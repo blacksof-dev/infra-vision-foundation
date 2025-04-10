@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import "tailwindcss";
+
+
+html,body {
+  scroll-behavior: smooth;
+
+}
+
+:root{
+  font-family: "Poppins", sans-serif;
+}
+
+@theme inline{
+  
+  --color-darkgray:#5D6468;
+  --color-black:#0A0A0A;
+  --color-pink:#C82249;
+  --color-white:#ffffff;
+  --color-lightgray:#979797;
+  --color-gray:#D0D0D0;
+  --color-whitesmoke:#F6F6F6;
+  --breakpoint-3xl : 1921px,
+  --breakpoint-2xl :1536px,
+  --breakpoint-xlg : 1440px,
+  --breakpoint-xl  :1280px,
+  --breakpoint-clg : 1100px,
+  --breakpoint-lg  : 1024px,
+  --breakpoint-md  : 786px,
+  --breakpoint-sm  :556px,
+  --font-poppins:"Poppins", "sans-serif"
+}
+
+
+
+
+@layer components {
+  .d {
+    @apply border-2 border-[#ff0000] border-solid;
+  }
+
+  .blade-top-padding {
+    @apply pt-8 md:pt-10 lg:pt-14 xl:pt-16 2xl:pt-20;
+ 
+  }
+
+  .blade-top-padding-sm {
+    @apply pt-5 md:pt-6 lg:pt-8 xl:pt-10 2xl:pt-14;
+  }
+
+  .blade-top-padding-lg {
+    @apply pt-10 md:pt-12 lg:pt-20 xl:pt-24 2xl:pt-28;
+  }
+
+  .blade-top-padding-xl {
+    @apply pt-16 md:pt-10 lg:pt-20 xl:pt-28 2xl:pt-36;
+  }
+
+  .blade-bottom-padding {
+    @apply pb-8 md:pb-10 lg:pb-14 xl:pb-16 2xl:pb-20;
+  
+  }
+
+  .blade-bottom-padding-sm {
+    @apply pb-5 md:pb-6 lg:pb-8 xl:pb-10 2xl:pb-14;
+   
+  }
+
+  .blade-bottom-padding-lg {
+    @apply pb-10 md:pb-12 lg:pb-20 xl:pb-24 2xl:pb-28;
+   
+  }
+
+  .blade-bottom-padding-xl {
+    @apply pb-16 md:pb-10 lg:pb-20 xl:pb-28 2xl:pb-36;
+  
+  }
+
+  .blade-top-margin {
+    @apply mt-8 md:mt-10 lg:mt-12 xl:mt-16 2xl:mt-20;
+  }
+
+  .blade-top-margin-sm {
+    @apply mt-5 md:mt-6 lg:mt-8 xl:mt-10 2xl:mt-14;
+  }
+
+  .blade-top-margin-lg {
+    @apply mt-10 md:mt-12 lg:mt-16 xl:mt-20 2xl:mt-24;
+  }
+
+  .blade-bottom-margin {
+    @apply mb-8 md:mb-10 lg:mb-12 xl:mb-16 2xl:mb-20;
+  }
+
+  .blade-bottom-margin-sm {
+    @apply mb-5 md:mb-6 lg:mb-8 xl:mb-10 2xl:mb-14;
+  }
+
+  .blade-bottom-margin-lg {
+    @apply mb-10 md:mb-12 lg:mb-16 xl:mb-20 2xl:mb-24;
+  }
+
+  .w-container-xs {
+    @apply mx-auto w-11/12 max-w-screen-xl sm:px-3 lg:w-8/12;
+  }
+
+  .w-container-sm {
+    @apply max-w-screen-2xl mx-auto w-11/12 lg:w-10/12 2xl:w-[70%] sm:px-3;
+  }
+
+  .w-container {
+    @apply mx-auto max-w-screen-2xl px-3 lg:w-11/12;
+  }
+
+  .w-container-lg {
+    @apply mx-auto max-w-screen-2xl px-3 md:w-11/12;
+  }
+
+  .w-container-xl {
+    @apply md:w-11/12 px-3 xl:px-16 2xl:px-20 max-w-[1920px] mx-auto;
+  }
+}
+
+.strong {
+  font-weight: bold;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tight;
+  }
+
+ 
+  h1 {
+    @apply text-3xl xl:text-[42px]  2xl:text-[54px];
+  }
+
+  h2 {
+    @apply text-lg  xl:text-xl  2xl:text-3xl ;
+  }
+
+  h3 {
+    @apply text-xl xl:text-[27px]  2xl:text-[28px] ;
+  }
+
+  h4 {
+    @apply  text-lg lg:text-xl  2xl:text-[24px] ;
+  }
+
+  h5 {
+    @apply text-base  md:text-base lg:text-lg  tracking-tight 2xl:text-xl xl:text-lg;
+  }
+
+  h6 {
+    @apply  lg:text-[18px]  ;
+  }
+
+  p{
+    @apply text-base
+  }
+
+  .buttonText{
+    @apply text-sm
+  }
+
+  br {
+    @apply hidden sm:block;
+  }
+
+  .text-input {
+    @apply text-base leading-normal md:leading-normal lg:leading-normal xl:text-xl 2xl:text-xl 2xl:leading-normal;
+  }
+
+  .text-gradient {
+    @apply  bg-clip-text text-transparent;
+  }
+
+  .text-dark-gradient {
+    @apply  bg-clip-text text-transparent py-1;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #040418;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #040418;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #d8d8d8;
+}
+
+::-webkit-scrollbar-track:hover {
+  background-color: #d8d8d8;
+}
+
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.features-mobile-wrapper .swiper-slide,
+.capacity-carousel-wrapper .swiper-slide {
+  height: auto !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c7c7c7;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #d8d8d8;
+  border-radius: 20px;
+  visibility: hidden;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+.spin {
+  animation: spin_360 90s linear infinite;
+}
+
+
+.d {
+  border: 1px solid red !important;
+}
+
+::-webkit-datetime-edit {
+  color: rgba(128, 128, 128, 0.502);
+}
+::-webkit-datetime-edit-fields-wrapper {
+  color: rgba(128, 128, 128, 0.502);
+}
+::-webkit-datetime-edit-text {
+  color: rgba(128, 128, 128, 0.502);
+}
+
+::-webkit-datetime-edit-year-field {
+  color: rgba(128, 128, 128, 0.502);
+}
+::-webkit-datetime-edit-month-field {
+  color: rgba(128, 128, 128, 0.502);
+}
+::-webkit-datetime-edit-week-field {
+  color: rgba(128, 128, 128, 0.502);
+}
+::-webkit-datetime-edit-day-field {
+  color: rgba(128, 128, 128, 0.502);
+}
+::-webkit-datetime-edit-hour-field {
+  color: rgba(128, 128, 128, 0.502);
+}
+::-webkit-datetime-edit-minute-field {
+  color: rgba(128, 128, 128, 0.502);
+}
+::-webkit-datetime-edit-second-field {
+  color: rgba(128, 128, 128, 0.502);
+}
+::-webkit-datetime-edit-millisecond-field {
+  color: rgba(128, 128, 128, 0.502);
+}
+::-webkit-datetime-edit-ampm-field {
+  color: rgba(128, 128, 128, 0.502);
+}
+
+::-webkit-inner-spin-button {
+  color: rgba(128, 128, 128, 0.502);
+}
+::-webkit-calendar-picker-indicator {
+  color: rgba(128, 128, 128, 0.502);
+}
+
+
