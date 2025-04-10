@@ -37,7 +37,7 @@ export default function Blogs() {
             <div className="pt-4 relative   xl:w-[50%]">
               <Image src={blogsImg} alt="Blogs" className=" w-full h-full " />
 
-              <div className="hidden md:block  px-6 py-4 2xl:py-8  absolute rounded bg-white lg:w-[55rem]  lg:h-[12rem] xl:w-[33rem]  xl:h-[11rem]  2xl:w-[43rem]  2xl:h-[12rem] bottom-4 left-3 right-3 ">
+              <div className="hidden md:block  px-6 py-4 2xl:py-8  absolute rounded bg-white lg:w-[55rem]  lg:h-[12rem] xl:w-[33rem]  xl:h-[11rem] 2xl:w-[40rem]   3xl:w-[43rem]  2xl:h-[12rem] bottom-4 left-3 right-3 ">
                 <div className="flex flex-row justify-between ">
                   <div>
                     <p className="font-medium text-darkgray">

@@ -12,17 +12,17 @@ import InfravisionTalks from "./10_infravision_talks"
 export default function Home(){
   return (
     <>
-    <Decoding/>
-    <Turning/>
-    <Driving/>
-    <Infravisionaries/>
-    <Publication/>
-     <Blogs/>
-     <Champion/>
-     <StayConnected/>
-     <InfravisionTalks/>
+      <Decoding />
+      <Turning />
+      <Driving />
+      <Infravisionaries />
+      <Publication />
+      <Blogs />
+      <Champion />
+      <StayConnected />
+      <InfravisionTalks />
     </>
-  )
+  );
 }
 
 

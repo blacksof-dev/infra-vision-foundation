@@ -21,14 +21,14 @@ html,body {
   --color-lightgray:#979797;
   --color-gray:#D0D0D0;
   --color-whitesmoke:#F6F6F6;
-  --breakpoint-3xl : 1921px,
-  --breakpoint-2xl :1536px,
-  --breakpoint-xlg : 1440px,
-  --breakpoint-xl  :1280px,
-  --breakpoint-clg : 1100px,
-  --breakpoint-lg  : 1024px,
-  --breakpoint-md  : 786px,
-  --breakpoint-sm  :556px,
+  --breakpoint-3xl : 1921px;
+  --breakpoint-2xl :1536px;
+  --breakpoint-xlg : 1440px;
+  --breakpoint-xl  :1280px;
+  --breakpoint-clg : 1100px;
+  --breakpoint-lg  : 1024px;
+  --breakpoint-md  : 786px;
+  --breakpoint-sm  :556px;
   --font-poppins:"Poppins", "sans-serif"
 }
 

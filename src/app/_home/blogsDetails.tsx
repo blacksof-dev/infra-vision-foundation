@@ -10,7 +10,6 @@ export default function BlogsDetails({ date, title, description }: CardProps) {
     <>
       <section>
         <div className="py-3 lg:py-4 lg:border-l-1   md:border-darkgray/40">
-        
           <div className="lg:ml-6">
             <div className="pt-2 md:py-3">
               <p>{date}</p>
@@ -34,12 +33,8 @@ export default function BlogsDetails({ date, title, description }: CardProps) {
               </div>
             </div>
           </div>
-
-         
         </div>
-        
       </section>
-      
     </>
   );
 }
