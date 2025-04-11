@@ -7,14 +7,14 @@ import { Navigation, Pagination } from "swiper/modules";
 import { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { HeroBtn } from "../atoms/buttons";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 import budgetSignals from "@/../public/assets/home/budgetSignals.jpg";
 import infraOutlays from "@/../public/assets/home/infraOutlays.jpg";
 import groupTaxation from "@/../public/assets/home/groupTaxation.jpg";
 import Card from "./cardTemplate";
-import workshop from "@/../public/assets/home/workshop.jpg";
-import rail from "@/../public/assets/home/rail.jpg";
-import agriExports from "@/../public/assets/home/agriExports.jpg";
+import workshop from "@/../public/assets/home/workshop.png";
+import rail from "@/../public/assets/home/rail.png";
+import agriExports from "@/../public/assets/home/agriExports.png";
 
 
 export default function CardSlider() {
@@ -74,7 +74,7 @@ export default function CardSlider() {
           }`}
           aria-label="Previous slide"
         >
-          <FaAngleLeft />
+          <GoArrowLeft/>
         </button>
         <button
           className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white ${
@@ -82,7 +82,7 @@ export default function CardSlider() {
           }`}
           aria-label="Next slide"
         >
-          <FaAngleRight />
+          <GoArrowRight />
         </button>
       </div>
     </>

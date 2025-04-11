@@ -1,11 +1,11 @@
 "use client";
 import { HeroBtn } from "@/_components/atoms/buttons";
 import Image from "next/image";
-import publications from "@/../public/assets/home/publications.jpg";
+import publications from "@/../public/assets/home/publications.png";
 import Card from "@/_components/molecules/cardTemplate";
-import workshop from "@/../public/assets/home/workshop.jpg";
-import rail from "@/../public/assets/home/rail.jpg";
-import agriExports from "@/../public/assets/home/agriExports.jpg";
+import workshop from "@/../public/assets/home/workshop.png";
+import rail from "@/../public/assets/home/rail.png";
+import agriExports from "@/../public/assets/home/agriExports.png";
 
 export default function Publication() {
   return (

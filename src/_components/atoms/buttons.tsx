@@ -24,7 +24,7 @@ type MasterBtnProps<T extends "submit" | "button"> = {
   borderColor: string;
   color: string;
   aarowColor?:string,
-  bgColor: string;
+  bgColor?: string;
 };
 
 export function HeroBtn<T extends "submit" | "button">({
@@ -119,12 +119,12 @@ export function UnderlineCta<T extends "submit" | "button">(
   return (
     <div>
       <button className={`text-${color} text-md lg:text-xl relative font-medium`}>
-        {title}
-        <span
-          className="w-10 sm:w-15 h-[1px] sm:h-[2px]  absolute bottom-0 left-0 top-7"
-          style={{ backgroundColor: underlineColor }}
-        ></span>
-      </button>
+          {title}
+          <span
+            className="w-10 sm:w-15 h-[1px] sm:h-[2px]  absolute bottom-0 left-0 top-7"
+            style={{ backgroundColor: underlineColor }}
+          ></span>
+        </button>
     </div>
   );
 }

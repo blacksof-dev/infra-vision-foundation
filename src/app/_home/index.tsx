@@ -1,3 +1,4 @@
+import Banner from "./01_banner"
 import Decoding from "./02_decoding"
 import Turning from "./03_turning"
 import Driving from "./04_driving"
@@ -12,10 +13,11 @@ import InfravisionTalks from "./10_infravision_talks"
 export default function Home(){
   return (
     <>
+    <Banner/>
     <Decoding/>
     <Turning/>
-    <Driving/>
-    <Infravisionaries/>
+    {/* <Driving/>
+    <Infravisionaries/> */}
     <Publication/>
      <Blogs/>
      <Champion/>

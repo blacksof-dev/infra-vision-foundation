@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import Link from "next/link";
+import { GoChevronDown } from "react-icons/go";
 
 const sizeMap = {
   small: " text-sm",
@@ -21,6 +22,7 @@ type MasterAnchorProps = {
   href: string;
   target?: "_self" | "_blank";
   className?: string;
+  iconVisiblity?:boolean;
 };
 
 export function Anchor({
@@ -61,6 +63,46 @@ export function TextAnchor({
                     focus:underline decoration-from-font underline-offset-4 focus:text-opacity-100 transition-all font-be-vietnam-pro-light`}
       >
         {text}
+       
       </Link>
     );
   }
+
+
+
+  export function TextNavAnchor({
+    text,
+    target,
+    href,
+    color = "dark",
+    size = "base",
+    className,
+    iconVisiblity,
+    ...rest
+   
+  }: MasterAnchorProps & { color?: "dark" | "light" }) {
+    const sizeClass: string = sizeMap[size];
+    const colorClass: string = colorMap[color];
+    return (
+     
+            <Link
+        target={target}
+        href={href}
+        {...rest}
+        className={`${sizeClass} ${colorClass} ${className} flex flex-row gap-1 justify-center items-center  text-opacity-80 hover:text-opacity-100 focus:outline-none 
+                    focus:underline decoration-from-font underline-offset-4 focus:text-opacity-100 transition-all `}
+      >
+        {text} 
+        <div>
+          {iconVisiblity &&
+           <GoChevronDown className=" text-darkgray "/>
+          }
+         
+        </div>
+      </Link>
+     
+     
+    );
+  }
+
+

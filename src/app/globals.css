@@ -21,15 +21,15 @@ html,body {
   --color-lightgray:#979797;
   --color-gray:#D0D0D0;
   --color-whitesmoke:#F6F6F6;
-  --breakpoint-3xl : 1921px,
-  --breakpoint-2xl :1536px,
-  --breakpoint-xlg : 1440px,
-  --breakpoint-xl  :1280px,
-  --breakpoint-clg : 1100px,
-  --breakpoint-lg  : 1024px,
-  --breakpoint-md  : 786px,
-  --breakpoint-sm  :556px,
-  --font-poppins:"Poppins", "sans-serif"
+  --breakpoint-3xl : 1921px;
+  --breakpoint-2xl :1536px;
+  --breakpoint-xlg : 1440px;
+  --breakpoint-xl  :1280px;
+  --breakpoint-clg : 1100px;
+  --breakpoint-lg  : 1024px;
+  --breakpoint-md  : 786px;
+  --breakpoint-sm  :556px;
+  --font-poppins:"Poppins", "sans-serif";
 }
 
 
@@ -295,6 +295,15 @@ html,body {
 }
 ::-webkit-calendar-picker-indicator {
   color: rgba(128, 128, 128, 0.502);
+}
+
+.bg-blurGradient {
+  background-image: 
+    linear-gradient(0deg, rgba(0, 0, 0, 0.37) 0%, rgba(0, 0, 0, 0.37) 100%),
+    radial-gradient(107.32% 141.42% at 0% 0%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+}
+.shadow-blur{
+  box-shadow: -2.501px -2.501px 125.035px 0px rgba(255, 255, 255, 0.02) inset;
 }
 
 
