@@ -1,7 +1,7 @@
 "use client";
 
 import { UnderlineCta } from "@/_components/atoms/buttons";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 
 import Image, { StaticImageData } from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -10,7 +10,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import playSvg from "@/../public/assets/globals/playSvg.svg";
+import linkedinSvg from "@/../public/assets/globals/linkedinSvg.svg";
 import Kiran from "@/../public/assets/home/trustees/Kiran.jpg";
 import Rumjhum from "@/../public/assets/home/trustees/Rumjhum.jpg";
 
@@ -48,101 +48,131 @@ import PriyankaBains from "@/../public/assets/home/team/PriyankaBains.jpg";
 import RumjhumChatterjee from "@/../public/assets/home/team/RumjhumChatterjee.jpg";
 import Vinayak from "@/../public/assets/home/team/Vinayak.jpg";
 import VrindaSingh from "@/../public/assets/home/team/VrindaSingh.png";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 export default function Infravisionaries() {
   const [data, setdata] = useState("trustee");
+  const [isLastSlide, setIsLastSlide] = useState(false);
+  const [isFirstSlide, setIsFirstSlide] = useState(true);
+
+  const handleSlideChange = (swiper: any) => {
+    setIsLastSlide(swiper.isEnd);
+    setIsFirstSlide(swiper.isBeginning);
+  };
 
   const trustee = [
     {
       image: Kiran,
-      title: "Kiran",
+      title: "Kiran Karnik",
+      desig: "Trustee",
     },
     {
       image: Rumjhum,
-      title: "Rumjhum",
+      title: "Rumjhum Chatterjee",
+      desig: "Co-Founder & Managing Trustee",
     },
     {
       image: Vinayak,
-      title: "Vinayak",
+      title: "Vinayak Chatterjee",
+      desig: "Founder & Managing Trustee",
     },
   ];
 
   const advisory = [
     {
       image: Arun,
-      title: "Arun",
+      title: "Arun Maira",
+      desig: "Member,Council of Advisors",
     },
     {
       image: ArunNanda,
       title: "Arun Nanda",
+      desig: "Member,Council of Advisors",
     },
     {
       image: AshishDhawan,
       title: "Ashish Dhawan",
+      desig: "Member,Council of Advisors",
     },
     {
       image: CyrilShroff,
       title: "Cyril Shroff",
+      desig: "Member,Council of Advisors",
     },
     {
       image: DKSen,
       title: "D. K. Sen",
+      desig: "Member,Council of Advisors",
     },
     {
       image: JanmejayaKSinha,
       title: "Janmejaya K. Sinha",
+      desig: "Member,Council of Advisors",
     },
     {
       image: GeetanjaliKirloskar,
       title: "Geetanjali Kirloskar",
+      desig: "Member,Council of Advisors",
     },
     {
       image: HemendraMKothari,
       title: "Hemendra M. Kothari",
+      desig: "Member,Council of Advisors",
     },
     {
       image: jagan,
-      title: "Jagan",
+      title: "Jagan Shah",
+      desig: "Member,Council of Advisors",
     },
     {
       image: khurshed,
       title: "Khurshed",
+      desig: "Member,Council of Advisors",
     },
     {
       image: NarotamSekhsaria,
       title: "Narotam Sekhsaria",
+      desig: "Member,Council of Advisors",
     },
     {
       image: ProfessorGRaghuram,
       title: "Professor G. Raghuram",
+      desig: "Member,Council of Advisors",
     },
     {
       image: NasserMunjee,
       title: "Nasser Munjee",
+      desig: "Member,Council of Advisors",
     },
     {
       image: RajnishKumar,
       title: "Rajnish Kumar",
+      desig: "Member,Council of Advisors",
     },
     {
       image: SameerGupta,
       title: "Sameer Gupta",
+      desig: "Member,Council of Advisors",
     },
     {
       image: SNSubrahmanyan,
       title: "S. N. Subrahmanyan",
+      desig: "Member,Council of Advisors",
     },
     {
       image: SunilMathur,
       title: "Sunil Mathur",
+      desig: "Member,Council of Advisors",
     },
     {
       image: DilipCherian,
       title: "Dilip Cherian",
+      desig: "Member,Council of Advisors",
     },
     {
       image: ManojKSingh,
       title: "Manoj K. Singh",
+      desig: "Member,Council of Advisors",
     },
   ];
 
@@ -150,26 +180,32 @@ export default function Infravisionaries() {
     {
       image: AkhileshTilotia,
       title: "Akhilesh Tilotia",
+      desig: "Distinguished Fellow (Public Policy)",
     },
     {
       image: rajajiMeshram,
       title: "Rajaji Meshram",
+      desig: "Distinguished Fellow(Transport & Logistics)",
     },
     {
       image: rajivRanjanMishra,
       title: "Rajiv Ranjan Mishra",
+      desig: "Distinguished Fellow (Water Conservation)",
     },
     {
       image: rasikaAthawale,
       title: "Rasika Athawale",
+      desig: "Distinguished Fellow (Power)",
     },
     {
       image: SoumyaKantiGhosh,
       title: "Soumya Kanti Ghosh",
+      desig: "Distinguished Fellow (Economic Policy)",
     },
     {
       image: supratimSarkar,
       title: "Supratim Sarkar",
+      desig: "Distinguished Fellow (Financial Services)",
     },
   ];
 
@@ -177,34 +213,42 @@ export default function Infravisionaries() {
     {
       image: MutumChaobisana,
       title: "Mutum Chaobisana",
+      desig: "DHead-Programmes",
     },
     {
       image: KavereeBamzai,
       title: "Kaveree Bamzai",
+      desig: "Head-Advocacy",
     },
     {
       image: LawrenceCardoza,
       title: "Lawrence Cardoza",
+      desig: "Research Associate",
     },
     {
       image: PriyankaBains,
       title: "Priyanka Bains",
+      desig: "Research Associate",
     },
     {
       image: RumjhumChatterjee,
       title: "Rumjhum Chatterjee",
+      desig: "Co-Founder & Managing Trustee",
     },
     {
       image: Vinayak,
-      title: "Vinayak",
+      title: "Vinayak Chatterjee",
+      desig: "Founder & Managing Trustee",
     },
     {
       image: VrindaSingh,
       title: "Vrinda Singh",
+      desig: "Research Associate",
     },
     {
       image: jagan,
-      title: "Jagan",
+      title: "Jagan Shah",
+      desig: "CEO",
     },
   ];
 
@@ -240,11 +284,11 @@ export default function Infravisionaries() {
             </div>
           </div>
 
-          <div className="flex flex-row gap-12 ">
-            <div className="w-[20%]">
+          <div className="hidden md:flex flex-row gap-20 blade-top-padding-sm overflow-x-hidden">
+            <div className="w-[40%] border-r-1 pe-9 border-lightgray">
               <div className="py-4">
                 <button
-                  className="text-white text-md lg:text-xl relative font-medium"
+                  className="text-white text-md text-nowrap lg:text-xl relative font-medium"
                   onClick={() => setdata("trustee")}
                 >
                   Trustee
@@ -253,7 +297,7 @@ export default function Infravisionaries() {
               </div>
               <div className="py-4">
                 <button
-                  className="text-white text-md lg:text-xl relative font-medium"
+                  className="text-white text-md  text-nowrap lg:text-xl relative font-medium"
                   onClick={() => setdata("advisory")}
                 >
                   Advisory Council
@@ -262,7 +306,7 @@ export default function Infravisionaries() {
               </div>
               <div className="py-4">
                 <button
-                  className="text-white text-md lg:text-xl relative font-medium"
+                  className="text-white text-md text-nowrap lg:text-xl relative font-medium"
                   onClick={() => setdata("fellow")}
                 >
                   Distinguished Fellows
@@ -271,7 +315,7 @@ export default function Infravisionaries() {
               </div>
               <div className="py-4">
                 <button
-                  className="text-white text-md lg:text-xl relative font-medium"
+                  className="text-white text-md lg:text-xl relative font-medium text-nowrap"
                   onClick={() => setdata("team")}
                 >
                   Team
@@ -281,39 +325,373 @@ export default function Infravisionaries() {
             </div>
 
             <div>
-            <div className="w-full overflow-hidden">
-  <Swiper
-    modules={[Navigation, Pagination]}
-    grabCursor
-    spaceBetween={20}
-    slidesPerView={cardData.length} // Show all cards
-  >
-    {cardData.map((ele, index) => (
-      <SwiperSlide key={index} className="!w-auto"> {/* important */}
-        <div className="flex flex-col items-center">
-          <Image
-            src={ele.image}
-            alt={ele.title}
-            className="w-32 h-32 object-cover rounded-lg"
-          />
-        
-        </div>
-      </SwiperSlide>
-    ))}
-  </Swiper>
-</div>
+              <div className="w-full  overflow-hidden">
+                <Swiper
+                  modules={[Navigation, Pagination]}
+                  spaceBetween={20}
+                  onSwiper={(swiper) => {
+                    setTimeout(() => {
+                      swiper.params.navigation = {
+                        prevEl: ".swiper-solution-prev-btn",
+                        nextEl: ".swiper-solution-next-btn",
+                      };
+                      swiper.navigation.destroy(); // clean before re-init
+                      swiper.navigation.init();
+                      swiper.navigation.update();
+                    });
+                  }}
+                  onSlideChange={handleSlideChange}
+                  slidesPerView={cardData.length}
+                >
+                  {cardData.map((ele, index) => (
+                    <SwiperSlide key={index} className="!w-auto">
+                      {" "}
+                      <div className="flex realtive flex-col w-[19rem] h-[19rem] ">
+                        <Image
+                          src={ele.image}
+                          alt={ele.title}
+                          className="w-full h-full object-cover "
+                        />
+                        <div className="absolute right-4 bottom-17 bg-white w-[3rem] h-[3rem] rounded">
+                          <Image
+                            src={linkedinSvg}
+                            alt={ele.title}
+                            className="w-full h-full object-cover "
+                          />
+                        </div>
+                        <div className="absolute bottom-0 left-0">
+                          <div className="bg-white w-[15rem] h-[5rem] rounded">
+                            <h6 className="pt-6 px-3 font-medium">
+                              {ele.title}
+                            </h6>
+                            <p className="px-3  font-light text-black">
+                              {ele.desig}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+              <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-8 2xl:mt-1">
+                <button
+                  className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                    isFirstSlide ? "opacity-40" : ""
+                  }`}
+                  aria-label="Previous slide"
+                >
+                  <FaAngleLeft />
+                </button>
+                <button
+                  className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                    isLastSlide ? "opacity-40" : ""
+                  }`}
+                  aria-label="Next slide"
+                >
+                  <FaAngleRight />
+                </button>
+              </div>
+            </div>
+          </div>
 
-
-              {/* {cardData.map((ele, index) => (
-                <div>
-                  <section className="mt-3" key={index}>
-                    <div className="flex flex-row gap-12">
-                      <Image src={ele.image} alt={ele.title} className="" />
+          {/* MObile View */}
+          <div className="md:hidden block">
+            <div className="py-4">
+              <button
+                className="text-white text-md text-nowrap lg:text-xl relative font-medium"
+                onClick={() => setdata("trustee")}
+              >
+                Trustee
+                <span className="w-10 sm:w-15 h-[1px] sm:h-[2px] bg-white absolute bottom-0 left-0 top-7"></span>
+              </button>
+            </div>
+            <div className="w-full  overflow-hidden">
+              <Swiper
+                modules={[Navigation, Pagination]}
+                spaceBetween={20}
+                onSwiper={(swiper) => {
+                  setTimeout(() => {
+                    swiper.params.navigation = {
+                      prevEl: ".swiper-solution-prev-btn",
+                      nextEl: ".swiper-solution-next-btn",
+                    };
+                    swiper.navigation.destroy(); // clean before re-init
+                    swiper.navigation.init();
+                    swiper.navigation.update();
+                  });
+                }}
+                onSlideChange={handleSlideChange}
+                slidesPerView={cardData.length}
+              >
+                {trustee.map((ele, index) => (
+                  <SwiperSlide key={index} className="!w-auto">
+                    {" "}
+                    <div className="flex realtive flex-col w-[19rem] h-[19rem] ">
+                      <Image
+                        src={ele.image}
+                        alt={ele.title}
+                        className="w-full h-full object-cover "
+                      />
+                      <div className="absolute right-4 bottom-17 bg-white w-[3rem] h-[3rem] rounded">
+                        <Image
+                          src={linkedinSvg}
+                          alt={ele.title}
+                          className="w-full h-full object-cover "
+                        />
+                      </div>
+                      <div className="absolute bottom-0 left-0">
+                        <div className="bg-white w-[15rem] h-[5rem] rounded">
+                          <h6 className="pt-6 px-3 font-medium">{ele.title}</h6>
+                          <p className="px-3  font-light text-black">
+                            {ele.desig}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    <div></div>
-                  </section>
-                </div>
-              ))} */}
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+            <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-8 2xl:mt-1">
+              <button
+                className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                  isFirstSlide ? "opacity-40" : ""
+                }`}
+                aria-label="Previous slide"
+              >
+                <FaAngleLeft />
+              </button>
+              <button
+                className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                  isLastSlide ? "opacity-40" : ""
+                }`}
+                aria-label="Next slide"
+              >
+                <FaAngleRight />
+              </button>
+            </div>
+          </div>
+
+          <div className="md:hidden block">
+            <div className="py-4">
+              <button className="text-white text-md text-nowrap lg:text-xl relative font-medium">
+                Distinguished
+                <span className="w-10 sm:w-15 h-[1px] sm:h-[2px] bg-white absolute bottom-0 left-0 top-7"></span>
+              </button>
+            </div>
+            <div className="w-full  overflow-hidden">
+              <Swiper
+                modules={[Navigation, Pagination]}
+                spaceBetween={20}
+                onSwiper={(swiper) => {
+                  setTimeout(() => {
+                    swiper.params.navigation = {
+                      prevEl: ".swiper-solution-prev-btn",
+                      nextEl: ".swiper-solution-next-btn",
+                    };
+                    swiper.navigation.destroy(); // clean before re-init
+                    swiper.navigation.init();
+                    swiper.navigation.update();
+                  });
+                }}
+                onSlideChange={handleSlideChange}
+                slidesPerView={cardData.length}
+              >
+                {fellow.map((ele, index) => (
+                  <SwiperSlide key={index} className="!w-auto">
+                    {" "}
+                    <div className="flex realtive flex-col w-[19rem] h-[19rem] ">
+                      <Image
+                        src={ele.image}
+                        alt={ele.title}
+                        className="w-full h-full object-cover "
+                      />
+                      <div className="absolute right-4 bottom-17 bg-white w-[3rem] h-[3rem] rounded">
+                        <Image
+                          src={linkedinSvg}
+                          alt={ele.title}
+                          className="w-full h-full object-cover "
+                        />
+                      </div>
+                      <div className="absolute bottom-0 left-0">
+                        <div className="bg-white w-[15rem] h-[5rem] rounded">
+                          <h6 className="pt-6 px-3 font-medium">{ele.title}</h6>
+                          <p className="px-3  font-light text-black">
+                            {ele.desig}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+            <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-8 2xl:mt-1">
+              <button
+                className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                  isFirstSlide ? "opacity-40" : ""
+                }`}
+                aria-label="Previous slide"
+              >
+                <FaAngleLeft />
+              </button>
+              <button
+                className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                  isLastSlide ? "opacity-40" : ""
+                }`}
+                aria-label="Next slide"
+              >
+                <FaAngleRight />
+              </button>
+            </div>
+          </div>
+
+          <div className="md:hidden block">
+            <div className="py-4">
+              <button className="text-white text-md text-nowrap lg:text-xl relative font-medium">
+                Advisory Council
+                <span className="w-10 sm:w-15 h-[1px] sm:h-[2px] bg-white absolute bottom-0 left-0 top-7"></span>
+              </button>
+            </div>
+            <div className="w-full  overflow-hidden">
+              <Swiper
+                modules={[Navigation, Pagination]}
+                spaceBetween={20}
+                onSwiper={(swiper) => {
+                  setTimeout(() => {
+                    swiper.params.navigation = {
+                      prevEl: ".swiper-solution-prev-btn",
+                      nextEl: ".swiper-solution-next-btn",
+                    };
+                    swiper.navigation.destroy(); // clean before re-init
+                    swiper.navigation.init();
+                    swiper.navigation.update();
+                  });
+                }}
+                onSlideChange={handleSlideChange}
+                slidesPerView={cardData.length}
+              >
+                {advisory.map((ele, index) => (
+                  <SwiperSlide key={index} className="!w-auto">
+                    {" "}
+                    <div className="flex realtive flex-col w-[19rem] h-[19rem] ">
+                      <Image
+                        src={ele.image}
+                        alt={ele.title}
+                        className="w-full h-full object-cover "
+                      />
+                      <div className="absolute right-4 bottom-17 bg-white w-[3rem] h-[3rem] rounded">
+                        <Image
+                          src={linkedinSvg}
+                          alt={ele.title}
+                          className="w-full h-full object-cover "
+                        />
+                      </div>
+                      <div className="absolute bottom-0 left-0">
+                        <div className="bg-white w-[15rem] h-[5rem] rounded">
+                          <h6 className="pt-6 px-3 font-medium">{ele.title}</h6>
+                          <p className="px-3  font-light text-black">
+                            {ele.desig}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+            <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-8 2xl:mt-1">
+              <button
+                className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                  isFirstSlide ? "opacity-40" : ""
+                }`}
+                aria-label="Previous slide"
+              >
+                <FaAngleLeft />
+              </button>
+              <button
+                className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                  isLastSlide ? "opacity-40" : ""
+                }`}
+                aria-label="Next slide"
+              >
+                <FaAngleRight />
+              </button>
+            </div>
+          </div>
+
+          <div className="md:hidden block">
+            <div className="py-4">
+              <button className="text-white text-md text-nowrap lg:text-xl relative font-medium">
+                Team
+                <span className="w-10 sm:w-15 h-[1px] sm:h-[2px] bg-white absolute bottom-0 left-0 top-7"></span>
+              </button>
+            </div>
+            <div className="w-full  overflow-hidden">
+              <Swiper
+                modules={[Navigation, Pagination]}
+                spaceBetween={20}
+                onSwiper={(swiper) => {
+                  setTimeout(() => {
+                    swiper.params.navigation = {
+                      prevEl: ".swiper-solution-prev-btn",
+                      nextEl: ".swiper-solution-next-btn",
+                    };
+                    swiper.navigation.destroy(); // clean before re-init
+                    swiper.navigation.init();
+                    swiper.navigation.update();
+                  });
+                }}
+                onSlideChange={handleSlideChange}
+                slidesPerView={cardData.length}
+              >
+                {team.map((ele, index) => (
+                  <SwiperSlide key={index} className="!w-auto">
+                    {" "}
+                    <div className="flex realtive flex-col w-[19rem] h-[19rem] ">
+                      <Image
+                        src={ele.image}
+                        alt={ele.title}
+                        className="w-full h-full object-cover "
+                      />
+                      <div className="absolute right-4 bottom-17 bg-white w-[3rem] h-[3rem] rounded">
+                        <Image
+                          src={linkedinSvg}
+                          alt={ele.title}
+                          className="w-full h-full object-cover "
+                        />
+                      </div>
+                      <div className="absolute bottom-0 left-0">
+                        <div className="bg-white w-[15rem] h-[5rem] rounded">
+                          <h6 className="pt-6 px-3 font-medium">{ele.title}</h6>
+                          <p className="px-3  font-light text-black">
+                            {ele.desig}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+            <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-8 2xl:mt-1">
+              <button
+                className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                  isFirstSlide ? "opacity-40" : ""
+                }`}
+                aria-label="Previous slide"
+              >
+                <FaAngleLeft />
+              </button>
+              <button
+                className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                  isLastSlide ? "opacity-40" : ""
+                }`}
+                aria-label="Next slide"
+              >
+                <FaAngleRight />
+              </button>
             </div>
           </div>
         </div>

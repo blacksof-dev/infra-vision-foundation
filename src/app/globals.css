@@ -30,6 +30,7 @@ html,body {
   --breakpoint-md  : 786px;
   --breakpoint-sm  :556px;
   --font-poppins:"Poppins", "sans-serif";
+  --font-poppins:"Poppins", "sans-serif"
 }
 
 
@@ -138,7 +139,7 @@ html,body {
 
  
   h1 {
-    @apply text-3xl xl:text-[42px]  2xl:text-[54px];
+    @apply text-2xl  xl:text-[42px]  2xl:text-[54px];
   }
 
   h2 {

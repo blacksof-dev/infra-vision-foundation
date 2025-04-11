@@ -14,17 +14,18 @@ export default function Home(){
   return (
     <>
     <Banner/>
-    <Decoding/>
-    <Turning/>
-    {/* <Driving/>
-    <Infravisionaries/> */}
-    <Publication/>
-     <Blogs/>
-     <Champion/>
-     <StayConnected/>
-     <InfravisionTalks/>
+    
+      <Decoding />
+      <Turning />
+      {/* <Driving /> */}
+      <Infravisionaries />
+      <Publication />
+      <Blogs />
+      <Champion />
+      <StayConnected />
+      <InfravisionTalks />
     </>
-  )
+  );
 }
 
 

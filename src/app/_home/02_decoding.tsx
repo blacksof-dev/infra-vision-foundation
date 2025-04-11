@@ -36,7 +36,7 @@ export default function Decoding() {
               <LinkedinCard />
             </div>
             <div className="w-full  lg:w-[50%] ">
-              <div className="pt-1  lg:border-l-1 lg:border-darkgray/40 px-5 xl:px-16">
+              <div className="pt-1  lg:border-l-1 lg:border-darkgray/40 lg:px-5 xl:px-16">
                 <div>
                   <h3 className="text-black tracking-[-2%]">
                     Infrastructure is all around us, yet its impact often goes

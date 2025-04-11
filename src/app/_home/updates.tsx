@@ -33,7 +33,7 @@ export default function Updates() {
       <div className="flex flex-row gap-8">
         {/* Left Column */}
         <div className="border-r border-white">
-          <div className="ms-30">
+          <div className="lg:ms-24  xl:ms-30 hidden xl:block">
             <h4 className="text-white font-medium text-nowrap px-5">
               Latest Updates
             </h4>
@@ -96,8 +96,8 @@ export default function Updates() {
           >
             {EventsDetails.map((ele, index) => (
               <SwiperSlide key={index} className="!w-fit group">
-                <div className="flex flex-row gap-4 bg-blurGradient backdrop-blur-[13px] shadow-blur rounded-lg p-4 w-[45rem] h-[14rem] ">
-                  <div className="w-[22rem] h-[12rem] relative ">
+                <div className="flex flex-row gap-4 bg-blurGradient backdrop-blur-[13px] shadow-blur rounded-lg p-2 md:p-4 w-[25rem]  md:w-[28rem]    xl:w-[45rem] xl:h-[14rem] ">
+                  <div className="w-[9rem]  h-[8rem] md:w-[14rem] md:h-[9rem]   xl:w-[22rem] xl:h-[12rem] relative ">
                     <Image
                       src={ele.image}
                       alt={ele.title}
@@ -111,7 +111,7 @@ export default function Updates() {
                       <p className="font-light text-white">{ele.category}</p>
                     </div>
                     <div className="py-2">
-                      <h5 className="text-white font-medium">{ele.title}</h5>
+                      <h5 className="text-white font-medium truncate">{ele.title}</h5>
                     </div>
                     <HeroBtn
                       text={ele.btnTitle}
