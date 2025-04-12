@@ -1,6 +1,6 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
+import {  Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -116,7 +116,7 @@ export default function Turning() {
                       },
                     }}
                   >
-                    {data.map((item: any, index: number) => {
+                    {data.map((item, index) => {
                       return (
                         <SwiperSlide key={index} className="!h-full ">
                           <div className=" ">

@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import Image from "next/image";
 import youtubeSvg from "@/../public/assets/globals/youtubeSvg.svg";
 import LinkedinCard from "@/_components/molecules/CommonCardTemplate";
@@ -7,13 +6,13 @@ import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 import Link from "next/link";
 
 export default function Decoding() {
-  const [isLastSlide, setIsLastSlide] = useState(false);
-  const [isFirstSlide, setIsFirstSlide] = useState(true);
+  // const [isLastSlide, setIsLastSlide] = useState(false);
+  // const [isFirstSlide, setIsFirstSlide] = useState(true);
 
-  const handleSlideChange = (swiper: any) => {
-    setIsLastSlide(swiper.isEnd);
-    setIsFirstSlide(swiper.isBeginning);
-  };
+  // const handleSlideChange = (swiper: any) => {
+  //   setIsLastSlide(swiper.isEnd);
+  //   setIsFirstSlide(swiper.isBeginning);
+  // };
   return (
     <>
       <section className="bg-whitesmoke">
@@ -64,17 +63,13 @@ export default function Decoding() {
                 </div>
                 <div className="lg:flex  hidden  flex-wrap gap-5 justify-center  lg:justify-start md:gap-8 pt-9">
                   <button
-                    className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white ${
-                      isFirstSlide ? "opacity-40" : ""
-                    }`}
+                    className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white`}
                     aria-label="Previous slide"
                   >
                     <GoArrowLeft />
                   </button>
                   <button
-                    className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white ${
-                      isLastSlide ? "!opacity-40" : ""
-                    }`}
+                    className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white`}
                     aria-label="Next slide"
                   >
                     <GoArrowRight />

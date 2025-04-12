@@ -1,27 +1,27 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperClass } from 'swiper/types';
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import { useState } from "react";
-import Image, { StaticImageData } from "next/image";
-import { HeroBtn } from "../atoms/buttons";
+
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 import budgetSignals from "@/../public/assets/home/budgetSignals.jpg";
 import infraOutlays from "@/../public/assets/home/infraOutlays.jpg";
 import groupTaxation from "@/../public/assets/home/groupTaxation.jpg";
 import Card from "./cardTemplate";
-import workshop from "@/../public/assets/home/workshop.png";
-import rail from "@/../public/assets/home/rail.png";
-import agriExports from "@/../public/assets/home/agriExports.png";
+// import workshop from "@/../public/assets/home/workshop.png";
+// import rail from "@/../public/assets/home/rail.png";
+// import agriExports from "@/../public/assets/home/agriExports.png";
 
 
 export default function CardSlider() {
   const [isLastSlide, setIsLastSlide] = useState(false);
   const [isFirstSlide, setIsFirstSlide] = useState(true);
 
-  const handleSlideChange = (swiper: any) => {
+  const handleSlideChange = (swiper:SwiperClass) => {
     setIsLastSlide(swiper.isEnd);
     setIsFirstSlide(swiper.isBeginning);
   };
@@ -49,7 +49,7 @@ export default function CardSlider() {
             }}
           >
             
-            {CardData.map((item: any, index: number) => {
+            {CardData.map((item, index) => {
               return (
                 <SwiperSlide key={index} className="!h-full ">
                   <div className="">
@@ -113,26 +113,26 @@ const CardData = [
   },
 ];
 
-const Publication = [
-  {
-    category:"Newsletter",
-    date: "Aug 15 2024",
-    title: "Workshop on trees outside forests",
-    img: workshop,
-    link:"https://theinfravisionfoundation.org/wp-content/uploads/2025/01/INFRAVISION-TALK-January-2025.pdf"
-  },
-  {
-    category:"Research paper",
-    date:"July, 2024",
-    title:"The case for developing high-speed rail corridors in India",
-    img:rail,
-    link:"https://www.financialexpress.com/opinion/nbspinfra-outlays-a-strategic-downplay-the-budget-signals-a-move-out-of-the-era-of-large-infra-spends-pump-priming-the-economy/3563263/#:~:text=stressful%20Covid%20period.-,Across%20the%20last%20few%20years%2C%20India%20saw%20Union%20Budget%20infra,11%25%20to%20Rs%2011.1%20trillion."
-  },
-  {
-    category:"Newsletter",
-    date:"February, 2025",
-    title:"CAIRA Roundtable on Agri Exports is a success",
-    img:agriExports,
-    link:"https://www.moneycontrol.com/news/business/economy/budget-signals-shift-in-infra-strategy-as-govt-pushes-states-private-sector-to-pitch-in-12777120.html"
-  }
-];
+// const Publication = [
+//   {
+//     category:"Newsletter",
+//     date: "Aug 15 2024",
+//     title: "Workshop on trees outside forests",
+//     img: workshop,
+//     link:"https://theinfravisionfoundation.org/wp-content/uploads/2025/01/INFRAVISION-TALK-January-2025.pdf"
+//   },
+//   {
+//     category:"Research paper",
+//     date:"July, 2024",
+//     title:"The case for developing high-speed rail corridors in India",
+//     img:rail,
+//     link:"https://www.financialexpress.com/opinion/nbspinfra-outlays-a-strategic-downplay-the-budget-signals-a-move-out-of-the-era-of-large-infra-spends-pump-priming-the-economy/3563263/#:~:text=stressful%20Covid%20period.-,Across%20the%20last%20few%20years%2C%20India%20saw%20Union%20Budget%20infra,11%25%20to%20Rs%2011.1%20trillion."
+//   },
+//   {
+//     category:"Newsletter",
+//     date:"February, 2025",
+//     title:"CAIRA Roundtable on Agri Exports is a success",
+//     img:agriExports,
+//     link:"https://www.moneycontrol.com/news/business/economy/budget-signals-shift-in-infra-strategy-as-govt-pushes-states-private-sector-to-pitch-in-12777120.html"
+//   }
+// ];

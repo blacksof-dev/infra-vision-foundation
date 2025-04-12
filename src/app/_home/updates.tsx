@@ -1,13 +1,13 @@
 "use client";
-import {  useState } from "react";
+import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperClass } from 'swiper/types';
 import Image from "next/image";
 import "swiper/css";
 import "swiper/css/navigation";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { HeroBtn } from "@/_components/atoms/buttons";
-import { Navigation } from "swiper/modules";
-
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 import taxation from "@/../public/assets/home/updates/taxation.png";
 import infraKathaEvent from "@/../public/assets/home/updates/infraKathaEvent.png";
@@ -15,18 +15,14 @@ import afforestation from "@/../public/assets/home/updates/afforestation.png";
 import infraKatha from "@/../public/assets/home/updates/infraKatha.png";
 import agriWarehousing from "@/../public/assets/home/updates/agriWarehousing.png";
 
-
 export default function Updates() {
-
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [isLastSlide, setIsLastSlide] = useState(false);
 
-  const handleSlideChange = (swiper: any) => {
+  const handleSlideChange = (swiper:SwiperClass) => {
     setIsFirstSlide(swiper.isBeginning);
     setIsLastSlide(swiper.isEnd);
   };
-
-
 
   return (
     <section>
@@ -39,19 +35,17 @@ export default function Updates() {
             </h4>
             <div className="flex gap-5 pt-5 justify-center mt-4 lg:justify-start md:gap-4 2xl:mt-1 w-container">
               <button
-              
                 className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
-                    isFirstSlide ? "opacity-40" : ""
-                  }`}
+                  isFirstSlide ? "opacity-40" : ""
+                }`}
                 aria-label="Previous slide"
               >
                 <GoArrowLeft />
               </button>
               <button
-            
                 className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
-                    isLastSlide ? "opacity-40" : ""
-                  }`}
+                  isLastSlide ? "opacity-40" : ""
+                }`}
                 aria-label="Next slide"
               >
                 <GoArrowRight />
@@ -62,38 +56,47 @@ export default function Updates() {
 
         {/* Right Column */}
         <div className="overflow-x-hidden">
-          <Swiper
-          
-            modules={[Navigation]}
-            loop
-            onSlideChange={handleSlideChange}
-            grabCursor={false}
-            spaceBetween={20}
-            slidesPerView={1.1}
-            centeredSlides={true}
-            breakpoints={{
-              480: {
-                slidesPerView: "auto",
-                spaceBetween: 15,
-                centeredSlides: true,
-              },
-              768: {
-                slidesPerView: "auto",
-                spaceBetween: 30,
-                centeredSlides: false,
-              },
-              960: {
-                slidesPerView: "auto",
-                spaceBetween: 20,
-                centeredSlides: false,
-              },
-              1536: {
-                slidesPerView: "auto",
-                spaceBetween: 40,
-                centeredSlides: false,
-              },
-            }}
-          >
+        <Swiper
+  modules={[Navigation, Pagination, Autoplay]}
+  navigation={{
+    prevEl: ".swiper-solution-prev-btn",
+    nextEl: ".swiper-solution-next-btn",
+  }}
+  pagination={{ clickable: true }}
+  loop
+  grabCursor
+  slideToClickedSlide
+  speed={1000}
+  autoplay={{
+    delay: 3000,
+    disableOnInteraction: false,
+    reverseDirection: true,
+  }}
+  breakpoints={{
+    480: {
+      slidesPerView: "auto",
+      spaceBetween: 15,
+      centeredSlides: true,
+    },
+    768: {
+      slidesPerView: "auto",
+      spaceBetween: 30,
+      centeredSlides: false,
+    },
+    960: {
+      slidesPerView: "auto",
+      spaceBetween: 20,
+      centeredSlides: false,
+    },
+    1536: {
+      slidesPerView: "auto",
+      spaceBetween: 40,
+      centeredSlides: false,
+    },
+  }}
+  onSlideChange={handleSlideChange}
+>
+
             {EventsDetails.map((ele, index) => (
               <SwiperSlide key={index} className="!w-fit group">
                 <div className="flex flex-row gap-4 bg-blurGradient backdrop-blur-[13px] shadow-blur rounded-lg p-2 md:p-4 w-[25rem]  md:w-[28rem]    xl:w-[45rem] xl:h-[14rem] ">
@@ -111,7 +114,9 @@ export default function Updates() {
                       <p className="font-light text-white">{ele.category}</p>
                     </div>
                     <div className="py-2">
-                      <h5 className="text-white font-medium truncate">{ele.title}</h5>
+                      <h5 className="text-white font-medium truncate lg:overflow-visible lg:whitespace-normal">
+                        {ele.title}
+                      </h5>
                     </div>
                     <HeroBtn
                       text={ele.btnTitle}

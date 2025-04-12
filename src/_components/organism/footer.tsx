@@ -34,6 +34,7 @@ const footer = () => {
                 color="black"
                 bgColor="white"
                 size="extralarge"
+                aarowColor="pink"
               />
             </div>
           </div>

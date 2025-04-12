@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 import infravisionfoundationBg from "@/../public/assets/home/infravisionfoundationBg.png";
 import { HeroBtn, UnderlineCta } from "@/_components/atoms/buttons";
 import infravisionTalkMobile from "@/../public/assets/home/infravisionTalkMobile.jpg";

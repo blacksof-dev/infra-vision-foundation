@@ -159,7 +159,7 @@ html,body {
   }
 
   h6 {
-    @apply  lg:text-[18px]  ;
+    @apply  text-[18px]  ;
   }
 
   p{

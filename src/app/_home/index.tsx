@@ -17,7 +17,7 @@ export default function Home(){
     
       <Decoding />
       <Turning />
-      {/* <Driving /> */}
+      <Driving />
       <Infravisionaries />
       <Publication />
       <Blogs />

@@ -4,7 +4,6 @@ import Card from "@/_components/molecules/cardTemplate";
 import budgetSignals from "@/../public/assets/home/budgetSignals.jpg";
 import infraOutlays from "@/../public/assets/home/infraOutlays.jpg";
 import groupTaxation from "@/../public/assets/home/groupTaxation.jpg";
-import Image, { StaticImageData } from "next/image"; 
 import CardSlider from "@/_components/molecules/slidercardTemplate";
 
 

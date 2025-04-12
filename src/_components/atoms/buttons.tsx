@@ -20,7 +20,7 @@ type MasterBtnProps<T extends "submit" | "button"> = {
   link?: string;
   target?: "_blank" | "_self" | "_parent" | "_top";
   onClick?: T extends "submit" ? never : () => void;
-  isloading?: boolean;
+  
   borderColor: string;
   color: string;
   aarowColor?:string,
@@ -36,7 +36,6 @@ export function HeroBtn<T extends "submit" | "button">({
   role = "button",
   link = "/",
   target = "_self",
-  isloading,
   borderColor,
   bgColor,
   color,
@@ -55,10 +54,10 @@ export function HeroBtn<T extends "submit" | "button">({
     }
   }
 
-  const baseStyles = `w-7 h-7 md:w-10 md:h-10 rounded-sm p-1 md:p-2 border-2 
-                    border-${borderColor} text-${color} bg-${bgColor}
-                     text-xl 
-                    transition-all duration-300`;
+  // const baseStyles = `w-7 h-7 md:w-10 md:h-10 rounded-sm p-1 md:p-2 border-2 
+  //                   border-${borderColor} text-${color} bg-${bgColor}
+  //                    text-xl 
+  //                   transition-all duration-300`;
 
   return (
     <div className="w-fit">
@@ -106,7 +105,6 @@ type MasterUnderlineBtnProps<T extends "submit" | "button"> = {
   link?: string;
   target?: "_blank" | "_self" | "_parent" | "_top";
   onClick?: T extends "submit" ? never : () => void;
-  isloading?: boolean;
   color?: string;
   title: string;
   underlineColor?:string;

@@ -19,7 +19,7 @@ const colorMap = {
 type MasterAnchorProps = {
   size?: keyof typeof sizeMap;
   text: string;
-  href: string;
+  href?: string;
   target?: "_self" | "_blank";
   className?: string;
   iconVisiblity?:boolean;
@@ -57,7 +57,7 @@ export function TextAnchor({
     return (
       <Link
         target={target}
-        href={href}
+        href={href ?? "/"} 
         {...rest}
         className={`${sizeClass} ${colorClass} ${className} text-opacity-80 hover:text-opacity-100 focus:outline-none 
                     focus:underline decoration-from-font underline-offset-4 focus:text-opacity-100 transition-all font-be-vietnam-pro-light`}
@@ -87,15 +87,51 @@ export function TextAnchor({
      
             <Link
         target={target}
-        href={href}
+        href={href ?? "/"} 
         {...rest}
-        className={`${sizeClass} ${colorClass} ${className} flex flex-row gap-1 justify-center items-center  text-opacity-80 hover:text-opacity-100 focus:outline-none 
+        className={`${sizeClass} ${colorClass} ${className} flex flex-row gap-1   text-opacity-80 hover:text-opacity-100 focus:outline-none 
                     focus:underline decoration-from-font underline-offset-4 focus:text-opacity-100 transition-all `}
       >
         {text} 
         <div>
           {iconVisiblity &&
-           <GoChevronDown className=" text-darkgray "/>
+           <GoChevronDown className=" text-darkgray mt-2"/>
+          }
+         
+        </div>
+      </Link>
+     
+     
+    );
+  }
+
+
+  export function TextMobileNavAnchor({
+    text,
+    target,
+    href,
+    color = "dark",
+    size = "base",
+    className,
+    iconVisiblity,
+    ...rest
+   
+  }: MasterAnchorProps & { color?: "dark" | "light" }) {
+    const sizeClass: string = sizeMap[size];
+    const colorClass: string = colorMap[color];
+    return (
+     
+            <Link
+        target={target}
+        href={href ?? "/"} 
+        {...rest}
+        className={`${sizeClass} ${colorClass} ${className} no-underline  flex flex-row gap-1 justify-between  text-opacity-80 hover:text-opacity-100 
+                     focus:text-opacity-100 transition-all `}
+      >
+        {text} 
+        <div>
+          {iconVisiblity &&
+           <GoChevronDown className=" text-darkgray mt-2"/>
           }
          
         </div>

@@ -1,9 +1,9 @@
 "use client";
 
-import { UnderlineCta } from "@/_components/atoms/buttons";
-import { useState, useEffect, useMemo, useRef } from "react";
 
-import Image, { StaticImageData } from "next/image";
+import { useState, useEffect, useMemo} from "react";
+import type { Swiper as SwiperClass } from 'swiper/types';
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -55,7 +55,7 @@ export default function Infravisionaries() {
   const [isLastSlide, setIsLastSlide] = useState(false);
   const [isFirstSlide, setIsFirstSlide] = useState(true);
 
-  const handleSlideChange = (swiper: any) => {
+  const handleSlideChange = (swiper:SwiperClass) => {
     setIsLastSlide(swiper.isEnd);
     setIsFirstSlide(swiper.isBeginning);
   };
@@ -266,7 +266,8 @@ export default function Infravisionaries() {
       default:
         return [];
     }
-  }, [data]);
+  }, [data, trustee, advisory, fellow, team]);
+  
 
   return (
     <>
@@ -327,7 +328,15 @@ export default function Infravisionaries() {
             <div>
               <div className="w-full  overflow-hidden">
                 <Swiper
-                  modules={[Navigation, Pagination]}
+                modules={[Navigation, Pagination]}
+                speed={6000}
+                autoplay={{
+                  delay: 20,
+                  disableOnInteraction: false,
+                }}
+                noSwiping={true}
+                loop
+                grabCursor
                   spaceBetween={20}
                   onSwiper={(swiper) => {
                     setTimeout(() => {
@@ -360,11 +369,11 @@ export default function Infravisionaries() {
                           />
                         </div>
                         <div className="absolute bottom-0 left-0">
-                          <div className="bg-white w-[15rem] h-[5rem] rounded">
-                            <h6 className="pt-6 px-3 font-medium">
+                          <div className="bg-white w-[15rem] lg:h-[5.5rem] rounded">
+                            <h6 className="pt-1 2xl:pt-2 px-2  font-medium">
                               {ele.title}
                             </h6>
-                            <p className="px-3  font-light text-black">
+                            <p className="px-2  font-light text-black">
                               {ele.desig}
                             </p>
                           </div>
@@ -441,9 +450,9 @@ export default function Infravisionaries() {
                         />
                       </div>
                       <div className="absolute bottom-0 left-0">
-                        <div className="bg-white w-[15rem] h-[5rem] rounded">
-                          <h6 className="pt-6 px-3 font-medium">{ele.title}</h6>
-                          <p className="px-3  font-light text-black">
+                        <div className="bg-white w-[15rem] h-[5.5rem] rounded">
+                          <h6 className="pt-2 px-1 font-medium">{ele.title}</h6>
+                          <p className="px-1  font-light text-black">
                             {ele.desig}
                           </p>
                         </div>
@@ -476,7 +485,7 @@ export default function Infravisionaries() {
           <div className="md:hidden block">
             <div className="py-4">
               <button className="text-white text-md text-nowrap lg:text-xl relative font-medium">
-                Distinguished
+               Distinguished Fellows
                 <span className="w-10 sm:w-15 h-[1px] sm:h-[2px] bg-white absolute bottom-0 left-0 top-7"></span>
               </button>
             </div>
@@ -515,9 +524,9 @@ export default function Infravisionaries() {
                         />
                       </div>
                       <div className="absolute bottom-0 left-0">
-                        <div className="bg-white w-[15rem] h-[5rem] rounded">
-                          <h6 className="pt-6 px-3 font-medium">{ele.title}</h6>
-                          <p className="px-3  font-light text-black">
+                        <div className="bg-white w-[15rem] h-[5.5rem] rounded">
+                          <h6 className="pt-2 px-1 font-medium">{ele.title}</h6>
+                          <p className="px-1  font-light text-black">
                             {ele.desig}
                           </p>
                         </div>
@@ -589,9 +598,9 @@ export default function Infravisionaries() {
                         />
                       </div>
                       <div className="absolute bottom-0 left-0">
-                        <div className="bg-white w-[15rem] h-[5rem] rounded">
-                          <h6 className="pt-6 px-3 font-medium">{ele.title}</h6>
-                          <p className="px-3  font-light text-black">
+                        <div className="bg-white w-[15rem] h-[5.5rem] rounded">
+                          <h6 className="pt-2 px-1 font-medium">{ele.title}</h6>
+                          <p className="px-1  font-light text-black">
                             {ele.desig}
                           </p>
                         </div>
@@ -663,9 +672,9 @@ export default function Infravisionaries() {
                         />
                       </div>
                       <div className="absolute bottom-0 left-0">
-                        <div className="bg-white w-[15rem] h-[5rem] rounded">
-                          <h6 className="pt-6 px-3 font-medium">{ele.title}</h6>
-                          <p className="px-3  font-light text-black">
+                        <div className="bg-white w-[15rem] h-[5.5rem] rounded">
+                          <h6 className="pt-2 px-1 font-medium">{ele.title}</h6>
+                          <p className="px-1  font-light text-black">
                             {ele.desig}
                           </p>
                         </div>

@@ -1,6 +1,7 @@
 "use client";
 import { HeroBtn } from "@/_components/atoms/buttons";
 import Image from "next/image";
+import type { Swiper as SwiperClass } from 'swiper/types';
 import publications from "@/../public/assets/home/publications.png";
 import Card from "@/_components/molecules/cardTemplate";
 import workshop from "@/../public/assets/home/workshop.png";
@@ -136,7 +137,7 @@ function PublicationSlider() {
   const [isLastSlide, setIsLastSlide] = useState(false);
   const [isFirstSlide, setIsFirstSlide] = useState(true);
 
-  const handleSlideChange = (swiper: any) => {
+  const handleSlideChange = (swiper:SwiperClass) => {
     setIsLastSlide(swiper.isEnd);
     setIsFirstSlide(swiper.isBeginning);
   };
@@ -163,7 +164,7 @@ function PublicationSlider() {
               1536: { slidesPerView: 4.3, centeredSlides: false },
             }}
           >
-            {Publicationdata.map((item: any, index: number) => {
+            {Publicationdata.map((item, index) => {
               return (
                 <SwiperSlide key={index} className=" !h-full ">
                   <div className="">

@@ -1,16 +1,35 @@
+"use client"
 import Image from "next/image";
 import logo from "@/../public/assets/globals/logo.svg";
 import { TextNavAnchor } from "../atoms/links";
 import { FaSearch } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
+import Mobilenav from "./mobileNav";
+import { useEffect, useState } from "react";
 
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(prev => !prev); 
+  };
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden"; // disable scroll
+    } else {
+      document.body.style.overflow = "auto"; // enable scroll
+    }
+  
+    return () => {
+      document.body.style.overflow = "auto"; // cleanup on unmount
+    };
+  }, [isMenuOpen]);
   return (
     <>
      <section className="absolute w-full z-[99999] top-3 left-0 xl:top-8">
-  <div className="px-4 xl:px-16">
-    <div className="flex flex-row  justify-between xl:justify-center xl:gap-10 items-center w-full">
+  <div className="px-4 xl:px-16 relative ">
+    <div className="flex flex-row justify-between xl:justify-center xl:gap-10 items-center w-full">
 
       {/* Logo */}
       <div className="w-[10rem] 2xl:w-[14rem] h-[6rem]">
@@ -93,7 +112,7 @@ export default function Header() {
         </ul>
 
         {/* Search Box */}
-        <div className="hidden 2xl:block border border-darkgray w-full max-w-sm sm:max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-[15%] rounded-md">
+        <div className="hidden 2xl:block border border-darkgray w-full  xl:max-w-lg 2xl:max-w-[15%] rounded-md">
           <form className="p-2">
             <div className="flex items-center gap-3">
               <FaSearch className="text-darkgray" />
@@ -108,8 +127,16 @@ export default function Header() {
       </div>
 
       {/* Mobile Hamburger Menu */}
-      <div className="xl:hidden">
-       <GiHamburgerMenu className="text-3xl mb-10"/>
+      <div className="xl:hidden ">
+        <div>
+           <button  onClick={toggleMenu} ><GiHamburgerMenu className="text-3xl mb-10"/></button>
+        </div>
+      
+       {isMenuOpen && (
+        <div className="absolute top-0 left-0 z-50">
+          <Mobilenav />
+        </div>
+      )}
       </div>
 
     </div>
