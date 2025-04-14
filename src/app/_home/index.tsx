@@ -13,8 +13,7 @@ import InfravisionTalks from "./10_infravision_talks"
 export default function Home(){
   return (
     <>
-    <Banner/>
-    
+      <Banner/>
       <Decoding />
       <Turning />
       <Driving />

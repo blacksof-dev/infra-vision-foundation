@@ -416,23 +416,47 @@ export default function Infravisionaries() {
               </button>
             </div>
             <div className="w-full  overflow-hidden">
-              <Swiper
-                modules={[Navigation, Pagination]}
-                spaceBetween={20}
-                onSwiper={(swiper) => {
-                  setTimeout(() => {
-                    swiper.params.navigation = {
-                      prevEl: ".swiper-solution-prev-btn",
-                      nextEl: ".swiper-solution-next-btn",
-                    };
-                    swiper.navigation.destroy(); // clean before re-init
-                    swiper.navigation.init();
-                    swiper.navigation.update();
-                  });
-                }}
-                onSlideChange={handleSlideChange}
-                slidesPerView={cardData.length}
-              >
+            <Swiper
+            modules={[Pagination, Navigation]}
+            className=" sm:!pl-[2%] 2xl:!pl-[8%] lg:!pl-[6%] !pl-[3%]"
+            spaceBetween={20}
+            grabCursor
+            onSlideChange={handleSlideChange}
+            slideToClickedSlide
+            slidesPerView={1.1}
+            // onSlideChange={handleSlideChange}
+            navigation={{
+              prevEl: ".brochursPrevBtn",
+              nextEl: ".brochursNextBtn",
+            }}
+            pagination={{
+              el: ".swiper-progressbar-new",
+              type: "progressbar",
+              // progressbarOppositeClass: "fill-progressbar",
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 40,
+              },
+              1024: {
+                slidesPerView: 2.5,
+                spaceBetween: 50,
+              },
+              1280: {
+                spaceBetween: 20,
+                slidesPerView: 3.1,
+              },
+              1536: {
+                spaceBetween: 30,
+                slidesPerView: 3.4,
+              },
+            }}
+          >
                 {trustee.map((ele, index) => (
                   <SwiperSlide key={index} className="!w-auto">
                     {" "}
@@ -462,7 +486,7 @@ export default function Infravisionaries() {
                 ))}
               </Swiper>
             </div>
-            <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-8 2xl:mt-1">
+            {/* <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-8 2xl:mt-1">
               <button
                 className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                   isFirstSlide ? "opacity-40" : ""
@@ -479,7 +503,25 @@ export default function Infravisionaries() {
               >
                 <FaAngleRight />
               </button>
-            </div>
+            </div> */}
+             <div className="custom-navigation sm:mt-9 flex gap-2 sm:gap-2 ">
+             <button
+                className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                  isFirstSlide ? "opacity-40" : ""
+                }`}
+                aria-label="Previous slide"
+              >
+                <FaAngleLeft />
+              </button>
+                <button
+                className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                  isLastSlide ? "opacity-40" : ""
+                }`}
+                aria-label="Next slide"
+              >
+                <FaAngleRight />
+              </button>
+              </div>
           </div>
 
           <div className="md:hidden block">
