@@ -4,7 +4,7 @@ import {  Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { HeroBtn, HeroBtnPink } from "@/_components/atoms/buttons";
+import {  HeroBtnPink } from "@/_components/atoms/buttons";
 import villagers from "@/../public/assets/home/villagers.png";
 import portraitMan from "@/../public/assets/home/portraitMan.png";
 import chineseCity from "@/../public/assets/home/chineseCity.png";

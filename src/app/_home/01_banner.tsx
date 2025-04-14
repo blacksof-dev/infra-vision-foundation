@@ -1,6 +1,5 @@
 import Image from "next/image";
 import BannerBg from "@/../public/assets/home/BannerBg.png";
-import { HeroBtn } from "@/_components/atoms/buttons";
 import Updates from "./updates";
 import mobileBannerBg from "@/../public/assets/home/mobileBannerBg.png";
 import { GoArrowRight } from "react-icons/go";
