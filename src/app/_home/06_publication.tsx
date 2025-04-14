@@ -1,5 +1,5 @@
 "use client";
-import { HeroBtn } from "@/_components/atoms/buttons";
+import { BorderGrayHeroBtn, HeroBtn } from "@/_components/atoms/buttons";
 import Image from "next/image";
 import type { Swiper as SwiperClass } from 'swiper/types';
 import publications from "@/../public/assets/home/publications.png";
@@ -44,24 +44,24 @@ export default function Publication() {
               <Image
                 src={publications}
                 alt="Featured publications"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded"
               />
 
               <div className=" px-6 py-2 xl:py-14 absolute rounded bg-white lg:w-[23rem]  lg:h-[12rem] xl:w-[25rem]  xl:h-[18rem]  2xl:w-[27rem]  2xl:h-[22rem] top-10 right-7 ">
                 <div className="flex flex-row justify-between ">
                   <div className="flex  flex-row  items-center gap-2 md:gap-3">
-                    <span className="w-[7px] h-[7px] md:w-[13px] md:h-[13px] rounded-full bg-lightgray "></span>
+                    <span className="w-[7px] h-[7px] md:w-[13px] md:h-[13px] rounded-full bg-lightgray/30 "></span>
                     <p className="font-medium text-black">Research paper</p>
                   </div>
                   <div className="py-2 xl:py-5">
                     <p className="text-darkgray">November, 2024</p>
                   </div>
                 </div>
-                <h4 className="text-black font-medium">
+                <h4 className="text-black font-medium ">
                   Study on implementation of compensatory afforestation in India
                 </h4>
-                <div className="pt-1 pb-6 xl:py-5">
-                  <HeroBtn
+                <div className="pt-1 pb-6 xl:py-5 ">
+                  <BorderGrayHeroBtn
                     text="Read more"
                     role="link"
                     borderColor="darkgray/40"
@@ -154,7 +154,7 @@ function PublicationSlider() {
             }}
             spaceBetween={20}
             onSlideChange={handleSlideChange}
-            slidesPerView={1.1}
+            slidesPerView={1}
             centeredSlides={true}
             breakpoints={{
               500: { slidesPerView: 1.9, centeredSlides: false },

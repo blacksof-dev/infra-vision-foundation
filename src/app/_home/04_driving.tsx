@@ -4,7 +4,7 @@ import Ciara from "@/../public/assets/home/awards/Caira.png";
 import Infrakhata from "@/../public/assets/home/awards/Infrakhata.png";
 import Infrashakti from "@/../public/assets/home/awards/Infrashakti.png";
 import ciaraLogo from "@/../public/assets/home/awards/ciaraLogo.jpg";
-import { HeroBtn } from "@/_components/atoms/buttons";
+import { BorderGrayHeroBtn, HeroBtn } from "@/_components/atoms/buttons";
 import {useState} from "react"
 
 type AwardKey = 'CAIRA' | 'InfraKatha' | 'InfraShakti';
@@ -55,10 +55,9 @@ const AwardsDetails: Record<AwardKey, Awardsdata> = {
             {" "}
             <div className="">
               <h1 className="tracking-[-3%] font-light text-black">
-                Driving our cause
-                <br /> to &nbsp;
-                <span className="font-medium tracking-[-3%] text-black">
-                  impact
+                Driving our cause <br/>to 
+                <span className="font-medium  text-black">
+                  &nbsp;impact
                 </span>
               </h1>
             </div>
@@ -75,8 +74,8 @@ const AwardsDetails: Record<AwardKey, Awardsdata> = {
           <div className=" mt-5">
             <div className="flex flex-row gap-5 xl:gap-15">
               <div className="w-[44%] xl:w-[50%]">
-                {" "}
-                <div className="w-[25rem] h-[20rem]  xl:w-[40rem] xl:h-[29rem] ">
+              
+                <div className="w-[25rem] h-[20rem] xl:w-[35rem] 2xl:w-[45rem] xl:h-[29rem] ">
                   <Image
                     src={AwardsDetails[data].image}
                     alt="Ciara Award"
@@ -86,12 +85,12 @@ const AwardsDetails: Record<AwardKey, Awardsdata> = {
               </div>
 
               <div className="w-[50%]  xl:border-l-1 xl:border-darkgray/40 ">
-                <div className="flex flex-row gap-16  w-[75%] ms-11 xl:ms-25 ">
-                  <button onClick={()=>setdata("CAIRA")}  className={`text-nowrap text-lg tracking-[-1%]  ${data==="CAIRA"?"text-pink":"text-black"}`}>CAIRA</button>
-                  <button onClick={()=>setdata("InfraKatha")} className={`text-nowrap text-lg tracking-[-1%]  ${data==="InfraKatha"?"text-pink":"text-black"}`}>InfraKatha</button>
-                  <button onClick={()=>setdata("InfraShakti")} className={`text-nowrap text-lg tracking-[-1%]  ${data==="InfraShakti"?"text-pink":"text-black"}`}>InfraShakti Awards</button>
+                <div className="flex flex-row gap-16  w-[75%] ms-11 xl:ms-16 2xl:ms-28 ">
+                  <button onClick={()=>setdata("CAIRA")}  className={`text-nowrap text-xl tracking-[-1%]  ${data==="CAIRA"?"text-pink font-medium":"text-black"}`}>CAIRA</button>
+                  <button onClick={()=>setdata("InfraKatha")} className={`text-nowrap text-xl tracking-[-1%]  ${data==="InfraKatha"?"text-pink font-medium":"text-black"}`}>InfraKatha</button>
+                  <button onClick={()=>setdata("InfraShakti")} className={`text-nowrap text-xl tracking-[-1%]  ${data==="InfraShakti"?"text-pink font-medium":"text-black"}`}>InfraShakti Awards</button>
                 </div>
-                <div className="ms-11 xl:ms-25">
+                <div className="ms-11 xl:ms-16 2xl:ms-28 ">
                   <div className="pt-10">
                     <Image src={AwardsDetails[data].logo} alt="CIARA logo" className="" />
                   </div>
@@ -104,12 +103,12 @@ const AwardsDetails: Record<AwardKey, Awardsdata> = {
                     </p>
 
                     <div className="pt-6">
-                      <HeroBtn
+                      <BorderGrayHeroBtn
                         text="Know more"
                         role="link"
                         borderColor="pink"
                         color="black"
-                        bgColor=""
+                        bgColor="white"
                         size="large"
                         aarowColor="pink"
                         classes="font-medium"
@@ -211,7 +210,7 @@ function MobileView({logo,title,desc,image}:Awardsdata){
                     role="link"
                     borderColor="pink"
                     color="black"
-                    bgColor=""
+                    bgColor="white"
                     size="extralarge"
                     aarowColor="pink"
                     classes="font-medium"

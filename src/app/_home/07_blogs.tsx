@@ -1,4 +1,4 @@
-import { HeroBtn } from "@/_components/atoms/buttons";
+import { HeroBtn, BorderGrayHeroBtn } from "@/_components/atoms/buttons";
 import Image from "next/image";
 import blogsImg from "@/../public/assets/home/blogsImg.jpg";
 import BlogsDetails from "./blogsDetails";
@@ -33,14 +33,14 @@ export default function Blogs() {
             </div>
           </div>
 
-          <div className="flex flex-col xl:flex-row xl:gap-10  ">
+          <div className="flex flex-col xl:flex-row  xl:gap-20  ">
             <div className="pt-4 relative   xl:w-[50%]">
-              <Image src={blogsImg} alt="Blogs" className=" w-full h-full " />
+              <Image src={blogsImg} alt="Blogs" className=" w-full h-full rounded" />
 
               <div className="hidden md:block  px-6 py-4 2xl:py-8  absolute rounded bg-white lg:w-[55rem]  lg:h-[12rem] xl:w-[33rem]  xl:h-[11rem] 2xl:w-[40rem]   3xl:w-[43rem]  2xl:h-[12rem] bottom-4 left-3 right-3 ">
                 <div className="flex flex-row justify-between ">
                   <div>
-                    <p className="font-medium text-darkgray">
+                    <p className="font-medium text-darkgray/80">
                       October 16, 2024
                     </p>
                   </div>
@@ -59,8 +59,8 @@ export default function Blogs() {
                     </div>
                   </div>
 
-                  <div className="pt-1 pb-6 xl:py-5 mt-auto ">
-                    <HeroBtn
+                  <div className="pt-1 pb-6 xl:py-5 mt-auto">
+                    <BorderGrayHeroBtn
                       text=""
                       role="link"
                       borderColor="darkgray/40"
@@ -103,16 +103,16 @@ export default function Blogs() {
                       proposed in the 2014 Draft Road Transport and Safety Bill
                     </p>
                   </div>
-                  <div className=" py-2 md:py-5 lg:py-0 mt-auto">
-                    <HeroBtn
+                  <div className=" py-2  md:py-5 lg:py-0 mt-auto">
+                    <BorderGrayHeroBtn
                       text=""
                       role="link"
                       borderColor="darkgray/40"
-                      color="pink"
+                      color="black"
                       bgColor="white"
-                      size="extralarge"
-                      //   link="https://x.com/Infra_VinayakCh/status/1773515311419191457"
-                      //   target="_blank"
+                      size="small"
+                      
+                     
                     />
                   </div>
                 </div>

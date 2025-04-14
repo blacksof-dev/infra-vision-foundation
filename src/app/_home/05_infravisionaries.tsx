@@ -1,8 +1,7 @@
 "use client";
 
-
-import { useState, useEffect, useMemo} from "react";
-import type { Swiper as SwiperClass } from 'swiper/types';
+import { useState, useEffect, useMemo } from "react";
+import type { Swiper as SwiperClass } from "swiper/types";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -55,7 +54,7 @@ export default function Infravisionaries() {
   const [isLastSlide, setIsLastSlide] = useState(false);
   const [isFirstSlide, setIsFirstSlide] = useState(true);
 
-  const handleSlideChange = (swiper:SwiperClass) => {
+  const handleSlideChange = (swiper: SwiperClass) => {
     setIsLastSlide(swiper.isEnd);
     setIsFirstSlide(swiper.isBeginning);
   };
@@ -267,7 +266,6 @@ export default function Infravisionaries() {
         return [];
     }
   }, [data, trustee, advisory, fellow, team]);
-  
 
   return (
     <>
@@ -286,7 +284,7 @@ export default function Infravisionaries() {
           </div>
 
           <div className="hidden md:flex flex-row gap-20 blade-top-padding-sm overflow-x-hidden">
-            <div className="w-[40%] border-r-1 pe-9 border-lightgray">
+            <div className=" border-r-1 pe-20 border-lightgray/40  w-fit">
               <div className="py-4">
                 <button
                   className="text-white text-md text-nowrap lg:text-xl relative font-medium"
@@ -328,15 +326,15 @@ export default function Infravisionaries() {
             <div>
               <div className="w-full  overflow-hidden">
                 <Swiper
-                modules={[Navigation, Pagination]}
-                speed={6000}
-                autoplay={{
-                  delay: 20,
-                  disableOnInteraction: false,
-                }}
-                noSwiping={true}
-                loop
-                grabCursor
+                  modules={[Navigation, Pagination]}
+                  speed={6000}
+                  autoplay={{
+                    delay: 20,
+                    disableOnInteraction: false,
+                  }}
+                  noSwiping={true}
+                  loop
+                  grabCursor
                   spaceBetween={20}
                   onSwiper={(swiper) => {
                     setTimeout(() => {
@@ -361,12 +359,14 @@ export default function Infravisionaries() {
                           alt={ele.title}
                           className="w-full h-full object-cover "
                         />
-                        <div className="absolute right-4 bottom-17 bg-white w-[3rem] h-[3rem] rounded">
-                          <Image
-                            src={linkedinSvg}
-                            alt={ele.title}
-                            className="w-full h-full object-cover "
-                          />
+                        <div className="absolute right-5 bottom-17  bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                          <div className="w-[2rem] h-[2rem] ">
+                            <Image
+                              src={linkedinSvg}
+                              alt={ele.title}
+                              className="object-cover w-full h-full my-auto"
+                            />
+                          </div>
                         </div>
                         <div className="absolute bottom-0 left-0">
                           <div className="bg-white w-[15rem] lg:h-[5.5rem] rounded">
@@ -442,12 +442,14 @@ export default function Infravisionaries() {
                         alt={ele.title}
                         className="w-full h-full object-cover "
                       />
-                      <div className="absolute right-4 bottom-17 bg-white w-[3rem] h-[3rem] rounded">
-                        <Image
-                          src={linkedinSvg}
-                          alt={ele.title}
-                          className="w-full h-full object-cover "
-                        />
+                      <div className="absolute right-5 bottom-17  bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                        <div className="w-[2rem] h-[2rem] ">
+                          <Image
+                            src={linkedinSvg}
+                            alt={ele.title}
+                            className="object-cover w-full h-full my-auto"
+                          />
+                        </div>
                       </div>
                       <div className="absolute bottom-0 left-0">
                         <div className="bg-white w-[15rem] h-[5.5rem] rounded">
@@ -485,7 +487,7 @@ export default function Infravisionaries() {
           <div className="md:hidden block">
             <div className="py-4">
               <button className="text-white text-md text-nowrap lg:text-xl relative font-medium">
-               Distinguished Fellows
+                Distinguished Fellows
                 <span className="w-10 sm:w-15 h-[1px] sm:h-[2px] bg-white absolute bottom-0 left-0 top-7"></span>
               </button>
             </div>
@@ -516,12 +518,14 @@ export default function Infravisionaries() {
                         alt={ele.title}
                         className="w-full h-full object-cover "
                       />
-                      <div className="absolute right-4 bottom-17 bg-white w-[3rem] h-[3rem] rounded">
-                        <Image
-                          src={linkedinSvg}
-                          alt={ele.title}
-                          className="w-full h-full object-cover "
-                        />
+                      <div className="absolute right-5 bottom-17  bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                        <div className="w-[2rem] h-[2rem] ">
+                          <Image
+                            src={linkedinSvg}
+                            alt={ele.title}
+                            className="object-cover w-full h-full my-auto"
+                          />
+                        </div>
                       </div>
                       <div className="absolute bottom-0 left-0">
                         <div className="bg-white w-[15rem] h-[5.5rem] rounded">
@@ -573,7 +577,7 @@ export default function Infravisionaries() {
                       prevEl: ".swiper-solution-prev-btn",
                       nextEl: ".swiper-solution-next-btn",
                     };
-                    swiper.navigation.destroy(); // clean before re-init
+                    swiper.navigation.destroy(); 
                     swiper.navigation.init();
                     swiper.navigation.update();
                   });
@@ -590,12 +594,14 @@ export default function Infravisionaries() {
                         alt={ele.title}
                         className="w-full h-full object-cover "
                       />
-                      <div className="absolute right-4 bottom-17 bg-white w-[3rem] h-[3rem] rounded">
-                        <Image
-                          src={linkedinSvg}
-                          alt={ele.title}
-                          className="w-full h-full object-cover "
-                        />
+                      <div className="absolute right-5 bottom-17  bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                        <div className="w-[2rem] h-[2rem] ">
+                          <Image
+                            src={linkedinSvg}
+                            alt={ele.title}
+                            className="object-cover w-full h-full my-auto"
+                          />
+                        </div>
                       </div>
                       <div className="absolute bottom-0 left-0">
                         <div className="bg-white w-[15rem] h-[5.5rem] rounded">
@@ -664,12 +670,14 @@ export default function Infravisionaries() {
                         alt={ele.title}
                         className="w-full h-full object-cover "
                       />
-                      <div className="absolute right-4 bottom-17 bg-white w-[3rem] h-[3rem] rounded">
-                        <Image
-                          src={linkedinSvg}
-                          alt={ele.title}
-                          className="w-full h-full object-cover "
-                        />
+                      <div className="absolute right-5 bottom-17  bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                        <div className="w-[2rem] h-[2rem] ">
+                          <Image
+                            src={linkedinSvg}
+                            alt={ele.title}
+                            className="object-cover w-full h-full my-auto"
+                          />
+                        </div>
                       </div>
                       <div className="absolute bottom-0 left-0">
                         <div className="bg-white w-[15rem] h-[5.5rem] rounded">

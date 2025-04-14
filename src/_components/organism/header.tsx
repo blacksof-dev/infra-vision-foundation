@@ -27,9 +27,9 @@ export default function Header() {
   }, [isMenuOpen]);
   return (
     <>
-     <section className="absolute w-full z-[99999] top-3 left-0 xl:top-8">
-  <div className="px-4 xl:px-16 relative ">
-    <div className="flex flex-row justify-between xl:justify-center xl:gap-10 items-center w-full">
+  <nav className="absolute w-full z-[9999] top-3 left-0 xl:top-8 ">
+  <div className="w-container relative ">
+    <div className="flex flex-row justify-between xl:gap-10 items-center w-full">
 
       {/* Logo */}
       <div className="w-[10rem] 2xl:w-[14rem] h-[6rem]">
@@ -141,7 +141,7 @@ export default function Header() {
 
     </div>
   </div>
-</section>
+</nav>
 
     </>
   );

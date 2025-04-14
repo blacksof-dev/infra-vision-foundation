@@ -9,13 +9,16 @@ import { CiLocationOn } from "react-icons/ci";
 import { MdOutlineEmail } from "react-icons/md";
 import { MdOutlinePhone } from "react-icons/md";
 import { FaInstagram } from "react-icons/fa";
+import locationSvg from '@/../public/assets/globals/locationSvg.svg'
+
+
 import Link from "next/link";
 const footer = () => {
   return (
     <>
       <footer className=" blade-top-padding-lg  ">
         <div className=" w-container">
-          <div className=" flex md:flex-row flex-col md:justify-between md:items-end border-b-1 border-lightgray/60 md:pb-6">
+          <div className=" flex md:flex-row flex-col md:justify-between md:items-end border-b-1 border-gray/60 md:pb-6">
             <div className="">
               <Anchor href="/">
                 <Image
@@ -34,12 +37,13 @@ const footer = () => {
                 color="black"
                 bgColor="white"
                 size="extralarge"
-                aarowColor="pink"
+                aarowColor="pink"  
+                classes="font-medium"
               />
             </div>
           </div>
-          <div className="flex lg:flex-row flex-col pt-5 lg:pt-0 lg:gap-8  border-b-1 border-lightgray/60 ">
-            <div className="grid grid-cols-1  md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 xl:gap-17  lg:py-9">
+          <div className="flex lg:flex-row flex-col pt-5 lg:pt-0 lg:gap-8  border-b-1 border-gray/60 ">
+            <div className="grid grid-cols-1  md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 xl:gap-17  lg:pt-9 lg:pb-14 xl:pb-32">
               <ul>
                 <li className="flex items-center gap-3">
                   <div className="w-3 h-3 rounded-full bg-darkgray opacity-30"></div>
@@ -244,7 +248,8 @@ const footer = () => {
               <div className=" h-full   pt-4 lg:py-9  lg:border-l-1 lg:border-lightgray/20 lg:ps-4 xl:ps-10">
                 <div className="">
                   <div className="flex flex-row gap-1  items-center">
-                    <CiLocationOn className="text-[#9EA2A4] text-xl" />
+                    <Image src={locationSvg} alt="Location Icon" />
+                    {/* <CiLocationOn className="text-[#9EA2A4] text-xl" /> */}
                     <h5 className="text-darkgray/60 2xl:text-lg">Address</h5>
                   </div>
 
@@ -279,7 +284,7 @@ const footer = () => {
           </div>
           <div className="flex sm:flex-row  flex-col justify-between py-4 lg:pt-9">
             <div>
-              <p className="text-darkgray md:text-start text-center">
+              <p className="text-darkgray/80 md:text-start text-center smallText">
                 Copyright 2025. All rights reserved.
               </p>
             </div>

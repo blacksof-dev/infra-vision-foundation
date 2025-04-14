@@ -38,7 +38,7 @@ export default function CardSlider() {
             }}
             spaceBetween={20}
             onSlideChange={handleSlideChange}
-            slidesPerView={1.1}
+            slidesPerView={1}
             centeredSlides={true}
             breakpoints={{
               500: { slidesPerView: 1.9, centeredSlides: false },
@@ -113,26 +113,3 @@ const CardData = [
   },
 ];
 
-// const Publication = [
-//   {
-//     category:"Newsletter",
-//     date: "Aug 15 2024",
-//     title: "Workshop on trees outside forests",
-//     img: workshop,
-//     link:"https://theinfravisionfoundation.org/wp-content/uploads/2025/01/INFRAVISION-TALK-January-2025.pdf"
-//   },
-//   {
-//     category:"Research paper",
-//     date:"July, 2024",
-//     title:"The case for developing high-speed rail corridors in India",
-//     img:rail,
-//     link:"https://www.financialexpress.com/opinion/nbspinfra-outlays-a-strategic-downplay-the-budget-signals-a-move-out-of-the-era-of-large-infra-spends-pump-priming-the-economy/3563263/#:~:text=stressful%20Covid%20period.-,Across%20the%20last%20few%20years%2C%20India%20saw%20Union%20Budget%20infra,11%25%20to%20Rs%2011.1%20trillion."
-//   },
-//   {
-//     category:"Newsletter",
-//     date:"February, 2025",
-//     title:"CAIRA Roundtable on Agri Exports is a success",
-//     img:agriExports,
-//     link:"https://www.moneycontrol.com/news/business/economy/budget-signals-shift-in-infra-strategy-as-govt-pushes-states-private-sector-to-pitch-in-12777120.html"
-//   }
-// ];

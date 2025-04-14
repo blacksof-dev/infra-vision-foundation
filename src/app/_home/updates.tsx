@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import type { Swiper as SwiperClass } from 'swiper/types';
+import type { Swiper as SwiperClass } from "swiper/types";
 import Image from "next/image";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -19,7 +19,7 @@ export default function Updates() {
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [isLastSlide, setIsLastSlide] = useState(false);
 
-  const handleSlideChange = (swiper:SwiperClass) => {
+  const handleSlideChange = (swiper: SwiperClass) => {
     setIsFirstSlide(swiper.isBeginning);
     setIsLastSlide(swiper.isEnd);
   };
@@ -56,47 +56,46 @@ export default function Updates() {
 
         {/* Right Column */}
         <div className="overflow-x-hidden">
-        <Swiper
-  modules={[Navigation, Pagination, Autoplay]}
-  navigation={{
-    prevEl: ".swiper-solution-prev-btn",
-    nextEl: ".swiper-solution-next-btn",
-  }}
-  pagination={{ clickable: true }}
-  loop
-  grabCursor
-  slideToClickedSlide
-  speed={1000}
-  autoplay={{
-    delay: 3000,
-    disableOnInteraction: false,
-    reverseDirection: true,
-  }}
-  breakpoints={{
-    480: {
-      slidesPerView: "auto",
-      spaceBetween: 15,
-      centeredSlides: true,
-    },
-    768: {
-      slidesPerView: "auto",
-      spaceBetween: 30,
-      centeredSlides: false,
-    },
-    960: {
-      slidesPerView: "auto",
-      spaceBetween: 20,
-      centeredSlides: false,
-    },
-    1536: {
-      slidesPerView: "auto",
-      spaceBetween: 40,
-      centeredSlides: false,
-    },
-  }}
-  onSlideChange={handleSlideChange}
->
-
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            navigation={{
+              prevEl: ".swiper-solution-prev-btn",
+              nextEl: ".swiper-solution-next-btn",
+            }}
+            pagination={{ clickable: true }}
+            loop
+            grabCursor
+            slideToClickedSlide
+            speed={1000}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+              reverseDirection: true,
+            }}
+            breakpoints={{
+              480: {
+                slidesPerView: "auto",
+                spaceBetween: 15,
+                centeredSlides: true,
+              },
+              768: {
+                slidesPerView: "auto",
+                spaceBetween: 30,
+                centeredSlides: false,
+              },
+              960: {
+                slidesPerView: "auto",
+                spaceBetween: 20,
+                centeredSlides: false,
+              },
+              1536: {
+                slidesPerView: "auto",
+                spaceBetween: 40,
+                centeredSlides: false,
+              },
+            }}
+            onSlideChange={handleSlideChange}
+          >
             {EventsDetails.map((ele, index) => (
               <SwiperSlide key={index} className="!w-fit group">
                 <div className="flex flex-row gap-4 bg-blurGradient backdrop-blur-[13px] shadow-blur rounded-lg p-2 md:p-4 w-[25rem]  md:w-[28rem]    xl:w-[45rem] xl:h-[14rem] ">
@@ -114,11 +113,11 @@ export default function Updates() {
                       <p className="font-light text-white">{ele.category}</p>
                     </div>
                     <div className="py-2">
-                      <h5 className="text-white font-medium truncate lg:overflow-visible lg:whitespace-normal">
+                      <h5 className="text-white font-medium truncate xl:overflow-visible xl:whitespace-normal">
                         {ele.title}
                       </h5>
                     </div>
-                    <HeroBtn
+                    {/* <HeroBtn
                       text={ele.btnTitle}
                       role="link"
                       borderColor="white"
@@ -126,7 +125,16 @@ export default function Updates() {
                       color="white"
                       size="small"
                       bgColor="white"
-                    />
+                      
+                    /> */}
+                     <div className="flex gap-2 lg:gap-4 items-center justify-center group  w-fit">
+                <h5 className=" text-white">{ele.btnTitle}</h5>
+                <button
+                  className={`rounded-sm p-1 md:p-2 border-2 bg-white border-white group-hover:border-transparent   w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 group-hover:bg-pink `}
+                >
+                  <GoArrowRight className={`   text-pink  group-hover:text-white group-hover:border-none text-2xl`}/>
+                </button>
+            </div>
                   </div>
                 </div>
               </SwiperSlide>

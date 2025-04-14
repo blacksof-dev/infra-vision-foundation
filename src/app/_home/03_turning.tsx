@@ -4,7 +4,7 @@ import {  Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { HeroBtn } from "@/_components/atoms/buttons";
+import { HeroBtn, HeroBtnPink } from "@/_components/atoms/buttons";
 import villagers from "@/../public/assets/home/villagers.png";
 import portraitMan from "@/../public/assets/home/portraitMan.png";
 import chineseCity from "@/../public/assets/home/chineseCity.png";
@@ -61,8 +61,8 @@ export default function Turning() {
                   change.
                 </h6>
               </div>
-              <div className=" pt-5 md:py-5 lg:py-6 mt-auto">
-                <HeroBtn
+              <div className=" pt-5 md:py-5 lg:py-6 mt-auto ">
+                <HeroBtnPink
                   text="Know more"
                   role="link"
                   borderColor="white"
@@ -70,6 +70,7 @@ export default function Turning() {
                   bgColor="pink"
                   size="extralarge"
                   aarowColor="white"
+                  btnrole="what"
                 />
               </div>
             </div>
