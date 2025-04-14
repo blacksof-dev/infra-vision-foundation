@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo } from "react";
 import type { Swiper as SwiperClass } from "swiper/types";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -49,11 +49,17 @@ import Vinayak from "@/../public/assets/home/team/Vinayak.jpg";
 import VrindaSingh from "@/../public/assets/home/team/VrindaSingh.png";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
+type CardData = {
+  image: StaticImageData;
+  title: string;
+  desig: string;
+};
+
 export default function Infravisionaries() {
   const [data, setdata] = useState("trustee");
   const [isLastSlide, setIsLastSlide] = useState(false);
   const [isFirstSlide, setIsFirstSlide] = useState(true);
-
+  const [carddata, setcarddata] = useState<CardData[]>([]);
   const handleSlideChange = (swiper: SwiperClass) => {
     setIsLastSlide(swiper.isEnd);
     setIsFirstSlide(swiper.isBeginning);
@@ -251,21 +257,28 @@ export default function Infravisionaries() {
     },
   ];
 
-  useEffect(() => {});
-  const cardData = useMemo(() => {
+  useEffect(() => {
+    let cardDetails: CardData[] = [];
+
     switch (data) {
       case "trustee":
-        return trustee;
+        cardDetails = trustee;
+        break;
       case "advisory":
-        return advisory;
+        cardDetails = advisory;
+        break;
       case "fellow":
-        return fellow;
+        cardDetails = fellow;
+        break;
       case "team":
-        return team;
+        cardDetails = team;
+        break;
       default:
-        return [];
+        cardDetails = [];
     }
-  }, [data, trustee, advisory, fellow, team]);
+
+    setcarddata(cardDetails);
+  }, [data]);
 
   return (
     <>
@@ -326,31 +339,28 @@ export default function Infravisionaries() {
             <div>
               <div className="w-full  overflow-hidden">
                 <Swiper
-                  modules={[Navigation, Pagination]}
-                  speed={6000}
-                  autoplay={{
-                    delay: 20,
-                    disableOnInteraction: false,
-                  }}
-                  noSwiping={true}
-                  loop
-                  grabCursor
-                  spaceBetween={20}
-                  onSwiper={(swiper) => {
-                    setTimeout(() => {
-                      swiper.params.navigation = {
-                        prevEl: ".swiper-solution-prev-btn",
-                        nextEl: ".swiper-solution-next-btn",
-                      };
-                      swiper.navigation.destroy(); // clean before re-init
-                      swiper.navigation.init();
-                      swiper.navigation.update();
-                    });
+                  modules={[Navigation]}
+                  speed={500}
+                  navigation={{
+                    prevEl: ".swiper-solution-prev-btn-members",
+                    nextEl: ".swiper-solution-next-btn-members",
                   }}
                   onSlideChange={handleSlideChange}
-                  slidesPerView={cardData.length}
+                  slidesPerView={1.1}
+                  slidesPerGroup={1} // 👈 Add this line
+                  breakpoints={{
+                    500: { slidesPerView: 1.5, slidesPerGroup: 1 },
+                    768: { slidesPerView: 2.2, slidesPerGroup: 1 },
+                    1024: { slidesPerView: 2, slidesPerGroup: 1 },
+                    1280: { slidesPerView: 3, slidesPerGroup: 1 },
+                    1536: {
+                      slidesPerView: 3,
+                      slidesPerGroup: 1,
+                      spaceBetween: 20,
+                    },
+                  }}
                 >
-                  {cardData.map((ele, index) => (
+                  {carddata.map((ele, index) => (
                     <SwiperSlide key={index} className="!w-auto">
                       {" "}
                       <div className="flex realtive flex-col w-[19rem] h-[19rem] ">
@@ -385,7 +395,7 @@ export default function Infravisionaries() {
               </div>
               <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-8 2xl:mt-1">
                 <button
-                  className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                  className={`swiper-solution-prev-btn-members flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                     isFirstSlide ? "opacity-40" : ""
                   }`}
                   aria-label="Previous slide"
@@ -393,7 +403,7 @@ export default function Infravisionaries() {
                   <FaAngleLeft />
                 </button>
                 <button
-                  className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                  className={`swiper-solution-next-btn-members flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                     isLastSlide ? "opacity-40" : ""
                   }`}
                   aria-label="Next slide"
@@ -405,7 +415,7 @@ export default function Infravisionaries() {
           </div>
 
           {/* MObile View */}
-          <div className="md:hidden block">
+          {/* <div className="md:hidden block">
             <div className="py-4">
               <button
                 className="text-white text-md text-nowrap lg:text-xl relative font-medium"
@@ -482,9 +492,9 @@ export default function Infravisionaries() {
                 <FaAngleRight />
               </button>
             </div>
-          </div>
+          </div> */}
 
-          <div className="md:hidden block">
+          {/* <div className="md:hidden block">
             <div className="py-4">
               <button className="text-white text-md text-nowrap lg:text-xl relative font-medium">
                 Distinguished Fellows
@@ -710,7 +720,7 @@ export default function Infravisionaries() {
                 <FaAngleRight />
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </>

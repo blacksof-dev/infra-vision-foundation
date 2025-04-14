@@ -27,9 +27,9 @@ export default function Banner() {
             />
           </div>
 
-          <div className="absolute  top-[21%]  lg:top-[19%]  xl:top-[23%] 2xl:top-[20%] left-4  sm:left-9  md:left-[10%]  2xl:left-[11%] ">
+          <div className="absolute  top-[21%]  lg:top-[19%]  xl:top-[23%] 2xl:top-[20%] left-1/2 -translate-x-1/2  mx-auto max-w-screen-2xl px-2 sm:px-4 w-full lg:w-11/12">
             <div className="w-[80%] lg:w-full ">
-              <h1 className="tracking-[-4%] font-light txt-black/90">
+              <h1 className="tracking-[-4%] font-light txt-black/90 ">
                 {" "}
                 An{" "}
                 <span className="tracking-[-4%] font-medium text-pink">
