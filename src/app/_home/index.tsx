@@ -15,15 +15,15 @@ export default function Home(){
     <>
     <Banner/>
     
-      <Decoding />
+      {/* <Decoding />
       <Turning />
-      <Driving />
+      <Driving /> */}
       <Infravisionaries />
-      <Publication />
+      {/* <Publication />
       <Blogs />
       <Champion />
       <StayConnected />
-      <InfravisionTalks />
+      <InfravisionTalks /> */}
     </>
   );
 }

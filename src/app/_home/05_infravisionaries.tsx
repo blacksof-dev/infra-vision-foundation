@@ -340,62 +340,64 @@ export default function Infravisionaries() {
               <div className="w-full  overflow-hidden">
                 <Swiper
                   modules={[Navigation]}
-                  speed={500}
+                  className=" w-full"
                   navigation={{
-                    prevEl: ".swiper-solution-prev-btn-members",
-                    nextEl: ".swiper-solution-next-btn-members",
+                    prevEl: ".swiper-prev-btn",
+                    nextEl: ".swiper-next-btn",
                   }}
+                  spaceBetween={20}
                   onSlideChange={handleSlideChange}
                   slidesPerView={1.1}
-                  slidesPerGroup={1} // 👈 Add this line
+                  centeredSlides={true}
                   breakpoints={{
-                    500: { slidesPerView: 1.5, slidesPerGroup: 1 },
-                    768: { slidesPerView: 2.2, slidesPerGroup: 1 },
-                    1024: { slidesPerView: 2, slidesPerGroup: 1 },
-                    1280: { slidesPerView: 3, slidesPerGroup: 1 },
+                    500: { slidesPerView: 1.5, centeredSlides: false },
+                    768: { slidesPerView: 2.2, centeredSlides: false },
+                    1024: { slidesPerView: 2.9, centeredSlides: false },
+                    1280: { slidesPerView: 3, centeredSlides: false },
                     1536: {
                       slidesPerView: 3,
-                      slidesPerGroup: 1,
-                      spaceBetween: 20,
+                      centeredSlides: false,
+                      spaceBetween: 50,
                     },
                   }}
                 >
-                  {carddata.map((ele, index) => (
-                    <SwiperSlide key={index} className="!w-auto">
-                      {" "}
-                      <div className="flex realtive flex-col w-[19rem] h-[19rem] ">
-                        <Image
-                          src={ele.image}
-                          alt={ele.title}
-                          className="w-full h-full object-cover "
-                        />
-                        <div className="absolute right-5 bottom-17  bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
-                          <div className="w-[2rem] h-[2rem] ">
-                            <Image
-                              src={linkedinSvg}
-                              alt={ele.title}
-                              className="object-cover w-full h-full my-auto"
-                            />
+                  {carddata.map((ele, index) => {
+                    return (
+                      <SwiperSlide key={index} className="!w-auto">
+                        <div className="flex realtive flex-col  h-[19rem]">
+                          <Image
+                            src={ele.image}
+                            alt={ele.title}
+                            className="w-full h-full object-cover "
+                          />
+                          <div className="absolute right-5 bottom-17  bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                            <div className="w-[2rem] h-[2rem] ">
+                              <Image
+                                src={linkedinSvg}
+                                alt={ele.title}
+                                className="object-cover w-full rounded h-full my-auto"
+                              />
+                            </div>
+                          </div>
+                          <div className="absolute bottom-0 left-0">
+                            <div className="bg-white w-[15rem] lg:h-[5.5rem] rounded">
+                              <h6 className="pt-1 2xl:pt-2 px-2  font-medium">
+                                {ele.title}
+                              </h6>
+                              <p className="px-2  font-light text-black">
+                                {ele.desig}
+                              </p>
+                            </div>
                           </div>
                         </div>
-                        <div className="absolute bottom-0 left-0">
-                          <div className="bg-white w-[15rem] lg:h-[5.5rem] rounded">
-                            <h6 className="pt-1 2xl:pt-2 px-2  font-medium">
-                              {ele.title}
-                            </h6>
-                            <p className="px-2  font-light text-black">
-                              {ele.desig}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </SwiperSlide>
-                  ))}
+                      </SwiperSlide>
+                    );
+                  })}
                 </Swiper>
               </div>
               <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-8 2xl:mt-1">
                 <button
-                  className={`swiper-solution-prev-btn-members flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                  className={`swiper-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                     isFirstSlide ? "opacity-40" : ""
                   }`}
                   aria-label="Previous slide"
@@ -403,7 +405,7 @@ export default function Infravisionaries() {
                   <FaAngleLeft />
                 </button>
                 <button
-                  className={`swiper-solution-next-btn-members flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                  className={`swiper-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                     isLastSlide ? "opacity-40" : ""
                   }`}
                   aria-label="Next slide"
