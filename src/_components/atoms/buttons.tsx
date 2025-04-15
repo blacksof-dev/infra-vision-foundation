@@ -79,9 +79,10 @@ export function HeroBtn<T extends "submit" | "button">({
         >
           <h5 className={`text-${color} ${sizeClass}`}>{text}</h5>
           <div
-            className={`rounded-sm p-1 md:p-2 border-2 border-${borderColor} text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300`}
+            className={`rounded-sm p-1 relative md:p-2 border-2 border-pink overflow-hidden   w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300  `}
           >
-           <GoArrowRight className={`text-${aarowColor} group-hover:text-${bgColor} text-2xl`}/>
+             <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
+             <GoArrowRight className={`   text-pink  group-hover:text-white text-2xl z-[2]`}/>
           </div>
         </Link>
       ) : (
@@ -94,9 +95,9 @@ export function HeroBtn<T extends "submit" | "button">({
             onClick={handleClick}
             {...rest}
             type={type === "button" ? "button" : "submit"}
-            className={`rounded-sm p-1 md:p-2 border-2 border-${borderColor} text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 ${classes} `}
+            className={`rounded-sm relative p-1 md:p-2 border-2 border-${borderColor} overflow-hidden text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 ${classes} `}
           >
-           <GoArrowRight className={`   text-${aarowColor}  text-2xl`}/>
+            <GoArrowRight className={`   text-pink  group-hover:text-white text-2xl z-[2]`}/>
           </button>
         </div>
       
@@ -151,9 +152,9 @@ export function HeroBtnPink<T extends "submit" | "button">({
         >
           <h5 className={`text-${color} ${sizeClass}`}>{text}</h5>
           <div
-            className={`rounded-sm p-1 md:p-2 border-2 border-${borderColor} text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300`}
+            className={`rounded-sm p-1 relative overflow-hidden md:p-2 border-2 border-${borderColor} text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300`}
           >
-           <GoArrowRight className={`text-white group-hover:text-pink text-2xl`}/>
+           <GoArrowRight className={`   text-white  group-hover:text-pink text-2xl z-[2]`}/>
           </div>
         </Link>
       ) : (
@@ -166,9 +167,9 @@ export function HeroBtnPink<T extends "submit" | "button">({
             onClick={handleClick}
             {...rest}
             type={type === "button" ? "button" : "submit"}
-            className={`rounded-sm p-1 md:p-2 border-2 border-${borderColor} text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 ${classes} `}
+            className={`rounded-sm p-1 md:p-2 relative overflow-hidden border-2 border-${borderColor} text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 ${classes} `}
           >
-           <GoArrowRight className={`   text-${aarowColor}  text-2xl`}/>
+            <GoArrowRight className={`   text-white  group-hover:text-pink text-2xl z-[2]`}/>
           </button>
         </div>
       
@@ -224,9 +225,10 @@ export function BorderGrayHeroBtn<T extends "submit" | "button">({
         >
           <h5 className={`text-${color} ${sizeClass}`}>{text}</h5>
           <div
-            className={`rounded-sm p-1 md:p-2 border-2 border-darkgray/50  w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 group-hover:bg-pink group-hover:border-pink`}
+            className={`rounded-sm p-1 relative overflow-hidden md:p-2 border-2 border-darkgray/50  w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 group-hover:bg-pink group-hover:border-pink`}
           >
-           <GoArrowRight className={`text-pink group-hover:text-white text-2xl`}/>
+             <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
+             <GoArrowRight className={`   text-pink  group-hover:text-white text-2xl z-[2]`}/>
           </div>
         </Link>
       ) : (
@@ -239,9 +241,9 @@ export function BorderGrayHeroBtn<T extends "submit" | "button">({
             onClick={handleClick}
             {...rest}
             type={type === "button" ? "button" : "submit"}
-            className={`rounded-sm p-1 md:p-2 border-2 border-${borderColor} text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 ${classes} `}
+            className={`rounded-sm p-1 relative overflow-hidden md:p-2 border-2 border-${borderColor} text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 ${classes} `}
           >
-            <GoArrowRight className={`text-${aarowColor}  text-2xl`}/>
+             <GoArrowRight className={`   text-pink  group-hover:text-white text-2xl z-[2]`}/>
           </button>
         </div>
       

@@ -19,8 +19,7 @@ export default function Turning() {
     <>
       <section className="bg-pink relative d">
       <div className="absolute top-0 left-0 opacity-30 hidden xl:block">
-        <Image src={halfcirclesvg} alt="Circle Image" />
-        </div>
+        <Image src={halfcirclesvg} alt="Circle Image" /></div>
         <div className="absolute 2xl:top-7 top-3 left-0 2xl:left-15 opacity-30 hidden xl:block">
           <Image src={circlesvg1} alt="Circle Image" />
         </div>
@@ -142,7 +141,7 @@ export default function Turning() {
                     Sectors of operation
                   </h3>
 
-                  <ul className="grid grid-cols-2 2xl:grid-cols-3 gap-16  2xl:gap-x-4 gap-y-2 py-3 list-disc list-inside text-white text-lg w-fit">
+                  <ul className="grid  grid-cols-2 2xl:grid-cols-3 pt-10 gap-16  2xl:gap-x-4 gap-y-4 py-4 list-disc list-inside text-white text-lg w-fit">
                     <li>Education</li>
                     <li>Transportation</li>
                     <li>Water and Sanitation</li>

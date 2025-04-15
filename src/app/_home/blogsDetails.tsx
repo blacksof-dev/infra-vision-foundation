@@ -17,7 +17,7 @@ export default function BlogsDetails({ date, title, description }: CardProps) {
             <div className=" flex flex-row justify-between">
               <div className="w-full md:w-[65%]  lg:w-[60%]">
                 <h4 className="pb-2 font-medium">{title}</h4>
-                <p>{description}</p>
+                <p className="line-clamp-3 ">{description}</p>
               </div>
               <div className=" py-2 md:py-5 lg:py-0 mt-auto">
                 <BorderGrayHeroBtn

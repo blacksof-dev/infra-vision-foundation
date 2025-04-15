@@ -36,9 +36,13 @@ export default function TwitterPost() {
           </div>
         </div>
       </div>
+      
       <div className="pt-5 md:pt-8 h-full  ">
         <div className="">
-        <div className="taggbox" style={{ width: "100%", height: "416px" }} data-widget-id="2164217" data-tags="false"  ></div><Script src="https://widget.taggbox.com/embed-lite.min.js" type="text/javascript"></Script>
+        <div className="taggbox" style={{ width: "100%", height: "416px" }} data-widget-id="2164217" data-tags="false"  ></div>
+        <Script src="https://widget.taggbox.com/embed-lite.min.js" type="text/javascript">
+        </Script>
+       
           
         </div>
       </div>

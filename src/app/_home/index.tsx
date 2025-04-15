@@ -20,8 +20,9 @@ export default function Home(){
       <Infravisionaries />
       <Publication />
       <Blogs />
-      <Champion />
       <StayConnected />
+      <Champion />
+     
       <InfravisionTalks />
     </>
   );

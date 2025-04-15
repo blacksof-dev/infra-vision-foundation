@@ -56,6 +56,199 @@ type CardData = {
   title: string;
   desig: string;
 };
+const trustee = [
+  {
+    image: Vinayak,
+    title: "Vinayak Chatterjee",
+    desig: "Founder & Managing Trustee",
+  },
+  {
+    image: Rumjhum,
+    title: "Rumjhum Chatterjee",
+    desig: "Co-Founder & Managing Trustee",
+  },
+ 
+  {
+    image: Kiran,
+    title: "Kiran Karnik",
+    desig: "Trustee",
+  },
+];
+
+const advisory = [
+  {
+    image: Arun,
+    title: "Arun Maira",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: ArunNanda,
+    title: "Arun Nanda",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: AshishDhawan,
+    title: "Ashish Dhawan",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: CyrilShroff,
+    title: "Cyril Shroff",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: DKSen,
+    title: "D. K. Sen",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: JanmejayaKSinha,
+    title: "Janmejaya K. Sinha",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: GeetanjaliKirloskar,
+    title: "Geetanjali Kirloskar",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: HemendraMKothari,
+    title: "Hemendra M. Kothari",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: jagan,
+    title: "Jagan Shah",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: khurshed,
+    title: "Khurshed",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: NarotamSekhsaria,
+    title: "Narotam Sekhsaria",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: ProfessorGRaghuram,
+    title: "Professor G. Raghuram",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: NasserMunjee,
+    title: "Nasser Munjee",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: RajnishKumar,
+    title: "Rajnish Kumar",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: SameerGupta,
+    title: "Sameer Gupta",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: SNSubrahmanyan,
+    title: "S. N. Subrahmanyan",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: SunilMathur,
+    title: "Sunil Mathur",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: DilipCherian,
+    title: "Dilip Cherian",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: ManojKSingh,
+    title: "Manoj K. Singh",
+    desig: "Member, Council of Advisors",
+  },
+];
+
+const fellow = [
+  {
+    image: AkhileshTilotia,
+    title: "Akhilesh Tilotia",
+    desig: "Distinguished Fellow (Public Policy)",
+  },
+  {
+    image: rajajiMeshram,
+    title: "Rajaji Meshram",
+    desig: "Distinguished Fellow(Transport & Logistics)",
+  },
+  {
+    image: rajivRanjanMishra,
+    title: "Rajiv Ranjan Mishra",
+    desig: "Distinguished Fellow (Water Conservation)",
+  },
+  {
+    image: rasikaAthawale,
+    title: "Rasika Athawale",
+    desig: "Distinguished Fellow (Power)",
+  },
+  {
+    image: SoumyaKantiGhosh,
+    title: "Soumya Kanti Ghosh",
+    desig: "Distinguished Fellow (Economic Policy)",
+  },
+  {
+    image: supratimSarkar,
+    title: "Supratim Sarkar",
+    desig: "Distinguished Fellow (Financial Services)",
+  },
+];
+
+const team = [
+  {
+    image: MutumChaobisana,
+    title: "Mutum Chaobisana",
+    desig: "DHead Programmes",
+  },
+  {
+    image: KavereeBamzai,
+    title: "Kaveree Bamzai",
+    desig: "Head Advocacy",
+  },
+  {
+    image: LawrenceCardoza,
+    title: "Lawrence Cardoza",
+    desig: "Research Associate",
+  },
+  {
+    image: PriyankaBains,
+    title: "Priyanka Bains",
+    desig: "Research Associate",
+  },
+  {
+    image: RumjhumChatterjee,
+    title: "Rumjhum Chatterjee",
+    desig: "Co-Founder & Managing Trustee",
+  },
+  {
+    image: Vinayak,
+    title: "Vinayak Chatterjee",
+    desig: "Founder & Managing Trustee",
+  },
+  {
+    image: VrindaSingh,
+    title: "Vrinda Singh",
+    desig: "Research Associate",
+  },
+  {
+    image: jagan,
+    title: "Jagan Shah",
+    desig: "CEO",
+  },
+];
+
 
 export default function Infravisionaries() {
   const [data, setdata] = useState("trustee");
@@ -67,198 +260,7 @@ export default function Infravisionaries() {
     setIsFirstSlide(swiper.isBeginning);
   };
 
-  const trustee = [
-    {
-      image: Kiran,
-      title: "Kiran Karnik",
-      desig: "Trustee",
-    },
-    {
-      image: Rumjhum,
-      title: "Rumjhum Chatterjee",
-      desig: "Co-Founder & Managing Trustee",
-    },
-    {
-      image: Vinayak,
-      title: "Vinayak Chatterjee",
-      desig: "Founder & Managing Trustee",
-    },
-  ];
-
-  const advisory = [
-    {
-      image: Arun,
-      title: "Arun Maira",
-      desig: "Member,Council of Advisors",
-    },
-    {
-      image: ArunNanda,
-      title: "Arun Nanda",
-      desig: "Member,Council of Advisors",
-    },
-    {
-      image: AshishDhawan,
-      title: "Ashish Dhawan",
-      desig: "Member,Council of Advisors",
-    },
-    {
-      image: CyrilShroff,
-      title: "Cyril Shroff",
-      desig: "Member,Council of Advisors",
-    },
-    {
-      image: DKSen,
-      title: "D. K. Sen",
-      desig: "Member,Council of Advisors",
-    },
-    {
-      image: JanmejayaKSinha,
-      title: "Janmejaya K. Sinha",
-      desig: "Member,Council of Advisors",
-    },
-    {
-      image: GeetanjaliKirloskar,
-      title: "Geetanjali Kirloskar",
-      desig: "Member,Council of Advisors",
-    },
-    {
-      image: HemendraMKothari,
-      title: "Hemendra M. Kothari",
-      desig: "Member,Council of Advisors",
-    },
-    {
-      image: jagan,
-      title: "Jagan Shah",
-      desig: "Member,Council of Advisors",
-    },
-    {
-      image: khurshed,
-      title: "Khurshed",
-      desig: "Member,Council of Advisors",
-    },
-    {
-      image: NarotamSekhsaria,
-      title: "Narotam Sekhsaria",
-      desig: "Member,Council of Advisors",
-    },
-    {
-      image: ProfessorGRaghuram,
-      title: "Professor G. Raghuram",
-      desig: "Member,Council of Advisors",
-    },
-    {
-      image: NasserMunjee,
-      title: "Nasser Munjee",
-      desig: "Member,Council of Advisors",
-    },
-    {
-      image: RajnishKumar,
-      title: "Rajnish Kumar",
-      desig: "Member,Council of Advisors",
-    },
-    {
-      image: SameerGupta,
-      title: "Sameer Gupta",
-      desig: "Member,Council of Advisors",
-    },
-    {
-      image: SNSubrahmanyan,
-      title: "S. N. Subrahmanyan",
-      desig: "Member,Council of Advisors",
-    },
-    {
-      image: SunilMathur,
-      title: "Sunil Mathur",
-      desig: "Member,Council of Advisors",
-    },
-    {
-      image: DilipCherian,
-      title: "Dilip Cherian",
-      desig: "Member,Council of Advisors",
-    },
-    {
-      image: ManojKSingh,
-      title: "Manoj K. Singh",
-      desig: "Member,Council of Advisors",
-    },
-  ];
-
-  const fellow = [
-    {
-      image: AkhileshTilotia,
-      title: "Akhilesh Tilotia",
-      desig: "Distinguished Fellow (Public Policy)",
-    },
-    {
-      image: rajajiMeshram,
-      title: "Rajaji Meshram",
-      desig: "Distinguished Fellow(Transport & Logistics)",
-    },
-    {
-      image: rajivRanjanMishra,
-      title: "Rajiv Ranjan Mishra",
-      desig: "Distinguished Fellow (Water Conservation)",
-    },
-    {
-      image: rasikaAthawale,
-      title: "Rasika Athawale",
-      desig: "Distinguished Fellow (Power)",
-    },
-    {
-      image: SoumyaKantiGhosh,
-      title: "Soumya Kanti Ghosh",
-      desig: "Distinguished Fellow (Economic Policy)",
-    },
-    {
-      image: supratimSarkar,
-      title: "Supratim Sarkar",
-      desig: "Distinguished Fellow (Financial Services)",
-    },
-  ];
-
-  const team = [
-    {
-      image: MutumChaobisana,
-      title: "Mutum Chaobisana",
-      desig: "DHead-Programmes",
-    },
-    {
-      image: KavereeBamzai,
-      title: "Kaveree Bamzai",
-      desig: "Head-Advocacy",
-    },
-    {
-      image: LawrenceCardoza,
-      title: "Lawrence Cardoza",
-      desig: "Research Associate",
-    },
-    {
-      image: PriyankaBains,
-      title: "Priyanka Bains",
-      desig: "Research Associate",
-    },
-    {
-      image: RumjhumChatterjee,
-      title: "Rumjhum Chatterjee",
-      desig: "Co-Founder & Managing Trustee",
-    },
-    {
-      image: Vinayak,
-      title: "Vinayak Chatterjee",
-      desig: "Founder & Managing Trustee",
-    },
-    {
-      image: VrindaSingh,
-      title: "Vrinda Singh",
-      desig: "Research Associate",
-    },
-    {
-      image: jagan,
-      title: "Jagan Shah",
-      desig: "CEO",
-    },
-  ];
-
+ 
   useEffect(() => {
     let cardDetails: CardData[] = [];
 
@@ -286,7 +288,11 @@ export default function Infravisionaries() {
     <>
       <section className="bg-pink">
         <div className="w-container blade-top-padding-lg blade-bottom-padding-lg">
-          <div>
+          <div className="flex  flex-row  items-center gap-2 md:gap-3">
+            <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-white "></span>
+            <h5 className="font-medium text-white">Our core</h5>
+          </div>
+          <div className="pt-4 pb-2 md:py-5">
             <h1 className="text-white font-medium">The Infravisionaries</h1>
             <div className="w-full md:w-[45%]">
               <h6 className="text-white font-extralight tracking-[1%] py-4">
@@ -373,7 +379,7 @@ export default function Infravisionaries() {
                             alt={ele.title}
                             className="w-full h-full object-cover rounded"
                           />
-                          <div className="absolute xl:right-5  bottom-20   bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                          {/* <div className="absolute xl:right-5 2xl:right-3  bottom-20   bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
                             <div className="w-[2rem] h-[2rem] ">
                               <Image
                                 src={linkedinSvg}
@@ -383,14 +389,35 @@ export default function Infravisionaries() {
                             </div>
                           </div>
                           <div className="absolute bottom-0 left-0">
-                            <div className="bg-white w-[14rem] lg:h-[5.5rem]  rounded">
+                            <div className="bg-white w-[14rem]  lg:h-[5.5rem]  rounded">
                               <h6 className="pt-1 2xl:pt-2 px-2  font-medium">
                                 {ele.title}
                               </h6>
-                              <p className="px-2  font-light text-black">
+                              <p className="px-2  smallText font-light text-black">
                                 {ele.desig}
                               </p>
                             </div>
+                          </div> */}
+
+                          <div className="absolute bottom-0 left-0 w-[17rem]  ">
+                          <div className=" ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                            <div className=" ">
+                              <Image
+                                src={linkedinSvg}
+                                alt={ele.title}
+                                className="object-cover w-full rounded h-full my-auto"
+                              />
+                            </div>
+                          </div>
+                            <div className="bg-white w-[14rem]  lg:h-[5.5rem]  rounded">
+                              <h6 className="pt-1 2xl:pt-2 px-2  font-medium">
+                                {ele.title}
+                              </h6>
+                              <p className="px-2  smallText font-light text-black">
+                                {ele.desig}
+                              </p>
+                            </div>
+
                           </div>
                         </div>
                       </SwiperSlide>
@@ -400,17 +427,13 @@ export default function Infravisionaries() {
               </div>
               <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-4 2xl:mt-1">
                 <button
-                  className={`swiper-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
-                    isFirstSlide ? "opacity-40" : ""
-                  }`}
+                  className={`swiper-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
                   aria-label="Previous slide"
                 >
                   <GoArrowLeft/>
                 </button>
                 <button
-                  className={`swiper-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
-                    isLastSlide ? "opacity-40" : ""
-                  }`}
+                  className={`swiper-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
                   aria-label="Next slide"
                 >
                   <GoArrowRight />
@@ -491,7 +514,7 @@ export default function Infravisionaries() {
                       <div className="absolute bottom-0 left-0">
                         <div className="bg-white w-[15rem] h-[5.5rem] rounded">
                           <h6 className="pt-2 px-1 font-medium">{ele.title}</h6>
-                          <p className="px-1  font-light text-black">
+                          <p className="smallText px-1  font-light text-black">
                             {ele.desig}
                           </p>
                         </div>
@@ -501,7 +524,7 @@ export default function Infravisionaries() {
                 ))}
               </Swiper>
             </div>
-          <div className=" flex pt-5 flex-wrap gap-5 mt-4 justify-end md:gap-8 2xl:mt-1">
+          <div className=" flex pt-5 flex-wrap gap-3 mt-4 justify-start  2xl:mt-1">
               <button
                 className={`prevbtntrustee flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                   isFirstSlide ? "opacity-40" : ""
@@ -585,7 +608,7 @@ export default function Infravisionaries() {
                       <div className="absolute bottom-0 left-0">
                         <div className="bg-white w-[15rem] h-[5.5rem] rounded">
                           <h6 className="pt-2 px-1 font-medium">{ele.title}</h6>
-                          <p className="px-1  font-light text-black">
+                          <p className="px-1 smallText font-light text-black">
                             {ele.desig}
                           </p>
                         </div>
@@ -680,7 +703,7 @@ export default function Infravisionaries() {
                       <div className="absolute bottom-0 left-0">
                         <div className="bg-white w-[15rem] h-[5.5rem] rounded">
                           <h6 className="pt-2 px-1 font-medium">{ele.title}</h6>
-                          <p className="px-1  font-light text-black">
+                          <p className="px-1 smallText font-light text-black">
                             {ele.desig}
                           </p>
                         </div>
@@ -774,7 +797,7 @@ export default function Infravisionaries() {
                       <div className="absolute bottom-0 left-0">
                         <div className="bg-white w-[15rem] h-[5.5rem] rounded">
                           <h6 className="pt-2 px-1 font-medium">{ele.title}</h6>
-                          <p className="px-1  font-light text-black">
+                          <p className="px-1 smallText font-light text-black">
                             {ele.desig}
                           </p>
                         </div>

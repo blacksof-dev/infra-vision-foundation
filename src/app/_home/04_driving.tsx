@@ -123,8 +123,8 @@ export default function Driving() {
                 </div>
                  
                 </div>
-                <div className="ms-11 xl:ms-16 2xl:ms-28 ">
-                  <div className="pt-10">
+                <div  className="ms-11 xl:ms-16 2xl:ms-28  my-auto h-full flex flex-col justify-center">
+                  <div className="">
                     <Image
                       src={AwardsDetails[data].logo}
                       alt="CIARA logo"

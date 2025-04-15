@@ -39,34 +39,26 @@ export default function Banner() {
                 nation-building{" "}
               </h1>
             </div>
-            <div className="   w-[80%] lg:w-[45%] py-2 xl:py-4 ">
-              <h5 className="text-black">
+            <div className="   w-[80%] lg:w-[37%] py-2 xl:py-4 ">
+              <h5 className="text-black ">
                 We help shape India’s infrastructure policies with neutral
                 fact-based insights, analysis, and discourse.
               </h5>
             </div>
-            {/* <div className="">
-              <HeroBtn
-                text="Know more"
-                role="link"
-                borderColor="pink"
-                aarowColor="pink"
-                color="black"
-                size="extralarge"
-                classes="w-full sm:w-auto p-3 sm:p-2 text-sm"
-                bgColor ="transparent"
-              />
-            </div> */}
+          
             <div className="flex gap-2 lg:gap-4 items-center justify-center group  w-fit">
                 <h5 className="font-medium">Know more</h5>
-                <button
-                  className={`rounded-sm p-1 md:p-2 border-2 border-pink   w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 group-hover:bg-pink `}
+                 <button
+                  className={`rounded-sm p-1 relative md:p-2 border-2 border-pink overflow-hidden   w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300  `}
                 >
-                  <GoArrowRight className={`   text-pink  group-hover:text-white text-2xl`}/>
+                  <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
+
+                  <GoArrowRight className={`   text-pink  group-hover:text-white text-2xl z-[2]`}/>
                 </button>
             </div>
+            
           </div>
-          <div className="absolute bottom-8 lg:bottom-3 2xl:bottom-10 ">
+          <div className="absolute  2xl:left-44  bottom-8 lg:bottom-3 2xl:bottom-10 ">
             <Updates />
           </div>
         </div>

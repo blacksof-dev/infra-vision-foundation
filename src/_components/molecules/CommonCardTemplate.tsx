@@ -4,7 +4,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
+import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 import playSvg from "@/../public/assets/globals/playSvg.svg";
 import jaganShah from "@/../public/assets/home/decoding/jaganShah.jpg";
 import geetamTiwari from "@/../public/assets/home/decoding/geetamTiwari.jpg";
@@ -21,11 +21,16 @@ import rajivRanjanMishraMobileImg from "@/../public/assets/home/decoding/rajivRa
 
 export default function LinkedinCard() {
   return (
-    <div className="relative">
+    <>
+      <div className="relative">
       <div className="absolute top-0 right-0 h-full w-[20%] " />
 
       <Swiper
         modules={[Navigation, Pagination]}
+        navigation={{
+          prevEl: ".swiper-solution-prev-decoding",
+          nextEl: ".swiper-solution-next-decoding",
+        }}
         loop
         grabCursor
         slideToClickedSlide
@@ -49,7 +54,7 @@ export default function LinkedinCard() {
           <SwiperSlide key={index}>
             <section className="mt-3">
               <div className="relative  lg:block hidden">
-                <Image src={ele.image} alt={ele.title} className="w-full" />
+                <Image src={ele.image} alt={ele.title} className="w-full rounded" />
 
                 <div className="absolute top-0 right-0   pr-5 pt-6">
                   <div className=" w-[55%]   ms-auto last:text-end ">
@@ -60,7 +65,7 @@ export default function LinkedinCard() {
                 </div>
 
                 <div className="w-[50%]">
-                  <div className="absolute left-[15rem] top-[7rem]  lg:left-[17rem] lg:top-[7rem]   xl:left-[20rem] xl:top-[11rem] 2xl:left-[20rem]  2xl:top-[12rem] ">
+                  <div className="absolute left-[15rem] top-[7rem]  lg:left-[17rem] lg:top-[7rem]   xl:left-[19rem] xl:top-[12rem] 2xl:left-[20rem]  2xl:top-[12rem] ">
                     <div className="bg-white  w-[3rem] h-[3rem]  xl:w-[4rem] xl:h-[3rem] flex items-center justify-center ">
                       <Image
                         src={playSvg}
@@ -87,6 +92,22 @@ export default function LinkedinCard() {
         ))}
       </Swiper>
     </div>
+        <div className="flex lg:hidden flex-wrap gap-3 justify-start mt-9  md:gap-8 2xl:mt-1 w-container">
+            <button
+              className={`swiper-solution-prev-decoding flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white `}
+              aria-label="Previous slide"
+            >
+              <GoArrowLeft/>
+            </button>
+            <button
+              className={`swiper-solution-next-decoding flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white `}
+              aria-label="Next slide"
+            >
+              <GoArrowRight />
+            </button>
+    </div>
+    </>
+   
   );
 }
 
@@ -96,7 +117,7 @@ const cardData = [
     mobileImg:jaganShahMobileImg,
     title: "Air Pollution: The solution has to be multi-sectoral",
     subtitle: "Jagan shah",
-    desc: "Premier Urbanist, Senior expert in urban development policy and Distinguished Fellow, TIF",
+    desc: "Premier Urbanist, Senior expert in urban development policy and Distinguished Fellow,The Infravision Foundation",
     subdesc: "",
   },
   {

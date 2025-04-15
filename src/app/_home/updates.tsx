@@ -14,6 +14,7 @@ import infraKathaEvent from "@/../public/assets/home/updates/infraKathaEvent.png
 import afforestation from "@/../public/assets/home/updates/afforestation.png";
 import infraKatha from "@/../public/assets/home/updates/infraKatha.png";
 import agriWarehousing from "@/../public/assets/home/updates/agriWarehousing.png";
+import Link from "next/link";
 
 export default function Updates() {
   const [isFirstSlide, setIsFirstSlide] = useState(true);
@@ -29,7 +30,7 @@ export default function Updates() {
       <div className="flex flex-row gap-8">
         {/* Left Column */}
         <div className="border-r border-white xl:block hidden">
-          <div className="lg:ms-24  xl:ms-30 hidden xl:block">
+          <div className="lg:ms-24  xl:ms-13 2xl:ms-0 hidden xl:block">
             <h4 className="text-white font-medium text-nowrap px-5">
               Latest Updates
             </h4>
@@ -63,13 +64,13 @@ export default function Updates() {
             }}
             // pagination={{ clickable: true }}
             loop
-            // grabCursor
+            grabCursor={true}
             // slideToClickedSlide
             speed={500} 
             spaceBetween={20}
             slidesPerView={1.1}
             // centeredSlides={true}
-
+         
             // autoplay={{
             //   delay: 2000,
             //   disableOnInteraction: false, // important if you want autoplay to resume after click
@@ -115,13 +116,16 @@ export default function Updates() {
                       bgColor="white"
                       
                     /> */}
-                     <div className="flex gap-2 lg:gap-4 items-center justify-center group  w-fit">
+                <div className="flex gap-2 lg:gap-4 items-center justify-center group  w-fit">
                 <h5 className="smallText text-white group-hover:text-black">{ele.btnTitle}</h5>
+                <Link href={ele.link} target="_blank">
                 <button
-                  className={`rounded-sm p-1 md:p-2 border-2 bg-white border-white group-hover:border-transparent   w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 group-hover:bg-pink `}
+                  className={`rounded-sm p-1 relative overflow-hidden md:p-2 border-2 bg-white border-white group-hover:border-transparent   w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 group-hover:bg-pink `}
                 >
-                  <GoArrowRight className={`   text-pink  group-hover:text-white group-hover:border-none text-2xl`}/>
+                   <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
+                   <GoArrowRight className={`   text-pink  group-hover:text-white text-2xl z-[2]`}/>
                 </button>
+                </Link>
             </div>
                   </div>
                 </div>
@@ -140,18 +144,22 @@ const EventsDetails = [
     category: "News & media",
     title: "Group taxation regime for infrastructure",
     btnTitle: "Read more",
+    link:"https://www.business-standard.com/opinion/columns/group-taxation-regime-for-infrastructure-124081500813_1.html"
+    
   },
   {
     image: infraKathaEvent,
     category: "Upcoming event",
-    title: "InfraKatha #8, with Economist, Montek Singh Ahluwalia, IHC, 7 PM",
+    title: "InfraKatha #8 with Economist Montek Singh Ahluwalia, India Habitat Centre, New Delhi,7 PM onwards",
     btnTitle: "Register now",
+     link:"https://www.youtube.com/watch?v=o6nb3IejARc&t=13s&ab_channel=TheInfravisionFoundation"
   },
   {
     image: afforestation,
     category: "Research paper",
     title: "Study on Implementation of Compensatory Afforestation in India",
     btnTitle: "Read more",
+    link:"https://theinfravisionfoundation.org/wp-content/uploads/2025/03/Study-on-Implementation-of-Compensatory-Afforestation-in-India.pdf"
   },
   {
     image: infraKatha,
@@ -159,11 +167,13 @@ const EventsDetails = [
     title:
       "InfraKatha: Can Public Private Partnerships be Revitalised by Montek Singh Ahluwalia",
     btnTitle: "Watch now",
+    link:"https://www.youtube.com/watch?v=o6nb3IejARc&t=13s&ab_channel=TheInfravisionFoundation"
   },
   {
     image: agriWarehousing,
     category: "Blog",
     title: "Agri-Warehousing: A problem of capacity",
     btnTitle: "Read more",
+    link:"https://theinfravisionfoundation.org/2023/11/25/poor-regulatory-capacity-of-the-warehousing-and-development-regulatory-authority-impacts-warehouse-based-sales-of-agri-commodities-and-issue-of-e-negotiable-warehouse-receipts/"
   },
 ];

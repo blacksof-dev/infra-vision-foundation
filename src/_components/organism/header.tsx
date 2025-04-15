@@ -6,6 +6,7 @@ import { FaSearch } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Mobilenav from "./mobileNav";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 
 export default function Header() {
@@ -29,22 +30,23 @@ export default function Header() {
     <>
   <nav className="absolute w-full z-[9999] top-3 left-0 xl:top-8 ">
   <div className="w-container relative ">
-    <div className="flex flex-row justify-between  xl:gap-10 items-center w-full">
+    <div className="flex flex-row justify-between  xl:gap-10 items-center  w-full">
 
       {/* Logo */}
-      <div className="w-[10rem] 2xl:w-[14rem] h-[6rem]">
-        <Image src={logo} alt="Infra Vision Foundation" />
+      <div className="w-[10rem] 2xl:w-[14rem]  ">
+        <Link href="/"><Image src={logo} alt="Infra Vision Foundation" /></Link>
       </div>
 
       {/* Desktop Navigation */}
-      <div className="hidden xl:flex flex-row  xl:gap-5 2xl:gap-6 3xl:gap-8 items-center">
+      <div className="hidden xl:flex  flex-row  xl:gap-5 2xl:gap-6 3xl:gap-8 items-center ">
         <ul>
-          <li>
+          
+          <li className="">
             <TextNavAnchor
               color="dark"
               size="large"
-              className="block whitespace-nowrap ps-5 py-1 md:py-2"
-              href="/what-drives-us"
+              className="block whitespace-nowrap ps-5 py-1 md:py-2 no-underline"
+              // href="/what-drives-us"
               text="What Drives Us"
               iconVisiblity={true}
             />
@@ -55,8 +57,8 @@ export default function Header() {
             <TextNavAnchor
               color="dark"
               size="large"
-              className="block whitespace-nowrap ps-5 py-1 md:py-2"
-              href="/our-initiatives"
+              className="block whitespace-nowrap ps-5 py-1 md:py-2 no-underline"
+              // href="/our-initiatives"
               text="Our Initiatives"
               iconVisiblity={true}
             />
@@ -67,8 +69,8 @@ export default function Header() {
             <TextNavAnchor
               color="dark"
               size="large"
-              className="block whitespace-nowrap ps-5 py-1 md:py-2"
-              href="/publications"
+              className="block whitespace-nowrap ps-5 py-1 md:py-2 no-underline"
+              // href="/publications"
               text="Publications"
               iconVisiblity={true}
             />
@@ -79,8 +81,8 @@ export default function Header() {
             <TextNavAnchor
               color="dark"
               size="large"
-              className="block whitespace-nowrap ps-5 py-1 md:py-2"
-              href="/resources"
+              className="block whitespace-nowrap ps-5 py-1 md:py-2 no-underline"
+              // href="/resources"
               text="Resources"
               iconVisiblity={true}
             />
@@ -91,8 +93,8 @@ export default function Header() {
             <TextNavAnchor
               color="dark"
               size="large"
-              className="block whitespace-nowrap ps-5 py-1 md:py-2"
-              href="/events"
+              className="block whitespace-nowrap ps-5 py-1 md:py-2 no-underline"
+              // href="/events"
               text="Events"
               iconVisiblity={true}
             />
@@ -103,16 +105,20 @@ export default function Header() {
             <TextNavAnchor
               color="dark"
               size="large"
-              className="block whitespace-nowrap ps-5 py-1 md:py-2"
-              href="/contact-us"
+              className="block whitespace-nowrap ps-5 py-1 md:py-2 no-underline"
+              // href="/contact-us"
               text="Contact Us"
               iconVisiblity={false}
             />
           </li>
         </ul>
 
-        {/* Search Box */}
-        <div className="hidden xl:block border border-darkgray w-full xl:w-[8rem]  2xl:w-[10rem]  rounded">
+       
+       
+
+      </div>
+
+      <div className="hidden xl:block border  border-darkgray w-full xl:w-[8rem]  2xl:w-[10rem]  rounded">
           <form className="p-2">
             <div className="flex items-center gap-3">
               <FaSearch className="text-darkgray text-xl" />
@@ -124,7 +130,13 @@ export default function Header() {
             </div>
           </form>
         </div>
-      </div>
+
+
+
+
+
+
+
 
       {/* Mobile Hamburger Menu */}
       <div className="xl:hidden ">

@@ -104,7 +104,7 @@ export default function Publication() {
 const CardData = [
   {
     category: "Newsletter",
-    date: "Aug 15 2024",
+    date: "Aug  2024",
     title: "Workshop on trees outside forests",
     img: workshop,
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/01/INFRAVISION-TALK-January-2025.pdf",
@@ -214,7 +214,7 @@ const Publicationdata = [
   },
   {
     category: "Newsletter",
-    date: "Aug 15 2024",
+    date: "Aug 2024",
     title: "Workshop on trees outside forests",
     img: workshop,
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/01/INFRAVISION-TALK-January-2025.pdf",

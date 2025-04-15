@@ -57,7 +57,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-5 py-1 md:py-2"
-                        href="/who-we-are"
+                        // href="/who-we-are"
                         text="Who we are"
                       />
                     </li>
@@ -66,7 +66,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-5 py-1 md:py-2"
-                        href="/vision-mission"
+                        // href="/vision-mission"
                         text="Vision and Mission"
                       />
                     </li>
@@ -75,7 +75,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-5 py-1 md:py-2"
-                        href="/the-infravisionaries"
+                        // href="/the-infravisionaries"
                         text="The Infravisionaries"
                       />
                     </li>
@@ -84,7 +84,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-5 py-1 md:py-2"
-                        href="/collaborate-with-us"
+                        // href="/collaborate-with-us"
                         text="Collaborate with us"
                       />
                     </li>
@@ -105,7 +105,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-5 py-1 md:py-2"
-                        href="/infraShakti-awards"
+                        // href="/infraShakti-awards"
                         text="InfraShakti Awards"
                       />
                     </li>
@@ -114,7 +114,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-5 py-1 md:py-2"
-                        href="/infraKatha"
+                        // href="/infraKatha"
                         text="InfraKatha"
                       />
                     </li>
@@ -123,7 +123,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-5 py-1 md:py-2"
-                        href="/caira"
+                        // href="/caira"
                         text="CAIRA"
                       />
                     </li>
@@ -144,7 +144,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-5 py-1 md:py-2"
-                        href="/blogs"
+                        // href="/blogs"
                         text="Blogs"
                       />
                     </li>
@@ -154,7 +154,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-5 py-1 md:py-2"
-                        href="/who-we-are"
+                        // href="/who-we-are"
                         text="Who we are"
                       />
                     </li>
@@ -163,8 +163,8 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-5 py-1 md:py-2"
-                        href="/news-and-media"
-                        text="News & media"
+                        // href="/news-and-media"
+                        text="News and media"
                       />
                     </li>
                     <li>
@@ -172,7 +172,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-5 py-1 md:py-2"
-                        href="/videos"
+                        // href="/videos"
                         text="Videos"
                       />
                     </li>
@@ -193,7 +193,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-5 py-1 md:py-2"
-                        href="/research-papers"
+                        // href="/research-papers"
                         text="Research papers"
                       />
                     </li>
@@ -202,16 +202,25 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-5 py-1 md:py-2"
-                        href="/background-papers"
+                        // href="/white-papers"
+                        text="White papers"
+                      />
+                    </li>
+                    <li>
+                      <TextAnchor
+                        color="dark"
+                        size="base"
+                        className="block whitespace-nowrap ps-5 py-1 md:py-2"
+                        // href="/background-papers"
                         text="Background papers"
                       />
                     </li>
                     <li>
                       <TextAnchor
                         color="dark"
-                        size="small"
+                        size="base"
                         className="block whitespace-nowrap ps-5 py-1 md:py-2"
-                        href="/newsletters"
+                        // href="/newsletters"
                         text="Newsletters"
                       />
                     </li>
@@ -229,7 +238,7 @@ const footer = () => {
                     color="dark"
                     size="base"
                     className="block whitespace-nowrap ps-5 py-1 md:py-2"
-                    href="/upcoming-events"
+                    // href="/upcoming-events"
                     text="Upcoming events"
                   />
                 </li>
@@ -238,7 +247,7 @@ const footer = () => {
                     color="dark"
                     size="base"
                     className="block whitespace-nowrap ps-5 py-1 md:py-2"
-                    href="/past-events"
+                    // href="/past-events"
                     text="Past events"
                   />
                 </li>

@@ -85,19 +85,21 @@ export function TextAnchor({
     const colorClass: string = colorMap[color];
     return (
      
-            <Link
+      <Link
         target={target}
         href={href ?? "/"} 
         {...rest}
-        className={`${sizeClass} ${colorClass} ${className} flex flex-row gap-1   text-opacity-80 hover:text-opacity-100 focus:outline-none 
+        className={`${sizeClass} ${colorClass} ${className} group relative flex flex-row gap-1 justify-center items-center  text-opacity-80 hover:text-opacity-100 focus:outline-none 
                     focus:underline decoration-from-font underline-offset-4 focus:text-opacity-100 transition-all `}
       >
+
+        <span className="absolute left-0 w-0 h-0 group-hover:w-2 group-hover:h-2 group-hover:rounded group-hover:bg-pink"></span>
         {text} 
+          
         <div>
           {iconVisiblity &&
-           <GoChevronDown className=" text-darkgray mt-2"/>
+           <GoChevronDown className=" text-darkgray "/>
           }
-         
         </div>
       </Link>
      
