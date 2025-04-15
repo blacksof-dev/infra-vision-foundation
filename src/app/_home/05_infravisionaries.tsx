@@ -1,11 +1,10 @@
 "use client";
 
-
-import { useState, useEffect, useMemo} from "react";
-import type { Swiper as SwiperClass } from 'swiper/types';
-import Image from "next/image";
+import { useState, useEffect } from "react";
+import type { Swiper as SwiperClass } from "swiper/types";
+import Image, { StaticImageData } from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation,Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -48,14 +47,22 @@ import PriyankaBains from "@/../public/assets/home/team/PriyankaBains.jpg";
 import RumjhumChatterjee from "@/../public/assets/home/team/RumjhumChatterjee.jpg";
 import Vinayak from "@/../public/assets/home/team/Vinayak.jpg";
 import VrindaSingh from "@/../public/assets/home/team/VrindaSingh.png";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { GoArrowRight, GoArrowLeft } from "react-icons/go";
+
+
+
+type CardData = {
+  image: StaticImageData;
+  title: string;
+  desig: string;
+};
 
 export default function Infravisionaries() {
   const [data, setdata] = useState("trustee");
   const [isLastSlide, setIsLastSlide] = useState(false);
   const [isFirstSlide, setIsFirstSlide] = useState(true);
-
-  const handleSlideChange = (swiper:SwiperClass) => {
+  const [carddata, setcarddata] = useState<CardData[]>([]);
+  const handleSlideChange = (swiper: SwiperClass) => {
     setIsLastSlide(swiper.isEnd);
     setIsFirstSlide(swiper.isBeginning);
   };
@@ -252,22 +259,28 @@ export default function Infravisionaries() {
     },
   ];
 
-  useEffect(() => {});
-  const cardData = useMemo(() => {
+  useEffect(() => {
+    let cardDetails: CardData[] = [];
+
     switch (data) {
       case "trustee":
-        return trustee;
+        cardDetails = trustee;
+        break;
       case "advisory":
-        return advisory;
+        cardDetails = advisory;
+        break;
       case "fellow":
-        return fellow;
+        cardDetails = fellow;
+        break;
       case "team":
-        return team;
+        cardDetails = team;
+        break;
       default:
-        return [];
+        cardDetails = [];
     }
-  }, [data, trustee, advisory, fellow, team]);
-  
+
+    setcarddata(cardDetails);
+  }, [data]);
 
   return (
     <>
@@ -286,41 +299,41 @@ export default function Infravisionaries() {
           </div>
 
           <div className="hidden md:flex flex-row gap-20 blade-top-padding-sm overflow-x-hidden">
-            <div className="w-[40%] border-r-1 pe-9 border-lightgray">
-              <div className="py-4">
+            <div className=" border-r-1 pe-20 border-lightgray/40  w-fit">
+              <div className="py-4 group">
                 <button
                   className="text-white text-md text-nowrap lg:text-xl relative font-medium"
                   onClick={() => setdata("trustee")}
                 >
                   Trustee
-                  <span className="w-10 sm:w-15 h-[1px] sm:h-[2px] bg-white absolute bottom-0 left-0 top-7"></span>
+                  <span className="w-10 sm:w-5 h-[1px] group-hover:w-full sm:h-[2px] transition-all duration-1000 bg-white absolute bottom-0 left-0 top-7"></span>
                 </button>
               </div>
-              <div className="py-4">
+              <div className="py-4 group">
                 <button
                   className="text-white text-md  text-nowrap lg:text-xl relative font-medium"
                   onClick={() => setdata("advisory")}
                 >
                   Advisory Council
-                  <span className="w-10 sm:w-15 h-[1px] sm:h-[2px] bg-white absolute bottom-0 left-0 top-7"></span>
+                  <span className="w-10 sm:w-10 h-[1px] group-hover:w-full sm:h-[2px] transition-all duration-1000 bg-white absolute bottom-0 left-0 top-7"></span>
                 </button>
               </div>
-              <div className="py-4">
+              <div className="py-4 group">
                 <button
                   className="text-white text-md text-nowrap lg:text-xl relative font-medium"
                   onClick={() => setdata("fellow")}
                 >
                   Distinguished Fellows
-                  <span className="w-10 sm:w-15 h-[1px] sm:h-[2px] bg-white absolute bottom-0 left-0 top-7"></span>
+                  <span className="w-10 sm:w-5 h-[1px] group-hover:w-full sm:h-[2px] transition-all duration-1000 bg-white absolute bottom-0 left-0 top-7"></span>
                 </button>
               </div>
-              <div className="py-4">
+              <div className="py-4 group">
                 <button
                   className="text-white text-md lg:text-xl relative font-medium text-nowrap"
                   onClick={() => setdata("team")}
                 >
                   Team
-                  <span className="w-10 sm:w-15 h-[1px] sm:h-[2px] bg-white absolute bottom-0 left-0 top-7"></span>
+                  <span className="w-10 sm:w-5 h-[1px] group-hover:w-full sm:h-[2px] transition-all duration-1000 bg-white absolute bottom-0 left-0 top-7"></span>
                 </button>
               </div>
             </div>
@@ -328,115 +341,115 @@ export default function Infravisionaries() {
             <div>
               <div className="w-full  overflow-hidden">
                 <Swiper
-                modules={[Navigation, Pagination]}
-                speed={6000}
-                autoplay={{
-                  delay: 20,
-                  disableOnInteraction: false,
-                }}
-                noSwiping={true}
-                loop
-                grabCursor
-                  spaceBetween={20}
-                  onSwiper={(swiper) => {
-                    setTimeout(() => {
-                      swiper.params.navigation = {
-                        prevEl: ".swiper-solution-prev-btn",
-                        nextEl: ".swiper-solution-next-btn",
-                      };
-                      swiper.navigation.destroy(); // clean before re-init
-                      swiper.navigation.init();
-                      swiper.navigation.update();
-                    });
+                  modules={[Navigation]}
+                  className=" w-full"
+                  watchOverflow={true}
+                  navigation={{
+                    prevEl: ".swiper-prev-btn",
+                    nextEl: ".swiper-next-btn",
                   }}
+                  spaceBetween={20}
                   onSlideChange={handleSlideChange}
-                  slidesPerView={cardData.length}
+                  slidesPerView={1.1}
+                  centeredSlides={true}
+                  breakpoints={{
+                    500: { slidesPerView: 1.5, centeredSlides: false },
+                    768: { slidesPerView: 2.2, centeredSlides: false },
+                    1024: { slidesPerView: 2.9, centeredSlides: false },
+                    1280: { slidesPerView: 3, centeredSlides: false },
+                    1536: {
+                      slidesPerView: 2.5,
+                      centeredSlides: false,
+                      spaceBetween: 50,
+                    },
+                  }}
                 >
-                  {cardData.map((ele, index) => (
-                    <SwiperSlide key={index} className="!w-auto">
-                      {" "}
-                      <div className="flex realtive flex-col w-[19rem] h-[19rem] ">
-                        <Image
-                          src={ele.image}
-                          alt={ele.title}
-                          className="w-full h-full object-cover "
-                        />
-                        <div className="absolute right-4 bottom-17 bg-white w-[3rem] h-[3rem] rounded">
+                  {carddata.map((ele, index) => {
+                    return (
+                      <SwiperSlide key={index} className="!w-auto">
+                        <div className="flex realtive flex-col  h-[19rem]">
                           <Image
-                            src={linkedinSvg}
+                            src={ele.image}
                             alt={ele.title}
-                            className="w-full h-full object-cover "
+                            className="w-full h-full object-cover rounded"
                           />
-                        </div>
-                        <div className="absolute bottom-0 left-0">
-                          <div className="bg-white w-[15rem] lg:h-[5.5rem] rounded">
-                            <h6 className="pt-1 2xl:pt-2 px-2  font-medium">
-                              {ele.title}
-                            </h6>
-                            <p className="px-2  font-light text-black">
-                              {ele.desig}
-                            </p>
+                          <div className="absolute right-2 bottom-20  bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                            <div className="w-[2rem] h-[2rem] ">
+                              <Image
+                                src={linkedinSvg}
+                                alt={ele.title}
+                                className="object-cover w-full rounded h-full my-auto"
+                              />
+                            </div>
+                          </div>
+                          <div className="absolute bottom-0 left-0">
+                            <div className="bg-white w-[14rem] lg:h-[5.5rem]  rounded">
+                              <h6 className="pt-1 2xl:pt-2 px-2  font-medium">
+                                {ele.title}
+                              </h6>
+                              <p className="px-2  font-light text-black">
+                                {ele.desig}
+                              </p>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </SwiperSlide>
-                  ))}
+                      </SwiperSlide>
+                    );
+                  })}
                 </Swiper>
               </div>
               <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-8 2xl:mt-1">
                 <button
-                  className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                  className={`swiper-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                     isFirstSlide ? "opacity-40" : ""
                   }`}
                   aria-label="Previous slide"
                 >
-                  <FaAngleLeft />
+                  <GoArrowLeft />
                 </button>
                 <button
-                  className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                  className={`swiper-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                     isLastSlide ? "opacity-40" : ""
                   }`}
                   aria-label="Next slide"
                 >
-                  <FaAngleRight />
+                  <GoArrowRight />
                 </button>
               </div>
             </div>
           </div>
 
+
+
           {/* MObile View */}
-          <div className="md:hidden block">
-            <div className="py-4">
+         <div className="md:hidden block pb-7">
+            <div className="py-5">
               <button
                 className="text-white text-md text-nowrap lg:text-xl relative font-medium"
                 onClick={() => setdata("trustee")}
               >
                 Trustee
-                <span className="w-10 sm:w-15 h-[1px] sm:h-[2px] bg-white absolute bottom-0 left-0 top-7"></span>
+               
               </button>
             </div>
             <div className="w-full  overflow-hidden">
             <Swiper
-            modules={[Pagination, Navigation]}
-            className=" sm:!pl-[2%] 2xl:!pl-[8%] lg:!pl-[6%] !pl-[3%]"
+            modules={[ Navigation]}
+            
+            className=""
             spaceBetween={20}
             grabCursor
             onSlideChange={handleSlideChange}
             slideToClickedSlide
             slidesPerView={1.1}
-            // onSlideChange={handleSlideChange}
+           
             navigation={{
-              prevEl: ".brochursPrevBtn",
-              nextEl: ".brochursNextBtn",
-            }}
-            pagination={{
-              el: ".swiper-progressbar-new",
-              type: "progressbar",
-              // progressbarOppositeClass: "fill-progressbar",
+              prevEl: ".prevbtntrustee",
+              nextEl: ".nextbtntrustee",
             }}
             breakpoints={{
               640: {
-                slidesPerView: 2,
+                slidesPerView: 1.5,
                 spaceBetween: 20,
               },
               768: {
@@ -458,7 +471,7 @@ export default function Infravisionaries() {
             }}
           >
                 {trustee.map((ele, index) => (
-                  <SwiperSlide key={index} className="!w-auto">
+                  <SwiperSlide key={index} className=" !w-auto">
                     {" "}
                     <div className="flex realtive flex-col w-[19rem] h-[19rem] ">
                       <Image
@@ -466,12 +479,14 @@ export default function Infravisionaries() {
                         alt={ele.title}
                         className="w-full h-full object-cover "
                       />
-                      <div className="absolute right-4 bottom-17 bg-white w-[3rem] h-[3rem] rounded">
-                        <Image
-                          src={linkedinSvg}
-                          alt={ele.title}
-                          className="w-full h-full object-cover "
-                        />
+                      <div className="absolute right-5 bottom-17  bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                        <div className="w-[2rem] h-[2rem] ">
+                          <Image
+                            src={linkedinSvg}
+                            alt={ele.title}
+                            className="object-cover w-full h-full my-auto"
+                          />
+                        </div>
                       </div>
                       <div className="absolute bottom-0 left-0">
                         <div className="bg-white w-[15rem] h-[5.5rem] rounded">
@@ -486,70 +501,70 @@ export default function Infravisionaries() {
                 ))}
               </Swiper>
             </div>
-            {/* <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-8 2xl:mt-1">
+          <div className=" flex pt-5 flex-wrap gap-5 mt-4 justify-end md:gap-8 2xl:mt-1">
               <button
-                className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                className={`prevbtntrustee flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                   isFirstSlide ? "opacity-40" : ""
                 }`}
                 aria-label="Previous slide"
               >
-                <FaAngleLeft />
+                <GoArrowLeft />
               </button>
               <button
-                className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                className={`nextbtntrustee flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                   isLastSlide ? "opacity-40" : ""
                 }`}
                 aria-label="Next slide"
               >
-                <FaAngleRight />
+                <GoArrowRight />
               </button>
-            </div> */}
-             <div className="custom-navigation sm:mt-9 flex gap-2 sm:gap-2 ">
-             <button
-                className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
-                  isFirstSlide ? "opacity-40" : ""
-                }`}
-                aria-label="Previous slide"
-              >
-                <FaAngleLeft />
-              </button>
-                <button
-                className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
-                  isLastSlide ? "opacity-40" : ""
-                }`}
-                aria-label="Next slide"
-              >
-                <FaAngleRight />
-              </button>
-              </div>
-          </div>
+            </div>
+          </div> 
 
-          <div className="md:hidden block">
-            <div className="py-4">
+          <div className="md:hidden block pb-7">
+            <div className="py-5  ">
               <button className="text-white text-md text-nowrap lg:text-xl relative font-medium">
-               Distinguished Fellows
-                <span className="w-10 sm:w-15 h-[1px] sm:h-[2px] bg-white absolute bottom-0 left-0 top-7"></span>
+                Distinguished Fellows
               </button>
             </div>
             <div className="w-full  overflow-hidden">
-              <Swiper
-                modules={[Navigation, Pagination]}
+                <Swiper
+                modules={[ Navigation]}
+                className=""
                 spaceBetween={20}
-                onSwiper={(swiper) => {
-                  setTimeout(() => {
-                    swiper.params.navigation = {
-                      prevEl: ".swiper-solution-prev-btn",
-                      nextEl: ".swiper-solution-next-btn",
-                    };
-                    swiper.navigation.destroy(); // clean before re-init
-                    swiper.navigation.init();
-                    swiper.navigation.update();
-                  });
-                }}
+                grabCursor
                 onSlideChange={handleSlideChange}
-                slidesPerView={cardData.length}
+                slideToClickedSlide
+                slidesPerView={1.1}
+              
+                navigation={{
+                  prevEl: ".prevbtnfellows",
+                  nextEl: ".nextbtnfellows",
+                }}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1.5,
+                    spaceBetween: 20,
+                  },
+                  768: {
+                    slidesPerView: 2,
+                    spaceBetween: 40,
+                  },
+                  1024: {
+                    slidesPerView: 2.5,
+                    spaceBetween: 50,
+                  },
+                  1280: {
+                    spaceBetween: 20,
+                    slidesPerView: 3.1,
+                  },
+                  1536: {
+                    spaceBetween: 30,
+                    slidesPerView: 3.4,
+                  },
+                }}
               >
-                {fellow.map((ele, index) => (
+                    {fellow.map((ele, index) => (
                   <SwiperSlide key={index} className="!w-auto">
                     {" "}
                     <div className="flex realtive flex-col w-[19rem] h-[19rem] ">
@@ -558,12 +573,14 @@ export default function Infravisionaries() {
                         alt={ele.title}
                         className="w-full h-full object-cover "
                       />
-                      <div className="absolute right-4 bottom-17 bg-white w-[3rem] h-[3rem] rounded">
-                        <Image
-                          src={linkedinSvg}
-                          alt={ele.title}
-                          className="w-full h-full object-cover "
-                        />
+                      <div className="absolute right-5 bottom-17  bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                        <div className="w-[2rem] h-[2rem] ">
+                          <Image
+                            src={linkedinSvg}
+                            alt={ele.title}
+                            className="object-cover w-full h-full my-auto"
+                          />
+                        </div>
                       </div>
                       <div className="absolute bottom-0 left-0">
                         <div className="bg-white w-[15rem] h-[5.5rem] rounded">
@@ -580,64 +597,85 @@ export default function Infravisionaries() {
             </div>
             <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-8 2xl:mt-1">
               <button
-                className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                className={`prevbtnfellows flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                   isFirstSlide ? "opacity-40" : ""
                 }`}
                 aria-label="Previous slide"
               >
-                <FaAngleLeft />
+                <GoArrowLeft />
               </button>
               <button
-                className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                className={`nextbtnfellows flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                   isLastSlide ? "opacity-40" : ""
                 }`}
                 aria-label="Next slide"
               >
-                <FaAngleRight />
+                <GoArrowRight />
               </button>
             </div>
           </div>
 
-          <div className="md:hidden block">
-            <div className="py-4">
+          <div className="md:hidden block pb-7">
+            <div className="py-5">
               <button className="text-white text-md text-nowrap lg:text-xl relative font-medium">
                 Advisory Council
-                <span className="w-10 sm:w-15 h-[1px] sm:h-[2px] bg-white absolute bottom-0 left-0 top-7"></span>
               </button>
             </div>
             <div className="w-full  overflow-hidden">
-              <Swiper
-                modules={[Navigation, Pagination]}
+            <Swiper
+                modules={[ Navigation]}
+                className=""
+                watchOverflow={true}
                 spaceBetween={20}
-                onSwiper={(swiper) => {
-                  setTimeout(() => {
-                    swiper.params.navigation = {
-                      prevEl: ".swiper-solution-prev-btn",
-                      nextEl: ".swiper-solution-next-btn",
-                    };
-                    swiper.navigation.destroy(); // clean before re-init
-                    swiper.navigation.init();
-                    swiper.navigation.update();
-                  });
-                }}
+                grabCursor
                 onSlideChange={handleSlideChange}
-                slidesPerView={cardData.length}
+                slideToClickedSlide
+                slidesPerView={1.1}
+              
+                navigation={{
+                  prevEl: ".prevbtnadvisory",
+                  nextEl: ".nextbtnadvisory",
+                }}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                  },
+                  768: {
+                    slidesPerView: 2,
+                    spaceBetween: 40,
+                  },
+                  1024: {
+                    slidesPerView: 2.5,
+                    spaceBetween: 50,
+                  },
+                  1280: {
+                    spaceBetween: 20,
+                    slidesPerView: 3.1,
+                  },
+                  1536: {
+                    spaceBetween: 30,
+                    slidesPerView: 3.4,
+                  },
+                }}
               >
-                {advisory.map((ele, index) => (
-                  <SwiperSlide key={index} className="!w-auto">
+                    {advisory.map((ele, index) => (
+                  <SwiperSlide key={index} className="!w-[19rem]">
                     {" "}
-                    <div className="flex realtive flex-col w-[19rem] h-[19rem] ">
+                    <div className="flex realtive flex-col  h-[19rem] ">
                       <Image
                         src={ele.image}
                         alt={ele.title}
                         className="w-full h-full object-cover "
                       />
-                      <div className="absolute right-4 bottom-17 bg-white w-[3rem] h-[3rem] rounded">
-                        <Image
-                          src={linkedinSvg}
-                          alt={ele.title}
-                          className="w-full h-full object-cover "
-                        />
+                      <div className="absolute right-5 bottom-17  bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                        <div className="w-[2rem] h-[2rem] ">
+                          <Image
+                            src={linkedinSvg}
+                            alt={ele.title}
+                            className="object-cover w-full h-full my-auto"
+                          />
+                        </div>
                       </div>
                       <div className="absolute bottom-0 left-0">
                         <div className="bg-white w-[15rem] h-[5.5rem] rounded">
@@ -654,48 +692,66 @@ export default function Infravisionaries() {
             </div>
             <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-8 2xl:mt-1">
               <button
-                className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                className={`prevbtnadvisory flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                   isFirstSlide ? "opacity-40" : ""
                 }`}
-                aria-label="Previous slide"
+               
               >
-                <FaAngleLeft />
+                <GoArrowLeft />
               </button>
               <button
-                className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                className={`nextbtnadvisory flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                   isLastSlide ? "opacity-40" : ""
                 }`}
-                aria-label="Next slide"
+               
               >
-                <FaAngleRight />
+                <GoArrowRight />
               </button>
             </div>
           </div>
 
-          <div className="md:hidden block">
-            <div className="py-4">
+          <div className="md:hidden block ">
+            <div className="py-5">
               <button className="text-white text-md text-nowrap lg:text-xl relative font-medium">
                 Team
-                <span className="w-10 sm:w-15 h-[1px] sm:h-[2px] bg-white absolute bottom-0 left-0 top-7"></span>
               </button>
             </div>
             <div className="w-full  overflow-hidden">
-              <Swiper
-                modules={[Navigation, Pagination]}
+            <Swiper
+                modules={[ Navigation]}
+                className=""
                 spaceBetween={20}
-                onSwiper={(swiper) => {
-                  setTimeout(() => {
-                    swiper.params.navigation = {
-                      prevEl: ".swiper-solution-prev-btn",
-                      nextEl: ".swiper-solution-next-btn",
-                    };
-                    swiper.navigation.destroy(); // clean before re-init
-                    swiper.navigation.init();
-                    swiper.navigation.update();
-                  });
-                }}
+                grabCursor
                 onSlideChange={handleSlideChange}
-                slidesPerView={cardData.length}
+                slideToClickedSlide
+                slidesPerView={1.1}
+              
+                navigation={{
+                  prevEl: ".prevbtnteam",
+                  nextEl: ".nextbtnteam",
+                }}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1.5,
+                    spaceBetween: 20,
+                  },
+                  768: {
+                    slidesPerView: 2,
+                    spaceBetween: 40,
+                  },
+                  1024: {
+                    slidesPerView: 2.5,
+                    spaceBetween: 50,
+                  },
+                  1280: {
+                    spaceBetween: 20,
+                    slidesPerView: 3.1,
+                  },
+                  1536: {
+                    spaceBetween: 30,
+                    slidesPerView: 3.4,
+                  },
+                }}
               >
                 {team.map((ele, index) => (
                   <SwiperSlide key={index} className="!w-auto">
@@ -706,12 +762,14 @@ export default function Infravisionaries() {
                         alt={ele.title}
                         className="w-full h-full object-cover "
                       />
-                      <div className="absolute right-4 bottom-17 bg-white w-[3rem] h-[3rem] rounded">
-                        <Image
-                          src={linkedinSvg}
-                          alt={ele.title}
-                          className="w-full h-full object-cover "
-                        />
+                      <div className="absolute right-5 bottom-17  bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                        <div className="w-[2rem] h-[2rem] ">
+                          <Image
+                            src={linkedinSvg}
+                            alt={ele.title}
+                            className="object-cover w-full h-full my-auto"
+                          />
+                        </div>
                       </div>
                       <div className="absolute bottom-0 left-0">
                         <div className="bg-white w-[15rem] h-[5.5rem] rounded">
@@ -728,20 +786,20 @@ export default function Infravisionaries() {
             </div>
             <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-8 2xl:mt-1">
               <button
-                className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                className={`prevbtnteam flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                   isFirstSlide ? "opacity-40" : ""
                 }`}
                 aria-label="Previous slide"
               >
-                <FaAngleLeft />
+                <GoArrowLeft />
               </button>
               <button
-                className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                className={`nextbtnteam flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                   isLastSlide ? "opacity-40" : ""
                 }`}
                 aria-label="Next slide"
               >
-                <FaAngleRight />
+                <GoArrowRight />
               </button>
             </div>
           </div>

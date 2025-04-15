@@ -16,20 +16,20 @@ export default function Header() {
   };
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.style.overflow = "hidden"; // disable scroll
+      document.body.style.overflow = "hidden"; 
     } else {
-      document.body.style.overflow = "auto"; // enable scroll
+      document.body.style.overflow = "auto"; 
     }
   
     return () => {
-      document.body.style.overflow = "auto"; // cleanup on unmount
+      document.body.style.overflow = "auto"; 
     };
   }, [isMenuOpen]);
   return (
     <>
-     <section className="absolute w-full z-[99999] top-3 left-0 xl:top-8">
-  <div className="px-4 xl:px-16 relative ">
-    <div className="flex flex-row justify-between xl:justify-center xl:gap-10 items-center w-full">
+  <nav className="absolute w-full z-[9999] top-3 left-0 xl:top-8 ">
+  <div className="w-container relative ">
+    <div className="flex flex-row justify-between  xl:gap-10 items-center w-full">
 
       {/* Logo */}
       <div className="w-[10rem] 2xl:w-[14rem] h-[6rem]">
@@ -37,7 +37,7 @@ export default function Header() {
       </div>
 
       {/* Desktop Navigation */}
-      <div className="hidden xl:flex flex-row 2xl:gap-6 3xl:gap-8 items-center">
+      <div className="hidden xl:flex flex-row  xl:gap-5 2xl:gap-6 3xl:gap-8 items-center">
         <ul>
           <li>
             <TextNavAnchor
@@ -112,10 +112,10 @@ export default function Header() {
         </ul>
 
         {/* Search Box */}
-        <div className="hidden 2xl:block border border-darkgray w-full  xl:max-w-lg 2xl:max-w-[15%] rounded-md">
+        <div className="hidden xl:block border border-darkgray w-full xl:w-[8rem]  2xl:w-[10rem]  rounded">
           <form className="p-2">
             <div className="flex items-center gap-3">
-              <FaSearch className="text-darkgray" />
+              <FaSearch className="text-darkgray text-xl" />
               <input
                 type="text"
                 placeholder="Search"
@@ -141,7 +141,7 @@ export default function Header() {
 
     </div>
   </div>
-</section>
+</nav>
 
     </>
   );

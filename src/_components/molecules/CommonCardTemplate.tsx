@@ -60,7 +60,7 @@ export default function LinkedinCard() {
                 </div>
 
                 <div className="w-[50%]">
-                  <div className="absolute left-[15rem] top-[7rem]  lg:left-[15rem] lg:top-[7rem]   xl:left-[22rem] xl:top-[15rem] 2xl:left-[20rem]  2xl:top-[10rem]">
+                  <div className="absolute left-[15rem] top-[7rem]  lg:left-[17rem] lg:top-[7rem]   xl:left-[20rem] xl:top-[11rem] 2xl:left-[20rem]  2xl:top-[12rem] ">
                     <div className="bg-white  w-[3rem] h-[3rem]  xl:w-[4rem] xl:h-[3rem] flex items-center justify-center ">
                       <Image
                         src={playSvg}

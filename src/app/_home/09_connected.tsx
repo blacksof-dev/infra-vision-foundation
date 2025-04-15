@@ -30,32 +30,36 @@ export default function StayConnected(){
               Foundation — expert insights, reports, events, and more, Join the
               community.
             </h6>
-            <div className=" py-2 sm:py-4 hidden lg:block">
-              <h6 className="text-pink font-medium">Follow us on</h6>
-              <div className="flex flex-row gap-5 py-2">
+            <div className=" py-2 sm:py-4 hidden lg:block ">
+              <h6 className="text-pink font-medium py-2">Follow us on</h6>
+              <div className="flex flex-row gap-5 py-2 ">
                 <Link
                   href="https://www.youtube.com/@theinfravisionfoundation"
                   target="_blank"
+                   className="group"
                 >
-                  <FaYoutube className="text-3xl border-1 rounded-sm border-darkgray p-1 text-darkgray" />
+                  <FaYoutube className="text-4xl border-1  group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
                 </Link>
                 <Link
                   href="https://www.linkedin.com/company/the-infravision-foundation/?originalSubdomain=in"
                   target="_blank"
+                   className="group"
                 >
-                  <FaLinkedin className="text-3xl border-1 rounded-sm border-darkgray p-1 text-darkgray" />
+                  <FaLinkedin className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
                 </Link>
                 <Link
                   href="https://x.com/TheInfravision?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
                   target="_blank"
+                   className="group"
                 >
-                  <FaXTwitter className="text-3xl border-1 rounded-sm border-darkgray p-1 text-darkgray" />
+                  <FaXTwitter className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
                 </Link>
                 <Link
                   href="https://www.instagram.com/theinfravisionfoundation/"
                   target="_blank"
+                   className="group"
                 >
-                  <FaInstagram className="text-3xl border-1 rounded-sm border-darkgray p-1 text-darkgray" />
+                  <FaInstagram className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
                 </Link>
               </div>
             </div>
@@ -65,30 +69,34 @@ export default function StayConnected(){
           </div>
           <div className=" py-2 sm:py-4 block lg:hidden">
               <h6 className="text-pink font-medium">Follow us on</h6>
-              <div className="flex flex-row gap-5 py-2">
+              <div className="flex flex-row gap-5 py-2 ">
                 <Link
                   href="https://www.youtube.com/@theinfravisionfoundation"
                   target="_blank"
+                   className="group"
                 >
-                  <FaYoutube className="text-3xl border-1 rounded-sm border-darkgray p-1 text-darkgray" />
+                  <FaYoutube className="text-4xl border-1  group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
                 </Link>
                 <Link
                   href="https://www.linkedin.com/company/the-infravision-foundation/?originalSubdomain=in"
                   target="_blank"
+                   className="group"
                 >
-                  <FaLinkedin className="text-3xl border-1 rounded-sm border-darkgray p-1 text-darkgray" />
+                  <FaLinkedin className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
                 </Link>
                 <Link
                   href="https://x.com/TheInfravision?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
                   target="_blank"
+                   className="group"
                 >
-                  <FaXTwitter className="text-3xl border-1 rounded-sm border-darkgray p-1 text-darkgray" />
+                  <FaXTwitter className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
                 </Link>
                 <Link
                   href="https://www.instagram.com/theinfravisionfoundation/"
                   target="_blank"
+                   className="group"
                 >
-                  <FaInstagram className="text-3xl border-1 rounded-sm border-darkgray p-1 text-darkgray" />
+                  <FaInstagram className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
                 </Link>
               </div>
             </div>

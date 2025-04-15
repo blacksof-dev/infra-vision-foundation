@@ -52,12 +52,13 @@ export default function Decoding() {
                   </h6>
                 </div>
 
-                <div>
+                <div className="group">
                   <Link href="https://www.youtube.com/@theinfravisionfoundation" target="_blank">
                     <button className="text-black text-md lg:text-xl  cursor-pointer relative font-medium flex flex-row gap-2">
                       <Image src={youtubeSvg} alt="Youtube Icon" />
                       Explore the playlist
-                      <div className="w-10 sm:w-20 h-[1px] sm:h-[2px]   absolute bottom-0 left-0 top-9 bg-pink"></div>
+                      
+<div className="w-10 sm:w-20 h-[1px] sm:h-[2px] group-hover:w-full absolute bottom-0 left-0 top-9 bg-pink transition-all duration-1000"></div>
                     </button>
                   </Link>
                 </div>
