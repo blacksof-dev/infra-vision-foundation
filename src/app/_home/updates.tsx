@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { HeroBtn } from "@/_components/atoms/buttons";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Navigation,  Autoplay } from "swiper/modules";
 
 import taxation from "@/../public/assets/home/updates/taxation.png";
 import infraKathaEvent from "@/../public/assets/home/updates/infraKathaEvent.png";
@@ -55,7 +55,7 @@ export default function Updates() {
         {/* Right Column */}
         <div className="overflow-x-hidden">
           <Swiper
-            modules={[Navigation]}
+            modules={[Navigation,Autoplay]}
             navigation={{
               prevEl: ".swiper-solution-prev-btn-hero",
               nextEl: ".swiper-solution-next-btn-hero",
@@ -69,13 +69,12 @@ export default function Updates() {
             slidesPerView={1.1}
             centeredSlides={true}
 
-            // autoplay={{
-            //   delay: 3000,
-            //   disableOnInteraction: false,
-            //   reverseDirection: true,
-            // }}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false, // important if you want autoplay to resume after click
+            }}
             breakpoints={{
-              500: { slidesPerView: 1.5,  },
+              500: { slidesPerView: 2  },
               768: { slidesPerView: 2.2,  },
               1024: { slidesPerView: 2.9,  },
               1280: { slidesPerView: 3.5,  },
@@ -86,6 +85,7 @@ export default function Updates() {
             {EventsDetails.map((ele, index) => (
               <SwiperSlide key={index} className="!w-fit group">
                 <div className="flex flex-row gap-4 bg-[#0000005e]  backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4 w-[25rem]  md:w-[28rem]    xl:w-[39rem] xl:h-[14rem] group-hover:bg-white">
+                
                   <div className="w-[9rem]  h-[8rem] md:w-[14rem] md:h-[9rem]   xl:w-[22rem] xl:h-[12rem] relative ">
                     <Image
                       src={ele.image}
