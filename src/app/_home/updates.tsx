@@ -28,7 +28,7 @@ export default function Updates() {
     <section>
       <div className="flex flex-row gap-8">
         {/* Left Column */}
-        <div className="border-r border-white">
+        <div className="border-r border-white xl:block hidden">
           <div className="lg:ms-24  xl:ms-30 hidden xl:block">
             <h4 className="text-white font-medium text-nowrap px-5">
               Latest Updates
@@ -53,7 +53,8 @@ export default function Updates() {
         </div>
 
         {/* Right Column */}
-        <div className="overflow-x-hidden">
+        <div className="w-screen
+        ">
           <Swiper
             modules={[Navigation,Autoplay]}
             navigation={{
@@ -67,12 +68,12 @@ export default function Updates() {
             speed={500} 
             spaceBetween={20}
             slidesPerView={1.1}
-            centeredSlides={true}
+            // centeredSlides={true}
 
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false, // important if you want autoplay to resume after click
-            }}
+            // autoplay={{
+            //   delay: 2000,
+            //   disableOnInteraction: false, // important if you want autoplay to resume after click
+            // }}
             breakpoints={{
               500: { slidesPerView: 2  },
               768: { slidesPerView: 2.2,  },

@@ -89,7 +89,7 @@ export default function Driving() {
                       onClick={() => setdata("CAIRA")}
                     >
                       CAIRA
-                      <span className="w-10 sm:w-5 h-[1px] group-hover:w-full group-hover:bg-pink sm:h-[2px] transition-all duration-1000 bg-black absolute bottom-0 left-0 top-7"></span>
+                      <span className={` h-[1px] ${data==="CAIRA"?"w-full bg-pink transition-all duration-1000":"w-10 sm:w-5"}  sm:h-[2px]  bg-black absolute bottom-0 left-0 top-7`}></span>
                     </button>
                   </div>
  
@@ -104,7 +104,7 @@ export default function Driving() {
                     }`}
                   >
                     InfraKatha
-                    <span className="w-10 sm:w-5 h-[1px] group-hover:w-full group-hover:bg-pink sm:h-[2px] transition-all duration-1000 bg-black absolute bottom-0 left-0 top-7"></span>
+                    <span className={` h-[1px] ${data==="InfraKatha"?"w-full bg-pink transition-all duration-1000":"w-10 sm:w-5"}  sm:h-[2px]  bg-black absolute bottom-0 left-0 top-7`}></span>
                   </button>
                    </div>
                 
@@ -118,7 +118,7 @@ export default function Driving() {
                     }`}
                   >
                     InfraShakti Awards
-                    <span className="w-10 sm:w-5 h-[1px] group-hover:w-full group-hover:bg-pink sm:h-[2px] transition-all duration-1000 bg-black absolute bottom-0 left-0 top-7"></span>
+                    <span className={` h-[1px] ${data==="InfraShakti"?"w-full bg-pink transition-all duration-1000":"w-10 sm:w-5"}  sm:h-[2px]  bg-black absolute bottom-0 left-0 top-7`}></span>
                   </button>
                 </div>
                  

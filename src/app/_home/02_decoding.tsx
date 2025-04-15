@@ -4,6 +4,9 @@ import youtubeSvg from "@/../public/assets/globals/youtubeSvg.svg";
 import LinkedinCard from "@/_components/molecules/CommonCardTemplate";
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 import Link from "next/link";
+import { useState } from "react";
+import halfcirclesvg from '@/../public/assets/home/halfcirclesvg.svg'
+import circlesvg1 from '@/../public/assets/home/circlesvg1.svg'
 
 export default function Decoding() {
   // const [isLastSlide, setIsLastSlide] = useState(false);
@@ -15,8 +18,16 @@ export default function Decoding() {
   // };
   return (
     <>
-      <section className="bg-whitesmoke">
-        <div className="blade-top-padding-lg blade-bottom-padding-lg w-container">
+      <section className="bg-whitesmoke relative">
+
+      <div className="absolute top-0 left-0 opacity-30 hidden xl:block">
+        <Image src={halfcirclesvg} alt="Circle Image" />
+        </div>
+        <div className="absolute 2xl:top-7 top-3 left-0 2xl:left-15 opacity-30 hidden xl:block">
+          <Image src={circlesvg1} alt="Circle Image" />
+        </div>
+
+        <div className="blade-top-padding-lg blade-bottom-padding-lg w-container ">
           <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
             <h5 className="font-medium text-pink">Infravision Conversations</h5>
@@ -58,7 +69,7 @@ export default function Decoding() {
                       <Image src={youtubeSvg} alt="Youtube Icon" />
                       Explore the playlist
                       
-<div className="w-10 sm:w-20 h-[1px] sm:h-[2px] group-hover:w-full absolute bottom-0 left-0 top-9 bg-pink transition-all duration-1000"></div>
+                    <div className="w-10 sm:w-20 h-[1px] sm:h-[2px] group-hover:w-full absolute bottom-0 left-0 top-9 bg-pink transition-all duration-1000"></div>
                     </button>
                   </Link>
                 </div>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Script from "next/script";
 
 export default function TwitterPost() {
@@ -10,7 +11,7 @@ export default function TwitterPost() {
           </h4>
         </div>
         <div className="flex flex-row gap-3 py-3 lg:py-0 lg:justify-center lg:items-center">
-          <h5 className="text-pink">View more on</h5>
+           <Link href="https://x.com/Infra_VinayakCh/status/1773515311419191457" target="_blank"><h5 className="text-pink">View more on</h5></Link>
           <div>
             <svg
               className="w-7 h-7 lg:w-10 lg:h-10"

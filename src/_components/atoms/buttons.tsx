@@ -273,7 +273,7 @@ export function UnderlineCta<T extends "submit" | "button">(
       <button className={`text-${color}  text-md lg:text-xl relative font-medium`}>
           {title}
           <span
-            className="w-10 sm:w-15 h-[1px] sm:h-[2px]  absolute bottom-0 left-0 top-7 group-hover:w-full"
+            className="w-10 sm:w-15 h-[1px] sm:h-[2px]  absolute bottom-0 left-0 top-7 group-hover:w-full transition-all duration-1000"
             style={{ backgroundColor: underlineColor }}
           ></span>
         </button>

@@ -18,7 +18,9 @@ export default function Turning() {
   return (
     <>
       <section className="bg-pink relative d">
-      <div className="absolute top-0 left-0 opacity-30 hidden xl:block"><Image src={halfcirclesvg} alt="Circle Image" /></div>
+      <div className="absolute top-0 left-0 opacity-30 hidden xl:block">
+        <Image src={halfcirclesvg} alt="Circle Image" />
+        </div>
         <div className="absolute 2xl:top-7 top-3 left-0 2xl:left-15 opacity-30 hidden xl:block">
           <Image src={circlesvg1} alt="Circle Image" />
         </div>

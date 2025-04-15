@@ -306,7 +306,7 @@ export default function Infravisionaries() {
                   onClick={() => setdata("trustee")}
                 >
                   Trustee
-                  <span className="w-10 sm:w-5 h-[1px] group-hover:w-full sm:h-[2px] transition-all duration-1000 bg-white absolute bottom-0 left-0 top-7"></span>
+                  <span className={` h-[1px] ${data==="trustee"?"w-full transition-all duration-1000":"w-10 sm:w-5"}  sm:h-[2px]  bg-white absolute bottom-0 left-0 top-7`}></span>
                 </button>
               </div>
               <div className="py-4 group">
@@ -315,7 +315,7 @@ export default function Infravisionaries() {
                   onClick={() => setdata("advisory")}
                 >
                   Advisory Council
-                  <span className="w-10 sm:w-10 h-[1px] group-hover:w-full sm:h-[2px] transition-all duration-1000 bg-white absolute bottom-0 left-0 top-7"></span>
+                  <span className={` h-[1px] ${data==="advisory"?"w-full transition-all duration-1000":"w-10 sm:w-5"}  sm:h-[2px]  bg-white absolute bottom-0 left-0 top-7`}></span>
                 </button>
               </div>
               <div className="py-4 group">
@@ -324,7 +324,7 @@ export default function Infravisionaries() {
                   onClick={() => setdata("fellow")}
                 >
                   Distinguished Fellows
-                  <span className="w-10 sm:w-5 h-[1px] group-hover:w-full sm:h-[2px] transition-all duration-1000 bg-white absolute bottom-0 left-0 top-7"></span>
+                  <span className={` h-[1px] ${data==="fellow"?"w-full transition-all duration-1000":"w-10 sm:w-5"}  sm:h-[2px]  bg-white absolute bottom-0 left-0 top-7`}></span>
                 </button>
               </div>
               <div className="py-4 group">
@@ -333,7 +333,7 @@ export default function Infravisionaries() {
                   onClick={() => setdata("team")}
                 >
                   Team
-                  <span className="w-10 sm:w-5 h-[1px] group-hover:w-full sm:h-[2px] transition-all duration-1000 bg-white absolute bottom-0 left-0 top-7"></span>
+                  <span className={` h-[1px] ${data==="team"?"w-full transition-all duration-1000":"w-10 sm:w-5"}  sm:h-[2px]  bg-white absolute bottom-0 left-0 top-7`}></span>
                 </button>
               </div>
             </div>
@@ -373,7 +373,7 @@ export default function Infravisionaries() {
                             alt={ele.title}
                             className="w-full h-full object-cover rounded"
                           />
-                          <div className="absolute right-2 bottom-20  bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                          <div className="absolute xl:right-5  bottom-20   bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
                             <div className="w-[2rem] h-[2rem] ">
                               <Image
                                 src={linkedinSvg}
@@ -398,14 +398,14 @@ export default function Infravisionaries() {
                   })}
                 </Swiper>
               </div>
-              <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-8 2xl:mt-1">
+              <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-4 2xl:mt-1">
                 <button
                   className={`swiper-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                     isFirstSlide ? "opacity-40" : ""
                   }`}
                   aria-label="Previous slide"
                 >
-                  <GoArrowLeft />
+                  <GoArrowLeft/>
                 </button>
                 <button
                   className={`swiper-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
