@@ -3,9 +3,9 @@ import Image, { StaticImageData } from "next/image";
 import Ciara from "@/../public/assets/home/awards/Caira.png";
 import Infrakhata from "@/../public/assets/home/awards/Infrakhata.png";
 import Infrashakti from "@/../public/assets/home/awards/Infrashakti.png";
-import ciaraLogo from "@/../public/assets/home/awards/ciaraLogo.jpg";
-import InfraKathaLogo from "@/../public/assets/home/awards/InfraKathaLogo.png";
-import InfrashaktiLogo from "@/../public/assets/home/awards/InfrashaktiLogo.png";
+import ciaraLogo from "@/../public/assets/home/awards/ciaraLogo.png";
+import InfraKatha from "@/../public/assets/home/awards/InfraKatha.png";
+import InfrashaktiImg from "@/../public/assets/home/awards/InfrashaktiImg.png";
 import { BorderGrayHeroBtn, HeroBtn } from "@/_components/atoms/buttons";
 import { useState } from "react";
 
@@ -28,14 +28,14 @@ export default function Driving() {
       desc: "Resilience fuels reform. CAIRA is an arm of The Infravision Foundation aimed at advancing India’s agricultural infrastructure. It is committed to improving the state of the farming community and enhancing its agri-export prospects.",
     },
     InfraKatha: {
-      logo: InfraKathaLogo,
+      logo: InfraKatha,
       image: Infrakhata,
       title: "InfraKatha",
       desc: "Dialogue drives action. InfraKatha is a monthly congregation where our Founder and Managing Trustee, Mr. Vinayak Chatterjee, deliberates on infrastructure development with esteemed leaders and experts. A goldmine of exclusive insights, it sparks deeper thought and awareness about infrastructure.",
     },
     InfraShakti: {
-      logo: InfrashaktiLogo,
-      image: Infrashakti,
+      logo: Infrashakti,
+      image: InfrashaktiImg,
       title: "InfraShakti Awards",
       desc: "Milestones narrate a history of progress. The InfraShakti Awards is our flagship initiative in partnership with NDTV. The event celebrates individuals driving India’s infrastructure development and transforming life on the ground.",
     },
@@ -71,11 +71,12 @@ export default function Driving() {
           <div className=" mt-5">
             <div className="flex flex-row gap-5 xl:gap-15">
               <div className="w-[44%] xl:w-[50%]">
-                <div className="w-[25rem] h-[20rem] xl:w-[35rem] 2xl:w-[45rem] xl:h-[29rem] ">
+                <div className="w-[25rem] h-[20rem] xl:w-[35rem]  2xl:w-[45rem] xl:h-[29rem] ">
                   <Image
                     src={AwardsDetails[data].image}
                     alt="Ciara Award"
                     className="w-full h-full object-contain"
+                    quality={100}
                   />
                 </div>
               </div>
@@ -127,11 +128,12 @@ export default function Driving() {
                  
                 </div>
                 <div  className="ms-11 xl:ms-16 2xl:ms-27  my-auto h-full flex flex-col justify-center">
-                  <div className="">
+                  <div className="w-40">
                     <Image
                       src={AwardsDetails[data].logo}
                       alt="CIARA logo"
                       className=""
+                      quality={100}
                     />
                   </div>
                   <div>
@@ -197,18 +199,18 @@ export default function Driving() {
               />
               <MobileView
                index={2}
-                logo={InfrashaktiLogo}
+                logo={Infrashakti}
                 title=" InfraShakti Awards"
                 desc=" Milestones narrate a history of progress. The InfraShakti
                   Awards is our flagship initiative in partnership with NDTV.
                   The event celebrates individuals driving India’s
                   infrastructure development and transforming life on the
                   ground."
-                image={Infrashakti}
+                image={InfrashaktiImg}
               />
               <MobileView
                index={3}
-                logo={InfraKathaLogo}
+                logo={InfraKatha}
                 title="InfraKatha"
                 desc=" Dialogue drives action. InfraKatha is a monthly congregation
                   where our Founder and Managing Trustee, Mr. Vinayak
@@ -231,13 +233,13 @@ function MobileView({ logo, title, desc, image,index }: Awardsdata) {
     <>
       <section className="pt-5 ">
         <div className="pt-5 ">
-          <Image  src={logo} alt="CIARA logo" className="py-4" />
+          <Image  src={logo} quality={100} alt="CIARA logo" className= {`py-4  ${index !==2 ? 'w-36':'w-[170px]'}`} />
         </div>
         <div>
-          <h6 className="text-pink py-2 font-medium tracking-[1%]">{title}</h6>
+          <h6 className="text-pink py-2 font-medium ">{title}</h6>
           <p className="smallText tracking-[-0.2px]  text-[#212222]">{desc}</p>
           <div className="py-4">
-            <Image src={image} alt={title} className="" />
+            <Image src={image} quality={100} alt={title} className="" />
           </div>
           <div className={`border-darkgray/40 ${index !== 3 ? 'border-b pb-10' : ''}`}>
             <HeroBtn

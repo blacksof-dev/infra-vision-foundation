@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import youtubeSvg from "@/../public/assets/globals/youtubeSvg.svg";
+import { FaYoutube } from "react-icons/fa";
 import LinkedinCard from "@/_components/molecules/CommonCardTemplate";
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 import Link from "next/link";
@@ -23,8 +23,8 @@ export default function Decoding() {
             <h5 className="font-medium text-pink">Infravision Conversations</h5>
           </div>
           <div className="py-2 ">
-            <h1 className="text-black tracking-[3%] font-light">
-              <span className="text-black/90 font-medium tracking-[3%]">
+            <h1 className="text-black  font-light">
+              <span className="text-black/90 font-medium ">
                 Decoding infrastructure,
               </span>
               <br />{" "}
@@ -38,7 +38,7 @@ export default function Decoding() {
             <div className="w-full  lg:w-[50%] ">
               <div className="pt-1  lg:border-l-1 lg:border-darkgray/40 lg:px-5 xl:px-11">
                 <div>
-                  <h3 className="text-black tracking-[-2%]">
+                  <h3 className="text-black ">
                     Infrastructure is all around us, yet its impact often goes
                     unnoticed. But is it as distant as it seems?{" "}
                   </h3>
@@ -56,7 +56,7 @@ export default function Decoding() {
                 <div className="group flex ">
                   <Link href="https://www.youtube.com/playlist?list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em" target="_blank">
                     <button className="text-black text-lg lg:text-xl  justify-center item-center cursor-pointer relative font-medium flex flex-row gap-2">
-                      <Image src={youtubeSvg} alt="Youtube Icon" className="relative bottom-[1px]"/>
+                     <FaYoutube className="text-red-600 text-3xl"/>
                        Explore the playlist
                       <div className="w-10 sm:w-20 h-[1px] sm:h-[2px] group-hover:w-full absolute bottom-0 left-0 top-9 bg-pink transition-all duration-1000"></div>
                     </button>

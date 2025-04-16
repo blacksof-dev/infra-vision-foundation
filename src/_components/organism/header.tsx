@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import logo from "@/../public/assets/globals/logo.svg";
+import logo from "@/../public/assets/globals/logo.png";
 import { TextNavAnchor } from "../atoms/links";
 import { FaSearch } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -34,7 +34,7 @@ export default function Header() {
 
       {/* Logo */}
       <div className="w-[11rem] 2xl:w-[14rem]  ">
-        <Link href="/"><Image src={logo} className="" alt="Infra Vision Foundation" /></Link>
+        <Link href="/"><Image src={logo} quality={100} className="" alt="Infra Vision Foundation" /></Link>
       </div>
 
       {/* Desktop Navigation */}

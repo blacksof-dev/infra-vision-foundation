@@ -403,7 +403,7 @@ export default function Infravisionaries() {
               </div>
             </div>
 
-            <div key={carddata.length} className="w-full">
+            <div className="w-full">
               <div className="w-screen overflow-hidden">
                 <Swiper
                   modules={[Navigation]}

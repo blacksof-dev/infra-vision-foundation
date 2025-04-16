@@ -6,18 +6,15 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 
-
-
-
 import jaganShahMobileImg from "@/../public/assets/home/decoding/jaganShahMobileImg.svg";
 import geetamTiwariMobileImg from "@/../public/assets/home/decoding/geetamTiwariMobileImg.svg";
 import profRaghuramMobileImg from "@/../public/assets/home/decoding/profRaghuramMobileImg.svg";
 import rajivRanjanMishraMobileImg from "@/../public/assets/home/decoding/rajivRanjanMishraMobileImg.svg";
 
-import Jaganshah from "@/../public/assets/home/decoding/Jaganshah.svg";
-import GeetamTiwari from "@/../public/assets/home/decoding/GeetamTiwari.svg";
-import ProfGRaghuram from "@/../public/assets/home/decoding/ProfGRaghuram.svg";
-import RajivRanjanMishra from "@/../public/assets/home/decoding/RajivRanjanMishra.svg";
+import Jaganshah from "@/../public/assets/home/decoding/Jaganshah.png";
+import GeetamTiwari from "@/../public/assets/home/decoding/GeetamTiwari.png";
+import ProfGRaghuram from "@/../public/assets/home/decoding/ProfGRaghuram.png";
+import RajivRanjanMishra from "@/../public/assets/home/decoding/RajivRanjanMishra.png";
 
 export default function LinkedinCard() {
   return (

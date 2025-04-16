@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "@/../public/assets/globals/logo.svg";
+import logo from "@/../public/assets/globals/logo.png";
 import { Anchor, TextAnchor } from "../atoms/links";
 import { HeroBtn } from "../atoms/buttons";
 import { FaYoutube } from "react-icons/fa";
