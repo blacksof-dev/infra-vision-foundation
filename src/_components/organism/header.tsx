@@ -28,8 +28,8 @@ export default function Header() {
   }, [isMenuOpen]);
   return (
     <>
-  <nav className="absolute w-[99dvw] overflow-hidden  z-[9999] top-3 left-2  xl:top-8 ">
-  <div className="w-container  relative overflow-hidden ">
+  <nav className="absolute w-[98dvw] overflow-hidden  z-[9999] top-3 left-2  xl:top-8 ">
+  <div className="p-0  w-container  relative overflow-hidden ">
     <div className="flex flex-row justify-between  xl:gap-10 items-center  w-full">
 
       {/* Logo */}

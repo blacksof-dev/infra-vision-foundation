@@ -14,7 +14,7 @@ export default function Banner() {
               <Image
                 src={BannerBg}
                 alt="InfraVision Foundation"
-                className="h-full w-full object-cover"
+                className="h-full  w-full object-cover"
               />
             </div>
           </div>
@@ -26,7 +26,7 @@ export default function Banner() {
             />
           </div>
 
-          <div className="absolute  top-[21%]  lg:top-[23%]  xl:top-[23%] 2xl:top-[20%] left-[53%] md:left-1/2 -translate-x-1/2  mx-auto max-w-screen-2xl px-2 sm:px-4 w-full lg:w-11/12">
+          <div className="absolute  top-[21%]  lg:top-[23%]  xl:top-[23%] 2xl:top-[20%]   left-[50%] md:left-1/2 -translate-x-1/2  mx-auto max-w-screen-2xl px-2 sm:px-4 w-full lg:w-11/12">
             <div className="w-[80%] lg:w-full ">
               <h1 className="tracking-[-4%] font-light txt-black/90 ">
                 {" "}
@@ -39,7 +39,7 @@ export default function Banner() {
                 nation-building{" "}
               </h1>
             </div>
-            <div className="w-[80%]  sm:w-[50%] xl:w-[40%] py-2 xl:py-4 ">
+            <div className="w-[90%]  sm:w-[50%] xl:w-[40%] py-4 xl:py-4 ">
               <h5 className="text-black ">
                 We help shape India’s infrastructure policies with neutral
                 fact-based insights, analysis, and discourse.
@@ -58,7 +58,7 @@ export default function Banner() {
             </div>
             
           </div>
-          <div className="absolute  2xl:left-44  bottom-8 lg:bottom-3 2xl:bottom-10 ">
+          <div className="absolute  2xl:left-46   bottom-8 lg:bottom-3 2xl:bottom-10 ">
             <Updates />
           </div>
         </div>

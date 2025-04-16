@@ -69,7 +69,7 @@ export default function Turning() {
               <div className=" pt-5 md:py-5 lg:py-6 mt-auto ">
                 <HeroBtnPink
                   text="Know more"
-                  role="link"
+                  role="button"
                   borderColor="white"
                   color="white"
                   bgColor="pink"
@@ -139,7 +139,7 @@ export default function Turning() {
                 </div>
               </div>
 
-              <div className="border-l border-r lg:mt-16   border-white/30 hidden lg:block">
+              <div className="border-l border-r lg:mt-16   border-white/40 hidden lg:block">
                 <div className="mx-5">
                   <h3 className="text-white font-medium text-start">
                     Sectors of operation

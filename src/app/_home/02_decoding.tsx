@@ -27,8 +27,8 @@ export default function Decoding() {
               <span className="text-black/90 font-medium tracking-[3%]">
                 Decoding infrastructure,
               </span>
-              <br />
-               &nbsp;one topic at a time
+              <br />{" "}
+               one topic at a time
             </h1>
           </div>
           <div className="flex flex-col-reverse  lg:flex-row gap-6  pt-1">

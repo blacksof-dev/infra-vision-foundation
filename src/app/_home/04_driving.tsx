@@ -15,6 +15,7 @@ type Awardsdata = {
   title: string;
   desc: string;
   image: StaticImageData;
+  index?:number;
 };
 export default function Driving() {
   const [data, setdata] = useState<AwardKey>("CAIRA");
@@ -57,7 +58,7 @@ export default function Driving() {
                 <span className="font-medium  text-black">&nbsp;impact</span>
               </h1>
             </div>
-            <div className="w-[50%]  xl:w-[43%] 2xl:w-[40.5%] ">
+            <div className="w-[50%]  xl:w-[42%] 2xl:w-[41%] ">
               <h6 className="text-black tracking-[1%]">
                 Elevating and expanding the nation’s infrastructure footprint
                 through intellect and advocacy demands collaboration and
@@ -144,7 +145,7 @@ export default function Driving() {
                     <div className="pt-6">
                       <BorderGrayHeroBtn
                         text="Know more"
-                        role="link"
+                        role="button"
                         borderColor="pink"
                         color="black"
                         bgColor="white"
@@ -185,6 +186,7 @@ export default function Driving() {
 
             <div>
               <MobileView
+                index={1}
                 logo={ciaraLogo}
                 title="Centre for Agri Infrastructure Research and Action (CAIRA)"
                 desc="Resilience fuels reform. CAIRA is an arm of The Infravision
@@ -194,6 +196,7 @@ export default function Driving() {
                 image={Ciara}
               />
               <MobileView
+               index={2}
                 logo={InfrashaktiLogo}
                 title=" InfraShakti Awards"
                 desc=" Milestones narrate a history of progress. The InfraShakti
@@ -204,6 +207,7 @@ export default function Driving() {
                 image={Infrashakti}
               />
               <MobileView
+               index={3}
                 logo={InfraKathaLogo}
                 title="InfraKatha"
                 desc=" Dialogue drives action. InfraKatha is a monthly congregation
@@ -222,12 +226,12 @@ export default function Driving() {
   );
 }
 
-function MobileView({ logo, title, desc, image }: Awardsdata) {
+function MobileView({ logo, title, desc, image,index }: Awardsdata) {
   return (
     <>
-      <section className="pt-5">
+      <section className="pt-5 ">
         <div className="pt-5 ">
-          <Image src={logo} alt="CIARA logo" className="py-4" />
+          <Image  src={logo} alt="CIARA logo" className="py-4" />
         </div>
         <div>
           <h6 className="text-pink py-2 font-medium tracking-[1%]">{title}</h6>
@@ -235,7 +239,7 @@ function MobileView({ logo, title, desc, image }: Awardsdata) {
           <div className="py-4">
             <Image src={image} alt={title} className="" />
           </div>
-          <div className="">
+          <div className={`border-darkgray/40 ${index !== 3 ? 'border-b pb-10' : ''}`}>
             <HeroBtn
               text="Know more"
               role="link"

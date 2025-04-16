@@ -187,7 +187,6 @@ const advisory = [
     desig: "Member, Council of Advisors",
     link: "https://www.linkedin.com/in/khurshed-daruvala/",
   },
-
 ];
 
 const fellow = [
@@ -279,10 +278,6 @@ const team = [
   },
 ];
 
-
-
-
-
 export default function Infravisionaries() {
   const [data, setdata] = useState("trustee");
   const [isLastSlide, setIsLastSlide] = useState(false);
@@ -337,7 +332,7 @@ export default function Infravisionaries() {
           </div>
 
           <div className="hidden md:flex flex-row gap-20 blade-top-padding-sm overflow-x-hidden">
-            <div className=" border-r-1 pe-20 border-lightgray/40  w-fit">
+            <div className=" border-r-1 pe-20 border-white/40  w-fit">
               <div className="py-4 group">
                 <button
                   className={`text-white text-md text-nowrap lg:text-xl relative ${
@@ -408,11 +403,11 @@ export default function Infravisionaries() {
               </div>
             </div>
 
-            <div>
-              <div className="w-full  overflow-hidden">
+            <div key={carddata.length} className="w-full">
+              <div className="w-screen overflow-hidden">
                 <Swiper
                   modules={[Navigation]}
-                  className=" w-full"
+                  className="!pl-10%"
                   watchOverflow={true}
                   navigation={{
                     prevEl: ".swiper-prev-btn-members",
@@ -422,29 +417,27 @@ export default function Infravisionaries() {
                   spaceBetween={10}
                   onSlideChange={handleSlideChange}
                   slidesPerView={1.1}
-                  centeredSlides={true}
+                  centeredSlides={false}
                   breakpoints={{
                     500: { slidesPerView: 1.5, centeredSlides: false },
                     768: { slidesPerView: 2.2, centeredSlides: false },
                     1024: { slidesPerView: 2.9, centeredSlides: false },
                     1280: { slidesPerView: 4, centeredSlides: false },
                     1536: {
-                      slidesPerView: 3.5,
+                      slidesPerView: 6,
                       centeredSlides: false,
-                      spaceBetween: 40,
                     },
                   }}
                 >
                   {carddata.map((ele, index) => {
                     return (
-                      <SwiperSlide key={index} className="!w-auto">
-                        <div className="flex realtive flex-col  h-[19rem]">
+                      <SwiperSlide key={index} className="w-full  overflow-hidden ">
+                        <div className="flex realtive flex-col w-[19rem]  h-[19rem]">
                           <Image
                             src={ele.image}
                             alt={ele.title}
                             className="w-full h-full object-cover rounded"
                           />
-
                           <div className="absolute  bottom-0 left-0 w-[17rem]  ">
                             {ele.link ? (
                               <Link
@@ -482,7 +475,6 @@ export default function Infravisionaries() {
                                 </div>
                               </div>
                             )}
-
                             <div className="bg-white w-[14rem]  lg:h-[5.5rem]  rounded">
                               <h6 className="pt-1 2xl:pt-2 px-2  font-medium">
                                 {ele.title}
@@ -500,17 +492,13 @@ export default function Infravisionaries() {
               </div>
               <div className="flex pt-3 flex-wrap gap-5 mt-4 justify-start md:gap-4 2xl:mt-1">
                 <button
-                  className={`swiper-prev-btn-members cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
-                    isFirstSlide ? "opacity-40" : ""
-                  }`}
+                  className={`swiper-prev-btn-members cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
                   aria-label="Previous slide"
                 >
                   <GoArrowLeft />
                 </button>
                 <button
-                  className={`swiper-next-btn-members cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
-                    isLastSlide ? "opacity-40" : ""
-                  }`}
+                  className={`swiper-next-btn-members cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink `}
                   aria-label="Next slide"
                 >
                   <GoArrowRight />
@@ -530,77 +518,108 @@ export default function Infravisionaries() {
               </button>
             </div>
             <div className="w-full  overflow-hidden">
-              <Swiper
+            <Swiper
                 modules={[Navigation]}
+                className=""
+                spaceBetween={20}
+                grabCursor
+                onSlideChange={handleSlideChange}
+                slideToClickedSlide
+                slidesPerView={1.1}
+                centeredSlides={false}
                 navigation={{
                   prevEl: ".prevbtntrustee",
                   nextEl: ".nextbtntrustee",
                 }}
-                centeredSlides={false}
-                grabCursor
-                slideToClickedSlide
-                speed={2000}
-                autoplay={{
-                  delay: 300,
-                  disableOnInteraction: false,
-                  reverseDirection: true,
-                }}
-                spaceBetween={20}
-                slidesPerView={1.1}
                 breakpoints={{
-                  500: { slidesPerView: 1.1, spaceBetween: 20 },
-                  640: { slidesPerView: 1.3, spaceBetween: 20 },
-                  768: { slidesPerView: 1.5, spaceBetween: 30 },
-                  1024: { slidesPerView: 1.8, spaceBetween: 30 },
-                  1280: { slidesPerView: 2.3, spaceBetween: 40 },
-                  1536: { slidesPerView: 2.5, spaceBetween: 50 },
+                  640: {
+                    slidesPerView: 1.5,
+                    spaceBetween: 20,
+                  },
+                  768: {
+                    slidesPerView: 2,
+                    spaceBetween: 40,
+                  },
+                  1024: {
+                    slidesPerView: 2.5,
+                    spaceBetween: 50,
+                  },
+                  1280: {
+                    spaceBetween: 20,
+                    slidesPerView: 3.1,
+                  },
+                  1536: {
+                    spaceBetween: 30,
+                    slidesPerView: 3.4,
+                  },
                 }}
               >
                 {trustee.map((ele, index) => (
-                   <SwiperSlide key={index} className="!w-auto">
-                   {" "}
-                   <div className="flex realtive flex-col w-[19rem] h-[19rem] ">
-                     <Image
-                       src={ele.image}
-                       alt={ele.title}
-                       className="w-full h-full object-cover "
-                     />
-                     <div className="absolute right-5 bottom-17  bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
-                       <div className="w-[2rem] h-[2rem] ">
-                         <Image
-                           src={linkedinSvg}
-                           alt={ele.title}
-                           className="object-cover w-full h-full my-auto"
-                         />
-                       </div>
-                     </div>
-                     <div className="absolute bottom-0 left-0">
-                     <div className="bg-white w-[15rem] h-[5.5rem] rounded  flex flex-col  justify-center ps-3">
-                         <h6 className=" smallText  font-medium">{ele.title}</h6>
-                         <p className="text-sm   font-light text-black">
-                           {ele.desig}
-                         </p>
-                       </div>
-                     </div>
-                   </div>
-                 </SwiperSlide>
+                  <SwiperSlide key={index} className="">
+                    <div className="flex realtive flex-col w-[19rem]  h-[19rem]">
+                      <Image
+                        src={ele.image}
+                        alt={ele.title}
+                        className="w-full h-full object-cover rounded"
+                      />
+                      <div className="absolute  bottom-0 left-0 w-[17rem]  ">
+                        {ele.link ? (
+                          <Link href={ele.link ? ele.link : ""} target="_blank">
+                            <div className="   ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                              <div className=" ">
+                                <svg
+                                  width="26"
+                                  height="26"
+                                  viewBox="0 0 26 26"
+                                  fill="none"
+                                  className="fill-[#5D6468] group-hover:fill-[#C82249]"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path d="M23.9911 0H1.9127C0.85508 0 -0.00012207 0.834961 -0.00012207 1.86728V24.0368C-0.00012207 25.0691 0.85508 25.9091 1.9127 25.9091H23.9911C25.0487 25.9091 25.909 25.0691 25.909 24.0418V1.86728C25.909 0.834961 25.0487 0 23.9911 0ZM7.68658 22.0784H3.8407V9.71085H7.68658V22.0784ZM5.76364 8.02575C4.52891 8.02575 3.53202 7.02885 3.53202 5.79918C3.53202 4.56951 4.52891 3.57262 5.76364 3.57262C6.99331 3.57262 7.9902 4.56951 7.9902 5.79918C7.9902 7.02379 6.99331 8.02575 5.76364 8.02575ZM22.0783 22.0784H18.2374V16.0667C18.2374 14.6346 18.2121 12.7876 16.2386 12.7876C14.2398 12.7876 13.9361 14.3512 13.9361 15.9655V22.0784H10.1004V9.71085H13.7843V11.401H13.8349C14.346 10.4294 15.601 9.40217 17.4683 9.40217C21.3597 9.40217 22.0783 11.9627 22.0783 15.2924V22.0784Z" />
+                                </svg>
+                              </div>
+                            </div>
+                          </Link>
+                        ) : (
+                          <div className="group-hover:bg-pink  ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                            <div className=" ">
+                              <svg
+                                width="26"
+                                height="26"
+                                viewBox="0 0 26 26"
+                                fill="none"
+                                className="fill-[#5D6468] group-hover:fill-white"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M23.9911 0H1.9127C0.85508 0 -0.00012207 0.834961 -0.00012207 1.86728V24.0368C-0.00012207 25.0691 0.85508 25.9091 1.9127 25.9091H23.9911C25.0487 25.9091 25.909 25.0691 25.909 24.0418V1.86728C25.909 0.834961 25.0487 0 23.9911 0ZM7.68658 22.0784H3.8407V9.71085H7.68658V22.0784ZM5.76364 8.02575C4.52891 8.02575 3.53202 7.02885 3.53202 5.79918C3.53202 4.56951 4.52891 3.57262 5.76364 3.57262C6.99331 3.57262 7.9902 4.56951 7.9902 5.79918C7.9902 7.02379 6.99331 8.02575 5.76364 8.02575ZM22.0783 22.0784H18.2374V16.0667C18.2374 14.6346 18.2121 12.7876 16.2386 12.7876C14.2398 12.7876 13.9361 14.3512 13.9361 15.9655V22.0784H10.1004V9.71085H13.7843V11.401H13.8349C14.346 10.4294 15.601 9.40217 17.4683 9.40217C21.3597 9.40217 22.0783 11.9627 22.0783 15.2924V22.0784Z" />
+                              </svg>
+                            </div>
+                          </div>
+                        )}
+                        <div className="bg-white w-[14rem]  lg:h-[5.5rem]  rounded">
+                          <h6 className="pt-1 2xl:pt-2 px-2  font-medium">
+                            {ele.title}
+                          </h6>
+                          <p className="px-2  text-sm font-light text-black">
+                            {ele.desig}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
                 ))}
               </Swiper>
             </div>
 
             <div className=" flex pt-3 flex-wrap gap-3 mt-4 justify-start  2xl:mt-1">
               <button
-                className={`prevbtntrustee flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
-                  isFirstSlide ? "opacity-40" : ""
-                }`}
+                className={`prevbtntrustee flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
                 aria-label="Previous slide"
               >
                 <GoArrowLeft />
               </button>
               <button
-                className={`nextbtntrustee flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
-                  isLastSlide ? "opacity-40" : ""
-                }`}
+                className={`nextbtntrustee flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink `}
                 aria-label="Next slide"
               >
                 <GoArrowRight />
@@ -608,22 +627,22 @@ export default function Infravisionaries() {
             </div>
           </div>
 
-           <div className="md:hidden block pb-7">
+          <div className="md:hidden block pb-7">
             <div className="py-5  ">
               <button className="text-white text-md text-nowrap lg:text-xl relative font-medium">
                 Distinguished Fellows
               </button>
             </div>
             <div className="w-full  overflow-hidden">
-                <Swiper
-                modules={[ Navigation]}
+              <Swiper
+                modules={[Navigation]}
                 className=""
                 spaceBetween={20}
                 grabCursor
                 onSlideChange={handleSlideChange}
                 slideToClickedSlide
                 slidesPerView={1.1}
-                centeredSlides={true}
+                centeredSlides={false}
                 navigation={{
                   prevEl: ".prevbtnfellows",
                   nextEl: ".nextbtnfellows",
@@ -651,28 +670,53 @@ export default function Infravisionaries() {
                   },
                 }}
               >
-                    {fellow.map((ele, index) => (
-                  <SwiperSlide key={index} className="!w-auto">
-                    {" "}
-                    <div className="flex realtive flex-col w-[19rem] h-[19rem] ">
+                {fellow.map((ele, index) => (
+                  <SwiperSlide key={index} className="">
+                    <div className="flex realtive flex-col w-[19rem]  h-[19rem]">
                       <Image
                         src={ele.image}
                         alt={ele.title}
-                        className="w-full h-full object-cover "
+                        className="w-full h-full object-cover rounded"
                       />
-                      <div className="absolute right-5 bottom-17  bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
-                        <div className="w-[2rem] h-[2rem] ">
-                          <Image
-                            src={linkedinSvg}
-                            alt={ele.title}
-                            className="object-cover w-full h-full my-auto"
-                          />
-                        </div>
-                      </div>
-                      <div className="absolute bottom-0 left-0">
-                      <div className="bg-white w-[15rem] h-[5.5rem] rounded  flex flex-col  justify-center ps-3">
-                          <h6 className=" smallText  font-medium">{ele.title}</h6>
-                          <p className="text-sm   font-light text-black">
+                      <div className="absolute  bottom-0 left-0 w-[17rem]  ">
+                        {ele.link ? (
+                          <Link href={ele.link ? ele.link : ""} target="_blank">
+                            <div className="   ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                              <div className=" ">
+                                <svg
+                                  width="26"
+                                  height="26"
+                                  viewBox="0 0 26 26"
+                                  fill="none"
+                                  className="fill-[#5D6468] group-hover:fill-[#C82249]"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path d="M23.9911 0H1.9127C0.85508 0 -0.00012207 0.834961 -0.00012207 1.86728V24.0368C-0.00012207 25.0691 0.85508 25.9091 1.9127 25.9091H23.9911C25.0487 25.9091 25.909 25.0691 25.909 24.0418V1.86728C25.909 0.834961 25.0487 0 23.9911 0ZM7.68658 22.0784H3.8407V9.71085H7.68658V22.0784ZM5.76364 8.02575C4.52891 8.02575 3.53202 7.02885 3.53202 5.79918C3.53202 4.56951 4.52891 3.57262 5.76364 3.57262C6.99331 3.57262 7.9902 4.56951 7.9902 5.79918C7.9902 7.02379 6.99331 8.02575 5.76364 8.02575ZM22.0783 22.0784H18.2374V16.0667C18.2374 14.6346 18.2121 12.7876 16.2386 12.7876C14.2398 12.7876 13.9361 14.3512 13.9361 15.9655V22.0784H10.1004V9.71085H13.7843V11.401H13.8349C14.346 10.4294 15.601 9.40217 17.4683 9.40217C21.3597 9.40217 22.0783 11.9627 22.0783 15.2924V22.0784Z" />
+                                </svg>
+                              </div>
+                            </div>
+                          </Link>
+                        ) : (
+                          <div className="group-hover:bg-pink  ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                            <div className=" ">
+                              <svg
+                                width="26"
+                                height="26"
+                                viewBox="0 0 26 26"
+                                fill="none"
+                                className="fill-[#5D6468] group-hover:fill-white"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M23.9911 0H1.9127C0.85508 0 -0.00012207 0.834961 -0.00012207 1.86728V24.0368C-0.00012207 25.0691 0.85508 25.9091 1.9127 25.9091H23.9911C25.0487 25.9091 25.909 25.0691 25.909 24.0418V1.86728C25.909 0.834961 25.0487 0 23.9911 0ZM7.68658 22.0784H3.8407V9.71085H7.68658V22.0784ZM5.76364 8.02575C4.52891 8.02575 3.53202 7.02885 3.53202 5.79918C3.53202 4.56951 4.52891 3.57262 5.76364 3.57262C6.99331 3.57262 7.9902 4.56951 7.9902 5.79918C7.9902 7.02379 6.99331 8.02575 5.76364 8.02575ZM22.0783 22.0784H18.2374V16.0667C18.2374 14.6346 18.2121 12.7876 16.2386 12.7876C14.2398 12.7876 13.9361 14.3512 13.9361 15.9655V22.0784H10.1004V9.71085H13.7843V11.401H13.8349C14.346 10.4294 15.601 9.40217 17.4683 9.40217C21.3597 9.40217 22.0783 11.9627 22.0783 15.2924V22.0784Z" />
+                              </svg>
+                            </div>
+                          </div>
+                        )}
+                        <div className="bg-white w-[14rem]  lg:h-[5.5rem]  rounded">
+                          <h6 className="pt-1 2xl:pt-2 px-2  font-medium">
+                            {ele.title}
+                          </h6>
+                          <p className="px-2  text-sm font-light text-black">
                             {ele.desig}
                           </p>
                         </div>
@@ -684,33 +728,29 @@ export default function Infravisionaries() {
             </div>
             <div className="flex pt-3 flex-wrap gap-3 mt-4 justify-start md:gap-8 2xl:mt-1">
               <button
-                className={`prevbtnfellows flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
-                  isFirstSlide ? "opacity-40" : ""
-                }`}
+                className={`prevbtnfellows flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink `}
                 aria-label="Previous slide"
               >
                 <GoArrowLeft />
               </button>
               <button
-                className={`nextbtnfellows flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
-                  isLastSlide ? "opacity-40" : ""
-                }`}
+                className={`nextbtnfellows flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
                 aria-label="Next slide"
               >
                 <GoArrowRight />
               </button>
             </div>
-          </div> 
+          </div>
 
-         <div className="md:hidden block pb-7">
+          <div className="md:hidden block pb-7">
             <div className="py-5">
               <button className="text-white text-md text-nowrap lg:text-xl relative font-medium">
                 Advisory Council
               </button>
             </div>
             <div className="w-full  overflow-hidden">
-            <Swiper
-                modules={[ Navigation]}
+              <Swiper
+                modules={[Navigation]}
                 className=""
                 watchOverflow={true}
                 spaceBetween={20}
@@ -718,7 +758,7 @@ export default function Infravisionaries() {
                 onSlideChange={handleSlideChange}
                 slideToClickedSlide
                 slidesPerView={1.1}
-                centeredSlides={true}
+                centeredSlides={false}
                 navigation={{
                   prevEl: ".prevbtnadvisory",
                   nextEl: ".nextbtnadvisory",
@@ -746,28 +786,53 @@ export default function Infravisionaries() {
                   },
                 }}
               >
-                    {advisory.map((ele, index) => (
-                  <SwiperSlide key={index} className="!w-[19rem]">
-                    {" "}
-                    <div className="flex realtive flex-col  h-[19rem] ">
+                {advisory.map((ele, index) => (
+                  <SwiperSlide key={index} className="">
+                    <div className="flex realtive flex-col w-[19rem]  h-[19rem]">
                       <Image
                         src={ele.image}
                         alt={ele.title}
-                        className="w-full h-full object-cover "
+                        className="w-full h-full object-cover rounded"
                       />
-                      <div className="absolute right-5 bottom-17  bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
-                        <div className="w-[2rem] h-[2rem] ">
-                          <Image
-                            src={linkedinSvg}
-                            alt={ele.title}
-                            className="object-cover w-full h-full my-auto"
-                          />
-                        </div>
-                      </div>
-                      <div className="absolute bottom-0 left-0">
-                      <div className="bg-white w-[15rem] h-[5.5rem] rounded  flex flex-col  justify-center ps-3">
-                          <h6 className=" smallText  font-medium">{ele.title}</h6>
-                          <p className="text-sm   font-light text-black">
+                      <div className="absolute  bottom-0 left-0 w-[17rem]  ">
+                        {ele.link ? (
+                          <Link href={ele.link ? ele.link : ""} target="_blank">
+                            <div className="   ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                              <div className=" ">
+                                <svg
+                                  width="26"
+                                  height="26"
+                                  viewBox="0 0 26 26"
+                                  fill="none"
+                                  className="fill-[#5D6468] group-hover:fill-[#C82249]"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path d="M23.9911 0H1.9127C0.85508 0 -0.00012207 0.834961 -0.00012207 1.86728V24.0368C-0.00012207 25.0691 0.85508 25.9091 1.9127 25.9091H23.9911C25.0487 25.9091 25.909 25.0691 25.909 24.0418V1.86728C25.909 0.834961 25.0487 0 23.9911 0ZM7.68658 22.0784H3.8407V9.71085H7.68658V22.0784ZM5.76364 8.02575C4.52891 8.02575 3.53202 7.02885 3.53202 5.79918C3.53202 4.56951 4.52891 3.57262 5.76364 3.57262C6.99331 3.57262 7.9902 4.56951 7.9902 5.79918C7.9902 7.02379 6.99331 8.02575 5.76364 8.02575ZM22.0783 22.0784H18.2374V16.0667C18.2374 14.6346 18.2121 12.7876 16.2386 12.7876C14.2398 12.7876 13.9361 14.3512 13.9361 15.9655V22.0784H10.1004V9.71085H13.7843V11.401H13.8349C14.346 10.4294 15.601 9.40217 17.4683 9.40217C21.3597 9.40217 22.0783 11.9627 22.0783 15.2924V22.0784Z" />
+                                </svg>
+                              </div>
+                            </div>
+                          </Link>
+                        ) : (
+                          <div className="group-hover:bg-pink  ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                            <div className=" ">
+                              <svg
+                                width="26"
+                                height="26"
+                                viewBox="0 0 26 26"
+                                fill="none"
+                                className="fill-[#5D6468] group-hover:fill-white"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M23.9911 0H1.9127C0.85508 0 -0.00012207 0.834961 -0.00012207 1.86728V24.0368C-0.00012207 25.0691 0.85508 25.9091 1.9127 25.9091H23.9911C25.0487 25.9091 25.909 25.0691 25.909 24.0418V1.86728C25.909 0.834961 25.0487 0 23.9911 0ZM7.68658 22.0784H3.8407V9.71085H7.68658V22.0784ZM5.76364 8.02575C4.52891 8.02575 3.53202 7.02885 3.53202 5.79918C3.53202 4.56951 4.52891 3.57262 5.76364 3.57262C6.99331 3.57262 7.9902 4.56951 7.9902 5.79918C7.9902 7.02379 6.99331 8.02575 5.76364 8.02575ZM22.0783 22.0784H18.2374V16.0667C18.2374 14.6346 18.2121 12.7876 16.2386 12.7876C14.2398 12.7876 13.9361 14.3512 13.9361 15.9655V22.0784H10.1004V9.71085H13.7843V11.401H13.8349C14.346 10.4294 15.601 9.40217 17.4683 9.40217C21.3597 9.40217 22.0783 11.9627 22.0783 15.2924V22.0784Z" />
+                              </svg>
+                            </div>
+                          </div>
+                        )}
+                        <div className="bg-white w-[14rem]  lg:h-[5.5rem]  rounded">
+                          <h6 className="pt-1 2xl:pt-2 px-2  font-medium">
+                            {ele.title}
+                          </h6>
+                          <p className="px-2  text-sm font-light text-black">
                             {ele.desig}
                           </p>
                         </div>
@@ -779,40 +844,34 @@ export default function Infravisionaries() {
             </div>
             <div className="flex pt-3 flex-wrap gap-3 mt-4 justify-start md:gap-8 2xl:mt-1">
               <button
-                className={`prevbtnadvisory flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
-                  isFirstSlide ? "opacity-40" : ""
-                }`}
-               
+                className={`prevbtnadvisory flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink `}
               >
                 <GoArrowLeft />
               </button>
               <button
-                className={`nextbtnadvisory flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
-                  isLastSlide ? "opacity-40" : ""
-                }`}
-               
+                className={`nextbtnadvisory flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink `}
               >
                 <GoArrowRight />
               </button>
             </div>
-          </div> 
+          </div>
 
-        <div className="md:hidden block ">
+          <div className="md:hidden block ">
             <div className="py-5">
               <button className="text-white text-md text-nowrap lg:text-xl relative font-medium">
                 Team
               </button>
             </div>
             <div className="w-full  overflow-hidden">
-            <Swiper
-                modules={[ Navigation]}
+              <Swiper
+                modules={[Navigation]}
                 className=""
                 spaceBetween={20}
                 grabCursor
                 onSlideChange={handleSlideChange}
                 slideToClickedSlide
                 slidesPerView={1.1}
-                centeredSlides={true}
+                centeredSlides={false}
                 navigation={{
                   prevEl: ".prevbtnteam",
                   nextEl: ".nextbtnteam",
@@ -841,27 +900,52 @@ export default function Infravisionaries() {
                 }}
               >
                 {team.map((ele, index) => (
-                  <SwiperSlide key={index} className="!w-auto">
-                    {" "}
-                    <div className="flex realtive flex-col w-[19rem] h-[19rem] ">
+                  <SwiperSlide key={index} className="">
+                    <div className="flex realtive flex-col w-[19rem]  h-[19rem]">
                       <Image
                         src={ele.image}
                         alt={ele.title}
-                        className="w-full h-full object-cover "
+                        className="w-full h-full object-cover rounded"
                       />
-                      <div className="absolute right-5 bottom-17  bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
-                        <div className="w-[2rem] h-[2rem] ">
-                          <Image
-                            src={linkedinSvg}
-                            alt={ele.title}
-                            className="object-cover w-full h-full my-auto"
-                          />
-                        </div>
-                      </div>
-                      <div className="absolute bottom-0 left-0">
-                      <div className="bg-white w-[15rem] h-[5.5rem] rounded  flex flex-col  justify-center ps-3">
-                          <h6 className=" smallText  font-medium">{ele.title}</h6>
-                          <p className="text-sm   font-light text-black">
+                      <div className="absolute  bottom-0 left-0 w-[17rem]  ">
+                        {ele.link ? (
+                          <Link href={ele.link ? ele.link : ""} target="_blank">
+                            <div className="   ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                              <div className=" ">
+                                <svg
+                                  width="26"
+                                  height="26"
+                                  viewBox="0 0 26 26"
+                                  fill="none"
+                                  className="fill-[#5D6468] group-hover:fill-[#C82249]"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path d="M23.9911 0H1.9127C0.85508 0 -0.00012207 0.834961 -0.00012207 1.86728V24.0368C-0.00012207 25.0691 0.85508 25.9091 1.9127 25.9091H23.9911C25.0487 25.9091 25.909 25.0691 25.909 24.0418V1.86728C25.909 0.834961 25.0487 0 23.9911 0ZM7.68658 22.0784H3.8407V9.71085H7.68658V22.0784ZM5.76364 8.02575C4.52891 8.02575 3.53202 7.02885 3.53202 5.79918C3.53202 4.56951 4.52891 3.57262 5.76364 3.57262C6.99331 3.57262 7.9902 4.56951 7.9902 5.79918C7.9902 7.02379 6.99331 8.02575 5.76364 8.02575ZM22.0783 22.0784H18.2374V16.0667C18.2374 14.6346 18.2121 12.7876 16.2386 12.7876C14.2398 12.7876 13.9361 14.3512 13.9361 15.9655V22.0784H10.1004V9.71085H13.7843V11.401H13.8349C14.346 10.4294 15.601 9.40217 17.4683 9.40217C21.3597 9.40217 22.0783 11.9627 22.0783 15.2924V22.0784Z" />
+                                </svg>
+                              </div>
+                            </div>
+                          </Link>
+                        ) : (
+                          <div className="group-hover:bg-pink  ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                            <div className=" ">
+                              <svg
+                                width="26"
+                                height="26"
+                                viewBox="0 0 26 26"
+                                fill="none"
+                                className="fill-[#5D6468] group-hover:fill-white"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M23.9911 0H1.9127C0.85508 0 -0.00012207 0.834961 -0.00012207 1.86728V24.0368C-0.00012207 25.0691 0.85508 25.9091 1.9127 25.9091H23.9911C25.0487 25.9091 25.909 25.0691 25.909 24.0418V1.86728C25.909 0.834961 25.0487 0 23.9911 0ZM7.68658 22.0784H3.8407V9.71085H7.68658V22.0784ZM5.76364 8.02575C4.52891 8.02575 3.53202 7.02885 3.53202 5.79918C3.53202 4.56951 4.52891 3.57262 5.76364 3.57262C6.99331 3.57262 7.9902 4.56951 7.9902 5.79918C7.9902 7.02379 6.99331 8.02575 5.76364 8.02575ZM22.0783 22.0784H18.2374V16.0667C18.2374 14.6346 18.2121 12.7876 16.2386 12.7876C14.2398 12.7876 13.9361 14.3512 13.9361 15.9655V22.0784H10.1004V9.71085H13.7843V11.401H13.8349C14.346 10.4294 15.601 9.40217 17.4683 9.40217C21.3597 9.40217 22.0783 11.9627 22.0783 15.2924V22.0784Z" />
+                              </svg>
+                            </div>
+                          </div>
+                        )}
+                        <div className="bg-white w-[14rem]  lg:h-[5.5rem]  rounded">
+                          <h6 className="pt-1 2xl:pt-2 px-2  font-medium">
+                            {ele.title}
+                          </h6>
+                          <p className="px-2  text-sm font-light text-black">
                             {ele.desig}
                           </p>
                         </div>
@@ -873,26 +957,21 @@ export default function Infravisionaries() {
             </div>
             <div className="flex pt-3 flex-wrap gap-3 mt-4 justify-start md:gap-8 2xl:mt-1">
               <button
-                className={`prevbtnteam flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
-                  isFirstSlide ? "opacity-40" : ""
-                }`}
+                className={`prevbtnteam flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink `}
                 aria-label="Previous slide"
               >
                 <GoArrowLeft />
               </button>
               <button
-                className={`nextbtnteam flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
-                  isLastSlide ? "opacity-40" : ""
-                }`}
+                className={`nextbtnteam flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink `}
                 aria-label="Next slide"
               >
                 <GoArrowRight />
               </button>
             </div>
-          </div> 
+          </div>
         </div>
       </section>
     </>
   );
 }
-

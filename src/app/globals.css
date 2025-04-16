@@ -141,7 +141,7 @@ html,body {
 
  
   h1 {
-    @apply text-[28px]  xl:text-[42px]  2xl:text-[54px] 2xl:leading-[64px];
+    @apply text-[28px]  xl:text-[42px]  2xl:text-[54px] leading-8 xl:leading-13 2xl:leading-[64px];
   }
 
   h2 {

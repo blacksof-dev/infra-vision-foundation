@@ -284,8 +284,8 @@ const footer = () => {
                   </h6>
                 </div>
 
-                <div>
-                  <div className="flex flex-row gap-1  items-center">
+                <div className=" pb-2">
+                  <div className="flex flex-row gap-1  ditems-center">
                     <MdOutlinePhone className="text-[#9EA2A4] text-xl" />
                     <h5 className="text-darkgray/60 2xl:text-lg">Phone</h5>
                   </div>
@@ -295,44 +295,46 @@ const footer = () => {
               </div>
             </div>
           </div>
-          <div className="flex sm:flex-row  flex-col justify-between py-4 lg:pt-9">
+          <div className="flex sm:flex-row  flex-col justify-between py-5 lg:pt-9">
             <div>
               <p className="text-darkgray/80 text-start  smallText">
                 Copyright 2025. All rights reserved.
               </p>
             </div>
-            <div className="flex flex-row gap-5 d  justify-center items-center pt-5 sm:pt-0">
-              <h5 className="text-darkgray/60 mr-5 sm:block hidden">
+            <div className="flex flex-row gap-5   justify-start sm:justify-center sm:items-center pt-4 sm:pt-0">
+              <h5 className="text-darkgray/60 mr-5 sm:block hidden  ">
                 Follow us
               </h5>
-              <Link
-                href="https://www.youtube.com/@theinfravisionfoundation"
-                target="_blank"
-                className="hover:bg-pink"
-              >
-                <FaYoutube className="text-2xl xl:text-3xl text-darkgray hover:text-white hover:border-pink hover:rounded hover:p-1" />
-              </Link>
-              <Link
-                href="https://www.linkedin.com/company/the-infravision-foundation/?originalSubdomain=in"
-                target="_blank"
-                className="hover:bg-pink"
-              >
-                <FaLinkedin className="text-2xl xl:text-3xl text-darkgray hover:text-white hover:border-pink hover:rounded hover:p-1" />
-              </Link>
-              <Link
-                href="https://x.com/TheInfravision?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
-                target="_blank"
-                className="hover:bg-pink"
-              >
-                <FaXTwitter className="text-2xl xl:text-3xl text-darkgray hover:text-white hover:border-pink hover:rounded hover:p-1" />
-              </Link>
-              <Link
-                href="https://www.instagram.com/theinfravisionfoundation/"
-                target="_blank"
-                className="hover:bg-pink"
-              >
-                <FaInstagram className="text-2xl xl:text-3xl text-darkgray hover:text-white hover:border-pink hover:rounded hover:p-1" />
-              </Link>
+              <div className="flex flex-row gap-5 py-2 ">
+                <Link
+                  href="https://www.youtube.com/@theinfravisionfoundation"
+                  target="_blank"
+                   className="group"
+                >
+                  <FaYoutube className="text-4xl border-1   group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
+                </Link>
+                <Link
+                  href="https://www.linkedin.com/company/the-infravision-foundation/?originalSubdomain=in"
+                  target="_blank"
+                   className="group"
+                >
+                  <FaLinkedin className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
+                </Link>
+                <Link
+                  href="https://x.com/TheInfravision?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                  target="_blank"
+                   className="group"
+                >
+                  <FaXTwitter className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
+                </Link>
+                <Link
+                  href="https://www.instagram.com/theinfravisionfoundation/"
+                  target="_blank"
+                   className="group"
+                >
+                  <FaInstagram className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>

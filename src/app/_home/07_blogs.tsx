@@ -47,7 +47,7 @@ export default function Blogs() {
                 </div>
                 <div className="flex  flex-row justify-between ">
                   <div>
-                    <h4 className="text-black font-medium py-2">
+                    <h4 className="text-black font-medium py-3 ">
                       How to make India’s highways safe
                     </h4>
                     <div className="w-[80%]">
@@ -103,7 +103,7 @@ export default function Blogs() {
                       proposed in the 2014 Draft Road Transport and Safety Bill
                     </p>
                   </div>
-                  <div className=" py-2  md:py-5 lg:py-0 lg:block hidden">
+                  <div className=" py-3  md:py-5 lg:py-0 lg:block hidden">
                     <BorderGrayHeroBtn
                        text="Read more"
                       role="link"
@@ -114,7 +114,7 @@ export default function Blogs() {
                     />
                 </div>
                 </div>
-                <div className=" py-2  md:py-5 lg:py-0 ">
+                <div className=" py-3  md:py-5 lg:py-0 ">
                     <BorderGrayHeroBtn
                        text="Read more"
                       role="link"

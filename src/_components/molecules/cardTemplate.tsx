@@ -23,7 +23,7 @@ export default function Card({ date, title, image,link,category }: CardProps) {
           </div>
 
            
-           <div className=" h-[12rem] flex justify-between flex-col">
+           <div className="  flex justify-between flex-col">
             <div>
               <div className="flex flex-row justify-between pt-2 pb-1 md:py-3">
                 <div className="flex  flex-row  items-center gap-3 ">
@@ -36,7 +36,7 @@ export default function Card({ date, title, image,link,category }: CardProps) {
               </div>
 
               <div className="pt-1">
-                <h5 className="text-black font-medium ">{title}</h5>
+                <h5 className="text-black font-medium line-clamp-1">{title}</h5>
               </div>
             </div>
 

@@ -152,14 +152,14 @@ export function HeroBtnPink<T extends "submit" | "button">({
         >
           <h5 className={`text-${color} ${sizeClass}`}>{text}</h5>
           <div
-            className={`rounded-sm p-1 relative overflow-hidden md:p-2 border-2 border-${borderColor} text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300`}
+            className={`rounded-sm p-1 relative overflow-hidden md:p-2 border-2 border-${borderColor} text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center  transition-all duration-300`}
           >
            <GoArrowRight className={`   text-white  group-hover:text-pink text-2xl z-[2]`}/>
           </div>
         </Link>
       ) : (
 
-        <div className="flex lg:gap-4 items-center justify-center  w-fit">
+        <div className="flex gap-2 lg:gap-4 items-center justify-center  w-fit">
           <h5 className={`text-${color} ${sizeClass}`}>{text}</h5>
           <button
             role={role}
