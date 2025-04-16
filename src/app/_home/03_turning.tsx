@@ -18,10 +18,10 @@ export default function Turning() {
   return (
     <>
       <section className="bg-pink relative d">
-        <div className="absolute top-0 left-0 opacity-30 hidden xl:block">
+        <div className="absolute top-0 z-0 left-0 opacity-30 hidden xl:block">
           <Image src={halfcirclesvg} alt="Circle Image" />
         </div>
-        <div className="absolute 2xl:top-7 top-3 left-0 2xl:left-15 opacity-30 hidden xl:block">
+        <div className="absolute z-0 2xl:top-7 top-3 left-0 2xl:left-15 opacity-30 hidden xl:block">
           <Image src={circlesvg1} alt="Circle Image" />
         </div>
         <div className="blade-top-padding-lg blade-bottom-padding-lg w-container  ">
@@ -30,13 +30,16 @@ export default function Turning() {
             <h5 className="font-medium text-white">What we do</h5>
           </div>
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-28">
-            <div className=" w-full  lg:w-[40%] ">
-              <h1 className="font-light text-white py-4 md:py-8">
-                Turning policy ideas into{" "}
-                <span className="text-white font-medium">
-                  instruments of transformation
-                </span>
-              </h1>
+            <div className=" w-full   lg:w-[40%] ">
+              <div className="">
+                <h1 className="font-light text-white py-4 md:py-8">
+                  Turning policy ideas <br className="block"/>into{" "}
+                  <span className="text-white font-medium">
+                    instruments of transformation
+                  </span>
+                </h1>
+              </div>
+              
               <div>
                 <h4 className="text-white font-light">
                   <span className="text-white font-medium">
@@ -56,7 +59,7 @@ export default function Turning() {
                   recommendations, and strategic advocacy to transform policy
                   ideas into lasting impact across diverse segments.
                 </h6>
-                <h6 className="text-white/80 font-light pt-3 md:pt-4 tracking-[1%]">
+                <h6 className="text-white font-light pt-3 md:pt-4 tracking-[1%]">
                   Founded in 2022 by Mr. Vinayak Chatterjee and Mrs. Rumjhum
                   Chatterjee, two reputable names in infrastructure, The
                   Infravision Foundation stands as a catalyst for meaningful
@@ -83,9 +86,9 @@ export default function Turning() {
                   <Swiper
                     className="!px-5"
                     modules={[Autoplay]}
-                    speed={6000}
+                    speed={5000}
                     autoplay={{
-                      delay: 20,
+                      delay:30,
                       disableOnInteraction: false,
                     }}
                     noSwiping={true}
@@ -94,7 +97,7 @@ export default function Turning() {
                     breakpoints={{
                       320: {
                         slidesPerView: 1,
-                        spaceBetween: 30,
+                        spaceBetween: 20,
                       },
 
                       480: {
@@ -158,7 +161,7 @@ export default function Turning() {
               </div>
             </div>
             <div className="lg:hidden block">
-              <div className="mx-5">
+              <div className="">
                 <h3 className="text-white font-medium">Sectors of operation</h3>
 
                 <ul className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-18 md:gap-x-4 gap-y-2 py-3 list-disc list-inside text-white text-lg w-fit">

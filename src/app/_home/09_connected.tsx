@@ -8,9 +8,9 @@ import TwitterPost from "./twittersection";
 
 export default function StayConnected(){
   return (
-    <section className="bg-[#F6F6F6] ">
+    <section className="bg-white ">
       <div className="blade-top-padding-lg blade-bottom-padding-lg">
-        <div className="w-container flex flex-col lg:flex-row gap-3 sm:gap-6 lg:gap-20">
+        <div className="w-container flex flex-col lg:flex-row gap-7 sm:gap-6 lg:gap-20">
           <div className="w-full lg:w-[50%] xl:w-[40%] ">
             <div className="flex  flex-row  items-center gap-2 md:gap-3">
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
@@ -25,7 +25,7 @@ export default function StayConnected(){
               </h1>
             </div>
 
-            <h6 className="text-black font-light">
+            <h6 className="text-black ">
               Catch the latest updates about infrastructure and The Infravision
               Foundation — expert insights, reports, events, and more, Join the
               community.
@@ -75,7 +75,7 @@ export default function StayConnected(){
                   target="_blank"
                    className="group"
                 >
-                  <FaYoutube className="text-4xl border-1  group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
+                  <FaYoutube className="text-4xl border-1   group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
                 </Link>
                 <Link
                   href="https://www.linkedin.com/company/the-infravision-foundation/?originalSubdomain=in"

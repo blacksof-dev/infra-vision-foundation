@@ -22,16 +22,16 @@ export default function Decoding() {
             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
             <h5 className="font-medium text-pink">Infravision Conversations</h5>
           </div>
-          <div className="py-3 ">
+          <div className="py-2 ">
             <h1 className="text-black tracking-[3%] font-light">
               <span className="text-black/90 font-medium tracking-[3%]">
                 Decoding infrastructure,
               </span>
               <br />
-              one topic at a time
+               &nbsp;one topic at a time
             </h1>
           </div>
-          <div className="flex flex-col-reverse  lg:flex-row gap-6  pt-4">
+          <div className="flex flex-col-reverse  lg:flex-row gap-6  pt-1">
             <div className="w-full lg:w-[50%]">
               <LinkedinCard />
             </div>
@@ -53,24 +53,24 @@ export default function Decoding() {
                   </h6>
                 </div>
 
-                <div className="group">
+                <div className="group flex ">
                   <Link href="https://www.youtube.com/playlist?list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em" target="_blank">
-                    <button className="text-black text-md lg:text-xl  cursor-pointer relative font-medium flex flex-row gap-2">
-                      <Image src={youtubeSvg} alt="Youtube Icon" />
-                      Explore the playlist
+                    <button className="text-black text-lg lg:text-xl  justify-center item-center cursor-pointer relative font-medium flex flex-row gap-2">
+                      <Image src={youtubeSvg} alt="Youtube Icon" className="relative bottom-[1px]"/>
+                       Explore the playlist
                       <div className="w-10 sm:w-20 h-[1px] sm:h-[2px] group-hover:w-full absolute bottom-0 left-0 top-9 bg-pink transition-all duration-1000"></div>
                     </button>
                   </Link>
                 </div>
                 <div className="lg:flex  hidden  flex-wrap gap-5 justify-center  lg:justify-start md:gap-4 pt-9">
                   <button
-                    className={`swiper-solution-prev-decoding flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white`}
+                    className={`swiper-solution-prev-decoding cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white`}
                     aria-label="Previous slide"
                   >
                     <GoArrowLeft />
                   </button>
                   <button
-                    className={`swiper-solution-next-decoding flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white`}
+                    className={`swiper-solution-next-decoding cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white`}
                     aria-label="Next slide"
                   >
                     <GoArrowRight />

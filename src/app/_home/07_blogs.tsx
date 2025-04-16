@@ -20,12 +20,12 @@ export default function Blogs() {
                   <span className="text-black font-medium">and beyond</span>{" "}
                 </h1>
               </div>
-              <div className=" pt-5 md:py-5 lg:py-0 mt-auto">
+              <div className=" pt-5 md:py-5  lg:py-0 mt-auto">
                 <HeroBtn
                   text="View all"
                   role="link"
                   borderColor="pink"
-                  color="pink"
+                  color="black"
                   bgColor="white"
                   size="extralarge"
                 />
@@ -39,8 +39,8 @@ export default function Blogs() {
 
               <div className="hidden md:block  px-6 py-4 2xl:py-8  absolute rounded bg-white lg:w-[55rem]  lg:h-[12rem] xl:w-[33rem]  xl:h-[11rem] 2xl:w-[40rem]   3xl:w-[43rem]  2xl:h-[12rem] bottom-4 left-3 right-3 ">
                 <div className="flex flex-row justify-between ">
-                  <div>
-                    <p className="font-medium text-darkgray/80">
+                   <div>
+                    <p className="text-sm text-darkgray/80">
                       October 16, 2024
                     </p>
                   </div>
@@ -51,27 +51,27 @@ export default function Blogs() {
                       How to make India’s highways safe
                     </h4>
                     <div className="w-[80%]">
-                      <p>
+                      <p className="text-base ">
                         A fully empowered National Road Safety Authority, as
                         proposed in the 2014 Draft Road Transport and Safety
                         Bill
                       </p>
                     </div>
                   </div>
-
-                  <div className="pt-1 pb-6 xl:py-5 mt-auto">
+                  <div className="pt-1 pb-6 xl:py-5 mt-auto ">
                     <BorderGrayHeroBtn
                       text=""
                       role="link"
                       borderColor="darkgray/40"
                       color="black"
                       bgColor="white"
-                      size="small"
+                       size="base"
                       target="_blank"
                       link="https://theinfravisionfoundation.org/wp-content/uploads/2025/03/Study-on-Implementation-of-Compensatory-Afforestation-in-India.pdf"
-                      classes=""
+                      classes="text-base"
                     />
                   </div>
+                  
                 </div>
               </div>
             </div>
@@ -90,31 +90,39 @@ export default function Blogs() {
               ))}
               <div className="lg:ml-6 block md:hidden border-t-1 border-darkgray/40 py-3">
                 <div className="pt-2 md:py-3">
-                  <p className="font-medium text-darkgray">October 16, 2024</p>
+                  <p className=" text-sm text-darkgray">October 16, 2024</p>
                 </div>
                 <div className=" flex flex-row justify-between">
                   <div className="w-full md:w-[65%]  lg:w-[60%]">
-                    <h4 className="pb-2 font-medium">
+                    <h4 className="py-2 font-medium">
                       How to make India’s highways safe
                     </h4>
-                    <p>
+                    <p className="text-base line-clamp-2 ">
                       {" "}
                       A fully empowered National Road Safety Authority, as
                       proposed in the 2014 Draft Road Transport and Safety Bill
                     </p>
                   </div>
-                  <div className=" py-2  md:py-5 lg:py-0 mt-auto">
+                  <div className=" py-2  md:py-5 lg:py-0 lg:block hidden">
                     <BorderGrayHeroBtn
-                      text=""
+                       text="Read more"
                       role="link"
                       borderColor="darkgray/40"
                       color="black"
                       bgColor="white"
-                      size="small"
-                      
-                     
+                      size="base"
                     />
-                  </div>
+                </div>
+                </div>
+                <div className=" py-2  md:py-5 lg:py-0 ">
+                    <BorderGrayHeroBtn
+                       text="Read more"
+                      role="link"
+                      borderColor="darkgray/40"
+                      color="black"
+                      bgColor="white"
+                       size="base"
+                    />
                 </div>
               </div>
             </div>

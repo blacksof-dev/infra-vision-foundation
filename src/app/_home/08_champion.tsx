@@ -8,7 +8,7 @@ import CardSlider from "@/_components/molecules/slidercardTemplate";
 export default function Champion() {
   return (
     <>
-      <section>
+      <section className="bg-[#F6F6F6]">
         <div className="w-container blade-top-padding-lg blade-bottom-padding-lg">
           <div>
             <div className="flex  flex-row  items-center gap-2 md:gap-3">

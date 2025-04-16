@@ -4,13 +4,13 @@ import Script from "next/script";
 export default function TwitterPost() {
   return (
     <section>
-      <div className="flex flex-col lg:flex-row justify-between  border-b border-darkgray/40 md:pb-4">
+      <div className="flex flex-col lg:flex-row justify-between  pb-3 md:pb-4">
         <div>
           <h4 className="text-black font-medium">
             Posts from @Infra_Vinayak Chatterjee
           </h4>
         </div>
-        <div className="flex flex-row gap-3 py-3 lg:py-0 lg:justify-center lg:items-center">
+        <div className="md:flex hidden  flex-row gap-3 py-3 lg:py-0 lg:justify-center lg:items-center">
            <Link href="https://x.com/Infra_VinayakCh/status/1773515311419191457" target="_blank"><h5 className="text-pink">View more on</h5></Link>
           <div>
             <svg
@@ -37,7 +37,7 @@ export default function TwitterPost() {
         </div>
       </div>
       
-      <div className="pt-5 md:pt-8 h-full  ">
+      <div className=" md:pt-8 h-full  border-1 border-darkgray/50 p-3 rounded ">
         <div className="">
         <div className="taggbox" style={{ width: "100%", height: "416px" }} data-widget-id="2164217" data-tags="false"  ></div>
         <Script src="https://widget.taggbox.com/embed-lite.min.js" type="text/javascript">

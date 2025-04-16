@@ -8,7 +8,7 @@ const sizeMap = {
   base: "text-base",
   md: "text-md",
   large: "text-lg",
-  extralarge: "text-sm sm:text-base lg:text-xl",
+  extralarge: "text-lg lg:text-xl",
 };
 
 const colorMap = {
@@ -159,7 +159,7 @@ export function HeroBtnPink<T extends "submit" | "button">({
         </Link>
       ) : (
 
-        <div className="flex gap-2 lg:gap-4 items-center justify-center  w-fit">
+        <div className="flex lg:gap-4 items-center justify-center  w-fit">
           <h5 className={`text-${color} ${sizeClass}`}>{text}</h5>
           <button
             role={role}
@@ -223,12 +223,12 @@ export function BorderGrayHeroBtn<T extends "submit" | "button">({
           onClick={handleClick}
           {...rest}
         >
-          <h5 className={`text-${color} ${sizeClass}`}>{text}</h5>
+          <h5 className={`text-${color}  ${sizeClass}`}>{text}</h5>
           <div
-            className={`rounded-sm p-1 relative overflow-hidden md:p-2 border-2 border-darkgray/50  w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 group-hover:bg-pink group-hover:border-pink`}
+            className={`rounded-sm p-1  relative overflow-hidden  border-2 border-darkgray/50  w-7 h-7 md:w-8 md:h-8 flex items-center justify-center transition-all  duration-300 group-hover:bg-pink group-hover:border-pink`}
           >
              <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
-             <GoArrowRight className={`   text-pink  group-hover:text-white text-2xl z-[2]`}/>
+             <GoArrowRight className={`   text-pink  group-hover:text-white text-3xl z-[2]`}/>
           </div>
         </Link>
       ) : (
@@ -272,7 +272,7 @@ export function UnderlineCta<T extends "submit" | "button">(
   const { title, color,underlineColor} = props;
   return (
     <div className="group">
-      <button className={`text-${color}  text-md lg:text-xl relative font-medium`}>
+      <button className={`text-${color}  text-lg lg:text-xl relative font-medium`}>
           {title}
           <span
             className="w-10 sm:w-15 h-[1px] sm:h-[2px]  absolute bottom-0 left-0 top-7 group-hover:w-full transition-all duration-1000"

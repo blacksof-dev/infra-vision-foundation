@@ -43,7 +43,7 @@ export default function InfravisionTalks() {
                     <input
                       type="email"
                       placeholder="Enter email address"
-                      className="flex-1 w-[10.5rem]  px-1 sm:px-6 sm:py-3  text-base tracking-[-0.3px] outline-none text-darkgray"
+                      className="flex-1 w-[13.5rem] h-[3rem] px-1 sm:px-6 sm:py-3  text-base tracking-[-0.3px] outline-none text-darkgray"
                     />
 
                     <div className="border-l-1 border-darkgray/20 ">
@@ -54,7 +54,7 @@ export default function InfravisionTalks() {
                         color="pink"
                         bgColor="white"
                         size="extralarge"
-                        classes="w-full sm:w-auto p-1 sm:p-2 text-sm font-medium"
+                        classes="w-full w-auto p-3 sm:p-2 text-sm font-medium"
            
                       />
                     </div>

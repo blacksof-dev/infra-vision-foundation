@@ -16,8 +16,8 @@ export default function Home(){
       <Banner/>
       <Decoding />
       <Turning />
-      <Driving />
-      <Infravisionaries />
+      <Driving /> 
+      <Infravisionaries /> 
       <Publication />
       <Blogs />
       <StayConnected />

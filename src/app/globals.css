@@ -141,7 +141,7 @@ html,body {
 
  
   h1 {
-    @apply text-2xl  xl:text-[42px]  2xl:text-[54px] 2xl:leading-[64px];
+    @apply text-[28px]  xl:text-[42px]  2xl:text-[54px] 2xl:leading-[64px];
   }
 
   h2 {
@@ -157,7 +157,7 @@ html,body {
   }
 
   h5 {
-    @apply text-base  md:text-base  tracking-tight 2xl:text-xl xl:text-lg;
+    @apply   text-lg  tracking-tight 2xl:text-xl ;
   }
 
   h6 {
@@ -165,11 +165,11 @@ html,body {
   }
 
   p{
-    @apply text-base
+    @apply  text-lg  sm:text-sm  lg:text-base
   }
 
   .smallText{
-    @apply text-sm
+    @apply text-base md:text-sm
   }
 
   br {
@@ -310,16 +310,15 @@ html,body {
 }
 
 .swiper-pagination-bullet {
-  background-color:white !important;
-  opacity: 0.3;
-  margin: 0 4px !important;
-  width: 10px;
-  height: 10px;
+  background-color:#5D6468  !important;
+  z-index:99999
+  
+  
 }
 
 .swiper-pagination-bullet-active {
-  opacity: 1;
-  background-color: black !important;
+  background-color:#C82249  !important; 
+ 
 }
 
 

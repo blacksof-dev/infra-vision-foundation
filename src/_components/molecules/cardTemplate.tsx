@@ -13,7 +13,7 @@ export default function Card({ date, title, image,link,category }: CardProps) {
     <>
       <section>
       
-        <div className=" lg:w-[25rem] xl:w-[21rem] 2xl:w-[29rem] 3xl:w-[29rem]">
+        <div className=" lg:w-[25rem]  xl:w-[21rem] 2xl:w-[29rem] 3xl:w-[29rem]">
           <div className=" xl:max-w-[29rem] h-[16rem] ">
             <Image
               src={image}
@@ -21,26 +21,30 @@ export default function Card({ date, title, image,link,category }: CardProps) {
               className="w-full h-full object-cover rounded"
             />
           </div>
+
+           
           <div className="flex flex-row justify-between pt-2 pb-1 md:py-3">
             <div className="flex  flex-row  items-center gap-3 ">
               <span className="w-[12px]  h-[12px] rounded-full bg-darkgray/30 "></span>
-              <p className="font-medium text-black">{category}</p>
+              <p className="text-sm font-medium text-black">{category}</p>
             </div>
             <div>
-              <h6 className="smallText text-darkgray">{date}</h6>
+              <h6 className="text-sm  text-darkgray">{date}</h6>
             </div>
           </div>
-          <div className="">
+
+          <div className="pt-1">
             <h5 className="text-black font-medium ">{title}</h5>
           </div>
-          <div className="pt-1 pb-6 xl:py-5">
+
+          <div className="pt-3 pb-6 xl:py-5">
             <BorderGrayHeroBtn
               text="Read more"
               role="link"
               borderColor="darkgray/40"
               color="black"
               bgColor="white"
-              size="small"
+              size="base"
               target="_blank"
               link={link}
             />

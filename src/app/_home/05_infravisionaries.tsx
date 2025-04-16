@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import type { Swiper as SwiperClass } from "swiper/types";
 import Image, { StaticImageData } from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation,Pagination } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -49,13 +49,13 @@ import RumjhumChatterjee from "@/../public/assets/home/team/RumjhumChatterjee.jp
 import Vinayak from "@/../public/assets/home/team/Vinayak.jpg";
 import VrindaSingh from "@/../public/assets/home/team/VrindaSingh.png";
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
-
-
+import Link from "next/link";
 
 type CardData = {
   image: StaticImageData;
   title: string;
   desig: string;
+  link?: string;
 };
 const trustee = [
   {
@@ -67,8 +67,9 @@ const trustee = [
     image: Rumjhum,
     title: "Rumjhum Chatterjee",
     desig: "Co-Founder & Managing Trustee",
+    link: "https://www.linkedin.com/in/rumjhum-chatterjee-396041268/",
   },
- 
+
   {
     image: Kiran,
     title: "Kiran Karnik",
@@ -81,6 +82,7 @@ const advisory = [
     image: NasserMunjee,
     title: "Nasser Munjee",
     desig: "Member, Council of Advisors",
+    link: "https://www.linkedin.com/in/nasser-munjee-8aaa5316/",
   },
   {
     image: HemendraMKothari,
@@ -111,12 +113,14 @@ const advisory = [
     image: ManojKSingh,
     title: "Manoj K. Singh",
     desig: "Member, Council of Advisors",
+    link: "https://www.linkedin.com/in/manoj-k-singh-72817a9/",
   },
- 
+
   {
     image: SunilMathur,
     title: "Sunil Mathur",
     desig: "Member, Council of Advisors",
+    link: "https://www.linkedin.com/in/sunil-mathur/",
   },
   {
     image: AshishDhawan,
@@ -139,54 +143,51 @@ const advisory = [
     title: "D. K. Sen",
     desig: "Member, Council of Advisors",
   },
-  
+
   {
     image: ArunNanda,
     title: "Arun Nanda",
     desig: "Member, Council of Advisors",
   },
 
- {
+  {
     image: Arun,
     title: "Arun Maira",
     desig: "Member, Council of Advisors",
+    link: "https://www.linkedin.com/in/arun-maira-5499711b4/",
   },
   {
     image: DilipCherian,
     title: "Dilip Cherian",
     desig: "Member, Council of Advisors",
+    link: "https://www.linkedin.com/in/dilipcherian/",
   },
   {
     image: GeetanjaliKirloskar,
     title: "Geetanjali Kirloskar",
     desig: "Member, Council of Advisors",
+    link: "https://www.linkedin.com/in/geetanjali-kirloskar-b04203154/",
   },
   {
     image: VishalKampani,
     title: "Vishal Kampani",
     desig: "Member, Council of Advisors",
+    link: "https://www.linkedin.com/in/vishal-kampani-0a94942a6/",
   },
- {
+  {
     image: CyrilShroff,
     title: "Cyril Shroff",
     desig: "Member, Council of Advisors",
+    link: "https://www.linkedin.com/in/cyrilshroff/",
   },
- 
-  
+
   {
     image: khurshed,
     title: "Khurshed",
     desig: "Member, Council of Advisors",
+    link: "https://www.linkedin.com/in/khurshed-daruvala/",
   },
-  
-  
-  // {
-  //   image: jagan,
-  //   title: "Jagan Shah",
-  //   desig: "Member, Council of Advisors",
-  // },
-   
-  
+
 ];
 
 const fellow = [
@@ -194,6 +195,7 @@ const fellow = [
     image: rasikaAthawale,
     title: "Rasika Athawale",
     desig: "Distinguished Fellow (Power)",
+    link: "https://www.linkedin.com/in/rasika-athawale-5072ab1/",
   },
 
   {
@@ -210,20 +212,21 @@ const fellow = [
     image: rajajiMeshram,
     title: "Rajaji Meshram",
     desig: "Distinguished Fellow(Transport & Logistics)",
+    link: "https://www.linkedin.com/in/rajaji-meshram-9aa3437/",
   },
 
   {
     image: SoumyaKantiGhosh,
     title: "Soumya Kanti Ghosh",
     desig: "Distinguished Fellow (Economic Policy)",
+    link: "https://www.linkedin.com/in/soumya-kanti-ghosh-2043921a/",
   },
   {
     image: AkhileshTilotia,
     title: "Akhilesh Tilotia",
     desig: "Distinguished Fellow (Public Policy)",
+    link: "https://www.linkedin.com/in/atilotia/",
   },
-  
-  
 ];
 
 const team = [
@@ -241,35 +244,43 @@ const team = [
     image: jagan,
     title: "Jagan Shah",
     desig: "CEO",
+    link: "https://www.linkedin.com/in/jagan-shah/",
   },
   {
     image: KavereeBamzai,
     title: "Kaveree Bamzai",
     desig: "Head Advocacy",
+    link: "https://www.linkedin.com/in/kavereebamzai/",
   },
   {
     image: MutumChaobisana,
     title: "Dr. Mutum Chaobisana",
     desig: "Head Programmes",
+    link: "https://www.linkedin.com/in/dr-mutum-chaobisana-83647017/",
   },
-  
+
   {
     image: VrindaSingh,
     title: "Vrinda Singh",
     desig: "Research Associate",
+    link: "https://www.linkedin.com/in/vrinda-singh-3951951b4/",
   },
   {
     image: LawrenceCardoza,
     title: "Lawrence Cardoza",
     desig: "Research Associate",
+    link: "https://www.linkedin.com/in/lawrence-cardoza/",
   },
   {
     image: PriyankaBains,
     title: "Priyanka Bains",
     desig: "Research Associate",
+    link: "https://www.linkedin.com/in/priyanka-bains-b070607b/",
   },
- 
 ];
+
+
+
 
 
 export default function Infravisionaries() {
@@ -282,7 +293,6 @@ export default function Infravisionaries() {
     setIsFirstSlide(swiper.isBeginning);
   };
 
- 
   useEffect(() => {
     let cardDetails: CardData[] = [];
 
@@ -317,7 +327,7 @@ export default function Infravisionaries() {
           <div className="pt-4 pb-2 md:py-5">
             <h1 className="text-white font-medium">The Infravisionaries</h1>
             <div className="w-full md:w-[45%]">
-              <h6 className="text-white font-extralight tracking-[1%] py-4">
+              <h6 className="text-white  tracking-[1%] py-4">
                 The Infravision Foundation is a confluence of seasoned leaders
                 from across the infrastructure domain. With exceptional
                 intellect, global experience, and shared purpose, this
@@ -330,38 +340,70 @@ export default function Infravisionaries() {
             <div className=" border-r-1 pe-20 border-lightgray/40  w-fit">
               <div className="py-4 group">
                 <button
-                  className={`text-white text-md text-nowrap lg:text-xl relative ${data==="trustee"?"font-medium":""}`}
+                  className={`text-white text-md text-nowrap lg:text-xl relative ${
+                    data === "trustee" ? "font-medium" : ""
+                  }`}
                   onClick={() => setdata("trustee")}
                 >
                   Trustees
-                  <span className={` h-[1px] ${data==="trustee"?"w-full transition-all  duration-1000 ":"w-10 sm:w-5"}  sm:h-[2px]  bg-white absolute bottom-0 left-0 top-7`}></span>
+                  <span
+                    className={` h-[1px] ${
+                      data === "trustee"
+                        ? "w-full transition-all  duration-1000 "
+                        : "w-10 sm:w-5"
+                    }  sm:h-[2px]  bg-white absolute bottom-0 left-0 top-7`}
+                  ></span>
                 </button>
               </div>
               <div className="py-4 group">
                 <button
-                    className={`text-white text-md text-nowrap lg:text-xl relative ${data==="advisory"?"font-medium":""}`}
+                  className={`text-white text-md text-nowrap lg:text-xl relative ${
+                    data === "advisory" ? "font-medium" : ""
+                  }`}
                   onClick={() => setdata("advisory")}
                 >
                   Advisory Council
-                  <span className={` h-[1px] ${data==="advisory"?"w-full transition-all  duration-1000":"w-10 sm:w-5"}  sm:h-[2px]  bg-white absolute bottom-0 left-0 top-7`}></span>
+                  <span
+                    className={` h-[1px] ${
+                      data === "advisory"
+                        ? "w-full transition-all  duration-1000"
+                        : "w-10 sm:w-5"
+                    }  sm:h-[2px]  bg-white absolute bottom-0 left-0 top-7`}
+                  ></span>
                 </button>
               </div>
               <div className="py-4 group">
                 <button
-                   className={`text-white text-md text-nowrap lg:text-xl relative ${data==="fellow"?"font-medium":""}`}
+                  className={`text-white text-md text-nowrap lg:text-xl relative ${
+                    data === "fellow" ? "font-medium" : ""
+                  }`}
                   onClick={() => setdata("fellow")}
                 >
                   Distinguished Fellows
-                  <span className={` h-[1px] ${data==="fellow"?"w-full  transition-all duration-1000":"w-10 sm:w-5"}  sm:h-[2px]  bg-white absolute bottom-0 left-0 top-7`}></span>
+                  <span
+                    className={` h-[1px] ${
+                      data === "fellow"
+                        ? "w-full  transition-all duration-1000"
+                        : "w-10 sm:w-5"
+                    }  sm:h-[2px]  bg-white absolute bottom-0 left-0 top-7`}
+                  ></span>
                 </button>
               </div>
               <div className="py-4 group">
                 <button
-                      className={`text-white text-md text-nowrap lg:text-xl relative ${data==="team"?"font-medium":""}`}
+                  className={`text-white text-md text-nowrap lg:text-xl relative ${
+                    data === "team" ? "font-medium" : ""
+                  }`}
                   onClick={() => setdata("team")}
                 >
                   Team
-                  <span className={` h-[1px] ${data==="team"?"w-full  transition-all duration-1000":"w-10 sm:w-5"}  sm:h-[2px]  bg-white absolute bottom-0 left-0 top-7`}></span>
+                  <span
+                    className={` h-[1px] ${
+                      data === "team"
+                        ? "w-full  transition-all duration-1000"
+                        : "w-10 sm:w-5"
+                    }  sm:h-[2px]  bg-white absolute bottom-0 left-0 top-7`}
+                  ></span>
                 </button>
               </div>
             </div>
@@ -387,7 +429,7 @@ export default function Infravisionaries() {
                     1024: { slidesPerView: 2.9, centeredSlides: false },
                     1280: { slidesPerView: 4, centeredSlides: false },
                     1536: {
-                      slidesPerView:3.5,
+                      slidesPerView: 3.5,
                       centeredSlides: false,
                       spaceBetween: 40,
                     },
@@ -402,26 +444,53 @@ export default function Infravisionaries() {
                             alt={ele.title}
                             className="w-full h-full object-cover rounded"
                           />
-                          
-                          <div className="absolute bottom-0 left-0 w-[17rem]  ">
-                          <div className=" ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
-                            <div className=" ">
-                              <Image
-                                src={linkedinSvg}
-                                alt={ele.title}
-                                className="object-cover w-full rounded h-full my-auto"
-                              />
-                            </div>
-                          </div>
+
+                          <div className="absolute  bottom-0 left-0 w-[17rem]  ">
+                            {ele.link ? (
+                              <Link
+                                href={ele.link ? ele.link : ""}
+                                target="_blank"
+                              >
+                                <div className="   ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                                  <div className=" ">
+                                    <svg
+                                      width="26"
+                                      height="26"
+                                      viewBox="0 0 26 26"
+                                      fill="none"
+                                      className="fill-[#5D6468] group-hover:fill-[#C82249]"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path d="M23.9911 0H1.9127C0.85508 0 -0.00012207 0.834961 -0.00012207 1.86728V24.0368C-0.00012207 25.0691 0.85508 25.9091 1.9127 25.9091H23.9911C25.0487 25.9091 25.909 25.0691 25.909 24.0418V1.86728C25.909 0.834961 25.0487 0 23.9911 0ZM7.68658 22.0784H3.8407V9.71085H7.68658V22.0784ZM5.76364 8.02575C4.52891 8.02575 3.53202 7.02885 3.53202 5.79918C3.53202 4.56951 4.52891 3.57262 5.76364 3.57262C6.99331 3.57262 7.9902 4.56951 7.9902 5.79918C7.9902 7.02379 6.99331 8.02575 5.76364 8.02575ZM22.0783 22.0784H18.2374V16.0667C18.2374 14.6346 18.2121 12.7876 16.2386 12.7876C14.2398 12.7876 13.9361 14.3512 13.9361 15.9655V22.0784H10.1004V9.71085H13.7843V11.401H13.8349C14.346 10.4294 15.601 9.40217 17.4683 9.40217C21.3597 9.40217 22.0783 11.9627 22.0783 15.2924V22.0784Z" />
+                                    </svg>
+                                  </div>
+                                </div>
+                              </Link>
+                            ) : (
+                              <div className="group-hover:bg-pink  ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                                <div className=" ">
+                                  <svg
+                                    width="26"
+                                    height="26"
+                                    viewBox="0 0 26 26"
+                                    fill="none"
+                                    className="fill-[#5D6468] group-hover:fill-white"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path d="M23.9911 0H1.9127C0.85508 0 -0.00012207 0.834961 -0.00012207 1.86728V24.0368C-0.00012207 25.0691 0.85508 25.9091 1.9127 25.9091H23.9911C25.0487 25.9091 25.909 25.0691 25.909 24.0418V1.86728C25.909 0.834961 25.0487 0 23.9911 0ZM7.68658 22.0784H3.8407V9.71085H7.68658V22.0784ZM5.76364 8.02575C4.52891 8.02575 3.53202 7.02885 3.53202 5.79918C3.53202 4.56951 4.52891 3.57262 5.76364 3.57262C6.99331 3.57262 7.9902 4.56951 7.9902 5.79918C7.9902 7.02379 6.99331 8.02575 5.76364 8.02575ZM22.0783 22.0784H18.2374V16.0667C18.2374 14.6346 18.2121 12.7876 16.2386 12.7876C14.2398 12.7876 13.9361 14.3512 13.9361 15.9655V22.0784H10.1004V9.71085H13.7843V11.401H13.8349C14.346 10.4294 15.601 9.40217 17.4683 9.40217C21.3597 9.40217 22.0783 11.9627 22.0783 15.2924V22.0784Z" />
+                                  </svg>
+                                </div>
+                              </div>
+                            )}
+
                             <div className="bg-white w-[14rem]  lg:h-[5.5rem]  rounded">
                               <h6 className="pt-1 2xl:pt-2 px-2  font-medium">
                                 {ele.title}
                               </h6>
-                              <p className="px-2  smallText font-light text-black">
+                              <p className="px-2  text-sm font-light text-black">
                                 {ele.desig}
                               </p>
                             </div>
-
                           </div>
                         </div>
                       </SwiperSlide>
@@ -429,17 +498,19 @@ export default function Infravisionaries() {
                   })}
                 </Swiper>
               </div>
-              <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-4 2xl:mt-1">
+              <div className="flex pt-3 flex-wrap gap-5 mt-4 justify-start md:gap-4 2xl:mt-1">
                 <button
-                  className={`swiper-prev-btn-members cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${isFirstSlide ? "opacity-40" : ""
-                }`}
+                  className={`swiper-prev-btn-members cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                    isFirstSlide ? "opacity-40" : ""
+                  }`}
                   aria-label="Previous slide"
                 >
-                  <GoArrowLeft/>
+                  <GoArrowLeft />
                 </button>
                 <button
-                  className={`swiper-next-btn-members cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${isLastSlide ? "opacity-40" : ""
-                }`}
+                  className={`swiper-next-btn-members cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
+                    isLastSlide ? "opacity-40" : ""
+                  }`}
                   aria-label="Next slide"
                 >
                   <GoArrowRight />
@@ -448,79 +519,68 @@ export default function Infravisionaries() {
             </div>
           </div>
 
-
-
           {/* MObile View */}
-         <div className="md:hidden block pb-7">
+          <div className="md:hidden block pb-7">
             <div className="py-5">
               <button
                 className="text-white text-md text-nowrap lg:text-xl relative font-medium"
                 onClick={() => setdata("trustee")}
               >
                 Trustees
-               
               </button>
             </div>
             <div className="w-full  overflow-hidden">
-            <Swiper
-            modules={[ Navigation]}
-            
-            className=""
-            spaceBetween={20}
-            grabCursor
-            onSlideChange={handleSlideChange}
-            slideToClickedSlide
-            slidesPerView={1.1}
-           
-            navigation={{
-              prevEl: ".prevbtntrustee",
-              nextEl: ".nextbtntrustee",
-            }}
-            breakpoints={{
-              640: {
-                slidesPerView: 1.5,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 40,
-              },
-              1024: {
-                slidesPerView: 2.5,
-                spaceBetween: 50,
-              },
-              1280: {
-                spaceBetween: 20,
-                slidesPerView: 3.1,
-              },
-              1536: {
-                spaceBetween: 30,
-                slidesPerView: 3.4,
-              },
-            }}
-          >
+              <Swiper
+                modules={[Navigation]}
+                navigation={{
+                  prevEl: ".prevbtntrustee",
+                  nextEl: ".nextbtntrustee",
+                }}
+                centeredSlides={true}
+                grabCursor
+                slideToClickedSlide
+                speed={2000}
+                autoplay={{
+                  delay: 300,
+                  disableOnInteraction: false,
+                  reverseDirection: true,
+                }}
+                spaceBetween={20}
+                slidesPerView={1.1}
+                breakpoints={{
+                  500: { slidesPerView: 1.1, spaceBetween: 20 },
+                  640: { slidesPerView: 1.3, spaceBetween: 20 },
+                  768: { slidesPerView: 1.5, spaceBetween: 30 },
+                  1024: { slidesPerView: 1.8, spaceBetween: 30 },
+                  1280: { slidesPerView: 2.3, spaceBetween: 40 },
+                  1536: { slidesPerView: 2.5, spaceBetween: 50 },
+                }}
+              >
                 {trustee.map((ele, index) => (
-                  <SwiperSlide key={index} className=" !w-auto">
-                    {" "}
-                    <div className="flex realtive flex-col w-[19rem] h-[19rem] ">
+                  <SwiperSlide key={index}>
+                    <div className="flex relative flex-col w-[17rem] h-[19rem] mx-auto">
                       <Image
                         src={ele.image}
                         alt={ele.title}
-                        className="w-full h-full object-cover "
+                        className="w-full h-full object-cover rounded"
                       />
-                      <div className="absolute right-5 bottom-17  bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
-                        <div className="w-[2rem] h-[2rem] ">
+
+                      {/* LinkedIn Icon */}
+                      <div className="absolute right-4 bottom-20 bg-white w-[3rem] h-[3rem] rounded-full flex justify-center items-center shadow-md">
+                        <div className="w-[2rem] h-[2rem]">
                           <Image
                             src={linkedinSvg}
-                            alt={ele.title}
-                            className="object-cover w-full h-full my-auto"
+                            alt={`${ele.title} LinkedIn`}
+                            className="object-contain w-full h-full"
                           />
                         </div>
                       </div>
+
+                      {/* Info Card */}
                       <div className="absolute bottom-0 left-0">
-                        <div className="bg-white w-[15rem] h-[5.5rem] rounded">
-                          <h6 className="pt-2 px-1 font-medium">{ele.title}</h6>
-                          <p className="smallText px-1  font-light text-black">
+                        <div className="bg-white w-[15rem] h-[5.5rem] rounded flex flex-col justify-center ps-3 shadow-md">
+                          <h6 className="smallText font-medium">{ele.title}</h6>
+                          <p className="text-sm font-light text-black">
                             {ele.desig}
                           </p>
                         </div>
@@ -530,7 +590,8 @@ export default function Infravisionaries() {
                 ))}
               </Swiper>
             </div>
-          <div className=" flex pt-5 flex-wrap gap-3 mt-4 justify-start  2xl:mt-1">
+
+            <div className=" flex pt-3 flex-wrap gap-3 mt-4 justify-start  2xl:mt-1">
               <button
                 className={`prevbtntrustee flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                   isFirstSlide ? "opacity-40" : ""
@@ -548,9 +609,9 @@ export default function Infravisionaries() {
                 <GoArrowRight />
               </button>
             </div>
-          </div> 
+          </div>
 
-          <div className="md:hidden block pb-7">
+           <div className="md:hidden block pb-7">
             <div className="py-5  ">
               <button className="text-white text-md text-nowrap lg:text-xl relative font-medium">
                 Distinguished Fellows
@@ -565,7 +626,7 @@ export default function Infravisionaries() {
                 onSlideChange={handleSlideChange}
                 slideToClickedSlide
                 slidesPerView={1.1}
-              
+                centeredSlides={true}
                 navigation={{
                   prevEl: ".prevbtnfellows",
                   nextEl: ".nextbtnfellows",
@@ -612,9 +673,9 @@ export default function Infravisionaries() {
                         </div>
                       </div>
                       <div className="absolute bottom-0 left-0">
-                        <div className="bg-white w-[15rem] h-[5.5rem] rounded">
-                          <h6 className="pt-2 px-1 font-medium">{ele.title}</h6>
-                          <p className="px-1 smallText font-light text-black">
+                      <div className="bg-white w-[15rem] h-[5.5rem] rounded  flex flex-col  justify-center ps-3">
+                          <h6 className=" smallText  font-medium">{ele.title}</h6>
+                          <p className="text-sm   font-light text-black">
                             {ele.desig}
                           </p>
                         </div>
@@ -624,7 +685,7 @@ export default function Infravisionaries() {
                 ))}
               </Swiper>
             </div>
-            <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-8 2xl:mt-1">
+            <div className="flex pt-3 flex-wrap gap-3 mt-4 justify-start md:gap-8 2xl:mt-1">
               <button
                 className={`prevbtnfellows flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                   isFirstSlide ? "opacity-40" : ""
@@ -642,9 +703,9 @@ export default function Infravisionaries() {
                 <GoArrowRight />
               </button>
             </div>
-          </div>
+          </div> 
 
-          <div className="md:hidden block pb-7">
+         <div className="md:hidden block pb-7">
             <div className="py-5">
               <button className="text-white text-md text-nowrap lg:text-xl relative font-medium">
                 Advisory Council
@@ -660,7 +721,7 @@ export default function Infravisionaries() {
                 onSlideChange={handleSlideChange}
                 slideToClickedSlide
                 slidesPerView={1.1}
-              
+                centeredSlides={true}
                 navigation={{
                   prevEl: ".prevbtnadvisory",
                   nextEl: ".nextbtnadvisory",
@@ -707,9 +768,9 @@ export default function Infravisionaries() {
                         </div>
                       </div>
                       <div className="absolute bottom-0 left-0">
-                        <div className="bg-white w-[15rem] h-[5.5rem] rounded">
-                          <h6 className="pt-2 px-1 font-medium">{ele.title}</h6>
-                          <p className="px-1 smallText font-light text-black">
+                      <div className="bg-white w-[15rem] h-[5.5rem] rounded  flex flex-col  justify-center ps-3">
+                          <h6 className=" smallText  font-medium">{ele.title}</h6>
+                          <p className="text-sm   font-light text-black">
                             {ele.desig}
                           </p>
                         </div>
@@ -719,7 +780,7 @@ export default function Infravisionaries() {
                 ))}
               </Swiper>
             </div>
-            <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-8 2xl:mt-1">
+            <div className="flex pt-3 flex-wrap gap-3 mt-4 justify-start md:gap-8 2xl:mt-1">
               <button
                 className={`prevbtnadvisory flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                   isFirstSlide ? "opacity-40" : ""
@@ -737,9 +798,9 @@ export default function Infravisionaries() {
                 <GoArrowRight />
               </button>
             </div>
-          </div>
+          </div> 
 
-          <div className="md:hidden block ">
+        <div className="md:hidden block ">
             <div className="py-5">
               <button className="text-white text-md text-nowrap lg:text-xl relative font-medium">
                 Team
@@ -754,7 +815,7 @@ export default function Infravisionaries() {
                 onSlideChange={handleSlideChange}
                 slideToClickedSlide
                 slidesPerView={1.1}
-              
+                centeredSlides={true}
                 navigation={{
                   prevEl: ".prevbtnteam",
                   nextEl: ".nextbtnteam",
@@ -801,9 +862,9 @@ export default function Infravisionaries() {
                         </div>
                       </div>
                       <div className="absolute bottom-0 left-0">
-                        <div className="bg-white w-[15rem] h-[5.5rem] rounded">
-                          <h6 className="pt-2 px-1 font-medium">{ele.title}</h6>
-                          <p className="px-1 smallText font-light text-black">
+                      <div className="bg-white w-[15rem] h-[5.5rem] rounded  flex flex-col  justify-center ps-3">
+                          <h6 className=" smallText  font-medium">{ele.title}</h6>
+                          <p className="text-sm   font-light text-black">
                             {ele.desig}
                           </p>
                         </div>
@@ -813,7 +874,7 @@ export default function Infravisionaries() {
                 ))}
               </Swiper>
             </div>
-            <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-8 2xl:mt-1">
+            <div className="flex pt-3 flex-wrap gap-3 mt-4 justify-start md:gap-8 2xl:mt-1">
               <button
                 className={`prevbtnteam flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${
                   isFirstSlide ? "opacity-40" : ""
@@ -831,9 +892,10 @@ export default function Infravisionaries() {
                 <GoArrowRight />
               </button>
             </div>
-          </div>
+          </div> 
         </div>
       </section>
     </>
   );
 }
+

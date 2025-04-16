@@ -18,7 +18,7 @@ export default function Banner() {
               />
             </div>
           </div>
-          <div className="sm:hidden block h-[38rem] ">
+          <div className="sm:hidden block h-[46rem] ">
             <Image
               src={Bannermobile}
               alt="InfraVison Fondation"
@@ -26,7 +26,7 @@ export default function Banner() {
             />
           </div>
 
-          <div className="absolute  top-[21%]  lg:top-[23%]  xl:top-[23%] 2xl:top-[20%] left-1/2 -translate-x-1/2  mx-auto max-w-screen-2xl px-2 sm:px-4 w-full lg:w-11/12">
+          <div className="absolute  top-[21%]  lg:top-[23%]  xl:top-[23%] 2xl:top-[20%] left-[53%] md:left-1/2 -translate-x-1/2  mx-auto max-w-screen-2xl px-2 sm:px-4 w-full lg:w-11/12">
             <div className="w-[80%] lg:w-full ">
               <h1 className="tracking-[-4%] font-light txt-black/90 ">
                 {" "}
@@ -39,14 +39,14 @@ export default function Banner() {
                 nation-building{" "}
               </h1>
             </div>
-            <div className="w-full  sm:w-[50%] xl:w-[40%] py-2 xl:py-4 ">
+            <div className="w-[80%]  sm:w-[50%] xl:w-[40%] py-2 xl:py-4 ">
               <h5 className="text-black ">
                 We help shape India’s infrastructure policies with neutral
                 fact-based insights, analysis, and discourse.
               </h5>
             </div>
           
-            <div className="flex gap-2 lg:gap-4 items-center justify-center group  w-fit">
+            <div className="flex gap-2 pt-4 lg:gap-4 items-center justify-center group  w-fit">
                 <h5 className="font-medium">Know more</h5>
                  <button
                   className={`rounded-sm p-1 relative md:p-2 border-2 border-pink overflow-hidden   w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300  `}

@@ -67,7 +67,7 @@ export default function CardSlider() {
           </Swiper>
         </div>
       </div>
-      <div className="flex lg:hidden flex-wrap gap-5 justify-center mt-4 lg:justify-end md:gap-4 2xl:mt-1 w-container">
+      <div className="flex lg:hidden flex-wrap gap-3 justify-start mt-4 lg:justify-end md:gap-4 2xl:mt-1">
         <button
           className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white ${
             isFirstSlide ? "opacity-40" : ""

@@ -56,7 +56,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
+                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/who-we-are"
                         text="Who we are"
                       />
@@ -65,7 +65,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
+                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/vision-mission"
                         text="Vision and Mission"
                       />
@@ -74,7 +74,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
+                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/the-infravisionaries"
                         text="The Infravisionaries"
                       />
@@ -83,7 +83,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
+                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/collaborate-with-us"
                         text="Collaborate with us"
                       />
@@ -104,7 +104,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
+                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/infraShakti-awards"
                         text="InfraShakti Awards"
                       />
@@ -113,7 +113,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
+                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/infraKatha"
                         text="InfraKatha"
                       />
@@ -122,7 +122,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
+                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/caira"
                         text="CAIRA"
                       />
@@ -143,7 +143,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
+                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/blogs"
                         text="Blogs"
                       />
@@ -153,7 +153,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
+                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/who-we-are"
                         text="Who we are"
                       />
@@ -162,7 +162,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
+                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/news-and-media"
                         text="News and media"
                       />
@@ -171,7 +171,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
+                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/videos"
                         text="Videos"
                       />
@@ -192,7 +192,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
+                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/research-papers"
                         text="Research papers"
                       />
@@ -201,7 +201,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
+                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/white-papers"
                         text="White papers"
                       />
@@ -210,7 +210,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
+                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/background-papers"
                         text="Background papers"
                       />
@@ -219,7 +219,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
+                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/newsletters"
                         text="Newsletters"
                       />
@@ -232,12 +232,13 @@ const footer = () => {
                   <div className="w-3 h-3 rounded-full bg-darkgray opacity-30"></div>
                   <span className="text-black text-xl">Events</span>
                 </li>
-
-                <li>
+                <li className="md:pt-2 xl:pt-4">
+                  <ul>
+                  <li>
                   <TextAnchor
                     color="dark"
                     size="base"
-                    className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
+                    className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                     // href="/upcoming-events"
                     text="Upcoming events"
                   />
@@ -246,11 +247,14 @@ const footer = () => {
                   <TextAnchor
                     color="dark"
                     size="base"
-                    className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
+                    className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                     // href="/past-events"
                     text="Past events"
                   />
                 </li>
+                  </ul>
+                </li>
+                
               </ul>
             </div>
             <div className="">
@@ -293,11 +297,11 @@ const footer = () => {
           </div>
           <div className="flex sm:flex-row  flex-col justify-between py-4 lg:pt-9">
             <div>
-              <p className="text-darkgray/80 md:text-start text-center smallText">
+              <p className="text-darkgray/80 text-start  smallText">
                 Copyright 2025. All rights reserved.
               </p>
             </div>
-            <div className="flex flex-row gap-5  justify-center items-center pt-5 sm:pt-0">
+            <div className="flex flex-row gap-5 d  justify-center items-center pt-5 sm:pt-0">
               <h5 className="text-darkgray/60 mr-5 sm:block hidden">
                 Follow us
               </h5>

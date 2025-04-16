@@ -68,14 +68,20 @@ export default function Updates() {
             // slideToClickedSlide
             speed={500} 
             spaceBetween={20}
-            slidesPerView={1.1}
+            slidesPerView={1.5}
             // centeredSlides={true}
          
             // autoplay={{
             //   delay: 2000,
             //   disableOnInteraction: false, // important if you want autoplay to resume after click
             // }}
-            breakpoints={{
+            breakpoints={{ 
+              200:{
+                slidesPerView: 1.2
+              },
+              435:{
+                slidesPerView: 1.2
+              },
               500: { slidesPerView: 2  },
               768: { slidesPerView: 2.2,  },
               1024: { slidesPerView: 2.9,  },
@@ -85,15 +91,16 @@ export default function Updates() {
             onSlideChange={handleSlideChange}
           >
             {EventsDetails.map((ele, index) => (
-              <SwiperSlide key={index} className="!w-fit group">
-                <div className="flex flex-row gap-4 bg-[#0000005e]  backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4 w-[25rem]  md:w-[28rem]    xl:w-[39rem] xl:h-[14rem] group-hover:bg-white">
+              <SwiperSlide key={index} className="!w-fit group ">
+              <Link href={ele.link} target="_blank">
+                <div className="flex flex-row gap-4 bg-[#0000005e]  backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4 w-[22rem] sm:w-[24rem]  xl:w-[40rem]  h-[9rem]   xl:h-[14rem] group-hover:bg-white">
                 
-                  <div className="w-[9rem]  h-[8rem] md:w-[14rem] md:h-[9rem]   xl:w-[22rem] xl:h-[12rem] relative ">
+                  <div className="w-[6rem]  h-[8rem] md:w-[14rem] md:h-[8rem]   xl:w-[22rem] xl:h-[12rem] relative ">
                     <Image
                       src={ele.image}
                       alt={ele.title}
                       fill
-                      className="object-cover rounded"
+                      className="object-cover object-left rounded"
                     />
                   </div>
                   <div className="my-auto w-[60%]">
@@ -102,8 +109,8 @@ export default function Updates() {
                       <p className="font-light text-white group-hover:text-black">{ele.category}</p>
                     </div>
                     <div className="py-2">
-                      <h5 className="text-white group-hover:text-black  group-hover:font-medium truncate xl:overflow-visible xl:whitespace-normal">
-                        {ele.title}
+                      <h5 className="text-white font-medium lg:font-normal group-hover:text-black   truncate xl:overflow-visible xl:whitespace-normal">
+                        {ele.title} 
                       </h5>
                     </div>
                     {/* <HeroBtn
@@ -118,17 +125,18 @@ export default function Updates() {
                     /> */}
                 <div className="flex gap-2 lg:gap-4 items-center justify-center group  w-fit">
                 <h5 className="smallText text-white group-hover:text-black">{ele.btnTitle}</h5>
-                <Link href={ele.link} target="_blank">
+             
                 <button
                   className={`rounded-sm p-1 relative overflow-hidden md:p-2 border-2 bg-white border-white group-hover:border-transparent   w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 group-hover:bg-pink `}
                 >
                    <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
                    <GoArrowRight className={`   text-pink  group-hover:text-white text-2xl z-[2]`}/>
                 </button>
-                </Link>
+               
             </div>
                   </div>
                 </div>
+               </Link>
               </SwiperSlide>
             ))}
           </Swiper>

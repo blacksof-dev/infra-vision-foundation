@@ -7,6 +7,7 @@ import Card from "@/_components/molecules/cardTemplate";
 import workshop from "@/../public/assets/home/workshop.png";
 import rail from "@/../public/assets/home/rail.png";
 import agriExports from "@/../public/assets/home/agriExports.png";
+import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 
 export default function Publication() {
   return (
@@ -143,7 +144,7 @@ function PublicationSlider() {
   };
   return (
     <>
-      <div className="pt-5 md:pt-5 ">
+      <div className="pt-2 md:pt-5 ">
         <div className="">
           <Swiper
             modules={[Navigation, Pagination]}
@@ -182,14 +183,14 @@ function PublicationSlider() {
           </Swiper>
         </div>
       </div>
-      <div className="flex lg:hidden flex-wrap gap-5 justify-center mt-4 lg:justify-end md:gap-8 2xl:mt-1 w-container">
+      <div className="flex lg:hidden flex-wrap gap-3 justify-start mt-2 lg:justify-end md:gap-8 2xl:mt-1">
         <button
           className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white ${
             isFirstSlide ? "opacity-40" : ""
           }`}
           aria-label="Previous slide"
         >
-          <FaAngleLeft />
+          <GoArrowLeft />
         </button>
         <button
           className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white ${
@@ -197,7 +198,7 @@ function PublicationSlider() {
           }`}
           aria-label="Next slide"
         >
-          <FaAngleRight />
+          <GoArrowRight />
         </button>
       </div>
     </>

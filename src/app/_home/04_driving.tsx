@@ -170,10 +170,8 @@ export default function Driving() {
             <div className="">
               <h1 className="tracking-[-3%] font-light text-black py-4">
                 Driving our cause
-                <br /> to &nbsp;
-                <span className="font-medium tracking-[-3%] text-black">
-                  impact
-                </span>
+                 to <span className="font-medium tracking-[-3%] text-black">impact</span>
+                
               </h1>
 
               <p>
@@ -227,14 +225,14 @@ export default function Driving() {
 function MobileView({ logo, title, desc, image }: Awardsdata) {
   return (
     <>
-      <section>
-        <div className="pt-10">
-          <Image src={logo} alt="CIARA logo" className="" />
+      <section className="pt-5">
+        <div className="pt-5 ">
+          <Image src={logo} alt="CIARA logo" className="py-4" />
         </div>
         <div>
-          <h6 className="text-pink py-4 font-medium tracking-[1%]">{title}</h6>
-          <p className="tracking-[-0.2px] text-[#212222]">{desc}</p>
-          <div className="py-3">
+          <h6 className="text-pink py-2 font-medium tracking-[1%]">{title}</h6>
+          <p className="smallText tracking-[-0.2px]  text-[#212222]">{desc}</p>
+          <div className="py-4">
             <Image src={image} alt={title} className="" />
           </div>
           <div className="">

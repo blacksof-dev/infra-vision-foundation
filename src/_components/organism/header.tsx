@@ -28,17 +28,17 @@ export default function Header() {
   }, [isMenuOpen]);
   return (
     <>
-  <nav className="absolute w-full z-[9999] top-3 left-0 xl:top-8 ">
-  <div className=" w-container relative ">
+  <nav className="absolute w-[99dvw] overflow-hidden  z-[9999] top-3 left-2  xl:top-8 ">
+  <div className="w-container  relative overflow-hidden ">
     <div className="flex flex-row justify-between  xl:gap-10 items-center  w-full">
 
       {/* Logo */}
-      <div className="w-[10rem] 2xl:w-[14rem]  ">
+      <div className="w-[11rem] 2xl:w-[14rem]  ">
         <Link href="/"><Image src={logo} className="" alt="Infra Vision Foundation" /></Link>
       </div>
 
       {/* Desktop Navigation */}
-      <div className="hidden xl:flex  flex-row  xl:gap-5 2xl:gap-6 3xl:gap-8 items-center ">
+      <div className="hidden xl:flex   flex-row  xl:gap-5 2xl:gap-6 3xl:gap-8 items-center ">
         <ul>
           
           <li className="">
@@ -141,14 +141,14 @@ export default function Header() {
       {/* Mobile Hamburger Menu */}
       <div className="xl:hidden ">
         <div>
-           <button  onClick={toggleMenu} ><RxHamburgerMenu className="text-xl mb-10"/></button>
+           <button  onClick={toggleMenu} ><RxHamburgerMenu className="text-3xl  me-4 "/></button>
         </div>
       
-       {isMenuOpen && (
-        <div className="absolute top-0 left-0 z-50">
+       {/* {isMenuOpen && (
+        <div className="absolute  top-0 left-0 z-50">
           <Mobilenav />
         </div>
-      )}
+      )} */}
       </div>
 
     </div>

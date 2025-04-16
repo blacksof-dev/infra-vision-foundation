@@ -1,15 +1,12 @@
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
-import playSvg from "@/../public/assets/globals/playSvg.svg";
-import jaganShah from "@/../public/assets/home/decoding/jaganShah.jpg";
-import geetamTiwari from "@/../public/assets/home/decoding/geetamTiwari.jpg";
-import profRaghuram from "@/../public/assets/home/decoding/profRaghuram.jpg";
-import rajivRanjanMishra from "@/../public/assets/home/decoding/rajivRanjanMishra.jpg";
+
+
 
 
 import jaganShahMobileImg from "@/../public/assets/home/decoding/jaganShahMobileImg.svg";
@@ -17,7 +14,10 @@ import geetamTiwariMobileImg from "@/../public/assets/home/decoding/geetamTiwari
 import profRaghuramMobileImg from "@/../public/assets/home/decoding/profRaghuramMobileImg.svg";
 import rajivRanjanMishraMobileImg from "@/../public/assets/home/decoding/rajivRanjanMishraMobileImg.svg";
 
-
+import Jaganshah from "@/../public/assets/home/decoding/Jaganshah.svg";
+import GeetamTiwari from "@/../public/assets/home/decoding/GeetamTiwari.svg";
+import ProfGRaghuram from "@/../public/assets/home/decoding/ProfGRaghuram.svg";
+import RajivRanjanMishra from "@/../public/assets/home/decoding/RajivRanjanMishra.svg";
 
 export default function LinkedinCard() {
   return (
@@ -26,15 +26,17 @@ export default function LinkedinCard() {
       <div className="absolute top-0 right-0 h-full w-[20%] " />
 
       <Swiper
-        modules={[Navigation, Pagination]}
+        modules={[Navigation]}
         navigation={{
           prevEl: ".swiper-solution-prev-decoding",
           nextEl: ".swiper-solution-next-decoding",
         }}
+       
         loop
         grabCursor
         slideToClickedSlide
         speed={2000}
+        
         autoplay={{
           delay: 300,
           disableOnInteraction: false,
@@ -65,7 +67,7 @@ export default function LinkedinCard() {
         ))}
       </Swiper>
     </div>
-        <div className="flex lg:hidden flex-wrap gap-3  justify-start mt-9  md:gap-8 2xl:mt-1 w-container">
+        <div className="flex lg:hidden flex-wrap gap-3  justify-start mt-7  md:gap-8 2xl:mt-1 ">
             <button
               className={`swiper-solution-prev-decoding flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white `}
               aria-label="Previous slide"
@@ -86,16 +88,16 @@ export default function LinkedinCard() {
 
 const cardData = [
   {
-    image: jaganShah,
-    mobileImg:jaganShahMobileImg,
+    image: jaganShahMobileImg,
+    mobileImg:Jaganshah,
     title: "Air Pollution: The solution has to be multi-sectoral",
     subtitle: "Jagan shah",
     desc: "Premier Urbanist, Senior expert in urban development policy and Distinguished Fellow,The Infravision Foundation",
     subdesc: "",
   },
   {
-    image: geetamTiwari,
-    mobileImg:geetamTiwariMobileImg,
+    image: geetamTiwariMobileImg,
+    mobileImg:GeetamTiwari,
     title:
       "Selecting the Appropriate Urban Transport System for India's Cities",
     subtitle: "Professor Geetam Tiwari",
@@ -103,8 +105,8 @@ const cardData = [
     subdesc: "",
   },
   {
-    image: profRaghuram,
-    mobileImg:profRaghuramMobileImg,
+    image: profRaghuramMobileImg,
+    mobileImg:ProfGRaghuram,
     title: "Indian Railways : Why Innovation Matters",
     subtitle: "Prof.G Raghuram",
     desc: "Member, Council of Advisors, TIF, and Former Director, IIM Bangalore",
@@ -112,8 +114,8 @@ const cardData = [
   },
 
   {
-    image: rajivRanjanMishra,
-    mobileImg:rajivRanjanMishraMobileImg,
+    image: rajivRanjanMishraMobileImg,
+    mobileImg:RajivRanjanMishra,
     title: "How to save our hill cities",
     subtitle: "Rajiv Ranjan Mishra",
     desc: "Distinguished Fellow, The Infravision Foundation, and former Director General, National Mission for Clean Ganga",
