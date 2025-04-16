@@ -3,6 +3,7 @@ import { BorderGrayHeroBtn, HeroBtn } from "@/_components/atoms/buttons";
 import Image from "next/image";
 import type { Swiper as SwiperClass } from 'swiper/types';
 import publications from "@/../public/assets/home/publications.png";
+import publicationDesktop from "@/../public/assets/home/publicationDesktop.png";
 import Card from "@/_components/molecules/cardTemplate";
 import workshop from "@/../public/assets/home/workshop.png";
 import rail from "@/../public/assets/home/rail.png";
@@ -43,7 +44,7 @@ export default function Publication() {
           <div>
             <div className="lg:block pt-5  hidden relative">
               <Image
-                src={publications}
+                src={publicationDesktop}
                 alt="Featured publications"
                 className="w-full h-full object-cover rounded"
               />

@@ -8,9 +8,9 @@ import { Navigation, Pagination } from "swiper/modules";
 import { useState } from "react";
 
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
-import budgetSignals from "@/../public/assets/home/budgetSignals.jpg";
-import infraOutlays from "@/../public/assets/home/infraOutlays.jpg";
-import groupTaxation from "@/../public/assets/home/groupTaxation.jpg";
+import budgetSignals from "@/../public/assets/home/budgetSignals.png";
+import infraOutlays from "@/../public/assets/home/infraOutlays.png";
+import groupTaxation from "@/../public/assets/home/groupTaxation.png";
 import Card from "./cardTemplate";
 // import workshop from "@/../public/assets/home/workshop.png";
 // import rail from "@/../public/assets/home/rail.png";
