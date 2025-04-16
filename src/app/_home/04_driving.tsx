@@ -57,7 +57,7 @@ export default function Driving() {
                 <span className="font-medium  text-black">&nbsp;impact</span>
               </h1>
             </div>
-            <div className="w-[50%]  xl:w-[43%] 2xl:w-[40%] ">
+            <div className="w-[50%]  xl:w-[43%] 2xl:w-[40.5%] ">
               <h6 className="text-black tracking-[1%]">
                 Elevating and expanding the nation’s infrastructure footprint
                 through intellect and advocacy demands collaboration and
@@ -80,7 +80,7 @@ export default function Driving() {
               </div>
 
               <div className="w-[50%]  xl:border-l-1 xl:border-darkgray/40 ">
-                <div className="flex flex-row gap-16  w-[75%] ms-11 xl:ms-16 2xl:ms-28 ">
+                <div className="flex flex-row gap-16  w-[75%] ms-11 xl:ms-16 2xl:ms-27 ">
                   <div className=" group">
                     <button
                       className={`text-nowrap relative text-xl tracking-[-1%] ${
@@ -125,7 +125,7 @@ export default function Driving() {
                 </div>
                  
                 </div>
-                <div  className="ms-11 xl:ms-16 2xl:ms-28  my-auto h-full flex flex-col justify-center">
+                <div  className="ms-11 xl:ms-16 2xl:ms-27  my-auto h-full flex flex-col justify-center">
                   <div className="">
                     <Image
                       src={AwardsDetails[data].logo}

@@ -536,7 +536,7 @@ export default function Infravisionaries() {
                   prevEl: ".prevbtntrustee",
                   nextEl: ".nextbtntrustee",
                 }}
-                centeredSlides={true}
+                centeredSlides={false}
                 grabCursor
                 slideToClickedSlide
                 speed={2000}
@@ -557,36 +557,33 @@ export default function Infravisionaries() {
                 }}
               >
                 {trustee.map((ele, index) => (
-                  <SwiperSlide key={index}>
-                    <div className="flex relative flex-col w-[17rem] h-[19rem] mx-auto">
-                      <Image
-                        src={ele.image}
-                        alt={ele.title}
-                        className="w-full h-full object-cover rounded"
-                      />
-
-                      {/* LinkedIn Icon */}
-                      <div className="absolute right-4 bottom-20 bg-white w-[3rem] h-[3rem] rounded-full flex justify-center items-center shadow-md">
-                        <div className="w-[2rem] h-[2rem]">
-                          <Image
-                            src={linkedinSvg}
-                            alt={`${ele.title} LinkedIn`}
-                            className="object-contain w-full h-full"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Info Card */}
-                      <div className="absolute bottom-0 left-0">
-                        <div className="bg-white w-[15rem] h-[5.5rem] rounded flex flex-col justify-center ps-3 shadow-md">
-                          <h6 className="smallText font-medium">{ele.title}</h6>
-                          <p className="text-sm font-light text-black">
-                            {ele.desig}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </SwiperSlide>
+                   <SwiperSlide key={index} className="!w-auto">
+                   {" "}
+                   <div className="flex realtive flex-col w-[19rem] h-[19rem] ">
+                     <Image
+                       src={ele.image}
+                       alt={ele.title}
+                       className="w-full h-full object-cover "
+                     />
+                     <div className="absolute right-5 bottom-17  bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                       <div className="w-[2rem] h-[2rem] ">
+                         <Image
+                           src={linkedinSvg}
+                           alt={ele.title}
+                           className="object-cover w-full h-full my-auto"
+                         />
+                       </div>
+                     </div>
+                     <div className="absolute bottom-0 left-0">
+                     <div className="bg-white w-[15rem] h-[5.5rem] rounded  flex flex-col  justify-center ps-3">
+                         <h6 className=" smallText  font-medium">{ele.title}</h6>
+                         <p className="text-sm   font-light text-black">
+                           {ele.desig}
+                         </p>
+                       </div>
+                     </div>
+                   </div>
+                 </SwiperSlide>
                 ))}
               </Swiper>
             </div>

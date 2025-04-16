@@ -56,7 +56,7 @@ export default function LinkedinCard() {
           <SwiperSlide key={index}>
             <section className="mt-3">
               <div className="relative  lg:block hidden">
-                 <Image src={ele.mobileImg} alt={ele.title} className="w-full h-full" />
+                 <Image src={ele.image} alt={ele.title} className="w-full h-full" />
              
               </div>
               <div className="lg:hidden block">
