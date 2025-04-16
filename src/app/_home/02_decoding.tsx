@@ -36,7 +36,7 @@ export default function Decoding() {
               <LinkedinCard />
             </div>
             <div className="w-full  lg:w-[50%] ">
-              <div className="pt-1  lg:border-l-1 lg:border-darkgray/40 lg:px-5 xl:px-16">
+              <div className="pt-1  lg:border-l-1 lg:border-darkgray/40 lg:px-5 xl:px-11">
                 <div>
                   <h3 className="text-black tracking-[-2%]">
                     Infrastructure is all around us, yet its impact often goes
@@ -54,7 +54,7 @@ export default function Decoding() {
                 </div>
 
                 <div className="group">
-                  <Link href="https://www.youtube.com/@theinfravisionfoundation" target="_blank">
+                  <Link href="https://www.youtube.com/playlist?list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em" target="_blank">
                     <button className="text-black text-md lg:text-xl  cursor-pointer relative font-medium flex flex-row gap-2">
                       <Image src={youtubeSvg} alt="Youtube Icon" />
                       Explore the playlist
@@ -62,7 +62,7 @@ export default function Decoding() {
                     </button>
                   </Link>
                 </div>
-                <div className="lg:flex  hidden  flex-wrap gap-5 justify-center  lg:justify-start md:gap-5 pt-9">
+                <div className="lg:flex  hidden  flex-wrap gap-5 justify-center  lg:justify-start md:gap-4 pt-9">
                   <button
                     className={`swiper-solution-prev-decoding flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white`}
                     aria-label="Previous slide"

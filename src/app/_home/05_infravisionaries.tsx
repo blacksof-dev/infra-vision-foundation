@@ -32,6 +32,7 @@ import SNSubrahmanyan from "@/../public/assets/home/advisory/SNSubrahmanyan.jpg"
 import SunilMathur from "@/../public/assets/home/advisory/SunilMathur.jpg";
 import DilipCherian from "@/../public/assets/home/advisory/DilipCherian.jpg";
 import ManojKSingh from "@/../public/assets/home/advisory/ManojKSingh.jpg";
+import VishalKampani from "@/../public/assets/home/advisory/VishalKampani.png";
 
 import AkhileshTilotia from "@/../public/assets/home/fellows/AkhileshTilotia.jpg";
 import rajajiMeshram from "@/../public/assets/home/fellows/rajajiMeshram.png";
@@ -77,38 +78,8 @@ const trustee = [
 
 const advisory = [
   {
-    image: Arun,
-    title: "Arun Maira",
-    desig: "Member, Council of Advisors",
-  },
-  {
-    image: ArunNanda,
-    title: "Arun Nanda",
-    desig: "Member, Council of Advisors",
-  },
-  {
-    image: AshishDhawan,
-    title: "Ashish Dhawan",
-    desig: "Member, Council of Advisors",
-  },
-  {
-    image: CyrilShroff,
-    title: "Cyril Shroff",
-    desig: "Member, Council of Advisors",
-  },
-  {
-    image: DKSen,
-    title: "D. K. Sen",
-    desig: "Member, Council of Advisors",
-  },
-  {
-    image: JanmejayaKSinha,
-    title: "Janmejaya K. Sinha",
-    desig: "Member, Council of Advisors",
-  },
-  {
-    image: GeetanjaliKirloskar,
-    title: "Geetanjali Kirloskar",
+    image: NasserMunjee,
+    title: "Nasser Munjee",
     desig: "Member, Council of Advisors",
   },
   {
@@ -117,13 +88,8 @@ const advisory = [
     desig: "Member, Council of Advisors",
   },
   {
-    image: jagan,
-    title: "Jagan Shah",
-    desig: "Member, Council of Advisors",
-  },
-  {
-    image: khurshed,
-    title: "Khurshed",
+    image: JanmejayaKSinha,
+    title: "Janmejaya K. Sinha",
     desig: "Member, Council of Advisors",
   },
   {
@@ -132,23 +98,29 @@ const advisory = [
     desig: "Member, Council of Advisors",
   },
   {
-    image: ProfessorGRaghuram,
-    title: "Professor G. Raghuram",
-    desig: "Member, Council of Advisors",
-  },
-  {
-    image: NasserMunjee,
-    title: "Nasser Munjee",
-    desig: "Member, Council of Advisors",
-  },
-  {
     image: RajnishKumar,
     title: "Rajnish Kumar",
     desig: "Member, Council of Advisors",
   },
   {
-    image: SameerGupta,
-    title: "Sameer Gupta",
+    image: ProfessorGRaghuram,
+    title: "Professor G. Raghuram",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: ManojKSingh,
+    title: "Manoj K. Singh",
+    desig: "Member, Council of Advisors",
+  },
+ 
+  {
+    image: SunilMathur,
+    title: "Sunil Mathur",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: AshishDhawan,
+    title: "Ashish Dhawan",
     desig: "Member, Council of Advisors",
   },
   {
@@ -156,9 +128,27 @@ const advisory = [
     title: "S. N. Subrahmanyan",
     desig: "Member, Council of Advisors",
   },
+
   {
-    image: SunilMathur,
-    title: "Sunil Mathur",
+    image: SameerGupta,
+    title: "Sameer Gupta",
+    desig: "Member, Council of Advisors",
+  },
+  {
+    image: DKSen,
+    title: "D. K. Sen",
+    desig: "Member, Council of Advisors",
+  },
+  
+  {
+    image: ArunNanda,
+    title: "Arun Nanda",
+    desig: "Member, Council of Advisors",
+  },
+
+ {
+    image: Arun,
+    title: "Arun Maira",
     desig: "Member, Council of Advisors",
   },
   {
@@ -167,22 +157,49 @@ const advisory = [
     desig: "Member, Council of Advisors",
   },
   {
-    image: ManojKSingh,
-    title: "Manoj K. Singh",
+    image: GeetanjaliKirloskar,
+    title: "Geetanjali Kirloskar",
     desig: "Member, Council of Advisors",
   },
+  {
+    image: VishalKampani,
+    title: "Vishal Kampani",
+    desig: "Member, Council of Advisors",
+  },
+ {
+    image: CyrilShroff,
+    title: "Cyril Shroff",
+    desig: "Member, Council of Advisors",
+  },
+ 
+  
+  {
+    image: khurshed,
+    title: "Khurshed",
+    desig: "Member, Council of Advisors",
+  },
+  
+  
+  // {
+  //   image: jagan,
+  //   title: "Jagan Shah",
+  //   desig: "Member, Council of Advisors",
+  // },
+   
+  
 ];
 
 const fellow = [
   {
-    image: AkhileshTilotia,
-    title: "Akhilesh Tilotia",
-    desig: "Distinguished Fellow (Public Policy)",
+    image: rasikaAthawale,
+    title: "Rasika Athawale",
+    desig: "Distinguished Fellow (Power)",
   },
+
   {
-    image: rajajiMeshram,
-    title: "Rajaji Meshram",
-    desig: "Distinguished Fellow(Transport & Logistics)",
+    image: supratimSarkar,
+    title: "Supratim Sarkar",
+    desig: "Distinguished Fellow (Financial Services)",
   },
   {
     image: rajivRanjanMishra,
@@ -190,32 +207,56 @@ const fellow = [
     desig: "Distinguished Fellow (Water Conservation)",
   },
   {
-    image: rasikaAthawale,
-    title: "Rasika Athawale",
-    desig: "Distinguished Fellow (Power)",
+    image: rajajiMeshram,
+    title: "Rajaji Meshram",
+    desig: "Distinguished Fellow(Transport & Logistics)",
   },
+
   {
     image: SoumyaKantiGhosh,
     title: "Soumya Kanti Ghosh",
     desig: "Distinguished Fellow (Economic Policy)",
   },
   {
-    image: supratimSarkar,
-    title: "Supratim Sarkar",
-    desig: "Distinguished Fellow (Financial Services)",
+    image: AkhileshTilotia,
+    title: "Akhilesh Tilotia",
+    desig: "Distinguished Fellow (Public Policy)",
   },
+  
+  
 ];
 
 const team = [
   {
-    image: MutumChaobisana,
-    title: "Mutum Chaobisana",
-    desig: "DHead Programmes",
+    image: Vinayak,
+    title: "Vinayak Chatterjee",
+    desig: "Founder & Managing Trustee",
+  },
+  {
+    image: RumjhumChatterjee,
+    title: "Rumjhum Chatterjee",
+    desig: "Co-Founder & Managing Trustee",
+  },
+  {
+    image: jagan,
+    title: "Jagan Shah",
+    desig: "CEO",
   },
   {
     image: KavereeBamzai,
     title: "Kaveree Bamzai",
     desig: "Head Advocacy",
+  },
+  {
+    image: MutumChaobisana,
+    title: "Dr. Mutum Chaobisana",
+    desig: "Head Programmes",
+  },
+  
+  {
+    image: VrindaSingh,
+    title: "Vrinda Singh",
+    desig: "Research Associate",
   },
   {
     image: LawrenceCardoza,
@@ -227,26 +268,7 @@ const team = [
     title: "Priyanka Bains",
     desig: "Research Associate",
   },
-  {
-    image: RumjhumChatterjee,
-    title: "Rumjhum Chatterjee",
-    desig: "Co-Founder & Managing Trustee",
-  },
-  {
-    image: Vinayak,
-    title: "Vinayak Chatterjee",
-    desig: "Founder & Managing Trustee",
-  },
-  {
-    image: VrindaSingh,
-    title: "Vrinda Singh",
-    desig: "Research Associate",
-  },
-  {
-    image: jagan,
-    title: "Jagan Shah",
-    desig: "CEO",
-  },
+ 
 ];
 
 
@@ -308,38 +330,38 @@ export default function Infravisionaries() {
             <div className=" border-r-1 pe-20 border-lightgray/40  w-fit">
               <div className="py-4 group">
                 <button
-                  className="text-white text-md text-nowrap lg:text-xl relative font-medium"
+                  className={`text-white text-md text-nowrap lg:text-xl relative ${data==="trustee"?"font-medium":""}`}
                   onClick={() => setdata("trustee")}
                 >
-                  Trustee
-                  <span className={` h-[1px] ${data==="trustee"?"w-full transition-all duration-1000":"w-10 sm:w-5"}  sm:h-[2px]  bg-white absolute bottom-0 left-0 top-7`}></span>
+                  Trustees
+                  <span className={` h-[1px] ${data==="trustee"?"w-full transition-all  duration-1000 ":"w-10 sm:w-5"}  sm:h-[2px]  bg-white absolute bottom-0 left-0 top-7`}></span>
                 </button>
               </div>
               <div className="py-4 group">
                 <button
-                  className="text-white text-md  text-nowrap lg:text-xl relative font-medium"
+                    className={`text-white text-md text-nowrap lg:text-xl relative ${data==="advisory"?"font-medium":""}`}
                   onClick={() => setdata("advisory")}
                 >
                   Advisory Council
-                  <span className={` h-[1px] ${data==="advisory"?"w-full transition-all duration-1000":"w-10 sm:w-5"}  sm:h-[2px]  bg-white absolute bottom-0 left-0 top-7`}></span>
+                  <span className={` h-[1px] ${data==="advisory"?"w-full transition-all  duration-1000":"w-10 sm:w-5"}  sm:h-[2px]  bg-white absolute bottom-0 left-0 top-7`}></span>
                 </button>
               </div>
               <div className="py-4 group">
                 <button
-                  className="text-white text-md text-nowrap lg:text-xl relative font-medium"
+                   className={`text-white text-md text-nowrap lg:text-xl relative ${data==="fellow"?"font-medium":""}`}
                   onClick={() => setdata("fellow")}
                 >
                   Distinguished Fellows
-                  <span className={` h-[1px] ${data==="fellow"?"w-full transition-all duration-1000":"w-10 sm:w-5"}  sm:h-[2px]  bg-white absolute bottom-0 left-0 top-7`}></span>
+                  <span className={` h-[1px] ${data==="fellow"?"w-full  transition-all duration-1000":"w-10 sm:w-5"}  sm:h-[2px]  bg-white absolute bottom-0 left-0 top-7`}></span>
                 </button>
               </div>
               <div className="py-4 group">
                 <button
-                  className="text-white text-md lg:text-xl relative font-medium text-nowrap"
+                      className={`text-white text-md text-nowrap lg:text-xl relative ${data==="team"?"font-medium":""}`}
                   onClick={() => setdata("team")}
                 >
                   Team
-                  <span className={` h-[1px] ${data==="team"?"w-full transition-all duration-1000":"w-10 sm:w-5"}  sm:h-[2px]  bg-white absolute bottom-0 left-0 top-7`}></span>
+                  <span className={` h-[1px] ${data==="team"?"w-full  transition-all duration-1000":"w-10 sm:w-5"}  sm:h-[2px]  bg-white absolute bottom-0 left-0 top-7`}></span>
                 </button>
               </div>
             </div>
@@ -351,10 +373,11 @@ export default function Infravisionaries() {
                   className=" w-full"
                   watchOverflow={true}
                   navigation={{
-                    prevEl: ".swiper-prev-btn",
-                    nextEl: ".swiper-next-btn",
+                    prevEl: ".swiper-prev-btn-members",
+                    nextEl: ".swiper-next-btn-members",
                   }}
-                  spaceBetween={20}
+                  grabCursor={true}
+                  spaceBetween={10}
                   onSlideChange={handleSlideChange}
                   slidesPerView={1.1}
                   centeredSlides={true}
@@ -362,11 +385,11 @@ export default function Infravisionaries() {
                     500: { slidesPerView: 1.5, centeredSlides: false },
                     768: { slidesPerView: 2.2, centeredSlides: false },
                     1024: { slidesPerView: 2.9, centeredSlides: false },
-                    1280: { slidesPerView: 3, centeredSlides: false },
+                    1280: { slidesPerView: 4, centeredSlides: false },
                     1536: {
-                      slidesPerView: 2.5,
+                      slidesPerView:3.5,
                       centeredSlides: false,
-                      spaceBetween: 50,
+                      spaceBetween: 40,
                     },
                   }}
                 >
@@ -379,26 +402,7 @@ export default function Infravisionaries() {
                             alt={ele.title}
                             className="w-full h-full object-cover rounded"
                           />
-                          {/* <div className="absolute xl:right-5 2xl:right-3  bottom-20   bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
-                            <div className="w-[2rem] h-[2rem] ">
-                              <Image
-                                src={linkedinSvg}
-                                alt={ele.title}
-                                className="object-cover w-full rounded h-full my-auto"
-                              />
-                            </div>
-                          </div>
-                          <div className="absolute bottom-0 left-0">
-                            <div className="bg-white w-[14rem]  lg:h-[5.5rem]  rounded">
-                              <h6 className="pt-1 2xl:pt-2 px-2  font-medium">
-                                {ele.title}
-                              </h6>
-                              <p className="px-2  smallText font-light text-black">
-                                {ele.desig}
-                              </p>
-                            </div>
-                          </div> */}
-
+                          
                           <div className="absolute bottom-0 left-0 w-[17rem]  ">
                           <div className=" ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
                             <div className=" ">
@@ -427,13 +431,15 @@ export default function Infravisionaries() {
               </div>
               <div className="flex pt-5 flex-wrap gap-5 mt-4 justify-start md:gap-4 2xl:mt-1">
                 <button
-                  className={`swiper-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
+                  className={`swiper-prev-btn-members cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${isFirstSlide ? "opacity-40" : ""
+                }`}
                   aria-label="Previous slide"
                 >
                   <GoArrowLeft/>
                 </button>
                 <button
-                  className={`swiper-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
+                  className={`swiper-next-btn-members cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink ${isLastSlide ? "opacity-40" : ""
+                }`}
                   aria-label="Next slide"
                 >
                   <GoArrowRight />
@@ -451,7 +457,7 @@ export default function Infravisionaries() {
                 className="text-white text-md text-nowrap lg:text-xl relative font-medium"
                 onClick={() => setdata("trustee")}
               >
-                Trustee
+                Trustees
                
               </button>
             </div>

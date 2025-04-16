@@ -79,7 +79,7 @@ export default function Blogs() {
               {BlogsData.map((item, index) => (
                 <div
                   key={index}
-                  className=" border-b-1  border-darkgray/40 last:border-b-0"
+                  className={`border-darkgray/40 ${index !== BlogsData.length - 1 ? 'border-b' : ''}`}
                 >
                   <BlogsDetails
                     date={item.date}
@@ -88,7 +88,7 @@ export default function Blogs() {
                   />
                 </div>
               ))}
-              <div className="lg:ml-6 block md:hidden py-3">
+              <div className="lg:ml-6 block md:hidden border-t-1 border-darkgray/40 py-3">
                 <div className="pt-2 md:py-3">
                   <p className="font-medium text-darkgray">October 16, 2024</p>
                 </div>
@@ -127,10 +127,10 @@ export default function Blogs() {
 
 const BlogsData = [
   {
-    date: "October 16, 2024",
-    title: "How to make India’s highways safe",
+    date: "September 25, 2023",
+    title: "India Needs Sustainability Ratings for Infrastructure Projects",
     description:
-      "A fully empowered National Road Safety Authority, as proposed in the 2014 Draft Road Transport and Safety Bill",
+      "India’s ongoing economic transition will make it a $5 trillion economy by 2026-27 and possibly the third-largest global economy soon.",
   },
   {
     date: "November 25, 2023",

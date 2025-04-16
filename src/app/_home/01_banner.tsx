@@ -1,7 +1,7 @@
 import Image from "next/image";
 import BannerBg from "@/../public/assets/home/BannerBg.png";
 import Updates from "./updates";
-import mobileBannerBg from "@/../public/assets/home/mobileBannerBg.png";
+import Bannermobile from "@/../public/assets/home/Bannermobile.png";
 import { GoArrowRight } from "react-icons/go";
 
 export default function Banner() {
@@ -18,15 +18,15 @@ export default function Banner() {
               />
             </div>
           </div>
-          <div className="sm:hidden block h-[38rem]">
+          <div className="sm:hidden block h-[38rem] ">
             <Image
-              src={mobileBannerBg}
+              src={Bannermobile}
               alt="InfraVison Fondation"
-              className="h-full"
+              className="h-full w-full object-cover "
             />
           </div>
 
-          <div className="absolute  top-[21%]  lg:top-[19%]  xl:top-[23%] 2xl:top-[20%] left-1/2 -translate-x-1/2  mx-auto max-w-screen-2xl px-2 sm:px-4 w-full lg:w-11/12">
+          <div className="absolute  top-[21%]  lg:top-[23%]  xl:top-[23%] 2xl:top-[20%] left-1/2 -translate-x-1/2  mx-auto max-w-screen-2xl px-2 sm:px-4 w-full lg:w-11/12">
             <div className="w-[80%] lg:w-full ">
               <h1 className="tracking-[-4%] font-light txt-black/90 ">
                 {" "}
@@ -39,7 +39,7 @@ export default function Banner() {
                 nation-building{" "}
               </h1>
             </div>
-            <div className="   w-[80%] lg:w-[37%] py-2 xl:py-4 ">
+            <div className="w-full  sm:w-[50%] xl:w-[40%] py-2 xl:py-4 ">
               <h5 className="text-black ">
                 We help shape India’s infrastructure policies with neutral
                 fact-based insights, analysis, and discourse.

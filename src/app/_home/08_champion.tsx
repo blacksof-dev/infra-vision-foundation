@@ -1,13 +1,9 @@
-
 import { HeroBtn } from "@/_components/atoms/buttons";
 import Card from "@/_components/molecules/cardTemplate";
 import budgetSignals from "@/../public/assets/home/budgetSignals.jpg";
 import infraOutlays from "@/../public/assets/home/infraOutlays.jpg";
 import groupTaxation from "@/../public/assets/home/groupTaxation.jpg";
 import CardSlider from "@/_components/molecules/slidercardTemplate";
-
-
-
 
 export default function Champion() {
   return (
@@ -44,7 +40,12 @@ export default function Champion() {
             </div>
             <div className="hidden  lg:flex flex-row md:gap-16 lg:gap-12 pt-4 md:pt-0 lg:justify-between justify-center flex-wrap xl:flex-nowrap    lg:pt-9">
               {CardData.map((item, key) => (
-                <div  key={key}>
+                <div
+                  key={key}
+                  className={`  ${
+                    key === 0 ? "border-l-0" : "xl:border-l-1 xl:border-darkgray/20 ps-8"
+                  }`}
+                >
                   <Card
                     date={item.date}
                     title={item.title}
@@ -56,7 +57,7 @@ export default function Champion() {
               ))}
             </div>
             <div className="lg:hidden block">
-              <CardSlider/>
+              <CardSlider />
             </div>
           </div>
         </div>
@@ -71,20 +72,20 @@ const CardData = [
     title: "Group taxation regime for infrastructure",
     img: groupTaxation,
     link: "https://www.business-standard.com/opinion/columns/group-taxation-regime-for-infrastructure-124081500813_1.html",
-    category:"News"
+    category: "News",
   },
   {
     date: "July 24, 2024",
     title: "Infra outlays: A strategic downplay",
     img: infraOutlays,
     link: "https://www.financialexpress.com/opinion/nbspinfra-outlays-a-strategic-downplay-the-budget-signals-a-move-out-of-the-era-of-large-infra-spends-pump-priming-the-economy/3563263/#:~:text=stressful%20Covid%20period.-,Across%20the%20last%20few%20years%2C%20India%20saw%20Union%20Budget%20infra,11%25%20to%20Rs%2011.1%20trillion.",
-    category:"News"
+    category: "News",
   },
   {
     date: "July 24, 2024",
     title: "Budget signals shift in infra strategy",
     img: budgetSignals,
     link: "https://www.moneycontrol.com/news/business/economy/budget-signals-shift-in-infra-strategy-as-govt-pushes-states-private-sector-to-pitch-in-12777120.html",
-    category:"News"
+    category: "News",
   },
 ];

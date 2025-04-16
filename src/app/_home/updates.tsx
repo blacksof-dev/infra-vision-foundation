@@ -29,9 +29,9 @@ export default function Updates() {
     <section>
       <div className="flex flex-row gap-8">
         {/* Left Column */}
-        <div className="border-r border-white xl:block hidden">
+        <div className="border-r border-white/50 xl:block hidden">
           <div className="lg:ms-24  xl:ms-13 2xl:ms-0 hidden xl:block">
-            <h4 className="text-white font-medium text-nowrap px-5">
+            <h4 className="text-white  text-nowrap px-5">
               Latest Updates
             </h4>
             <div className="flex gap-5 pt-5 justify-center mt-4 lg:justify-start md:gap-4 2xl:mt-1 w-container">
@@ -102,7 +102,7 @@ export default function Updates() {
                       <p className="font-light text-white group-hover:text-black">{ele.category}</p>
                     </div>
                     <div className="py-2">
-                      <h5 className="text-white group-hover:text-black font-medium truncate xl:overflow-visible xl:whitespace-normal">
+                      <h5 className="text-white group-hover:text-black  group-hover:font-medium truncate xl:overflow-visible xl:whitespace-normal">
                         {ele.title}
                       </h5>
                     </div>

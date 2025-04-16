@@ -18,12 +18,12 @@ const footer = () => {
     <>
       <footer className=" blade-top-padding-lg  ">
         <div className=" w-container">
-          <div className=" flex md:flex-row flex-col md:justify-between md:items-end border-b-1 border-gray/60 md:pb-6">
+          <div className=" flex md:flex-row flex-col md:justify-between md:items-end border-b-1 border-gray/60  md:pb-6">
             <div className="">
               <Anchor href="/">
                 <Image
                   src={logo}
-                  className="w-[50%] h-[30%] md:h-full md:w-auto "
+                  className="w-[50%] h-[30%] md:h-full md:w-[70%] "
                   alt="TIF logo"
                   title=" logo"
                 />
@@ -43,7 +43,7 @@ const footer = () => {
             </div>
           </div>
           <div className="flex lg:flex-row flex-col pt-5 lg:pt-0 lg:gap-8  border-b-1 border-gray/60 ">
-            <div className="grid grid-cols-1  md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 xl:gap-17  lg:pt-9 lg:pb-14 xl:pb-32">
+            <div className="grid grid-cols-1  md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 xl:gap-14  lg:pt-9 lg:pb-14 xl:pb-8 2xl:pb-32">
               <ul>
                 <li className="flex items-center gap-3">
                   <div className="w-3 h-3 rounded-full bg-darkgray opacity-30"></div>
@@ -56,7 +56,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2"
+                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
                         // href="/who-we-are"
                         text="Who we are"
                       />
@@ -65,7 +65,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2"
+                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
                         // href="/vision-mission"
                         text="Vision and Mission"
                       />
@@ -74,7 +74,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2"
+                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
                         // href="/the-infravisionaries"
                         text="The Infravisionaries"
                       />
@@ -83,7 +83,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2"
+                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
                         // href="/collaborate-with-us"
                         text="Collaborate with us"
                       />
@@ -104,7 +104,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2"
+                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
                         // href="/infraShakti-awards"
                         text="InfraShakti Awards"
                       />
@@ -113,7 +113,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2"
+                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
                         // href="/infraKatha"
                         text="InfraKatha"
                       />
@@ -122,7 +122,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2"
+                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
                         // href="/caira"
                         text="CAIRA"
                       />
@@ -143,7 +143,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2"
+                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
                         // href="/blogs"
                         text="Blogs"
                       />
@@ -153,7 +153,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2"
+                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
                         // href="/who-we-are"
                         text="Who we are"
                       />
@@ -162,7 +162,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2"
+                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
                         // href="/news-and-media"
                         text="News and media"
                       />
@@ -171,7 +171,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2"
+                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
                         // href="/videos"
                         text="Videos"
                       />
@@ -192,7 +192,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2"
+                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
                         // href="/research-papers"
                         text="Research papers"
                       />
@@ -201,7 +201,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2"
+                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
                         // href="/white-papers"
                         text="White papers"
                       />
@@ -210,7 +210,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2"
+                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
                         // href="/background-papers"
                         text="Background papers"
                       />
@@ -219,7 +219,7 @@ const footer = () => {
                       <TextAnchor
                         color="dark"
                         size="base"
-                        className="block whitespace-nowrap ps-5 py-1 md:py-2"
+                        className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
                         // href="/newsletters"
                         text="Newsletters"
                       />
@@ -237,7 +237,7 @@ const footer = () => {
                   <TextAnchor
                     color="dark"
                     size="base"
-                    className="block whitespace-nowrap ps-5 py-1 md:py-2"
+                    className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
                     // href="/upcoming-events"
                     text="Upcoming events"
                   />
@@ -246,7 +246,7 @@ const footer = () => {
                   <TextAnchor
                     color="dark"
                     size="base"
-                    className="block whitespace-nowrap ps-5 py-1 md:py-2"
+                    className="block whitespace-nowrap ps-5 py-1 md:py-2 hover:text-black"
                     // href="/past-events"
                     text="Past events"
                   />
@@ -262,7 +262,7 @@ const footer = () => {
                     <h5 className="text-darkgray/60 2xl:text-lg">Address</h5>
                   </div>
 
-                  <h6 className="text-darkgray ps-1 py-2 lg:py-1">
+                  <h6 className="text-base text-darkgray ps-1 py-2 lg:py-1">
                     E 2261, Palam Vihar, Gurugram -{" "}
                     <br className="lg:block hidde" /> 122017, Haryana, Delhi
                     NCR, India.
@@ -275,7 +275,7 @@ const footer = () => {
                     <h5 className="text-darkgray/60 2xl:text-lg py-1">Email</h5>
                   </div>
 
-                  <h6 className="text-darkgray ps-1 py-2 lg:py-1">
+                  <h6 className="text-darkgray ps-1 py-2 lg:py-1 text-base">
                     info@theinfravisionfoundation.org
                   </h6>
                 </div>
@@ -286,7 +286,7 @@ const footer = () => {
                     <h5 className="text-darkgray/60 2xl:text-lg">Phone</h5>
                   </div>
 
-                  <h6 className="text-darkgray ps-1 py-1">+91 98107 50745</h6>
+                  <h6 className="text-darkgray ps-1 py-1 ">+91 98107 50745</h6>
                 </div>
               </div>
             </div>
@@ -297,33 +297,37 @@ const footer = () => {
                 Copyright 2025. All rights reserved.
               </p>
             </div>
-            <div className="flex flex-row gap-5 justify-center items-center pt-5 sm:pt-0">
+            <div className="flex flex-row gap-5  justify-center items-center pt-5 sm:pt-0">
               <h5 className="text-darkgray/60 mr-5 sm:block hidden">
                 Follow us
               </h5>
               <Link
                 href="https://www.youtube.com/@theinfravisionfoundation"
                 target="_blank"
+                className="hover:bg-pink"
               >
-                <FaYoutube className="text-2xl xl:text-3xl text-darkgray" />
+                <FaYoutube className="text-2xl xl:text-3xl text-darkgray hover:text-white hover:border-pink hover:rounded hover:p-1" />
               </Link>
               <Link
                 href="https://www.linkedin.com/company/the-infravision-foundation/?originalSubdomain=in"
                 target="_blank"
+                className="hover:bg-pink"
               >
-                <FaLinkedin className="text-2xl xl:text-3xl text-darkgray" />
+                <FaLinkedin className="text-2xl xl:text-3xl text-darkgray hover:text-white hover:border-pink hover:rounded hover:p-1" />
               </Link>
               <Link
                 href="https://x.com/TheInfravision?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
                 target="_blank"
+                className="hover:bg-pink"
               >
-                <FaXTwitter className="text-2xl xl:text-3xl text-darkgray" />
+                <FaXTwitter className="text-2xl xl:text-3xl text-darkgray hover:text-white hover:border-pink hover:rounded hover:p-1" />
               </Link>
               <Link
                 href="https://www.instagram.com/theinfravisionfoundation/"
                 target="_blank"
+                className="hover:bg-pink"
               >
-                <FaInstagram className="text-2xl xl:text-3xl text-darkgray" />
+                <FaInstagram className="text-2xl xl:text-3xl text-darkgray hover:text-white hover:border-pink hover:rounded hover:p-1" />
               </Link>
             </div>
           </div>

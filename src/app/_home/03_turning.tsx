@@ -18,8 +18,9 @@ export default function Turning() {
   return (
     <>
       <section className="bg-pink relative d">
-      <div className="absolute top-0 left-0 opacity-30 hidden xl:block">
-        <Image src={halfcirclesvg} alt="Circle Image" /></div>
+        <div className="absolute top-0 left-0 opacity-30 hidden xl:block">
+          <Image src={halfcirclesvg} alt="Circle Image" />
+        </div>
         <div className="absolute 2xl:top-7 top-3 left-0 2xl:left-15 opacity-30 hidden xl:block">
           <Image src={circlesvg1} alt="Circle Image" />
         </div>
@@ -75,7 +76,7 @@ export default function Turning() {
                 />
               </div>
             </div>
-            
+
             <div className="w-full lg:w-[50%] ">
               <div className=" md:pt-5 ">
                 <div className="w-full">
@@ -137,19 +138,22 @@ export default function Turning() {
 
               <div className="border-l border-r lg:mt-16   border-white/30 hidden lg:block">
                 <div className="mx-5">
-                  <h3 className="text-white font-medium">
+                  <h3 className="text-white font-medium text-start">
                     Sectors of operation
                   </h3>
 
-                  <ul className="grid  grid-cols-2 2xl:grid-cols-3 pt-10 gap-16  2xl:gap-x-4 gap-y-4 py-4 list-disc list-inside text-white text-lg w-fit">
-                    <li>Education</li>
-                    <li>Transportation</li>
-                    <li>Water and Sanitation</li>
-                    <li>Energy</li>
-                    <li>Urban Planning</li>
-                    <li>Rural and Agri Infra</li>
-                    <li>Health Infra</li>
-                  </ul>
+                  <div className="flex  justify-start item-start">
+                    <ul className="grid   grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 pt-10 gap-16  2xl:gap-x-4 gap-y-4 py-4 list-disc list-inside text-white text-lg w-fit">
+                      <li>Transportation</li>
+                      <li>Energy</li>
+                      <li>Water and Sanitation</li>
+
+                      <li>Urban Planning</li>
+                      <li>Rural and Agri Infra</li>
+                      <li>Health Infra</li>
+                      <li>Education</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -158,13 +162,14 @@ export default function Turning() {
                 <h3 className="text-white font-medium">Sectors of operation</h3>
 
                 <ul className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-18 md:gap-x-4 gap-y-2 py-3 list-disc list-inside text-white text-lg w-fit">
-                  <li>Education</li>
                   <li>Transportation</li>
-                  <li>Water and Sanitation</li>
                   <li>Energy</li>
+                  <li>Water and Sanitation</li>
+
                   <li>Urban Planning</li>
                   <li>Rural and Agri Infra</li>
                   <li>Health Infra</li>
+                  <li>Education</li>
                 </ul>
               </div>
             </div>

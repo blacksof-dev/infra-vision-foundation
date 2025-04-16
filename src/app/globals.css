@@ -141,7 +141,7 @@ html,body {
 
  
   h1 {
-    @apply text-2xl  xl:text-[42px]  2xl:text-[54px];
+    @apply text-2xl  xl:text-[42px]  2xl:text-[54px] 2xl:leading-[64px];
   }
 
   h2 {
@@ -157,7 +157,7 @@ html,body {
   }
 
   h5 {
-    @apply text-base  md:text-base lg:text-lg  tracking-tight 2xl:text-xl xl:text-lg;
+    @apply text-base  md:text-base  tracking-tight 2xl:text-xl xl:text-lg;
   }
 
   h6 {

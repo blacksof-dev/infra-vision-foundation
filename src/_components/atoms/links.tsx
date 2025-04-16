@@ -93,7 +93,7 @@ export function TextAnchor({
                     focus:underline decoration-from-font underline-offset-4 focus:text-opacity-100 transition-all `}
       >
 
-        <span className="absolute left-0 w-0 h-0 group-hover:w-2 group-hover:h-2 group-hover:rounded group-hover:bg-pink"></span>
+        <span className="absolute left-1 w-0 h-0 group-hover:w-2 group-hover:h-2 group-hover:rounded group-hover:bg-pink"></span>
         {text} 
           
         <div>

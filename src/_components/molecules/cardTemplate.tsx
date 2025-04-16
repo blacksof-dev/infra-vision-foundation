@@ -12,6 +12,7 @@ export default function Card({ date, title, image,link,category }: CardProps) {
   return (
     <>
       <section>
+      
         <div className=" lg:w-[25rem] xl:w-[21rem] 2xl:w-[29rem] 3xl:w-[29rem]">
           <div className=" xl:max-w-[29rem] h-[16rem] ">
             <Image

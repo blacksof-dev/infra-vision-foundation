@@ -33,9 +33,9 @@ export default function Mobilenav() {
     <>
       <section>
         {crossicon && (
-          <div className="  w-screen h-screen bg-[#E9F8FF]  ">
+          <div className=" w-screen h-screen bg-[#E9F8FF]  ">
             <div className="flex flex-row justify-between  items-center">
-              <div className="w-[12rem] sm:w-[15rem] h-[5rem] sm:h-[7rem] px-3">
+              <div className="w-[12rem] sm:w-[15rem] h-[5rem] sm:h-[7rem]  px-3">
                 <Image
                   src={logo}
                   alt="Infravision Foundation Logo"

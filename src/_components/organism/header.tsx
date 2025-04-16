@@ -3,7 +3,7 @@ import Image from "next/image";
 import logo from "@/../public/assets/globals/logo.svg";
 import { TextNavAnchor } from "../atoms/links";
 import { FaSearch } from "react-icons/fa";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { RxHamburgerMenu } from "react-icons/rx";
 import Mobilenav from "./mobileNav";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -29,12 +29,12 @@ export default function Header() {
   return (
     <>
   <nav className="absolute w-full z-[9999] top-3 left-0 xl:top-8 ">
-  <div className="w-container relative ">
+  <div className=" w-container relative ">
     <div className="flex flex-row justify-between  xl:gap-10 items-center  w-full">
 
       {/* Logo */}
       <div className="w-[10rem] 2xl:w-[14rem]  ">
-        <Link href="/"><Image src={logo} alt="Infra Vision Foundation" /></Link>
+        <Link href="/"><Image src={logo} className="" alt="Infra Vision Foundation" /></Link>
       </div>
 
       {/* Desktop Navigation */}
@@ -45,7 +45,7 @@ export default function Header() {
             <TextNavAnchor
               color="dark"
               size="large"
-              className="block whitespace-nowrap ps-5 py-1 md:py-2 no-underline"
+              className="block whitespace-nowrap ps-5 py-1 md:py-2 "
               // href="/what-drives-us"
               text="What Drives Us"
               iconVisiblity={true}
@@ -120,12 +120,12 @@ export default function Header() {
 
       <div className="hidden xl:block border  border-darkgray w-full xl:w-[8rem]  2xl:w-[10rem]  rounded">
           <form className="p-2">
-            <div className="flex items-center gap-3">
-              <FaSearch className="text-darkgray text-xl" />
+            <div className="flex items-center  gap-3">
+              <FaSearch className="text-darkgray text-xl " />
               <input
                 type="text"
                 placeholder="Search"
-                className="w-full outline-none bg-transparent text-sm placeholder:text-gray-500"
+                className="w-full outline-none bg-transparent  text-sm placeholder:text-gray-500"
               />
             </div>
           </form>
@@ -141,7 +141,7 @@ export default function Header() {
       {/* Mobile Hamburger Menu */}
       <div className="xl:hidden ">
         <div>
-           <button  onClick={toggleMenu} ><GiHamburgerMenu className="text-3xl mb-10"/></button>
+           <button  onClick={toggleMenu} ><RxHamburgerMenu className="text-xl mb-10"/></button>
         </div>
       
        {isMenuOpen && (

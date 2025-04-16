@@ -12,10 +12,10 @@ import profRaghuram from "@/../public/assets/home/decoding/profRaghuram.jpg";
 import rajivRanjanMishra from "@/../public/assets/home/decoding/rajivRanjanMishra.jpg";
 
 
-import jaganShahMobileImg from "@/../public/assets/home/decoding/jaganShahMobileImg.png";
-import geetamTiwariMobileImg from "@/../public/assets/home/decoding/geetamTiwariMobileImg.png";
-import profRaghuramMobileImg from "@/../public/assets/home/decoding/profRaghuramMobileImg.png";
-import rajivRanjanMishraMobileImg from "@/../public/assets/home/decoding/rajivRanjanMishraMobileImg.png";
+import jaganShahMobileImg from "@/../public/assets/home/decoding/jaganShahMobileImg.svg";
+import geetamTiwariMobileImg from "@/../public/assets/home/decoding/geetamTiwariMobileImg.svg";
+import profRaghuramMobileImg from "@/../public/assets/home/decoding/profRaghuramMobileImg.svg";
+import rajivRanjanMishraMobileImg from "@/../public/assets/home/decoding/rajivRanjanMishraMobileImg.svg";
 
 
 
@@ -36,7 +36,7 @@ export default function LinkedinCard() {
         slideToClickedSlide
         speed={2000}
         autoplay={{
-          delay: 1000,
+          delay: 300,
           disableOnInteraction: false,
           reverseDirection: true,
         }}
@@ -54,35 +54,8 @@ export default function LinkedinCard() {
           <SwiperSlide key={index}>
             <section className="mt-3">
               <div className="relative  lg:block hidden">
-                <Image src={ele.image} alt={ele.title} className="w-full rounded" />
-
-                <div className="absolute top-0 right-0   pr-5 pt-6">
-                  <div className=" w-[55%]   ms-auto last:text-end ">
-                    <h2 className="text-white tracking-tight font-medium">
-                      {ele.title}
-                    </h2>
-                  </div>
-                </div>
-
-                <div className="w-[50%]">
-                  <div className="absolute left-[15rem] top-[7rem]  lg:left-[17rem] lg:top-[7rem]   xl:left-[19rem] xl:top-[12rem] 2xl:left-[20rem]  2xl:top-[12rem] ">
-                    <div className="bg-white  w-[3rem] h-[3rem]  xl:w-[4rem] xl:h-[3rem] flex items-center justify-center ">
-                      <Image
-                        src={playSvg}
-                        alt="Play Icon"
-                        className="w-6 h-6"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="absolute bottom-0  left-0">
-                    <div className="bg-white w-[17rem]  md:w-[15rem] lg:w-[17rem]  h-[7.5rem] lg:h-[7rem]   xl:w-[20rem] 2xl:w-[20rem] 2xl:h-[8rem] pt-3 px-2 ">
-                      <h5 className="font-medium">{ele.subtitle}</h5>
-                      <p className="py-1 text-black/80 text-sm">{ele.desc}</p>
-                    </div>
-                  </div>
-
-                </div>
+                 <Image src={ele.mobileImg} alt={ele.title} className="w-full h-full" />
+             
               </div>
               <div className="lg:hidden block">
                  <Image src={ele.mobileImg} alt={ele.title} className="w-full h-full" />
@@ -92,7 +65,7 @@ export default function LinkedinCard() {
         ))}
       </Swiper>
     </div>
-        <div className="flex lg:hidden flex-wrap gap-3 justify-start mt-9  md:gap-8 2xl:mt-1 w-container">
+        <div className="flex lg:hidden flex-wrap gap-3  justify-start mt-9  md:gap-8 2xl:mt-1 w-container">
             <button
               className={`swiper-solution-prev-decoding flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white `}
               aria-label="Previous slide"

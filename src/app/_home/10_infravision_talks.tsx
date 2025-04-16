@@ -37,11 +37,13 @@ export default function InfravisionTalks() {
               
               <div>
                 <form className="w-full">
-                  <div className="flex flex-row  md:w-[35rem]  bg-white rounded md:rounded-md overflow-hidden border border-darkgray/30 ">
+                  <div className="flex flex-row   md:w-[35rem] d bg-white rounded md:rounded-md overflow-hidden border border-darkgray/30 ">
+                    
+                    
                     <input
                       type="email"
                       placeholder="Enter email address"
-                      className="flex-1 px-1 sm:px-6 sm:py-3  text-base tracking-[-0.3px] outline-none text-darkgray"
+                      className="flex-1 w-[10.5rem]  px-1 sm:px-6 sm:py-3  text-base tracking-[-0.3px] outline-none text-darkgray"
                     />
 
                     <div className="border-l-1 border-darkgray/20 ">
@@ -53,7 +55,7 @@ export default function InfravisionTalks() {
                         bgColor="white"
                         size="extralarge"
                         classes="w-full sm:w-auto p-1 sm:p-2 text-sm font-medium"
-                        
+           
                       />
                     </div>
                   </div>

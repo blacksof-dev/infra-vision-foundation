@@ -167,12 +167,12 @@ function PublicationSlider() {
             {Publicationdata.map((item, index) => {
               return (
                 <SwiperSlide key={index} className=" !h-full ">
-                  <div className="">
+                 <div>
                     <Card
                       date={item.date}
                       title={item.title}
                       image={item.img}
-                      link={item.link}
+                      link={item.link}                 
                       category={item.category}
                     />
                   </div>
