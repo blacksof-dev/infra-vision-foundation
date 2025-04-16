@@ -29,7 +29,7 @@ export default function Header() {
   return (
     <>
   <nav className="absolute w-[98dvw] overflow-hidden  z-[9999] top-3 left-2  xl:top-8 ">
-  <div className="p-0 2xl:p-4  w-container  relative overflow-hidden ">
+  <div className="p-0 sm:px-3 xl:px-4 2xl:px-6  w-container  relative overflow-hidden ">
     <div className="flex flex-row justify-between  xl:gap-10 items-center  w-full">
 
       {/* Logo */}
