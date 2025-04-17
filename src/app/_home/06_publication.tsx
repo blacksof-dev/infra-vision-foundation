@@ -116,14 +116,14 @@ const CardData = [
     date: "July, 2024",
     title: "The case for developing high-speed rail corridors in India",
     img: rail,
-    link: "https://www.financialexpress.com/opinion/nbspinfra-outlays-a-strategic-downplay-the-budget-signals-a-move-out-of-the-era-of-large-infra-spends-pump-priming-the-economy/3563263/#:~:text=stressful%20Covid%20period.-,Across%20the%20last%20few%20years%2C%20India%20saw%20Union%20Budget%20infra,11%25%20to%20Rs%2011.1%20trillion.",
+    link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/02/The-Case-For-Developing-High-Speed-Rail-Corridors-In-India.pdf",
   },
   {
     category: "Newsletter",
     date: "February, 2025",
     title: "CAIRA Roundtable on Agri Exports is a success",
     img: agriExports,
-    link: "https://www.moneycontrol.com/news/business/economy/budget-signals-shift-in-infra-strategy-as-govt-pushes-states-private-sector-to-pitch-in-12777120.html",
+    link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/03/INFRAVISION-TALK-February-2025-Newsletter.pdf",
   },
 ];
 
@@ -153,6 +153,10 @@ function PublicationSlider() {
             navigation={{
               prevEl: ".swiper-solution-prev-btn",
               nextEl: ".swiper-solution-next-btn",
+            }}
+            pagination={{
+              el: ".custom-pagination-bullets-publication",
+              type: 'fraction',
             }}
             spaceBetween={20}
             onSlideChange={handleSlideChange}
@@ -184,23 +188,22 @@ function PublicationSlider() {
           </Swiper>
         </div>
       </div>
-      <div className="flex lg:hidden flex-wrap gap-3 justify-start mt-2 lg:justify-end md:gap-8 2xl:mt-1">
-        <button
-          className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white ${
-            isFirstSlide ? "opacity-40" : ""
-          }`}
-          aria-label="Previous slide"
-        >
-          <GoArrowLeft />
-        </button>
-        <button
-          className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white ${
-            isLastSlide ? "!opacity-40" : ""
-          }`}
-          aria-label="Next slide"
-        >
-          <GoArrowRight />
-        </button>
+      <div className="flex   justify-between mt-4">
+        <div className="flex lg:hidden   gap-3  justify-start   md:gap-8 2xl:mt-1 ">
+          <button
+            className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white `}
+            aria-label="Previous slide"
+          >
+            <GoArrowLeft />
+          </button>
+          <button
+            className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white `}
+            aria-label="Next slide"
+          >
+            <GoArrowRight />
+          </button>
+        </div>
+        <div className="lg:hidden  w-fit h-4 my-auto flex gap-2 justify-end custom-pagination-bullets-publication"></div>
       </div>
     </>
   );
@@ -226,13 +229,13 @@ const Publicationdata = [
     date: "July, 2024",
     title: "The case for developing high-speed rail corridors in India",
     img: rail,
-    link: "https://www.financialexpress.com/opinion/nbspinfra-outlays-a-strategic-downplay-the-budget-signals-a-move-out-of-the-era-of-large-infra-spends-pump-priming-the-economy/3563263/#:~:text=stressful%20Covid%20period.-,Across%20the%20last%20few%20years%2C%20India%20saw%20Union%20Budget%20infra,11%25%20to%20Rs%2011.1%20trillion.",
+    link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/02/The-Case-For-Developing-High-Speed-Rail-Corridors-In-India.pdf",
   },
   {
     category: "Newsletter",
     date: "February, 2025",
     title: "CAIRA Roundtable on Agri Exports is a success",
     img: agriExports,
-    link: "https://www.moneycontrol.com/news/business/economy/budget-signals-shift-in-infra-strategy-as-govt-pushes-states-private-sector-to-pitch-in-12777120.html",
+    link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/03/INFRAVISION-TALK-February-2025-Newsletter.pdf",
   },
 ];

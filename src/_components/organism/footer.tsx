@@ -9,8 +9,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { MdOutlineEmail } from "react-icons/md";
 import { MdOutlinePhone } from "react-icons/md";
 import { FaInstagram } from "react-icons/fa";
-import locationSvg from '@/../public/assets/globals/locationSvg.svg'
-
+import locationSvg from "@/../public/assets/globals/locationSvg.svg";
 
 import Link from "next/link";
 const footer = () => {
@@ -32,12 +31,12 @@ const footer = () => {
             <div className="py-5 lg:py-0 ">
               <HeroBtn
                 text="Contact us"
-                role="link"
+                role="button"
                 borderColor="pink"
                 color="black"
                 bgColor="white"
                 size="extralarge"
-                aarowColor="pink"  
+                aarowColor="pink"
                 classes="font-medium"
               />
             </div>
@@ -232,29 +231,28 @@ const footer = () => {
                   <div className="w-3 h-3 rounded-full bg-darkgray opacity-30"></div>
                   <span className="text-black text-xl">Events</span>
                 </li>
-                <li className="md:pt-2 xl:pt-4">
+                <li className="md:pt-2 xl:pt-4 ">
                   <ul>
-                  <li>
-                  <TextAnchor
-                    color="dark"
-                    size="base"
-                    className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                    // href="/upcoming-events"
-                    text="Upcoming events"
-                  />
-                </li>
-                <li>
-                  <TextAnchor
-                    color="dark"
-                    size="base"
-                    className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                    // href="/past-events"
-                    text="Past events"
-                  />
-                </li>
+                    <li>
+                      <TextAnchor
+                        color="dark"
+                        size="base"
+                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
+                        // href="/upcoming-events"
+                        text="Upcoming events"
+                      />
+                    </li>
+                    <li>
+                      <TextAnchor
+                        color="dark"
+                        size="base"
+                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
+                        // href="/past-events"
+                        text="Past events"
+                      />
+                    </li>
                   </ul>
                 </li>
-                
               </ul>
             </div>
             <div className="">
@@ -278,16 +276,17 @@ const footer = () => {
                     <MdOutlineEmail className="text-[#9EA2A4] text-xl" />
                     <h5 className="text-darkgray/60 2xl:text-lg py-1">Email</h5>
                   </div>
-
-                  <h6 className="text-darkgray ps-1 py-2 lg:py-1 text-base">
-                    info@theinfravisionfoundation.org
-                  </h6>
+                  <Link href="mailto:info@theinfravisionfoundation.org">
+                    <h6 className="text-darkgray ps-1 py-2 lg:py-1 text-base">
+                      info@theinfravisionfoundation.org
+                    </h6>
+                  </Link>
                 </div>
 
                 <div className=" pb-2">
-                  <div className="flex flex-row gap-1  ditems-center">
-                    <MdOutlinePhone className="text-[#9EA2A4] text-xl" />
-                    <h5 className="text-darkgray/60 2xl:text-lg">Phone</h5>
+                  <div className="flex flex-row gap-1  ditems-center ">
+                    <MdOutlinePhone className="text-[#9EA2A4] text-xl  my-auto" />
+                    <h5 className="text-darkgray/60 2xl:text-lg ">Phone</h5>
                   </div>
 
                   <h6 className="text-darkgray ps-1 py-1 ">+91 98107 50745</h6>
@@ -295,9 +294,9 @@ const footer = () => {
               </div>
             </div>
           </div>
-          <div className="flex sm:flex-row  flex-col justify-between py-5 lg:pt-9">
-            <div>
-              <p className="text-darkgray/80 text-start  smallText">
+          <div className="flex sm:flex-row  flex-col justify-between py-5 lg:pt-9 ">
+            <div className=" my-auto">
+              <p className="text-darkgray/80   smallText">
                 Copyright 2025. All rights reserved.
               </p>
             </div>
@@ -309,28 +308,28 @@ const footer = () => {
                 <Link
                   href="https://www.youtube.com/@theinfravisionfoundation"
                   target="_blank"
-                   className="group"
+                  className="group"
                 >
                   <FaYoutube className="text-4xl border-1   group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
                 </Link>
                 <Link
                   href="https://www.linkedin.com/company/the-infravision-foundation/?originalSubdomain=in"
                   target="_blank"
-                   className="group"
+                  className="group"
                 >
                   <FaLinkedin className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
                 </Link>
                 <Link
                   href="https://x.com/TheInfravision?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
                   target="_blank"
-                   className="group"
+                  className="group"
                 >
                   <FaXTwitter className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
                 </Link>
                 <Link
                   href="https://www.instagram.com/theinfravisionfoundation/"
                   target="_blank"
-                   className="group"
+                  className="group"
                 >
                   <FaInstagram className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
                 </Link>

@@ -67,7 +67,7 @@ export default function Blogs() {
                       bgColor="white"
                        size="base"
                       target="_blank"
-                      link="https://theinfravisionfoundation.org/wp-content/uploads/2025/03/Study-on-Implementation-of-Compensatory-Afforestation-in-India.pdf"
+                      link="https://theinfravisionfoundation.org/2024/10/16/a-national-road-safety-authority-crucial-for-improving-indias-deteriorating-road-safety/"
                       classes="text-base"
                     />
                   </div>
@@ -85,6 +85,7 @@ export default function Blogs() {
                     date={item.date}
                     title={item.title}
                     description={item.description}
+                    link={item.link}
                   />
                 </div>
               ))}
@@ -105,23 +106,27 @@ export default function Blogs() {
                   </div>
                   <div className=" py-3  md:py-5 lg:py-0 lg:block hidden">
                     <BorderGrayHeroBtn
-                       text="Read more"
+                      text="Read more"
                       role="link"
+                      target="_blank"
                       borderColor="darkgray/40"
                       color="black"
                       bgColor="white"
                       size="base"
+                      link="https://theinfravisionfoundation.org/2024/10/16/a-national-road-safety-authority-crucial-for-improving-indias-deteriorating-road-safety/"
                     />
                 </div>
                 </div>
                 <div className=" py-3  md:py-5 lg:py-0 ">
                     <BorderGrayHeroBtn
-                       text="Read more"
+                      text="Read more"
                       role="link"
+                      target="_blank"
                       borderColor="darkgray/40"
                       color="black"
                       bgColor="white"
-                       size="base"
+                      size="base"
+                      link="https://theinfravisionfoundation.org/2024/10/16/a-national-road-safety-authority-crucial-for-improving-indias-deteriorating-road-safety/"
                     />
                 </div>
               </div>
@@ -139,18 +144,21 @@ const BlogsData = [
     title: "India Needs Sustainability Ratings for Infrastructure Projects",
     description:
       "India’s ongoing economic transition will make it a $5 trillion economy by 2026-27 and possibly the third-largest global economy soon.",
+    link:"https://theinfravisionfoundation.org/2023/09/25/india-needs-sustainability-ratings-for-infrastructure-projects/"
   },
   {
     date: "November 25, 2023",
     title: "Agri-Warehousing: A problem of capacity",
     description:
       "Warehousing is a critical element of supply chain management, enabling the storage of commodities",
+    link:"https://theinfravisionfoundation.org/2023/11/25/poor-regulatory-capacity-of-the-warehousing-and-development-regulatory-authority-impacts-warehouse-based-sales-of-agri-commodities-and-issue-of-e-negotiable-warehouse-receipts/"
   },
   {
     date: "October 16, 2024",
     title: "Multi-utility Infra, the way to go!",
     description:
       "The infrastructure and construction sectors account for a significant share of the world’s consumption of material.",
+    link:"https://theinfravisionfoundation.org/2023/10/09/newsletter-images-do-not-remove/"
   },
 ];
 

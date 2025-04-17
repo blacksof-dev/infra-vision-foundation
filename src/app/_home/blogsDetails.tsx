@@ -4,8 +4,9 @@ type CardProps = {
   date: string;
   title: string;
   description: string;
+  link:string;
 };
-export default function BlogsDetails({ date, title, description }: CardProps) {
+export default function BlogsDetails({ date, title, description,link }: CardProps) {
   return (
     <>
       <section>
@@ -28,7 +29,7 @@ export default function BlogsDetails({ date, title, description }: CardProps) {
                   bgColor="white"
                   size="base"
                   target="_blank"
-                  link="https://theinfravisionfoundation.org/wp-content/uploads/2025/03/Study-on-Implementation-of-Compensatory-Afforestation-in-India.pdf"
+                  link={link}
                   classes="text-base"
                 />
               </div>
@@ -41,8 +42,8 @@ export default function BlogsDetails({ date, title, description }: CardProps) {
                 color="black"
                 bgColor="white"
                  size="base"
-                target="_blank"
-                link="https://theinfravisionfoundation.org/wp-content/uploads/2025/03/Study-on-Implementation-of-Compensatory-Afforestation-in-India.pdf"
+                 target="_blank"
+                 link={link}
                 classes="text-base"
               />
             </div>

@@ -163,7 +163,7 @@ export default function Driving() {
                     <div className="pt-6 ">
                     <BorderGrayHeroBtn
                       text="Know more"
-                      role="link"
+                      role="button"
                       borderColor="darkgray/40"
                       color="black"
                       bgColor="white"

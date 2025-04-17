@@ -33,8 +33,12 @@ export default function CardSlider() {
             modules={[Navigation, Pagination]}
             className=""
             navigation={{
-              prevEl: ".swiper-solution-prev-btn",
-              nextEl: ".swiper-solution-next-btn",
+              prevEl: ".swiper-solution-prev-news",
+              nextEl: ".swiper-solution-next-news",
+            }}
+            pagination={{
+              el: ".custom-pagination-bullets-news",
+              type: 'fraction',
             }}
             spaceBetween={20}
             onSlideChange={handleSlideChange}
@@ -67,23 +71,22 @@ export default function CardSlider() {
           </Swiper>
         </div>
       </div>
-      <div className="flex lg:hidden flex-wrap gap-3 justify-start mt-4 lg:justify-end md:gap-4 2xl:mt-1">
-        <button
-          className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white ${
-            isFirstSlide ? "opacity-40" : ""
-          }`}
-          aria-label="Previous slide"
-        >
-          <GoArrowLeft/>
-        </button>
-        <button
-          className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white ${
-            isLastSlide ? "!opacity-40" : ""
-          }`}
-          aria-label="Next slide"
-        >
-          <GoArrowRight />
-        </button>
+      <div className="flex   justify-between mt-4">
+        <div className="flex lg:hidden   gap-3  justify-start   md:gap-8 2xl:mt-1 ">
+          <button
+            className={`swiper-solution-prev-news flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white `}
+            aria-label="Previous slide"
+          >
+            <GoArrowLeft />
+          </button>
+          <button
+            className={`swiper-solution-next-news flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white `}
+            aria-label="Next slide"
+          >
+            <GoArrowRight />
+          </button>
+        </div>
+        <div className="lg:hidden   w-fit h-4 my-auto flex gap-2 justify-end custom-pagination-bullets-news"></div>
       </div>
     </>
   );

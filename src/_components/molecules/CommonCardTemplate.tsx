@@ -69,8 +69,8 @@ export default function LinkedinCard() {
           ))}
         </Swiper>
       </div>
-      <div className="flex   justify-between">
-        <div className="flex lg:hidden   gap-3  justify-start mt-7  md:gap-8 2xl:mt-1 ">
+      <div className="flex   justify-between mt-4">
+        <div className="flex lg:hidden   gap-3  justify-start   md:gap-8 2xl:mt-1 ">
           <button
             className={`swiper-solution-prev-decoding flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white `}
             aria-label="Previous slide"
@@ -84,7 +84,7 @@ export default function LinkedinCard() {
             <GoArrowRight />
           </button>
         </div>
-        <div className="lg:hidden  w-fit h-4 mt-auto flex gap-2 justify-end custom-pagination-bullets-decoding"></div>
+        <div className="lg:hidden  w-fit h-4 my-auto flex gap-2 justify-end custom-pagination-bullets-decoding"></div>
       </div>
     </>
   );

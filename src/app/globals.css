@@ -344,16 +344,16 @@ html,body {
 
 
 
-.custom-pagination-bullets-decoding.swiper-pagination-fraction {
+.custom-pagination-bullets-news .custom-pagination-bullets-publication  .custom-pagination-bullets-decoding.swiper-pagination-fraction {
   color: black !important; /* Main color */
   font-weight: 500;
   font-size: 15px;
 }
 
-.custom-pagination-bullets-decoding .swiper-pagination-current {
+.custom-pagination-bullets-news .custom-pagination-bullets-publication .custom-pagination-bullets-decoding .swiper-pagination-current {
   color: black !important; /* Current number */
 }
 
-.custom-pagination-bullets-decoding .swiper-pagination-total {
+.custom-pagination-bullets-news .custom-pagination-bullets-publication .custom-pagination-bullets-decoding .swiper-pagination-total {
   color: black !important; /* Total number */
 }
