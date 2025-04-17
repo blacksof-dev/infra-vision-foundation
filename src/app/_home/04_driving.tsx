@@ -15,7 +15,7 @@ type Awardsdata = {
   title: string;
   desc: string;
   image: StaticImageData;
-  index?:number;
+  index?: number;
 };
 export default function Driving() {
   const [data, setdata] = useState<AwardKey>("CAIRA");
@@ -83,51 +83,67 @@ export default function Driving() {
 
               <div className="w-[50%]  xl:border-l-1 xl:border-darkgray/40 ">
                 <div className="flex flex-row gap-16  w-[75%] ms-11 xl:ms-16 2xl:ms-27 ">
-                  <div className=" group">
+                  <div className="group">
                     <button
-                      className={`text-nowrap relative text-xl tracking-[-1%] ${
+                      onClick={() => setdata("CAIRA")}
+                      className={`text-nowrap relative text-xl tracking-[-1%] cursor-pointer ${
                         data === "CAIRA"
-                          ? "text-pink font-medium w-full"
+                          ? "text-pink font-medium"
                           : "text-black"
                       }`}
-                      onClick={() => setdata("CAIRA")}
                     >
                       CAIRA
-                      <span className={` h-[1px] ${data==="CAIRA"?"w-full bg-pink transition-all duration-1000":"w-10 sm:w-5"}  sm:h-[2px]  bg-black absolute bottom-0 left-0 top-7`}></span>
+                      <span
+                        className={`absolute bottom-0 left-0 top-7 sm:h-[2px] h-[1px] transition-all duration-500 ease-in-out ${
+                          data === "CAIRA"
+                            ? "w-full bg-pink"
+                            : "w-5 sm:w-10 bg-black"
+                        }`}
+                      />
                     </button>
                   </div>
- 
 
-                   <div className=" group">
-                   <button
-                    onClick={() => setdata("InfraKatha")}
-                    className={`text-nowrap relative text-xl tracking-[-1%]  ${
-                      data === "InfraKatha"
-                        ? "text-pink font-medium"
-                        : "text-black"
-                    }`}
-                  >
-                    InfraKatha
-                    <span className={` h-[1px] ${data==="InfraKatha"?"w-full bg-pink transition-all duration-1000":"w-10 sm:w-5"}  sm:h-[2px]  bg-black absolute bottom-0 left-0 top-7`}></span>
-                  </button>
-                   </div>
-                
-                <div className=" group">
-                <button
-                    onClick={() => setdata("InfraShakti")}
-                    className={`text-nowrap text-xl relative tracking-[-1%]  ${
-                      data === "InfraShakti"
-                        ? "text-pink font-medium"
-                        : "text-black"
-                    }`}
-                  >
-                    InfraShakti Awards
-                    <span className={` h-[1px] ${data==="InfraShakti"?"w-full bg-pink transition-all duration-1000":"w-10 sm:w-5"}  sm:h-[2px]  bg-black absolute bottom-0 left-0 top-7`}></span>
-                  </button>
+                  <div className="group">
+                    <button
+                      onClick={() => setdata("InfraKatha")}
+                      className={`text-nowrap relative text-xl tracking-[-1%] cursor-pointer ${
+                        data === "InfraKatha"
+                          ? "text-pink font-medium"
+                          : "text-black"
+                      }`}
+                    >
+                      InfraKatha
+                      <span
+                        className={`absolute bottom-0 left-0 top-7 sm:h-[2px] h-[1px] transition-all duration-500 ease-in-out ${
+                          data === "InfraKatha"
+                            ? "w-full bg-pink"
+                            : "w-5 sm:w-10 bg-black"
+                        }`}
+                      />
+                    </button>
+                  </div>
+
+                  <div className="group">
+                    <button
+                      onClick={() => setdata("InfraShakti")}
+                      className={`text-nowrap relative text-xl tracking-[-1%] cursor-pointer ${
+                        data === "InfraShakti"
+                          ? "text-pink font-medium"
+                          : "text-black"
+                      }`}
+                    >
+                      InfraShakti
+                      <span
+                        className={`absolute bottom-0 left-0 top-7 sm:h-[2px] h-[1px]  ${
+                          data === "InfraShakti"
+                            ? "w-full bg-pink"
+                            : "w-5 sm:w-10 bg-black"
+                        }`}
+                      />
+                    </button>
+                  </div>
                 </div>
-                 
-                </div>
-                <div  className="ms-11 xl:ms-16 2xl:ms-27  my-auto h-full flex flex-col justify-center">
+                <div className="ms-11 xl:ms-16 2xl:ms-27  my-auto h-full flex flex-col justify-center">
                   <div className="w-40">
                     <Image
                       src={AwardsDetails[data].logo}
@@ -144,17 +160,16 @@ export default function Driving() {
                       {AwardsDetails[data].desc}
                     </p>
 
-                    <div className="pt-6">
-                      <BorderGrayHeroBtn
-                        text="Know more"
-                        role="button"
-                        borderColor="pink"
-                        color="black"
-                        bgColor="white"
-                        size="large"
-                        aarowColor="pink"
-                        classes="font-medium"
-                      />
+                    <div className="pt-6 ">
+                    <BorderGrayHeroBtn
+                      text="Know more"
+                      role="link"
+                      borderColor="darkgray/40"
+                      color="black"
+                      bgColor="white"
+                      size="large"
+                      classes="font-medium"
+                    />
                     </div>
                   </div>
                 </div>
@@ -172,9 +187,10 @@ export default function Driving() {
             </div>
             <div className="">
               <h1 className="tracking-[-3%] font-light text-black py-4">
-                Driving our cause
-                 to <span className="font-medium tracking-[-3%] text-black">impact</span>
-                
+                Driving our cause to{" "}
+                <span className="font-medium tracking-[-3%] text-black">
+                  impact
+                </span>
               </h1>
 
               <p>
@@ -198,7 +214,7 @@ export default function Driving() {
                 image={Ciara}
               />
               <MobileView
-               index={2}
+                index={2}
                 logo={Infrashakti}
                 title=" InfraShakti Awards"
                 desc=" Milestones narrate a history of progress. The InfraShakti
@@ -209,7 +225,7 @@ export default function Driving() {
                 image={InfrashaktiImg}
               />
               <MobileView
-               index={3}
+                index={3}
                 logo={InfraKatha}
                 title="InfraKatha"
                 desc=" Dialogue drives action. InfraKatha is a monthly congregation
@@ -228,12 +244,17 @@ export default function Driving() {
   );
 }
 
-function MobileView({ logo, title, desc, image,index }: Awardsdata) {
+function MobileView({ logo, title, desc, image, index }: Awardsdata) {
   return (
     <>
       <section className="pt-5 ">
         <div className="pt-5 ">
-          <Image  src={logo} quality={100} alt="CIARA logo" className= {`py-4  ${index !==2 ? 'w-36':'w-[170px]'}`} />
+          <Image
+            src={logo}
+            quality={100}
+            alt="CIARA logo"
+            className={`py-4  ${index !== 2 ? "w-36" : "w-[170px]"}`}
+          />
         </div>
         <div>
           <h6 className="text-pink py-2 font-medium ">{title}</h6>
@@ -241,7 +262,11 @@ function MobileView({ logo, title, desc, image,index }: Awardsdata) {
           <div className="py-4">
             <Image src={image} quality={100} alt={title} className="" />
           </div>
-          <div className={`border-darkgray/40 ${index !== 3 ? 'border-b pb-10' : ''}`}>
+          <div
+            className={`border-darkgray/40 ${
+              index !== 3 ? "border-b pb-10" : ""
+            }`}
+          >
             <HeroBtn
               text="Know more"
               role="link"

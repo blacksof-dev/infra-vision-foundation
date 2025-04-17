@@ -309,16 +309,51 @@ html,body {
   box-shadow: -2.501px -2.501px 125.035px 0px rgba(255, 255, 255, 0.02) inset;
 }
 
-.swiper-pagination-bullet {
-  background-color:#5D6468  !important;
-  z-index:99999
-  
-  
-}
 
-.swiper-pagination-bullet-active {
-  background-color:#C82249  !important; 
+
+
+
+
+
+/* Inactive bullet for all */
+.custom-pagination-bullets-members .swiper-pagination-current,
+.custom-pagination-bullets-banner .custom-pagination-bullets-fellows .swiper-pagination-current,
+.custom-pagination-bullets-advisory .swiper-pagination-current,
+.custom-pagination-bullets-team .swiper-pagination-current {
+  color: #ffff !important;
  
+} 
+
+
+
+/* Active bullet for all */
+ .custom-pagination-bullets-banner .custom-pagination-bullets-members .swiper-pagination-total,
+.custom-pagination-bullets-fellows .swiper-pagination-total,
+.custom-pagination-bullets-advisory .swiper-pagination-total,
+.custom-pagination-bullets-team .swiper-pagination-total {
+ color: #fff !important;
+ 
+} 
+
+
+.swiper-pagination-fraction {
+  color: #fff  !important;
+  font-weight: 500;
+  font-size: 15px;
 }
 
 
+
+.custom-pagination-bullets-decoding.swiper-pagination-fraction {
+  color: black !important; /* Main color */
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.custom-pagination-bullets-decoding .swiper-pagination-current {
+  color: black !important; /* Current number */
+}
+
+.custom-pagination-bullets-decoding .swiper-pagination-total {
+  color: black !important; /* Total number */
+}

@@ -313,7 +313,35 @@ export default function Infravisionaries() {
 
   return (
     <>
-      <section className="bg-pink">
+      <section className="bg-pink relative">
+        <div className=" absolute top-0 xl:right-8 2xl:right-28 xl:block hidden">
+          <svg
+            width="594"
+            height="427"
+            viewBox="0 0 594 427"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g opacity="0.5">
+              <circle
+                cx="130.108"
+                cy="130.108"
+                r="129.737"
+                transform="matrix(-0.914239 -0.405175 -0.405175 0.914239 593.496 -18.2383)"
+                stroke="#D9D9D9"
+                stroke-width="0.742301"
+              />
+              <circle
+                opacity="0.3"
+                cx="153.523"
+                cy="153.523"
+                r="153.523"
+                transform="matrix(-0.914239 -0.405175 -0.405175 0.914239 405.117 93.9883)"
+                fill="#D9D9D9"
+              />
+            </g>
+          </svg>
+        </div>
         <div className="w-container blade-top-padding-lg blade-bottom-padding-lg">
           <div className="flex  flex-row  items-center gap-2 md:gap-3">
             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-white "></span>
@@ -335,7 +363,7 @@ export default function Infravisionaries() {
             <div className=" border-r-1 pe-20 border-white/40  w-fit">
               <div className="py-4 group">
                 <button
-                  className={`text-white text-md text-nowrap lg:text-xl relative ${
+                  className={`text-white text-md text-nowrap cursor-pointer lg:text-xl relative ${
                     data === "trustee" ? "font-medium" : ""
                   }`}
                   onClick={() => setdata("trustee")}
@@ -352,7 +380,7 @@ export default function Infravisionaries() {
               </div>
               <div className="py-4 group">
                 <button
-                  className={`text-white text-md text-nowrap lg:text-xl relative ${
+                  className={`text-white text-md cursor-pointer text-nowrap lg:text-xl relative ${
                     data === "advisory" ? "font-medium" : ""
                   }`}
                   onClick={() => setdata("advisory")}
@@ -369,7 +397,7 @@ export default function Infravisionaries() {
               </div>
               <div className="py-4 group">
                 <button
-                  className={`text-white text-md text-nowrap lg:text-xl relative ${
+                  className={`text-white cursor-pointer text-md text-nowrap lg:text-xl relative ${
                     data === "fellow" ? "font-medium" : ""
                   }`}
                   onClick={() => setdata("fellow")}
@@ -386,7 +414,7 @@ export default function Infravisionaries() {
               </div>
               <div className="py-4 group">
                 <button
-                  className={`text-white text-md text-nowrap lg:text-xl relative ${
+                  className={`text-white cursor-pointer text-md text-nowrap lg:text-xl relative ${
                     data === "team" ? "font-medium" : ""
                   }`}
                   onClick={() => setdata("team")}
@@ -431,7 +459,10 @@ export default function Infravisionaries() {
                 >
                   {carddata.map((ele, index) => {
                     return (
-                      <SwiperSlide key={index} className="w-full  overflow-hidden ">
+                      <SwiperSlide
+                        key={index}
+                        className="   "
+                      >
                         <div className="flex realtive flex-col w-[19rem]  h-[19rem]">
                           <Image
                             src={ele.image}
@@ -441,24 +472,24 @@ export default function Infravisionaries() {
                           <div className="absolute  bottom-0 left-0 w-[17rem]  ">
                             {ele.link ? (
                               <Link
-                                href={ele.link ? ele.link : ""}
-                                target="_blank"
-                              >
-                                <div className="   ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
-                                  <div className=" ">
-                                    <svg
-                                      width="26"
-                                      height="26"
-                                      viewBox="0 0 26 26"
-                                      fill="none"
-                                      className="fill-[#5D6468] group-hover:fill-[#C82249]"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <path d="M23.9911 0H1.9127C0.85508 0 -0.00012207 0.834961 -0.00012207 1.86728V24.0368C-0.00012207 25.0691 0.85508 25.9091 1.9127 25.9091H23.9911C25.0487 25.9091 25.909 25.0691 25.909 24.0418V1.86728C25.909 0.834961 25.0487 0 23.9911 0ZM7.68658 22.0784H3.8407V9.71085H7.68658V22.0784ZM5.76364 8.02575C4.52891 8.02575 3.53202 7.02885 3.53202 5.79918C3.53202 4.56951 4.52891 3.57262 5.76364 3.57262C6.99331 3.57262 7.9902 4.56951 7.9902 5.79918C7.9902 7.02379 6.99331 8.02575 5.76364 8.02575ZM22.0783 22.0784H18.2374V16.0667C18.2374 14.6346 18.2121 12.7876 16.2386 12.7876C14.2398 12.7876 13.9361 14.3512 13.9361 15.9655V22.0784H10.1004V9.71085H13.7843V11.401H13.8349C14.346 10.4294 15.601 9.40217 17.4683 9.40217C21.3597 9.40217 22.0783 11.9627 22.0783 15.2924V22.0784Z" />
-                                    </svg>
-                                  </div>
-                                </div>
-                              </Link>
+                              href={ele.link ? ele.link : ""}
+                              target="_blank"
+                              className="group" 
+                            >
+                              <div className="ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                                <svg
+                                  width="26"
+                                  height="26"
+                                  viewBox="0 0 26 26"
+                                  fill="none"
+                                  className="fill-[#5D6468] group-hover:fill-[#C82249] transition-colors duration-300" // Add transition for smooth effect
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path d="M23.9911 0H1.9127C0.85508 0 -0.00012207 0.834961 -0.00012207 1.86728V24.0368C-0.00012207 25.0691 0.85508 25.9091 1.9127 25.9091H23.9911C25.0487 25.9091 25.909 25.0691 25.909 24.0418V1.86728C25.909 0.834961 25.0487 0 23.9911 0ZM7.68658 22.0784H3.8407V9.71085H7.68658V22.0784ZM5.76364 8.02575C4.52891 8.02575 3.53202 7.02885 3.53202 5.79918C3.53202 4.56951 4.52891 3.57262 5.76364 3.57262C6.99331 3.57262 7.9902 4.56951 7.9902 5.79918C7.9902 7.02379 6.99331 8.02575 5.76364 8.02575ZM22.0783 22.0784H18.2374V16.0667C18.2374 14.6346 18.2121 12.7876 16.2386 12.7876C14.2398 12.7876 13.9361 14.3512 13.9361 15.9655V22.0784H10.1004V9.71085H13.7843V11.401H13.8349C14.346 10.4294 15.601 9.40217 17.4683 9.40217C21.3597 9.40217 22.0783 11.9627 22.0783 15.2924V22.0784Z" />
+                                </svg>
+                              </div>
+                            </Link>
+                            
                             ) : (
                               <div className="group-hover:bg-pink  ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
                                 <div className=" ">
@@ -490,15 +521,16 @@ export default function Infravisionaries() {
                   })}
                 </Swiper>
               </div>
-              <div className="flex pt-3 flex-wrap gap-5 mt-4 justify-start md:gap-4 2xl:mt-1">
+              
+              <div className="flex pt-3  h-[80px] flex-wrap gap-5 mt-4 justify-start md:gap-4 2xl:mt-1">
                 <button
-                  className={`swiper-prev-btn-members cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
+                  className={`swiper-prev-btn-members  cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
                   aria-label="Previous slide"
                 >
                   <GoArrowLeft />
                 </button>
                 <button
-                  className={`swiper-next-btn-members cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink `}
+                  className={`swiper-next-btn-members  cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink `}
                   aria-label="Next slide"
                 >
                   <GoArrowRight />
@@ -518,10 +550,10 @@ export default function Infravisionaries() {
               </button>
             </div>
             <div className="w-full  overflow-hidden">
-            <Swiper
-                modules={[Navigation]}
+              <Swiper
+                modules={[Navigation, Pagination]}
                 className=""
-                spaceBetween={20}
+                spaceBetween={10}
                 grabCursor
                 onSlideChange={handleSlideChange}
                 slideToClickedSlide
@@ -531,14 +563,19 @@ export default function Infravisionaries() {
                   prevEl: ".prevbtntrustee",
                   nextEl: ".nextbtntrustee",
                 }}
+                pagination={{
+                  el: ".custom-pagination-bullets-members",
+                  type: 'fraction',
+                }}
+               
                 breakpoints={{
                   640: {
                     slidesPerView: 1.5,
                     spaceBetween: 20,
                   },
                   768: {
-                    slidesPerView: 2,
-                    spaceBetween: 40,
+                    slidesPerView: 2.2,
+                    spaceBetween: 10,
                   },
                   1024: {
                     slidesPerView: 2.5,
@@ -611,19 +648,23 @@ export default function Infravisionaries() {
               </Swiper>
             </div>
 
-            <div className=" flex pt-3 flex-wrap gap-3 mt-4 justify-start  2xl:mt-1">
-              <button
-                className={`prevbtntrustee flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
-                aria-label="Previous slide"
-              >
-                <GoArrowLeft />
-              </button>
-              <button
-                className={`nextbtntrustee flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink `}
-                aria-label="Next slide"
-              >
-                <GoArrowRight />
-              </button>
+            <div className="flex flex-row justify-between mt-4 ">
+              <div className="flex  w-fit gap-3">
+                <button
+                  className="prevbtntrustee cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink"
+                  aria-label="Previous slide"
+                >
+                  <GoArrowLeft />
+                </button>
+                <button
+                  className="nextbtntrustee cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink"
+                  aria-label="Next slide"
+                >
+                  <GoArrowRight />
+                </button>
+              </div>
+
+              <div className="lg:hidden  my-auto h-4 flex gap-1  flex-1 justify-end custom-pagination-bullets-members" />
             </div>
           </div>
 
@@ -635,11 +676,15 @@ export default function Infravisionaries() {
             </div>
             <div className="w-full  overflow-hidden">
               <Swiper
-                modules={[Navigation]}
+                modules={[Navigation, Pagination]}
                 className=""
-                spaceBetween={20}
+                spaceBetween={10}
                 grabCursor
                 onSlideChange={handleSlideChange}
+                pagination={{
+                  el: ".custom-pagination-bullets-fellows",
+                  type: 'fraction',
+                }}
                 slideToClickedSlide
                 slidesPerView={1.1}
                 centeredSlides={false}
@@ -653,8 +698,8 @@ export default function Infravisionaries() {
                     spaceBetween: 20,
                   },
                   768: {
-                    slidesPerView: 2,
-                    spaceBetween: 40,
+                    slidesPerView: 2.2,
+                    spaceBetween: 10,
                   },
                   1024: {
                     slidesPerView: 2.5,
@@ -726,19 +771,23 @@ export default function Infravisionaries() {
                 ))}
               </Swiper>
             </div>
-            <div className="flex pt-3 flex-wrap gap-3 mt-4 justify-start md:gap-8 2xl:mt-1">
-              <button
-                className={`prevbtnfellows flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink `}
-                aria-label="Previous slide"
-              >
-                <GoArrowLeft />
-              </button>
-              <button
-                className={`nextbtnfellows flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
-                aria-label="Next slide"
-              >
-                <GoArrowRight />
-              </button>
+            <div className="flex flex-row justify-between mt-4">
+              <div className="flex  w-fit gap-3">
+                <button
+                  className="prevbtnfellows flex sm:h-10 cursor-pointer sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink"
+                  aria-label="Previous slide"
+                >
+                  <GoArrowLeft />
+                </button>
+                <button
+                  className="nextbtnfellows flex sm:h-10 cursor-pointer sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink"
+                  aria-label="Next slide"
+                >
+                  <GoArrowRight />
+                </button>
+              </div>
+
+              <div className="lg:hidden mt-auto h-4 flex gap-1 flex-1 justify-end custom-pagination-bullets-fellows" />
             </div>
           </div>
 
@@ -750,10 +799,10 @@ export default function Infravisionaries() {
             </div>
             <div className="w-full  overflow-hidden">
               <Swiper
-                modules={[Navigation]}
+                modules={[Navigation, Pagination]}
                 className=""
                 watchOverflow={true}
-                spaceBetween={20}
+                spaceBetween={10}
                 grabCursor
                 onSlideChange={handleSlideChange}
                 slideToClickedSlide
@@ -763,14 +812,18 @@ export default function Infravisionaries() {
                   prevEl: ".prevbtnadvisory",
                   nextEl: ".nextbtnadvisory",
                 }}
+                pagination={{
+                  el: ".custom-pagination-bullets-advisory",
+                  type: 'fraction',
+                }}
                 breakpoints={{
                   640: {
-                    slidesPerView: 1,
+                    slidesPerView: 1.5,
                     spaceBetween: 20,
                   },
                   768: {
-                    slidesPerView: 2,
-                    spaceBetween: 40,
+                    slidesPerView: 2.2,
+                    spaceBetween: 10,
                   },
                   1024: {
                     slidesPerView: 2.5,
@@ -842,17 +895,23 @@ export default function Infravisionaries() {
                 ))}
               </Swiper>
             </div>
-            <div className="flex pt-3 flex-wrap gap-3 mt-4 justify-start md:gap-8 2xl:mt-1">
-              <button
-                className={`prevbtnadvisory flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink `}
-              >
-                <GoArrowLeft />
-              </button>
-              <button
-                className={`nextbtnadvisory flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink `}
-              >
-                <GoArrowRight />
-              </button>
+            <div className="flex flex-row justify-between mt-4">
+              <div className="flex  w-fit gap-3">
+                <button
+                  className="prevbtnadvisory flex sm:h-10 sm:w-10 h-8 w-8 cursor-pointer  items-center justify-center rounded-full bg-white text-xl text-pink"
+                  aria-label="Previous slide"
+                >
+                  <GoArrowLeft />
+                </button>
+                <button
+                  className="nextbtnadvisory flex sm:h-10 sm:w-10 h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white text-xl text-pink"
+                  aria-label="Next slide"
+                >
+                  <GoArrowRight />
+                </button>
+              </div>
+
+              <div className="lg:hidden mt-auto h-4 flex  gap-[1px]  justify-end custom-pagination-bullets-advisory" />
             </div>
           </div>
 
@@ -864,9 +923,9 @@ export default function Infravisionaries() {
             </div>
             <div className="w-full  overflow-hidden">
               <Swiper
-                modules={[Navigation]}
+                modules={[Navigation, Pagination]}
                 className=""
-                spaceBetween={20}
+                spaceBetween={10}
                 grabCursor
                 onSlideChange={handleSlideChange}
                 slideToClickedSlide
@@ -876,14 +935,18 @@ export default function Infravisionaries() {
                   prevEl: ".prevbtnteam",
                   nextEl: ".nextbtnteam",
                 }}
+                pagination={{
+                  el: ".custom-pagination-bullets-team",
+                  type: 'fraction',
+                }}
                 breakpoints={{
                   640: {
                     slidesPerView: 1.5,
                     spaceBetween: 20,
                   },
                   768: {
-                    slidesPerView: 2,
-                    spaceBetween: 40,
+                    slidesPerView: 2.2,
+                    spaceBetween: 10,
                   },
                   1024: {
                     slidesPerView: 2.5,
@@ -955,21 +1018,26 @@ export default function Infravisionaries() {
                 ))}
               </Swiper>
             </div>
-            <div className="flex pt-3 flex-wrap gap-3 mt-4 justify-start md:gap-8 2xl:mt-1">
-              <button
-                className={`prevbtnteam flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink `}
-                aria-label="Previous slide"
-              >
-                <GoArrowLeft />
-              </button>
-              <button
-                className={`nextbtnteam flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink `}
-                aria-label="Next slide"
-              >
-                <GoArrowRight />
-              </button>
+            <div className="flex flex-row justify-between mt-4">
+              <div className="flex  w-fit gap-3">
+                <button
+                  className="prevbtnteam flex sm:h-10 sm:w-10 h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white text-xl text-pink"
+                  aria-label="Previous slide"
+                >
+                  <GoArrowLeft />
+                </button>
+                <button
+                  className="nextbtnteam flex sm:h-10 sm:w-10 h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white text-xl text-pink"
+                  aria-label="Next slide"
+                >
+                  <GoArrowRight />
+                </button>
+              </div>
+
+              <div className="lg:hidden mt-auto h-4 flex gap-1 flex-1  justify-end custom-pagination-bullets-team" />
             </div>
           </div>
+
         </div>
       </section>
     </>

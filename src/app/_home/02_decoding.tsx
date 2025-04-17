@@ -16,7 +16,36 @@ export default function Decoding() {
   };
   return (
     <>
-      <section className="bg-whitesmoke">
+      <section className="bg-whitesmoke relative ">
+        <div className=" absolute top-4 right-14 xl:block hidden">
+          <svg
+            width="459"
+            height="481"
+            viewBox="0 0 459 481"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g opacity="0.5">
+              <circle
+                cx="130.108"
+                cy="130.108"
+                r="129.737"
+                transform="matrix(-0.998666 -0.0516365 -0.0516365 0.998666 458.307 -4.56348)"
+                stroke="#D9D9D9"
+                stroke-width="0.742301"
+              />
+              <circle
+                opacity="0.3"
+                cx="153.523"
+                cy="153.523"
+                r="153.523"
+                transform="matrix(-0.998666 -0.0516365 -0.0516365 0.998666 322.49 167.581)"
+                fill="#D9D9D9"
+              />
+            </g>
+          </svg>
+        </div>
+
         <div className="blade-top-padding-lg blade-bottom-padding-lg w-container">
           <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
@@ -27,8 +56,7 @@ export default function Decoding() {
               <span className="text-black/90 font-medium ">
                 Decoding infrastructure,
               </span>
-              <br />{" "}
-               one topic at a time
+              <br /> one topic at a time
             </h1>
           </div>
           <div className="flex flex-col-reverse  lg:flex-row gap-6  pt-1">
@@ -54,10 +82,13 @@ export default function Decoding() {
                 </div>
 
                 <div className="group flex ">
-                  <Link href="https://www.youtube.com/playlist?list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em" target="_blank">
+                  <Link
+                    href="https://www.youtube.com/playlist?list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em"
+                    target="_blank"
+                  >
                     <button className="text-black text-lg lg:text-xl  justify-center item-center cursor-pointer relative font-medium flex flex-row gap-2">
-                     <FaYoutube className="text-red-600 text-3xl"/>
-                       Explore the playlist
+                      <FaYoutube className="text-red-600 text-3xl" />
+                      Explore the playlist
                       <div className="w-10 sm:w-20 h-[1px] sm:h-[2px] group-hover:w-full absolute bottom-0 left-0 top-9 bg-pink transition-all duration-1000"></div>
                     </button>
                   </Link>

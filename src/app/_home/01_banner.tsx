@@ -60,7 +60,9 @@ export default function Banner() {
           </div>
           <div className="absolute  2xl:left-46   bottom-8 lg:bottom-3 2xl:bottom-10 ">
             <Updates />
+            <div className=" w-fit gap-2 flex justify-center mt-5 custom-pagination-bullets-banner xl:hidden" ></div>
           </div>
+
         </div>
       </section>
     </>

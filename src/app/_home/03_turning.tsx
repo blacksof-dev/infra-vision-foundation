@@ -17,7 +17,7 @@ import circlesvg1 from '@/../public/assets/home/circlesvg1.svg'
 export default function Turning() {
   return (
     <>
-      <section className="bg-pink relative d">
+      <section className="bg-pink relative ">
         <div className="absolute top-0 z-0 left-0 opacity-30 hidden xl:block">
           <Image src={halfcirclesvg} alt="Circle Image" />
         </div>

@@ -33,6 +33,19 @@ type MasterBtnProps<T extends "submit" | "button"> = {
   aarowColor?:string,
   bgColor?: keyof typeof colorMap;
 };
+type MasterUnderlineBtnProps<T extends "submit" | "button"> = {
+  classes?: string;
+  type?: T;
+  size?: keyof typeof sizeMap;
+  isDisabled?: boolean;
+  role: "button" | "submit" | "link";
+  link?: string;
+  target?: "_blank" | "_self" | "_parent" | "_top";
+  onClick?: T extends "submit" ? never : () => void;
+  color?: string;
+  title: string;
+  underlineColor?:string;
+};
 
 export function HeroBtn<T extends "submit" | "button">({
   text,
@@ -214,57 +227,45 @@ export function BorderGrayHeroBtn<T extends "submit" | "button">({
 
   return (
     <div className="w-fit group">
-      {  (role === "link" && link!= ' ')  ? (
-        <Link
-          href={link}
-          target={target}
-          className={`flex gap-2 lg:gap-4 items-center justify-center ${classes}`}
+    {  (role === "link" && link!= ' ')  ? (
+      <Link
+        href={link}
+        target={target}
+        className={`flex gap-2 lg:gap-4 items-center justify-center ${classes}`}
+        role={role}
+        onClick={handleClick}
+        {...rest}
+      >
+        <h5 className={`text-${color} ${sizeClass}`}>{text}</h5>
+        <div
+          className={`rounded-sm p-1 relative md:p-2 border-2 border-darkgray/50 group-hover:border-transparent  overflow-hidden   w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300  `}
+        >
+           <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
+           <GoArrowRight className={`   text-pink  group-hover:text-white text-2xl z-[2]`}/>
+        </div>
+      </Link>
+    ) : (
+
+      <div className="flex gap-2 lg:gap-4 items-center justify-center  w-fit">
+        <h5 className={`text-${color} ${sizeClass}`}>{text}</h5>
+        <button
           role={role}
+          disabled={isDisabled}
           onClick={handleClick}
           {...rest}
+          type={type === "button" ? "button" : "submit"}
+          className={`rounded-sm relative p-1 md:p-2 border-2 border-${borderColor} overflow-hidden text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 ${classes} `}
         >
-          <h5 className={`text-${color}  ${sizeClass}`}>{text}</h5>
-          <div
-            className={`rounded-sm p-1  relative overflow-hidden  border-2 border-darkgray/50  w-7 h-7 md:w-8 md:h-8 flex items-center justify-center transition-all  duration-300 group-hover:bg-pink group-hover:border-pink`}
-          >
-             <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
-             <GoArrowRight className={`   text-pink  group-hover:text-white text-3xl z-[2]`}/>
-          </div>
-        </Link>
-      ) : (
-
-        <div className="flex gap-2 lg:gap-4 items-center justify-center  w-fit">
-          <h5 className={`text-${color} ${sizeClass}`}>{text}</h5>
-          <button
-            role={role}
-            disabled={isDisabled}
-            onClick={handleClick}
-            {...rest}
-            type={type === "button" ? "button" : "submit"}
-            className={`rounded-sm p-1 relative overflow-hidden md:p-2 border-2 border-${borderColor} text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 ${classes} `}
-          >
-             <GoArrowRight className={`   text-pink  group-hover:text-white text-2xl z-[2]`}/>
-          </button>
-        </div>
-      
-      )}
-    </div>
+          <GoArrowRight className={`   text-pink  group-hover:text-white text-2xl z-[2]`}/>
+        </button>
+      </div>
+    
+    )}
+  </div>
   );
 }
 
-type MasterUnderlineBtnProps<T extends "submit" | "button"> = {
-  classes?: string;
-  type?: T;
-  size?: keyof typeof sizeMap;
-  isDisabled?: boolean;
-  role: "button" | "submit" | "link";
-  link?: string;
-  target?: "_blank" | "_self" | "_parent" | "_top";
-  onClick?: T extends "submit" ? never : () => void;
-  color?: string;
-  title: string;
-  underlineColor?:string;
-};
+
 
 export function UnderlineCta<T extends "submit" | "button">(
   props: MasterUnderlineBtnProps<T>
