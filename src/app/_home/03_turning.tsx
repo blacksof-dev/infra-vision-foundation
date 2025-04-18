@@ -75,7 +75,7 @@ export default function Turning() {
                   bgColor="pink"
                   size="extralarge"
                   aarowColor="white"
-                  btnrole="what"
+                 
                 />
               </div>
             </div>

@@ -173,7 +173,7 @@ function PublicationSlider() {
             {Publicationdata.map((item, index) => {
               return (
                 <SwiperSlide key={index} className=" !h-full ">
-                 <div>
+                 <div className="">
                     <Card
                       date={item.date}
                       title={item.title}

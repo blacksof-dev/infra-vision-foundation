@@ -21,6 +21,7 @@ html,body {
   --color-lightgray:#979797;
   --color-gray:#D0D0D0;
   --color-whitesmoke:#F6F6F6;
+  --color-blacksecond:#191919
 
   --breakpoint-3xl : 1921px;
   --breakpoint-2xl :1536px;
@@ -315,45 +316,48 @@ html,body {
 
 
 
-/* Inactive bullet for all */
+/* White style for members, banner, fellows, advisory, team */
 .custom-pagination-bullets-members .swiper-pagination-current,
-.custom-pagination-bullets-banner .custom-pagination-bullets-fellows .swiper-pagination-current,
+.custom-pagination-bullets-banner .swiper-pagination-current,
+.custom-pagination-bullets-fellows .swiper-pagination-current,
 .custom-pagination-bullets-advisory .swiper-pagination-current,
 .custom-pagination-bullets-team .swiper-pagination-current {
-  color: #ffff !important;
- 
-} 
+  color: #fff !important;
+}
 
-
-
-/* Active bullet for all */
- .custom-pagination-bullets-banner .custom-pagination-bullets-members .swiper-pagination-total,
+.custom-pagination-bullets-members .swiper-pagination-total,
+.custom-pagination-bullets-banner .swiper-pagination-total,
 .custom-pagination-bullets-fellows .swiper-pagination-total,
 .custom-pagination-bullets-advisory .swiper-pagination-total,
 .custom-pagination-bullets-team .swiper-pagination-total {
- color: #fff !important;
- 
-} 
+  color: #fff !important;
+}
+
+/* Black style for news, publication, decoding */
+.custom-pagination-bullets-news .swiper-pagination-current,
+.custom-pagination-bullets-publication .swiper-pagination-current,
+.custom-pagination-bullets-decoding .swiper-pagination-current {
+  color: black !important;
+}
+
+.custom-pagination-bullets-news .swiper-pagination-total,
+.custom-pagination-bullets-publication .swiper-pagination-total,
+.custom-pagination-bullets-decoding .swiper-pagination-total {
+  color: black !important;
+}
 
 
 .swiper-pagination-fraction {
-  color: #fff  !important;
+  color: #fff !important;
   font-weight: 500;
   font-size: 15px;
 }
 
 
-
-.custom-pagination-bullets-news .custom-pagination-bullets-publication  .custom-pagination-bullets-decoding.swiper-pagination-fraction {
-  color: black !important; /* Main color */
-  font-weight: 500;
-  font-size: 15px;
+.custom-pagination-bullets-news .swiper-pagination-fraction,
+.custom-pagination-bullets-publication .swiper-pagination-fraction,
+.custom-pagination-bullets-decoding .swiper-pagination-fraction {
+  color: black !important;
 }
 
-.custom-pagination-bullets-news .custom-pagination-bullets-publication .custom-pagination-bullets-decoding .swiper-pagination-current {
-  color: black !important; /* Current number */
-}
 
-.custom-pagination-bullets-news .custom-pagination-bullets-publication .custom-pagination-bullets-decoding .swiper-pagination-total {
-  color: black !important; /* Total number */
-}

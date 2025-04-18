@@ -168,6 +168,7 @@ export function HeroBtnPink<T extends "submit" | "button">({
           <div
             className={`rounded-sm p-1 relative overflow-hidden md:p-2 border-2 border-${borderColor} text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center  transition-all duration-300`}
           >
+             <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
            <GoArrowRight className={`   text-white  group-hover:text-pink text-2xl z-[2]`}/>
           </div>
         </Link>
@@ -183,7 +184,8 @@ export function HeroBtnPink<T extends "submit" | "button">({
             type={type === "button" ? "button" : "submit"}
             className={`rounded-sm p-1 md:p-2 relative overflow-hidden border-2 border-${borderColor} text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 ${classes} `}
           >
-            <GoArrowRight className={`   text-white  group-hover:text-pink text-2xl z-[2]`}/>
+             <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
+            <GoArrowRight className={`   text-white  group-hover:text-white text-2xl z-[2]`}/>
           </button>
         </div>
       
