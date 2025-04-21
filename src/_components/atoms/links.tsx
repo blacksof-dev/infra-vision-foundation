@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import Link from "next/link";
-import { GoChevronDown } from "react-icons/go";
+import { GoChevronDown, GoChevronUp } from "react-icons/go";
 
 const sizeMap = {
   small: " text-sm",
@@ -22,7 +22,7 @@ type MasterAnchorProps = {
   href?: string;
   target?: "_self" | "_blank";
   className?: string;
-  iconVisiblity?:boolean;
+  status?:boolean;
 };
 
 export function Anchor({
@@ -77,7 +77,7 @@ export function TextAnchor({
     color = "dark",
     size = "base",
     className,
-    iconVisiblity,
+    status,
     ...rest
    
   }: MasterAnchorProps & { color?: "dark" | "light" }) {
@@ -89,18 +89,19 @@ export function TextAnchor({
         target={target}
         href={href ?? "/"} 
         {...rest}
-        className={`${sizeClass} ${colorClass} ${className} group relative flex flex-row gap-1 justify-center items-center  text-opacity-80 hover:text-opacity-100 
-                    decoration-from-font focus:text-opacity-100 transition-all`}
+        className={`${sizeClass} ${colorClass} ${className} group relative flex flex-row gap-1 justify-center items-center `}
       >
 
-        <span className="absolute left-1 w-0 h-0 group-hover:w-2 group-hover:h-2 group-hover:rounded group-hover:bg-pink"></span>
-        {text} 
+        {/* <span className="absolute -left-1 w-0 h-0 group-hover:w-2 group-hover:h-2 group-hover:rounded group-hover:bg-pink"></span> */}
+        <div className="group-hover:text-black">
+           {text}   
+        </div>
           
         <div>
-          {iconVisiblity &&
-           <GoChevronDown className=" text-darkgray "/>
-          }
-        </div>
+          {status ?(
+              <GoChevronUp/>
+            ):(<GoChevronDown/>) }
+          </div>
       </Link>
      
      
@@ -114,8 +115,8 @@ export function TextAnchor({
     href,
     color = "dark",
     size = "base",
+    status,
     className,
-    iconVisiblity,
     ...rest
    
   }: MasterAnchorProps & { color?: "dark" | "light" }) {
@@ -132,9 +133,9 @@ export function TextAnchor({
       >
         {text} 
         <div>
-          {iconVisiblity &&
-           <GoChevronDown className=" text-darkgray mt-2"/>
-          }
+          {status ?(
+            <GoChevronDown/>
+          ):(<GoChevronUp/>) }
          
         </div>
       </Link>

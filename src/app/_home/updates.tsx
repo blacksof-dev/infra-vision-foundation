@@ -30,20 +30,20 @@ export default function Updates() {
       <div className="flex flex-row gap-8">
         {/* Left Column */}
         <div className="border-r border-white/50 xl:block hidden">
-          <div className="lg:ms-24  xl:ms-13 2xl:ms-0 hidden xl:block">
-            <h4 className="text-white  text-nowrap px-5">Latest Updates</h4>
-            <div className="flex gap-5 pt-5 justify-center mt-4 lg:justify-start md:gap-4 2xl:mt-1 w-container">
+          <div className="   hidden xl:block">
+            <h4 className="text-white me-4 text-nowrap ">Latest Updates</h4>
+            <div className="flex gap-5 py-4 justify-center  lg:justify-start md:gap-4 ">
               <button
                 className={`swiper-solution-prev-btn-hero cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink
                 }`}
-                // aria-label="Previous slide"
+              
               >
                 <GoArrowLeft />
               </button>
               <button
                 className={`swiper-solution-next-btn-hero cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink
                 }`}
-                // aria-label="Next slide"
+                
               >
                 <GoArrowRight />
               </button>
@@ -53,7 +53,7 @@ export default function Updates() {
 
         {/* Right Column */}
         <div
-          className="w-screen
+          className="w-screen 
         "
         >
           <Swiper

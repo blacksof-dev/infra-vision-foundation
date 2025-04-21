@@ -2,7 +2,7 @@
 import { RxCross1 } from "react-icons/rx";
 import { TextMobileNavAnchor} from "../atoms/links";
 import Image from "next/image";
-import logo from "@/../public/assets/globals/logo.svg";
+import logo from "@/../public/assets/globals/logo.png";
 import { FaSearch } from "react-icons/fa";
 import { useEffect, useState } from "react";
 export default function Mobilenav() {
@@ -33,9 +33,9 @@ export default function Mobilenav() {
     <>
       <section>
         {crossicon && (
-          <div className=" w-screen h-screen bg-[#E9F8FF]  ">
+          <div className=" w-screen h-screen bg-white ">
             <div className="flex flex-row justify-between  items-center">
-              <div className="w-[12rem] sm:w-[15rem] h-[5rem] sm:h-[7rem]  px-3">
+              <div className="w-[12rem] sm:w-[10rem] h-[5rem] sm:h-[9rem]  px-3">
                 <Image
                   src={logo}
                   alt="Infravision Foundation Logo"
@@ -57,7 +57,7 @@ export default function Mobilenav() {
                     size="xxl"
                     className="block whitespace-nowrap py-4"
                     text="What Drives Us"
-                    iconVisiblity={true}
+                  
                   />
                 </li>
                 {openSection === "What Drives Us" && (
@@ -90,7 +90,7 @@ export default function Mobilenav() {
                     size="xxl"
                     className="block whitespace-nowrap  py-4"
                     text="Our Initiatives"
-                    iconVisiblity={true}
+                  
                   />
                 </li>
                 {openSection === "Our Initiatives" && (
@@ -116,7 +116,7 @@ export default function Mobilenav() {
                     size="xxl"
                     className="block whitespace-nowrap  py-4"
                     text="Publications"
-                    iconVisiblity={true}
+                  
                   />
                 </li>
 
@@ -143,7 +143,7 @@ export default function Mobilenav() {
                     size="xxl"
                     className="block whitespace-nowrap  py-4"
                     text="Resources"
-                    iconVisiblity={true}
+                   
                   />
                 </li>
                 {openSection === "Resources" && (
@@ -169,7 +169,7 @@ export default function Mobilenav() {
                     size="xxl"
                     className="block whitespace-nowrap  py-4"
                     text="Events"
-                    iconVisiblity={true}
+                   
                   />
                 </li>
                 {openSection === "Events" && (
@@ -192,25 +192,11 @@ export default function Mobilenav() {
                     size="xxl"
                     className="block whitespace-nowrap  py-4"
                     text="Contact Us"
-                    iconVisiblity={false}
                   />
                 </li>
               </ul>
             </div>
-            <div className="mx-3 mt-8 border border-darkgray  rounded-md">
-              <form className="p-2">
-                <div className="flex items-center gap-3">
-                  <button>
-                    <FaSearch className="text-darkgray" />
-                  </button>
-                  <input
-                    type="text"
-                    placeholder="Search"
-                    className="w-full outline-none bg-transparent text-sm placeholder:text-gray-500"
-                  />
-                </div>
-              </form>
-            </div>
+          
           </div>
         )}
       </section>

@@ -1,4 +1,5 @@
-"use client"
+
+"use client";
 import Image from "next/image";
 import logo from "@/../public/assets/globals/logo.png";
 import { TextNavAnchor } from "../atoms/links";
@@ -7,17 +8,23 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import Mobilenav from "./mobileNav";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-
+import { motion, AnimatePresence } from "framer-motion";
+import { FiArrowRight } from "react-icons/fi";
+import { NavgHeroBtn } from "../atoms/buttons";
 
 export default function Header() {
-
- 
-
+  const [open, setopen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const WhatDrivesUs = [
+    "Who we are",
+    "Vision and Mission",
+    "The Infravisionaries",
+    "Collaborate with us",
+  ];
 
-  const toggleMenu = () => {
+  const handlehamberg=()=>{
     setIsMenuOpen(prev => !prev); 
-  };
+  }
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden"; 
@@ -25,142 +32,151 @@ export default function Header() {
       document.body.style.overflow = "auto"; 
     }
   
-    return () => {
-      document.body.style.overflow = "auto"; 
-    };
   }, [isMenuOpen]);
 
-
-
   return (
-    <>
-  <nav className={`absolute w-full overflow-hidden  z-[9999] top-3 left-2  xl:top-8 d `} >
-  <div className="p-0 sm:px-3 xl:px-4 2xl:px-6  w-container  relative overflow-hidden ">
-    <div className="flex flex-row justify-between  xl:gap-10 items-center  w-full">
+    <section className="pt-5 absolute z-[999]">
+      <div className=" w-container ">
+        <div className="flex flex-row justify-center items-center gap-[8 rem] sm:gap-[20rem] md:gap-[25rem] lg:gap-[35rem] xl:gap-9 w-full">
+          {/* Logo */}
+          <div className="w-[12rem]  xl:w-[17rem]">
+            <Link href="/">
+              <Image
+                src={logo}
+                quality={100}
+                alt="Infra Vision Foundation"
+                className="w-full h-auto"
+              />
+            </Link>
+          </div>
 
-      {/* Logo */}
-      <div className="w-[11rem] 2xl:w-[14rem]  ">
-        <Link href="/"><Image src={logo} quality={100} className="" alt="Infra Vision Foundation" /></Link>
-      </div>
+          {/* Navigation Links */}
+          <div className="hidden  xl:flex flex-row  gap-4 items-center">
+            <ul className="relative">
+              {" "}
+              {/* Make sure ul is relative for absolute dropdown */}
+              <li onClick={() => setopen((prev) => !prev)}>
+                <TextNavAnchor
+                  color="dark"
+                  size="large"
+                  className="block whitespace-nowrap px-3 py-1 md:py-2"
+                  text="What Drives Us"
+                  status={open}
+                />
+              </li>
+              <AnimatePresence>
+                {open && (
+                  <motion.div
+                    key="dropdown" // Important for AnimatePresence
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ duration: 0.35, ease: "easeInOut" }}
+                    className="absolute z-50 w-[19rem] bg-white rounded-md shadow-xl mt-2"
+                  >
+                    <ul>
+                      {WhatDrivesUs.map((data, index) => (
+                        <li
+                          key={index}
+                          className="flex justify-between items-center group cursor-pointer hover:opacity-80 p-6 border-b border-darkgray/60 transition"
+                        >
+                          <span className="text-sm text-darkgray">{data}</span>
+                          <NavgHeroBtn
+                            text=""
+                            role="link"
+                            borderColor="pink"
+                            color="pink"
+                            bgColor="white"
+                            size="extralarge"
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </ul>
 
-      {/* Desktop Navigation */}
-      <div className="hidden xl:flex   flex-row  xl:gap-5 2xl:gap-6 3xl:gap-8 items-center ">
-        <ul>
-          
-          <li className="">
-            <TextNavAnchor
-              color="dark"
-              size="large"
-              className="block whitespace-nowrap ps-5 py-1 md:py-2 "
-              // href="/what-drives-us"
-              text="What Drives Us"
-              iconVisiblity={true}
-            />
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <TextNavAnchor
-              color="dark"
-              size="large"
-              className="block whitespace-nowrap ps-5 py-1 md:py-2 no-underline"
-              // href="/our-initiatives"
-              text="Our Initiatives"
-              iconVisiblity={true}
-            />
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <TextNavAnchor
-              color="dark"
-              size="large"
-              className="block whitespace-nowrap ps-5 py-1 md:py-2 no-underline"
-              // href="/publications"
-              text="Publications"
-              iconVisiblity={true}
-            />
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <TextNavAnchor
-              color="dark"
-              size="large"
-              className="block whitespace-nowrap ps-5 py-1 md:py-2 no-underline"
-              // href="/resources"
-              text="Resources"
-              iconVisiblity={true}
-            />
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <TextNavAnchor
-              color="dark"
-              size="large"
-              className="block whitespace-nowrap ps-5 py-1 md:py-2 no-underline"
-              // href="/events"
-              text="Events"
-              iconVisiblity={true}
-            />
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <TextNavAnchor
-              color="dark"
-              size="large"
-              className="block whitespace-nowrap ps-5 py-1 md:py-2 no-underline"
-              // href="/contact-us"
-              text="Contact Us"
-              iconVisiblity={false}
-            />
-          </li>
-        </ul>
+            <ul>
+              <li>
+                <TextNavAnchor
+                  color="dark"
+                  size="large"
+                  className="block whitespace-nowrap px-3 py-1 md:py-2"
+                  text="Our Initiatives"
+                  //  status={true}
+                />
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <TextNavAnchor
+                  color="dark"
+                  size="large"
+                  className="block whitespace-nowrap px-3 py-1 md:py-2"
+                  text="Publications"
+                  //  status={true}
+                />
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <TextNavAnchor
+                  color="dark"
+                  size="large"
+                  className="block whitespace-nowrap px-3 py-1 md:py-2"
+                  text="Resources"
+                  //  status={true}
+                />
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <TextNavAnchor
+                  color="dark"
+                  size="large"
+                  className="block whitespace-nowrap px-3 py-1 md:py-2"
+                  text="Events"
+                  //  status={true}
+                />
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <TextNavAnchor
+                  color="dark"
+                  size="large"
+                  className="block whitespace-nowrap px-3 py-1 md:py-2"
+                  text="Contact Us"
+                  //  status={false}
+                />
+              </li>
+            </ul>
+          </div>
 
-       
-       
-
-      </div>
-
-      <div className="hidden xl:block border  border-darkgray w-full xl:w-[8rem]  2xl:w-[10rem]  rounded">
-          <form className="p-2">
-            <div className="flex items-center  gap-3">
-              <FaSearch className="text-darkgray text-xl " />
+        <div className="flex flex-row gap-4  justify-center items-center">
+            <div className=" hidden w-[10%] xl:w-[14%] min-w-[160px] border border-darkgray rounded-[2px] p-2 sm:flex flex-row gap-2 items-center">
+              <FaSearch className="text-darkgray text-xl" />
               <input
                 type="text"
                 placeholder="Search"
-                className="w-full outline-none bg-transparent  text-sm placeholder:text-gray-500"
+                className="w-full outline-none bg-transparent text-sm placeholder:text-gray-500"
               />
             </div>
-          </form>
+            <div className="  sm:hidden w-8 h-8 rounded-full p-1 bg-pink flex justify-center items-center">
+              <FaSearch className="text-white text-lg" />
+            </div>
+            <div className=" block xl:hidden ">
+               <button onClick={handlehamberg}><RxHamburgerMenu className="text-lg"/></button>
+            </div>
         </div>
 
-
-
-
-
-
-
-
-      {/* Mobile Hamburger Menu */}
-      <div className="xl:hidden ">
-        <div>
-           <button  onClick={toggleMenu} ><RxHamburgerMenu className="text-3xl  me-4 "/></button>
+         
         </div>
-      
-       {/* {isMenuOpen && (
-        <div className="absolute  top-0 left-0 z-50">
-          <Mobilenav />
-        </div>
-      )} */}
+        {/* <div>
+           <Mobilenav/>
+        </div> */}
       </div>
-
-    </div>
-  </div>
-</nav>
-
-    </>
+    </section>
   );
 }
