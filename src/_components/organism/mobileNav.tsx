@@ -217,3 +217,21 @@ export default function Mobilenav() {
     </>
   );
 }
+
+
+
+
+
+// useEffect(() => {
+//   const activeUrl = ["/publication"];
+//   const currentPath = window.location.pathname;
+
+//   if (activeUrl.includes(currentPath)) {
+//     setshowNavBg(true);
+//   }
+//   else {
+//     setshowNavBg(false)
+//   }
+// },  []);
+// const [showNavBg,setshowNavBg] =useState<boolean>(false)
+// ${showNavBg?"bg-white":"bg-transparent"}
