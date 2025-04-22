@@ -16,8 +16,8 @@ export default function Banner() {
             ></Image>
           </div>
 
-          <div className="w-container ">
-            <div className="absolute top-[24%] md:top-[30%] xl:top-[20%]">
+          <div className="w-container">
+            <div className="absolute top-[24%]  md:top-[30%] xl:top-[20%]">
               <div className="w-full    ">
                 <h1 className="tracking-[-4%] font-light txt-black/90 ">
                   {" "}

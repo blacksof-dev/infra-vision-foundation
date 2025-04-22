@@ -1,7 +1,7 @@
 export default function Permission() {
   return (
     <>
-      <section className="bg-whitesmoke ">
+      <div className="bg-whitesmoke ">
         <div className="w-container blade-top-padding-lg blade-bottom-padding-lg relative">
           <div className="hidden md:block absolute right-0 top-0">
             <svg
@@ -67,7 +67,7 @@ export default function Permission() {
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 }

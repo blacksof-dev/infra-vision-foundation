@@ -26,7 +26,7 @@ export default function Newsletter({
 }: Newsletter) {
   return (
     <>
-      <section className={`${bgColor !== "" ? "bg-" + bgColor : ""}`}>
+      <div className={`${bgColor !== "" ? "bg-" + bgColor : ""}`}>
         <div className="relative h-auto  ">
           {bgImage && mobilebg && (
             <>
@@ -141,7 +141,7 @@ export default function Newsletter({
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 }

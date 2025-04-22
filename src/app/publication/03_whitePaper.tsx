@@ -128,7 +128,7 @@ export default function WhitePaper() {
   };
   return (
     <>
-      <section className="bg-whitesmoke">
+      <div className="bg-whitesmoke">
         <div className="w-container blade-top-padding-lg blade-bottom-padding-lg">
           <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
@@ -388,7 +388,7 @@ export default function WhitePaper() {
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 }
