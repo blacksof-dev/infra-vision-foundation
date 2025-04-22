@@ -22,7 +22,7 @@ const footer = () => {
               <Anchor href="/">
                 <Image
                   src={logo}
-                  className="w-[50%] h-[30%] md:h-full md:w-[70%] "
+                  className=" w-[45%] h-[30%] md:h-full md:w-[45%] "
                   alt="TIF logo"
                   title=" logo"
                 />

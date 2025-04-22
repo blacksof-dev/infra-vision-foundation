@@ -26,65 +26,70 @@ export default function PublicationTabs({ sectionRefs }: Props) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        let visibleSections: TabId[] = [];
+        const visibilityMap: { id: TabId; ratio: number }[] = [];
 
         entries.forEach((entry) => {
           const matchedTab = Object.entries(sectionRefs).find(
             ([_, ref]) => ref.current === entry.target
           );
-          if (matchedTab && entry.isIntersecting) {
-            visibleSections.push(matchedTab[0] as TabId);
+          if (matchedTab) {
+            visibilityMap.push({
+              id: matchedTab[0] as TabId,
+              ratio: entry.isIntersecting ? entry.intersectionRatio : 0,
+            });
           }
         });
 
-        // Set active tab if one is in view
-        if (visibleSections.length > 0) {
-          setActiveTab(visibleSections[0]);
-          setStickyVisible(true);
+        // Sort by most visible section
+        visibilityMap.sort((a, b) => b.ratio - a.ratio);
+
+        // Determine most visible tab section
+        if (visibilityMap.length > 0 && visibilityMap[0].ratio > 0) {
+          const topVisible = visibilityMap[0].id;
+          if (topVisible !== activeTab) {
+            setActiveTab(topVisible);
+          }
+          setStickyVisible(true); // Only show if one is in view
         } else {
-          setStickyVisible(false); // Hide sticky when none are visible
+          setStickyVisible(false); // Hide if none of the three are visible
         }
       },
       {
-        threshold: 0.4, // You can tweak this
+        threshold: [0, 0.25, 0.5, 0.75, 1],
       }
     );
 
-    // Observe only tab sections
     Object.values(sectionRefs).forEach((ref) => {
-      if (ref.current) {
-        observer.observe(ref.current);
-      }
+      if (ref.current) observer.observe(ref.current);
     });
 
     return () => {
       Object.values(sectionRefs).forEach((ref) => {
-        if (ref.current) {
-          observer.unobserve(ref.current);
-        }
+        if (ref.current) observer.unobserve(ref.current);
       });
     };
-  }, [sectionRefs]);
+  }, [sectionRefs, activeTab]);
 
   return (
     <div
       className={clsx(
-        "w-container",
+        "border-b border-darkgray/16 ",
+        "bg-white",
         "z-50",
         "sticky",
         "top-0",
         isStickyVisible ? "block" : "hidden"
       )}
     >
-      <div className="flex gap-8 border-b border-gray-200 justify-start bg-white sticky top-0 z-40">
+      <div className="flex gap-4 w-container sm:gap-20 md:pt-8  justify-start  sticky top-0 z-40">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => handleTabClick(tab.id)}
             className={clsx(
-              "py-4 text-base md:text-lg font-medium text-darkgray border-b-2 transition-all",
+              "py-4 text-sm md:text-lg   text-darkgray border-b-2 transition-all",
               activeTab === tab.id
-                ? "text-pink border-pink"
+                ? "text-pink border-pink font-medium"
                 : "border-transparent"
             )}
           >

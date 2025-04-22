@@ -229,7 +229,7 @@ export function BorderGrayHeroBtn<T extends "submit" | "button">({
           onClick={handleClick}
           {...rest}
         >
-          <h5 className={`text-${color} ${sizeClass}`}>{text}</h5>
+          <h5 className={`text-${color} ${sizeClass} font-medium`}>{text}</h5>
           <div
             className={`rounded-sm p-1 relative md:p-2 border-2 border-darkgray/50 group-hover:border-transparent  overflow-hidden group-hover:rounded  w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300  `}
           >
@@ -241,14 +241,14 @@ export function BorderGrayHeroBtn<T extends "submit" | "button">({
         </Link>
       ) : (
         <div className="flex gap-2 lg:gap-4 items-center justify-center  w-fit">
-          <h5 className={`text-${color} ${sizeClass}`}>{text}</h5>
+          <h5 className={`text-${color} ${sizeClass} font-medium`}>{text}</h5>
           <button
             role={role}
             disabled={isDisabled}
             onClick={handleClick}
             {...rest}
             type={type === "button" ? "button" : "submit"}
-            className={` relative p-1 md:p-2 border-2 border-${borderColor} rounded overflow-hidden text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center group-hover:border-transparent transition-all duration-300 ${classes} `}
+            className={` relative p-1 md:p-2 border-2 border-${borderColor}  rounded overflow-hidden text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center group-hover:border-transparent transition-all duration-300 ${classes} `}
           >
             <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
             <GoArrowRight
@@ -299,7 +299,7 @@ export function UnderlineWithHover<T extends "submit" | "button">({
   const sizeClass: string = sizeMap[size];
   return (
     <>
-      <div className="group ">
+       <div className="group ">
         <div className="">
           <button
               onClick={handlefun}

@@ -20,7 +20,7 @@ const thirdPublicationFilter = ["2025", "2024"];
 //   "Health",
 // ];
 
-const secondSectorFilter = ["Transportation", "Energy", "Urban Planning"];
+const secondSectorFilter = ["All" , "Transportation", "Energy", "Urban Planning"];
 
 const allcards = [
   {
@@ -85,7 +85,7 @@ const allcards = [
 
 export default function WhitePaper() {
   const [selectTab, setselectedTab] = useState("All");
-  const [selectedFilter, setselectedFilter] = useState("All");
+  const [selectedFilter, setselectedFilter] = useState("");
 
   const totalcount = 6;
   const mobileview = 3;
@@ -95,6 +95,14 @@ export default function WhitePaper() {
 
   const handletabClick = (tab: string) => {
     setselectedTab(tab);
+  
+    if (tab === "Sectors") {
+      setselectedFilter(secondSectorFilter[0]);
+    } else if (tab === "Publication Year") {
+      setselectedFilter(thirdPublicationFilter[0]);
+    } else {
+      setselectedFilter(""); 
+    }
   };
 
   const handleFilterClick = (filtername: string) => {
@@ -103,19 +111,18 @@ export default function WhitePaper() {
 
   const FilteredCard = () => {
     if (selectTab === "Publication Year") {
-      return selectedFilter === "All"
-        ? allcards
-        : allcards.filter(
-            (card) => card.date.split(" ").pop() === selectedFilter
-          );
-    } else if (selectTab === "Sectors") {
-      return selectedFilter === "All"
-        ? allcards
-        : allcards.filter((card) => card.category === selectedFilter);
+      return allcards.filter(
+        (card) => card.date.split(" ").pop() === selectedFilter
+      );
     }
-    console.log(selectedFilter);
+  
+    if (selectTab === "Sectors") {
+      return  selectedFilter==="All"? allcards:allcards.filter((card) => card.category === selectedFilter);
+    }
+  
     return allcards;
   };
+  
 
   const handleSeeMoreCta = () => {
     if (typeof window !== "undefined") {
@@ -126,10 +133,11 @@ export default function WhitePaper() {
       }
     }
   };
+
   return (
     <>
       <div className="bg-whitesmoke">
-        <div className="w-container blade-top-padding-lg blade-bottom-padding-lg">
+        <div className="w-container blade-top-padding-sm blade-bottom-padding-sm">
           <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
             <h5 className="font-medium text-pink">White papers</h5>
@@ -144,89 +152,86 @@ export default function WhitePaper() {
             </h1>
           </div>
 
-          <div className="md:py-5">
+          <div className="md:pt-5">
             <div className="flex flex-col md:flex-row gap-6  border-b border-darkgray/20  ">
-              <div className="md:border-r md:border-darkgray/20">
-                <h5 className="text-darkgray/80 py-3 md:py-5 pr-5 text-nowrap">
-                  Filter by Category
+             <div className="sm:border-r sm:border-darkgray/20">
+                <h5 className="text-darkgray/80 sm:py-5 pr-5 text-nowrap">
+                  Filter by
                 </h5>
               </div>
 
               {/* Tab Show */}
-              <div className="flex flex-row justify-between   w-full">
-                <div className="flex flex-row gap-3 md:gap-5 ">
-                  <button
-                    className={`mt-auto  text-sm md:text-base cursor-pointer rounded-[50px] px-3 py-1 mb-3 sm:px-6 sm:py-3  sm:mb-4  ${
-                      selectTab === "All"
-                        ? "border border-pink text-pink"
-                        : "border border-lightgray"
-                    }`}
-                    onClick={() => handletabClick("All")}
-                  >
-                    All
-                  </button>
 
-                  <button
-                    onClick={() => handletabClick("Sectors")}
-                    className={`mt-auto text-sm md:text-base cursor-pointer  rounded-[50px] px-3 py-1 mb-3 sm:px-6 sm:py-3  sm:mb-4  ${
-                      selectTab === "Sectors"
-                        ? "border  border-pink text-pink"
-                        : "border border-lightgray"
-                    }`}
-                  >
-                    Sectors
-                  </button>
+              <div className="flex flex-row gap-3 md:gap-5 ">
+                <button
+                  className={`mt-auto  text-sm md:text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4  ${
+                    selectTab === "All"
+                      ? "border border-pink text-pink font-medium"
+                      : "border border-lightgray/30"
+                  }`}
+                  onClick={() => handletabClick("All")}
+                >
+                  All
+                </button>
 
-                  <button
-                    onClick={() => handletabClick("Publication Year")}
-                    className={`mt-auto text-sm md:text-base cursor-pointer  rounded-[50px] px-3 py-1 mb-3 sm:px-6 sm:py-3  sm:mb-4  ${
-                      selectTab === "Publication Year"
-                        ? "border  border-pink text-pink"
-                        : "border border-lightgray"
-                    }`}
-                  >
-                    Publication Year
-                  </button>
-                </div>
+                <button
+                  onClick={() => handletabClick("Sectors")}
+                  className={`mt-auto text-sm md:text-base cursor-pointer  rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4  ${
+                    selectTab === "Sectors"
+                      ? "border  border-pink text-pink font-medium"
+                      : "border border-lightgray/30"
+                  }`}
+                >
+                  Sectors
+                </button>
 
-                <div>
-                  {selectTab === "Sectors" && (
-                    <div className="md:hidden block  ">
-                      <select
-                        name="years"
-                        value={selectedFilter}
-                        onChange={(e) => handleFilterClick(e.target.value)}
-                        className={`text-sm md:text-base  h-[3rem] w-[5rem] outline-none text-darkgray `}
-                      >
-                        <option value="All">All</option>
-                        {secondSectorFilter.map((filter) => (
-                          <option key={filter} value={filter}>
-                            {filter}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  )}
-
-                  {selectTab === "Publication Year" && (
-                    <div className="md:hidden block  ">
-                      <select
-                        name="years"
-                        value={selectedFilter}
-                        onChange={(e) => handleFilterClick(e.target.value)}
-                        className={`text-sm md:text-base   h-[3rem] w-[5rem]   text-darkgray outline-none`}
-                      >
-                        <option value="All">All</option>
-                        {thirdPublicationFilter.map((filter) => (
-                          <option key={filter} value={filter}>
-                            {filter}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  )}
-                </div>
+                <button
+                  onClick={() => handletabClick("Publication Year")}
+                  className={`mt-auto text-sm md:text-base cursor-pointer  rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4  ${
+                    selectTab === "Publication Year"
+                      ? "border  border-pink text-pink font-medium"
+                      : "border border-lightgray/30"
+                  }`}
+                >
+                  Publication Year
+                </button>
               </div>
+            </div>
+
+            {/* Sub filter */}
+            <div>
+             {selectTab === "Sectors" && (
+                <div className="py-5  flex gap-3 md:hidden flex-wrap">
+                  {secondSectorFilter.map((filter) => (
+                    <button
+                      className={`mt-auto  text-base cursor-pointer rounded-[50px] px-3 py-1 mb-4  ${
+                        selectedFilter === filter
+                          ? "border border-pink text-white bg-pink font-medium"
+                          : "border border-lightgray/30"
+                      }`}
+                      onClick={() => handleFilterClick(filter)}
+                    >
+                      {filter}
+                    </button>
+                  ))}
+                </div>
+              )}
+              {selectTab === "Publication Year" && (
+                <div className="py-5  flex gap-3 md:hidden">
+                  {thirdPublicationFilter.map((filter) => (
+                    <button
+                      className={`mt-auto  text-base cursor-pointer rounded-[50px]  px-3 py-1 mb-4  ${
+                        selectedFilter === filter
+                          ? "border border-pink text-white bg-pink font-medium"
+                          : "border border-lightgray/30"
+                      }`}
+                      onClick={() => handleFilterClick(filter)}
+                    >
+                      {filter}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Inner Filteration Tab */}
@@ -236,24 +241,13 @@ export default function WhitePaper() {
                   <>
                     <div className="py-5 hidden md:block">
                       <div className="flex flex-row gap-5">
-                        <button
-                          className={`mt-auto  text-base cursor-pointer rounded-[50px] px-6 py-3 mb-4  ${
-                            selectedFilter === "All"
-                              ? "border border-pink text-white bg-pink"
-                              : "border border-lightgray"
-                          }`}
-                          onClick={() => handleFilterClick("All")}
-                        >
-                          All
-                        </button>
-
                         <div className="space-x-4 ">
                           {secondSectorFilter.map((filter) => (
                             <button
                               className={`mt-auto  text-base cursor-pointer rounded-[50px] px-6 py-3 mb-4  ${
                                 selectedFilter === filter
-                                  ? "border border-pink text-white bg-pink"
-                                  : "border border-lightgray"
+                                  ? "border border-pink text-white bg-pink font-medium"
+                                  : "border border-lightgray/30"
                               }`}
                               onClick={() => handleFilterClick(filter)}
                             >
@@ -268,25 +262,14 @@ export default function WhitePaper() {
                 {selectTab === "Publication Year" && (
                   <>
                     <div className="py-5 hidden md:block">
-                      <div className="flex flex-row gap-5">
-                        <button
-                          className={`mt-auto  text-base cursor-pointer rounded-[50px] px-6 py-3 mb-4  ${
-                            selectedFilter === "All"
-                              ? "border border-pink text-white bg-pink"
-                              : "border border-lightgray"
-                          }`}
-                          onClick={() => handleFilterClick("All")}
-                        >
-                          All
-                        </button>
-
+                      <div className="flex flex-row gap-5">                     
                         <div className="space-x-4 ">
                           {thirdPublicationFilter.map((filter) => (
                             <button
                               className={`mt-auto  text-base cursor-pointer rounded-[50px] px-6 py-3 mb-4  ${
                                 selectedFilter === filter
-                                  ? "border border-pink text-white bg-pink"
-                                  : "border border-lightgray"
+                                  ? "border border-pink text-white bg-pink font-medium"
+                                  : "border border-lightgray/30"
                               }`}
                               onClick={() => handleFilterClick(filter)}
                             >
@@ -302,7 +285,7 @@ export default function WhitePaper() {
 
               {/* Data show and Filteration */}
 
-              <div className="py-5 xl:py-7 md:block hidden">
+              <div className=" pt-12  md:block hidden">
                 <div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-24 ">
                     {FilteredCard()
@@ -322,7 +305,7 @@ export default function WhitePaper() {
                             image={ele.img}
                             link={ele.link}
                             category={ele.category}
-                             classes="line-clamp-3"
+                            classes="line-clamp-3"
                           />
                         </div>
                       ))}
@@ -344,9 +327,10 @@ export default function WhitePaper() {
                     )}
                 </div>
               </div>
-              <div className="py-5 xl:py-7 block md:hidden">
+              <div className="pt-6 sm:pt-12 block md:hidden">
                 <div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10 xl:gap-24 ">
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-24 ">
                     {FilteredCard()
                       .slice(0, visiblecountmobile)
                       .map((ele, index) => (
@@ -371,7 +355,7 @@ export default function WhitePaper() {
                   </div>
 
                   {visiblecountmobile <= FilteredCard().length && (
-                    <div className="flex justify-center mt-8 ">
+                    <div className="flex justify-center mt-2 ">
                       <UnderlineWithHover
                         size="xxlsize"
                         color="pink"
@@ -383,6 +367,7 @@ export default function WhitePaper() {
                       />
                     </div>
                   )}
+
                 </div>
               </div>
             </div>

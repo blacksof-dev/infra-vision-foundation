@@ -8,7 +8,7 @@ export default function InfravisionTalk() {
       <Newsletter
         bgColor="pink"
         title="Want to keep up with <br/> <span class='font-medium text-white'>The Infravision Foundation?</span>"
-        desc="  Subscribe to our free monthly newsletter now!"
+        desc="Subscribe to our free monthly newsletter now!"
         herobtntitle="Subscribe"
         image={infratalkBook}
       />

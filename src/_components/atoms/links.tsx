@@ -12,7 +12,7 @@ const sizeMap = {
   "3xl": " text-xl md:text-2xl xl:text-3xl",
 };
 const colorMap = {
-  dark: "text-[#5D6468]",
+  dark: "text-grayishblue",
   light: "text-white",
 };
 

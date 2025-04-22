@@ -80,53 +80,50 @@ const allcards = [
 export default function Insights() {
   const [selectTab, setselectedTab] = useState("All");
   const [selectedFilter, setselectedFilter] = useState("All");
-  
+
   const totalcount = 6;
-   const mobileview = 3
+  const mobileview = 3;
 
   const [visiblecount, setvisiblecount] = useState(totalcount);
-   const [visiblecountmobile, setvisiblecountmobile] = useState(mobileview);
+  const [visiblecountmobile, setvisiblecountmobile] = useState(mobileview);
 
   const handletabClick = (tab: string) => {
     setselectedTab(tab);
+  
+    if (tab === "Publication Year") {
+      setselectedFilter(secondFilter[0]);
+    } else {
+      setselectedFilter(""); 
+    }
   };
 
   const handleFilterClick = (filtername: string) => {
     setselectedFilter(filtername);
   };
 
-
-  
   const FilteredCard = () => {
     if (selectTab === "Publication Year") {
-      return selectedFilter === "All"
-        ? allcards
-        : allcards.filter(
-            (card) => card.date.split(" ").pop() === selectedFilter
-          );
+      return allcards.filter(
+        (card) => card.date.split(" ").pop() === selectedFilter
+      );
     }
     return allcards;
   };
 
-  
-
   const handleSeeMoreCta = () => {
     if (typeof window !== "undefined") {
       if (window.innerWidth < 768) {
-      
         setvisiblecountmobile((prev) => prev + 3);
       } else {
-       
         setvisiblecount((prev) => prev + 3);
       }
     }
   };
-  
 
   return (
     <>
       <div>
-        <div className="w-container blade-top-padding-lg blade-bottom-padding-lg">
+        <div className="w-container blade-top-padding-sm blade-bottom-padding-sm">
           <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
             <h5 className="font-medium text-pink">
@@ -143,58 +140,57 @@ export default function Insights() {
             </h1>
           </div>
 
-          <div className="py-5">
+          <div className="pt-5">
             <div className="flex flex-col sm:flex-row gap-6  border-b border-darkgray/20  ">
               <div className="sm:border-r sm:border-darkgray/20">
                 <h5 className="text-darkgray/80 sm:py-5 pr-5 text-nowrap">
-                  Filter by Category
+                  Filter by
                 </h5>
               </div>
 
               {/* Tab Show */}
-              <div className="flex flex-row justify-between   w-full">
-                <div className="flex flex-row gap-5 ">
-                  <button
-                    className={`mt-auto  text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3  sm:mb-4  ${
-                      selectTab === "All"
-                        ? "border border-pink text-pink"
-                        : "border border-lightgray"
-                    }`}
-                    onClick={() => handletabClick("All")}
-                  >
-                    All
-                  </button>
 
-                  <button
-                    onClick={() => handletabClick("Publication Year")}
-                    className={`mt-auto text-base cursor-pointer  rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4  ${
-                      selectTab === "Publication Year"
-                        ? "border  border-pink text-pink"
-                        : "border border-lightgray"
-                    }`}
-                  >
-                    Publication Year
-                  </button>
-                </div>
-                {selectTab === "Publication Year" && (
-                  <div className="md:hidden block  ">
-                    <select
-                      name="years"
-                      value={selectedFilter}
-                      onChange={(e) => handleFilterClick(e.target.value)}
-                      className={`text-base text-darkgray outline-none px-3 py-1 sm:px-4 sm:py-2`}  
-                    >
-                      <option value="All">All</option>
-                      {secondFilter.map((filter) => (
-                        <option key={filter} value={filter}>
-                          {filter}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                )}
+              <div className="flex flex-row gap-5 ">
+                <button
+                  className={`mt-auto  text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3  sm:mb-4  ${
+                    selectTab === "All"
+                      ? "border border-pink text-pink font-medium"
+                      : "border border-lightgray/30"
+                  }`}
+                  onClick={() => handletabClick("All")}
+                >
+                  All
+                </button>
+
+                <button
+                  onClick={() => handletabClick("Publication Year")}
+                  className={`mt-auto text-base cursor-pointer  rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4  ${
+                    selectTab === "Publication Year"
+                      ? "border  border-pink text-pink font-medium"
+                      : "border border-lightgray/30"
+                  }`}
+                >
+                  Publication Year
+                </button>
               </div>
             </div>
+
+            {selectTab === "Publication Year" && (
+            <div className="py-5  flex gap-3 md:hidden">
+              {secondFilter.map((filter) => (
+                <button
+                  className={`mt-auto  text-base cursor-pointer rounded-[50px] px-3 py-1 mb-4  ${
+                    selectedFilter === filter
+                      ? "border border-pink text-white bg-pink font-medium"
+                      : "border border-lightgray/30"
+                  }`}
+                  onClick={() => handleFilterClick(filter)}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
+            )}
 
             {/* Inner Filteration Tab */}
             <div className="">
@@ -203,24 +199,15 @@ export default function Insights() {
                   <>
                     <div className="py-5 hidden md:block">
                       <div className="flex flex-row gap-5">
-                        <button
-                          className={`mt-auto  text-base cursor-pointer rounded-[50px] px-6 py-3 mb-4  ${
-                            selectedFilter === "All"
-                              ? "border border-pink text-white bg-pink"
-                              : "border border-lightgray"
-                          }`}
-                          onClick={() => handleFilterClick("All")}
-                        >
-                          All
-                        </button>
+                        
 
                         <div className="space-x-4 ">
                           {secondFilter.map((filter) => (
                             <button
                               className={`mt-auto  text-base cursor-pointer rounded-[50px] px-6 py-3 mb-4  ${
                                 selectedFilter === filter
-                                  ? "border border-pink text-white bg-pink"
-                                  : "border border-lightgray"
+                                  ? "border border-pink text-white bg-pink font-medium"
+                                  : "border border-lightgray/30"
                               }`}
                               onClick={() => handleFilterClick(filter)}
                             >
@@ -236,7 +223,7 @@ export default function Insights() {
 
               {/* Data show and Filteration */}
 
-              <div className="py-5 xl:py-7 md:block hidden">
+              <div className=" pt-12  md:block hidden">
                 <div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10 xl:gap-24 ">
                     {FilteredCard()
@@ -245,7 +232,7 @@ export default function Insights() {
                         <div
                           key={index}
                           className={`  ${
-                            index === 0 || index%3===0
+                            index === 0 || index % 3 === 0
                               ? "xl:border-l-0"
                               : "xl:border-l-1 xl:border-darkgray/20 xl:ps-8"
                           }`}
@@ -279,7 +266,7 @@ export default function Insights() {
                 </div>
               </div>
 
-             <div className="py-5 xl:py-7 block md:hidden">
+              <div className="pt-6 sm:pt-12 block md:hidden">
                 <div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-24 ">
                     {FilteredCard()
@@ -299,29 +286,27 @@ export default function Insights() {
                             image={ele.img}
                             link={ele.link}
                             category={ele.category}
-                             classes="line-clamp-2"
+                            classes="line-clamp-2"
                           />
                         </div>
                       ))}
                   </div>
 
-                  {visiblecountmobile <= FilteredCard().length &&
-                    (
-                      <div className="flex justify-center mt-8 ">
-                        <UnderlineWithHover
-                          size="xxlsize"
-                          color="pink"
-                          bgColor="pink"
-                          text="See more"
-                          role="button"
-                          borderColor="white"
-                          handlefun={handleSeeMoreCta}
-                        />
-                      </div>
-                    )}
+                  {visiblecountmobile <= FilteredCard().length && (
+                    <div className="flex justify-center mt-2 ">
+                      <UnderlineWithHover
+                        size="xxlsize"
+                        color="pink"
+                        bgColor="pink"
+                        text="See more"
+                        role="button"
+                        borderColor="white"
+                        handlefun={handleSeeMoreCta}
+                      />
+                    </div>
+                  )}
                 </div>
-              </div> 
-
+              </div>
             </div>
           </div>
         </div>

@@ -33,7 +33,7 @@ export default function Banner() {
                   <RiArrowRightSLine  className="text-[24px]"/>
                   Publications</h5>
               </div>
-              <div className="w-[66%] ">
+              <div className="w-[60%] ">
                 <h1 className="text-white font-medium ">Publications</h1>
                 <div className="py-2 sm:py-4">
                   <h5 className="text-white">

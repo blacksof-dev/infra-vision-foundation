@@ -122,7 +122,7 @@ export default function Header() {
               </ul>
             </div>
             <div className="flex flex-row gap-4  justify-center items-center">
-              <div className=" hidden w-[10%] xl:w-[14%] min-w-[160px] border border-darkgray rounded p-2 sm:flex flex-row gap-2 items-center">
+              <div className=" hidden w-[10%] xl:w-[14%] min-w-[160px] border border-darkgray rounded  p-3  sm:flex flex-row gap-2 items-center">
                 <FaSearch className="text-darkgray text-xl" />
                 <input
                   type="text"
