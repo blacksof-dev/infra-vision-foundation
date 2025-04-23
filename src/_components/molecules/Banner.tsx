@@ -1,16 +1,25 @@
-import Image from "next/image";
-import bannerPublication from "@/../public/assets/publication/bannerPublication.png";
+import Image,{StaticImageData} from "next/image";
+
+interface bannerProps {
+  image:StaticImageData;
+  heading:string;
+  title:string;
+  subdesc:string;
+}
+
+
+
 import { RiArrowRightSLine } from "react-icons/ri";
-export default function Banner() {
+export default function Banner({image,heading,title,subdesc}:bannerProps) {
   return (
     <>
       <div className="pt-[5rem] lg:pt-[7rem]">
         <div className="relative ">
           <div className="h-[26rem] md:h-[28rem] xl:h-[40rem]">
             <Image
-              src={bannerPublication}
+              src={image}
               alt="Publication Banner"
-              className="w-full h-full md:object-cover object-right"
+              className="w-full h-full object-cover object-right"
             ></Image>
           </div>
           <div className="w-container">
@@ -29,16 +38,15 @@ export default function Banner() {
                     fill="white"
                   />
                 </svg>
-                <h5 className="text-white font-medium flex flex-row">
+                <h5 className="text-white font-light flex flex-row">
                   <RiArrowRightSLine  className="text-[24px]"/>
-                  Publications</h5>
+                  {heading}</h5>
               </div>
               <div className="w-[60%] ">
-                <h1 className="text-white font-medium ">Publications</h1>
+                <h1 className="text-white font-medium ">{title}</h1>
                 <div className="py-2 sm:py-4">
-                  <h5 className="text-white">
-                    Rigorous knowledge assets shaping India's infrastructure
-                    growth story
+                  <h5 className="text-white  font-light">
+                   {subdesc}
                   </h5>
                 </div>
               </div>

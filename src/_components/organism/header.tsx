@@ -42,7 +42,7 @@ export default function Header() {
  
   return (
     <>
-      <nav className={`absolute py-2 z-[999] w-full translate-x-1/2 lg:h-[6rem] right-1/2 md:right-[46%] 2xl:right-[50%] ${showNavBg?"bg-white":"bg-transparent"}`}>
+      <nav className={`absolute  py-2 z-[999] w-full translate-x-1/2 lg:h-[6rem] right-1/2 md:right-[46%] 2xl:right-[50%] ${showNavBg?"bg-white":"bg-transparent"}`}>
         <div className=" flex flex-row  w-container w-full gap-[8rem] sm:gap-[20rem] md:gap-[19rem] lg:gap-[35rem] xl:gap-11 ">
           <div className= "w-[10rem] md:w-[10rem] xl:w-[14rem] h-full">
             <Image

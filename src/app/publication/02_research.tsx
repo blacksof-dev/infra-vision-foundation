@@ -297,11 +297,7 @@ export default function ReserachPaper(){
                          .map((ele, index) => (
                            <div
                              key={index}
-                             className={`  ${
-                               index === 0 || index % 3 === 0
-                                 ? "xl:border-l-0"
-                                 : "xl:border-l-1 xl:border-darkgray/20 xl:ps-8"
-                             }`}
+                            
                            >
                              <Card
                                date={ele.date}
@@ -339,11 +335,7 @@ export default function ReserachPaper(){
                          .map((ele, index) => (
                            <div
                              key={index}
-                             className={`  ${
-                               index === 0
-                                 ? "xl:border-l-0"
-                                 : "xl:border-l-1 xl:border-darkgray/20 xl:ps-8"
-                             }`}
+                             
                            >
                              <Card
                                date={ele.date}

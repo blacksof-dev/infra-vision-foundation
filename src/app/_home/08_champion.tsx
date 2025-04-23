@@ -42,9 +42,7 @@ export default function Champion() {
               {CardData.map((item, key) => (
                 <div
                   key={key}
-                  className={`  ${
-                    key === 0 ? "border-l-0" : "xl:border-l-1 xl:border-darkgray/20 ps-8"
-                  }`}
+                  
                 >
                   <Card
                     date={item.date}
