@@ -2,20 +2,16 @@ import Image from "next/image";
 import logo from "@/../public/assets/globals/logo.png";
 import { Anchor, TextAnchor } from "../atoms/links";
 import { HeroBtn } from "../atoms/buttons";
-import { FaYoutube } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { CiLocationOn } from "react-icons/ci";
 import { MdOutlineEmail } from "react-icons/md";
 import { MdOutlinePhone } from "react-icons/md";
-import { FaInstagram } from "react-icons/fa";
 import locationSvg from "@/../public/assets/globals/locationSvg.svg";
-
 import Link from "next/link";
+import SocialMedia from "../atoms/socialMedia";
+
 const footer = () => {
   return (
     <>
-      <footer className=" blade-top-padding-lg  ">
+      <footer className="blade-top-padding-lg  ">
         <div className=" w-container">
           <div className=" flex md:flex-row flex-col md:justify-between md:items-end border-b-1 border-gray/60  md:pb-6">
             <div className="">
@@ -45,8 +41,8 @@ const footer = () => {
             <div className="grid grid-cols-1  md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 xl:gap-14  lg:pt-9 lg:pb-14 xl:pb-8 2xl:pb-32">
               <ul>
                 <li className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full bg-darkgray opacity-30"></div>
-                  <span className="text-black text-xl">What drives us</span>
+                  <div className="w-3 h-3 rounded-full bg-darkgray/30 "></div>
+                  <span className="text-black text-xl ">What drives us</span>
                 </li>
 
                 <li className="md:pt-2 xl:pt-4">
@@ -304,35 +300,8 @@ const footer = () => {
               <h5 className="text-darkgray/60 mr-5 sm:block hidden  ">
                 Follow us
               </h5>
-              <div className="flex flex-row gap-5 py-2 ">
-                <Link
-                  href="https://www.youtube.com/@theinfravisionfoundation"
-                  target="_blank"
-                  className="group"
-                >
-                  <FaYoutube className="text-4xl border-1   group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
-                </Link>
-                <Link
-                  href="https://www.linkedin.com/company/the-infravision-foundation/?originalSubdomain=in"
-                  target="_blank"
-                  className="group"
-                >
-                  <FaLinkedin className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
-                </Link>
-                <Link
-                  href="https://x.com/TheInfravision?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
-                  target="_blank"
-                  className="group"
-                >
-                  <FaXTwitter className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
-                </Link>
-                <Link
-                  href="https://www.instagram.com/theinfravisionfoundation/"
-                  target="_blank"
-                  className="group"
-                >
-                  <FaInstagram className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
-                </Link>
+              <div>
+                 <SocialMedia/>
               </div>
             </div>
           </div>

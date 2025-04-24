@@ -248,7 +248,7 @@ export function BorderGrayHeroBtn<T extends "submit" | "button">({
             onClick={handleClick}
             {...rest}
             type={type === "button" ? "button" : "submit"}
-            className={` relative p-1 md:p-2 border-2 border-${borderColor}  rounded overflow-hidden text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center group-hover:border-transparent transition-all duration-300 ${classes} `}
+            className={` relative p-1 md:p-2 border-2 border-darkgray/50  rounded overflow-hidden text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center group-hover:border-transparent transition-all duration-300 ${classes} `}
           >
             <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
             <GoArrowRight

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import image1 from "@/../public/assets/resource/blogs/image1.png"
 import image2 from "@/../public/assets/resource/blogs/image2.png"
 import image3 from "@/../public/assets/resource/blogs/image3.png"
@@ -56,10 +56,10 @@ export default function Blog(){
    const [selectTab, setselectedTab] = useState("All");
      const [selectedFilter, setselectedFilter] = useState("All");
    
-     const totalcount = 6;
+    
      const mobileview = 3;
    
-     const [visiblecount, setvisiblecount] = useState(totalcount);
+   
      const [visiblecountmobile, setvisiblecountmobile] = useState(mobileview);
    
      const handletabClick = (tab: string) => {
@@ -92,19 +92,18 @@ export default function Blog(){
       return allcards;
     };
    
-     const handleSeeMoreCta = () => {
-       if (typeof window !== "undefined") {
-         if (window.innerWidth < 1024) {
-           setvisiblecountmobile((prev) => prev + 3);
-         } else {
-           setvisiblecount((prev) => prev + 3);
-         }
-       }
-     };
+    const handleSeeMoreCta = () => {
+      setvisiblecountmobile((prev) => prev + 3);
+    };
+
+     useEffect(() => {
+        setvisiblecountmobile(mobileview);
+      }, [selectTab]);
+
      return (
        <>
          <div>
-           <div className="w-container blade-top-padding-sm blade-bottom-padding-sm">
+           <div className="w-container blade-top-padding-lg blade-bottom-padding-lg">
              <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
                <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
                <h5 className="font-medium text-pink">Blogs</h5>
@@ -206,7 +205,7 @@ export default function Blog(){
                  <div>
                    {selectTab === "Sectors" && (
                      <>
-                       <div className="py-5 hidden md:block">
+                       <div className="pt-5 hidden md:block">
                          <div className="flex flex-row gap-5">
                     
                            <div className="space-x-4 ">
@@ -229,7 +228,7 @@ export default function Blog(){
                    )}
                    {selectTab === "Publication Year" && (
                      <>
-                       <div className="py-5 hidden md:block ">
+                       <div className="pt-5 hidden md:block ">
                          <div className="flex flex-row gap-5">
                          <div className="space-x-4 ">
                           {thirdPublicationFilter.map((filter) => (
@@ -253,11 +252,11 @@ export default function Blog(){
    
                  {/* Data show and Filteration */}
    
-                 <div className=" pt-12  md:block hidden">
+                 <div className={` ${selectTab === "Sectors" || selectTab === "Publication Year" ? "lg:pt-8" : "pt-12"}`}>
                    <div>
                      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-24 ">
                        {FilteredCard()
-                         .slice(0, visiblecount)
+                         .slice(0, visiblecountmobile)
                          .map((ele, index) => (
                            <div
                              key={index}
@@ -275,8 +274,7 @@ export default function Blog(){
                          ))}
                      </div>
    
-                     {visiblecount < FilteredCard().length &&
-                       visiblecount === totalcount && (
+                     {visiblecountmobile < FilteredCard().length && (
                          <div className="flex justify-center mt-8  ">
                            <UnderlineWithHover
                              size="xxlsize"
@@ -291,47 +289,7 @@ export default function Blog(){
                        )}
                    </div>
                  </div>
-                 <div className="pt-6 sm:pt-12   block md:hidden">
-                   <div>
-                     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-24 ">
-                       {FilteredCard()
-                         .slice(0, visiblecountmobile)
-                         .map((ele, index) => (
-                           <div
-                             key={index}
-                             className={`  ${
-                               index === 0
-                                 ? "xl:border-l-0"
-                                 : "xl:border-l-1 xl:border-darkgray/20 xl:ps-8"
-                             }`}
-                           >
-                             <Card
-                               date={ele.date}
-                               title={ele.title}
-                               image={ele.img}
-                               link={ele.link}
-                               category={ele.category}
-                               classes="line-clamp-3"
-                             />
-                           </div>
-                         ))}
-                     </div>
-   
-                     {visiblecountmobile <= FilteredCard().length && (
-                       <div className="flex justify-center mt-2 ">
-                         <UnderlineWithHover
-                           size="xxlsize"
-                           color="pink"
-                           bgColor="pink"
-                           text="See more"
-                           role="button"
-                           borderColor="white"
-                           handlefun={handleSeeMoreCta}
-                         />
-                       </div>
-                     )}
-                   </div>
-                 </div>
+                
                </div>
              </div>
            </div>

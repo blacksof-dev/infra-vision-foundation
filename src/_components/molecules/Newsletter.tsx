@@ -121,6 +121,7 @@ export default function Newsletter({
                         color="white"
                         underlineColor="white"
                         role="link"
+                        size="extralarge"
                       />
                     </div>
                   )}

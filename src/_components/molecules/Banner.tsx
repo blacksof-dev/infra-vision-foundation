@@ -5,23 +5,33 @@ interface bannerProps {
   heading:string;
   title:string;
   subdesc:string;
+  mobileimage?:StaticImageData;
 }
 
 
 
 import { RiArrowRightSLine } from "react-icons/ri";
-export default function Banner({image,heading,title,subdesc}:bannerProps) {
+export default function Banner({image,heading,title,subdesc,mobileimage}:bannerProps) {
   return (
     <>
       <div className="pt-[5rem] lg:pt-[7rem]">
         <div className="relative ">
-          <div className="h-[26rem] md:h-[28rem] xl:h-[40rem]">
+          <div className="h-[26rem] md:h-[28rem] xl:h-[40rem] hidden md:block">
             <Image
               src={image}
               alt="Publication Banner"
               className="w-full h-full object-cover object-right"
             ></Image>
           </div>
+          {mobileimage && (
+            <div className="md:hidden block">
+            <Image
+              src={mobileimage}
+              alt="Publication Banner"
+              className="w-full h-full object-cover object-right"
+            ></Image>
+            </div>
+          )}
           <div className="w-container">
             <div className="absolute top-9 sm:top-4 md:top-18 flex flex-col  justify-between h-[80%]">
               <div className="flex flex-row gap-1">

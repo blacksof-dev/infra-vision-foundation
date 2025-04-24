@@ -334,30 +334,28 @@ html,body {
   color: #fff !important;
 }
 
-/* Black style for news, publication, decoding */
-.custom-pagination-bullets-news .swiper-pagination-current,
-.custom-pagination-bullets-publication .swiper-pagination-current,
-.custom-pagination-bullets-decoding .swiper-pagination-current {
-  color: black !important;
-}
-
-.custom-pagination-bullets-news .swiper-pagination-total,
-.custom-pagination-bullets-publication .swiper-pagination-total,
-.custom-pagination-bullets-decoding .swiper-pagination-total {
-  color: black !important;
-}
 
 
-.swiper-pagination-fraction {
+.custom-pagination-bullets-members .swiper-pagination-fraction,
+.custom-pagination-bullets-banner .swiper-pagination-fraction,
+.custom-pagination-bullets-fellows .swiper-pagination-fraction,
+.custom-pagination-bullets-advisory  .swiper-pagination-fraction,
+.custom-pagination-bullets-team  .swiper-pagination-fraction {
   color: #fff !important;
   font-weight: 500;
   font-size: 15px;
 }
 
+/* Black style for news, publication, decoding */
+.custom-pagination-bullets-gallery .swiper-pagination-current{
+  color: black !important;
+}
 
-.custom-pagination-bullets-news .swiper-pagination-fraction,
-.custom-pagination-bullets-publication .swiper-pagination-fraction,
-.custom-pagination-bullets-decoding .swiper-pagination-fraction {
+.custom-pagination-bullets-gallery .swiper-pagination-total{
+  color: black !important;
+}
+
+.custom-pagination-bullets-gallery .swiper-pagination-fraction{
   color: black !important;
 }
 

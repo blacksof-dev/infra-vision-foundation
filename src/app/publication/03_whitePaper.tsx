@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import energy from "@/../public/assets/publication/whitePaper/energy.png";
 import transportation from "@/../public/assets/publication/whitePaper/transportation.png";
@@ -87,10 +87,9 @@ export default function WhitePaper() {
   const [selectTab, setselectedTab] = useState("All");
   const [selectedFilter, setselectedFilter] = useState("");
 
-  const totalcount = 6;
   const mobileview = 3;
 
-  const [visiblecount, setvisiblecount] = useState(totalcount);
+ 
   const [visiblecountmobile, setvisiblecountmobile] = useState(mobileview);
 
   const handletabClick = (tab: string) => {
@@ -125,14 +124,13 @@ export default function WhitePaper() {
   
 
   const handleSeeMoreCta = () => {
-    if (typeof window !== "undefined") {
-      if (window.innerWidth < 1024) {
-        setvisiblecountmobile((prev) => prev + 3);
-      } else {
-        setvisiblecount((prev) => prev + 3);
-      }
-    }
-  };
+          setvisiblecountmobile((prev) => prev + 3);
+      };
+      
+  useEffect(() => {
+    setvisiblecountmobile(mobileview);
+  }, [selectTab]);
+ 
 
   return (
     <>
@@ -239,7 +237,7 @@ export default function WhitePaper() {
               <div>
                 {selectTab === "Sectors" && (
                   <>
-                    <div className="py-5 hidden md:block">
+                    <div className="pt-5 hidden md:block">
                       <div className="flex flex-row gap-5">
                         <div className="space-x-4 ">
                           {secondSectorFilter.map((filter) => (
@@ -261,7 +259,7 @@ export default function WhitePaper() {
                 )}
                 {selectTab === "Publication Year" && (
                   <>
-                    <div className="py-5 hidden md:block">
+                    <div className="pt-5 hidden md:block">
                       <div className="flex flex-row gap-5">                     
                         <div className="space-x-4 ">
                           {thirdPublicationFilter.map((filter) => (
@@ -285,47 +283,8 @@ export default function WhitePaper() {
 
               {/* Data show and Filteration */}
 
-              <div className=" pt-12  md:block hidden">
+              <div className={` ${selectTab === "Sectors" || selectTab === "Publication Year" ? " lg:pt-8" : "pt-12"}`}>
                 <div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-24 ">
-                    {FilteredCard()
-                      .slice(0, visiblecount)
-                      .map((ele, index) => (
-                        <div
-                          key={index}
-                          
-                        >
-                          <Card
-                            date={ele.date}
-                            title={ele.title}
-                            image={ele.img}
-                            link={ele.link}
-                            category={ele.category}
-                            classes="line-clamp-3"
-                          />
-                        </div>
-                      ))}
-                  </div>
-
-                  {visiblecount < FilteredCard().length &&
-                    visiblecount === totalcount && (
-                      <div className="flex justify-center mt-8 ">
-                        <UnderlineWithHover
-                          size="xxlsize"
-                          color="pink"
-                          bgColor="pink"
-                          text="See more"
-                          role="button"
-                          borderColor="white"
-                          handlefun={handleSeeMoreCta}
-                        />
-                      </div>
-                    )}
-                </div>
-              </div>
-              <div className="pt-6 sm:pt-12 block md:hidden">
-                <div>
-                  
                   <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-24 ">
                     {FilteredCard()
                       .slice(0, visiblecountmobile)
@@ -346,22 +305,23 @@ export default function WhitePaper() {
                       ))}
                   </div>
 
-                  {visiblecountmobile <= FilteredCard().length && (
-                    <div className="flex justify-center mt-2 ">
-                      <UnderlineWithHover
-                        size="xxlsize"
-                        color="pink"
-                        bgColor="pink"
-                        text="See more"
-                        role="button"
-                        borderColor="white"
-                        handlefun={handleSeeMoreCta}
-                      />
-                    </div>
-                  )}
-
+                  {visiblecountmobile < FilteredCard().length &&
+                   (
+                      <div className="flex justify-center mt-8 ">
+                        <UnderlineWithHover
+                          size="xxlsize"
+                          color="pink"
+                          bgColor="pink"
+                          text="See more"
+                          role="button"
+                          borderColor="white"
+                          handlefun={handleSeeMoreCta}
+                        />
+                      </div>
+                    )}
                 </div>
               </div>
+             
             </div>
           </div>
         </div>

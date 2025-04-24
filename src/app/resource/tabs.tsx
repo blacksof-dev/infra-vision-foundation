@@ -2,20 +2,21 @@
 import { useState, useEffect } from "react";
 import clsx from "clsx";
 
-type TabId = "research" | "whitepapers" | "newsletters";
+type TabId = "blogs" | "videos" | "newsmedia" | "gallery"
 
 const tabs: { id: TabId; label: string }[] = [
-  { id: "research", label: "Research papers" },
-  { id: "whitepapers", label: "White papers" },
-  { id: "newsletters", label: "Newsletters" },
+  { id: "blogs", label: "Blogs" },
+  { id: "videos", label: "Videos" },
+  { id: "newsmedia", label: "News and Media" },
+  { id: "gallery", label: "Gallery" },
 ];
 
 type Props = {
   sectionRefs: Record<TabId, React.RefObject<HTMLDivElement | null>>;
 };
 
-export default function PublicationTabs({ sectionRefs }: Props) {
-  const [activeTab, setActiveTab] = useState<TabId>("research");
+export default function ResourceTabs({ sectionRefs }: Props) {
+  const [activeTab, setActiveTab] = useState<TabId>("blogs");
   const [isStickyVisible, setStickyVisible] = useState(true);
 
   const handleTabClick = (id: TabId) => {
@@ -81,13 +82,13 @@ export default function PublicationTabs({ sectionRefs }: Props) {
         isStickyVisible ? "block" : "hidden"
       )}
     >
-      <div className="flex gap-4 w-container sm:gap-20 md:pt-8  justify-start  sticky top-0 z-40">
+      <div className="flex gap-6 w-container sm:gap-20 md:pt-8  justify-start  sticky top-0 z-40">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => handleTabClick(tab.id)}
             className={clsx(
-              "py-4 text-sm md:text-lg   text-darkgray border-b-2 transition-all",
+              "py-4 text-sm md:text-lg cursor-pointer  text-darkgray border-b-2 transition-all",
               activeTab === tab.id
                 ? "text-pink border-pink font-medium"
                 : "border-transparent"

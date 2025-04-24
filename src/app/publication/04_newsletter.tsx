@@ -176,7 +176,7 @@ export default function Insights() {
             </div>
 
             {selectTab === "Publication Year" && (
-            <div className="py-5  flex gap-3 md:hidden">
+            <div className="pt-5  flex gap-3 md:hidden">
               {secondFilter.map((filter) => (
                 <button
                   className={`mt-auto  text-base cursor-pointer rounded-[50px] px-3 py-1 mb-4  ${
@@ -197,7 +197,7 @@ export default function Insights() {
               <div>
                 {selectTab === "Publication Year" && (
                   <>
-                    <div className="py-5 hidden md:block">
+                    <div className="pt-5 hidden md:block">
                       <div className="flex flex-row gap-5">
                         
 
@@ -223,7 +223,7 @@ export default function Insights() {
 
               {/* Data show and Filteration */}
 
-              <div className=" pt-12  md:block hidden">
+              <div className={` ${ selectTab === "Publication Year" ? "pt-8" : "pt-12"}`}>
                 <div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10 xl:gap-24 ">
                     {FilteredCard()
