@@ -7,6 +7,8 @@ import { MdOutlinePhone } from "react-icons/md";
 import locationSvg from "@/../public/assets/globals/locationSvg.svg";
 import Link from "next/link";
 import SocialMedia from "../atoms/socialMedia";
+import { GoArrowUp } from "react-icons/go";
+import ArrowScope from "../atoms/visiblityScope";
 
 const footer = () => {
   return (
@@ -290,7 +292,8 @@ const footer = () => {
               </div>
             </div>
           </div>
-          <div className="flex sm:flex-row  flex-col justify-between py-5 lg:pt-9 ">
+
+          <div className="flex sm:flex-row  flex-col justify-between py-5  lg:pt-9 ">
             <div className=" my-auto">
               <p className="text-darkgray/80   smallText">
                 Copyright 2025. All rights reserved.
@@ -301,12 +304,15 @@ const footer = () => {
                 Follow us
               </h5>
               <div>
-                 <SocialMedia/>
+                <SocialMedia />
               </div>
             </div>
           </div>
         </div>
       </footer>
+      
+        <ArrowScope/>
+     
     </>
   );
 };

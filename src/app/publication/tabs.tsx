@@ -77,11 +77,11 @@ export default function PublicationTabs({ sectionRefs }: Props) {
         "bg-white",
         "z-50",
         "sticky",
-        "top-0",
+        "top-[11%] sm:top-[12%]",
         isStickyVisible ? "block" : "hidden"
       )}
     >
-      <div className="flex gap-4 w-container sm:gap-20 md:pt-8  justify-start  sticky top-0 z-40">
+      <div className="flex gap-5 w-container sm:gap-20 md:pt-8  justify-start  sticky top-0 z-40">
         {tabs.map((tab) => (
           <button
             key={tab.id}

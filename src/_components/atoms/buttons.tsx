@@ -33,6 +33,7 @@ type MasterBtnProps<T extends "submit" | "button"> = {
   aarowColor?: string;
   bgColor?: keyof typeof colorMap;
   handlefun?: () => void;
+  handlepopup?:()=> void;
 };
 type MasterUnderlineBtnProps<T extends "submit" | "button"> = {
   classes?: string;
@@ -203,6 +204,7 @@ export function BorderGrayHeroBtn<T extends "submit" | "button">({
   bgColor,
   color,
   aarowColor,
+  handlepopup,
   ...rest
 }: MasterBtnProps<T>) {
   const sizeClass: string = sizeMap[size];
@@ -231,7 +233,7 @@ export function BorderGrayHeroBtn<T extends "submit" | "button">({
         >
           <h5 className={`text-${color} ${sizeClass} font-medium`}>{text}</h5>
           <div
-            className={`rounded-sm p-1 relative md:p-2 border-2 border-darkgray/50 group-hover:border-transparent  overflow-hidden group-hover:rounded  w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300  `}
+            className={`rounded-sm p-1  relative md:p-2 border-2 border-darkgray/50 group-hover:border-transparent  overflow-hidden group-hover:rounded  w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300  `}
           >
             <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
             <GoArrowRight
@@ -240,15 +242,16 @@ export function BorderGrayHeroBtn<T extends "submit" | "button">({
           </div>
         </Link>
       ) : (
-        <div className="flex gap-2 lg:gap-4 items-center justify-center  w-fit">
-          <h5 className={`text-${color} ${sizeClass} font-medium`}>{text}</h5>
+        <div  onClick={handlepopup} className="flex gap-2 lg:gap-4 items-center justify-center  w-fit">
+          <h5 className={`text-${color} ${sizeClass} cursor-pointer font-medium`}>{text}</h5>
           <button
             role={role}
             disabled={isDisabled}
-            onClick={handleClick}
+           
+
             {...rest}
             type={type === "button" ? "button" : "submit"}
-            className={` relative p-1 md:p-2 border-2 border-darkgray/50  rounded overflow-hidden text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center group-hover:border-transparent transition-all duration-300 ${classes} `}
+            className={`cursor-pointer  relative p-1 md:p-2 border-2 border-darkgray/50  rounded overflow-hidden text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center group-hover:border-transparent transition-all duration-300 ${classes} `}
           >
             <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
             <GoArrowRight

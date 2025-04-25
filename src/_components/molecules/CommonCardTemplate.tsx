@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -15,8 +16,17 @@ import Jaganshah from "@/../public/assets/home/decoding/Jaganshah.png";
 import GeetamTiwari from "@/../public/assets/home/decoding/GeetamTiwari.png";
 import ProfGRaghuram from "@/../public/assets/home/decoding/ProfGRaghuram.png";
 import RajivRanjanMishra from "@/../public/assets/home/decoding/RajivRanjanMishra.png";
+import { useState } from "react";
+import VideoPopup from "@/app/resource/videopopup";
 
 export default function LinkedinCard() {
+  const [videoLink, setVideoLink] = useState("");
+  const [popupOpen, setPopupOpen] = useState(false);
+
+  const handleVideoClick = (link: string) => {
+    setVideoLink(link);
+    setPopupOpen(true);
+  };
   return (
     <>
       <div className="relative">
@@ -34,9 +44,8 @@ export default function LinkedinCard() {
           speed={1000}
           pagination={{
             el: ".custom-pagination-bullets-decoding",
-            type: 'fraction',
+            type: "fraction",
           }}
-          
           spaceBetween={10}
           breakpoints={{
             500: { slidesPerView: 1.1, spaceBetween: 50 },
@@ -50,14 +59,19 @@ export default function LinkedinCard() {
           {cardData.map((ele, index) => (
             <SwiperSlide key={index}>
               <section className="mt-3">
-                <div className="relative  lg:block hidden">
-                  <Image
-                    src={ele.image}
-                    alt={ele.title}
-                    className="w-full h-full"
-                  />
-                </div>
-                <div className="lg:hidden block">
+                  <div
+                   onClick={() => handleVideoClick(ele.link)}
+                    className="relative  lg:block hidden cursor-pointer"
+                  >
+                    <Image
+                      src={ele.image}
+                      alt={ele.title}
+                      className="w-full h-full"
+                    />
+                  </div>
+             
+
+                <div   onClick={() => handleVideoClick(ele.link)}  className="lg:hidden block cursor-pointer">
                   <Image
                     src={ele.mobileImg}
                     alt={ele.title}
@@ -65,6 +79,9 @@ export default function LinkedinCard() {
                   />
                 </div>
               </section>
+               {popupOpen && (
+                      <VideoPopup src={videoLink} onClose={() => setPopupOpen(false)} />
+              )}
             </SwiperSlide>
           ))}
         </Swiper>
@@ -97,7 +114,7 @@ const cardData = [
     title: "Air Pollution: The solution has to be multi-sectoral",
     subtitle: "Jagan shah",
     desc: "Premier Urbanist, Senior expert in urban development policy and Distinguished Fellow,The Infravision Foundation",
-    subdesc: "",
+    link: "https://www.youtube.com/embed/OjrOlknqzu4?si=r0F8lXDBW5TrPtLw",
   },
   {
     image: geetamTiwariMobileImg,
@@ -106,7 +123,7 @@ const cardData = [
       "Selecting the Appropriate Urban Transport System for India's Cities",
     subtitle: "Professor Geetam Tiwari",
     desc: "  TRIPP Chair Professor in Department of Civil Engineering, Indian Institute of Technology in New Delhi, India.",
-    subdesc: "",
+    link: "https://www.youtube.com/embed/Sr17ZN7FLA4?si=5XGeBvf49YZ3m71_",
   },
   {
     image: profRaghuramMobileImg,
@@ -114,7 +131,7 @@ const cardData = [
     title: "Indian Railways : Why Innovation Matters",
     subtitle: "Prof.G Raghuram",
     desc: "Member, Council of Advisors, TIF, and Former Director, IIM Bangalore",
-    subdesc: "",
+    link: "https://www.youtube.com/embed/uzP6Vc_7IrQ?si=AS0TOQRabaJgsf4a",
   },
 
   {
@@ -123,6 +140,6 @@ const cardData = [
     title: "How to save our hill cities",
     subtitle: "Rajiv Ranjan Mishra",
     desc: "Distinguished Fellow, The Infravision Foundation, and former Director General, National Mission for Clean Ganga",
-    subdesc: "",
+    link: "https://www.youtube.com/embed/ZdLcdjJShW8?si=podn129zPvVi1Dzs",
   },
 ];

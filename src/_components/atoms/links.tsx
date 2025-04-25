@@ -22,7 +22,7 @@ type MasterAnchorProps = {
   href?: string;
   target?: "_self" | "_blank";
   className?: string;
-  status?:boolean;
+  status?: boolean;
 };
 
 export function Anchor({
@@ -114,13 +114,12 @@ export function TextAnchor({
     target,
     href,
     color = "dark",
-    size = "base",
     status,
     className,
     ...rest
    
   }: MasterAnchorProps & { color?: "dark" | "light" }) {
-    const sizeClass: string = sizeMap[size];
+  
     const colorClass: string = colorMap[color];
     return (
      
@@ -128,14 +127,14 @@ export function TextAnchor({
         target={target}
         href={href ?? "/"} 
         {...rest}
-        className={`${sizeClass} ${colorClass} ${className} no-underline  flex flex-row gap-1 justify-between  text-opacity-80 hover:text-opacity-100 
-                     focus:text-opacity-100 transition-all `}
+        className={`text-lg ${colorClass} ${className}  no-underline  flex flex-row gap-1 justify-between  text-opacity-80 hover:text-opacity-100 
+                     focus:text-opacity-100  `}
       >
         {text} 
         <div>
           {status ?(
-            <GoChevronDown/>
-          ):(<GoChevronUp/>) }
+            <GoChevronUp/>
+          ):(<GoChevronDown/>) }
          
         </div>
       </Link>

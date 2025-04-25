@@ -81,10 +81,10 @@ export default function Insights() {
   const [selectTab, setselectedTab] = useState("All");
   const [selectedFilter, setselectedFilter] = useState("All");
 
-  const totalcount = 6;
+ 
   const mobileview = 3;
 
-  const [visiblecount, setvisiblecount] = useState(totalcount);
+
   const [visiblecountmobile, setvisiblecountmobile] = useState(mobileview);
 
   const handletabClick = (tab: string) => {
@@ -111,14 +111,12 @@ export default function Insights() {
   };
 
   const handleSeeMoreCta = () => {
-    if (typeof window !== "undefined") {
-      if (window.innerWidth < 768) {
-        setvisiblecountmobile((prev) => prev + 3);
-      } else {
-        setvisiblecount((prev) => prev + 3);
-      }
-    }
-  };
+    setvisiblecountmobile((prev) => prev + 3);
+};
+
+useEffect(() => {
+setvisiblecountmobile(mobileview);
+}, [selectTab]);
 
   return (
     <>
@@ -227,7 +225,7 @@ export default function Insights() {
                 <div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10 xl:gap-24 ">
                     {FilteredCard()
-                      .slice(0, visiblecount)
+                      .slice(0, visiblecountmobile)
                       .map((ele, index) => (
                         <div
                           key={index}
@@ -245,8 +243,8 @@ export default function Insights() {
                       ))}
                   </div>
 
-                  {visiblecount < FilteredCard().length &&
-                    visiblecount === totalcount && (
+                  {visiblecountmobile < FilteredCard().length &&
+                    visiblecountmobile === mobileview && (
                       <div className="flex justify-center mt-8 ">
                         <UnderlineWithHover
                           size="xxlsize"

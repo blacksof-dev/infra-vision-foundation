@@ -318,7 +318,7 @@ html,body {
 
 
 /* White style for members, banner, fellows, advisory, team */
-.custom-pagination-bullets-members .swiper-pagination-current,
+/* .custom-pagination-bullets-members .swiper-pagination-current,
 .custom-pagination-bullets-banner .swiper-pagination-current,
 .custom-pagination-bullets-fellows .swiper-pagination-current,
 .custom-pagination-bullets-advisory .swiper-pagination-current,
@@ -342,21 +342,69 @@ html,body {
 .custom-pagination-bullets-advisory  .swiper-pagination-fraction,
 .custom-pagination-bullets-team  .swiper-pagination-fraction {
   color: #fff !important;
-  font-weight: 500;
-  font-size: 15px;
 }
 
 /* Black style for news, publication, decoding */
-.custom-pagination-bullets-gallery .swiper-pagination-current{
+/* .custom-pagination-bullets-gallery .swiper-pagination-current{
   color: black !important;
+} */
+
+/* .custom-pagination-bullets-gallery .swiper-pagination-total{
+  color: black !important;
+} */
+
+/* .custom-pagination-bullets-gallery .swiper-pagination-fraction{
+  color: black !important;
+} */
+
+
+
+/* Comprehensive fix for white pagination styles */
+.custom-pagination-bullets-members .swiper-pagination-fraction,
+.custom-pagination-bullets-banner .swiper-pagination-fraction,
+.custom-pagination-bullets-fellows .swiper-pagination-fraction,
+.custom-pagination-bullets-advisory .swiper-pagination-fraction,
+.custom-pagination-bullets-team .swiper-pagination-fraction {
+  color: #fff !important;
 }
 
-.custom-pagination-bullets-gallery .swiper-pagination-total{
-  color: black !important;
+/* Ensure all child elements inherit the color */
+.custom-pagination-bullets-members .swiper-pagination-fraction *,
+.custom-pagination-bullets-banner .swiper-pagination-fraction *,
+.custom-pagination-bullets-fellows .swiper-pagination-fraction *,
+.custom-pagination-bullets-advisory .swiper-pagination-fraction *,
+.custom-pagination-bullets-team .swiper-pagination-fraction * {
+  color: #fff !important;
 }
 
-.custom-pagination-bullets-gallery .swiper-pagination-fraction{
-  color: black !important;
+/* Explicitly target the current and total numbers */
+.custom-pagination-bullets-members .swiper-pagination-current,
+.custom-pagination-bullets-banner .swiper-pagination-current,
+.custom-pagination-bullets-fellows .swiper-pagination-current,
+.custom-pagination-bullets-advisory .swiper-pagination-current,
+.custom-pagination-bullets-team .swiper-pagination-current,
+.custom-pagination-bullets-members .swiper-pagination-total,
+.custom-pagination-bullets-banner .swiper-pagination-total,
+.custom-pagination-bullets-fellows .swiper-pagination-total,
+.custom-pagination-bullets-advisory .swiper-pagination-total,
+.custom-pagination-bullets-team .swiper-pagination-total {
+  color: #fff !important;
+}
+
+/* Black styles for gallery pagination */
+.custom-pagination-bullets-gallery .swiper-pagination-fraction,
+.custom-pagination-bullets-gallery .swiper-pagination-current,
+.custom-pagination-bullets-gallery .swiper-pagination-total {
+  color: #000 !important;
+}
+
+/* Additional fix for the separator in the fraction */
+.custom-pagination-bullets-members .swiper-pagination-fraction::after,
+.custom-pagination-bullets-banner .swiper-pagination-fraction::after,
+.custom-pagination-bullets-fellows .swiper-pagination-fraction::after,
+.custom-pagination-bullets-advisory .swiper-pagination-fraction::after,
+.custom-pagination-bullets-team .swiper-pagination-fraction::after {
+  color: #fff !important;
 }
 
 

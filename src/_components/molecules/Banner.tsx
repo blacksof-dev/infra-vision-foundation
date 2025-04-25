@@ -14,16 +14,16 @@ import { RiArrowRightSLine } from "react-icons/ri";
 export default function Banner({image,heading,title,subdesc,mobileimage}:bannerProps) {
   return (
     <>
-      <div className="pt-[5rem] lg:pt-[7rem]">
+      <div className="">
         <div className="relative ">
-          <div className="h-[26rem] md:h-[28rem] xl:h-[40rem] hidden md:block">
+          <div className={`h-[20rem] md:h-[28rem] xl:h-[40rem] ${mobileimage?"md:block hidden":""}`}>
             <Image
               src={image}
               alt="Publication Banner"
               className="w-full h-full object-cover object-right"
             ></Image>
           </div>
-          {mobileimage && (
+           {mobileimage && (
             <div className="md:hidden block">
             <Image
               src={mobileimage}
@@ -33,7 +33,7 @@ export default function Banner({image,heading,title,subdesc,mobileimage}:bannerP
             </div>
           )}
           <div className="w-container">
-            <div className="absolute top-9 sm:top-4 md:top-18 flex flex-col  justify-between h-[80%]">
+            <div className="absolute top-9   sm:top-12 md:top-18 flex flex-col  justify-between h-[80%]">
               <div className="flex flex-row gap-1">
                 <svg
                   width="28"

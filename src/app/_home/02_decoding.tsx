@@ -14,6 +14,8 @@ export default function Decoding() {
     setIsLastSlide(swiper.isEnd);
     setIsFirstSlide(swiper.isBeginning);
   };
+ 
+
   return (
     <>
       <section className="bg-whitesmoke relative ">
@@ -60,7 +62,7 @@ export default function Decoding() {
             </h1>
           </div>
           <div className="flex flex-col-reverse  lg:flex-row gap-6  pt-1">
-            <div className="w-full lg:w-[50%]">
+            <div className="w-full lg:w-[50%] ">
               <LinkedinCard />
             </div>
             <div className="w-full  lg:w-[50%] ">

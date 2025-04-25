@@ -14,7 +14,7 @@ export default function Card({ date, title, image,link,category,classes }: CardP
     <>
       <section>
       
-        <div className="  lg:w-[25rem]  xl:w-[22rem] 2xl:w-[28rem] 3xl:w-[29rem]">
+        <div className="   ">
           <div className="  xl:max-w-[29rem] h-[16rem] ">
             <Image
               src={image}

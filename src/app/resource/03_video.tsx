@@ -250,7 +250,7 @@ const allcards = [
     image: project5,
     subtitle: "Projects",
     subdesc: "Solar Rooftop scale up Challenges - The Infravision Foundation",
-    link: "https://www.youtube.com/embed/j-n-z551_ts?si=RWXdUc1-CGrPjped",
+    link: "https://www.youtube.com/embed/j-n-z551_ts?rel=0&playlist=j-n-z551_ts&modestbranding=1&showinfo=0",
   },
 ];
 
@@ -294,7 +294,7 @@ function CardSection({ tab }: { tab: string }) {
                   <Image
                     src={ele.image}
                     alt={ele.subtitle}
-                    className="w-full h-full"
+                    className="w-full h-full cursor-pointer"
                     onClick={() => handleVideoClick(ele.link)}
                   ></Image>
                 </div>
@@ -313,13 +313,12 @@ function CardSection({ tab }: { tab: string }) {
                 <div className="py-2 md:py-4">
                   <BorderGrayHeroBtn
                     text="Watch videos"
-                    role="link"
+                    role="button"
                     borderColor="darkgray/40"
                     color="black"
                     bgColor="white"
                     size="base"
-                    target="_blank"
-                    link={ele.link}
+                    handlepopup={() => handleVideoClick(ele.link)}
                   />
                 </div>
               </div>

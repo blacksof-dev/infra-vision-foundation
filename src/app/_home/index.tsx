@@ -15,15 +15,16 @@ export default function Home(){
     <>
       <Banner/>
       <Decoding />
-      <Turning />
-      <Driving /> 
-      <Infravisionaries /> 
-      <Publication />
-      <Blogs />
-      <StayConnected />
-      <Champion />
      
-      <InfravisionTalks />
+          <Turning />
+          <Driving /> 
+          <Infravisionaries /> 
+          <Publication />
+          <Blogs />
+          <StayConnected />
+          <Champion />    
+          <InfravisionTalks />
+     
     </>
   );
 }

@@ -28,6 +28,7 @@ export default function Blogs() {
                   color="black"
                   bgColor="white"
                   size="extralarge"
+                  link="/resource#blogs"
                 />
               </div>
             </div>

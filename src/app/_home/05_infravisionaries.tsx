@@ -993,7 +993,7 @@ export default function Infravisionaries() {
                         alt={ele.title}
                         className="w-full h-full object-cover rounded"
                       />
-                      <div className="absolute  bottom-0 left-0 w-[17rem]  ">
+                      <div className="absolute  bottom-0 left-0  w-[17rem]  ">
                         {ele.link ? (
                           <Link href={ele.link ? ele.link : ""} target="_blank">
                             <div className="   ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">

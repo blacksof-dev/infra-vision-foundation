@@ -33,12 +33,12 @@ export default function Champion() {
                   color="pink"
                   bgColor="white"
                   size="extralarge"
-                  // link="https://x.com/Infra_VinayakCh/status/1773515311419191457"
-                  // target="_blank"
+                   link="/resource#newsmedia"
+                  target="_self"
                 />
               </div>
             </div>
-            <div className="hidden  lg:flex flex-row md:gap-16 lg:gap-12 pt-4 md:pt-0 lg:justify-between justify-center flex-wrap xl:flex-nowrap    lg:pt-9">
+            <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 pt-14">
               {CardData.map((item, key) => (
                 <div
                   key={key}

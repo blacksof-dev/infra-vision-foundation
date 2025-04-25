@@ -64,6 +64,8 @@ export default function MediaSection({
                     color="pink"
                     bgColor="white"
                     size="extralarge"
+                    link="/publication"
+                    target="_self"
                   />
                 </div>
               )}
@@ -107,7 +109,7 @@ export default function MediaSection({
           </div>
 
           <div>
-            <div className="hidden   lg:flex flex-row  pt-4 md:pt-0 justify-between flex-wrap     lg:pt-9">
+          <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 pt-14">
               {cards?.map((item, key) => (
                 <>
                 <div
@@ -123,9 +125,9 @@ export default function MediaSection({
                       />
                   </div>
                  
-                 <div  className={`xl:block hidden ${key!==cards.length-1?" w-[1px] h-auto bg-darkgray/20 ":" "}`}>
-                </div>
-                    </>
+            
+               
+                   </>
               ))}
             </div>
 
