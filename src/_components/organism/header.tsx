@@ -17,10 +17,37 @@ export default function () {
   const [open, setopen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showNavBg, setshowNavBg] = useState(false);
+  const [lastScrollY, setlastScrollY] = useState(0);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
+  /*************** For Up and down nav hide code ***********************/
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+    if (currentScrollY > lastScrollY) {
+      setShowNavbar(false);
+    } else {
+      setShowNavbar(true);
+     
+    }
+
+    setlastScrollY(currentScrollY);
+  };
 
   const handlehamberg = () => {
     setIsMenuOpen((prev) => !prev);
   };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
+
+  /****************************************************************** */
+
+  //scroll should be avoid if mobile view navbar is open
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -29,6 +56,26 @@ export default function () {
       document.body.style.overflow = "auto";
     }
   }, [isMenuOpen]);
+
+
+
+  useEffect(() => {
+    const homeNavScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 120) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", homeNavScroll);
+    return () => window.removeEventListener("scroll",homeNavScroll);
+  }, []);
+
+
+
+  //Navbar color change for specifice routes
 
   useEffect(() => {
     const activeUrl = ["/publication", "/resource"];
@@ -49,9 +96,15 @@ export default function () {
   return (
     <>
       <nav
-        className={`fixed top-0 z-[999] w-full lg:h-[8rem] py-6 transition-colors duration-300 ${
-          showNavBg ? "bg-white" : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 w-full transition-transform duration-300 p-3 z-[999] ${
+          showNavbar ? "translate-y-0 " : "-translate-y-full "
+           
+        } ${showNavBg ? "bg-white" : "bg-transparent"} 
+
+          ${scrolled ? "bg-white shadow-md" : "bg-transparent"}
+
+        `}
+          
       >
         <div className="w-container">
           <div className="flex flex-row justify-between ">

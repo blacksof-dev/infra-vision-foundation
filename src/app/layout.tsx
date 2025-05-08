@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+
+
 
 import "./globals.css";
-import Footer from '@/_components/organism/footer'
+import type { Metadata } from "next";
+import Footer from "@/_components/organism/footer";
 import Header from "@/_components/organism/header";
-
-
 
 export const metadata: Metadata = {
   title: "The Infravision Foundation",
@@ -19,9 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={` antialiased `}>
-        <Header/>
+        <Header />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

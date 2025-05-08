@@ -2,18 +2,20 @@
 
 @import "tailwindcss";
 
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 
 html,body {
   scroll-behavior: smooth;
+  font-family:"Poppins" ;
 
 }
 
-:root{
-  font-family: "Poppins", sans-serif;
-}
+
 
 @theme inline{
-  
+
   --color-darkgray:#5D6468;
   --color-black:#0A0A0A;
   --color-pink:#C82249;
@@ -34,11 +36,9 @@ html,body {
   --breakpoint-sm  :556px;
 
   --font-poppins:"Poppins", "sans-serif";
-  
+
+
 }
-
-
-
 
 @layer components {
   .d {
@@ -47,7 +47,7 @@ html,body {
 
   .blade-top-padding {
     @apply pt-8 md:pt-10 lg:pt-14 xl:pt-16 2xl:pt-20;
- 
+
   }
 
   .blade-top-padding-sm {
@@ -64,22 +64,22 @@ html,body {
 
   .blade-bottom-padding {
     @apply pb-8 md:pb-10 lg:pb-14 xl:pb-16 2xl:pb-20;
-  
+
   }
 
   .blade-bottom-padding-sm {
     @apply pb-5 md:pb-6 lg:pb-8 xl:pb-10 2xl:pb-14;
-   
+
   }
 
   .blade-bottom-padding-lg {
     @apply pb-10 md:pb-12 lg:pb-20 xl:pb-24 2xl:pb-28;
-   
+
   }
 
   .blade-bottom-padding-xl {
     @apply pb-16 md:pb-10 lg:pb-20 xl:pb-28 2xl:pb-36;
-  
+
   }
 
   .blade-top-margin {
@@ -141,7 +141,6 @@ html,body {
     @apply tracking-tight;
   }
 
- 
   h1 {
     @apply text-[28px]  xl:text-[42px]  2xl:text-[54px] leading-8 xl:leading-13 2xl:leading-[64px];
   }
@@ -217,7 +216,6 @@ html,body {
   background-color: #d8d8d8;
 }
 
-
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -247,60 +245,14 @@ html,body {
   scrollbar-width: none;
 }
 
-
 .spin {
   animation: spin_360 90s linear infinite;
 }
-
 
 .d {
   border: 1px solid red !important;
 }
 
-::-webkit-datetime-edit {
-  color: rgba(128, 128, 128, 0.502);
-}
-::-webkit-datetime-edit-fields-wrapper {
-  color: rgba(128, 128, 128, 0.502);
-}
-::-webkit-datetime-edit-text {
-  color: rgba(128, 128, 128, 0.502);
-}
-
-::-webkit-datetime-edit-year-field {
-  color: rgba(128, 128, 128, 0.502);
-}
-::-webkit-datetime-edit-month-field {
-  color: rgba(128, 128, 128, 0.502);
-}
-::-webkit-datetime-edit-week-field {
-  color: rgba(128, 128, 128, 0.502);
-}
-::-webkit-datetime-edit-day-field {
-  color: rgba(128, 128, 128, 0.502);
-}
-::-webkit-datetime-edit-hour-field {
-  color: rgba(128, 128, 128, 0.502);
-}
-::-webkit-datetime-edit-minute-field {
-  color: rgba(128, 128, 128, 0.502);
-}
-::-webkit-datetime-edit-second-field {
-  color: rgba(128, 128, 128, 0.502);
-}
-::-webkit-datetime-edit-millisecond-field {
-  color: rgba(128, 128, 128, 0.502);
-}
-::-webkit-datetime-edit-ampm-field {
-  color: rgba(128, 128, 128, 0.502);
-}
-
-::-webkit-inner-spin-button {
-  color: rgba(128, 128, 128, 0.502);
-}
-::-webkit-calendar-picker-indicator {
-  color: rgba(128, 128, 128, 0.502);
-}
 
 .bg-blurGradient {
   background-image: 
@@ -310,53 +262,6 @@ html,body {
 .shadow-blur{
   box-shadow: -2.501px -2.501px 125.035px 0px rgba(255, 255, 255, 0.02) inset;
 }
-
-
-
-
-
-
-
-/* White style for members, banner, fellows, advisory, team */
-/* .custom-pagination-bullets-members .swiper-pagination-current,
-.custom-pagination-bullets-banner .swiper-pagination-current,
-.custom-pagination-bullets-fellows .swiper-pagination-current,
-.custom-pagination-bullets-advisory .swiper-pagination-current,
-.custom-pagination-bullets-team .swiper-pagination-current {
-  color: #fff !important;
-}
-
-.custom-pagination-bullets-members .swiper-pagination-total,
-.custom-pagination-bullets-banner .swiper-pagination-total,
-.custom-pagination-bullets-fellows .swiper-pagination-total,
-.custom-pagination-bullets-advisory .swiper-pagination-total,
-.custom-pagination-bullets-team .swiper-pagination-total {
-  color: #fff !important;
-}
-
-
-
-.custom-pagination-bullets-members .swiper-pagination-fraction,
-.custom-pagination-bullets-banner .swiper-pagination-fraction,
-.custom-pagination-bullets-fellows .swiper-pagination-fraction,
-.custom-pagination-bullets-advisory  .swiper-pagination-fraction,
-.custom-pagination-bullets-team  .swiper-pagination-fraction {
-  color: #fff !important;
-}
-
-/* Black style for news, publication, decoding */
-/* .custom-pagination-bullets-gallery .swiper-pagination-current{
-  color: black !important;
-} */
-
-/* .custom-pagination-bullets-gallery .swiper-pagination-total{
-  color: black !important;
-} */
-
-/* .custom-pagination-bullets-gallery .swiper-pagination-fraction{
-  color: black !important;
-} */
-
 
 
 /* Comprehensive fix for white pagination styles */
@@ -406,5 +311,6 @@ html,body {
 .custom-pagination-bullets-team .swiper-pagination-fraction::after {
   color: #fff !important;
 }
+
 
 

@@ -14,7 +14,7 @@ import { RiArrowRightSLine } from "react-icons/ri";
 export default function Banner({image,heading,title,subdesc,mobileimage}:bannerProps) {
   return (
     <>
-      <div className="">
+      <div className="pt-[6rem]">
         <div className="relative ">
           <div className={`h-[20rem] md:h-[28rem] xl:h-[40rem] ${mobileimage?"md:block hidden":""}`}>
             <Image
@@ -52,7 +52,7 @@ export default function Banner({image,heading,title,subdesc,mobileimage}:bannerP
                   <RiArrowRightSLine  className="text-[24px]"/>
                   {heading}</h5>
               </div>
-              <div className="w-[60%] ">
+              <div className="sm:w-[60%] w-full">
                 <h1 className="text-white font-medium ">{title}</h1>
                 <div className="py-2 sm:py-4">
                   <h5 className="text-white  font-light">

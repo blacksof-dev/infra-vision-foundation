@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Portal from "../../_components/atoms/popupPortal"
+import Portal from "../atoms/popupPortal"
 import { useEffect } from "react";
 import { RxCross2 } from "react-icons/rx";
 

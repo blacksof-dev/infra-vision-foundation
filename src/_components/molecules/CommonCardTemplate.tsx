@@ -17,7 +17,7 @@ import GeetamTiwari from "@/../public/assets/home/decoding/GeetamTiwari.png";
 import ProfGRaghuram from "@/../public/assets/home/decoding/ProfGRaghuram.png";
 import RajivRanjanMishra from "@/../public/assets/home/decoding/RajivRanjanMishra.png";
 import { useState } from "react";
-import VideoPopup from "@/app/resource/videopopup";
+import VideoPopup from "@/_components/molecules/videopopup";
 
 export default function LinkedinCard() {
   const [videoLink, setVideoLink] = useState("");

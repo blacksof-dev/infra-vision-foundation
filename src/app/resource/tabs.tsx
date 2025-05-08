@@ -78,7 +78,7 @@ export default function ResourceTabs({ sectionRefs }: Props) {
         "bg-white",
         "z-50",
         "sticky",
-        "top-[11%] sm:top-[12%]",
+        "top-0",
         isStickyVisible ? "block" : "hidden"
       )}
     >

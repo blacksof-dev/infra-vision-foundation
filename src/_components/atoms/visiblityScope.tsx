@@ -10,6 +10,7 @@ export default function ArrowScope() {
     const currentScrollY = window.scrollY;
     if (currentScrollY > 1000) {
       setVisible(true);
+      
     } else {
       setVisible(false);
     }

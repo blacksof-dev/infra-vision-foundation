@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import clsx from "clsx";
+import { useSelector } from 'react-redux';
+
 
 type TabId = "research" | "whitepapers" | "newsletters";
 
@@ -9,6 +11,8 @@ const tabs: { id: TabId; label: string }[] = [
   { id: "whitepapers", label: "White papers" },
   { id: "newsletters", label: "Newsletters" },
 ];
+
+
 
 type Props = {
   sectionRefs: Record<TabId, React.RefObject<HTMLDivElement | null>>;
@@ -77,7 +81,7 @@ export default function PublicationTabs({ sectionRefs }: Props) {
         "bg-white",
         "z-50",
         "sticky",
-        "top-[11%] sm:top-[12%]",
+       "top-0",
         isStickyVisible ? "block" : "hidden"
       )}
     >

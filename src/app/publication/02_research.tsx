@@ -13,16 +13,6 @@ import Card from "@/_components/molecules/cardTemplate";
 
 const thirdPublicationFilter = ["2025", "2024"];
 
-// const secondSectorFilter = [
-//   "Transportation",
-//   "Water and Sanitation",
-//   "Energy",
-//   "Urban Planning",
-//   "Rural and Agri Infra",
-//   "Education",
-//   "Health",
-// ];
-
 const secondSectorFilter = ["All","Transportation", "Energy", "Urban Planning","Rural and Agri Infra"];
 
 const allcards = [
@@ -77,7 +67,6 @@ const allcards = [
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2023/11/solar.pdf",
   },
   {
-   
     img: energy,
     category: "Energy",
     date: "January, 2025",

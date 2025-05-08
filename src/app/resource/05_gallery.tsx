@@ -5,46 +5,24 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination,Autoplay } from "swiper/modules";
-
 import Image from "next/image";
-import image1 from "@/../public/assets/resource/gallery/image1.jpg";
-import image2 from "@/../public/assets/resource/gallery/image2.jpg";
-import image3 from "@/../public/assets/resource/gallery/image3.jpg";
-import image4 from "@/../public/assets/resource/gallery/image4.jpg";
-import image5 from "@/../public/assets/resource/gallery/image5.jpg";
-
-import mobileimage1 from "@/../public/assets/resource/gallery/mobileimage1.png";
-import mobileimage2 from "@/../public/assets/resource/gallery/mobileimage2.png";
-import mobileimage3 from "@/../public/assets/resource/gallery/mobileimage3.png";
-import mobileimage4 from "@/../public/assets/resource/gallery/mobileimage4.png";
-import mobileimage5 from "@/../public/assets/resource/gallery/mobileimage5.png";
-
 import { useState } from "react";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 
-export default function Gallery() {
-  return (
-    <>
-      <div className="bg-whitesmoke">
-        <div className="blade-top-padding-lg  w-container">
-          <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
-            <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-            <h5 className="font-medium text-pink">Gallery</h5>
-          </div>
-          <div className="py-2 ">
-            <h1 className="text-black  font-medium">Scenes from our journey</h1>
-          </div>
-        </div>
-        <div className="md:pt-5">
-          <GallerSwiper />
-        </div>
-      </div>
-    </>
-  );
-}
+import image1 from "@/../public/assets/resource/gallery/image1.jpg"
+import image2 from "@/../public/assets/resource/gallery/image2.jpg"
+import image3 from "@/../public/assets/resource/gallery/image3.jpg"
+import image4 from "@/../public/assets/resource/gallery/image4.jpg"
+import image5 from "@/../public/assets/resource/gallery/image5.jpg"
+
+import mobileimage1 from "@/../public/assets/resource/gallery/mobileimage1.png"
+import mobileimage2 from "@/../public/assets/resource/gallery/mobileimage2.png"
+import mobileimage3 from "@/../public/assets/resource/gallery/mobileimage3.png"
+import mobileimage4 from "@/../public/assets/resource/gallery/mobileimage4.png"
+import mobileimage5 from "@/../public/assets/resource/gallery/mobileimage5.png"
 
 
-const AwardsData = [
+export  const awardsData = [
   {
     img: image1,
     mobileView: mobileimage5,
@@ -81,6 +59,28 @@ const AwardsData = [
     desc: "Sudhanshu Mani (INFRAVISIONARY AWARD), former general manager, ICF, for battling naysayers and beating all odds to create Vande Bharat Express, a high speed train made entirely in India within 18 months, a symbol of domestic engineering prowess.",
   },
 ];
+export default function Gallery() {
+  return (
+    <>
+      <div className="bg-whitesmoke">
+        <div className="blade-top-padding-lg  w-container">
+          <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
+            <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
+            <h5 className="font-medium text-pink">Gallery</h5>
+          </div>
+          <div className="py-2 ">
+            <h1 className="text-black  font-medium">Scenes from our journey</h1>
+          </div>
+        </div>
+        <div className="md:pt-5">
+          <GallerSwiper />
+        </div>
+      </div>
+    </>
+  );
+}
+
+
 
 function GallerSwiper() {
   const [isLastSlide, setIsLastSlide] = useState(false);
@@ -125,11 +125,11 @@ function GallerSwiper() {
               1536: { slidesPerView: 1.7, centeredSlides: false },
             }}
           >
-            {AwardsData.map((item, index) => {
+            {awardsData.map((item, index) => {
               return (
                 <SwiperSlide key={index} className="!h-full ">
                   <div className="relative md:block hidden ">
-                    <div>
+                    <div className="">
                       <Image
                         src={item.img}
                         alt="Awards"
@@ -137,9 +137,9 @@ function GallerSwiper() {
                       />
                     </div>
 
-                    <div className="absolute bottom-0  rounded-[10px] p-2 xl:p-3 m-3 xl:m-6 h-[10rem] bg-white ">
+                    <div className="absolute  bottom-0  rounded-[10px] p-2 xl:p-3 m-3 xl:m-6 h-[10rem] bg-white ">
                       <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
-                        <span className="w-[7px] h-[7px] md:w-[12px] md:h-[12px] rounded-full bg-darkgray/30 "></span>
+                        <span className="w-[7px] h-[7px] md:w-[12px]  md:h-[12px] rounded-full bg-darkgray/30 "></span>
                         <h5 className="border-r border-darkgray/20 pe-4">
                           {item.category}
                         </h5>

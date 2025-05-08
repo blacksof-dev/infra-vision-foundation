@@ -10,16 +10,6 @@ import Card from "@/_components/molecules/cardTemplate";
 
 const thirdPublicationFilter = ["2025", "2024"];
 
-// const secondSectorFilter = [
-//   "Transportation",
-//   "Water and Sanitation",
-//   "Energy",
-//   "Urban Planning",
-//   "Rural and Agri Infra",
-//   "Education",
-//   "Health",
-// ];
-
 const secondSectorFilter = ["All" , "Transportation", "Energy", "Urban Planning"];
 
 const allcards = [
