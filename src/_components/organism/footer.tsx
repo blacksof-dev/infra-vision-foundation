@@ -16,13 +16,14 @@ const footer = () => {
       <footer className="blade-top-padding-lg  ">
         <div className=" w-container">
           <div className=" flex md:flex-row flex-col md:justify-between md:items-end border-b-1 border-gray/60  md:pb-6">
-            <div className="">
+            <div className="w-[45%] sm:w-[35%]  h-[30%] md:h-full  lg:w-[20%]">
               <Anchor href="/">
                 <Image
                   src={logo}
-                  className=" w-[45%] h-[30%] md:h-full md:w-[45%] "
+                  className="w-full h-full "
                   alt="TIF logo"
                   title=" logo"
+                  quality={100}
                 />
               </Anchor>
             </div>

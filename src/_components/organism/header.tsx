@@ -14,12 +14,12 @@ import { usePathname } from "next/navigation";
 export default function () {
   const pathname = usePathname();
 
-  const [open, setopen] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showNavBg, setshowNavBg] = useState(false);
+  const [open, setopen] = useState<boolean>(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [showNavBg, setshowNavBg] = useState<boolean>(false);
   const [lastScrollY, setlastScrollY] = useState(0);
-  const [showNavbar, setShowNavbar] = useState(true);
-  const [scrolled, setScrolled] = useState(false);
+  const [showNavbar, setShowNavbar] = useState<boolean>(true);
+  const [scrolled, setScrolled] = useState<boolean>(false);
   /*************** For Up and down nav hide code ***********************/
 
   const handleScroll = () => {
@@ -78,11 +78,11 @@ export default function () {
   //Navbar color change for specifice routes
 
   useEffect(() => {
-    const activeUrl = ["/publication", "/resource"];
-    if (activeUrl.includes(pathname)) {
-      setshowNavBg(true);
-    } else {
+    const activeUrl = ["/home"];
+    if (!activeUrl.includes(pathname)) {
       setshowNavBg(false);
+    } else {
+      setshowNavBg(true);
     }
   }, [pathname]);
 
@@ -220,6 +220,7 @@ export default function () {
                       size="large"
                       className="block whitespace-nowrap px-3 py-1 md:py-2"
                       text="Contact Us"
+                      href="/contactUs"
                     />
                   </li>
                 </ul>

@@ -6,12 +6,13 @@ interface bannerProps {
   title:string;
   subdesc:string;
   mobileimage?:StaticImageData;
+  classes?:string;
 }
 
 
 
 import { RiArrowRightSLine } from "react-icons/ri";
-export default function Banner({image,heading,title,subdesc,mobileimage}:bannerProps) {
+export default function Banner({image,heading,title,subdesc,mobileimage,classes}:bannerProps) {
   return (
     <>
       <div className="pt-[6rem]">
