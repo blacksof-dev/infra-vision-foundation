@@ -129,7 +129,7 @@ export default function ContactForm() {
   return (
     <>
       <div className="bg-whitesmoke">
-        <div className="w-container blade-top-padding-sm blade-bottom-padding-sm ">
+        <div className="w-container blade-top-padding-lg blade-bottom-padding-lg ">
           <div className="flex flex-col md:flex-row gap-6 md:gap-6  xl:gap-14">
             {/* Map and Address Code */}
             <div className="w-full md:w-[50%] order-2 md:order-1 ">
