@@ -18,7 +18,7 @@ const secondSectorFilter = ["All","Transportation", "Energy", "Urban Planning","
 const allcards = [
   {
    
-    img: ruralAgriInfra,
+    img: ruralAgriInfra.src,
     category: "Rural and Agri Infra",
     date: "November, 2024",
     title:
@@ -27,7 +27,7 @@ const allcards = [
   },
   {
    
-    img: railResearch,
+    img: railResearch.src,
     category: "Transportation",
     date: "January, 2025",
     title: "The case for developing high-speed rail corridors in India",
@@ -35,7 +35,7 @@ const allcards = [
   },
   {
     
-    img: highway,
+    img: highway.src,
     category: "Transportation",
     date: "January, 2025",
     title: "Safe highways in India: Challenges and solutions",
@@ -43,7 +43,7 @@ const allcards = [
   },
   {
     
-    img: transportation,
+    img: transportation.src,
     category: "Transportation",
     date: "January, 2025",
     title:
@@ -52,7 +52,7 @@ const allcards = [
   },
   {
     
-    img: urban,
+    img: urban.src,
     category: "Urban Planning",
     date: "January, 2025",
     title: "Sustainability ratings for Infrastructure projects in India",
@@ -60,14 +60,14 @@ const allcards = [
   },
   {
    
-    img: energy,
+    img: energy.src,
     category: "Energy",
     date: "January, 2025",
     title: "Mass scale rooftop solar programme for poverty alleviation",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2023/11/solar.pdf",
   },
   {
-    img: energy,
+    img: energy.src,
     category: "Energy",
     date: "January, 2025",
     title: "Mass scale rooftop solar programme for poverty alleviation",

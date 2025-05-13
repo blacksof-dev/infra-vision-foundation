@@ -55,7 +55,7 @@ export default function Champion() {
               ))}
             </div>
             <div className="lg:hidden block">
-              <CardSlider />
+              <CardSlider details={CardData}/>
             </div>
           </div>
         </div>
@@ -68,21 +68,21 @@ const CardData = [
   {
     date: "Aug 15 2024",
     title: "Group taxation regime for infrastructure",
-    img: groupTaxation,
+    img: groupTaxation.src,
     link: "https://www.business-standard.com/opinion/columns/group-taxation-regime-for-infrastructure-124081500813_1.html",
     category: "News",
   },
   {
     date: "July 24, 2024",
     title: "Infra outlays: A strategic downplay",
-    img: infraOutlays,
+    img: infraOutlays.src,
     link: "https://www.financialexpress.com/opinion/nbspinfra-outlays-a-strategic-downplay-the-budget-signals-a-move-out-of-the-era-of-large-infra-spends-pump-priming-the-economy/3563263/#:~:text=stressful%20Covid%20period.-,Across%20the%20last%20few%20years%2C%20India%20saw%20Union%20Budget%20infra,11%25%20to%20Rs%2011.1%20trillion.",
     category: "News",
   },
   {
     date: "July 24, 2024",
     title: "Budget signals shift in infra strategy",
-    img: budgetSignals,
+    img: budgetSignals.src,
     link: "https://www.moneycontrol.com/news/business/economy/budget-signals-shift-in-infra-strategy-as-govt-pushes-states-private-sector-to-pitch-in-12777120.html",
     category: "News",
   },

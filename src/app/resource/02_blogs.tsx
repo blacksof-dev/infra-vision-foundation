@@ -12,21 +12,21 @@ const secondSectorFilter = ["All", "Transportation", "Rural and Agri Infra"];
 
 const allcards = [
   {
-    img: image1,
+    img: image1.src,
     category: "Transportation",
     date: "October, 2024",
     title: "How to make India’s highways safe",
     link: "https://theinfravisionfoundation.org/2024/10/16/a-national-road-safety-authority-crucial-for-improving-indias-deteriorating-road-safety/",
   },
   {
-    img: image2,
+    img: image2.src,
     category: "Transportation",
     date: "October, 2024",
     title: "Multi-utility Infra, the way to go!",
     link: "https://theinfravisionfoundation.org/2023/10/09/newsletter-images-do-not-remove/",
   },
   {
-    img: image3,
+    img: image3.src,
     category: "Rural and Agri Infra",
     date: "November, 2023",
     title: "Agri-Warehousing: A problem of capacity",

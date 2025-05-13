@@ -6,18 +6,21 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import { useState } from "react";
-
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
-import budgetSignals from "@/../public/assets/home/budgetSignals.png";
-import infraOutlays from "@/../public/assets/home/infraOutlays.png";
-import groupTaxation from "@/../public/assets/home/groupTaxation.png";
+
 import Card from "./cardTemplate";
-// import workshop from "@/../public/assets/home/workshop.png";
-// import rail from "@/../public/assets/home/rail.png";
-// import agriExports from "@/../public/assets/home/agriExports.png";
 
 
-export default function CardSlider() {
+
+type CardDataType = {
+title:string,
+img:string;
+link:string;
+category:string;
+date:string;
+}
+
+export default function CardSlider({details}:{details:CardDataType[]}) {
   const [isLastSlide, setIsLastSlide] = useState(false);
   const [isFirstSlide, setIsFirstSlide] = useState(true);
 
@@ -53,7 +56,7 @@ export default function CardSlider() {
             }}
           >
             
-            {CardData.map((item, index) => {
+            {details.map((item, index) => {
               return (
                 <SwiperSlide key={index} className="!h-full ">
                   <div className="">
@@ -92,27 +95,5 @@ export default function CardSlider() {
   );
 }
 
-const CardData = [
-  {
-    date: "Aug 15 2024",
-    title: "Group taxation regime for infrastructure",
-    img: groupTaxation,
-    link: "https://www.business-standard.com/opinion/columns/group-taxation-regime-for-infrastructure-124081500813_1.html",
-    category:"News"
-  },
-  {
-    date: "July 24, 2024",
-    title: "Infra outlays: A strategic downplay",
-    img: infraOutlays,
-    link: "https://www.financialexpress.com/opinion/nbspinfra-outlays-a-strategic-downplay-the-budget-signals-a-move-out-of-the-era-of-large-infra-spends-pump-priming-the-economy/3563263/#:~:text=stressful%20Covid%20period.-,Across%20the%20last%20few%20years%2C%20India%20saw%20Union%20Budget%20infra,11%25%20to%20Rs%2011.1%20trillion.",
-    category:"News"
-  },
-  {
-    date: "July 24, 2024",
-    title: "Budget signals shift in infra strategy",
-    img: budgetSignals,
-    link: "https://www.moneycontrol.com/news/business/economy/budget-signals-shift-in-infra-strategy-as-govt-pushes-states-private-sector-to-pitch-in-12777120.html",
-    category:"News"
-  },
-];
+
 

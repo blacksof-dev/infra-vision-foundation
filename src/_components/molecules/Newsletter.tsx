@@ -58,7 +58,7 @@ export default function Newsletter({
                     r="144.124"
                     transform="rotate(3.28503 79.3062 -19.4666)"
                     stroke="#D9D9D9"
-                    stroke-width="0.742301"
+                    strokeWidth="0.742301"
                   />
                   <circle
                     opacity="0.3"

@@ -1,5 +1,9 @@
 "use client";
-import { BorderGrayHeroBtn, HeroBtn, UnderlineWithHover } from "@/_components/atoms/buttons";
+import {
+  BorderGrayHeroBtn,
+  HeroBtn,
+  UnderlineWithHover,
+} from "@/_components/atoms/buttons";
 import Image, { StaticImageData } from "next/image";
 import type { Swiper as SwiperClass } from "swiper/types";
 import Card from "@/_components/molecules/cardTemplate";
@@ -9,11 +13,11 @@ interface CardItem {
   category: string;
   date: string;
   title: string;
-  img: StaticImageData;
+  img: string;
   link: string;
 }
 
-interface MediaSEctionProps {
+interface MediaSectionProps {
   title: string;
   desc: string;
   ctatitle?: string;
@@ -37,7 +41,7 @@ export default function MediaSection({
   blog1link,
   cards,
   data,
-}: MediaSEctionProps) {
+}: MediaSectionProps) {
   return (
     <>
       <section className="blade-top-padding-lg blade-bottom-padding-lg ">
@@ -76,11 +80,12 @@ export default function MediaSection({
               <Image
                 src={img1}
                 alt="Featured publications"
+                width={1000}
+                height={1000}
                 className="w-full h-full object-cover rounded"
               />
 
               <div className="absolute right-3 top-1/2 -translate-y-1/2 translate-x-[-10%] bg-white rounded px-6 py-2 xl:py-10 lg:w-[23rem] xl:w-[25rem] 2xl:w-[27rem]">
-  
                 <div className="flex flex-row justify-between ">
                   <div className="flex  flex-row  items-center gap-2 md:gap-3">
                     <span className="w-[7px] h-[7px] md:w-[13px] md:h-[13px]  rounded-full bg-lightgray/30 "></span>
@@ -109,28 +114,21 @@ export default function MediaSection({
           </div>
 
           <div>
-          <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 pt-14">
+            <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 pt-14">
               {cards?.map((item, key) => (
                 <>
-                <div
-                  key={key}
-                  className=""
-                  >
+                  <div key={key} className="">
                     <Card
                       date={item.date}
                       title={item.title}
                       image={item.img}
                       link={item.link}
                       category={item.category}
-                      />
+                    />
                   </div>
-                 
-            
-               
-                   </>
+                </>
               ))}
             </div>
-
 
             <div className="lg:hidden block">
               <PublicationSlider data={data} />
@@ -182,8 +180,6 @@ function PublicationSlider({ data }: PublicationSliderProps) {
             slidesPerView={1}
             centeredSlides={true}
             breakpoints={{
-             
-             
               768: { slidesPerView: 1.5, centeredSlides: false },
               1024: { slidesPerView: 2.9, centeredSlides: false },
               1280: { slidesPerView: 3.4, centeredSlides: false },
@@ -211,15 +207,17 @@ function PublicationSlider({ data }: PublicationSliderProps) {
       <div className="flex   justify-between mt-4">
         <div className="flex lg:hidden   gap-3  justify-start   md:gap-8 2xl:mt-1 ">
           <button
-            className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white ${isFirstSlide ? "opacity-40" : ""
-                    }`}
+            className={`swiper-solution-prev-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white ${
+              isFirstSlide ? "opacity-40" : ""
+            }`}
             aria-label="Previous slide"
           >
             <GoArrowLeft />
           </button>
           <button
-            className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white ${isLastSlide ? "opacity-40" : ""
-                    }`}
+            className={`swiper-solution-next-btn flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white ${
+              isLastSlide ? "opacity-40" : ""
+            }`}
             aria-label="Next slide"
           >
             <GoArrowRight />

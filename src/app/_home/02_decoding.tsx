@@ -34,7 +34,7 @@ export default function Decoding() {
                 r="129.737"
                 transform="matrix(-0.998666 -0.0516365 -0.0516365 0.998666 458.307 -4.56348)"
                 stroke="#D9D9D9"
-                stroke-width="0.742301"
+                strokeWidth="0.742301"
               />
               <circle
                 opacity="0.3"

@@ -1,12 +1,12 @@
 type CardProps = {
   date: string;
   title: string;
-  image: StaticImageData;
+  image: string;
   link: string;
   category:string;
   classes?:string
 };
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { BorderGrayHeroBtn} from "../atoms/buttons";
 
 export default function Card({ date, title, image,link,category,classes }: CardProps) {
@@ -14,10 +14,12 @@ export default function Card({ date, title, image,link,category,classes }: CardP
     <>
       <section>
       
-        <div className="   ">
+        <div >
           <div className="  xl:max-w-[29rem] h-[16rem] ">
             <Image
               src={image}
+               width={1000}
+                height={1000}
               alt="Image"
               className="w-full h-full object-cover rounded"
             />

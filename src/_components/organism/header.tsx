@@ -20,6 +20,7 @@ export default function () {
   const [lastScrollY, setlastScrollY] = useState(0);
   const [showNavbar, setShowNavbar] = useState<boolean>(true);
   const [scrolled, setScrolled] = useState<boolean>(false);
+ 
   /*************** For Up and down nav hide code ***********************/
 
   const handleScroll = () => {
@@ -79,6 +80,7 @@ export default function () {
 
   useEffect(() => {
     const activeUrl = ["/home"];
+
     if (!activeUrl.includes(pathname)) {
       setshowNavBg(false);
     } else {
@@ -99,7 +101,7 @@ export default function () {
         className={`fixed top-0 left-0 w-full transition-transform duration-300 p-3 z-[999] ${
           showNavbar ? "translate-y-0 " : "-translate-y-full "
            
-        } ${showNavBg ? "bg-white" : "bg-transparent"} 
+        } ${showNavBg ? "bg-white border-b-1 border-lightgray/20 shadow-sm" : "bg-transparent"} 
 
           ${scrolled ? "bg-white shadow-md" : "bg-transparent"}
 

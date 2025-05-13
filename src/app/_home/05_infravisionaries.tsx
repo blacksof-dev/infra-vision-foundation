@@ -329,7 +329,7 @@ export default function Infravisionaries() {
                 r="129.737"
                 transform="matrix(-0.914239 -0.405175 -0.405175 0.914239 593.496 -18.2383)"
                 stroke="#D9D9D9"
-                stroke-width="0.742301"
+                strokeWidth="0.742301"
               />
               <circle
                 opacity="0.3"
