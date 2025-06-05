@@ -11,7 +11,12 @@ export default function TwitterPost() {
           </h4>
         </div>
         <div className="md:flex hidden  flex-row gap-3 py-3 lg:py-0 lg:justify-center lg:items-center">
-           <Link href="https://x.com/Infra_VinayakCh/status/1773515311419191457" target="_blank"><h5 className="text-pink">View more on</h5></Link>
+          <Link
+            href="https://x.com/Infra_VinayakCh/status/1773515311419191457"
+            target="_blank"
+          >
+            <h5 className="text-pink">View more on</h5>
+          </Link>
           <div>
             <svg
               className="w-7 h-7 lg:w-10 lg:h-10"
@@ -36,15 +41,18 @@ export default function TwitterPost() {
           </div>
         </div>
       </div>
-      
-      <div className=" md:pt-8 h-full  border-1 border-darkgray/50 p-3 rounded ">
-        <div className="">
-        <div className="taggbox" style={{ width: "100%", height: "416px" }} data-widget-id="2164217" data-tags="false"  ></div>
-        <Script src="https://widget.taggbox.com/embed-lite.min.js" type="text/javascript">
-        </Script>
-       
-          
-        </div>
+
+      <div className="overflow-x-hidden">
+        <div
+          className="taggbox"
+          style={{ width: "100%", height: "30rem" }}
+          data-widget-id="2164217"
+          data-tags="false"
+        ></div>
+        <Script
+          src="https://widget.taggbox.com/embed-lite.min.js"
+          type="text/javascript"
+        />
       </div>
     </section>
   );
