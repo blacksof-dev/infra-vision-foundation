@@ -1,0 +1,4 @@
+.swiper-wrapper {
+  transition-property: transform !important;
+  transition-timing-function: linear !important;
+}

@@ -31,7 +31,7 @@ export default function Mobilenav({ onClose }: { onClose: () => void; }) {
             <TextMobileNavAnchor
               color="dark"
               className="block whitespace-nowrap py-6"
-              text="What drives us"
+              text="About us"
               status={mobilepopup}
             />
           </li>
@@ -41,7 +41,7 @@ export default function Mobilenav({ onClose }: { onClose: () => void; }) {
             <TextMobileNavAnchor
               color="dark"
               className="block whitespace-nowrap py-6"
-              text="Our initiatives"
+              text="Advocacy"
               status={mobilepopup}
             />
           </li>
@@ -51,45 +51,24 @@ export default function Mobilenav({ onClose }: { onClose: () => void; }) {
             <TextMobileNavAnchor
               color="dark"
               className="block whitespace-nowrap py-6"
-              text="Resources"
+              text="Knowledge"
               status={mobilepopup}
-              href="/resource"
-              target="_self"
             />
           </li>
         </ul>
+     
+     
         <ul>
           <li>
             <TextMobileNavAnchor
               color="dark"
               className="block whitespace-nowrap py-6"
-              text="Publications"
-              status={mobilepopup}
-              href="/publication"
-              target="_self"
-            />
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <TextMobileNavAnchor
-              color="dark"
-              className="block whitespace-nowrap py-6"
-              text="Events"
+              text="Get Involved"
               status={mobilepopup}
             />
           </li>
         </ul>
-        <ul>
-          <li>
-            <TextMobileNavAnchor
-              color="dark"
-              className="block whitespace-nowrap py-6"
-              text="Contact Us"
-              status={mobilepopup}
-            />
-          </li>
-        </ul>
+       
     
       </div>
     </div>

@@ -20,7 +20,7 @@ export default function () {
   const [lastScrollY, setlastScrollY] = useState(0);
   const [showNavbar, setShowNavbar] = useState<boolean>(true);
   const [scrolled, setScrolled] = useState<boolean>(false);
- 
+
   /*************** For Up and down nav hide code ***********************/
 
   const handleScroll = () => {
@@ -29,7 +29,6 @@ export default function () {
       setShowNavbar(false);
     } else {
       setShowNavbar(true);
-     
     }
 
     setlastScrollY(currentScrollY);
@@ -58,8 +57,6 @@ export default function () {
     }
   }, [isMenuOpen]);
 
-
-
   useEffect(() => {
     const homeNavScroll = () => {
       const offset = window.scrollY;
@@ -71,10 +68,8 @@ export default function () {
     };
 
     window.addEventListener("scroll", homeNavScroll);
-    return () => window.removeEventListener("scroll",homeNavScroll);
+    return () => window.removeEventListener("scroll", homeNavScroll);
   }, []);
-
-
 
   //Navbar color change for specifice routes
 
@@ -88,25 +83,20 @@ export default function () {
     }
   }, [pathname]);
 
-  const What_drives = [
-    "Who we are",
-    "Vision and Mission",
-    "The Infravisionaries",
-    "Collaborate with us",
-  ];
-
   return (
     <>
       <nav
         className={`fixed top-0 left-0 w-full transition-transform duration-300 p-3 z-[999] ${
           showNavbar ? "translate-y-0 " : "-translate-y-full "
-           
-        } ${showNavBg ? "bg-white border-b-1 border-lightgray/20 shadow-sm" : "bg-transparent"} 
+        } ${
+          showNavBg
+            ? "bg-white border-b-1 border-lightgray/20 shadow-sm"
+            : "bg-transparent"
+        } 
 
           ${scrolled ? "bg-white shadow-md" : "bg-transparent"}
 
         `}
-          
       >
         <div className="w-container">
           <div className="flex flex-row justify-between ">
@@ -120,7 +110,7 @@ export default function () {
               </Link>
             </div>
             <div className=" flex flex-row  gap-5">
-              <div className="hidden  xl:flex flex-row gap-1 2xl:gap-5  items-center">
+              <div className="hidden  xl:flex flex-row gap-6 2xl:gap-5  items-center">
                 <ul className="relative ">
                   <li
                     onClick={() => setopen((prev) => !prev)}
@@ -130,11 +120,11 @@ export default function () {
                       color="dark"
                       size="large"
                       className="block whitespace-nowrap px-3 py-1 md:py-2"
-                      text="What Drives Us"
+                      text="About us"
                       status={open}
                     />
 
-                    <AnimatePresence>
+                    {/* <AnimatePresence>
                       {open && (
                         <motion.div
                           initial={{ opacity: 0, y: 10 }}
@@ -163,7 +153,7 @@ export default function () {
                           ))}
                         </motion.div>
                       )}
-                    </AnimatePresence>
+                    </AnimatePresence> */}
                   </li>
                 </ul>
 
@@ -173,7 +163,7 @@ export default function () {
                       color="dark"
                       size="large"
                       className="block whitespace-nowrap px-3 py-1 md:py-2"
-                      text="Our Initiatives"
+                      text="Advocacy"
                     />
                   </li>
                 </ul>
@@ -184,7 +174,7 @@ export default function () {
                       color="dark"
                       size="large"
                       className="block whitespace-nowrap px-3 py-1 md:py-2"
-                      text="Publications"
+                      text="Knowledge"
                       href="/publication"
                       target="_self"
                     />
@@ -197,32 +187,7 @@ export default function () {
                       color="dark"
                       size="large"
                       className="block whitespace-nowrap px-3 py-1 md:py-2"
-                      text="Resources"
-                      href="/resource"
-                      target="_self"
-                    />
-                  </li>
-                </ul>
-
-                <ul>
-                  <li>
-                    <TextNavAnchor
-                      color="dark"
-                      size="large"
-                      className="block whitespace-nowrap px-3 py-1 md:py-2"
-                      text="Events"
-                    />
-                  </li>
-                </ul>
-
-                <ul>
-                  <li>
-                    <TextNavAnchor
-                      color="dark"
-                      size="large"
-                      className="block whitespace-nowrap px-3 py-1 md:py-2"
-                      text="Contact Us"
-                      href="/contactUs"
+                      text="Get Involved"
                     />
                   </li>
                 </ul>
