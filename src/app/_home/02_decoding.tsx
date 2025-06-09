@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { FaYoutube } from "react-icons/fa";
-
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 import Link from "next/link";
 import { useState } from "react";

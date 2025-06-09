@@ -1,4 +1,4 @@
-import Newsletter from "@/_components/molecules/newsletter";
+import Newsletter from "@/_components/molecules/Newsletter";
 import infratalkBook from "@/../public/assets/publication/infratalkBook.png"
 
 

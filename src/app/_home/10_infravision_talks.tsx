@@ -1,4 +1,3 @@
-
 import infravisionfoundationBg from "@/../public/assets/home/infravisionfoundationBg.png";
 import infravisionTalkMobile from "@/../public/assets/home/infravisionTalkMobile.jpg";
 import Newsletter from "@/_components/molecules/Newsletter";

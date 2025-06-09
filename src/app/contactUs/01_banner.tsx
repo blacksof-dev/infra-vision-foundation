@@ -1,4 +1,4 @@
-import Banner from "../../_components/molecules/banner";
+import Banner from "../../_components/molecules/Banner";
 import banner from "@/../public/assets/contact/banner.png";
 
 
