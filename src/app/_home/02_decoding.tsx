@@ -1,10 +1,11 @@
 "use client";
 import Image from "next/image";
 import { FaYoutube } from "react-icons/fa";
-import LinkedinCard from "@/_components/molecules/commonCardTemplate";
+
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 import Link from "next/link";
 import { useState } from "react";
+import LinkedinCard from "@/_components/molecules/CommonCardTemplate";
 
 export default function Decoding() {
   const [isLastSlide, setIsLastSlide] = useState(false);
