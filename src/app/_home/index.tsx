@@ -1,4 +1,5 @@
 import Banner from "./01_banner";
+import WhoWeAre from "./02_whoWeAre";
 
 import Association from "./04_association";
 
@@ -11,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Banner />
-
+      <WhoWeAre />
       <Infravisionaries />
       <Association />
 
