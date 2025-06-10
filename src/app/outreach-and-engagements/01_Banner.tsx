@@ -8,6 +8,7 @@ export default function OutreachBanner() {
     <Banner
       image={bannerBg}
       mobileimage={mobilebannerbg}
+      buttonText="Get notified"
       heading="Outreach and engagements"
       title="Outreach and engagements"
       subdesc="Join the discourse of a prosperous India driven by industry experts and thought leaders."

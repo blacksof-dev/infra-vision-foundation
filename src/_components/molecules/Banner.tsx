@@ -7,12 +7,14 @@ interface bannerProps {
   subdesc:string;
   mobileimage?:StaticImageData;
   classes?:string;
+  buttonText?: string;
 }
 
 
 
 import { RiArrowRightSLine } from "react-icons/ri";
-export default function Banner({image,heading,title,subdesc,mobileimage,classes}:bannerProps) {
+import { BorderGrayHeroBtn, HeroBtnPink } from "../atoms/buttons";
+export default function Banner({image,heading,title,subdesc,mobileimage,classes, buttonText}:bannerProps) {
   return (
     <>
       <div className="pt-[6rem]">
@@ -60,6 +62,17 @@ export default function Banner({image,heading,title,subdesc,mobileimage,classes}
                    {subdesc}
                   </h5>
                 </div>
+                {buttonText && (
+                  <HeroBtnPink
+                    text={buttonText}
+                    role="button"
+                    borderColor="pink"
+                    color="white"
+                    bgColor="transparent"
+                    size="large"
+                    classes="font-medium"
+                  />
+                )}
               </div>
             </div>
           </div>
