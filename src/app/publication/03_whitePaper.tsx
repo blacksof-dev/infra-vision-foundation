@@ -286,7 +286,7 @@ export default function WhitePaper() {
                           <Card
                             date={ele.date}
                             title={ele.title}
-                            image={ele.img}
+                            image={ele.img.src}
                             link={ele.link}
                             category={ele.category}
                             classes="line-clamp-3"
