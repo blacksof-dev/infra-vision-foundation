@@ -9,7 +9,7 @@ import { useState } from "react";
 import Card from "@/_components/molecules/cardTemplate";
 
 
-type TabItem = {
+export type TabItem = {
   id: number;
   img: string;
   category: string;
@@ -19,7 +19,6 @@ type TabItem = {
   subtitle?: string;
 };
 
-const tab = ["Knowledge", "Advocacy"];
 
 const knowledge = [
   {
@@ -134,7 +133,9 @@ export default function WhoWeAre() {
   );
 }
 
-const TabSwitch = ({
+
+
+export const TabSwitch = ({
   setActiveTab,
   activeTab,
 }: {
@@ -178,7 +179,7 @@ const TabSwitch = ({
 
 
 
-const TabContent = ({ data }: { data: TabItem[] }) => {
+ export const TabContent = ({ data }: { data: TabItem[] }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-2 sm:gap-8 lg:gap-9  md:blade-top-padding-sm">
       {data.map((item) => (

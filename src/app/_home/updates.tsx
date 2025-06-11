@@ -7,9 +7,7 @@ import Image from "next/image";
 import "swiper/css";
 import "swiper/css/navigation";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
-import { HeroBtn } from "@/_components/atoms/buttons";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
-
 import taxation from "@/../public/assets/home/updates/taxation.png";
 import infraKathaEvent from "@/../public/assets/home/updates/infraKathaEvent.png";
 import afforestation from "@/../public/assets/home/updates/afforestation.png";

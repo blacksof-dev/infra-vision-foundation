@@ -1,4 +1,4 @@
-import Newsletter from "@/_components/molecules/Newsletter";
+import Newsletter from "@/_components/molecules/newsletter";
 import newsletterbg from "@/../public/assets/resource/newsletterbg.png"
 export default function ResourceNewsLetter(){
     return(

@@ -8,7 +8,7 @@ import TwitterPost from "./twittersection";
 
 export default function StayConnected(){
   return (
-    <section className="bg-[#F6F6F6] ">
+    <section className=" ">
       <div className="blade-top-padding-lg blade-bottom-padding-lg">
         <div className="w-container flex flex-col lg:flex-row gap-7 sm:gap-6 lg:gap-20">
           <div className="w-full lg:w-[50%] xl:w-[40%] ">

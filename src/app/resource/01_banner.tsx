@@ -1,6 +1,6 @@
 import bannerBg from "@/../public/assets/resource/bannerBg.png";
 import mobilebannerbg from "@/../public/assets/resource/mobilebannerbg.png";
-import Banner from "@/_components/molecules/Banner";
+import Banner from "@/_components/molecules/banner";
 
 export default function ResourceBanner() {
   return(
