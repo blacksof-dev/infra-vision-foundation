@@ -102,7 +102,7 @@ export default function WhoWeAre() {
                 </h1>
               </div>
             </div>
-            <div className="w-full md:w-[50%]">
+            <div className="w-full md:w-[50%] pt-2">
               <h6 className="text-black font-light">
                 Established in 2022 by Mr Vinayak Chatterjee and Mrs Rumjhum
                 Chatterjee,{" "}
@@ -114,7 +114,7 @@ export default function WhoWeAre() {
                   infrastructure-led economic development of India.
                 </span>
               </h6>
-              <h6 className="text-black font-light py-3">
+              <h6 className="text-black font-light py-2 md:py-3">
                 Led by veteran domain experts and thought leaders, the
                 Foundation addresses deeply rooted infrastructure challenges to
                 enable steadfast infrastructure policy-making. It churns impact
@@ -165,7 +165,7 @@ const TabSwitch = ({
           Advocacy
         </button>
       </div>
-      <div>
+      <div className="pt-8">
         {activeTab === "Knowledge" ? (
           <TabContent data={knowledge} />
         ) : (
@@ -180,7 +180,7 @@ const TabSwitch = ({
 
 const TabContent = ({ data }: { data: TabItem[] }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-8 lg:gap-9 pt-9 md:blade-top-padding-sm">
+    <div className="grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-2 sm:gap-8 lg:gap-9  md:blade-top-padding-sm">
       {data.map((item) => (
         <Card
           key={item.id}

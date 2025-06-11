@@ -162,7 +162,7 @@ html,body {
   }
 
   h6 {
-    @apply  text-[18px]  ;
+    @apply text-base  lg:text-[18px]  ;
   }
 
   p{

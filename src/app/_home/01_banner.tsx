@@ -1,14 +1,13 @@
 import Image from "next/image";
 import BannerBg from "@/../public/assets/home/BannerBg.png";
 import Updates from "./updates";
-import Bannermobile from "@/../public/assets/home/Bannermobile.png";
 import { GoArrowRight } from "react-icons/go";
 export default function Banner() {
   return (
     <>
       <section>
         <div className="relative overflow-hidden">
-          <div className=" w-full h-[40rem] md:h-[36rem] xl:h-full">
+          <div className=" w-full h-[40rem]  md:h-auto xl:h-full">
             <Image
               src={BannerBg}
               alt="InfraVision Foundation"
@@ -50,7 +49,7 @@ export default function Banner() {
               </div>
              
             </div>
-             <div className="absolute bottom-3 ">
+             <div className="absolute bottom-8 xl:bottom-8 ">
                 <Updates />
               </div>
           </div>

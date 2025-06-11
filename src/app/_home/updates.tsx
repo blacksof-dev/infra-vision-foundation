@@ -1,3 +1,4 @@
+
 "use client";
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -69,6 +70,7 @@ export default function Updates() {
             loop
             grabCursor={true}
             speed={500}
+            centeredSlides={true}
             spaceBetween={20}
             slidesPerView={1.5}
             breakpoints={{
@@ -89,8 +91,8 @@ export default function Updates() {
             {EventsDetails.map((ele, index) => (
               <SwiperSlide key={index} className="!w-fit group ">
                 <Link href={ele.link} target="_blank">
-                  <div className="flex flex-row gap-4 bg-[#0000005e]  backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4 w-[22rem] sm:w-[24rem]  xl:w-[40rem]  h-[9rem]   xl:h-[14rem] group-hover:bg-white">
-                    <div className="w-[6rem]  h-[8rem] md:w-[14rem] md:h-[8rem]   xl:w-[22rem] xl:h-[12rem] relative ">
+                  <div className="flex flex-row gap-4 bg-[#0000005e]  backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4 w-[22rem] sm:w-[24rem]  xl:w-[40rem]  h-[9rem]   xl:h-[18rem] group-hover:bg-white">
+                    <div className="w-[6rem]  h-[8rem] md:w-[14rem] md:h-[8rem]   xl:w-[22rem] xl:h-[15rem] relative ">
                       <Image
                         src={ele.image}
                         alt={ele.title}

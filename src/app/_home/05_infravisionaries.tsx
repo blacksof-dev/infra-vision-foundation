@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useRef, useEffect } from "react";
 import type { Swiper as SwiperClass } from "swiper/types";
 import type { Swiper as SwiperType } from "swiper/types";
@@ -13,6 +12,7 @@ import { advisory, CardData, fellow, team, trustee } from "./static";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import Link from "next/link";
 import { StaticImageData } from "next/image";
+import PopupDescription from "./popupDescription";
 
 type ButtonTabProps = {
   label: string;
@@ -26,14 +26,20 @@ interface Member {
   title: string;
   desig: string;
   link?: string;
+  popupImg: string;
+  popupdesc?: string;
 }
 
 interface MobileMembersSliderProps {
   title: string;
-  data: Member[];
+  data: CardData[];
   navClass: string;
   paginationClass: string;
-  onSelectTab?: () => void;
+  onSelectTab: () => void;
+  setShowPopup: (show: boolean) => void;
+  popupData?: CardData;
+  setPopUpData: (data: CardData) => void;
+  showPopup: boolean;
 }
 
 const ButtonTab = ({ label, value, data, setdata }: ButtonTabProps) => {
@@ -64,6 +70,8 @@ export default function Infravisionaries() {
   const [isLastSlide, setIsLastSlide] = useState(false);
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [carddata, setcarddata] = useState<CardData[]>([]);
+  const [showPopup, setShowPopup] = useState<boolean>(false);
+  const [popupData, setPopUpData] = useState<CardData | undefined>();
   const handleSlideChange = (swiper: SwiperClass) => {
     setIsLastSlide(swiper.isEnd);
     setIsFirstSlide(swiper.isBeginning);
@@ -75,6 +83,14 @@ export default function Infravisionaries() {
       swiperInstance.slideTo(0, 0);
     }
   }, [data]);
+
+  useEffect(() => {
+    if (showPopup) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [showPopup]);
 
   useEffect(() => {
     let cardDetails: CardData[] = [];
@@ -152,12 +168,6 @@ export default function Infravisionaries() {
           <div className="md:flex flex-row  w-container hidden ">
             <div className=" border-r-1 pe-20 border-white/40">
               <ButtonTab
-                label="Team"
-                value="team"
-                data={data}
-                setdata={setdata}
-              />
-              <ButtonTab
                 label="Trustees"
                 value="trustee"
                 data={data}
@@ -172,6 +182,12 @@ export default function Infravisionaries() {
               <ButtonTab
                 label="Distinguished Fellows"
                 value="fellow"
+                data={data}
+                setdata={setdata}
+              />
+              <ButtonTab
+                label="Team"
+                value="team"
                 data={data}
                 setdata={setdata}
               />
@@ -210,7 +226,7 @@ export default function Infravisionaries() {
                         key={index}
                         className="w-screen  overflow-hidden "
                       >
-                        <div className="flex realtive flex-col w-[19rem]  h-[19rem]">
+                        <div className=" flex realtive flex-col w-[19rem]  h-[19rem]">
                           <Image
                             src={ele.image}
                             alt={ele.title}
@@ -252,8 +268,15 @@ export default function Infravisionaries() {
                                 </div>
                               </div>
                             )}
-                            <div className="bg-white w-[14rem]  lg:h-[5.5rem]  rounded">
-                              <h6 className="pt-1 2xl:pt-2 px-2  font-medium">
+                            <div className="bg-white w-[14rem]   lg:h-[5.5rem]  rounded">
+                              <h6
+                                onClick={() => {
+                                  setPopUpData(ele);
+                                  setShowPopup(true);
+                                }}
+                                className="pt-1 2xl:pt-2 px-2 cursor-pointer
+                                 font-medium hover:text-pink hover:font-semibold"
+                              >
                                 {ele.title}
                               </h6>
                               <p className="px-2  text-sm font-light text-black">
@@ -282,6 +305,12 @@ export default function Infravisionaries() {
                 </button>
               </div>
             </div>
+            {showPopup && popupData && (
+              <PopupDescription
+                onclose={() => setShowPopup(false)}
+                data={popupData}
+              />
+            )}
           </div>
 
           <MobileMembersSlider
@@ -289,6 +318,10 @@ export default function Infravisionaries() {
             data={trustee}
             navClass="trustee"
             paginationClass="custom-pagination-bullets-members"
+            setShowPopup={setShowPopup}
+            setPopUpData={setPopUpData}
+            popupData={popupData}
+            showPopup={showPopup}
             onSelectTab={() => setdata("trustee")}
           />
 
@@ -296,6 +329,10 @@ export default function Infravisionaries() {
             title="Advisory"
             data={advisory}
             navClass="advisory"
+            setShowPopup={setShowPopup}
+            setPopUpData={setPopUpData}
+            popupData={popupData}
+            showPopup={showPopup}
             paginationClass="custom-pagination-bullets-advisory"
             onSelectTab={() => setdata("advisory")}
           />
@@ -304,6 +341,10 @@ export default function Infravisionaries() {
             title="Fellows"
             data={fellow}
             navClass="fellow"
+            setShowPopup={setShowPopup}
+            setPopUpData={setPopUpData}
+            popupData={popupData}
+            showPopup={showPopup}
             paginationClass="custom-pagination-bullets-fellow"
             onSelectTab={() => setdata("fellow")}
           />
@@ -312,6 +353,10 @@ export default function Infravisionaries() {
             title="Team"
             data={team}
             navClass="team"
+            setShowPopup={setShowPopup}
+            setPopUpData={setPopUpData}
+            popupData={popupData}
+            showPopup={showPopup}
             paginationClass="custom-pagination-bullets-team"
             onSelectTab={() => setdata("team")}
           />
@@ -321,15 +366,25 @@ export default function Infravisionaries() {
   );
 }
 
-
-
 export const MobileMembersSlider = ({
   title,
   data,
   navClass,
   paginationClass,
   onSelectTab,
+  setShowPopup,
+  setPopUpData,
+  popupData,
+  showPopup,
 }: MobileMembersSliderProps) => {
+  useEffect(() => {
+    if (showPopup) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [showPopup]);
+
   return (
     <div className="md:hidden block pb-7 px-2">
       <div className="py-5">
@@ -411,7 +466,13 @@ export const MobileMembersSlider = ({
                     </div>
                   )}
                   <div className="bg-white w-[14rem] lg:h-[5.5rem] rounded">
-                    <h6 className="pt-1 2xl:pt-2 px-2 font-medium">
+                    <h6
+                      onClick={() => {
+                        setPopUpData(ele);
+                        setShowPopup(true);
+                      }}
+                      className="pt-1 2xl:pt-2 px-2 font-medium"
+                    >
                       {ele.title}
                     </h6>
                     <p className="px-2 text-sm font-light text-black">
@@ -423,6 +484,12 @@ export const MobileMembersSlider = ({
             </SwiperSlide>
           ))}
         </Swiper>
+        {showPopup && popupData && (
+          <PopupDescription
+            onclose={() => setShowPopup(false)}
+            data={popupData}
+          />
+        )}
       </div>
 
       <div className="flex flex-row justify-between mt-4 px-2">
