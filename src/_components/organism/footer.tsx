@@ -1,7 +1,7 @@
 import Image from "next/image";
 import logo from "@/../public/assets/globals/logo.png";
 import { Anchor, TextAnchor } from "../atoms/links";
-import { HeroBtn } from "../atoms/buttons";
+import { HeroBtn, UnderlineCta } from "../atoms/buttons";
 import { MdOutlineEmail } from "react-icons/md";
 import { MdOutlinePhone } from "react-icons/md";
 import locationSvg from "@/../public/assets/globals/locationSvg.svg";
@@ -15,7 +15,7 @@ const footer = () => {
     <>
       <footer className="blade-top-padding-lg  ">
         <div className=" w-container">
-          <div className=" flex md:flex-row flex-col md:justify-between md:items-end border-b-1 border-gray/60  md:pb-6">
+          <div className=" flex lg:flex-row flex-col lg:justify-between lg:items-end border-b-1 border-gray/60 pb-6 md:pb-9">
             <div className="w-[45%] sm:w-[35%]  h-[30%] md:h-full  lg:w-[20%]">
               <Anchor href="/">
                 <Image
@@ -27,25 +27,43 @@ const footer = () => {
                 />
               </Anchor>
             </div>
-            <div className="py-5 lg:py-0 ">
-              <HeroBtn
-                text="Contact us"
-                role="button"
-                borderColor="pink"
-                color="black"
-                bgColor="white"
-                size="extralarge"
-                aarowColor="pink"
-                classes="font-medium"
-              />
+
+            <div>
+              <h6 className="text-black py-2 font-medium">Subscribe to our newsletter</h6>
+              <form className="w-full sm:w-[70%] lg:w-full ">
+                <div className="flex flex-row lg:w-[28rem]  xl:w-[35rem]  bg-white rounded md:rounded-md overflow-hidden border border-darkgray/30 ">
+                  <input
+                    type="email"
+                    placeholder="Enter email address"
+                    className="flex-1 w-[12.5rem]  h-[3rem] my-auto md:h-full px-1 sm:px-4   text-base tracking-[-0.3px] outline-none text-darkgray"
+                  />
+
+                  <div className="border-l-1 sm:px-6 border-darkgray/20 ">
+                    <HeroBtn
+                      text="Subscribe"
+                      role="link"
+                      borderColor="pink"
+                      color="pink"
+                      bgColor="white"
+                      size="extralarge"
+                      classes="w-full w-auto  p-3 sm:p-2 text-sm font-medium"
+                    />
+                  </div>
+                 
+                </div>
+              </form>
+               <div className="flex gap-2  pt-5">
+                     <div className="w-5 h-4 mt-1 sm:mt-0  sm:w-5 sm:h-5 border-1 border-pink"></div>
+                     <p  className="text-darkgray text-sm">I agree to receive updates on newsletters from The Infravision Foundation.</p>
+                  </div>
             </div>
           </div>
           <div className="flex lg:flex-row flex-col pt-5 lg:pt-0 lg:gap-8  border-b-1 border-gray/60 ">
-            <div className="grid grid-cols-1  md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 xl:gap-14  lg:pt-9 lg:pb-14 xl:pb-8 2xl:pb-32">
+            <div className="grid grid-cols-1  md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-4 xl:gap-14  lg:pt-9 lg:pb-14 xl:pb-8 2xl:pb-32">
               <ul>
                 <li className="flex items-center gap-3">
                   <div className="w-3 h-3 rounded-full bg-darkgray/30 "></div>
-                  <span className="text-black text-xl ">What drives us</span>
+                  <span className="text-black text-xl ">About us</span>
                 </li>
 
                 <li className="md:pt-2 xl:pt-4">
@@ -64,15 +82,6 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        // href="/vision-mission"
-                        text="Vision and Mission"
-                      />
-                    </li>
-                    <li>
-                      <TextAnchor
-                        color="dark"
-                        size="base"
-                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/the-infravisionaries"
                         text="The Infravisionaries"
                       />
@@ -82,8 +91,27 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
+                        // href="/vision-mission"
+                        text="Vision and Mission"
+                      />
+                    </li>
+
+                    <li>
+                      <TextAnchor
+                        color="dark"
+                        size="base"
+                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/collaborate-with-us"
-                        text="Collaborate with us"
+                        text="Our pulse"
+                      />
+                    </li>
+                    <li>
+                      <TextAnchor
+                        color="dark"
+                        size="base"
+                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
+                        // href="/collaborate-with-us"
+                        text="The project pathway"
                       />
                     </li>
                   </ul>
@@ -93,7 +121,7 @@ const footer = () => {
               <ul>
                 <li className="flex items-center gap-3 ">
                   <div className="w-3 h-3 rounded-full bg-darkgray opacity-30"></div>
-                  <span className="text-black text-xl">Our initiatives</span>
+                  <span className="text-black text-xl">Advocacy</span>
                 </li>
 
                 <li className="md:pt-2 xl:pt-4">
@@ -122,7 +150,16 @@ const footer = () => {
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/caira"
-                        text="CAIRA"
+                        text="InfraPandit Awards"
+                      />
+                    </li>
+                    <li>
+                      <TextAnchor
+                        color="dark"
+                        size="base"
+                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
+                        // href="/caira"
+                        text="Outreach and engagement"
                       />
                     </li>
                   </ul>
@@ -132,7 +169,7 @@ const footer = () => {
               <ul>
                 <li className="flex items-center gap-3 ">
                   <div className="w-3 h-3 rounded-full bg-darkgray opacity-30"></div>
-                  <span className="text-black text-xl">Resources</span>
+                  <span className="text-black text-xl">Knowledge</span>
                 </li>
 
                 <li className="md:pt-2 xl:pt-4">
@@ -143,7 +180,7 @@ const footer = () => {
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/blogs"
-                        text="Blogs"
+                        text="Research papers"
                       />
                     </li>
 
@@ -153,7 +190,7 @@ const footer = () => {
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/who-we-are"
-                        text="Who we are"
+                        text="Infravision Conversations"
                       />
                     </li>
                     <li>
@@ -162,16 +199,7 @@ const footer = () => {
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         // href="/news-and-media"
-                        text="News and media"
-                      />
-                    </li>
-                    <li>
-                      <TextAnchor
-                        color="dark"
-                        size="base"
-                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        // href="/videos"
-                        text="Videos"
+                        text="Blogs"
                       />
                     </li>
                   </ul>
@@ -181,76 +209,12 @@ const footer = () => {
               <ul>
                 <li className="flex items-center gap-3 ">
                   <div className="w-3 h-3 rounded-full bg-darkgray opacity-30"></div>
-                  <span className="text-black text-xl">Publications</span>
+                  <span className="text-black text-xl">Get involved</span>
                 </li>
 
-                <li className="md:pt-2 xl:pt-4">
-                  <ul>
-                    <li>
-                      <TextAnchor
-                        color="dark"
-                        size="base"
-                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        // href="/research-papers"
-                        text="Research papers"
-                      />
-                    </li>
-                    <li>
-                      <TextAnchor
-                        color="dark"
-                        size="base"
-                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        // href="/white-papers"
-                        text="White papers"
-                      />
-                    </li>
-                    <li>
-                      <TextAnchor
-                        color="dark"
-                        size="base"
-                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        // href="/background-papers"
-                        text="Background papers"
-                      />
-                    </li>
-                    <li>
-                      <TextAnchor
-                        color="dark"
-                        size="base"
-                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        // href="/newsletters"
-                        text="Newsletters"
-                      />
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-              <ul>
                 <li className="flex items-center gap-3 ">
                   <div className="w-3 h-3 rounded-full bg-darkgray opacity-30"></div>
-                  <span className="text-black text-xl">Events</span>
-                </li>
-                <li className="md:pt-2 xl:pt-4 ">
-                  <ul>
-                    <li>
-                      <TextAnchor
-                        color="dark"
-                        size="base"
-                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        // href="/upcoming-events"
-                        text="Upcoming events"
-                      />
-                    </li>
-                    <li>
-                      <TextAnchor
-                        color="dark"
-                        size="base"
-                        className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        // href="/past-events"
-                        text="Past events"
-                      />
-                    </li>
-                  </ul>
+                  <span className="text-black text-xl py-3">Gallery</span>
                 </li>
               </ul>
             </div>
@@ -311,9 +275,8 @@ const footer = () => {
           </div>
         </div>
       </footer>
-      
-        <ArrowScope/>
-     
+
+      <ArrowScope />
     </>
   );
 };

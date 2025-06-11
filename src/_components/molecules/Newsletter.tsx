@@ -5,8 +5,7 @@ type Newsletter = {
   tag?: string;
   title: string;
   desc: string;
-  herobtntitle: string;
-  UnderlineCtatitle?: string;
+  ctatext: string;
   bgImage?: StaticImageData;
   mobilebg?: StaticImageData;
   image?: StaticImageData;
@@ -17,11 +16,10 @@ export default function Newsletter({
   tag,
   title,
   desc,
-  herobtntitle,
-  UnderlineCtatitle,
   bgImage,
   mobilebg,
   image,
+  ctatext,
   bgColor,
 }: Newsletter) {
   return (
@@ -82,50 +80,32 @@ export default function Newsletter({
                 </div>
               )}
 
-              <div className="py-4  w-[95%] sm:w-full">
-                <h1
-                  className="text-white font-light"
-                  dangerouslySetInnerHTML={{ __html: title }}
-                />
-
-                <h4 className="text-white font-light py-1 md:py-3 ">{desc}</h4>
-              </div>
-              <div className="flex flex-col lg:flex-row gap-10 md:gap-10 items-start md:items-center">
-                <div>
-                  <form className="w-full">
-                    <div className="flex flex-row lg:w-[28rem]  xl:w-[35rem]  bg-white rounded md:rounded-md overflow-hidden border border-darkgray/30 ">
-                      <input
-                        type="email"
-                        placeholder="Enter email address"
-                        className="flex-1 w-[12.5rem]  h-[3rem] py-3 md:py-4 md:h-full px-1 sm:px-6   text-base tracking-[-0.3px] outline-none text-darkgray"
-                      />
-
-                      <div className="border-l-1 border-darkgray/20 ">
-                        <HeroBtn
-                          text={herobtntitle}
-                          role="link"
-                          borderColor="pink"
-                          color="pink"
-                          bgColor="white"
-                          size="extralarge"
-                          classes="w-full w-auto p-3 sm:p-2 text-sm font-medium"
-                        />
-                      </div>
-                    </div>
-                  </form>
-
-                  {UnderlineCtatitle && (
-                    <div className=" pt-3 sm:pt-6">
-                      <UnderlineCta
-                        title={UnderlineCtatitle}
-                        color="white"
-                        underlineColor="white"
-                        role="link"
-                        size="extralarge"
-                      />
-                    </div>
-                  )}
+              <div className="py-4">
+                <div className="xl:w-[45rem] sm:w-[80%] w-full">
+                  <h1
+                    className="text-white font-light "
+                    dangerouslySetInnerHTML={{ __html: title }}
+                  />
                 </div>
+
+                <div className="sm:w-[80%] w-full">
+                  <h4 className="text-white font-light py-1 md:py-3 ">
+                    {desc}
+                  </h4>
+                </div>
+              </div>
+              <div>
+               
+                <HeroBtn
+                  text={ctatext}
+                  role="button"
+                  borderColor="white"
+                  color="white"
+                  bgColor="pink"
+                  size="extralarge"
+                  aarowColor="white"
+                  classes="font-medium"
+                />
               </div>
             </div>
 
