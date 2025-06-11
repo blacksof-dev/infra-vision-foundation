@@ -4,22 +4,17 @@ import clsx from "clsx";
 import { useSelector } from 'react-redux';
 
 
-type TabId = "highlight" | "upcoming" | "past";
+type TabId = string;
 
-const tabs: { id: TabId; label: string }[] = [
-  { id: "highlight", label: "The highlight" },
-  { id: "upcoming", label: "Upcoming programmes" },
-  { id: "past", label: "Past programmes" },
-];
-
-
+type Tab = { id: TabId; label: string };
 
 type Props = {
+  tabs: Tab[];
   sectionRefs: Record<TabId, React.RefObject<HTMLDivElement | null>>;
 };
 
-export default function PublicationTabs({ sectionRefs }: Props) {
-  const [activeTab, setActiveTab] = useState<TabId>("highlight");
+export default function PublicationTabs({ tabs, sectionRefs }: Props) {
+  const [activeTab, setActiveTab] = useState<TabId>("about");
   const [isStickyVisible, setStickyVisible] = useState(true);
 
   const handleTabClick = (id: TabId) => {
@@ -81,7 +76,7 @@ export default function PublicationTabs({ sectionRefs }: Props) {
         "bg-white",
         "z-50",
         "sticky",
-       "top-0",
+        "top-0",
         isStickyVisible ? "block" : "hidden"
       )}
     >

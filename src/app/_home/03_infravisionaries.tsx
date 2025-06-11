@@ -22,20 +22,10 @@ type ButtonTabProps = {
   setdata: (val: string) => void;
 };
 
-interface Member {
-  image: StaticImageData;
-  title: string;
-  desig: string;
-  link?: string;
-  popupImg: string;
-  popupdesc?: string;
-}
-
 interface MobileMembersSliderProps {
   title: string;
   data: CardData[];
   navClass: string;
-  paginationClass: string;
   onSelectTab: () => void;
   setShowPopup: (show: boolean) => void;
   popupData?: CardData;
@@ -43,29 +33,27 @@ interface MobileMembersSliderProps {
   showPopup: boolean;
 }
 
-
-
 const ButtonTab = ({ label, value, data, setdata }: ButtonTabProps) => {
   return (
     <div className="py-4 group">
       <button
-        className={`text-white cursor-pointer text-md text-nowrap lg:text-xl relative ${data === value ? "font-medium" : ""
-          }`}
+        className={`text-white cursor-pointer text-md text-nowrap lg:text-xl relative ${
+          data === value ? "font-medium" : ""
+        }`}
         onClick={() => setdata(value)}
       >
         {label}
         <span
-          className={`h-[1px] ${data === value
-            ? "w-full transition-all duration-1000"
-            : "w-10 sm:w-5"
-            } sm:h-[2px] bg-white absolute bottom-0 left-0 top-7`}
+          className={`h-[1px] ${
+            data === value
+              ? "w-full transition-all duration-1000"
+              : "w-10 sm:w-5"
+          } sm:h-[2px] bg-white absolute bottom-0 left-0 top-7`}
         ></span>
       </button>
     </div>
   );
 };
-
-
 
 export default function Infravisionaries() {
   const swiperRef = useRef<SwiperType | null>(null);
@@ -157,7 +145,7 @@ export default function Infravisionaries() {
             </div>
             <div className="pt-4 pb-2 md:py-5 ">
               <h1 className="text-white font-medium">The Infravisionaries</h1>
-              <div className="w-full md:w-[45%]">
+              <div className="w-full sm:w-[85%] xl:w-[45%]">
                 <h6 className="text-white  tracking-[1%] py-4">
                   The Infravision Foundation is a confluence of seasoned leaders
                   from across the infrastructure domain. With exceptional
@@ -196,7 +184,7 @@ export default function Infravisionaries() {
               />
             </div>
 
-             <div className="w-full overflow-x-hidden  ml-[4%]">
+            <div className="w-full overflow-x-hidden  ml-[4%]">
               <div className="">
                 <Swiper
                   onSwiper={(swiper) => (swiperRef.current = swiper)}
@@ -229,11 +217,13 @@ export default function Infravisionaries() {
                         key={index}
                         className="w-screen overflow-hidden"
                       >
-                        
-                        <div onClick={() => {
-                          setPopUpData(ele);
-                          setShowPopup(true);
-                        }} className="h-fit w-fit hover:cursor-pointer">
+                        <div
+                          onClick={() => {
+                            setPopUpData(ele);
+                            setShowPopup(true);
+                          }}
+                          className="h-fit w-fit hover:cursor-pointer"
+                        >
                           <MemberCard
                             image={ele.image}
                             title={ele.title}
@@ -273,7 +263,6 @@ export default function Infravisionaries() {
             title="Trustees"
             data={trustee}
             navClass="trustee"
-            paginationClass="custom-pagination-bullets-members"
             setShowPopup={setShowPopup}
             setPopUpData={setPopUpData}
             popupData={popupData}
@@ -289,7 +278,6 @@ export default function Infravisionaries() {
             setPopUpData={setPopUpData}
             popupData={popupData}
             showPopup={showPopup}
-            paginationClass="custom-pagination-bullets-advisory"
             onSelectTab={() => setdata("advisory")}
           />
 
@@ -301,7 +289,6 @@ export default function Infravisionaries() {
             setPopUpData={setPopUpData}
             popupData={popupData}
             showPopup={showPopup}
-            paginationClass="custom-pagination-bullets-fellow"
             onSelectTab={() => setdata("fellow")}
           />
 
@@ -313,7 +300,6 @@ export default function Infravisionaries() {
             setPopUpData={setPopUpData}
             popupData={popupData}
             showPopup={showPopup}
-            paginationClass="custom-pagination-bullets-team"
             onSelectTab={() => setdata("team")}
           />
         </div>
@@ -326,7 +312,6 @@ export const MobileMembersSlider = ({
   title,
   data,
   navClass,
-  paginationClass,
   onSelectTab,
   setShowPopup,
   setPopUpData,
@@ -364,10 +349,7 @@ export const MobileMembersSlider = ({
             prevEl: `.prevbtn${navClass}`,
             nextEl: `.nextbtn${navClass}`,
           }}
-          pagination={{
-            el: `.${paginationClass}`,
-            type: "fraction",
-          }}
+         
           breakpoints={{
             425: { slidesPerView: 1.3, spaceBetween: 20 },
             640: { slidesPerView: 1.5, spaceBetween: 20 },
@@ -379,10 +361,13 @@ export const MobileMembersSlider = ({
         >
           {data.map((ele, index) => (
             <SwiperSlide key={index}>
-              <div onClick={() => {
-                setPopUpData(ele);
-                setShowPopup(true);
-              }} className="h-fit w-fit hover:cursor-pointer">
+              <div
+                onClick={() => {
+                  setPopUpData(ele);
+                  setShowPopup(true);
+                }}
+                className="h-fit w-fit hover:cursor-pointer"
+              >
                 <MemberCard
                   image={ele.image}
                   title={ele.title}
@@ -416,9 +401,7 @@ export const MobileMembersSlider = ({
             <GoArrowRight />
           </button>
         </div>
-        <div
-          className={`lg:hidden my-auto h-4 flex gap-1 flex-1 justify-end ${paginationClass}`}
-        />
+       
       </div>
     </div>
   );

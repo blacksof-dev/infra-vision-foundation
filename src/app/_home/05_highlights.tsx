@@ -115,7 +115,7 @@ export const TabSwitch = ({
 }) => {
   return (
     <div>
-      <div className="flex flex-row gap-4 sm:gap-9  lg:gap-12 md:gap-18 border-b   border-darkgray/16 w-fit">
+      <div className="flex flex-row gap-6 sm:gap-12  lg:gap-12 md:gap-18 border-b   border-darkgray/16 w-fit">
         <button
           onClick={() => setActiveTab("Outreach and engagement")}
           className={` cursor-pointer text-sm sm:text-xl text-wrap  ${
@@ -149,7 +149,7 @@ export const TabSwitch = ({
         </button>
       </div>
 
-      <div className="pt-14">
+      <div className="pt-6 xl:pt-14">
         {activeTab === "Outreach and engagement" && <EventTemplate />}
 
         {activeTab === "Newsletters" && <TabContent data={newsletters} />}

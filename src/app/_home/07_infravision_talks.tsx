@@ -11,7 +11,7 @@ export default function InfravisionTalks() {
         bgImage={infravisionfoundationBg}
         mobilebg={infravisionTalkMobile}
         tag="Get involved"
-        title="Engage and contribute to change  <span class='font-medium text-white'>with The Infravision Foundation</span>"
+        title="Engage and contribute to change with  <span class='font-medium text-white'> The Infravision Foundation</span>"
         desc="Join our community, ask questions, or participate in building a resilient India."
         ctatext="Connect with us"
       />
