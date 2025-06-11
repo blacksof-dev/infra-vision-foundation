@@ -15,6 +15,7 @@ export const MemberCard = ({ image, title, desig, link }: MemberCardProps) => {
                 src={image}
                 alt={title}
                 className="w-full h-full object-cover rounded"
+                unoptimized={true}
             />
             <div className="absolute bottom-0 left-0 w-[17rem]">
                 {link ? (
