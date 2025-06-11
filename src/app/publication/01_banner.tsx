@@ -3,6 +3,8 @@ import bannerPublication from "@/../public/assets/publication/bannerPublication.
 import Banner from "@/_components/molecules/Banner";
 
 
+
+
 export default function PublicationBanner() {
     return (
         <>
