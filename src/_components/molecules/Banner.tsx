@@ -1,36 +1,36 @@
-import Image,{StaticImageData} from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 interface bannerProps {
-  image:StaticImageData;
-  heading:string;
-  title:string;
-  subdesc:string;
-  mobileimage?:StaticImageData;
-  classes?:string;
+  image: StaticImageData;
+  heading: string;
+  title: string;
+  subdesc: string;
+  mobileimage?: StaticImageData;
+  classes?: string;
 }
 
 
 
 import { RiArrowRightSLine } from "react-icons/ri";
-export default function Banner({image,heading,title,subdesc,mobileimage,classes}:bannerProps) {
+export default function Banner({ image, heading, title, subdesc, mobileimage, classes }: bannerProps) {
   return (
     <>
       <div className="pt-[6rem]">
         <div className="relative ">
-          <div className={`h-[20rem] md:h-[28rem] xl:h-[40rem] ${mobileimage?"md:block hidden":""}`}>
+          <div className={`h-[20rem] md:h-[28rem] xl:h-[40rem] ${mobileimage ? "md:block hidden" : ""}`}>
             <Image
               src={image}
               alt="Publication Banner"
-              className="w-full h-full object-cover object-right"
+              className="w-full h-full object-cover object-right" unoptimized={true}
             ></Image>
           </div>
-           {mobileimage && (
+          {mobileimage && (
             <div className="md:hidden block">
-            <Image
-              src={mobileimage}
-              alt="Publication Banner"
-              className="w-full h-full object-cover object-right"
-            ></Image>
+              <Image
+                src={mobileimage}
+                alt="Publication Banner"
+                className="w-full h-full object-cover object-right"
+              ></Image>
             </div>
           )}
           <div className="w-container">
@@ -50,14 +50,14 @@ export default function Banner({image,heading,title,subdesc,mobileimage,classes}
                   />
                 </svg>
                 <h5 className="text-white font-light flex flex-row">
-                  <RiArrowRightSLine  className="text-[24px]"/>
+                  <RiArrowRightSLine className="text-[24px]" />
                   {heading}</h5>
               </div>
               <div className="sm:w-[60%] w-full">
                 <h1 className="text-white font-medium ">{title}</h1>
                 <div className="py-2 sm:py-4">
                   <h5 className="text-white  font-light">
-                   {subdesc}
+                    {subdesc}
                   </h5>
                 </div>
               </div>
