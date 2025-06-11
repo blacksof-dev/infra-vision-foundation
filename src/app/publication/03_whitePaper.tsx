@@ -78,8 +78,6 @@ export default function WhitePaper() {
   const [selectedFilter, setselectedFilter] = useState("");
 
   const mobileview = 3;
-
- 
   const [visiblecountmobile, setvisiblecountmobile] = useState(mobileview);
 
   const handletabClick = (tab: string) => {

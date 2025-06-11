@@ -162,7 +162,7 @@ export default function Past() {
 
                             {/* Tab Show */}
 
-                            <div className="flex flex-row gap-3 md:gap-5 ">
+                            <div className="flex flex-row gap-3 overflow-x-auto md:gap-5 ">
                                 <button
                                     className={`mt-auto  text-sm md:text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4  ${selectTab === "All"
                                             ? "border border-pink text-pink font-medium"
