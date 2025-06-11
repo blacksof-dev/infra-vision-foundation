@@ -1,16 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 
 interface bannerProps {
-<<<<<<< HEAD
-  image:StaticImageData;
-  heading:string;
-  title:string;
-  subdesc:string;
-  mobileimage?:StaticImageData;
-  classes?:string;
-  buttonText?: string;
-  
-=======
   image: StaticImageData;
   heading: string;
   title: string;
@@ -18,18 +8,13 @@ interface bannerProps {
   mobileimage?: StaticImageData;
   classes?: string;
   buttonText?: string;
->>>>>>> 96627073cb1c844d2760fa1beaf5ebb69c932baa
 }
 
 
 
 import { RiArrowRightSLine } from "react-icons/ri";
-import { BorderGrayHeroBtn, HeroBtnPink } from "../atoms/buttons";
-<<<<<<< HEAD
+import {  HeroBtnPink } from "../atoms/buttons";
 export default function Banner({image,heading,title,subdesc,mobileimage,classes, buttonText}:bannerProps) {
-=======
-export default function Banner({ image, heading, title, subdesc, mobileimage, classes, buttonText }: bannerProps) {
->>>>>>> 96627073cb1c844d2760fa1beaf5ebb69c932baa
   return (
     <>
       <div className="pt-[6rem]">
