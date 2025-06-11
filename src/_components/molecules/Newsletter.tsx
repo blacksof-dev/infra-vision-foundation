@@ -71,8 +71,8 @@ export default function Newsletter({
             </div>
           )}
 
-          <div className="w-container flex flex-col md:flex-row  gap-14 md:gap-16 h-full ">
-            <div className="relative z-10    w-full xl:w-[50%] blade-top-padding-lg pb-0  md:pb-28 ">
+          <div className="w-container  flex flex-col md:flex-row  gap-14 md:gap-16 h-full ">
+            <div className="relative z-10   w-full xl:w-[50%] blade-top-padding-lg   md:pb-28 ">
               {tag && (
                 <div className="flex flex-row items-center gap-2 md:gap-3">
                   <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-white"></span>
@@ -80,8 +80,8 @@ export default function Newsletter({
                 </div>
               )}
 
-              <div className="py-4">
-                <div className="xl:w-[45rem] sm:w-[80%] w-full">
+              <div className="py-4 ">
+                <div className="xl:w-[45rem] sm:w-[80%] ">
                   <h1
                     className="text-white font-light "
                     dangerouslySetInnerHTML={{ __html: title }}

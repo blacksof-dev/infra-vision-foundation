@@ -42,27 +42,29 @@ interface MobileMembersSliderProps {
   showPopup: boolean;
 }
 
+
+
 const ButtonTab = ({ label, value, data, setdata }: ButtonTabProps) => {
   return (
     <div className="py-4 group">
       <button
-        className={`text-white cursor-pointer text-md text-nowrap lg:text-xl relative ${
-          data === value ? "font-medium" : ""
-        }`}
+        className={`text-white cursor-pointer text-md text-nowrap lg:text-xl relative ${data === value ? "font-medium" : ""
+          }`}
         onClick={() => setdata(value)}
       >
         {label}
         <span
-          className={`h-[1px] ${
-            data === value
-              ? "w-full transition-all duration-1000"
-              : "w-10 sm:w-5"
-          } sm:h-[2px] bg-white absolute bottom-0 left-0 top-7`}
+          className={`h-[1px] ${data === value
+            ? "w-full transition-all duration-1000"
+            : "w-10 sm:w-5"
+            } sm:h-[2px] bg-white absolute bottom-0 left-0 top-7`}
         ></span>
       </button>
     </div>
   );
 };
+
+
 
 export default function Infravisionaries() {
   const swiperRef = useRef<SwiperType | null>(null);
@@ -159,7 +161,7 @@ export default function Infravisionaries() {
                   The Infravision Foundation is a confluence of seasoned leaders
                   from across the infrastructure domain. With exceptional
                   intellect, global experience, and shared purpose, this
-                  consortium propels India’s infrastructure and economic growth.
+                  consortium propels India's infrastructure and economic growth.
                 </h6>
               </div>
             </div>
@@ -193,7 +195,7 @@ export default function Infravisionaries() {
               />
             </div>
 
-            <div className="w-full overflow-x-hidden  ml-[4%]">
+             <div className="w-full overflow-x-hidden  ml-[4%]">
               <div className="">
                 <Swiper
                   onSwiper={(swiper) => (swiperRef.current = swiper)}
@@ -224,7 +226,7 @@ export default function Infravisionaries() {
                     return (
                       <SwiperSlide
                         key={index}
-                        className="w-screen  overflow-hidden "
+                        className="w-screen overflow-hidden"
                       >
                         <div className=" flex realtive flex-col w-[19rem]  h-[19rem]">
                           <Image
