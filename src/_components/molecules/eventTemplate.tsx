@@ -11,7 +11,7 @@ export default function EventTemplate() {
 
   return (
     <>
-      <div className="relative  bg-white  rounded-lg py-8 lg:py-0 lg:mt-14 flex flex-col lg:flex-row items-center gap-7 xl:gap-10 overflow-hidden">
+      <div className="relative  bg-white  rounded-lg py-8 lg:py-0  flex flex-col lg:flex-row items-center gap-7 xl:gap-10 overflow-hidden">
         <div className="w-full lg:w-[40%]   lg:p-5">
           <Image
             src={montek}

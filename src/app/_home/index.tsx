@@ -12,7 +12,7 @@ export default function Home() {
       <Banner />
       <WhoWeAre />
       <Infravisionaries />
-      <Association />
+       <Association />
        <Highlights/>
       <StayConnected />
       <InfravisionTalks />

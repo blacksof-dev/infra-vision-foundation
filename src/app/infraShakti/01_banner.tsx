@@ -1,13 +1,15 @@
-import image from "@/../public/assets/infrakatha/banner/banner.jpg"
+import banner from "@/../public/assets/infraShakti/banner.png"
 import Banner from "../../_components/molecules/banner";
 
 export default function BannerSection() {
     return (
         <Banner
-            image={image}
-            heading="InfraKatha"
-            title="InfraKatha"
-            subdesc="A forum advancing infrastructure through dialogue, insights, and thought leadership"
+            image={banner}
+            heading="InfraShakti Awards"
+            title="InfraShakti Awards"
+            subdesc="Celebrating the champions of infrastructure."
+            buttonText="Watch the ceremony "
+           
         />
     )
 }
