@@ -1,6 +1,6 @@
 import bannerBg from "@/../public/assets/outreach-and-engagements/bannerBg.png";
 import mobilebannerbg from "@/../public/assets/resource/mobilebannerbg.png";
-import Banner from "@/_components/molecules/Banner";
+import Banner from "@/_components/molecules/banner";
 
 export default function OutreachBanner() {
   return (

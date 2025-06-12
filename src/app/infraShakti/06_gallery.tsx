@@ -15,7 +15,6 @@ const images = [
   "assets/infraShakti/gallery/image13.png",
   "assets/infraShakti/gallery/image14.png",
   "assets/infraShakti/gallery/image15.png",
- 
 ];
 
 export default function Gallery() {
@@ -35,20 +34,20 @@ export default function Gallery() {
               </span>
             </h1>
           </div>
-       <div className="columns-3  overflow-visible md:columns-3 lg:columns-5 gap-3 pt-8 space-y-2">
-          {images.map((src, index) => (
-            <div key={index} className="overflow-hidden rounded">
-              <Image
-                src={src}
-                alt={`InfraShakti Photo ${index + 1}`}
-                width={600}
-                height={600}
-                className="w-full h-full object-cover rounded"
-                unoptimized
-              />
-            </div>
-          ))}
-        </div>
+          <div className="columns-3  overflow-visible md:columns-3 lg:columns-5 gap-3 pt-8 space-y-2">
+            {images.map((src, index) => (
+              <div key={index} className="overflow-hidden rounded">
+                <Image
+                  src={src}
+                  alt={`InfraShakti Photo ${index + 1}`}
+                  width={600}
+                  height={600}
+                  className="w-full h-full object-cover rounded"
+                  unoptimized
+                />
+              </div>
+            ))}
+          </div>
 
         </div>
       </div>

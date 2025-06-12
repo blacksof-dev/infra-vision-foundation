@@ -13,7 +13,7 @@ import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import Link from "next/link";
 import { StaticImageData } from "next/image";
 import PopupDescription from "./popupDescription";
-import { MemberCard } from "@/_components/molecules/MemberCard";
+import { MemberCard } from "@/_components/molecules/memberCard";
 
 type ButtonTabProps = {
   label: string;
@@ -37,18 +37,16 @@ const ButtonTab = ({ label, value, data, setdata }: ButtonTabProps) => {
   return (
     <div className="py-4 group">
       <button
-        className={`text-white cursor-pointer text-md text-nowrap lg:text-xl relative ${
-          data === value ? "font-medium" : ""
-        }`}
+        className={`text-white cursor-pointer text-md text-nowrap lg:text-xl relative ${data === value ? "font-medium" : ""
+          }`}
         onClick={() => setdata(value)}
       >
         {label}
         <span
-          className={`h-[1px] ${
-            data === value
+          className={`h-[1px] ${data === value
               ? "w-full transition-all duration-1000"
               : "w-10 sm:w-5"
-          } sm:h-[2px] bg-white absolute bottom-0 left-0 top-7`}
+            } sm:h-[2px] bg-white absolute bottom-0 left-0 top-7`}
         ></span>
       </button>
     </div>
@@ -349,7 +347,7 @@ export const MobileMembersSlider = ({
             prevEl: `.prevbtn${navClass}`,
             nextEl: `.nextbtn${navClass}`,
           }}
-         
+
           breakpoints={{
             425: { slidesPerView: 1.3, spaceBetween: 20 },
             640: { slidesPerView: 1.5, spaceBetween: 20 },
@@ -401,7 +399,7 @@ export const MobileMembersSlider = ({
             <GoArrowRight />
           </button>
         </div>
-       
+
       </div>
     </div>
   );

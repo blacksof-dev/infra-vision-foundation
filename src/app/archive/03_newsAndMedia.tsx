@@ -31,8 +31,6 @@ const YEARS = ["2025", "2024"] as const;
 const SECTORS: SectorType[] = ['All', 'Transportation', 'Water and Sanitation', 'Energy', 'Urban Planning', 'Rural and Agri Infra', 'Education', 'Health Infra'];
 const INITIAL_VISIBLE_COUNT = 3;
 
-const secondFilter = ["2025", "2024"];
-const thridFilter = ['All', 'Transportation', 'Water and Sanitation', 'Energy', 'Urban Planning', 'Rural and Agri Infra', 'Education', 'Health Infra']
 const allcards = [
     {
         id: 1,
@@ -165,7 +163,7 @@ export default function NewsAndMedia() {
                     <h1 className="text-black font-light">
                         Data and findings from the ground,
                         <span className="text-black font-medium">
-                            fuelled by expert foresight
+                            {" "}fuelled by expert foresight
                         </span>
                     </h1>
                 </div>

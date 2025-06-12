@@ -1,5 +1,5 @@
 import React from 'react'
-import Banner from "../../_components/molecules/Banner";
+import Banner from "@/_components/molecules/banner";
 import image from "@/../public/assets/archive/banner/banner.jpg"
 export default function BannerSection() {
     return (

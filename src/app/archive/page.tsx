@@ -1,6 +1,7 @@
 import BannerSection from "./01_banner";
 import NewsAndMedia from "./03_newsAndMedia";
 import Newsletter from "./02_newsletter";
+import Gallery from "./04_gellary";
 
 
 export default function Archive() {
@@ -9,6 +10,7 @@ export default function Archive() {
             <BannerSection />
             <Newsletter />
             <NewsAndMedia />
+            <Gallery />
         </>
     )
 }

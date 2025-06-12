@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import "../../_components/molecules/infiniteCarousel.css";
+import "@/_components/molecules/infiniteCarousel.css";
 import cii from "@/../public/assets/home/association/cii.png";
 import iim from "@/../public/assets/home/association/iim.png";
 import iima from "@/../public/assets/home/association/iima.png";
@@ -48,7 +48,7 @@ export default function Association() {
             spaceBetween={20}
             centerInsufficientSlides={true}
             breakpoints={{
-               456: {
+              456: {
                 slidesPerView: "auto",
                 spaceBetween: 60,
               },
@@ -68,7 +68,7 @@ export default function Association() {
                 slidesPerView: "auto",
                 spaceBetween: 40,
               },
-               1400: {
+              1400: {
                 slidesPerView: "auto",
                 spaceBetween: 50,
               },

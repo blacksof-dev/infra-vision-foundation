@@ -1,5 +1,5 @@
 import banner from "@/../public/assets/infraShakti/banner.png"
-import Banner from "../../_components/molecules/banner";
+import Banner from "@/_components/molecules/banner";
 
 export default function BannerSection() {
     return (
@@ -9,7 +9,7 @@ export default function BannerSection() {
             title="InfraShakti Awards"
             subdesc="Celebrating the champions of infrastructure."
             buttonText="Watch the ceremony "
-           
+
         />
     )
 }

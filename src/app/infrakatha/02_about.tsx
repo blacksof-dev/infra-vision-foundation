@@ -3,7 +3,7 @@ import bg from "@/../public/assets/infrakatha/about/bgcircle.png"
 import image_01 from "@/../public/assets/infrakatha/about/dilip-cherian.jpg"
 import image_02 from "@/../public/assets/infrakatha/about/vinayak-chatterjee.jpg"
 import image_03 from "@/../public/assets/infrakatha/about/jagan-shah.jpg"
-import { MemberCard } from "@/_components/molecules/MemberCard";
+import { MemberCard } from "@/_components/molecules/memberCard";
 import Image from 'next/image'
 
 export default function About() {
