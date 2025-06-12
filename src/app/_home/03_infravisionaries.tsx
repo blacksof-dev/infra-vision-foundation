@@ -13,7 +13,7 @@ import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import Link from "next/link";
 import { StaticImageData } from "next/image";
 import PopupDescription from "./popupDescription";
-import { MemberCard } from "@/_components/molecules/MemberCard";
+import { MemberCard } from "@/_components/molecules/memberCard";
 
 type ButtonTabProps = {
   label: string;
