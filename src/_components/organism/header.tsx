@@ -74,7 +74,7 @@ function Header() {
   //Navbar color change for specifice routes
 
   useEffect(() => {
-    const activeUrl = ["/home"];
+    const activeUrl = ["/home", '/infrakatha'];
 
     if (!activeUrl.includes(pathname)) {
       setshowNavBg(false);
@@ -86,13 +86,11 @@ function Header() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full transition-transform duration-300 p-3 z-[999] ${
-          showNavbar ? "translate-y-0 " : "-translate-y-full "
-        } ${
-          showNavBg
+        className={`fixed top-0 left-0 w-full transition-transform duration-300 p-3 z-[999] ${showNavbar ? "translate-y-0 " : "-translate-y-full "
+          } ${showNavBg
             ? "bg-white border-b-1 border-lightgray/20 shadow-sm"
             : "bg-transparent"
-        } 
+          } 
 
           ${scrolled ? "bg-white shadow-md" : "bg-transparent"}
 
