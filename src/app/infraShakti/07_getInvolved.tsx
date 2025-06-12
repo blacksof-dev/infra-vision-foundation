@@ -1,12 +1,12 @@
+import Newsletter from "@/_components/molecules/newsletter";
 import infravisionfoundationBg from "@/../public/assets/home/infravisionfoundationBg.png";
 import infravisionTalkMobile from "@/../public/assets/home/infravisionTalkMobile.jpg";
-import GetInvolved from "@/_components/molecules/newsletter";
 
 
-export default function GetInvolvedSection() {
+export default function GetInvolved() {
   return (
     <>
-      <GetInvolved
+      <Newsletter
         bgImage={infravisionfoundationBg}
         mobilebg={infravisionTalkMobile}
         tag="Get involved"

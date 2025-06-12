@@ -308,7 +308,7 @@ export function UnderlineWithHover<T extends "submit" | "button">({
         <div className="">
           <button
               onClick={handlefun}
-            className={`${sizeClass} text-${color}  group-hover:w-40 px-4 py-3 font-medium relative group-hover:bg-pink overflow-hidden  group-hover:text-white transition-all duration-300`}
+            className={`${sizeClass} text-${color} text-nowrap group-hover:w-40 px-1 py-3 font-medium relative group-hover:bg-pink overflow-hidden  group-hover:text-white transition-all duration-300`}
           >
             {text}
             <span

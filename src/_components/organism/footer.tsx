@@ -31,7 +31,7 @@ const footer = () => {
             <div>
               <h6 className="text-black py-2 font-medium">Subscribe to our newsletter</h6>
               <form className="w-full sm:w-[70%] lg:w-full ">
-                <div className="flex flex-row lg:w-[28rem]  xl:w-[35rem]  bg-white rounded md:rounded-md overflow-hidden border border-darkgray/30 ">
+                <div className="flex flex-row lg:w-[32rem]   xl:w-[35rem]  bg-white rounded md:rounded-md overflow-hidden border border-darkgray/30 ">
                   <input
                     type="email"
                     placeholder="Enter email address"

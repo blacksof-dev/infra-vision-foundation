@@ -1,4 +1,5 @@
 import Image, { StaticImageData } from "next/image";
+import Balancer from 'react-wrap-balancer'
 
 interface bannerProps {
   image: StaticImageData;
@@ -13,8 +14,8 @@ interface bannerProps {
 
 
 import { RiArrowRightSLine } from "react-icons/ri";
-import { BorderGrayHeroBtn, HeroBtnPink } from "../atoms/buttons";
-export default function Banner({ image, heading, title, subdesc, mobileimage, classes, buttonText }: bannerProps) {
+import {  HeroBtnPink } from "../atoms/buttons";
+export default function Banner({image,heading,title,subdesc,mobileimage,classes, buttonText}:bannerProps) {
   return (
     <>
       <div className="pt-[6rem]">
@@ -55,11 +56,15 @@ export default function Banner({ image, heading, title, subdesc, mobileimage, cl
                   <RiArrowRightSLine className="text-[24px]" />
                   {heading}</h5>
               </div>
-              <div className="sm:w-[60%] w-full">
+              <div className="  w-full">
                 <h1 className="text-white font-medium ">{title}</h1>
-                <div className="py-2 sm:py-4">
+                <div className={` py-2 sm:py-4 w-full  max-w-xl`} >
+        
                   <h5 className="text-white  font-light">
-                    {subdesc}
+                    <Balancer>
+                       {subdesc}
+                    </Balancer>
+                   
                   </h5>
                 </div>
                 {buttonText && (
@@ -70,6 +75,7 @@ export default function Banner({ image, heading, title, subdesc, mobileimage, cl
                     color="white"
                     bgColor="transparent"
                     size="large"
+                    aarowColor="white"
                     classes="font-medium"
                   />
                 )}

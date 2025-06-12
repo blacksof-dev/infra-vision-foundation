@@ -11,6 +11,7 @@ import budget from "@/../public/assets/home/news/budget.png";
 import outlays from "@/../public/assets/home/news/outlays.png";
 import taxation from "@/../public/assets/home/news/taxation.png";
 import EventTemplate from "@/_components/molecules/eventTemplate";
+import { UnderlineWithHover } from "@/_components/atoms/buttons";
 
 const newsletters = [
   {
@@ -79,9 +80,9 @@ export default function Highlights() {
     setvisiblecountmobile((prev) => prev + 3);
   };
 
-    useEffect(() => {
-      setvisiblecountmobile(mobileview);
-    }, [activeTab]);
+  useEffect(() => {
+    setvisiblecountmobile(mobileview);
+  }, [activeTab]);
   return (
     <>
       <div className="bg-whitesmoke">
@@ -114,7 +115,7 @@ export const TabSwitch = ({
 }) => {
   return (
     <div>
-      <div className="flex flex-row gap-4 sm:gap-9  lg:gap-12 md:gap-18 border-b   border-darkgray/16 w-fit">
+      <div className="flex flex-row gap-6 sm:gap-12  lg:gap-12 md:gap-18 border-b   border-darkgray/16 w-fit">
         <button
           onClick={() => setActiveTab("Outreach and engagement")}
           className={` cursor-pointer text-sm sm:text-xl text-wrap  ${
@@ -147,14 +148,33 @@ export const TabSwitch = ({
           In the news
         </button>
       </div>
-      <div className="">
-        {activeTab==="Outreach and engagement"&&(
-          <EventTemplate/>
-        )}
-      </div>
-      <div className="pt-14">
+
+      <div className="pt-6 xl:pt-14">
+        {activeTab === "Outreach and engagement" && <EventTemplate />}
+
         {activeTab === "Newsletters" && <TabContent data={newsletters} />}
         {activeTab === "In the news" && <TabContent data={news} />}
+      </div>
+      <div className="mt-7">
+        {activeTab==="Outreach and engagement"?(
+          <UnderlineWithHover
+          size="extralarge"
+          color="pink"
+          bgColor="pink"
+          text="View all events"
+          role="button"
+          borderColor="white"
+        />
+        ):(
+          <UnderlineWithHover
+          size="extralarge"
+          color="pink"
+          bgColor="pink"
+          text="View all"
+          role="button"
+          borderColor="white"
+        />
+        )}
       </div>
     </div>
   );
@@ -175,9 +195,6 @@ export const TabContent = ({ data }: { data: TabItem[] }) => {
           classes="line-clamp-2 xl:line-clamp-3 text-lg md:text-xl text-black"
         />
       ))}
-       
     </div>
   );
 };
-
-
