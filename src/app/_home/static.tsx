@@ -52,7 +52,7 @@ export type CardData = {
   desig: string;
   link?: string;
   popupImg:string;
-  popupdesc?:string;
+  popupdesc:string;
 };
 
 export const trustee = [

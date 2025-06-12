@@ -49,13 +49,13 @@ const footer = () => {
                       classes="w-full w-auto  p-3 sm:p-2 text-sm font-medium"
                     />
                   </div>
-                 
+
                 </div>
               </form>
-               <div className="flex gap-2  pt-5">
-                     <div className="w-5 h-4 mt-1 sm:mt-0  sm:w-5 sm:h-5 border-1 border-pink"></div>
-                     <p  className="text-darkgray text-sm">I agree to receive updates on newsletters from The Infravision Foundation.</p>
-                  </div>
+              <div className="flex gap-2  pt-5">
+                <div className="w-5 h-4 mt-1 sm:mt-0  sm:w-5 sm:h-5 border-1 border-pink"></div>
+                <p className="text-darkgray text-sm">I agree to receive updates on newsletters from The Infravision Foundation.</p>
+              </div>
             </div>
           </div>
           <div className="flex lg:flex-row flex-col pt-5 lg:pt-0 lg:gap-8  border-b-1 border-gray/60 ">
@@ -140,7 +140,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        // href="/infraKatha"
+                        href="/infrakatha"
                         text="InfraKatha"
                       />
                     </li>
