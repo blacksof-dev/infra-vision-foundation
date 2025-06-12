@@ -16,7 +16,7 @@ const tabs: { id: TabId; label: string }[] = [
 ];
 
 
-export default function page() {
+export default function Page() {
     const sectionRefs: Record<TabId, React.RefObject<HTMLDivElement | null>> = {
         about: useRef<HTMLDivElement | null>(null),
         upcoming: useRef<HTMLDivElement | null>(null),

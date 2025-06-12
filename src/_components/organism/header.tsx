@@ -7,11 +7,10 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
-import { BorderGrayHeroBtn } from "../atoms/buttons";
 import Mobilenav from "./mobileNav";
 import { usePathname } from "next/navigation";
 
-export default function () {
+function Header() {
   const pathname = usePathname();
 
   const [open, setopen] = useState<boolean>(false);
@@ -34,6 +33,7 @@ export default function () {
     setlastScrollY(currentScrollY);
   };
 
+
   const handlehamberg = () => {
     setIsMenuOpen((prev) => !prev);
   };
@@ -43,7 +43,7 @@ export default function () {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [lastScrollY]);
+  }, [lastScrollY, handleScroll]);
 
   /****************************************************************** */
 
@@ -235,3 +235,7 @@ export default function () {
     </>
   );
 }
+
+Header.displayName = "Header";
+
+export default Header;
