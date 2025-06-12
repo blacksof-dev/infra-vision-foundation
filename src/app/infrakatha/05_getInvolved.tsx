@@ -1,6 +1,6 @@
 import infravisionfoundationBg from "@/../public/assets/home/infravisionfoundationBg.png";
 import infravisionTalkMobile from "@/../public/assets/home/infravisionTalkMobile.jpg";
-import GetInvolved from "@/_components/molecules/Newsletter";
+import GetInvolved from "@/_components/molecules/newsletter";
 
 
 export default function GetInvolvedSection() {
