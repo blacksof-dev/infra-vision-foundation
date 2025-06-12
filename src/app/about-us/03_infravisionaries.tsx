@@ -344,21 +344,21 @@ export default function Infravisionaries() {
         </div>
         <div className=" blade-top-padding-lg blade-bottom-padding-lg">
 
-        <div className="w-container flex justify-between items-center blade-bottom-margin">
+        <div className="w-container flex flex-col md:flex-row gap-y-5 md:gap-y-0 justify-between md:items-center blade-bottom-margin">
           <div>
             <div className="flex  flex-row  items-center gap-2 md:gap-3">
             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-            <h5 className="font-medium text-pink">Our core</h5>
+            <h5 className="font-medium text-pink text-sm xl:text-lg">Our core</h5>
           </div>
-           <div className="pt-4 pb-2 md:py-5 flex justify-between">
+           <div className="pt-1 md:pt-4 pb-2 md:py-5 flex justify-between">
             <h1 className="text-black font-medium">The Infravisionaries</h1>
           </div>
           </div>
-          <div className="w-full md:w-[45%]">
-                <h6 className="text-black  tracking-[1%] mb-4">
+          <div className="w-[90%] md:w-[45%]">
+                <h6 className="text-black  tracking-[1%] mb-4 text-sm xl:text-lg">
                   <span className="font-semibold">The Infravision Foundation</span> is a confluence of seasoned thought leaders and experts from across the infrastructure domain.
                 </h6>
-                <h6>It draws strength from the collective wisdom and a shared purpose. As a flagbearer of thought leadership in India’s infrastructural landscape, The Infravision Foundation is actively propelling the nation’s infrastructural and economic growth.</h6>
+                <h6 className="text-sm xl:text-lg">It draws strength from the collective wisdom and a shared purpose. As a flagbearer of thought leadership in India’s infrastructural landscape, The Infravision Foundation is actively propelling the nation’s infrastructural and economic growth.</h6>
               </div>
         </div>
          
