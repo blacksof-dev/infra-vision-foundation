@@ -1,5 +1,5 @@
 import image from "@/../public/assets/infrakatha/banner/banner.jpg"
-import Banner from "../../_components/molecules/banner";
+import Banner from "../../_components/molecules/Banner";
 
 export default function BannerSection() {
     return (

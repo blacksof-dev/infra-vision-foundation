@@ -1,6 +1,7 @@
 
 import banner from "@/../public/assets/contact/banner.png";
-import Banner from "@/_components/molecules/banner";
+import Banner from "@/_components/molecules/Banner";
+
 
 
 export default function ContactBanner() {
