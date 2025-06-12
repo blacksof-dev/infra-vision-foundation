@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
-import { MemberCard } from "@/_components/molecules/MemberCard";
+import { MemberCard } from "@/_components/molecules/memberCard";
 import { CardData, Guests, Preeminent, jury } from "./static";
 import PopupDescription from "../_home/popupDescription";
 
