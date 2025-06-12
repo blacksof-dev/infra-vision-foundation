@@ -88,14 +88,14 @@ export default function Newsletter({
                   />
                 </div>
 
-                <div className="sm:w-[70%] w-full">
+                <div className="max-w-lg w-full">
                   <h4 className="text-white font-light py-1 md:py-3 ">
                     {desc}
                   </h4>
                 </div>
               </div>
               <div>
-               
+
                 <HeroBtn
                   text={ctatext}
                   role="button"
@@ -104,7 +104,7 @@ export default function Newsletter({
                   bgColor="pink"
                   size="extralarge"
                   aarowColor="white"
-                  classes="font-medium"
+                  classes="font-medium cursor-pointer"
                 />
               </div>
             </div>

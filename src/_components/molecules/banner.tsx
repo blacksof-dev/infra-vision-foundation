@@ -14,17 +14,17 @@ interface bannerProps {
 
 
 import { RiArrowRightSLine } from "react-icons/ri";
-import {  HeroBtnPink } from "../atoms/buttons";
-export default function Banner({image,heading,title,subdesc,mobileimage,classes, buttonText}:bannerProps) {
+import { HeroBtnPink } from "../atoms/buttons";
+export default function Banner({ image, heading, title, subdesc, mobileimage, classes, buttonText }: bannerProps) {
   return (
     <>
       <div className="pt-[6rem]">
         <div className="relative ">
-          <div className={`h-[20rem] md:h-[28rem] xl:h-[40rem] ${mobileimage ? "md:block hidden" : ""}`}>
+          <div className={`h-[20rem] md:h-[28rem] xl:h-[40rem] bg-black ${mobileimage ? "md:block hidden" : ""}`}>
             <Image
               src={image}
               alt="Publication Banner"
-              className="w-full h-full object-cover object-right" unoptimized={true}
+              className="w-full h-full object-cover object-right [mask-image:linear-gradient(to_top,transparent,black_40%)]" unoptimized={true}
             ></Image>
           </div>
           {mobileimage && (
@@ -36,8 +36,8 @@ export default function Banner({image,heading,title,subdesc,mobileimage,classes,
               ></Image>
             </div>
           )}
-          <div className="w-container">
-            <div className="absolute top-9   sm:top-12 md:top-18 flex flex-col  justify-between h-[80%]">
+          <div className="w-container ">
+            <div className="absolute top-9  sm:top-12 md:top-18 flex flex-col  justify-between h-[88%] sm:h-[80%]">
               <div className="flex flex-row gap-1">
                 <svg
                   width="28"
@@ -59,12 +59,12 @@ export default function Banner({image,heading,title,subdesc,mobileimage,classes,
               <div className="  w-full">
                 <h1 className="text-white font-medium ">{title}</h1>
                 <div className={` py-2 sm:py-4 w-full  max-w-xl`} >
-        
+
                   <h5 className="text-white  font-light">
                     <Balancer>
-                       {subdesc}
+                      {subdesc}
                     </Balancer>
-                   
+
                   </h5>
                 </div>
                 {buttonText && (

@@ -45,7 +45,7 @@ const allcards = [
         date: "January, 2025",
         description:
             "A power-packed month featuring CAIRA's first roundtable on agri exports...",
-        link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/01/INFRAVISION-TALK-January-2025.pdf",
+        link: "#",
     },
     {
         id: 2,
@@ -56,7 +56,7 @@ const allcards = [
         date: "December, 2024",
         description:
             "A power-packed month featuring CAIRA's first roundtable on agri exports...",
-        link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/01/INFRAVISION-TALK-December-2024.pdf",
+        link: "#",
     },
     {
         id: 3,
@@ -67,7 +67,7 @@ const allcards = [
         date: "November, 2024",
         description:
             "A power-packed month featuring CAIRA's first roundtable on agri exports...",
-        link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/11/INFRAVISION-TALK-November-2024.pdf",
+        link: "#",
     },
     {
         id: 4,
@@ -78,7 +78,7 @@ const allcards = [
         date: "October, 2024",
         description:
             "A power-packed month featuring CAIRA's first roundtable on agri exports...",
-        link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/10/INFRAVISION-TALK-October-2024.pdf",
+        link: "#",
     },
     {
         id: 5,
@@ -89,7 +89,7 @@ const allcards = [
         date: "September 2024",
         description:
             "A power-packed month featuring CAIRA's first roundtable on agri exports...",
-        link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/10/INFRAVISION-TALK-September-2024.pdf",
+        link: "#",
     },
     {
         id: 6,
@@ -100,7 +100,7 @@ const allcards = [
         date: "August, 2024",
         description:
             "A power-packed month featuring CAIRA's first roundtable on agri exports...",
-        link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/08/INFRAVISION-TALK-August-2024.pdf",
+        link: "#",
     },
 ];
 

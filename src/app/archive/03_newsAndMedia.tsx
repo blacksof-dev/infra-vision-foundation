@@ -41,7 +41,7 @@ const allcards = [
         date: "January, 2025",
         description:
             "Group taxation regime for infrastructure",
-        link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/01/INFRAVISION-TALK-January-2025.pdf",
+        link: "#",
     },
     {
         id: 2,
@@ -52,7 +52,7 @@ const allcards = [
         date: "December, 2024",
         description:
             "Infra outlays: A strategic downplay",
-        link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/01/INFRAVISION-TALK-December-2024.pdf",
+        link: "#",
     },
     {
         id: 3,
@@ -63,7 +63,7 @@ const allcards = [
         date: "November, 2024",
         description:
             "Budget signals shift in infra strategy",
-        link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/11/INFRAVISION-TALK-November-2024.pdf",
+        link: "#",
     },
     {
         id: 4,
@@ -74,7 +74,7 @@ const allcards = [
         date: "January, 2025",
         description:
             "Group taxation regime for infrastructure",
-        link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/01/INFRAVISION-TALK-January-2025.pdf",
+        link: "#",
     },
     {
         id: 5,
@@ -85,7 +85,7 @@ const allcards = [
         date: "December, 2024",
         description:
             "Infra outlays: A strategic downplay",
-        link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/01/INFRAVISION-TALK-December-2024.pdf",
+        link: "#",
     },
     {
         id: 6,
@@ -96,7 +96,7 @@ const allcards = [
         date: "November, 2024",
         description:
             "Budget signals shift in infra strategy",
-        link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/11/INFRAVISION-TALK-November-2024.pdf",
+        link: "#",
     },
 
 ];

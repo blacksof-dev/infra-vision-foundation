@@ -56,9 +56,9 @@ export default function EventTemplate() {
             </div>
 
             <div
-              className="pt-6 cursor-pointer xl:pt-9 flex flex-wrap gap-9 items-center"
+              className="pt-6 xl:pt-9 flex flex-wrap gap-9 items-center "
             >
-              <div onClick={() => setPopup("notified")}>
+              <div className="cursor-pointer" tabIndex={0} role="button" onClick={() => setPopup("notified")}>
                 <HeroBtnPink
                   text="Get notified"
                   role="button"
@@ -71,13 +71,14 @@ export default function EventTemplate() {
                 />
               </div>
 
-              <div onClick={() => setPopup("details")}>
+              <div className="cursor-pointer" onClick={() => setPopup("details")}>
                 <UnderlineCta
                   title="Know more"
                   color="black"
                   underlineColor="#C82249"
                   role="link"
                   size="extralarge"
+                  classes=""
                 />
               </div>
             </div>
@@ -172,24 +173,24 @@ function NotifiedPopup({ onclose }: { onclose: () => void }) {
               />
               <button
                 type="submit"
-                className="w-full sm:w-fit px-14 mt-2 h-14 rounded-md bg-[#C82249] text-white text-xl font-medium transition hover:bg-[#a81b3a]"
+                className="cursor-pointer w-full sm:w-fit px-14 mt-2 h-14 rounded-md bg-[#C82249] text-white text-xl font-medium transition hover:bg-[#a81b3a]"
               >
                 Submit
               </button>
               <div className="flex flex-col gap-3 mt-4">
-                <label className="flex items-center gap-3 text-gray-600 text-base font-normal">
+                <label className="cursor-pointer flex items-center gap-3 text-gray-600 text-base font-normal">
                   <Checkbox
                     checked={form.notifyEvents}
                     onCheckedChange={(checked) => handleCheckbox("notifyEvents", !!checked)}
-                    className="size-6 border-gray-300"
+                    className="size-6 border-gray-300 cursor-pointer"
                   />
                   Get notified about upcoming events
                 </label>
-                <label className="flex items-center gap-3 text-gray-600 text-base font-normal">
+                <label className="cursor-pointer flex items-center gap-3 text-gray-600 text-base font-normal">
                   <Checkbox
                     checked={form.subscribeNewsletter}
                     onCheckedChange={(checked) => handleCheckbox("subscribeNewsletter", !!checked)}
-                    className="size-6 border-gray-300"
+                    className="size-6 border-gray-300 cursor-pointer"
                   />
                   Subscribe to our newsletter
                 </label>

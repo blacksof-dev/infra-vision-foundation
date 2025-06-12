@@ -147,9 +147,9 @@ export default function Gallery() {
                 {selectedTab === 'Event' && renderFilterButtons(SECTORS)}
                 {/* Gallery Grid */}
                 <div className="pt-8">
-                    <div className="columns-2  sm:columns-3 lg:columns-4 xl:columns-5 gap-3 space-y-3">
+                    <div className="columns-2  sm:columns-3 lg:columns-4 xl:columns-5 gap-1 sm:gap-3 space-y-1 sm:space-y-3">
                         {filteredImages.slice(0, visibleCount).map((img, idx) => (
-                            <div key={idx} className="overflow-hidden mb-4 break-inside-avoid shadow-sm bg-white">
+                            <div key={idx} className="overflow-hidden mb-1 sm:mb-3 break-inside-avoid shadow-sm bg-white">
                                 <Image
                                     src={img.image}
                                     alt={`Gallery Photo ${idx + 1}`}

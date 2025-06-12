@@ -101,17 +101,17 @@ export default function PastEvents() {
                     </h1>
                 </div>
                 <div className="md:pt-5">
-                    <div className="flex flex-row items-center gap-4  pb-4 mb-8">
-                        <div className="sm:border-r sm:border-darkgray/20">
+                    <div className="flex flex-row items-center gap-4  pb-4 mb-4 sm:mb-8">
+                        <div className="border-r border-darkgray/20">
                             <h5 className="text-darkgray/80 sm:py-5 pr-5 text-nowrap">
                                 Filter by year
                             </h5>
                         </div>
-                        <div className="flex flex-row gap-2">
+                        <div className="flex flex-row gap-2 ">
                             {yearFilters.map((year) => (
                                 <button
                                     key={year}
-                                    className={`mt-auto text-sm md:text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4 ${selectedYear === year ? "border border-pink text-pink font-medium" : "border border-lightgray/30"}`}
+                                    className={`mt-auto text-sm md:text-base cursor-pointer rounded-[50px] px-4 py-2  sm:px-6 sm:py-3  ${selectedYear === year ? "border border-pink text-pink font-medium" : "border border-lightgray/30"}`}
                                     onClick={() => handleYearClick(year)}
                                 >
                                     {year}
@@ -119,7 +119,7 @@ export default function PastEvents() {
                             ))}
                         </div>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-24 ">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-24">
                         {FilteredCard()
                             .slice(0, visiblecountmobile)
                             .map((ele, index) => (
