@@ -81,7 +81,7 @@ export default function Insights() {
   const [selectTab, setselectedTab] = useState("All");
   const [selectedFilter, setselectedFilter] = useState("All");
 
- 
+
   const mobileview = 3;
 
 
@@ -89,11 +89,11 @@ export default function Insights() {
 
   const handletabClick = (tab: string) => {
     setselectedTab(tab);
-  
+
     if (tab === "Publication Year") {
       setselectedFilter(secondFilter[0]);
     } else {
-      setselectedFilter(""); 
+      setselectedFilter("");
     }
   };
 
@@ -112,11 +112,11 @@ export default function Insights() {
 
   const handleSeeMoreCta = () => {
     setvisiblecountmobile((prev) => prev + 3);
-};
+  };
 
-useEffect(() => {
-setvisiblecountmobile(mobileview);
-}, [selectTab]);
+  useEffect(() => {
+    setvisiblecountmobile(mobileview);
+  }, [selectTab]);
 
   return (
     <>
@@ -150,11 +150,10 @@ setvisiblecountmobile(mobileview);
 
               <div className="flex flex-row gap-5 ">
                 <button
-                  className={`mt-auto  text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3  sm:mb-4  ${
-                    selectTab === "All"
+                  className={`mt-auto  text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3  sm:mb-4  ${selectTab === "All"
                       ? "border border-pink text-pink font-medium"
                       : "border border-lightgray/30"
-                  }`}
+                    }`}
                   onClick={() => handletabClick("All")}
                 >
                   All
@@ -162,11 +161,10 @@ setvisiblecountmobile(mobileview);
 
                 <button
                   onClick={() => handletabClick("Publication Year")}
-                  className={`mt-auto text-base cursor-pointer  rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4  ${
-                    selectTab === "Publication Year"
+                  className={`mt-auto text-base cursor-pointer  rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4  ${selectTab === "Publication Year"
                       ? "border  border-pink text-pink font-medium"
                       : "border border-lightgray/30"
-                  }`}
+                    }`}
                 >
                   Publication Year
                 </button>
@@ -174,20 +172,19 @@ setvisiblecountmobile(mobileview);
             </div>
 
             {selectTab === "Publication Year" && (
-            <div className="pt-5  flex gap-3 md:hidden">
-              {secondFilter.map((filter) => (
-                <button
-                  className={`mt-auto  text-base cursor-pointer rounded-[50px] px-3 py-1 mb-4  ${
-                    selectedFilter === filter
-                      ? "border border-pink text-white bg-pink font-medium"
-                      : "border border-lightgray/30"
-                  }`}
-                  onClick={() => handleFilterClick(filter)}
-                >
-                  {filter}
-                </button>
-              ))}
-            </div>
+              <div className="pt-5  flex gap-3 md:hidden">
+                {secondFilter.map((filter) => (
+                  <button
+                    className={`mt-auto  text-base cursor-pointer rounded-[50px] px-3 py-1 mb-4  ${selectedFilter === filter
+                        ? "border border-pink text-white bg-pink font-medium"
+                        : "border border-lightgray/30"
+                      }`}
+                    onClick={() => handleFilterClick(filter)}
+                  >
+                    {filter}
+                  </button>
+                ))}
+              </div>
             )}
 
             {/* Inner Filteration Tab */}
@@ -197,16 +194,15 @@ setvisiblecountmobile(mobileview);
                   <>
                     <div className="pt-5 hidden md:block">
                       <div className="flex flex-row gap-5">
-                        
+
 
                         <div className="space-x-4 ">
                           {secondFilter.map((filter) => (
                             <button
-                              className={`mt-auto  text-base cursor-pointer rounded-[50px] px-6 py-3 mb-4  ${
-                                selectedFilter === filter
+                              className={`mt-auto  text-base cursor-pointer rounded-[50px] px-6 py-3 mb-4  ${selectedFilter === filter
                                   ? "border border-pink text-white bg-pink font-medium"
                                   : "border border-lightgray/30"
-                              }`}
+                                }`}
                               onClick={() => handleFilterClick(filter)}
                             >
                               {filter}
@@ -221,7 +217,7 @@ setvisiblecountmobile(mobileview);
 
               {/* Data show and Filteration */}
 
-              <div className={` ${ selectTab === "Publication Year" ? "pt-8" : "pt-12"}`}>
+              <div className={` ${selectTab === "Publication Year" ? "pt-8" : "pt-12"}`}>
                 <div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10 xl:gap-24 ">
                     {FilteredCard()
@@ -229,12 +225,12 @@ setvisiblecountmobile(mobileview);
                       .map((ele, index) => (
                         <div
                           key={index}
-                          
+
                         >
                           <Card
                             date={ele.date}
                             title={ele.title}
-                            image={ele.img}
+                            image={ele.img.src}
                             link={ele.link}
                             category={ele.category}
                             classes="line-clamp-2 "
@@ -268,12 +264,12 @@ setvisiblecountmobile(mobileview);
                       .map((ele, index) => (
                         <div
                           key={index}
-                          
+
                         >
                           <Card
                             date={ele.date}
                             title={ele.title}
-                            image={ele.img}
+                            image={ele.img.src}
                             link={ele.link}
                             category={ele.category}
                             classes="line-clamp-2"
