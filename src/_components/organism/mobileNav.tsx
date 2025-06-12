@@ -7,7 +7,7 @@ import { TextMobileNavAnchor } from "../atoms/links";
 import { useState } from "react";
 
 export default function Mobilenav({ onClose }: { onClose: () => void; }) {
-  let [mobilepopup,setmobilepopup] = useState(false);
+   const[mobilepopup,setmobilepopup] = useState(false);
   return (
     <div>
       <div className="flex justify-between items-center blade-top-margin-sm ">

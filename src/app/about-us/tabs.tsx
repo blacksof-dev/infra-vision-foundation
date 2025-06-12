@@ -4,17 +4,24 @@ import clsx from "clsx";
 import { useSelector } from 'react-redux';
 
 
-type TabId = string;
+type TabId = 'who_we_are' | 'infravisionaries' | 'vision_and_mission' | 'our_pulse' | 'project_pathway';
 
-type Tab = { id: TabId; label: string };
+const tabs: { id: TabId; label: string }[] = [
+  { id: "who_we_are", label: "Who we are" },
+  { id: "infravisionaries", label: "The Infravisionaries" },
+  { id: "vision_and_mission", label: "Vision and Mission" },
+  { id: "our_pulse", label: "Our pulse" },
+  { id: "project_pathway", label: "The project pathway" },
+];
+
+
 
 type Props = {
-  tabs: Tab[];
   sectionRefs: Record<TabId, React.RefObject<HTMLDivElement | null>>;
 };
 
-export default function OutreachTabs({ sectionRefs,tabs }: Props) {
-  const [activeTab, setActiveTab] = useState<TabId>("highlight");
+export default function AboutUsTabs({ sectionRefs }: Props) {
+  const [activeTab, setActiveTab] = useState<TabId>("who_we_are");
   const [isStickyVisible, setStickyVisible] = useState(true);
 
   const handleTabClick = (id: TabId) => {
@@ -42,15 +49,15 @@ export default function OutreachTabs({ sectionRefs,tabs }: Props) {
         // Sort by most visible section
         visibilityMap.sort((a, b) => b.ratio - a.ratio);
 
-      
+        // Determine most visible tab section
         if (visibilityMap.length > 0 && visibilityMap[0].ratio > 0) {
           const topVisible = visibilityMap[0].id;
           if (topVisible !== activeTab) {
             setActiveTab(topVisible);
           }
-          setStickyVisible(true); 
+          setStickyVisible(true); // Only show if one is in view
         } else {
-          setStickyVisible(false)
+          setStickyVisible(false); // Hide if none of the three are visible
         }
       },
       {
@@ -76,7 +83,7 @@ export default function OutreachTabs({ sectionRefs,tabs }: Props) {
         "bg-white",
         "z-50",
         "sticky",
-        "top-0",
+       "top-0",
         isStickyVisible ? "block" : "hidden"
       )}
     >

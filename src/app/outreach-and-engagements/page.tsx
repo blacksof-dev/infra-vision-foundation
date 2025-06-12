@@ -1,12 +1,12 @@
 "use client";
 import React, { useRef } from 'react'
 import OutreachBanner from './01_Banner'
-
 import Highlight from './02_highlight';
 import Upcoming from './03_upcoming';
 import Past from './04_past';
 import Involved from './05_involved';
 import PublicationTabs from '@/_components/molecules/tabs';
+import OutreachTabs from '@/_components/molecules/tabs';
 
 
 type TabId = "highlight" | "upcoming" | "past";
@@ -35,7 +35,7 @@ const OutreachAndEngagements = () => {
   return (
     <>
       <OutreachBanner />
-      <PublicationTabs tabs={tabs} sectionRefs={sectionRefs} />
+      <OutreachTabs tabs={tabs} sectionRefs={sectionRefs} />
       <div id="highlight" ref={sectionRefs.highlight}>
         <Highlight />
       </div>
