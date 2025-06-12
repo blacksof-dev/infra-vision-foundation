@@ -35,7 +35,7 @@ export default function Gallery() {
               </span>
             </h1>
           </div>
-    <div className="columns-3 md:columns-3 lg:columns-5 gap-3 pt-8 space-y-2">
+       <div className="columns-3  overflow-visible md:columns-3 lg:columns-5 gap-3 pt-8 space-y-2">
           {images.map((src, index) => (
             <div key={index} className="overflow-hidden rounded">
               <Image
