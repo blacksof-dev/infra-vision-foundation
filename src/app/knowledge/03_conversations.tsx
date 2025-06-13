@@ -81,14 +81,14 @@ export default function Conversations() {
     };
 
     return (
-        <section className='bg-whitesmoke overflow-hidden'>
+        <section id="infravision-conversations" className='bg-whitesmoke overflow-hidden'>
             <div className="w-container blade-top-padding-lg blade-bottom-padding-lg">
                 {/* Header Section */}
                 <div className='lg:flex justify-between mb-4 lg:mb-8'>
                     <div className=''>
                         <div className="flex flex-row items-center gap-2 md:gap-3">
                             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
-                            <h5 className="font-medium text-pink">Infravision conversations</h5>
+                            <h5 className="font-medium text-pink">Infravision Conversations</h5>
                         </div>
                         <div className="py-3 max-w-4xl">
                             <h1 className="text-black font-light">

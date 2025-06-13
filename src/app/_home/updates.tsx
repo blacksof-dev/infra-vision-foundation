@@ -12,6 +12,7 @@ import taxation from "@/../public/assets/home/updates/taxation.png";
 import infraKathaEvent from "@/../public/assets/home/updates/infraKathaEvent.png";
 import afforestation from "@/../public/assets/home/updates/afforestation.png";
 import infraKatha from "@/../public/assets/home/updates/infraKatha.png";
+import article from "@/../public/assets/home/updates/article.png";
 import agriWarehousing from "@/../public/assets/home/updates/agriWarehousing.png";
 import Link from "next/link";
 
@@ -35,14 +36,14 @@ export default function Updates() {
               <button
                 className={`swiper-solution-prev-btn-hero cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink
                 }`}
-              
+
               >
                 <GoArrowLeft />
               </button>
               <button
                 className={`swiper-solution-next-btn-hero cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink
                 }`}
-                
+
               >
                 <GoArrowRight />
               </button>
@@ -89,7 +90,7 @@ export default function Updates() {
             {EventsDetails.map((ele, index) => (
               <SwiperSlide key={index} className="!w-fit group ">
                 <Link href={ele.link} target="_blank">
-                  <div className="flex flex-row gap-4 bg-[#0000005e]  backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4 w-[22rem] sm:w-[24rem]  xl:w-[40rem]  h-[9rem]   xl:h-[18rem] group-hover:bg-white">
+                  <div className="flex flex-row gap-4 bg-[#0000005e]  backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4 w-[22rem] sm:w-[24rem]  xl:w-[40rem]  h-[9rem]   xl:h-[18rem] group-hover:bg-white transition-all duration-500 ease-linear">
                     <div className="w-[6rem]  h-[8rem] md:w-[14rem] md:h-[8rem]   xl:w-[22rem] xl:h-[15rem] relative ">
                       <Image
                         src={ele.image}
@@ -140,39 +141,47 @@ export default function Updates() {
 const EventsDetails = [
   {
     image: taxation,
-    category: "News & media",
-    title: "Group taxation regime for infrastructure",
+    category: "Research report ",
+    title: "Analysing the effectiveness of compensatory afforestation in India",
     btnTitle: "Read more",
-    link: "https://www.business-standard.com/opinion/columns/group-taxation-regime-for-infrastructure-124081500813_1.html",
+    link: "/assets/pdf/Study-on-Implementation-of-Compensatory-Afforestation-in-India.pdf",
   },
-  {
-    image: infraKathaEvent,
-    category: "Upcoming event",
-    title:
-      "InfraKatha #8 with Economist Montek Singh Ahluwalia, India Habitat Centre, New Delhi,7 PM onwards",
-    btnTitle: "Register now",
-    link: "https://www.youtube.com/watch?v=o6nb3IejARc&t=13s&ab_channel=TheInfravisionFoundation",
-  },
-  {
-    image: afforestation,
-    category: "Research paper",
-    title: "Study on Implementation of Compensatory Afforestation in India",
-    btnTitle: "Read more",
-    link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/03/Study-on-Implementation-of-Compensatory-Afforestation-in-India.pdf",
-  },
+  // {
+  //   image: infraKathaEvent,
+  //   category: "Upcoming event",
+  //   title:
+  //     "InfraKatha #8 with Economist Montek Singh Ahluwalia, India Habitat Centre, New Delhi,7 PM onwards",
+  //   btnTitle: "Register now",
+  //   link: "https://www.youtube.com/watch?v=o6nb3IejARc&t=13s&ab_channel=TheInfravisionFoundation",
+  // },
+  // {
+  //   image: afforestation,
+  //   category: "Research paper",
+  //   title: "Study on Implementation of Compensatory Afforestation in India",
+  //   btnTitle: "Read more",
+  //   link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/03/Study-on-Implementation-of-Compensatory-Afforestation-in-India.pdf",
+  // },
   {
     image: infraKatha,
-    category: "InfraKatha",
+    category: "InfraKatha #8",
     title:
-      "InfraKatha: Can Public Private Partnerships be Revitalised by Montek Singh Ahluwalia",
+      "Featuring Mr. Montek Singh Ahluwalia, Former Deputy Chairman, the Planning Commission",
     btnTitle: "Watch now",
-    link: "https://www.youtube.com/watch?v=o6nb3IejARc&t=13s&ab_channel=TheInfravisionFoundation",
+    link: "https://www.youtube.com/watch?v=ukODX0llH7o&t=1139s",
+  },
+  {
+    image: article,
+    category: "Latest article",
+    title:
+      "Why India needs a national plan for building new cities",
+    btnTitle: "Read more",
+    link: "/knowledge",
   },
   {
     image: agriWarehousing,
     category: "Blog",
-    title: "Agri-Warehousing: A problem of capacity",
+    title: "How to make India’s highways safe",
     btnTitle: "Read more",
-    link: "https://theinfravisionfoundation.org/2023/11/25/poor-regulatory-capacity-of-the-warehousing-and-development-regulatory-authority-impacts-warehouse-based-sales-of-agri-commodities-and-issue-of-e-negotiable-warehouse-receipts/",
+    link: "https://theinfravisionfoundation.org/2024/10/16/a-national-road-safety-authority-crucial-for-improving-indias-deteriorating-road-safety/",
   },
 ];

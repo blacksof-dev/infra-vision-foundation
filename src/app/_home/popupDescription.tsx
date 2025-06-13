@@ -31,7 +31,7 @@ export default function PopupDescription({
               {/* IMAGE SECTION */}
               <div className="relative w-full h-[25rem] md:w-[25rem] md:h-[25rem]  lg:w-[40%] lg:h-full">
                 <Image
-                  src={data.popupImg}
+                  src={data.image.src}
                   alt={data.title}
                   fill
                   className="object-cover object-top rounded-md"
@@ -44,11 +44,10 @@ export default function PopupDescription({
                 <h6 className="text-pink font-medium py-2">{data.desig}</h6>
                 {data?.popupdesc && (
                   <p
-                    className={`${
-                      showlineclamp
+                    className={`${showlineclamp
                         ? "line-clamp-none overflow-y-auto "
                         : "line-clamp-6"
-                    } text-black text-sm md:text-base lg:overflow-y-auto h-full  pr-2`}
+                      } text-black text-sm md:text-base lg:overflow-y-auto h-full  pr-2`}
                     dangerouslySetInnerHTML={{ __html: data.popupdesc }}
                   />
                 )}

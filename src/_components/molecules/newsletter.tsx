@@ -1,11 +1,13 @@
 import { HeroBtn, UnderlineCta } from "@/_components/atoms/buttons";
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 
 type Newsletter = {
   tag?: string;
   title: string;
   desc: string;
   ctatext: string;
+  ctaLink: string;
   bgImage?: StaticImageData;
   mobilebg?: StaticImageData;
   image?: StaticImageData;
@@ -20,6 +22,7 @@ export default function Newsletter({
   mobilebg,
   image,
   ctatext,
+  ctaLink = "#",
   bgColor,
 }: Newsletter) {
   return (
@@ -94,18 +97,19 @@ export default function Newsletter({
                   </h4>
                 </div>
               </div>
-              <div>
-
-                <HeroBtn
-                  text={ctatext}
-                  role="button"
-                  borderColor="white"
-                  color="white"
-                  bgColor="pink"
-                  size="extralarge"
-                  aarowColor="white"
-                  classes="font-medium cursor-pointer"
-                />
+              <div className="w-fit">
+                <Link href={ctaLink}>
+                  <HeroBtn
+                    text={ctatext}
+                    role="button"
+                    borderColor="white"
+                    color="white"
+                    bgColor="pink"
+                    size="extralarge"
+                    aarowColor="white"
+                    classes="font-medium cursor-pointer"
+                  />
+                </Link>
               </div>
             </div>
 
