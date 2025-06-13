@@ -45,7 +45,7 @@ const allcards = [
         date: "November, 2024",
         description:
             "Study on the implementation of compensatory afforestation in India",
-        link: "#",
+        link: "/assets/knowledeg/researchPapers/Study-on-Implementation-of-Compensatory-Afforestation-in-India.pdf",
     },
     {
         id: 2,
@@ -154,7 +154,7 @@ export default function ResearchPapers() {
     );
 
     return (
-        <div>
+        <section>
             <div className="w-container blade-top-padding-sm blade-bottom-padding-sm">
                 {/* Header Section */}
                 <div className="flex flex-row items-center gap-2 md:gap-3">
@@ -164,9 +164,9 @@ export default function ResearchPapers() {
 
                 <div className="py-3 max-w-4xl">
                     <h1 className="text-black font-light">
-                        Data and findings from the ground,
+                        Data-powered studies from the ground,
                         <span className="text-black font-medium">
-                            {" "} fuelled by expert foresight
+                            {" "} fuelled by expert insight
                         </span>
                     </h1>
                 </div>
@@ -237,7 +237,7 @@ export default function ResearchPapers() {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

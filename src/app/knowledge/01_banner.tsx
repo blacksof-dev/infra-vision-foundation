@@ -7,7 +7,7 @@ export default function BannerSection() {
             image={image}
             heading="Knowledge"
             title="Knowledge"
-            subdesc="Knowledge resources shaping India's infrastructure growth story."
+            subdesc="In-depth and independent analyses of India's infrastructure-related issues"
         />
     )
 }

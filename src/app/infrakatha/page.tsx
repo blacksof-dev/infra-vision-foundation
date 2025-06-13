@@ -11,7 +11,7 @@ type TabId = "about" | "upcoming" | "past";
 
 const tabs: { id: TabId; label: string }[] = [
     { id: "about", label: "About InfraKatha" },
-    { id: "upcoming", label: "Upcoming sessions" },
+    // { id: "upcoming", label: "Upcoming sessions" },
     { id: "past", label: "Past sessions" },
 ];
 
@@ -30,9 +30,9 @@ export default function Page() {
             <div ref={sectionRefs.about}>
                 <About />
             </div>
-            <div ref={sectionRefs.upcoming}>
+            {/* <div ref={sectionRefs.upcoming}>
                 <UpcomingSession />
-            </div>
+            </div> */}
             <div ref={sectionRefs.past}>
                 <PastEvents />
             </div>
