@@ -7,7 +7,7 @@ type Newsletter = {
   title: string;
   desc: string;
   ctatext: string;
-  ctaLink: string;
+  ctaLink?: string;
   bgImage?: StaticImageData;
   mobilebg?: StaticImageData;
   image?: StaticImageData;
