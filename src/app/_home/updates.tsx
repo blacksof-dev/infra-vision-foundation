@@ -53,10 +53,10 @@ export default function Updates() {
 
         {/* Right Column */}
         <div
-          className="w-screen 
-        "
+          className="w-screen"
         >
           <Swiper
+            className="!overflow-visible xl:!overflow-hidden"
             modules={[Navigation, Autoplay, Pagination]}
             navigation={{
               prevEl: ".swiper-solution-prev-btn-hero",
@@ -90,8 +90,8 @@ export default function Updates() {
             {EventsDetails.map((ele, index) => (
               <SwiperSlide key={index} className="!w-fit group ">
                 <Link href={ele.link} target="_blank">
-                  <div className="flex flex-row gap-4 bg-[#0000005e]  backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4 w-[22rem] sm:w-[24rem]  xl:w-[40rem]  h-[9rem]   xl:h-[18rem] group-hover:bg-white transition-all duration-500 ease-linear">
-                    <div className="w-[6rem]  h-[8rem] md:w-[14rem] md:h-[8rem]   xl:w-[22rem] xl:h-[15rem] relative ">
+                  <div className="flex flex-row gap-4 bg-[#0000005e]  backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4 w-[22rem] sm:w-[24rem]  xl:w-[40rem]  h-[9rem]  lg:h-[10rem] xl:h-[13rem] xlg:h-[16rem] 2xl:h-[18rem] group-hover:bg-white transition-all duration-500 ease-linear">
+                    <div className="w-[6rem]   h-full md:w-[14rem]    xl:w-[22rem]   relative ">
                       <Image
                         src={ele.image}
                         alt={ele.title}

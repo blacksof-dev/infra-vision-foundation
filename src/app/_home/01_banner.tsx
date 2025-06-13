@@ -15,7 +15,6 @@ export default function Banner() {
               className="h-full  w-full object-cover"
             ></Image>
           </div>
-
           <div className="w-container">
             <div className="absolute top-[24%]  md:top-[30%] xl:top-[25%]">
               <div className="w-full    ">

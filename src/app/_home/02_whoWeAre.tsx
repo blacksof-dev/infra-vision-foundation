@@ -94,7 +94,7 @@ export default function WhoWeAre() {
               </div>
               <div className="py-2 ">
                 <h1 className="text-black  font-light">
-                  A <span className="text-black/90 font-medium ">
+                  A <span className="text-black font-medium ">
                     think-and-do tank
 
                   </span>
