@@ -40,27 +40,27 @@ const Pulse = () => {
                 <div>
                     <div className="flex  flex-row  items-center gap-2 md:gap-3">
                         <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-                        <h5 className="font-medium text-pink">Our core</h5>
+                        <h5 className="font-medium text-pink text-sm xl:text-lg">Our core</h5>
                     </div>
                     <div className="pt-4 pb-2 md:py-5 flex justify-between">
                         <h1 className="text-black font-light">Transformation <br /> grounded in <span className='font-medium'>insights, <br /> knowledge, and action</span></h1>
                     </div>
                 </div>
                 <div className="w-full md:w-[45%]">
-                    <h6 className="text-black  tracking-[1%] mb-4">
+                    <h6 className="text-black  tracking-[1%] mb-4 text-sm xl:text-lg">
                         To become ‘Viksit Bharat’ by 2047, India needs to address its infrastructure gaps swiftly and efficiently through proportionate, need-specific developments. Developments that are innovative, inclusive, steadfast, and sustainable. This demands active link between policymakers, private institutions, and citizens through increased awareness and collaboration.
                     </h6>
-                    <h6><span className='font-medium'>The Infravision Foundation</span> thrusts this journey forward with pragmatic reasoning, remedial approach, and strategic advocacy. The fluent voice of wisdom here stands on three essential pillars.</h6>
+                    <h6><span className='font-medium text-sm xl:text-lg'>The Infravision Foundation</span> thrusts this journey forward with pragmatic reasoning, remedial approach, and strategic advocacy. The fluent voice of wisdom here stands on three essential pillars.</h6>
                 </div>
             </div>
             <div className='w-container'>
-                <div className=' border-[#5D6468] border-t border-b py-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3'>
+                <div className=' border-[#5D6468] border-t border-b py-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3'>
                     {
                         data.map((elem, idx) => {
                             return (
                                 <div key={idx} className={` w-container py-10
-                                    ${idx === 1 ? ' border-r border-[#5D6468]' : ''} 
-                                    ${idx !== data.length - 1 ? 'border-r border-[#5D6468]' : ''}
+                                    ${idx === 1 ? ' xl:border-r xl:border-[#5D6468]' : ''} 
+                                    ${idx !== data.length - 1 ? 'xl:border-r xl:border-[#5D6468]' : ''}
                                 `}>
                                     <img src={elem.icon} alt="" />
                                     <h4 className='font-medium my-5'>{elem.title}</h4>
@@ -77,7 +77,7 @@ const Pulse = () => {
                         <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
                         <h5 className="font-medium text-pink">Sectors of operation</h5>
                     </div>
-                    <div className="hidden xl:block">
+                    <div className="hidden lg:block">
                             <div className="flex gap-5 py-4 justify-center  lg:justify-start md:gap-4 ">
                                 <button
                                     className={`swiper-solution-prev-btn-hero cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white
@@ -98,7 +98,7 @@ const Pulse = () => {
                 </div>
                 <div className="">
                     <div
-                        className="w-[90%] origin-left ml-auto"
+                        className="max-sm:px-2 sm:w-[98%] lg:w-[95%] xl:w-[90%] origin-left ml-auto"
                     >
                         <Swiper
                             modules={[Navigation, Autoplay, Pagination]}
@@ -133,7 +133,7 @@ const Pulse = () => {
                             {EventsDetails.map((elem, index) => (
                                 <SwiperSlide key={index} className="!w-fit group ">
                                     <Link href={elem.link} target="_blank">
-                                        <div className="relative flex flex-row gap-4 rounded-lg p-2 md:p-4 w-[27rem] sm:w-[19rem]  xl:w-[35rem]  h-[17rem]   xl:h-[22rem] group-hover:bg-white">
+                                        <div className="relative flex flex-row gap-4 rounded-lg p-2 md:p-4 w-[19rem]  xl:w-[35rem]  h-[17rem]   xl:h-[22rem] group-hover:bg-white">
                                             <Image
                                                     src={elem.image}
                                                     alt={elem.title}
