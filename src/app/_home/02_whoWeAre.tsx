@@ -8,7 +8,6 @@ import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infraShakti.p
 import { useState } from "react";
 import Card from "@/_components/molecules/cardTemplate";
 
-
 export type TabItem = {
   id: number;
   img: string;
@@ -18,7 +17,6 @@ export type TabItem = {
   date?: string;
   subtitle?: string;
 };
-
 
 const knowledge = [
   {
@@ -49,7 +47,6 @@ const knowledge = [
     subtitle: "Jagan Shah",
     link: "https://theinfravisionfoundation.org/2024/10/16/a-national-road-safety-authority-crucial-for-improving-indias-deteriorating-road-safety/",
   },
-
 ];
 
 const advocacy = [
@@ -94,22 +91,36 @@ export default function WhoWeAre() {
               </div>
               <div className="py-2 ">
                 <h1 className="text-black  font-light">
-                  A <span className="text-black font-medium ">
+                  A{" "}
+                  <span className="text-black font-medium ">
                     think-and-do tank
-
                   </span>
-                  <br />  powering change in India’s infrastructure
+                  <br /> powering change in India’s infrastructure
                 </h1>
               </div>
             </div>
             <div className="w-full md:w-[50%] pt-2">
               <h6 className="text-black font-light">
-                Established in 2022 by Vinayak Chatterjee and Rumjhum Chatterjee,   <span className="font-semibold">The Infravision Foundation</span> is a non-partisan, not-for-profit think tank driving   <span className="font-semibold"> infrastructure-led economic development.</span>
-
-
+                Established in 2022 by Vinayak Chatterjee and Rumjhum
+                Chatterjee,{" "}
+                <span className="font-semibold">
+                  The Infravision Foundation
+                </span>{" "}
+                is a non-partisan, not-for-profit think tank driving{" "}
+                <span className="font-semibold">
+                  {" "}
+                  infrastructure-led economic development.
+                </span>
               </h6>
               <h6 className="text-black font-light py-2 md:py-3">
-                Founded by professionals and embellished with an ecosystem of thought leaders and experts from various infra sectors, The Infravision Foundation stands for upholding the impartial, enlightened, and respected voice of reason. It addresses deeply rooted challenges to enable steadfast infrastructure policy-making through rigorous   <span className="font-semibold"> knowledge sharing </span> and   <span className="font-semibold"> advocacy.</span>
+                Founded by professionals and embellished with an ecosystem of
+                thought leaders and experts from various infra sectors, The
+                Infravision Foundation stands for upholding the impartial,
+                enlightened, and respected voice of reason. It addresses deeply
+                rooted challenges to enable steadfast infrastructure
+                policy-making through rigorous{" "}
+                <span className="font-semibold"> knowledge sharing </span> and{" "}
+                <span className="font-semibold"> advocacy.</span>
               </h6>
             </div>
           </div>
@@ -121,8 +132,6 @@ export default function WhoWeAre() {
     </>
   );
 }
-
-
 
 export const TabSwitch = ({
   setActiveTab,
@@ -136,19 +145,21 @@ export const TabSwitch = ({
       <div className="flex flex-row justify-center items-center gap-12 md:gap-18 border-b mx-auto  border-darkgray/16 w-fit">
         <button
           onClick={() => setActiveTab("Knowledge")}
-          className={`text-base cursor-pointer  md:text-xl   ${activeTab === "Knowledge"
-            ? "font-medium  border-b-2 border-pink pb-3 text-pink"
-            : "text-darkgray  pb-3"
-            }`}
+          className={`text-base cursor-pointer  md:text-xl   ${
+            activeTab === "Knowledge"
+              ? "font-medium  border-b-2 border-pink pb-3 text-pink"
+              : "text-darkgray  pb-3"
+          }`}
         >
           Knowledge
         </button>
         <button
           onClick={() => setActiveTab("Advocacy")}
-          className={` text-base cursor-pointer  md:text-xl ${activeTab === "Advocacy"
-            ? "font-medium  border-b-2 pb-3 border-pink text-pink"
-            : "text-darkgray  pb-3"
-            }`}
+          className={` text-base cursor-pointer  md:text-xl ${
+            activeTab === "Advocacy"
+              ? "font-medium  border-b-2 pb-3 border-pink text-pink"
+              : "text-darkgray  pb-3"
+          }`}
         >
           Advocacy
         </button>
@@ -164,8 +175,6 @@ export const TabSwitch = ({
   );
 };
 
-
-
 export const TabContent = ({ data }: { data: TabItem[] }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-2 sm:gap-8 lg:gap-9  md:blade-top-padding-sm">
@@ -178,7 +187,7 @@ export const TabContent = ({ data }: { data: TabItem[] }) => {
           link={item.link}
           category={item.category}
           subtitle={item.subtitle}
-          classes="line-clamp-2 xl:line-clamp-3 text-lg md:text-xl text-black"
+          classes=" text-lg md:text-xl text-black"
         />
       ))}
     </div>

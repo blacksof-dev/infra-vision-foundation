@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
@@ -17,6 +17,7 @@ export const MemberCard = ({ image, title, desig, link }: MemberCardProps) => {
         alt={title}
         className="w-full h-full object-cover rounded"
         unoptimized={true}
+        quality={100}
       />
       <div className="absolute bottom-0 left-0 w-[17rem]">
         {link ? (
