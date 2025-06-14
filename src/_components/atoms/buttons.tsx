@@ -149,7 +149,7 @@ export function HeroBtnPink<T extends "submit" | "button">({
   }
 
   return (
-    <div className="w-fit group">
+    <div className="w-fit group cursor-pointer">
       {role === "link" && link != " " ? (
         <Link
           href={link}
