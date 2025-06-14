@@ -4,8 +4,8 @@ import React from 'react'
 const AboutInfraPandit = () => {
   return (
     <section className='bg-[#F6F6F6]'>
-        <div className='w-container blade-top-padding blade-bottom-padding-lg flex flex-col justify-between sm:flex-row'>
-            <div className='max-w-full sm:max-w-sm lg:max-w-md xl:max-w-2xl'>
+        <div className='w-container blade-top-padding blade-bottom-padding-lg flex flex-col justify-between md:flex-row gap-20 md:items-center'>
+            <div className='max-w-full md:max-w-sm lg:max-w-md xl:max-w-2xl'>
                 <div className="flex items-center gap-2 md:gap-3 text-pink">
                     <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
                     <h5 className="font-medium text-sm xl:text-lg">About InfraPandit Awards</h5>
@@ -54,7 +54,7 @@ const AboutInfraPandit = () => {
                             </div>
             </div>
             <div>
-                <img src="/assets/infrapandit/award.png" alt="Infrapandit Awards" />
+                <img className='' src="/assets/infrapandit/award.png" alt="Infrapandit Awards" />
             </div>
         </div>
     </section>
