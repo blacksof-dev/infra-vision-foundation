@@ -8,7 +8,7 @@ export default function Banner() {
     <>
       <section>
         <div className="relative overflow-hidden">
-          <div className=" w-full h-[40rem] md:h-[36rem] xl:h-full">
+          <div className="w-full h-[40rem] md:h-[36rem] xl:h-full">
             <Image
               src={BannerBg}
               alt="InfraVision Foundation"

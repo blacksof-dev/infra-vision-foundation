@@ -23,7 +23,7 @@ export default function NewCard({ date, title, image,link,category,classes }: Ca
                width={1000}
                 height={1000}
               alt="Image"
-              className="w-full h-full object-cover rounded"
+              className="w-full h-full object-contain sm:object-cover object-center rounded"
             />
           </div>
 

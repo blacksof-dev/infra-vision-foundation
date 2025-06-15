@@ -136,7 +136,7 @@ export default function Past() {
 
     return (
         <>
-            <div>
+            <div className="bg-[#F6F6F6]">
                 <div className="w-container blade-top-padding-sm blade-bottom-padding-sm">
                     <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
                         <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
@@ -164,7 +164,7 @@ export default function Past() {
 
                             <div className="flex flex-row gap-3 overflow-x-auto md:gap-5 ">
                                 <button
-                                    className={`mt-auto  text-sm md:text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4  ${selectTab === "All"
+                                    className={`mt-auto  text-sm md:text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4 whitespace-nowrap flex-shrink-0 min-w-max ${selectTab === "All"
                                             ? "border border-pink text-pink font-medium"
                                             : "border border-lightgray/30"
                                         }`}
@@ -175,7 +175,7 @@ export default function Past() {
 
                                 <button
                                     onClick={() => handletabClick("InfraKatha")}
-                                    className={`mt-auto text-sm md:text-base cursor-pointer  rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4  ${selectTab === "InfraKatha"
+                                    className={`mt-auto text-sm md:text-base cursor-pointer  rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4 whitespace-nowrap flex-shrink-0 min-w-max ${selectTab === "InfraKatha"
                                             ? "border  border-pink text-pink font-medium"
                                             : "border border-lightgray/30"
                                         }`}
@@ -185,7 +185,7 @@ export default function Past() {
 
                                 <button
                                     onClick={() => handletabClick("InfraShakti Awards")}
-                                    className={`mt-auto text-sm md:text-base cursor-pointer  rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4  ${selectTab === "InfraShakti Awards"
+                                    className={`mt-auto text-sm md:text-base cursor-pointer  rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4 whitespace-nowrap flex-shrink-0 min-w-max  ${selectTab === "InfraShakti Awards"
                                             ? "border  border-pink text-pink font-medium"
                                             : "border border-lightgray/30"
                                         }`}
@@ -194,7 +194,7 @@ export default function Past() {
                                 </button>
                                 <button
                                     onClick={() => handletabClick("CAIRA Roundtable")}
-                                    className={`mt-auto text-sm md:text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4  ${selectTab === "CAIRA Roundtable"
+                                    className={`mt-auto text-sm md:text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4 whitespace-nowrap flex-shrink-0 min-w-max ${selectTab === "CAIRA Roundtable"
                                             ? "border border-pink text-pink font-medium"
                                             : "border border-lightgray/30"
                                         }`}
@@ -204,7 +204,7 @@ export default function Past() {
 
                                 <button
                                     onClick={() => handletabClick("Corporate")}
-                                    className={`mt-auto text-sm md:text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4  ${selectTab === "Corporate"
+                                    className={`mt-auto text-sm md:text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4 whitespace-nowrap flex-shrink-0 min-w-max ${selectTab === "Corporate"
                                             ? "border border-pink text-pink font-medium"
                                             : "border border-lightgray/30"
                                         }`}
@@ -315,7 +315,7 @@ export default function Past() {
                                                         image={ele.img}
                                                         link={ele.link}
                                                         category={ele.category}
-                                                        classes="line-clamp-3 "
+                                                        classes="line-clamp-3 text-lg"
                                                     />
                                                 </div>
                                             ))}

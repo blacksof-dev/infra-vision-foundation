@@ -19,7 +19,7 @@ export default function Banner({image,heading,title,subdesc,mobileimage,classes,
     <>
       <div className="pt-[6rem]">
         <div className="relative ">
-          <div className={`h-[20rem] md:h-[28rem] xl:h-[40rem] ${mobileimage?"md:block hidden":""}`}>
+          <div className={`w-full h-[40rem] md:h-[36rem] xl:h-[40rem] ${mobileimage?"md:block hidden":""}`}>
             <Image
               src={image}
               alt="Publication Banner"
@@ -27,7 +27,7 @@ export default function Banner({image,heading,title,subdesc,mobileimage,classes,
             ></Image>
           </div>
            {mobileimage && (
-            <div className="md:hidden block">
+            <div className="md:hidden block h-[40rem]">
             <Image
               src={mobileimage}
               alt="Publication Banner"

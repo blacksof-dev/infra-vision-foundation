@@ -344,7 +344,7 @@ export default function Infravisionaries() {
         </div>
         <div className=" blade-top-padding-lg blade-bottom-padding-lg">
 
-        <div className="w-container flex flex-col md:flex-row gap-y-5 md:gap-y-0 justify-between md:items-center blade-bottom-margin">
+        <div className="w-container flex flex-col md:flex-row gap-y-5 md:gap-y-0 justify-between md:items-start blade-bottom-margin">
           <div>
             <div className="flex  flex-row  items-center gap-2 md:gap-3">
             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>

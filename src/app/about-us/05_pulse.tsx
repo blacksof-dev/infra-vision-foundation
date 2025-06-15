@@ -28,7 +28,7 @@ const Pulse = () => {
             desc: "Emanating from national and international domain experts, the knowledge and counsel inform and shape public policymaking in infrastructure."
         },
         {
-            icon: "/assets/about-us/pulse/icon-1.png",
+            icon: "/assets/about-us/pulse/icon-3.png",
             title: "Capacity building",
             desc: "Targeted to enable impactful implementation of the recommendations, capacity-building programmes revitalise on-ground operations spanning management, execution, and governance."
         },
@@ -40,7 +40,7 @@ const Pulse = () => {
                 <div>
                     <div className="flex  flex-row  items-center gap-2 md:gap-3">
                         <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-                        <h5 className="font-medium text-pink text-sm xl:text-lg">Our core</h5>
+                        <h5 className="font-medium text-pink text-sm xl:text-lg">Our pulse</h5>
                     </div>
                     <div className="pt-4 pb-2 md:py-5 flex justify-between">
                         <h1 className="text-black font-light">Transformation <br /> grounded in <span className='font-medium'>insights, <br /> knowledge, and action</span></h1>
