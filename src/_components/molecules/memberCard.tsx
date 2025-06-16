@@ -58,7 +58,7 @@ export const MemberCard = ({ image, title, desig, link }: MemberCardProps) => {
         )}
         <div className="bg-white w-[14rem]  lg:h-auto rounded">
           <h6 className="pt-1 2xl:pt-2 px-2 font-medium">{title}</h6>
-          <p className="px-2 text-sm font-light text-black">{desig}</p>
+          <p className="px-2 text-sm font-light text-black pb-1">{desig}</p>
         </div>
       </div>
     </div>
