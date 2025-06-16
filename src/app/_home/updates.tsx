@@ -31,7 +31,7 @@ export default function Updates() {
         {/* Left Column */}
         <div className="border-r border-white/50 xl:block hidden">
           <div className="   hidden xl:block">
-            <h4 className="text-white me-4 text-nowrap ">Latest Updates</h4>
+            <h4 className="text-white me-4 text-nowrap ">Latest updates</h4>
             <div className="flex gap-5 py-4 justify-center  lg:justify-start md:gap-4 ">
               <button
                 className={`swiper-solution-prev-btn-hero cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink

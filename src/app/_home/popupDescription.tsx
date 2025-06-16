@@ -23,7 +23,7 @@ export default function PopupDescription({
           <div className="bg-white  rounded-lg max-w-xl my-auto lg:w-full  h-auto lg:h-[44rem]  lg:max-w-screen-2xl relative md:m-4 m-2">
             <button
               onClick={onclose}
-              className="scale-90 z-1 sm:scale-100 absolute top-2 right-3 md:top-7 md:right-7 xl:top-5 xl:right-5 h-10 w-10 text-darkBrown d bg-pink   border-[1px] border-darkBrown transition-all duration-300 rounded-full flex justify-center items-center text-xl   cursor-pointer"
+              className="scale-90 z-1 sm:scale-100 absolute top-2 right-3 md:top-7 md:right-7 xl:top-5 xl:right-5 h-10 w-10 text-darkBrown d bg-pink border-[1px] border-darkBrown transition-all duration-300 rounded-full flex justify-center items-center text-xl   cursor-pointer"
             >
               <RxCross2 className="text-white" />
             </button>
