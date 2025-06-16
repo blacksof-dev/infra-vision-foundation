@@ -9,6 +9,7 @@ interface bannerProps {
   mobileimage?: StaticImageData;
   classes?: string;
   buttonText?: string;
+  link?:string
 }
 
 import { RiArrowRightSLine } from "react-icons/ri";
@@ -21,6 +22,7 @@ export default function Banner({
   mobileimage,
   classes,
   buttonText,
+  link,
 }: bannerProps) {
   return (
     <>
@@ -78,15 +80,18 @@ export default function Banner({
                 {buttonText && (
                   <HeroBtnPink
                     text={buttonText}
-                    role="button"
+                    role="link"
                     borderColor="pink"
                     color="white"
                     bgColor="transparent"
                     size="large"
                     aarowColor="white"
                     classes="font-medium"
+                    link={link}
+                    target={"_blank"}
                   />
                 )}
+               
               </div>
             </div>
           </div>
