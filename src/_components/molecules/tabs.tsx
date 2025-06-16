@@ -1,7 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import clsx from "clsx";
 import { useSelector } from 'react-redux';
+import { useHeader } from "@/context/useHeader";
 
 
 type TabId = string;
@@ -13,14 +14,31 @@ type Props = {
   sectionRefs: Record<TabId, React.RefObject<HTMLDivElement | null>>;
 };
 
-export default function OutreachTabs({ sectionRefs,tabs }: Props) {
+export default function OutreachTabs({ sectionRefs, tabs }: Props) {
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState<TabId>("highlight");
   const [isStickyVisible, setStickyVisible] = useState(true);
-
-  const handleTabClick = (id: TabId) => {
+  const { isHeaderVisible } = useHeader()
+  const handleTabClick = (id: TabId, index: number) => {
     sectionRefs[id]?.current?.scrollIntoView({ behavior: "smooth" });
     setActiveTab(id);
+    scrollToCenter(index);
   };
+
+  const scrollToCenter = (index: number) => {
+    const tab = tabRefs.current[index];
+    const container = containerRef.current;
+
+    if (tab && container) {
+      // const containerRect = container.getBoundingClientRect();
+      // const tabRect = tab.getBoundingClientRect();
+      const offset =
+        tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
+      container.scrollTo({ left: offset, behavior: 'smooth' });
+    }
+  };
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -42,13 +60,13 @@ export default function OutreachTabs({ sectionRefs,tabs }: Props) {
         // Sort by most visible section
         visibilityMap.sort((a, b) => b.ratio - a.ratio);
 
-      
+
         if (visibilityMap.length > 0 && visibilityMap[0].ratio > 0) {
           const topVisible = visibilityMap[0].id;
           if (topVisible !== activeTab) {
             setActiveTab(topVisible);
           }
-          setStickyVisible(true); 
+          setStickyVisible(true);
         } else {
           setStickyVisible(false)
         }
@@ -71,22 +89,27 @@ export default function OutreachTabs({ sectionRefs,tabs }: Props) {
 
   return (
     <div
+      ref={containerRef}
       className={clsx(
-        "border-b border-darkgray/16 ",
+        "border-b overflow-hidden w-container  border-darkgray/16 transition-all duration-200 ease-linear",
         "bg-white",
         "z-50",
         "sticky",
         "top-0",
-        isStickyVisible ? "block" : "hidden"
+        isStickyVisible ? "block" : "hidden",
+        isHeaderVisible ? "sticky top-20 xl:top-24" : "top-0"
       )}
     >
-      <div className="flex gap-5 w-container sm:gap-20 md:pt-8  justify-start  sticky top-0 z-40">
-        {tabs.map((tab) => (
+      <div className="flex gap-5  sm:gap-20 md:pt-8  justify-start    z-40  w-fit ">
+        {tabs.map((tab, index) => (
           <button
             key={tab.id}
-            onClick={() => handleTabClick(tab.id)}
+            ref={(el: HTMLButtonElement | null) => {
+              tabRefs.current[index] = el;
+            }}
+            onClick={() => handleTabClick(tab.id, index)}
             className={clsx(
-              "py-4 text-sm md:text-lg cursor-pointer  text-darkgray border-b-2 transition-all",
+              "py-4 text-nowrap text-sm md:text-lg cursor-pointer  text-darkgray border-b-2 transition-all",
               activeTab === tab.id
                 ? "text-pink border-pink font-medium"
                 : "border-transparent"

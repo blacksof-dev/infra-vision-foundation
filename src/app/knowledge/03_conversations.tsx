@@ -180,7 +180,7 @@ export default function Conversations() {
             spaceBetween={30}
             slidesPerView={1}
             breakpoints={{
-              360: { slidesPerView: 1.1 },
+              360: { slidesPerView: 1.07 },
               540: { slidesPerView: 1.2 },
               768: { slidesPerView: 2.1 },
               1024: { slidesPerView: 2.3 },
@@ -191,7 +191,7 @@ export default function Conversations() {
             {people.map((person, idx) => (
               <SwiperSlide key={idx}>
                 <div className="    overflow-hidden flex flex-col h-full">
-                  <div className="relative w-full h-[24rem] rounded-xl overflow-hidden">
+                  <div className="relative w-full h-[20rem] sm:h-[24rem] rounded-xl overflow-hidden">
                     <Image
                       src={person.image}
                       alt={person.name}
@@ -220,7 +220,7 @@ export default function Conversations() {
                       {/* Text overlay */}
                       <div className="  bg-white rounded px-4 py-3 shadow z-20">
                         <p className="font-medium text-black">{person.name}</p>
-                        <p className="text-sm text-drakgray">{person.title}</p>
+                        <p className="text-sm text-drakgray leading-4 xl:leading-5">{person.title}</p>
                       </div>
                     </div>
                   </div>
@@ -237,18 +237,16 @@ export default function Conversations() {
           <div className="flex items-center justify-between mt-6">
             <div className="flex gap-3">
               <button
-                className={`swiper-conv-prev-btn cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white transition-opacity duration-200 ${
-                  isBeginning ? "opacity-50 cursor-not-allowed" : "opacity-100"
-                }`}
+                className={`swiper-conv-prev-btn cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white transition-opacity duration-200 ${isBeginning ? "opacity-50 cursor-not-allowed" : "opacity-100"
+                  }`}
                 aria-label="Previous slide"
                 disabled={isBeginning}
               >
                 <GoArrowLeft />
               </button>
               <button
-                className={`swiper-conv-next-btn cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-white transition-opacity duration-200 ${
-                  isEnd ? "opacity-50 cursor-not-allowed" : "opacity-100"
-                }`}
+                className={`swiper-conv-next-btn cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-white transition-opacity duration-200 ${isEnd ? "opacity-50 cursor-not-allowed" : "opacity-100"
+                  }`}
                 aria-label="Next slide"
                 disabled={isEnd}
               >

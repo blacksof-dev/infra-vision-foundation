@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 
 import img_01 from "@/../public/assets/knowledeg/blogs/01.jpg";
 import img_02 from "@/../public/assets/knowledeg/blogs/02.jpg";
@@ -81,9 +81,24 @@ const allcards = [
 ];
 
 export default function Blogs() {
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [selectedTab, setSelectedTab] = useState<FilterType>("All");
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
+
+  const scrollToCenter = (index: number) => {
+    const tab = tabRefs.current[index];
+    const container = containerRef.current;
+
+    if (tab && container) {
+      // const containerRect = container.getBoundingClientRect();
+      // const tabRect = tab.getBoundingClientRect();
+      const offset =
+        tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
+      container.scrollTo({ left: offset, behavior: 'smooth' });
+    }
+  };
 
   const handleTabClick = (tab: FilterType) => {
     setSelectedTab(tab);
@@ -97,8 +112,9 @@ export default function Blogs() {
     setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
 
-  const handleFilterClick = (filterName: string) => {
+  const handleFilterClick = (filterName: string, index: number) => {
     setSelectedFilter(filterName);
+    scrollToCenter(index);
   };
 
   const filteredCards = useMemo(() => {
@@ -118,17 +134,20 @@ export default function Blogs() {
   };
 
   const renderFilterButtons = (filters: readonly string[]) => (
-    <div className="pt-5">
-      <div className="flex flex-wrap gap-3">
-        {filters.map((filter) => (
+    <div ref={containerRef} className="pt-5 overflow-scroll no-scrollbar">
+      <div className="flex   gap-3">
+        {filters.map((filter, index) => (
           <button
             key={filter}
-            className={`text-base cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
+            ref={(el: HTMLButtonElement | null) => {
+              tabRefs.current[index] = el;
+            }}
+            className={`text-base text-nowrap cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
                             ${selectedFilter === filter
                 ? "border border-pink text-white bg-pink font-medium"
                 : "border border-lightgray/30"
               }`}
-            onClick={() => handleFilterClick(filter)}
+            onClick={() => handleFilterClick(filter, index)}
           >
             {filter}
           </button>
@@ -192,6 +211,9 @@ export default function Blogs() {
             className={`${selectedTab === "Publication Year" ? "pt-8" : "pt-8"
               }`}
           >
+            {
+              filteredCards.length === 0 && <div className="flex justify-center"> No results </div>
+            }
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 xlg:gap-24">
               {filteredCards.slice(0, visibleCount).map((card) => (
                 <div key={card.id}>

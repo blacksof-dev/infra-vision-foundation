@@ -2,9 +2,11 @@
 import rail from "@/../public/assets/home/whoWeAre/knowledge/rail.png";
 import highway from "@/../public/assets/home/whoWeAre/knowledge/highway.png";
 import rajivRanjan from "@/../public/assets/home/whoWeAre/knowledge/rajivRanjan.png";
-import infraKatha from "@/../public/assets/home/whoWeAre/advocacy/infraKatha.png";
+// import infraKatha from "@/../public/assets/home/whoWeAre/advocacy/infraKatha.png";
+import infraKatha from "@/../public/assets/infrakatha/banner/banner.jpg";
 import infraShakti from "@/../public/assets/home/whoWeAre/advocacy/infraPandit.png";
-import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infraShakti.png";
+// import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infraShakti.png";
+import infraPandit from "@/../public/assets/infrapandit/bannerBg.png";
 import { useState } from "react";
 import Card from "@/_components/molecules/cardTemplate";
 import { useHeader } from "@/context/useHeader";
@@ -72,10 +74,10 @@ const advocacy = [
   {
     id: 3,
     img: infraPandit.src,
-    category: "InfraPandit",
+    category: "InfraPandit Awards",
     title:
       "Another flagship initiative recognising outstanding doctoral research on infrastructure, fostering youth participation in India's infra evolution",
-    link: "",
+    link: "/infrapandit-awards",
   },
 ];
 
