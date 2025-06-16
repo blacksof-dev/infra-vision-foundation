@@ -164,7 +164,7 @@ const advisory = [
   },
   {
     image: GeetanjaliKirloskar,
-    title: "Geetanjali Kirloskar",
+    title: "Geetanjali V. Kirloskar",
     desig: "Member, Council of Advisors",
     link: "https://www.linkedin.com/in/geetanjali-kirloskar-b04203154/",
   },
@@ -183,7 +183,7 @@ const advisory = [
 
   {
     image: khurshed,
-    title: "Khurshed",
+    title: "Khurshed Daruvala",
     desig: "Member, Council of Advisors",
     link: "https://www.linkedin.com/in/khurshed-daruvala/",
   },
@@ -248,12 +248,12 @@ const team = [
   {
     image: KavereeBamzai,
     title: "Kaveree Bamzai",
-    desig: "Head Advocacy",
+    desig: "Head - Advocacy",
     link: "https://www.linkedin.com/in/kavereebamzai/",
   },
   {
     image: MutumChaobisana,
-    title: "Dr. Mutum Chaobisana",
+    title: "Dr Mutum Chaobisana",
     desig: "Head Programmes",
     link: "https://www.linkedin.com/in/dr-mutum-chaobisana-83647017/",
   },

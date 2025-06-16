@@ -77,23 +77,24 @@ export default function AboutUsTabs({ sectionRefs }: Props) {
   }, [sectionRefs, activeTab]);
 
   return (
-    <div
-      className={clsx(
-        "border-b border-darkgray/16 ",
-        "bg-white",
-        "z-50",
-        "sticky",
-       "top-0",
-        isStickyVisible ? "block" : "hidden"
-      )}
-    >
-      <div className="flex gap-5 w-container sm:gap-20 md:pt-8  justify-start  sticky top-0 z-40">
+  <div
+    className={clsx(
+      "border-b border-darkgray/16",
+      "bg-white",
+      "z-50",
+      "sticky",
+      "top-0",
+      isStickyVisible ? "block" : "hidden"
+    )}
+  >
+    <div className="w-container overflow-x-auto">
+      <div className="flex gap-5 sm:gap-20 md:pt-8 justify-start w-max whitespace-nowrap px-4">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => handleTabClick(tab.id)}
             className={clsx(
-              "py-4 text-sm md:text-lg cursor-pointer  text-darkgray border-b-2 transition-all",
+              "py-4 text-sm md:text-lg cursor-pointer text-darkgray border-b-2 transition-all min-w-max",
               activeTab === tab.id
                 ? "text-pink border-pink font-medium"
                 : "border-transparent"
@@ -104,5 +105,7 @@ export default function AboutUsTabs({ sectionRefs }: Props) {
         ))}
       </div>
     </div>
-  );
+  </div>
+);
+
 }

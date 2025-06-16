@@ -12,7 +12,7 @@ const Pathway = () => {
               <h1 className=" font-light">The touchpoints of <span className='font-medium'>impactful change</span></h1>
               <div className="w-full ">
                 <h6 className="font-normal  tracking-[1%] py-4">
-                  To help India build robust and resilient infrastructure, The Infravision Foundation churns the expertise of its thought leaders through a rigorous process.
+                  To help India build robust and resilient infrastructure, <span className='font-semibold'>The Infravision Foundation</span> churns the expertise of its thought leaders through a rigorous process.
                 </h6>
               </div>
           </div>
