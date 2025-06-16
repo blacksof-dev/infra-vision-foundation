@@ -94,7 +94,7 @@ export function HeroBtn<T extends "submit" | "button">({
           >
             <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
             <GoArrowRight
-              className={`   text-pink  group-hover:text-white text-2xl z-[2]`}
+              className={` ${aarowColor} text-pink  group-hover:text-white  text-2xl z-[2]`}
             />
           </div>
         </Link>

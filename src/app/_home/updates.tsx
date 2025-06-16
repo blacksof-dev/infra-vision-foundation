@@ -78,15 +78,15 @@ export default function Updates() {
               768: { slidesPerView: 2.2 },
               1024: { slidesPerView: 2.9 },
               1280: { slidesPerView: 3.5 },
-              1536: { slidesPerView: 4.23 },
+              1536: { slidesPerView: 3.5 },
             }}
             onSlideChange={handleSlideChange}
           >
             {EventsDetails.map((ele, index) => (
               <SwiperSlide key={index} className="!w-fit group ">
                 <Link href={ele.link} target="_blank">
-                  <div className="flex flex-row gap-4 bg-[#0000005e]  backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4 w-[22rem] sm:w-[24rem]  xl:w-[40rem]  h-[9rem]  lg:h-[10rem] xl:h-[13rem] xlg:h-[16rem] 2xl:h-[18rem] group-hover:bg-white transition-all duration-500 ease-linear">
-                    <div className="w-[6rem]   h-full md:w-[14rem]    xl:w-[22rem]   relative ">
+                  <div className="flex flex-row gap-4 bg-[#0000005e]  backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4 w-[22rem] sm:w-[24rem] lg:w-[30rem] xl:w-[40rem] xlg:w-[50rem]  h-[9rem]  lg:h-[10rem] xl:h-[13rem] xlg:h-[16rem] 2xl:h-[18rem] group-hover:bg-white transition-all duration-500 ease-linear">
+                    <div className="w-[6rem]   h-full md:w-[14rem] lg:w-[13rem]  xl:w-[20rem]  xlg:w-[30rem]   relative ">
                       <Image
                         src={ele.image}
                         alt={ele.title}
@@ -168,16 +168,16 @@ const EventsDetails = [
   },
   {
     image: article,
-    category: "Latest article",
+    category: "Watch now",
     title: "Why India needs a national plan for building new cities",
     btnTitle: "Read more",
-    link: "/knowledge",
+    link: "https://www.youtube.com/watch?v=g5aA3Q3af1g&ab_channel=TheInfravisionFoundation",
   },
   {
     image: agriWarehousing,
     category: "Blog",
     title: "How to make India’s highways safe",
     btnTitle: "Read more",
-    link: "https://theinfravisionfoundation.org/2024/10/16/a-national-road-safety-authority-crucial-for-improving-indias-deteriorating-road-safety/",
+    link: "/knowledge#blogs",
   },
 ];

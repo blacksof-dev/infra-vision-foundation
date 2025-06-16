@@ -7,6 +7,7 @@ import infraShakti from "@/../public/assets/home/whoWeAre/advocacy/infraPandit.p
 import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infraShakti.png";
 import { useState } from "react";
 import Card from "@/_components/molecules/cardTemplate";
+import { useHeader } from "@/context/useHeader";
 
 export type TabItem = {
   id: number;
@@ -16,6 +17,7 @@ export type TabItem = {
   link: string;
   date?: string;
   subtitle?: string;
+  ctaText?: string
 };
 
 const knowledge = [
@@ -36,7 +38,8 @@ const knowledge = [
     title:
       "How to save our hill cities? What does carrying capacity mean for planners",
     subtitle: "Rajiv Ranjan Mishra",
-    link: "/knowledge#infravision-conversations",
+    link: "https://www.youtube.com/watch?v=ZdLcdjJShW8&ab_channel=TheInfravisionFoundation",
+    ctaText: "Watch now"
   },
   {
     id: 2,
@@ -64,7 +67,7 @@ const advocacy = [
     category: "InfraShakti Awards",
     title:
       "A flagship initiative in association with NDTV, celebrating changemakers unlocking impact at scale through infrastructure-led innovation.",
-    link: "/infraShakti",
+    link: "/infrashakti-awards",
   },
   {
     id: 3,
@@ -124,7 +127,7 @@ export default function WhoWeAre() {
               </h6>
             </div>
           </div>
-          <div className="blade-top-padding-sm">
+          <div className=" relative">
             <TabSwitch setActiveTab={setActiveTab} activeTab={activeTab} />
           </div>
         </main>
@@ -140,29 +143,34 @@ export const TabSwitch = ({
   setActiveTab: (value: string) => void;
   activeTab: string;
 }) => {
+  const { isHeaderVisible } = useHeader()
   return (
     <div>
-      <div className="flex flex-row justify-center items-center gap-12 md:gap-18 border-b mx-auto  border-darkgray/16 w-fit">
-        <button
-          onClick={() => setActiveTab("Knowledge")}
-          className={`text-base cursor-pointer  md:text-xl   ${activeTab === "Knowledge"
-            ? "font-medium  border-b-2 border-pink pb-3 text-pink"
-            : "text-darkgray  pb-3"
-            }`}
-        >
-          Knowledge
-        </button>
-        <button
-          onClick={() => setActiveTab("Advocacy")}
-          className={` text-base cursor-pointer  md:text-xl ${activeTab === "Advocacy"
-            ? "font-medium  border-b-2 pb-3 border-pink text-pink"
-            : "text-darkgray  pb-3"
-            }`}
-        >
-          Advocacy
-        </button>
+      <div className={`${isHeaderVisible ? "top-20 xl:top-24" : "top-0"} sticky bg-whitesmoke py-6 xl:py-8 z-[99] transition-all duration-200 ease-linear`}>
+
+        <div className=" flex flex-row justify-center items-center gap-12 md:gap-18 border-b mx-auto  border-darkgray/16 w-fit">
+          <button
+            onClick={() => setActiveTab("Knowledge")}
+            className={`text-base cursor-pointer  md:text-xl   ${activeTab === "Knowledge"
+              ? "font-medium  border-b-2 border-pink pb-3 text-pink"
+              : "text-darkgray  pb-3"
+              }`}
+          >
+            Knowledge
+          </button>
+          <button
+            onClick={() => setActiveTab("Advocacy")}
+            className={` text-base cursor-pointer  md:text-xl ${activeTab === "Advocacy"
+              ? "font-medium  border-b-2 pb-3 border-pink text-pink"
+              : "text-darkgray  pb-3"
+              }`}
+          >
+            Advocacy
+          </button>
+        </div>
       </div>
-      <div className="pt-8">
+
+      <div className="">
         {activeTab === "Knowledge" ? (
           <TabContent data={knowledge} />
         ) : (
@@ -185,6 +193,7 @@ export const TabContent = ({ data }: { data: TabItem[] }) => {
           link={item.link}
           category={item.category}
           subtitle={item.subtitle}
+          ctaText={item.ctaText ? item.ctaText : "Read more"}
           classes=" text-lg md:text-xl text-black"
         />
       ))}

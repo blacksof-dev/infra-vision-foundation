@@ -266,7 +266,7 @@ const footer = () => {
                     </ul>
                   </li>
                 </ul>
-                <li className="flex items-center gap-3 mt-8">
+                <li className="flex items-center gap-3 mt-4 xl:mt-6 2xl:mt-8">
                   <div className="w-3 h-3 rounded-full bg-darkgray opacity-30"></div>
                   <span className="text-black hover:text-pink text-xl">
                     <Link href="/get-involved">Get involved</Link>
@@ -275,7 +275,7 @@ const footer = () => {
 
               </ul>
             </div>
-            <div className="">
+            <div className="mt-4 xl:mt-0">
               <div className=" h-full   pt-4 lg:py-9  lg:border-l-1 lg:border-lightgray/20 lg:ps-4 xl:ps-10">
                 <div className="">
                   <div className="flex flex-row gap-1  items-center">

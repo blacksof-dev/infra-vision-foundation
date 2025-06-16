@@ -9,70 +9,91 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import Mobilenav from "./mobileNav";
 import { usePathname } from "next/navigation";
+import { useHeader } from "@/context/useHeader";
 
 function Header() {
   const pathname = usePathname();
-
   const [open, setopen] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [showNavBg, setshowNavBg] = useState<boolean>(false);
   const [lastScrollY, setlastScrollY] = useState(0);
-  const [showNavbar, setShowNavbar] = useState<boolean>(true);
   const [scrolled, setScrolled] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [mounted, setMounted] = useState(false);
+  const { setIsHeaderVisible: setShowNavbar, isHeaderVisible: showNavbar } = useHeader();
 
-  /*************** For Up and down nav hide code ***********************/
-
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY;
-    if (currentScrollY > lastScrollY) {
-      setShowNavbar(false);
-    } else {
-      setShowNavbar(true);
-    }
-
-    setlastScrollY(currentScrollY);
-  };
-
-  const handlehamberg = () => {
-    setIsMenuOpen((prev) => !prev);
-  };
-
+  // Set mounted state to true after component mounts
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
+    setMounted(true);
+  }, []);
+
+  // Reset header visibility when pathname changes
+  useEffect(() => {
+    if (!mounted) return;
+    setShowNavbar(true);
+    setlastScrollY(window.scrollY);
+  }, [pathname, setShowNavbar, mounted]);
+
+  // Handle mobile detection and scroll events
+  useEffect(() => {
+    if (!mounted) return;
+
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
     };
-  }, [lastScrollY, handleScroll]);
 
-  /****************************************************************** */
+    const handleResize = () => {
+      checkMobile();
+      if (window.innerWidth <= 768) {
+        setShowNavbar(true); // Always show navbar on mobile
+      }
+    };
 
-  //scroll should be avoid if mobile view navbar is open
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > 100 && !isMobile) {
+        setShowNavbar(false);
+      } else {
+        setShowNavbar(true);
+      }
+      setlastScrollY(currentScrollY);
 
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [isMenuOpen]);
-
-  useEffect(() => {
-    const homeNavScroll = () => {
-      const offset = window.scrollY;
-      if (offset > 120) {
+      // Handle scrolled state
+      if (currentScrollY > 50) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
     };
 
-    window.addEventListener("scroll", homeNavScroll);
-    return () => window.removeEventListener("scroll", homeNavScroll);
-  }, []);
+    checkMobile(); // Initial check
+    window.addEventListener('resize', handleResize);
 
-  //Navbar color change for specifice routes
 
+    window.addEventListener("scroll", handleScroll);
+
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [lastScrollY, isMobile, mounted, setShowNavbar]);
+
+  // Handle body scroll lock for mobile menu
   useEffect(() => {
+    if (!mounted) return;
+
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isMenuOpen, mounted]);
+
+  //Navbar color change for specific routes
+  useEffect(() => {
+    if (!mounted) return;
+
     const activeUrl = [
       "/home",
       "/infrakatha",
@@ -81,27 +102,27 @@ function Header() {
       "/archive",
     ];
 
-    if (!activeUrl.includes(pathname)) {
-      setshowNavBg(false);
-    } else {
-      setshowNavBg(true);
-    }
-  }, [pathname]);
+    setshowNavBg(activeUrl.includes(pathname));
+  }, [pathname, mounted]);
+
+  // Don't render anything until mounted to prevent hydration mismatch
+  if (!mounted) {
+    return null;
+  }
+
+  const handlehamberg = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full transition-transform duration-300 p-3 z-[999] ${
-          showNavbar ? "translate-y-0 " : "-translate-y-full "
-        } ${
-          showNavBg
+        className={`fixed top-0 left-0 w-full transition-all ease-linear duration-200 p-3 z-[9999] ${isMobile ? "translate-y-0" : showNavbar ? "translate-y-0" : "-translate-y-full"
+          } ${showNavBg
             ? "bg-white border-b-1 border-lightgray/20 shadow-sm"
             : "bg-transparent"
-        } 
-
-          ${scrolled ? "bg-white shadow-md" : "bg-transparent"}
-
-        `}
+          } ${scrolled ? "bg-white shadow-md" : ""
+          }`}
       >
         <div className="w-container">
           <div className="flex flex-row justify-between ">
