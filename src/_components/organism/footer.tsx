@@ -10,11 +10,12 @@ import SocialMedia from "../atoms/socialMedia";
 import { GoArrowUp } from "react-icons/go";
 import ArrowScope from "../atoms/visiblityScope";
 import { LocateIcon, MapPin } from "lucide-react";
+import { Checkbox } from "../ui/checkbox";
 
 const footer = () => {
   return (
     <>
-      <footer className="blade-top-padding-lg  ">
+      <footer className="blade-top-padding ">
         <div className=" w-container">
           <div className=" flex lg:flex-row flex-col lg:justify-between lg:items-end border-b-1 border-gray/60 pb-6 md:pb-9">
             <div className="w-[45%] sm:w-[35%]  h-[30%] md:h-full  lg:w-[20%] mb-4 md:mb-0">
@@ -53,14 +54,18 @@ const footer = () => {
                     />
                   </div>
                 </div>
+                <div className="flex gap-2  pt-5">
+                  {/* input
+                  <label className="w-5 h-4 mt-1 sm:mt-0  sm:w-5 sm:h-5 border-1 border-pink"></label> */}
+                  {/* <che */} <Checkbox
+                    className="w-5 h-5 rounded border border-pink cursor-pointer"
+                  />
+                  <p className="text-darkgray text-sm">
+                    I agree to receive updates on newsletters from The Infravision
+                    Foundation.
+                  </p>
+                </div>
               </form>
-              <div className="flex gap-2  pt-5">
-                <div className="w-5 h-4 mt-1 sm:mt-0  sm:w-5 sm:h-5 border-1 border-pink"></div>
-                <p className="text-darkgray text-sm">
-                  I agree to receive updates on newsletters from The Infravision
-                  Foundation.
-                </p>
-              </div>
             </div>
           </div>
           <div className="flex  lg:flex-row flex-col pt-5 lg:pt-0 lg:gap-8  border-b-1 border-gray/60 ">
@@ -68,7 +73,11 @@ const footer = () => {
               <ul>
                 <li className="flex items-center gap-3">
                   <div className="w-3 h-3 rounded-full bg-darkgray/30 "></div>
-                  <span className="text-black text-xl ">About us</span>
+                  <span className="text-black hover:text-pink text-xl ">
+                    <Link href="/about-us">
+                      About us
+                    </Link>
+                  </span>
                 </li>
 
                 <li className="md:pt-2 xl:pt-4">
@@ -78,7 +87,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        href="/about-us"
+                        href="/about-us#who-we-are"
                         text="Who we are"
                       />
                     </li>
@@ -87,7 +96,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        href="/#infravisionaries"
+                        href="/about-us#infravisionaries"
                         text="The Infravisionaries"
                       />
                     </li>
@@ -96,7 +105,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        // href="/vision-mission"
+                        href="/about-us#mission-and-vision"
                         text="Vision and Mission"
                       />
                     </li>
@@ -106,7 +115,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        // href="/collaborate-with-us"
+                        href="/about-us#our-pulse"
                         text="Our pulse"
                       />
                     </li>
@@ -115,7 +124,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        // href="/collaborate-with-us"
+                        href="/about-us#project-pathway"
                         text="The project pathway"
                       />
                     </li>
@@ -136,7 +145,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        // href="/infraShakti-awards"
+                        href="/infrashakti-awards"
                         text="InfraShakti Awards"
                       />
                     </li>
@@ -154,7 +163,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        // href="/caira"
+                        href="/infrapandit-awards"
                         text="InfraPandit Awards"
                       />
                     </li>
@@ -164,7 +173,7 @@ const footer = () => {
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         href="/outreach-and-engagements"
-                        text="Outreach and engagement"
+                        text="Outreach and Engagement"
                       />
                     </li>
                   </ul>
@@ -174,7 +183,11 @@ const footer = () => {
               <ul>
                 <li className="flex items-center gap-3 ">
                   <div className="w-3 h-3 rounded-full bg-darkgray opacity-30"></div>
-                  <span className="text-black text-xl">Knowledge</span>
+                  <span className="text-black hover:text-pink text-xl">
+                    <Link href="/knowledge">
+                      Knowledge
+                    </Link>
+                  </span>
                 </li>
 
                 <li className="md:pt-2 xl:pt-4">
@@ -185,10 +198,9 @@ const footer = () => {
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         href="/knowledge#research-papers"
-                        text="Research papers"
+                        text="Research Papers"
                       />
                     </li>
-
                     <li>
                       <TextAnchor
                         color="dark"
@@ -203,7 +215,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        // href="/news-and-media"
+                        href="/knowledge#blogs"
                         text="Blogs"
                       />
                     </li>
@@ -212,19 +224,55 @@ const footer = () => {
               </ul>
 
               <ul>
-                <li className="flex items-center gap-3 ">
+                <ul>
+                  <li className="flex items-center gap-3 ">
+                    <div className="w-3 h-3 rounded-full bg-darkgray opacity-30"></div>
+                    <span className="text-black hover:text-pink text-xl">
+                      <Link href="/archive">
+                        Archives
+                      </Link>
+                    </span>
+                  </li>
+
+                  <li className="md:pt-2 xl:pt-4">
+                    <ul>
+                      <li>
+                        <TextAnchor
+                          color="dark"
+                          size="base"
+                          className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
+                          href="/archive#newsletters"
+                          text="Newsletters"
+                        />
+                      </li>
+                      <li>
+                        <TextAnchor
+                          color="dark"
+                          size="base"
+                          className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
+                          href="/archive#news-and-media"
+                          text="News and Media"
+                        />
+                      </li>
+                      <li>
+                        <TextAnchor
+                          color="dark"
+                          size="base"
+                          className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
+                          href="/archive#gallery"
+                          text="Gallery"
+                        />
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <li className="flex items-center gap-3 mt-8">
                   <div className="w-3 h-3 rounded-full bg-darkgray opacity-30"></div>
-                  <span className="text-black text-xl">
+                  <span className="text-black hover:text-pink text-xl">
                     <Link href="/get-involved">Get involved</Link>
                   </span>
                 </li>
 
-                <li className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full bg-darkgray opacity-30"></div>
-                  <span className="text-black text-xl py-3">
-                    <Link href="/archive#gallery">Gallery</Link>
-                  </span>
-                </li>
               </ul>
             </div>
             <div className="">

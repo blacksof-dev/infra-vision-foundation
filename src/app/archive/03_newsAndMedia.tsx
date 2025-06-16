@@ -92,8 +92,8 @@ export default function NewsAndMedia() {
       tab === "Publication Year"
         ? YEARS[0]
         : tab === "sectors"
-        ? SECTORS[0]
-        : "All"
+          ? SECTORS[0]
+          : "All"
     );
     setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
@@ -125,11 +125,10 @@ export default function NewsAndMedia() {
           <button
             key={filter}
             className={`text-base cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
-                            ${
-                              selectedFilter === filter
-                                ? "border border-pink text-white bg-pink font-medium"
-                                : "border border-lightgray/30"
-                            }`}
+                            ${selectedFilter === filter
+                ? "border border-pink text-white bg-pink font-medium"
+                : "border border-lightgray/30"
+              }`}
             onClick={() => handleFilterClick(filter)}
           >
             {filter}
@@ -140,7 +139,7 @@ export default function NewsAndMedia() {
   );
 
   return (
-    <div>
+    <section id="news-and-media">
       <div className="w-container blade-top-padding-sm blade-bottom-padding-sm">
         {/* Header Section */}
         <div className="flex flex-row items-center gap-2 md:gap-3">
@@ -172,11 +171,10 @@ export default function NewsAndMedia() {
                 <button
                   key={tab}
                   className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4
-                                        ${
-                                          selectedTab === tab
-                                            ? "border border-pink text-pink font-medium"
-                                            : "border border-lightgray/30"
-                                        }`}
+                                        ${selectedTab === tab
+                      ? "border border-pink text-pink font-medium"
+                      : "border border-lightgray/30"
+                    }`}
                   onClick={() => handleTabClick(tab)}
                 >
                   {tab}
@@ -191,9 +189,8 @@ export default function NewsAndMedia() {
 
           {/* Newsletter Cards */}
           <div
-            className={`${
-              selectedTab === "Publication Year" ? "pt-8" : "pt-8"
-            }`}
+            className={`${selectedTab === "Publication Year" ? "pt-8" : "pt-8"
+              }`}
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 xlg:gap-24">
               {filteredCards.slice(0, visibleCount).map((card) => (
@@ -227,6 +224,6 @@ export default function NewsAndMedia() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
