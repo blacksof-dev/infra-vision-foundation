@@ -168,9 +168,9 @@ const EventsDetails = [
   },
   {
     image: article,
-    category: "Watch now",
+    category: "Latest video",
     title: "Why India needs a national plan for building new cities",
-    btnTitle: "Read more",
+    btnTitle: "Watch now",
     link: "https://www.youtube.com/watch?v=g5aA3Q3af1g&ab_channel=TheInfravisionFoundation",
   },
   {
