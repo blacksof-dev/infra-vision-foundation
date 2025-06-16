@@ -26,20 +26,17 @@ export default function Banner({
     <>
       <div className="pt-[5rem] sm:pt-[6rem]">
         <div className="relative ">
-          <div
-            className={`h-[20rem] md:h-[28rem] xl:h-[40rem] bg-black ${
-              mobileimage ? "md:block hidden" : ""
-            }`}
-          >
+          {/* <div className={`w-full h-[40rem] md:h-[36rem] xl:h-[40rem] bg-black ${mobileimage ? "md:block hidden" : ""}`}> */}
+          <div className={`w-full h-[25rem] md:h-[36rem] xl:h-[40rem] bg-black ${mobileimage ? "md:block hidden" : ""}`}>
             <Image
               src={image}
               alt="Publication Banner"
-              className="w-full h-full object-cover object-right [mask-image:linear-gradient(to_top,transparent,black_40%)]"
+              className="w-full h-full object-cover [mask-image:linear-gradient(to_top,transparent,black_40%)]"
               unoptimized={true}
             ></Image>
           </div>
           {mobileimage && (
-            <div className="md:hidden block">
+            <div className="md:hidden block h-[40rem]">
               <Image
                 src={mobileimage}
                 alt="Publication Banner"
@@ -47,8 +44,8 @@ export default function Banner({
               ></Image>
             </div>
           )}
-          <div className="w-container ">
-            <div className="absolute top-9  sm:top-12 md:top-18 flex flex-col  justify-between h-[88%] sm:h-[80%]">
+          <div className="w-container overflow-hidden">
+            <div className="absolute w-auto sm:w-auto top-9  sm:top-12 md:top-18 flex flex-col  justify-between h-[88%] sm:h-[80%]">
               <div className="flex flex-row gap-1">
                 <svg
                   width="28"
@@ -68,7 +65,7 @@ export default function Banner({
                   {heading}
                 </h5>
               </div>
-              <div className="  w-full">
+              <div className="  w-full ">
                 <h1 className="text-white font-medium ">{title}</h1>
                 <div className={` py-2 sm:py-4 w-full  max-w-lg`}>
                   <h5 className="text-white font-light ">

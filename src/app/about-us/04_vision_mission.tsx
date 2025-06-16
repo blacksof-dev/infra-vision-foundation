@@ -36,6 +36,8 @@ const VisionMission = () => {
                 </div>
             </div>
 
+            <div className='h-[1px] blade-top-margin opacity-20 w-full bg-[#5D6468]'/>
+
             <div className='blade-top-margin-lg'>
                 <div className="flex items-center gap-2 md:gap-3">
                     <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
