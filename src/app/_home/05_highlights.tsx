@@ -130,32 +130,29 @@ export const TabSwitch = ({
       <div className="flex flex-row gap-6 sm:gap-12  lg:gap-12 md:gap-18 border-b   border-darkgray/16 w-fit">
         <button
           onClick={() => setActiveTab("Outreach and Engagements")}
-          className={` cursor-pointer text-sm sm:text-xl text-wrap  ${
-            activeTab === "Outreach and Engagements"
+          className={` cursor-pointer text-sm sm:text-xl text-wrap  ${activeTab === "Outreach and Engagements"
               ? "font-medium  border-b-2 border-pink pb-3 text-pink"
               : "text-darkgray  pb-3"
-          }`}
+            }`}
         >
           Outreach and Engagements
         </button>
 
         <button
           onClick={() => setActiveTab("Newsletters")}
-          className={` text-sm cursor-pointer  sm:text-xl text-wrap ${
-            activeTab === "Newsletters"
+          className={` text-sm cursor-pointer  sm:text-xl text-wrap ${activeTab === "Newsletters"
               ? "font-medium  border-b-2 pb-3 border-pink text-pink"
               : "text-darkgray  pb-3"
-          }`}
+            }`}
         >
           Newsletters
         </button>
         <button
           onClick={() => setActiveTab("In the News")}
-          className={` text-sm cursor-pointer  sm:text-xl text-wrap ${
-            activeTab === "In the News"
+          className={` text-sm cursor-pointer  sm:text-xl text-wrap ${activeTab === "In the News"
               ? "font-medium  border-b-2 pb-3 border-pink text-pink"
               : "text-darkgray  pb-3"
-          }`}
+            }`}
         >
           In the News
         </button>
@@ -204,6 +201,7 @@ export const TabContent = ({ data }: { data: TabItem[] }) => {
           link={item.link}
           category={item.category}
           subtitle={item.subtitle}
+          ctaText="Read more"
           classes="line-clamp-2 xl:line-clamp-3 text-lg md:text-xl text-black"
         />
       ))}
