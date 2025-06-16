@@ -37,7 +37,7 @@ const ButtonTab = ({ label, value, data, setdata }: ButtonTabProps) => {
   return (
     <div className="py-4 group">
       <button
-        className={`text-white cursor-pointer text-md text-nowrap lg:text-xl relative ${data === value ? "font-medium" : ""
+        className={`text-white cursor-pointer text-md text-nowrap lg:text-xl relative ${data === value ? "font-medium opacity-100" : "opacity-70"
           }`}
         onClick={() => setdata(value)}
       >
@@ -106,7 +106,7 @@ export default function Infravisionaries() {
 
   return (
     <>
-      <section className="bg-pink relative">
+      <section id="infravisionaries" className="bg-pink relative">
         <div className=" absolute top-0 xl:right-8 2xl:right-28 xl:block hidden">
           <svg
             width="594"
@@ -141,18 +141,23 @@ export default function Infravisionaries() {
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-white "></span>
               <h5 className="font-medium text-white">Our Core</h5>
             </div>
-            <div className="pt-4 pb-2 md:py-5 ">
+            <div className="pt-4 md:pt-5 ">
               <h1 className="text-white font-medium">The Infravisionaries</h1>
               <div className="w-full sm:w-[85%] xl:w-[45%]">
                 <h6 className="text-white  tracking-[1%] py-4">
-
-                  <span className="font-semibold"> The Infravision Foundation </span> is a confluence of seasoned professionals with the aim of contributing thought leadership to help shape and evaluate infrastructure-related public policies and programmes.
+                  <span className="font-semibold">
+                    {" "}
+                    The Infravision Foundation{" "}
+                  </span>{" "}
+                  is a confluence of seasoned professionals with the aim of
+                  contributing thought leadership to help shape and evaluate
+                  infrastructure-related public policies and programmes.
                 </h6>
               </div>
             </div>
           </div>
 
-          <div className="md:flex flex-row  w-container hidden ">
+          <div className="md:flex flex-row  w-container hidden blade-top-margin-sm ">
             <div className=" border-r-1 pe-20 border-white/40">
               <ButtonTab
                 label="Trustees"
@@ -230,6 +235,7 @@ export default function Infravisionaries() {
                       </SwiperSlide>
                     );
                   })}
+
                 </Swiper>
               </div>
               <div className="flex pt-3  h-[80px] flex-wrap gap-5 mt-4 justify-start md:gap-4 2xl:mt-1">
@@ -323,7 +329,7 @@ export const MobileMembersSlider = ({
   }, [showPopup]);
 
   return (
-    <div className="md:hidden block pb-7 px-2">
+    <div className="md:hidden block pb-7 px-3 overflow-hidden">
       <div className="py-5">
         <button
           className="text-white text-md text-nowrap lg:text-xl relative font-medium"
@@ -333,10 +339,11 @@ export const MobileMembersSlider = ({
         </button>
       </div>
 
-      <div className="w-full overflow-hidden">
+      <div className="w-full overflow-x-visible sm:overflow-hidden">
         <Swiper
           modules={[Navigation, Pagination]}
           spaceBetween={10}
+          className="!overflow-visible sm:!overflow-hidden"
           grabCursor
           slideToClickedSlide
           slidesPerView={1.1}
@@ -345,7 +352,6 @@ export const MobileMembersSlider = ({
             prevEl: `.prevbtn${navClass}`,
             nextEl: `.nextbtn${navClass}`,
           }}
-
           breakpoints={{
             425: { slidesPerView: 1.3, spaceBetween: 20 },
             640: { slidesPerView: 1.5, spaceBetween: 20 },
@@ -397,7 +403,6 @@ export const MobileMembersSlider = ({
             <GoArrowRight />
           </button>
         </div>
-
       </div>
     </div>
   );

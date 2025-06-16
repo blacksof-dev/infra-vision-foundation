@@ -6,7 +6,9 @@ import { TabItem } from "./02_whoWeAre";
 import telling from "@/../public/assets/home/newsletter/telling.png";
 import forests from "@/../public/assets/home/newsletter/forests.png";
 import caira from "@/../public/assets/home/newsletter/caira.png";
-
+import newsletter_1 from "@/../public/assets/archive/newsletter/01.png";
+import newsletter_2 from "@/../public/assets/archive/newsletter/02.png";
+import newsletter_3 from "@/../public/assets/archive/newsletter/03.png";
 import budget from "@/../public/assets/home/news/budget.png";
 import outlays from "@/../public/assets/home/news/outlays.png";
 import taxation from "@/../public/assets/home/news/taxation.png";
@@ -17,32 +19,42 @@ import InfrapanditAward from "./infraPanditAward";
 const newsletters = [
   {
     id: 1,
-    img: forests.src,
-    category: "Volume 20",
-    date: "January, 2025",
-    title:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
-    link: "",
-  },
-  {
-    id: 3,
-    img: telling.src,
-    category: "Volume 19",
-    date: "December, 2024",
-    title:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+    img: newsletter_1.src,
+    category: "Volume 24",
 
-    link: "",
+    date: "May 2025",
+    title:
+      "The Infravision Foundation’s quadruple impact, Rumjhum Chatterjee at The Edge and more.",
+    link: "/assets/archive/newsletter/INFRAVISION-TALK-May-2025.pdf",
   },
   {
     id: 2,
-    img: caira.src,
-    category: "Volume 18",
-    date: "November, 2024",
+    img: newsletter_2.src,
+    category: "Volume 23",
+
+    date: "April 2025",
     title:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
-    link: "",
+      "From urban decarbonisation and Noida to CAIRA’s first-ever engagement in Arunachal Pradesh and beyond.",
+    link: "/assets/archive/newsletter/INFRAVISION-TALK-April-2025.pdf",
   },
+  {
+    id: 3,
+    img: newsletter_3.src,
+    category: "Volume 22",
+
+    date: "March 2025",
+    title: "New Report urges fast tracking of High-Speed Rail.",
+    link: "/assets/archive/newsletter/INFRAVISION-TALK-March-2025.pdf",
+  },
+  // {
+  //   id: 2,
+  //   img: caira.src,
+  //   category: "Volume 18",
+  //   date: "November, 2024",
+  //   title:
+  //     "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+  //   link: "",
+  // },
 ];
 
 const news = [
@@ -94,7 +106,7 @@ export default function Highlights() {
           </div>
           <div>
             <h1 className="text-black font-light pt-2">
-              A Quick Look at   <span className="font-medium">What We Do</span>
+              A Quick Look at <span className="font-medium">What We Do</span>
             </h1>
           </div>
           <div className="blade-top-padding-sm">
@@ -118,29 +130,32 @@ export const TabSwitch = ({
       <div className="flex flex-row gap-6 sm:gap-12  lg:gap-12 md:gap-18 border-b   border-darkgray/16 w-fit">
         <button
           onClick={() => setActiveTab("Outreach and Engagements")}
-          className={` cursor-pointer text-sm sm:text-xl text-wrap  ${activeTab === "Outreach and Engagements"
-            ? "font-medium  border-b-2 border-pink pb-3 text-pink"
-            : "text-darkgray  pb-3"
-            }`}
+          className={` cursor-pointer text-sm sm:text-xl text-wrap  ${
+            activeTab === "Outreach and Engagements"
+              ? "font-medium  border-b-2 border-pink pb-3 text-pink"
+              : "text-darkgray  pb-3"
+          }`}
         >
           Outreach and Engagements
         </button>
 
         <button
           onClick={() => setActiveTab("Newsletters")}
-          className={` text-sm cursor-pointer  sm:text-xl text-wrap ${activeTab === "Newsletters"
-            ? "font-medium  border-b-2 pb-3 border-pink text-pink"
-            : "text-darkgray  pb-3"
-            }`}
+          className={` text-sm cursor-pointer  sm:text-xl text-wrap ${
+            activeTab === "Newsletters"
+              ? "font-medium  border-b-2 pb-3 border-pink text-pink"
+              : "text-darkgray  pb-3"
+          }`}
         >
           Newsletters
         </button>
         <button
           onClick={() => setActiveTab("In the News")}
-          className={` text-sm cursor-pointer  sm:text-xl text-wrap ${activeTab === "In the News"
-            ? "font-medium  border-b-2 pb-3 border-pink text-pink"
-            : "text-darkgray  pb-3"
-            }`}
+          className={` text-sm cursor-pointer  sm:text-xl text-wrap ${
+            activeTab === "In the News"
+              ? "font-medium  border-b-2 pb-3 border-pink text-pink"
+              : "text-darkgray  pb-3"
+          }`}
         >
           In the News
         </button>

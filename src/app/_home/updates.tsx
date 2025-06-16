@@ -1,4 +1,3 @@
-
 "use client";
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -36,14 +35,12 @@ export default function Updates() {
               <button
                 className={`swiper-solution-prev-btn-hero cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink
                 }`}
-
               >
                 <GoArrowLeft />
               </button>
               <button
                 className={`swiper-solution-next-btn-hero cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink
                 }`}
-
               >
                 <GoArrowRight />
               </button>
@@ -52,9 +49,7 @@ export default function Updates() {
         </div>
 
         {/* Right Column */}
-        <div
-          className="w-screen"
-        >
+        <div className="w-screen">
           <Swiper
             className="!overflow-visible xl:!overflow-hidden"
             modules={[Navigation, Autoplay, Pagination]}
@@ -64,7 +59,7 @@ export default function Updates() {
             }}
             pagination={{
               el: ".custom-pagination-bullets-banner",
-              type: 'fraction',
+              type: "fraction",
             }}
             loop
             grabCursor={true}
@@ -99,32 +94,34 @@ export default function Updates() {
                         className="object-cover object-left rounded"
                       />
                     </div>
-                    <div className="my-auto w-[60%]">
+                    <div className="my-auto w-[60%] flex flex-col h-full  ">
                       <div className="flex items-center gap-3">
                         <span className="w-[10px] h-[10px] rounded-full bg-white group-hover:bg-pink" />
                         <p className="font-light text-white group-hover:text-black">
                           {ele.category}
                         </p>
                       </div>
-                      <div className="py-2">
-                        <h5 className="text-white font-medium lg:font-normal group-hover:text-black   truncate xl:overflow-visible xl:whitespace-normal">
-                          {ele.title}
-                        </h5>
-                      </div>
+                      <div className="mt-auto">
+                        <div className="py-2 ">
+                          <h5 className="text-white font-medium lg:font-normal group-hover:text-black line-clamp-   truncate  xl:whitespace-normal">
+                            {ele.title}
+                          </h5>
+                        </div>
 
-                      <div className="flex gap-2 lg:gap-4 items-center justify-center group  w-fit">
-                        <h5 className="smallText text-white group-hover:text-black">
-                          {ele.btnTitle}
-                        </h5>
+                        <div className="flex gap-2 lg:gap-4 items-center justify-center group  w-fit">
+                          <h5 className="smallText text-white group-hover:text-black">
+                            {ele.btnTitle}
+                          </h5>
 
-                        <button
-                          className={`rounded-sm p-1 relative overflow-hidden md:p-2 border-2 bg-white border-white group-hover:border-transparent   w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 group-hover:bg-pink `}
-                        >
-                          <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
-                          <GoArrowRight
-                            className={`   text-pink  group-hover:text-white text-2xl z-[2]`}
-                          />
-                        </button>
+                          <button
+                            className={`rounded-sm p-1 relative overflow-hidden md:p-2 border-2 bg-white border-white group-hover:border-transparent   w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 group-hover:bg-pink `}
+                          >
+                            <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
+                            <GoArrowRight
+                              className={`   text-pink  group-hover:text-white text-2xl z-[2]`}
+                            />
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -172,8 +169,7 @@ const EventsDetails = [
   {
     image: article,
     category: "Latest article",
-    title:
-      "Why India needs a national plan for building new cities",
+    title: "Why India needs a national plan for building new cities",
     btnTitle: "Read more",
     link: "/knowledge",
   },

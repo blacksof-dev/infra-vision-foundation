@@ -21,7 +21,6 @@ export default function Card({
 }: CardProps) {
   return (
     <>
-
       <div className="xl:max-w-[29rem]  ">
         <div className="w-full h-[16rem] ">
           <Image
@@ -43,24 +42,18 @@ export default function Card({
                 </p>
               </div>
               <div>
-                <h6 className="text-sm md:text-base  text-darkgray ">
-                  {date}
-                </h6>
+                <h6 className="text-sm md:text-base  text-darkgray ">{date}</h6>
               </div>
             </div>
 
             <div className="pt-1 ">
-              <h4
-                className={`text-black font-medium ${classes} line-clamp-1`}
-              >
-                {title}
-              </h4>
+              <h4 className={`text-black font-medium ${classes}`}>{title}</h4>
             </div>
-            {subtitle &&
+            {subtitle && (
               <div>
-                <h6 className="text-darkgray pt-3">{subtitle}</h6>
+                <h6 className="text-darkgray pt-3 ">{subtitle}</h6>
               </div>
-            }
+            )}
           </div>
 
           <div className="pt-3  pb-6 xl:py-4 h">
@@ -78,6 +71,5 @@ export default function Card({
         </div>
       </div>
     </>
-
   );
 }

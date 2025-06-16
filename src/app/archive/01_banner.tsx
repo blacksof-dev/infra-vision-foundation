@@ -1,13 +1,13 @@
-import React from 'react'
+import React from "react";
 import Banner from "@/_components/molecules/banner";
-import image from "@/../public/assets/archive/banner/banner.jpg"
+import image from "@/../public/assets/archive/banner/banner.jpg";
 export default function BannerSection() {
-    return (
-        <Banner
-            image={image}
-            heading="Archive"
-            title="Archive"
-            subdesc="Knowledge resources shaping India's infrastructure growth story."
-        />
-    )
+  return (
+    <Banner
+      image={image}
+      heading="Archive"
+      title="Archive"
+      subdesc="Knowledge resources shaping India's infrastructure growth story."
+    />
+  );
 }

@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from "next/image";
-import Balancer from 'react-wrap-balancer'
+import Balancer from "react-wrap-balancer";
 
 interface bannerProps {
   image: StaticImageData;
@@ -11,20 +11,31 @@ interface bannerProps {
   buttonText?: string;
 }
 
-
-
 import { RiArrowRightSLine } from "react-icons/ri";
 import { HeroBtnPink } from "../atoms/buttons";
-export default function Banner({ image, heading, title, subdesc, mobileimage, classes, buttonText }: bannerProps) {
+export default function Banner({
+  image,
+  heading,
+  title,
+  subdesc,
+  mobileimage,
+  classes,
+  buttonText,
+}: bannerProps) {
   return (
     <>
-      <div className="pt-[6rem]">
+      <div className="pt-[5rem] sm:pt-[6rem]">
         <div className="relative ">
-          <div className={`h-[20rem] md:h-[28rem] xl:h-[40rem] bg-black ${mobileimage ? "md:block hidden" : ""}`}>
+          <div
+            className={`h-[20rem] md:h-[28rem] xl:h-[40rem] bg-black ${
+              mobileimage ? "md:block hidden" : ""
+            }`}
+          >
             <Image
               src={image}
               alt="Publication Banner"
-              className="w-full h-full object-cover object-right [mask-image:linear-gradient(to_top,transparent,black_40%)]" unoptimized={true}
+              className="w-full h-full object-cover object-right [mask-image:linear-gradient(to_top,transparent,black_40%)]"
+              unoptimized={true}
             ></Image>
           </div>
           {mobileimage && (
@@ -54,17 +65,14 @@ export default function Banner({ image, heading, title, subdesc, mobileimage, cl
                 </svg>
                 <h5 className="text-white font-light flex flex-row">
                   <RiArrowRightSLine className="text-[24px]" />
-                  {heading}</h5>
+                  {heading}
+                </h5>
               </div>
               <div className="  w-full">
                 <h1 className="text-white font-medium ">{title}</h1>
-                <div className={` py-2 sm:py-4 w-full  max-w-xl`} >
-
-                  <h5 className="text-white  font-light">
-                    <Balancer>
-                      {subdesc}
-                    </Balancer>
-
+                <div className={` py-2 sm:py-4 w-full  max-w-lg`}>
+                  <h5 className="text-white font-light ">
+                    <Balancer>{subdesc}</Balancer>
                   </h5>
                 </div>
                 {buttonText && (

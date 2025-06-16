@@ -31,10 +31,14 @@ export default function Banner() {
               </div>
               <div className="w-[90%] md:w-[60%] py-4">
                 <h5 className="text-black ">
-                  Helping shape public discourse and policy interventions through action research and advocacy
+                  Helping shape public discourse and policy interventions
+                  through action research and advocacy.
                 </h5>
               </div>
-              <Link href="#who-we-are" className="flex  gap-2 mt-4 lg:gap-4 items-center justify-center group  w-fit cursor-pointer">
+              <Link
+                href="#who-we-are"
+                className="flex  gap-2 mt-4 lg:gap-4 items-center justify-center group  w-fit cursor-pointer"
+              >
                 <h5 className="font-medium">Know more</h5>
                 <button
                   className={`rounded-sm p-1 relative md:p-2 border-2 border-pink overflow-hidden   w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300  `}
@@ -45,7 +49,6 @@ export default function Banner() {
                   />
                 </button>
               </Link>
-
             </div>
             <div className="absolute bottom-8 xl:bottom-8 ">
               <Updates />
