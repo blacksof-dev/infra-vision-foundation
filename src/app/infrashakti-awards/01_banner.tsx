@@ -9,7 +9,7 @@ export default function BannerSection() {
             title="InfraShakti Awards"
             subdesc="Celebrating the champions of infrastructure."
             buttonText="Watch the ceremony "
-
+            link="https://www.youtube.com/embed/9DIAhTDim9Y"
         />
     )
 }

@@ -1,14 +1,18 @@
+"use client";
 import dilip from "@/../public/assets/infraShakti/ceremony/dilip.png";
 import pranav from "@/../public/assets/infraShakti/ceremony/pranav.png";
 import raghuram from "@/../public/assets/infraShakti/ceremony/raghuram.png";
 import { FaPlay } from "react-icons/fa";
 import Image from "next/image";
+import { useState } from "react";
+import VideoPopupGlobal from "@/_components/molecules/videopopup";
 
 type VideoCard = {
   image: string;
   title: string;
   name: string;
   designation: string;
+  link: string;
 };
 
 const videoCardDetails = [
@@ -18,18 +22,21 @@ const videoCardDetails = [
     name: "Mr. Pranav Adani",
     designation:
       "Managing Director (Agro, Oil & Gas) and Director of Adani Enterprises",
+    link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=8400&end=9063",
   },
   {
     image: raghuram.src,
     title: "Juror’s speak",
     name: "Prof G Raghuram",
     designation: "Former Director IIMB and Dean IIMA",
+    link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=265&end=321",
   },
   {
     image: dilip.src,
     title: "Juror’s speak",
     name: "Mr. Dilip Cherian",
     designation: "Image Guru, Litigation Landscaping and Policy Analyst",
+    link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=214&end=244",
   },
 ];
 
@@ -57,37 +64,49 @@ export default function Ceremony() {
 }
 
 function VideoCard({ data }: { data: VideoCard[] }) {
+  const [openPopUp, setpopup] = useState<boolean>(false);
   return (
     <>
       <div className="flex flex-col justify-center items-center md:flex-row md:justify-start md:items-start gap-5 blade-top-padding-sm">
         {data.map((ele: VideoCard, index: number) => {
           return (
-            <div key={index} className="max-w-sm relative h-[28rem]  w-full">
-              <Image
-                src={ele.image}
-                alt={ele.title}
-                fill
-                className="object-cover rounded "
-                unoptimized
-                quality={100}
-              />
-              <div className="absolute -traslate-x-1/2 group -translate-y-1/2 left-1/2 top-1/2">
-                <div className="w-12 h-12 rounded-full  ring-1 ring-pink bg-white flex justify-center items-center group-hover:bg-pink transition-all duration-100">
-                 <FaPlay className="text-pink text-lg group-hover:text-white"/>
+            <>
+              <div key={index} className="max-w-sm relative h-[28rem]  w-full">
+                <Image
+                  src={ele.image}
+                  alt={ele.title}
+                  fill
+                  className="object-cover rounded "
+                  unoptimized
+                  quality={100}
+                />
+                <div className="absolute -traslate-x-1/2 group -translate-y-1/2 left-1/2 top-1/2">
+                  <button
+                    onClick={() => setpopup(true)}
+                    className="w-12 h-12 rounded-full  ring-1 ring-pink bg-white flex justify-center items-center group-hover:bg-pink transition-all duration-100"
+                  >
+                    <FaPlay className="text-pink text-lg group-hover:text-white" />
+                  </button>
+                </div>
+                <div className="w-full h-auto  absolute bottom-0">
+                  <div>
+                    <ul className="text-white list-disc pl-3 md:pl-5 list-inside text-lg">
+                      <li className="">{ele.title}</li>
+                    </ul>
+                  </div>
+                  <div className="text-white  pl-3 md:pl-5 py-2">
+                    <p className="text-base sm:text-md">{ele.name}</p>
+                    <p className="text-base sm:text-md">{ele.designation}</p>
+                  </div>
                 </div>
               </div>
-              <div className="w-full h-auto  absolute bottom-0">
-                <div>
-                  <ul className="text-white list-disc pl-3 md:pl-5 list-inside text-lg">
-                    <li className="">{ele.title}</li>
-                  </ul>
-                </div>
-                <div className="text-white  pl-3 md:pl-5 py-2">
-                  <p className="text-base sm:text-md">{ele.name}</p>
-                  <p className="text-base sm:text-md">{ele.designation}</p>
-                </div>
-              </div>
-            </div>
+              {openPopUp && (
+                <VideoPopupGlobal
+                  src={ele.link}
+                  onClose={() => setpopup(false)}
+                />
+              )}
+            </>
           );
         })}
       </div>
