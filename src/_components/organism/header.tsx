@@ -148,39 +148,10 @@ function Header() {
                       className="block whitespace-nowrap px-3 py-1 md:py-2"
                       text="About us"
                       href="/about-us"
-                      status={open}
+                      showArrow={true}
                     />
 
-                    {/* <AnimatePresence>
-                      {open && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -10 }}
-                          transition={{ duration: 0.3 }}
-                          className="absolute  left-0 top-full mt-2 w-[300px] bg-white shadow-lg rounded-md z-50"
-                        >
-                          {What_drives.map((item, index) => (
-                            <div
-                              key={index}
-                              className="border-b last:border-none border-gray-200 px-6 py-4 hover:bg-gray-50 flex justify-between items-center"
-                            >
-                              <h5 className="text-lg text-darkgray">{item}</h5>
-                              <span>
-                                <BorderGrayHeroBtn
-                                  text=""
-                                  role="link"
-                                  borderColor="darkgray/40"
-                                  color="black"
-                                  bgColor="white"
-                                  size="base"
-                                />
-                              </span>
-                            </div>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence> */}
+                
                   </li>
                 </ul>
 
@@ -191,6 +162,7 @@ function Header() {
                       size="large"
                       className="block whitespace-nowrap px-3 py-1 md:py-2"
                       text="Advocacy"
+                      showArrow={true}
                     />
                   </li>
                 </ul>
@@ -204,6 +176,7 @@ function Header() {
                       text="Knowledge"
                       href="/knowledge"
                       target="_self"
+                      showArrow={true}
                     />
                   </li>
                 </ul>
@@ -216,6 +189,7 @@ function Header() {
                       className="block whitespace-nowrap px-3 py-1 md:py-2"
                       text="Get Involved"
                       href="/get-involved"
+                      showArrow={false}
                     />
                   </li>
                 </ul>
@@ -249,7 +223,7 @@ function Header() {
                     initial={{ opacity: 0, x: "100%" }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: "100%" }}
-                    transition={{ duration: 0.9 }}
+                    transition={{ duration: 0.7, ease: "linear" }}
                     className="fixed top-0 left-0 w-screen h-screen z-[9999] bg-white p-4"
                   >
                     <Mobilenav onClose={() => setIsMenuOpen(false)} />
