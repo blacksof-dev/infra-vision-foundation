@@ -62,17 +62,17 @@ function VideoCard({ data }: { data: VideoCard[] }) {
       <div className="flex flex-col justify-center items-center md:flex-row md:justify-start md:items-start gap-5 blade-top-padding-sm">
         {data.map((ele: VideoCard, index: number) => {
           return (
-            <div key={index} className="max-w-sm relative  h-[28rem]  w-full">
+            <div key={index} className="max-w-sm relative h-[28rem]  w-full">
               <Image
                 src={ele.image}
                 alt={ele.title}
                 fill
-                className="object-cover"
+                className="object-cover rounded "
                 unoptimized
                 quality={100}
               />
               <div className="absolute -traslate-x-1/2 group -translate-y-1/2 left-1/2 top-1/2">
-                <div className="w-12 h-12 rounded-full bg-white flex justify-center items-center group-hover:bg-pink transition-all duration-100">
+                <div className="w-12 h-12 rounded-full  ring-1 ring-pink bg-white flex justify-center items-center group-hover:bg-pink transition-all duration-100">
                  <FaPlay className="text-pink text-lg group-hover:text-white"/>
                 </div>
               </div>

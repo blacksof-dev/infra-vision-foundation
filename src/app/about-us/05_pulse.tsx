@@ -94,7 +94,7 @@ const Pulse = () => {
                                     <GoArrowRight />
                                 </button>
                             </div>
-                        </div>
+                    </div>
                 </div>
                 <div className="">
                     <div
