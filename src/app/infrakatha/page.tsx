@@ -30,9 +30,9 @@ export default function Page() {
             <div ref={sectionRefs.about}>
                 <About />
             </div>
-            {/* <div ref={sectionRefs.upcoming}>
+            <div ref={sectionRefs.upcoming}>
                 <UpcomingSession />
-            </div> */}
+            </div>
             <div ref={sectionRefs.past}>
                 <PastEvents />
             </div>

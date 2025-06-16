@@ -4,7 +4,7 @@ import Portal from "../atoms/popupPortal"
 import { useEffect } from "react";
 import { RxCross2 } from "react-icons/rx";
 
-export default function VideoPopup({
+export default function VideoPopupGlobal({
     src,
     onClose,
   }: {

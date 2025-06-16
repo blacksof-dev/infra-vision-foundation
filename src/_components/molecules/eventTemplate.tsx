@@ -206,15 +206,15 @@ function NotifiedPopup({ onclose }: { onclose: () => void }) {
 function DetailsPopup({ onclose }: { onclose: () => void }) {
   return (
     <Portal>
-      <div className="flex justify-center md:items-center fixed inset-0 bg-black/70 z-[999] py-4 overflow-y-auto">
-        <div className="bg-white my-auto rounded-lg w-full max-w-lg md:max-w-4xl h-auto sm:h-auto relative md:m-4 m-2 p-3 sm:p-4  flex flex-col md:flex-row md:gap-8 overflow-auto">
+      <div className="flex justify-center  md:items-center fixed inset-0 bg-black/70 z-[999] py-4 overflow-y-auto">
+        <div className="bg-white my-auto  rounded-lg w-full max-w-lg md:max-w-4xl h-auto sm:h-auto relative md:m-4 m-2 p-3 sm:p-4  flex flex-col md:flex-row md:gap-8 overflow-auto">
           <button
             onClick={onclose}
             className="scale-75 sm:scale-90 z-1 hover:scale-100 absolute top-1 right-1 sm:top-4 sm:right-4 h-10 w-10 text-pink bg-white border border-pink transition-all duration-300 ease-linear rounded-full flex justify-center items-center text-xl cursor-pointer"
           >
             <RxCross2 className=" text-2xl" />
           </button>
-          <div className="w-full h-auto md:w-1/2 rounded-lg flex flex-col items-center justify-center relative  ">
+          <div className="w-full  h-auto md:w-1/2 rounded-lg flex flex-col items-center justify-center relative  ">
             <Image
               src={montek}
               alt="Mr Montek Singh Ahluwalia"
@@ -227,7 +227,7 @@ function DetailsPopup({ onclose }: { onclose: () => void }) {
               <h6 className="text-[#5D6468] font-normal text-sm">Former Deputy Chairman, the Planning Commission</h6>
             </div>
           </div>
-          <div className="w-full md:w-1/2 flex flex-col justify-center">
+          <div className="w-full  md:w-1/2 flex flex-col justify-center">
             <Image
               src={infraKatha}
               alt="Infra Katha"
