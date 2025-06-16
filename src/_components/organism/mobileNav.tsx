@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import logo from "@/../public/assets/globals/logo.png";
 import { RxCross1 } from "react-icons/rx";
@@ -6,8 +6,8 @@ import { FaSearch } from "react-icons/fa";
 import { TextMobileNavAnchor } from "../atoms/links";
 import { useState } from "react";
 
-export default function Mobilenav({ onClose }: { onClose: () => void; }) {
-   const[mobilepopup,setmobilepopup] = useState(false);
+export default function Mobilenav({ onClose }: { onClose: () => void }) {
+  const [mobilepopup, setmobilepopup] = useState(false);
   return (
     <div>
       <div className="flex justify-between items-center blade-top-margin-sm ">
@@ -32,6 +32,7 @@ export default function Mobilenav({ onClose }: { onClose: () => void; }) {
               color="dark"
               className="block whitespace-nowrap py-6"
               text="About us"
+              href="/about-us"
               status={mobilepopup}
             />
           </li>
@@ -52,24 +53,23 @@ export default function Mobilenav({ onClose }: { onClose: () => void; }) {
               color="dark"
               className="block whitespace-nowrap py-6"
               text="Knowledge"
+              href="/knowledge"
               status={mobilepopup}
             />
           </li>
         </ul>
-     
-     
+
         <ul>
           <li>
             <TextMobileNavAnchor
               color="dark"
               className="block whitespace-nowrap py-6"
               text="Get Involved"
+              href="/get-involved"
               status={mobilepopup}
             />
           </li>
         </ul>
-       
-    
       </div>
     </div>
   );

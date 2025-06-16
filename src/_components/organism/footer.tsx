@@ -9,6 +9,7 @@ import Link from "next/link";
 import SocialMedia from "../atoms/socialMedia";
 import { GoArrowUp } from "react-icons/go";
 import ArrowScope from "../atoms/visiblityScope";
+import { LocateIcon, MapPin } from "lucide-react";
 
 const footer = () => {
   return (
@@ -16,7 +17,7 @@ const footer = () => {
       <footer className="blade-top-padding-lg  ">
         <div className=" w-container">
           <div className=" flex lg:flex-row flex-col lg:justify-between lg:items-end border-b-1 border-gray/60 pb-6 md:pb-9">
-            <div className="w-[45%] sm:w-[35%]  h-[30%] md:h-full  lg:w-[20%]">
+            <div className="w-[45%] sm:w-[35%]  h-[30%] md:h-full  lg:w-[20%] mb-4 md:mb-0">
               <Anchor href="/">
                 <Image
                   src={logo}
@@ -29,7 +30,9 @@ const footer = () => {
             </div>
 
             <div>
-              <h6 className="text-black py-2 font-medium">Subscribe to our newsletter</h6>
+              <h6 className="text-black py-2 font-medium">
+                Subscribe to our newsletter
+              </h6>
               <form className="w-full sm:w-[70%] lg:w-full ">
                 <div className="flex flex-row lg:w-[32rem]   xl:w-[35rem]  bg-white rounded md:rounded-md overflow-hidden border border-darkgray/30 ">
                   <input
@@ -49,16 +52,18 @@ const footer = () => {
                       classes="w-full w-auto  p-3 sm:p-2 text-sm font-medium"
                     />
                   </div>
-
                 </div>
               </form>
               <div className="flex gap-2  pt-5">
                 <div className="w-5 h-4 mt-1 sm:mt-0  sm:w-5 sm:h-5 border-1 border-pink"></div>
-                <p className="text-darkgray text-sm">I agree to receive updates on newsletters from The Infravision Foundation.</p>
+                <p className="text-darkgray text-sm">
+                  I agree to receive updates on newsletters from The Infravision
+                  Foundation.
+                </p>
               </div>
             </div>
           </div>
-          <div className="flex lg:flex-row flex-col pt-5 lg:pt-0 lg:gap-8  border-b-1 border-gray/60 ">
+          <div className="flex  lg:flex-row flex-col pt-5 lg:pt-0 lg:gap-8  border-b-1 border-gray/60 ">
             <div className="grid grid-cols-1  md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-4 xl:gap-14  lg:pt-9 lg:pb-14 xl:pb-8 2xl:pb-32">
               <ul>
                 <li className="flex items-center gap-3">
@@ -73,7 +78,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        // href="/who-we-are"
+                        href="/about-us"
                         text="Who we are"
                       />
                     </li>
@@ -82,7 +87,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        // href="/the-infravisionaries"
+                        href="/#infravisionaries"
                         text="The Infravisionaries"
                       />
                     </li>
@@ -141,7 +146,7 @@ const footer = () => {
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         href="/infrakatha"
-                        text="InfraKatha"
+                        text="Infrakatha"
                       />
                     </li>
                     <li>
@@ -158,7 +163,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        // href="/caira"
+                        href="/outreach-and-engagements"
                         text="Outreach and engagement"
                       />
                     </li>
@@ -179,7 +184,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        // href="/blogs"
+                        href="/knowledge#research-papers"
                         text="Research papers"
                       />
                     </li>
@@ -189,7 +194,7 @@ const footer = () => {
                         color="dark"
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                        // href="/who-we-are"
+                        href="/knowledge#infravision-conversations"
                         text="Infravision Conversations"
                       />
                     </li>
@@ -209,12 +214,16 @@ const footer = () => {
               <ul>
                 <li className="flex items-center gap-3 ">
                   <div className="w-3 h-3 rounded-full bg-darkgray opacity-30"></div>
-                  <span className="text-black text-xl">Get involved</span>
+                  <span className="text-black text-xl">
+                    <Link href="/get-involved">Get involved</Link>
+                  </span>
                 </li>
 
-                <li className="flex items-center gap-3 ">
+                <li className="flex items-center gap-3">
                   <div className="w-3 h-3 rounded-full bg-darkgray opacity-30"></div>
-                  <span className="text-black text-xl py-3">Gallery</span>
+                  <span className="text-black text-xl py-3">
+                    <Link href="/archive#gallery">Gallery</Link>
+                  </span>
                 </li>
               </ul>
             </div>
@@ -222,12 +231,12 @@ const footer = () => {
               <div className=" h-full   pt-4 lg:py-9  lg:border-l-1 lg:border-lightgray/20 lg:ps-4 xl:ps-10">
                 <div className="">
                   <div className="flex flex-row gap-1  items-center">
-                    <Image src={locationSvg} alt="Location Icon" />
-                    {/* <CiLocationOn className="text-[#9EA2A4] text-xl" /> */}
-                    <h5 className="text-darkgray/60 2xl:text-lg">Address</h5>
+                    <MapPin className="text-xl" />
+
+                    <h5 className="text-black 2xl:text-lg">Address</h5>
                   </div>
 
-                  <h6 className="text-base text-darkgray ps-1 py-2 lg:py-1">
+                  <h6 className="text-base text-darkgray ps-1 py-2 lg:py-1  pl-7">
                     E 2261, Palam Vihar, Gurugram -{" "}
                     <br className="lg:block hidde" /> 122017, Haryana, Delhi
                     NCR, India.
@@ -236,11 +245,11 @@ const footer = () => {
 
                 <div className="py-3 lg:py-4">
                   <div className="flex flex-row gap-1  items-center">
-                    <MdOutlineEmail className="text-[#9EA2A4] text-xl" />
-                    <h5 className="text-darkgray/60 2xl:text-lg py-1">Email</h5>
+                    <MdOutlineEmail className="text-black text-xl" />
+                    <h5 className="text-black 2xl:text-lg py-1">Email</h5>
                   </div>
                   <Link href="mailto:info@theinfravisionfoundation.org">
-                    <h6 className="text-darkgray ps-1 py-2 lg:py-1 text-base">
+                    <h6 className="text-darkgray ps-1 py-2 lg:py-1 text-base  pl-6">
                       info@theinfravisionfoundation.org
                     </h6>
                   </Link>
@@ -248,11 +257,13 @@ const footer = () => {
 
                 <div className=" pb-2">
                   <div className="flex flex-row gap-1  ditems-center ">
-                    <MdOutlinePhone className="text-[#9EA2A4] text-xl  my-auto" />
-                    <h5 className="text-darkgray/60 2xl:text-lg ">Phone</h5>
+                    <MdOutlinePhone className="text-black text-xl  my-auto" />
+                    <h5 className="text-black 2xl:text-lg ">Phone</h5>
                   </div>
 
-                  <h6 className="text-darkgray ps-1 py-1 ">+91 98107 50745</h6>
+                  <h6 className="text-darkgray ps-1 py-1  pl-6">
+                    +91 98107 50745
+                  </h6>
                 </div>
               </div>
             </div>

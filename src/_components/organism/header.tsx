@@ -33,7 +33,6 @@ function Header() {
     setlastScrollY(currentScrollY);
   };
 
-
   const handlehamberg = () => {
     setIsMenuOpen((prev) => !prev);
   };
@@ -74,7 +73,13 @@ function Header() {
   //Navbar color change for specifice routes
 
   useEffect(() => {
-    const activeUrl = ["/home"];
+    const activeUrl = [
+      "/home",
+      "/infrakatha",
+      "/get-involved",
+      "/knowledge",
+      "/archive",
+    ];
 
     if (!activeUrl.includes(pathname)) {
       setshowNavBg(false);
@@ -121,6 +126,7 @@ function Header() {
                       size="large"
                       className="block whitespace-nowrap px-3 py-1 md:py-2"
                       text="About us"
+                      href="/about-us"
                       status={open}
                     />
 
@@ -175,7 +181,7 @@ function Header() {
                       size="large"
                       className="block whitespace-nowrap px-3 py-1 md:py-2"
                       text="Knowledge"
-                      href="/publication"
+                      href="/knowledge"
                       target="_self"
                     />
                   </li>
@@ -188,6 +194,7 @@ function Header() {
                       size="large"
                       className="block whitespace-nowrap px-3 py-1 md:py-2"
                       text="Get Involved"
+                      href="/get-involved"
                     />
                   </li>
                 </ul>

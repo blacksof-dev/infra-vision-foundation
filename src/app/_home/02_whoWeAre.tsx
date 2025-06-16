@@ -3,11 +3,10 @@ import rail from "@/../public/assets/home/whoWeAre/knowledge/rail.png";
 import highway from "@/../public/assets/home/whoWeAre/knowledge/highway.png";
 import rajivRanjan from "@/../public/assets/home/whoWeAre/knowledge/rajivRanjan.png";
 import infraKatha from "@/../public/assets/home/whoWeAre/advocacy/infraKatha.png";
-import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infraPandit.png";
-import infraShakti from "@/../public/assets/home/whoWeAre/advocacy/infraShakti.png";
+import infraShakti from "@/../public/assets/home/whoWeAre/advocacy/infraPandit.png";
+import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infraShakti.png";
 import { useState } from "react";
 import Card from "@/_components/molecules/cardTemplate";
-
 
 export type TabItem = {
   id: number;
@@ -19,18 +18,17 @@ export type TabItem = {
   subtitle?: string;
 };
 
-
 const knowledge = [
   {
     id: 1,
     img: rail.src,
-    category: "Research papers",
+    category: "Research Papers",
     date: "January, 2025",
     title: "The case for developing high-speed rail corridors in India",
     subtitle: "Dr. Ramakrishnan T.S",
-    link: "",
+    link: "/assets/home/whoWeAre/knowledge/The-Case-For-Developing-High-Speed-Rail-Corridors-In-India.pdf",
   },
-   {
+  {
     id: 3,
     img: rajivRanjan.src,
     category: "Infravision Conversations",
@@ -38,7 +36,7 @@ const knowledge = [
     title:
       "How to save our hill cities? What does carrying capacity mean for planners",
     subtitle: "Rajiv Ranjan Mishra",
-    link: "",
+    link: "/knowledge#infravision-conversations",
   },
   {
     id: 2,
@@ -47,9 +45,8 @@ const knowledge = [
     date: "October, 2024",
     title: "How to make India’s highways safe",
     subtitle: "Jagan Shah",
-    link: "",
+    link: "https://theinfravisionfoundation.org/2024/10/16/a-national-road-safety-authority-crucial-for-improving-indias-deteriorating-road-safety/",
   },
- 
 ];
 
 const advocacy = [
@@ -59,7 +56,7 @@ const advocacy = [
     category: "InfraKatha",
     title:
       "A forum of cross-sectoral experts sparking insightful conversations around the vivid dimensions of infrastructure.",
-    link: "",
+    link: "/infrakatha",
   },
   {
     id: 2,
@@ -67,25 +64,25 @@ const advocacy = [
     category: "InfraShakti Awards",
     title:
       "A flagship initiative in association with NDTV, celebrating changemakers unlocking impact at scale through infrastructure-led innovation.",
-    link: "",
+    link: "/infraShakti",
   },
   {
     id: 3,
     img: infraPandit.src,
-    category: "InfraPandit Awards",
+    category: "InfraPandit",
     title:
-      "A dedicated arm advocating for farmer prosperity and advanced agri-export prospects through stronger agricultural infrastructure.",
+      "Another flagship initiative recognising outstanding doctoral research on infrastructure, fostering youth participation in India's infra evolution",
     link: "",
   },
 ];
 
 export default function WhoWeAre() {
   const [activeTab, setActiveTab] = useState("Knowledge");
- 
+
   return (
     <>
-      <div className="bg-whitesmoke">
-        <div className="blade-top-padding-lg blade-bottom-padding-lg w-container">
+      <section id="who-we-are" className="bg-whitesmoke">
+        <main className="blade-top-padding-lg blade-bottom-padding-lg w-container">
           <div className="flex md:flex-row flex-col justify-between">
             <div>
               <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
@@ -94,46 +91,47 @@ export default function WhoWeAre() {
               </div>
               <div className="py-2 ">
                 <h1 className="text-black  font-light">
-                  <span className="text-black/90 font-medium ">
-                    Change emanating
+                  A{" "}
+                  <span className="text-black font-medium ">
+                    think-and-do tank
                   </span>
-                  <br /> from a shared purpose
+                  <br /> powering change in India’s infrastructure
                 </h1>
               </div>
             </div>
             <div className="w-full md:w-[50%] pt-2">
               <h6 className="text-black font-light">
-                Established in 2022 by Mr Vinayak Chatterjee and Mrs Rumjhum
+                Established in 2022 by Vinayak Chatterjee and Rumjhum
                 Chatterjee,{" "}
                 <span className="font-semibold">
                   The Infravision Foundation
                 </span>{" "}
                 is a non-partisan, not-for-profit think tank driving{" "}
                 <span className="font-semibold">
-                  infrastructure-led economic development of India.
+                  {" "}
+                  infrastructure-led economic development.
                 </span>
               </h6>
               <h6 className="text-black font-light py-2 md:py-3">
-                Led by veteran domain experts and thought leaders, the
-                Foundation addresses deeply rooted infrastructure challenges to
-                enable steadfast infrastructure policy-making. It churns impact
-                through rigorous{" "}
-                <span className="font-semibold">
-                  knowledge sharing and advocacy.
-                </span>
+                Founded by professionals and embellished with an ecosystem of
+                thought leaders and experts from various infra sectors, The
+                Infravision Foundation stands for upholding the impartial,
+                enlightened, and respected voice of reason. It addresses deeply
+                rooted challenges to enable steadfast infrastructure
+                policy-making through rigorous{" "}
+                <span className="font-semibold"> knowledge sharing </span> and{" "}
+                <span className="font-semibold"> advocacy.</span>
               </h6>
             </div>
           </div>
           <div className="blade-top-padding-sm">
             <TabSwitch setActiveTab={setActiveTab} activeTab={activeTab} />
           </div>
-        </div>
-      </div>
+        </main>
+      </section>
     </>
   );
 }
-
-
 
 export const TabSwitch = ({
   setActiveTab,
@@ -177,9 +175,7 @@ export const TabSwitch = ({
   );
 };
 
-
-
- export const TabContent = ({ data }: { data: TabItem[] }) => {
+export const TabContent = ({ data }: { data: TabItem[] }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-2 sm:gap-8 lg:gap-9  md:blade-top-padding-sm">
       {data.map((item) => (
@@ -191,7 +187,7 @@ export const TabSwitch = ({
           link={item.link}
           category={item.category}
           subtitle={item.subtitle}
-          classes="line-clamp-2 xl:line-clamp-3 text-lg md:text-xl text-black"
+          classes=" text-lg md:text-xl text-black"
         />
       ))}
     </div>

@@ -1,0 +1,187 @@
+"use client";
+
+import Image from "next/image";
+import { BorderGrayHeroBtn, HeroBtn } from "../atoms/buttons";
+import { FaPlay } from "react-icons/fa";
+import Portal from "../atoms/popupPortal";
+import { RxCross2 } from "react-icons/rx";
+import { useState } from "react";
+import Link from "next/link";
+import VideoPopupGlobal from "@/_components/molecules/videopopup"
+
+type VideoProps = {
+  name: string;
+  link: string;
+  awardName: string;
+  thumbnailImage: string;
+  title: string;
+  desc: string;
+  awardslogo: string;
+  logo: string;
+};
+
+type VideoCardProps = {
+  data: VideoProps[];
+};
+
+export default function VideoCard({ data }: VideoCardProps) {
+  const [selectedVideoPopUp, setSelectedVideoPopUp] =
+    useState<VideoProps | null>(null);
+  
+
+  return (
+    <>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-8 xl:gap-14">
+        {data.map((elem, index) => (
+          <div key={index}>
+            <div className="relative w-full h-[18rem]">
+              <Image
+                src={elem.thumbnailImage}
+                width={500}
+                height={500}
+                alt="Image"
+                className="w-full h-full object-cover object-top rounded-md"
+              />
+              <div className="group absolute right-4 bottom-4">
+                <button
+                  onClick={() => setSelectedVideoPopUp(elem)}
+                  className="w-12 h-12 rounded-full cursor-pointer ring-1 ring-pink bg-white flex justify-center items-center group-hover:bg-pink transition-all duration-100"
+                >
+                  <FaPlay className="text-pink text-lg group-hover:text-white" />
+                </button>
+              </div>
+            </div>
+
+            <div className="flex justify-between flex-col">
+              <div>
+                <div className="pt-3">
+                  <p className="text-pink font-medium">{elem.awardName}</p>
+                </div>
+                <h6 className="text-black font-medium xl:text-xl">
+                  {elem.name}
+                </h6>
+              </div>
+              <div className="pt-3 pb-6 xl:py-4">
+                <BorderGrayHeroBtn
+                  text="Read more"
+                  role="link"
+                  borderColor="darkgray/40"
+                  color="black"
+                  bgColor="white"
+                  size="base"
+                  classes="font-medium"
+                  target="_blank"
+                  link={elem.link}
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {selectedVideoPopUp && (
+        <VideoCardPopup
+          onclose={() => setSelectedVideoPopUp(null)}
+          videoPopupDetails={selectedVideoPopUp}
+        />
+      )}
+    </>
+  );
+}
+
+const VideoCardPopup = ({
+  onclose,
+  videoPopupDetails,
+}: {
+  onclose: () => void;
+  videoPopupDetails: VideoProps;
+   
+}) => {
+
+  
+  
+    const [videoPopUp,setvideoPopup] = useState<boolean>(false);
+  
+
+ 
+  
+  return (
+    <Portal>
+      <div className="flex justify-center md:items-center fixed inset-0 bg-black/90 z-[999] py-4 overflow-y-auto">
+        <div className="bg-white my-auto  rounded-lg w-full max-w-lg md:max-w-4xl h-auto relative m-2 md:m-4 p-3 sm:p-4 flex flex-col md:flex-row md:gap-8 overflow-auto">
+          <button
+            onClick={onclose}
+            className="scale-75 sm:scale-90 z-1 hover:scale-100 absolute top-1 right-1 sm:top-4 sm:right-4 h-10 w-10 text-pink bg-white border border-pink transition-all duration-300 ease-linear rounded-full flex justify-center items-center text-xl cursor-pointer"
+          >
+            <RxCross2 className="text-2xl" />
+          </button>
+
+          <div className="w-full  md:w-1/2 rounded-lg flex flex-col items-center justify-center relative">
+            <Image
+              src={videoPopupDetails.thumbnailImage}
+              alt="Thumbnail"
+              width={160}
+              height={50}
+              className="rounded-lg  w-full h-full object-cover"
+            />
+             <div className="group absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+             
+                <button
+                  onClick={()=>setvideoPopup(true)}    className="w-12 h-12 rounded-full d cursor-pointer ring-1 ring-pink bg-white flex justify-center items-center group-hover:bg-pink transition-all duration-100"
+                >
+
+                  <FaPlay  className="text-pink text-lg  group-hover:text-white" />
+                </button>
+                
+              </div>
+          </div>
+
+          <div className="w-full  md:w-1/2 flex flex-col justify-center">
+            <Image
+              src={videoPopupDetails.logo}
+              alt="Logo"
+              width={120}
+              height={100}
+              className="py-6 "
+            />
+
+            <div className="w-full h-full  lg:py-14">
+              <div className="flex flex-row gap-3 ">
+                <Image
+                  src={videoPopupDetails.awardslogo}
+                  alt="Award Logo"
+                  width={160}
+                  height={50}
+                  className="w-14 h-14"
+                />
+                <div className="my-auto">
+                  <p className="text-pink text-sm font-semibold">
+                    {videoPopupDetails.awardName}
+                  </p>
+                  <p className="text-pink text-sm">{videoPopupDetails.name}</p>
+                </div>
+              </div>
+
+              <div className="pt-5">
+                <h6 className="text-black font-medium">
+                  {videoPopupDetails.title}
+                </h6>
+                <p className="text-black text-sm w-full  pt-2 opacity-[0.9]">
+                  {videoPopupDetails.desc}
+                </p>
+              
+              </div>
+            </div>
+              
+          </div>
+
+          
+        </div>
+      
+      </div>
+        {videoPopUp && (
+             <VideoPopupGlobal src={videoPopupDetails.link} onClose={()=>setvideoPopup(false)}/>
+          )}
+    </Portal>
+  );
+};

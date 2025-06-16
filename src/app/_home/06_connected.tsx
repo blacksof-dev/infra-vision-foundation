@@ -6,7 +6,7 @@ import { FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 import TwitterPost from "./twittersection";
 
-export default function StayConnected(){
+export default function StayConnected() {
   return (
     <section className=" ">
       <div className="blade-top-padding-lg blade-bottom-padding-lg">
@@ -14,21 +14,19 @@ export default function StayConnected(){
           <div className="w-full lg:w-[50%] xl:w-[40%] ">
             <div className="flex  flex-row  items-center gap-2 md:gap-3">
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-              <h5 className="font-medium text-black">Social media</h5>
+              <h5 className="font-medium text-black">Social Media</h5>
             </div>
             <div className=" pt-4 pb-2 sm:py-4">
               <h1 className="font-light text-black">
-                Stay{" "}
+                Stay connected to {" "}
                 <span className="font-medium text-black">
-                  connected <br /> with us
+                  The Infravision Foundation
                 </span>
               </h1>
             </div>
 
             <h6 className="text-black ">
-              Catch the latest updates about infrastructure and The Infravision
-              Foundation — expert insights, reports, events, and more, Join the
-              community.
+              Be part of India's infrastructure transformation. Join our community of infrastructure experts, featuring exclusive conversations, in-depth analysis and research, and more.
             </h6>
             <div className=" py-2 sm:py-4 hidden lg:block ">
               <h6 className="text-pink font-medium py-2">Follow us on</h6>
@@ -36,28 +34,28 @@ export default function StayConnected(){
                 <Link
                   href="https://www.youtube.com/@theinfravisionfoundation"
                   target="_blank"
-                   className="group"
+                  className="group"
                 >
                   <FaYoutube className="text-4xl border-1  group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
                 </Link>
                 <Link
                   href="https://www.linkedin.com/company/the-infravision-foundation/?originalSubdomain=in"
                   target="_blank"
-                   className="group"
+                  className="group"
                 >
                   <FaLinkedin className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
                 </Link>
                 <Link
                   href="https://x.com/TheInfravision?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
                   target="_blank"
-                   className="group"
+                  className="group"
                 >
                   <FaXTwitter className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
                 </Link>
                 <Link
                   href="https://www.instagram.com/theinfravisionfoundation/"
                   target="_blank"
-                   className="group"
+                  className="group"
                 >
                   <FaInstagram className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
                 </Link>
@@ -65,43 +63,43 @@ export default function StayConnected(){
             </div>
           </div>
           <div className="w-full lg:w-[50%] xl:w-[60%]  ">
-             <TwitterPost/>
+            <TwitterPost />
           </div>
           <div className=" py-2 sm:py-4 block lg:hidden">
-              <h6 className="text-pink font-medium">Follow us on</h6>
-              <div className="flex flex-row gap-5 py-2 ">
-                <Link
-                  href="https://www.youtube.com/@theinfravisionfoundation"
-                  target="_blank"
-                   className="group"
-                >
-                  <FaYoutube className="text-4xl border-1   group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
-                </Link>
-                <Link
-                  href="https://www.linkedin.com/company/the-infravision-foundation/?originalSubdomain=in"
-                  target="_blank"
-                   className="group"
-                >
-                  <FaLinkedin className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
-                </Link>
-                <Link
-                  href="https://x.com/TheInfravision?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
-                  target="_blank"
-                   className="group"
-                >
-                  <FaXTwitter className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
-                </Link>
-                <Link
-                  href="https://www.instagram.com/theinfravisionfoundation/"
-                  target="_blank"
-                   className="group"
-                >
-                  <FaInstagram className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
-                </Link>
-              </div>
+            <h6 className="text-pink font-medium">Follow us on</h6>
+            <div className="flex flex-row gap-5 py-2 ">
+              <Link
+                href="https://www.youtube.com/@theinfravisionfoundation"
+                target="_blank"
+                className="group"
+              >
+                <FaYoutube className="text-4xl border-1   group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
+              </Link>
+              <Link
+                href="https://www.linkedin.com/company/the-infravision-foundation/?originalSubdomain=in"
+                target="_blank"
+                className="group"
+              >
+                <FaLinkedin className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
+              </Link>
+              <Link
+                href="https://x.com/TheInfravision?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                target="_blank"
+                className="group"
+              >
+                <FaXTwitter className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
+              </Link>
+              <Link
+                href="https://www.instagram.com/theinfravisionfoundation/"
+                target="_blank"
+                className="group"
+              >
+                <FaInstagram className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
+              </Link>
             </div>
+          </div>
         </div>
-      
+
       </div>
     </section>
   );
