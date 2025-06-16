@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
-import taxation from "@/../public/assets/home/updates/taxation.png";
+import taxation from "@/../public/assets/home/updates/afforestation.png";
 import infraKathaEvent from "@/../public/assets/home/updates/infraKathaEvent.png";
 import afforestation from "@/../public/assets/home/updates/afforestation.png";
 import infraKatha from "@/../public/assets/home/updates/infraKatha.png";
