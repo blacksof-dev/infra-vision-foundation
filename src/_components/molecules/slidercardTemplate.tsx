@@ -13,18 +13,19 @@ import Card from "./cardTemplate";
 
 
 type CardDataType = {
-title:string,
-img:string;
-link:string;
-category:string;
-date:string;
+  title: string,
+  img: string;
+  link: string;
+  category: string;
+  date: string;
+  ctaText?: string;
 }
 
-export default function CardSlider({details}:{details:CardDataType[]}) {
+export default function CardSlider({ details }: { details: CardDataType[] }) {
   const [isLastSlide, setIsLastSlide] = useState(false);
   const [isFirstSlide, setIsFirstSlide] = useState(true);
 
-  const handleSlideChange = (swiper:SwiperClass) => {
+  const handleSlideChange = (swiper: SwiperClass) => {
     setIsLastSlide(swiper.isEnd);
     setIsFirstSlide(swiper.isBeginning);
   };
@@ -55,7 +56,7 @@ export default function CardSlider({details}:{details:CardDataType[]}) {
               1536: { slidesPerView: 4.3, centeredSlides: false },
             }}
           >
-            
+
             {details.map((item, index) => {
               return (
                 <SwiperSlide key={index} className="!h-full ">
@@ -66,6 +67,7 @@ export default function CardSlider({details}:{details:CardDataType[]}) {
                       image={item.img}
                       link={item.link}
                       category={item.category}
+                      ctaText="Read more"
                     />
                   </div>
                 </SwiperSlide>

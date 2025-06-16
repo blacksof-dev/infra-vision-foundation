@@ -37,18 +37,16 @@ const ButtonTab = ({ label, value, data, setdata }: ButtonTabProps) => {
   return (
     <div className="py-4 group">
       <button
-        className={`text-white cursor-pointer text-md text-nowrap lg:text-xl relative ${
-          data === value ? "font-medium" : ""
-        }`}
+        className={`text-white cursor-pointer text-md text-nowrap lg:text-xl relative ${data === value ? "font-medium opacity-100" : "opacity-70"
+          }`}
         onClick={() => setdata(value)}
       >
         {label}
         <span
-          className={`h-[1px] ${
-            data === value
-              ? "w-full transition-all duration-1000"
-              : "w-10 sm:w-5"
-          } sm:h-[2px] bg-white absolute bottom-0 left-0 top-7`}
+          className={`h-[1px] ${data === value
+            ? "w-full transition-all duration-1000"
+            : "w-10 sm:w-5"
+            } sm:h-[2px] bg-white absolute bottom-0 left-0 top-7`}
         ></span>
       </button>
     </div>
@@ -143,7 +141,7 @@ export default function Infravisionaries() {
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-white "></span>
               <h5 className="font-medium text-white">Our Core</h5>
             </div>
-            <div className="pt-4 pb-2 md:py-5 ">
+            <div className="pt-4 md:pt-5 ">
               <h1 className="text-white font-medium">The Infravisionaries</h1>
               <div className="w-full sm:w-[85%] xl:w-[45%]">
                 <h6 className="text-white  tracking-[1%] py-4">
@@ -159,7 +157,7 @@ export default function Infravisionaries() {
             </div>
           </div>
 
-          <div className="md:flex flex-row  w-container hidden ">
+          <div className="md:flex flex-row  w-container hidden blade-top-margin-sm ">
             <div className=" border-r-1 pe-20 border-white/40">
               <ButtonTab
                 label="Trustees"
@@ -237,6 +235,7 @@ export default function Infravisionaries() {
                       </SwiperSlide>
                     );
                   })}
+
                 </Swiper>
               </div>
               <div className="flex pt-3  h-[80px] flex-wrap gap-5 mt-4 justify-start md:gap-4 2xl:mt-1">

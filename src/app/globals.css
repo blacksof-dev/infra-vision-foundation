@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 @import "tailwindcss";
 
@@ -6,38 +6,33 @@
 
 @custom-variant dark (&:is(.dark *));
 
-html,body {
+html,
+body {
   scroll-behavior: smooth;
-  font-family:"Poppins" ;
-
+  font-family: "Poppins";
 }
 
+@theme inline {
+  --color-darkgray: #5d6468;
+  --color-black: #0a0a0a;
+  --color-pink: #c82249;
+  --color-white: #ffffff;
+  --color-lightgray: #979797;
+  --color-gray: #d0d0d0;
+  --color-whitesmoke: #f6f6f6;
+  --color-blacksecond: #191919;
+  --color-grayishblue: #4b5154;
 
+  --breakpoint-3xl: 1921px;
+  --breakpoint-2xl: 1536px;
+  --breakpoint-xlg: 1440px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-clg: 1100px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-md: 786px;
+  --breakpoint-sm: 556px;
 
-@theme inline{
-
-  --color-darkgray:#5D6468;
-  --color-black:#0A0A0A;
-  --color-pink:#C82249;
-  --color-white:#ffffff;
-  --color-lightgray:#979797;
-  --color-gray:#D0D0D0;
-  --color-whitesmoke:#F6F6F6;
-  --color-blacksecond:#191919;
-  --color-grayishblue:#4B5154;
-
-  --breakpoint-3xl : 1921px;
-  --breakpoint-2xl :1536px;
-  --breakpoint-xlg : 1440px;
-  --breakpoint-xl  :1280px;
-  --breakpoint-clg : 1100px;
-  --breakpoint-lg  : 1024px;
-  --breakpoint-md  : 786px;
-  --breakpoint-sm  :556px;
-
-  --font-poppins:"Poppins", "sans-serif";
-
-
+  --font-poppins: "Poppins", "sans-serif";
 }
 
 @layer components {
@@ -47,7 +42,6 @@ html,body {
 
   .blade-top-padding {
     @apply pt-8 md:pt-10 lg:pt-14 xl:pt-16 2xl:pt-20;
-
   }
 
   .blade-top-padding-sm {
@@ -64,22 +58,18 @@ html,body {
 
   .blade-bottom-padding {
     @apply pb-8 md:pb-10 lg:pb-14 xl:pb-16 2xl:pb-20;
-
   }
 
   .blade-bottom-padding-sm {
     @apply pb-5 md:pb-6 lg:pb-8 xl:pb-10 2xl:pb-14;
-
   }
 
   .blade-bottom-padding-lg {
     @apply pb-10 md:pb-12 lg:pb-20 xl:pb-24 2xl:pb-28;
-
   }
 
   .blade-bottom-padding-xl {
     @apply pb-16 md:pb-10 lg:pb-20 xl:pb-28 2xl:pb-36;
-
   }
 
   .blade-top-margin {
@@ -146,31 +136,31 @@ html,body {
   }
 
   h2 {
-    @apply text-lg  xl:text-xl  2xl:text-3xl ;
+    @apply text-lg  xl:text-xl  2xl:text-3xl;
   }
 
   h3 {
-    @apply text-xl xl:text-[27px]  2xl:text-[28px] ;
+    @apply text-xl xl:text-[27px]  2xl:text-[28px];
   }
 
   h4 {
-    @apply  text-lg lg:text-xl  2xl:text-[24px] ;
+    @apply text-lg lg:text-xl  2xl:text-[24px];
   }
 
   h5 {
-    @apply   text-lg  tracking-tight 2xl:text-xl ;
+    @apply text-lg  tracking-tight 2xl:text-xl;
   }
 
   h6 {
-    @apply text-base  lg:text-[18px]  ;
+    @apply text-base  lg:text-[18px];
   }
 
-  p{
-    @apply  text-lg  sm:text-sm  lg:text-base
+  p {
+    @apply text-lg  sm:text-sm  lg:text-base;
   }
 
-  .smallText{
-    @apply text-base md:text-sm
+  .smallText {
+    @apply text-base md:text-sm;
   }
 
   br {
@@ -182,11 +172,11 @@ html,body {
   }
 
   .text-gradient {
-    @apply  bg-clip-text text-transparent;
+    @apply bg-clip-text text-transparent;
   }
 
   .text-dark-gradient {
-    @apply  bg-clip-text text-transparent py-1;
+    @apply bg-clip-text text-transparent py-1;
   }
 
   input[type="number"]::-webkit-inner-spin-button,
@@ -201,11 +191,11 @@ html,body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #040418;
+  background-color: #c82249;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #040418;
+  background-color: rgb(197, 20, 61);
 }
 
 ::-webkit-scrollbar-track {
@@ -226,12 +216,12 @@ html,body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #c7c7c7;
+  background-color: #c82249;
   border-radius: 20px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #d8d8d8;
+  background-color: #bbbbbb;
   border-radius: 20px;
   visibility: hidden;
 }
@@ -253,13 +243,18 @@ html,body {
   border: 1px solid red !important;
 }
 
-
 .bg-blurGradient {
-  background-image: 
-    linear-gradient(0deg, rgba(0, 0, 0, 0.37) 0%, #0000005e 100%),
-    radial-gradient(107.32% 141.42% at 0% 0%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.37) 0%,
+      #0000005e 100%
+    ),
+    radial-gradient(
+      107.32% 141.42% at 0% 0%,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
 }
-.shadow-blur{
+.shadow-blur {
   box-shadow: -2.501px -2.501px 125.035px 0px rgba(255, 255, 255, 0.02) inset;
 }
-

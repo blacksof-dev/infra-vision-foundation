@@ -18,6 +18,7 @@ export default function RecentPostDetails() {
                   image={ele.img}
                   link={ele.link}
                   category={ele.category}
+                  ctaText="Read more"
                 />
               </div>
             );

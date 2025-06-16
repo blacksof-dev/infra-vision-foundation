@@ -5,7 +5,7 @@ type CardProps = {
   link: string;
   category: string;
   classes?: string;
-  subtitle?: string;
+  subtitle?: string; ctaText: string;
 };
 import Image from "next/image";
 import { BorderGrayHeroBtn } from "../atoms/buttons";
@@ -18,6 +18,7 @@ export default function Card({
   category,
   classes,
   subtitle,
+  ctaText = "Read more"
 }: CardProps) {
   return (
     <>
@@ -58,7 +59,7 @@ export default function Card({
 
           <div className="pt-3  pb-6 xl:py-4 h">
             <BorderGrayHeroBtn
-              text="Read more"
+              text={ctaText}
               role="link"
               borderColor="darkgray/40"
               color="black"

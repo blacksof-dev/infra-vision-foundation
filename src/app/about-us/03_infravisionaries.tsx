@@ -313,7 +313,7 @@ export default function Infravisionaries() {
 
   return (
     <>
-      <section className="bg-[#F6F6F6] relative">
+      <section id="infravisionaries" className="bg-[#F6F6F6] relative">
         <div className=" absolute top-0 xl:right-8 2xl:right-28 xl:block hidden">
           <svg
             width="594"
@@ -344,210 +344,202 @@ export default function Infravisionaries() {
         </div>
         <div className=" blade-top-padding-lg blade-bottom-padding-lg">
 
-        <div className="w-container flex flex-col md:flex-row gap-y-5 md:gap-y-0 justify-between md:items-center blade-bottom-margin">
-          <div>
-            <div className="flex  flex-row  items-center gap-2 md:gap-3">
-            <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-            <h5 className="font-medium text-pink text-sm xl:text-lg">Our core</h5>
-          </div>
-           <div className="pt-1 md:pt-4 pb-2 md:py-5 flex justify-between">
-            <h1 className="text-black font-medium">The Infravisionaries</h1>
-          </div>
-          </div>
-          <div className="w-[90%] md:w-[45%]">
-                <h6 className="text-black  tracking-[1%] mb-4 text-sm xl:text-lg">
-                  <span className="font-semibold">The Infravision Foundation</span> is a confluence of seasoned thought leaders and experts from across the infrastructure domain.
-                </h6>
-                <h6 className="text-sm xl:text-lg">It draws strength from the collective wisdom and a shared purpose. As a flagbearer of thought leadership in India’s infrastructural landscape, The Infravision Foundation is actively propelling the nation’s infrastructural and economic growth.</h6>
+          <div className="w-container flex flex-col md:flex-row gap-y-5 md:gap-y-0 justify-between md:items-start blade-bottom-margin">
+            <div>
+              <div className="flex  flex-row  items-center gap-2 md:gap-3">
+                <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
+                <h5 className="font-medium text-pink text-sm xl:text-lg">Our core</h5>
               </div>
-        </div>
-         
+              <div className="pt-1 md:pt-4 pb-2 md:py-5 flex justify-between">
+                <h1 className="text-black font-medium">The Infravisionaries</h1>
+              </div>
+            </div>
+            <div className="w-[90%] md:w-[45%]">
+              <h6 className="text-black  tracking-[1%] mb-4 text-sm xl:text-lg">
+                <span className="font-semibold">The Infravision Foundation</span> is a confluence of seasoned thought leaders and experts from across the infrastructure domain.
+              </h6>
+              <h6 className="text-sm xl:text-lg">It draws strength from the collective wisdom and a shared purpose. As a flagbearer of thought leadership in India’s infrastructural landscape, The Infravision Foundation is actively propelling the nation’s infrastructural and economic growth.</h6>
+            </div>
+          </div>
+
 
           <div className="md:flex flex-row  w-container hidden ">
 
-             <div className=" border-r-1 pe-20 border-white/40   ">
+            <div className=" border-r-1 pe-20 border-white/40   ">
 
               <div className="py-4 group">
                 <button
-                  className={`text-[#5D6468] text-md text-nowrap cursor-pointer lg:text-xl relative ${
-                    data === "trustee" ? "font-medium text-pink" : "font-normal"
-                  }`}
+                  className={`text-[#5D6468] text-md text-nowrap cursor-pointer lg:text-xl relative ${data === "trustee" ? "font-medium text-pink" : "font-normal"
+                    }`}
                   onClick={() => setdata("trustee")}
                 >
                   Trustees
                   <span
-                    className={` h-[1px] ${
-                      data === "trustee"
-                        ? "w-full transition-all bg-pink duration-1000 "
-                        : "w-10 sm:w-5"
-                    }  sm:h-[2px]  bg-[#5D6468] absolute bottom-0 left-0 top-7`}
+                    className={` h-[1px] ${data === "trustee"
+                      ? "w-full transition-all bg-pink duration-1000 "
+                      : "w-10 sm:w-5"
+                      }  sm:h-[2px]  bg-[#5D6468] absolute bottom-0 left-0 top-7`}
                   ></span>
                 </button>
               </div>
 
               <div className="py-4 group">
                 <button
-                  className={`text-[#5D6468] text-md cursor-pointer text-nowrap lg:text-xl relative ${
-                    data === "advisory" ? "font-medium text-pink" : "font-normal"
-                  }`}
+                  className={`text-[#5D6468] text-md cursor-pointer text-nowrap lg:text-xl relative ${data === "advisory" ? "font-medium text-pink" : "font-normal"
+                    }`}
                   onClick={() => setdata("advisory")}
                 >
                   Advisory Council
                   <span
-                    className={` h-[1px] ${
-                      data === "advisory"
-                        ? "w-full transition-all bg-pink  duration-1000"
-                        : "w-10 sm:w-5"
-                    }  sm:h-[2px]  bg-[#5D6468] absolute bottom-0 left-0 top-7`}
+                    className={` h-[1px] ${data === "advisory"
+                      ? "w-full transition-all bg-pink  duration-1000"
+                      : "w-10 sm:w-5"
+                      }  sm:h-[2px]  bg-[#5D6468] absolute bottom-0 left-0 top-7`}
                   ></span>
                 </button>
               </div>
 
               <div className="py-4 group">
                 <button
-                  className={`text-[#5D6468] cursor-pointer text-md text-nowrap lg:text-xl relative ${
-                    data === "fellow" ? "font-medium text-pink" : "font-normal"
-                  }`}
+                  className={`text-[#5D6468] cursor-pointer text-md text-nowrap lg:text-xl relative ${data === "fellow" ? "font-medium text-pink" : "font-normal"
+                    }`}
                   onClick={() => setdata("fellow")}
                 >
                   Distinguished Fellows
                   <span
-                    className={` h-[1px] ${
-                      data === "fellow"
-                        ? "w-full  transition-all bg-pink duration-1000"
-                        : "w-10 sm:w-5"
-                    }  sm:h-[2px]  bg-[#5D6468] absolute bottom-0 left-0 top-7`}
+                    className={` h-[1px] ${data === "fellow"
+                      ? "w-full  transition-all bg-pink duration-1000"
+                      : "w-10 sm:w-5"
+                      }  sm:h-[2px]  bg-[#5D6468] absolute bottom-0 left-0 top-7`}
                   ></span>
                 </button>
               </div>
 
               <div className="py-4 group">
                 <button
-                  className={`text-[#5D6468] cursor-pointer text-md text-nowrap lg:text-xl relative ${
-                    data === "team" ? "font-medium text-pink" : "font-normal"
-                  }`}
+                  className={`text-[#5D6468] cursor-pointer text-md text-nowrap lg:text-xl relative ${data === "team" ? "font-medium text-pink" : "font-normal"
+                    }`}
                   onClick={() => setdata("team")}
                 >
                   Team
                   <span
-                    className={` h-[1px] ${
-                      data === "team"
-                        ? "w-full  transition-all bg-pink duration-1000"
-                        : "w-10 sm:w-5"
-                    }  sm:h-[2px]  bg-[#5D6468] absolute bottom-0 left-0 top-7`}
+                    className={` h-[1px] ${data === "team"
+                      ? "w-full  transition-all bg-pink duration-1000"
+                      : "w-10 sm:w-5"
+                      }  sm:h-[2px]  bg-[#5D6468] absolute bottom-0 left-0 top-7`}
                   ></span>
                 </button>
               </div>
-             </div>
+            </div>
 
-              <div className="w-full overflow-x-hidden  ml-[4%]">
-                <div className="">
-                  <Swiper
-                    modules={[Navigation]}
-                    className="!pl-10%"
-                    watchOverflow={true}
-                    navigation={{
-                      prevEl: ".swiper-prev-btn-members",
-                      nextEl: ".swiper-next-btn-members",
-                    }}
-                    grabCursor={true}
-                    spaceBetween={10}
-                    onSlideChange={handleSlideChange}
-                    slidesPerView={1.1}
-                    centeredSlides={false}
-                    breakpoints={{
-                      500: { slidesPerView: 1.5, centeredSlides: false },
-                      768: { slidesPerView: 2.2, centeredSlides: false },
-                      1024: { slidesPerView: 2, centeredSlides: false },
-                      1280: { slidesPerView: 2.9, centeredSlides: false },
-                      1536: {
-                        slidesPerView: 3.5,
-                        centeredSlides: false,
-                      },
-                    }}
-                  >
-                    {carddata.map((ele, index) => {
-                      return (
-                        <SwiperSlide
-                          key={index}
-                          className="w-screen  overflow-hidden "
-                        >
-                          <div className="flex realtive flex-col w-[19rem]  h-[19rem]">
-                            <Image
-                              src={ele.image}
-                              alt={ele.title}
-                              className="w-full h-full object-cover rounded"
-                            />
-                            <div className="absolute  bottom-0 left-0 w-[17rem]  ">
-                              {ele.link ? (
-                                <Link
-                                  href={ele.link ? ele.link : ""}
-                                  target="_blank"
-                                  className="group"
-                                >
-                                  <div className="ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
-                                    <svg
-                                      width="26"
-                                      height="26"
-                                      viewBox="0 0 26 26"
-                                      fill="none"
-                                      className="fill-[#5D6468] group-hover:fill-[#C82249] transition-colors duration-300" // Add transition for smooth effect
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <path d="M23.9911 0H1.9127C0.85508 0 -0.00012207 0.834961 -0.00012207 1.86728V24.0368C-0.00012207 25.0691 0.85508 25.9091 1.9127 25.9091H23.9911C25.0487 25.9091 25.909 25.0691 25.909 24.0418V1.86728C25.909 0.834961 25.0487 0 23.9911 0ZM7.68658 22.0784H3.8407V9.71085H7.68658V22.0784ZM5.76364 8.02575C4.52891 8.02575 3.53202 7.02885 3.53202 5.79918C3.53202 4.56951 4.52891 3.57262 5.76364 3.57262C6.99331 3.57262 7.9902 4.56951 7.9902 5.79918C7.9902 7.02379 6.99331 8.02575 5.76364 8.02575ZM22.0783 22.0784H18.2374V16.0667C18.2374 14.6346 18.2121 12.7876 16.2386 12.7876C14.2398 12.7876 13.9361 14.3512 13.9361 15.9655V22.0784H10.1004V9.71085H13.7843V11.401H13.8349C14.346 10.4294 15.601 9.40217 17.4683 9.40217C21.3597 9.40217 22.0783 11.9627 22.0783 15.2924V22.0784Z" />
-                                    </svg>
-                                  </div>
-                                </Link>
-                              ) : (
-                                <div className="group-hover:bg-pink  ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
-                                  <div className=" ">
-                                    <svg
-                                      width="26"
-                                      height="26"
-                                      viewBox="0 0 26 26"
-                                      fill="none"
-                                      className="fill-[#5D6468] group-hover:fill-white"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <path d="M23.9911 0H1.9127C0.85508 0 -0.00012207 0.834961 -0.00012207 1.86728V24.0368C-0.00012207 25.0691 0.85508 25.9091 1.9127 25.9091H23.9911C25.0487 25.9091 25.909 25.0691 25.909 24.0418V1.86728C25.909 0.834961 25.0487 0 23.9911 0ZM7.68658 22.0784H3.8407V9.71085H7.68658V22.0784ZM5.76364 8.02575C4.52891 8.02575 3.53202 7.02885 3.53202 5.79918C3.53202 4.56951 4.52891 3.57262 5.76364 3.57262C6.99331 3.57262 7.9902 4.56951 7.9902 5.79918C7.9902 7.02379 6.99331 8.02575 5.76364 8.02575ZM22.0783 22.0784H18.2374V16.0667C18.2374 14.6346 18.2121 12.7876 16.2386 12.7876C14.2398 12.7876 13.9361 14.3512 13.9361 15.9655V22.0784H10.1004V9.71085H13.7843V11.401H13.8349C14.346 10.4294 15.601 9.40217 17.4683 9.40217C21.3597 9.40217 22.0783 11.9627 22.0783 15.2924V22.0784Z" />
-                                    </svg>
-                                  </div>
+            <div className="w-full overflow-x-hidden  ml-[4%]">
+              <div className="">
+                <Swiper
+                  modules={[Navigation]}
+                  className="!pl-10%"
+                  watchOverflow={true}
+                  navigation={{
+                    prevEl: ".swiper-prev-btn-members",
+                    nextEl: ".swiper-next-btn-members",
+                  }}
+                  grabCursor={true}
+                  spaceBetween={10}
+                  onSlideChange={handleSlideChange}
+                  slidesPerView={1.1}
+                  centeredSlides={false}
+                  breakpoints={{
+                    500: { slidesPerView: 1.5, centeredSlides: false },
+                    768: { slidesPerView: 2.2, centeredSlides: false },
+                    1024: { slidesPerView: 2, centeredSlides: false },
+                    1280: { slidesPerView: 2.9, centeredSlides: false },
+                    1536: {
+                      slidesPerView: 3.5,
+                      centeredSlides: false,
+                    },
+                  }}
+                >
+                  {carddata.map((ele, index) => {
+                    return (
+                      <SwiperSlide
+                        key={index}
+                        className="w-screen  overflow-hidden "
+                      >
+                        <div className="flex realtive flex-col w-[19rem]  h-[19rem]">
+                          <Image
+                            src={ele.image}
+                            alt={ele.title}
+                            className="w-full h-full object-cover rounded"
+                          />
+                          <div className="absolute  bottom-0 left-0 w-[17rem]  ">
+                            {ele.link ? (
+                              <Link
+                                href={ele.link ? ele.link : ""}
+                                target="_blank"
+                                className="group"
+                              >
+                                <div className="ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                                  <svg
+                                    width="26"
+                                    height="26"
+                                    viewBox="0 0 26 26"
+                                    fill="none"
+                                    className="fill-[#5D6468] group-hover:fill-[#C82249] transition-colors duration-300" // Add transition for smooth effect
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path d="M23.9911 0H1.9127C0.85508 0 -0.00012207 0.834961 -0.00012207 1.86728V24.0368C-0.00012207 25.0691 0.85508 25.9091 1.9127 25.9091H23.9911C25.0487 25.9091 25.909 25.0691 25.909 24.0418V1.86728C25.909 0.834961 25.0487 0 23.9911 0ZM7.68658 22.0784H3.8407V9.71085H7.68658V22.0784ZM5.76364 8.02575C4.52891 8.02575 3.53202 7.02885 3.53202 5.79918C3.53202 4.56951 4.52891 3.57262 5.76364 3.57262C6.99331 3.57262 7.9902 4.56951 7.9902 5.79918C7.9902 7.02379 6.99331 8.02575 5.76364 8.02575ZM22.0783 22.0784H18.2374V16.0667C18.2374 14.6346 18.2121 12.7876 16.2386 12.7876C14.2398 12.7876 13.9361 14.3512 13.9361 15.9655V22.0784H10.1004V9.71085H13.7843V11.401H13.8349C14.346 10.4294 15.601 9.40217 17.4683 9.40217C21.3597 9.40217 22.0783 11.9627 22.0783 15.2924V22.0784Z" />
+                                  </svg>
                                 </div>
-                              )}
-                              <div className="bg-white w-[14rem]  lg:h-[5.5rem]  rounded">
-                                <h6 className="pt-1 2xl:pt-2 px-2  font-medium">
-                                  {ele.title}
-                                </h6>
-                                <p className="px-2  text-sm font-light text-black">
-                                  {ele.desig}
-                                </p>
+                              </Link>
+                            ) : (
+                              <div className="group-hover:bg-pink  ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+                                <div className=" ">
+                                  <svg
+                                    width="26"
+                                    height="26"
+                                    viewBox="0 0 26 26"
+                                    fill="none"
+                                    className="fill-[#5D6468] group-hover:fill-white"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path d="M23.9911 0H1.9127C0.85508 0 -0.00012207 0.834961 -0.00012207 1.86728V24.0368C-0.00012207 25.0691 0.85508 25.9091 1.9127 25.9091H23.9911C25.0487 25.9091 25.909 25.0691 25.909 24.0418V1.86728C25.909 0.834961 25.0487 0 23.9911 0ZM7.68658 22.0784H3.8407V9.71085H7.68658V22.0784ZM5.76364 8.02575C4.52891 8.02575 3.53202 7.02885 3.53202 5.79918C3.53202 4.56951 4.52891 3.57262 5.76364 3.57262C6.99331 3.57262 7.9902 4.56951 7.9902 5.79918C7.9902 7.02379 6.99331 8.02575 5.76364 8.02575ZM22.0783 22.0784H18.2374V16.0667C18.2374 14.6346 18.2121 12.7876 16.2386 12.7876C14.2398 12.7876 13.9361 14.3512 13.9361 15.9655V22.0784H10.1004V9.71085H13.7843V11.401H13.8349C14.346 10.4294 15.601 9.40217 17.4683 9.40217C21.3597 9.40217 22.0783 11.9627 22.0783 15.2924V22.0784Z" />
+                                  </svg>
+                                </div>
                               </div>
+                            )}
+                            <div className="bg-white w-[14rem]  lg:h-[5.5rem]  rounded">
+                              <h6 className="pt-1 2xl:pt-2 px-2  font-medium">
+                                {ele.title}
+                              </h6>
+                              <p className="px-2  text-sm font-light text-black">
+                                {ele.desig}
+                              </p>
                             </div>
                           </div>
-                        </SwiperSlide>
-                      );
-                    })}
-                  </Swiper>
-                </div>
-                <div className="flex pt-3  h-[80px] flex-wrap gap-5 mt-4 justify-start md:gap-4 2xl:mt-1">
-                  <button
-                    className={`swiper-prev-btn-members  cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
-                    aria-label="Previous slide"
-                  >
-                    <GoArrowLeft />
-                  </button>
-                  <button
-                    className={`swiper-next-btn-members  cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink `}
-                    aria-label="Next slide"
-                  >
-                    <GoArrowRight />
-                  </button>
-                </div>
+                        </div>
+                      </SwiperSlide>
+                    );
+                  })}
+                </Swiper>
               </div>
+              <div className="flex pt-3  h-[80px] flex-wrap gap-5 mt-4 justify-start md:gap-4 2xl:mt-1">
+                <button
+                  className={`swiper-prev-btn-members  cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
+                  aria-label="Previous slide"
+                >
+                  <GoArrowLeft />
+                </button>
+                <button
+                  className={`swiper-next-btn-members  cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink `}
+                  aria-label="Next slide"
+                >
+                  <GoArrowRight />
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* MObile View */}
-           <div className="md:hidden block pb-7 px-2">
+          <div className="md:hidden block pb-7 px-2">
             <div className="py-5">
               <button
                 className="text-black text-md text-nowrap lg:text-xl relative font-medium"
@@ -574,9 +566,9 @@ export default function Infravisionaries() {
                   el: ".custom-pagination-bullets-members",
                   type: 'fraction',
                 }}
-               
+
                 breakpoints={{
-                  425:{
+                  425: {
                     slidesPerView: 1.3,
                     spaceBetween: 20,
                   },
@@ -677,7 +669,7 @@ export default function Infravisionaries() {
 
               <div className="lg:hidden  my-auto h-4 flex gap-1  flex-1 justify-end custom-pagination-bullets-members" />
             </div>
-          </div> 
+          </div>
 
           <div className="md:hidden block pb-7 px-2">
             <div className="py-5  ">
@@ -704,7 +696,7 @@ export default function Infravisionaries() {
                   nextEl: ".nextbtnfellows",
                 }}
                 breakpoints={{
-                  425:{
+                  425: {
                     slidesPerView: 1.3,
                     spaceBetween: 20,
                   },
@@ -804,7 +796,7 @@ export default function Infravisionaries() {
 
               <div className="lg:hidden mt-auto h-4 flex gap-1 flex-1 justify-end custom-pagination-bullets-fellows" />
             </div>
-          </div> 
+          </div>
 
           <div className="md:hidden block pb-7 px-2">
             <div className="py-5">
@@ -832,7 +824,7 @@ export default function Infravisionaries() {
                   type: 'fraction',
                 }}
                 breakpoints={{
-                  425:{
+                  425: {
                     slidesPerView: 1.3,
                     spaceBetween: 20,
                   },
@@ -959,7 +951,7 @@ export default function Infravisionaries() {
                   type: 'fraction',
                 }}
                 breakpoints={{
-                  425:{
+                  425: {
                     slidesPerView: 1.3,
                     spaceBetween: 20,
                   },

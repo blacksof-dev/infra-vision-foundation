@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
-import taxation from "@/../public/assets/home/updates/taxation.png";
+import taxation from "@/../public/assets/home/updates/afforestation.png";
 import infraKathaEvent from "@/../public/assets/home/updates/infraKathaEvent.png";
 import afforestation from "@/../public/assets/home/updates/afforestation.png";
 import infraKatha from "@/../public/assets/home/updates/infraKatha.png";
@@ -30,7 +30,7 @@ export default function Updates() {
         {/* Left Column */}
         <div className="border-r border-white/50 xl:block hidden">
           <div className="   hidden xl:block">
-            <h4 className="text-white me-4 text-nowrap ">Latest Updates</h4>
+            <h4 className="text-white me-4 text-nowrap ">Latest updates</h4>
             <div className="flex gap-5 py-4 justify-center  lg:justify-start md:gap-4 ">
               <button
                 className={`swiper-solution-prev-btn-hero cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink
@@ -78,15 +78,15 @@ export default function Updates() {
               768: { slidesPerView: 2.2 },
               1024: { slidesPerView: 2.9 },
               1280: { slidesPerView: 3.5 },
-              1536: { slidesPerView: 4.23 },
+              1536: { slidesPerView: 3.5 },
             }}
             onSlideChange={handleSlideChange}
           >
             {EventsDetails.map((ele, index) => (
               <SwiperSlide key={index} className="!w-fit group ">
                 <Link href={ele.link} target="_blank">
-                  <div className="flex flex-row gap-4 bg-[#0000005e]  backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4 w-[22rem] sm:w-[24rem]  xl:w-[40rem]  h-[9rem]  lg:h-[10rem] xl:h-[13rem] xlg:h-[16rem] 2xl:h-[18rem] group-hover:bg-white transition-all duration-500 ease-linear">
-                    <div className="w-[6rem]   h-full md:w-[14rem]    xl:w-[22rem]   relative ">
+                  <div className="flex flex-row gap-4 bg-[#0000005e]  backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4 w-[22rem] sm:w-[24rem] lg:w-[30rem] xl:w-[40rem] xlg:w-[50rem]  h-[9rem]  lg:h-[10rem] xl:h-[13rem] xlg:h-[16rem] 2xl:h-[18rem] group-hover:bg-white transition-all duration-500 ease-linear">
+                    <div className="w-[6rem]   h-full md:w-[14rem] lg:w-[13rem]  xl:w-[20rem]  xlg:w-[30rem]   relative ">
                       <Image
                         src={ele.image}
                         alt={ele.title}
@@ -168,16 +168,16 @@ const EventsDetails = [
   },
   {
     image: article,
-    category: "Latest article",
+    category: "Latest video",
     title: "Why India needs a national plan for building new cities",
-    btnTitle: "Read more",
-    link: "/knowledge",
+    btnTitle: "Watch now",
+    link: "https://www.youtube.com/watch?v=g5aA3Q3af1g&ab_channel=TheInfravisionFoundation",
   },
   {
     image: agriWarehousing,
     category: "Blog",
     title: "How to make India’s highways safe",
     btnTitle: "Read more",
-    link: "https://theinfravisionfoundation.org/2024/10/16/a-national-road-safety-authority-crucial-for-improving-indias-deteriorating-road-safety/",
+    link: "/knowledge#blogs",
   },
 ];

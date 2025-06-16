@@ -106,8 +106,9 @@ export default function Newsletter({
                     color="white"
                     bgColor="pink"
                     size="extralarge"
-                    aarowColor="white"
-                    classes="font-medium cursor-pointer"
+
+                    aarowColor="text-pink"
+                    classes="font-medium cursor-pointer bg-white"
                   />
                 </Link>
               </div>
