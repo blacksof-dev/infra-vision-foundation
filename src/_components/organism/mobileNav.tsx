@@ -5,13 +5,26 @@ import { RxCross1 } from "react-icons/rx";
 import { FaSearch } from "react-icons/fa";
 import { TextMobileNavAnchor } from "../atoms/links";
 import { useState } from "react";
-
+interface CourseItem {
+  name: string;
+  href: string;
+  target?: '_blank' | '_self';
+}
 export default function Mobilenav({ onClose }: { onClose: () => void }) {
   const [mobilepopup, setmobilepopup] = useState(false);
+
+   const AboutuUsDropdown: CourseItem[] = [
+    { name: 'Who we are', href: '/astrology-webinar' },
+    { name: 'The Infravisionaries', href: '/lal-kitab-webinar' },
+    { name: 'Vision and Mission', href: '/numerology-mega-webinar' },
+    { name: 'Our pulse', href: '/vastu-shastra-webinar' },
+     { name: 'The project pathway', href: '/vastu-shastra-webinar' },
+  ];
+
   return (
     <div>
       <div className="flex justify-between items-center blade-top-margin-sm ">
-        <div className="w-[12rem] sm:w-[13rem]">
+        <div className="w-[9rem] sm:w-[13rem]">
           <Image src={logo} alt="Infravision Foundation Logo" className="" />
         </div>
         <div className="flex gap-3">
@@ -25,7 +38,7 @@ export default function Mobilenav({ onClose }: { onClose: () => void }) {
       </div>
 
       {/* Your mobile nav links go here */}
-      <div className="h-[70%] flex flex-col justify-center ">
+      <div className="pt-12  flex flex-col justify-center ">
         <ul>
           <li>
             <TextMobileNavAnchor
@@ -33,7 +46,7 @@ export default function Mobilenav({ onClose }: { onClose: () => void }) {
               className="block whitespace-nowrap py-6"
               text="About us"
               href="/about-us"
-              status={mobilepopup}
+              showArrow={true}
             />
           </li>
         </ul>
@@ -43,7 +56,7 @@ export default function Mobilenav({ onClose }: { onClose: () => void }) {
               color="dark"
               className="block whitespace-nowrap py-6"
               text="Advocacy"
-              status={mobilepopup}
+              showArrow={true}
             />
           </li>
         </ul>
@@ -54,7 +67,7 @@ export default function Mobilenav({ onClose }: { onClose: () => void }) {
               className="block whitespace-nowrap py-6"
               text="Knowledge"
               href="/knowledge"
-              status={mobilepopup}
+             showArrow={true}
             />
           </li>
         </ul>
@@ -66,7 +79,7 @@ export default function Mobilenav({ onClose }: { onClose: () => void }) {
               className="block whitespace-nowrap py-6"
               text="Get Involved"
               href="/get-involved"
-              status={mobilepopup}
+              showArrow={false}
             />
           </li>
         </ul>

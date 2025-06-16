@@ -22,13 +22,13 @@ type MasterAnchorProps = {
   href?: string;
   target?: "_self" | "_blank";
   className?: string;
-  status?: boolean;
+  showArrow?: boolean;
 };
 
 export function Anchor({
   href,
   children,
-  className =' ',
+  className = " ",
 }: {
   href: string;
   children: ReactNode;
@@ -44,103 +44,78 @@ export function Anchor({
 }
 
 export function TextAnchor({
-    text,
-    target,
-    href,
-    color = "dark",
-    size = "base",
-    className,
-    ...rest
-  }: MasterAnchorProps & { color?: "dark" | "light" }) {
-    const sizeClass: string = sizeMap[size];
-    const colorClass: string = colorMap[color];
-    return (
-      <Link
-        target={target}
-        href={href ?? "/"} 
-        {...rest}
-        className={`${sizeClass} ${colorClass} ${className} text-opacity-80 hover:text-opacity-100 focus:outline-none 
+  text,
+  target,
+  href,
+  color = "dark",
+  size = "base",
+  className,
+  ...rest
+}: MasterAnchorProps & { color?: "dark" | "light" }) {
+  const sizeClass: string = sizeMap[size];
+  const colorClass: string = colorMap[color];
+  return (
+    <Link
+      target={target}
+      href={href ?? "/"}
+      {...rest}
+      className={`${sizeClass} ${colorClass} ${className} text-opacity-80 hover:text-opacity-100 focus:outline-none 
                     focus:underline decoration-from-font underline-offset-4 focus:text-opacity-100 transition-all font-be-vietnam-pro-light`}
-      >
-        {text}
-       
-      </Link>
-    );
-  }
+    >
+      {text}
+    </Link>
+  );
+}
 
+export function TextNavAnchor({
+  text,
+  target,
+  href,
+  color = "dark",
+  size = "base",
+  className,
+  showArrow,
+  ...rest
+}: MasterAnchorProps & { color?: "dark" | "light" }) {
+  const sizeClass: string = sizeMap[size];
+  const colorClass: string = colorMap[color];
+  return (
+    <Link
+      target={target}
+      href={href ?? "/"}
+      {...rest}
+      className={`${sizeClass} ${colorClass} ${className} group relative flex flex-row gap-1 justify-center items-center `}
+    >
+      {/* <span className="absolute -left-1 w-0 h-0 group-hover:w-2 group-hover:h-2 group-hover:rounded group-hover:bg-pink"></span> */}
+      <div className="group-hover:text-black">{text}</div>
 
+      <div>  {showArrow ? <GoChevronDown /> : null}</div>
+    </Link>
+  );
+}
 
-  export function TextNavAnchor({
-    text,
-    target,
-    href,
-    color = "dark",
-    size = "base",
-    className,
-    status,
-    ...rest
-   
-  }: MasterAnchorProps & { color?: "dark" | "light" }) {
-    const sizeClass: string = sizeMap[size];
-    const colorClass: string = colorMap[color];
-    return (
-     
-      <Link
-        target={target}
-        href={href ?? "/"} 
-        {...rest}
-        className={`${sizeClass} ${colorClass} ${className} group relative flex flex-row gap-1 justify-center items-center `}
-      >
-
-        {/* <span className="absolute -left-1 w-0 h-0 group-hover:w-2 group-hover:h-2 group-hover:rounded group-hover:bg-pink"></span> */}
-        <div className="group-hover:text-black">
-           {text}   
-        </div>
-          
-        <div>
-          {status ?(
-              <GoChevronUp/>
-            ):(<GoChevronDown/>) }
-          </div>
-      </Link>
-     
-     
-    );
-  }
-
-
-  export function TextMobileNavAnchor({
-    text,
-    target,
-    href,
-    color = "dark",
-    status,
-    className,
-    ...rest
-   
-  }: MasterAnchorProps & { color?: "dark" | "light" }) {
-  
-    const colorClass: string = colorMap[color];
-    return (
-     
-            <Link
-        target={target}
-        href={href ?? "/"} 
-        {...rest}
-        className={`text-lg ${colorClass} ${className}  no-underline  flex flex-row gap-1 justify-between  text-opacity-80 hover:text-opacity-100 
+export function TextMobileNavAnchor({
+  text,
+  target,
+  href,
+  color = "dark",
+  className,
+  showArrow,
+  ...rest
+}: MasterAnchorProps & { color?: "dark" | "light" }) {
+  const colorClass: string = colorMap[color];
+  return (
+    <Link
+      target={target}
+      href={href ?? "/"}
+      {...rest}
+      className={`text-lg ${colorClass} ${className}  no-underline  flex flex-row gap-1 justify-between  text-opacity-80 hover:text-opacity-100 
                      focus:text-opacity-100  `}
-      >
-        {text} 
-        <div>
-          {status ?(
-            <GoChevronUp/>
-          ):(<GoChevronDown/>) }
-         
-        </div>
-      </Link>
-     
-     
-    );
-  }
-
-
+    >
+      {text}
+    <div className="w-4 flex justify-center items-center">
+  {showArrow ? <GoChevronDown /> : null}
+</div>
+    </Link>
+  );
+}
