@@ -8,12 +8,21 @@ import GetInvolved from "./07_getInvolved";
 import Spotlight from "./03_spotlight"
 
 
+
+
 export default function InfraShakti() {
+
+;
+
+
   return (
     <>
       <BannerSection />
 
-      <Overview/>
+ 
+       <Overview/>
+  
+     
       <Spotlight/>
       <Ceremony/>
       <Luminaries/>

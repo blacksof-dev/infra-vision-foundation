@@ -201,10 +201,7 @@ export default function Luminaries() {
                         className="w-screen overflow-hidden"
                       >
                         <div
-                          onClick={() => {
-                            setPopUpData(ele);
-                            setShowPopup(true);
-                          }}
+                          
                           className="h-fit w-fit hover:cursor-pointer"
                         >
                           <MemberCard
@@ -233,12 +230,7 @@ export default function Luminaries() {
                   <GoArrowRight />
                 </button>
               </div>
-              {showPopup && popupData && (
-                <PopupDescription
-                  onclose={() => setShowPopup(false)}
-                  data={popupData}
-                />
-              )}
+              
             </div>
           </div>
 
@@ -287,7 +279,6 @@ export const MobileMembersSlider = ({
   onSelectTab,
   setShowPopup,
   setPopUpData,
-  popupData,
   showPopup,
 }: MobileMembersSliderProps) => {
   useEffect(() => {
@@ -367,12 +358,7 @@ export const MobileMembersSlider = ({
           </button>
         </div>
       </div>
-      {showPopup && popupData && (
-        <PopupDescription
-          onclose={() => setShowPopup(false)}
-          data={popupData}
-        />
-      )}
+     
     </div>
   );
 };

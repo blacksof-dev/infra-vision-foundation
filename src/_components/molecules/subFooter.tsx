@@ -99,6 +99,7 @@ export default function SubFooter({
             <HeroBtnPink
               text={herobtntitle}
               role="link"
+              link="/contactUs"
               borderColor="white"
               color="white"
               bgColor="white"

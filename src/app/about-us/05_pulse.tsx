@@ -35,20 +35,20 @@ const Pulse = () => {
     ]
 
     return (
-        <section id="our-pulse" className='blade-top-padding blade-bottom-padding-lg bg-[#F6F6F6]'>
-            <div className="w-container flex justify-between items-center blade-bottom-margin">
+        <section className='blade-top-padding blade-bottom-padding-lg bg-[#F6F6F6]'>
+            <div className="w-container flex flex-col md:flex-row justify-between md:items-center blade-bottom-margin">
                 <div>
                     <div className="flex  flex-row  items-center gap-2 md:gap-3">
                         <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
                         <h5 className="font-medium text-pink text-sm xl:text-lg">Our pulse</h5>
                     </div>
                     <div className="pt-4 pb-2 md:py-5 flex justify-between">
-                        <h1 className="text-black font-light">Transformation <br /> grounded in <span className='font-medium'>insights, <br /> knowledge, and action</span></h1>
+                        <h1 className="text-black font-light">Transformation <br className='md:block hidden' /> grounded in <span className='font-medium'>insights, <br /> knowledge, and action</span></h1>
                     </div>
                 </div>
                 <div className="w-full md:w-[45%]">
                     <h6 className="text-black  tracking-[1%] mb-4 text-sm xl:text-lg">
-                        To become ‘Viksit Bharat’ by 2047, India needs to address its infrastructure gaps swiftly and efficiently through proportionate, need-specific developments. Developments that are innovative, inclusive, steadfast, and sustainable. This demands active link between policymakers, private institutions, and citizens through increased awareness and collaboration.
+                        To become ‘Viksit Bharat’ by 2047, India needs to address its infrastructure gaps swiftly and efficiently through proportionate, need-specific developments. Developments that are innovative, inclusive, steadfast, and sustainable. This demands an active link between policymakers, private institutions, and citizens through increased awareness and collaboration.
                     </h6>
                     <h6><span className='font-medium text-sm xl:text-lg'>The Infravision Foundation</span> thrusts this journey forward with pragmatic reasoning, remedial approach, and strategic advocacy. The fluent voice of wisdom here stands on three essential pillars.</h6>
                 </div>
@@ -64,7 +64,7 @@ const Pulse = () => {
                                 `}>
                                     <img src={elem.icon} alt="" />
                                     <h4 className='font-medium my-5'>{elem.title}</h4>
-                                    <p className=''>{elem.desc}</p>
+                                    <p className='lg:max-w-[350px] 2xl:max-w-full'>{elem.desc}</p>
                                 </div>
                             )
                         })
@@ -73,7 +73,7 @@ const Pulse = () => {
             </div>
             <div className='overflow-hidden blade-top-margin'>
                 <div className='flex items-center justify-between w-container'>
-                    <div className="flex  flex-row  items-center gap-2 md:gap-3">
+                    <div className="flex  flex-row  items-center gap-2 md:gap-3 mb-5 md:mb-5    ">
                         <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
                         <h5 className="font-medium text-pink">Sectors of operation</h5>
                     </div>
@@ -110,6 +110,7 @@ const Pulse = () => {
                                 el: ".custom-pagination-bullets-banner",
                                 type: 'fraction',
                             }}
+                            autoplay
                             loop
                             grabCursor={true}
                             speed={500}
@@ -132,7 +133,6 @@ const Pulse = () => {
                         >
                             {EventsDetails.map((elem, index) => (
                                 <SwiperSlide key={index} className="!w-fit group ">
-                                    <Link href={elem.link} target="_blank">
                                         <div className="relative flex flex-row gap-4 rounded-lg p-2 md:p-4 w-[19rem]  xl:w-[35rem]  h-[17rem]   xl:h-[22rem] group-hover:bg-white">
                                             <Image
                                                 src={elem.image}
@@ -142,7 +142,6 @@ const Pulse = () => {
                                             />
                                             <h4 className='text-white absolute bottom-5'>{elem.title}</h4>
                                         </div>
-                                    </Link>
                                 </SwiperSlide>
                             ))}
                         </Swiper>
