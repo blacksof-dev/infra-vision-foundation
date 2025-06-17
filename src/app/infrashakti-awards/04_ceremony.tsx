@@ -29,14 +29,14 @@ const videoCardDetails = [
     title: "Juror’s speak",
     name: "Prof G Raghuram",
     designation: "Former Director, IIMB and Dean, IIMA",
-    link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=265&end=321",
+    link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=265&si=uTJRwlzGhyjpn4_a",
   },
   {
     image: dilip.src,
     title: "Juror’s speak",
     name: "Mr. Dilip Cherian",
     designation: "Image Guru, Litigation Landscaping and Policy Analyst",
-    link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=214&end=244",
+    link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=214&si=uTJRwlzGhyjpn4_a",
   },
 ];
 
@@ -65,13 +65,14 @@ export default function Ceremony() {
 
 function VideoCard({ data }: { data: VideoCard[] }) {
   const [openPopUp, setpopup] = useState<boolean>(false);
+  const [activeVideoSrc, setActiveVideoSrc] = useState<string | null>(null);
   return (
     <>
       <div className="flex flex-col justify-center items-center md:flex-row md:justify-start md:items-start gap-5 blade-top-padding-sm">
         {data.map((ele: VideoCard, index: number) => {
           return (
             <>
-              <div key={index} className="max-w-sm relative h-[28rem]  w-full">
+              <div key={index} className=" max-w-sm relative h-[28rem]  w-full">
                 <Image
                   src={ele.image}
                   alt={ele.title}
@@ -82,7 +83,10 @@ function VideoCard({ data }: { data: VideoCard[] }) {
                 />
                 <div className="absolute -traslate-x-1/2 group -translate-y-1/2 left-1/2 top-1/2">
                   <button
-                    onClick={() => setpopup(true)}
+                    onClick={() => {
+                      setActiveVideoSrc(ele.link);
+                      setpopup(true);
+                    }}
                     className="w-12 h-12 rounded-full  ring-1 ring-pink bg-white flex justify-center items-center group-hover:bg-pink transition-all duration-100"
                   >
                     <FaPlay className="text-pink text-lg group-hover:text-white" />
@@ -100,10 +104,13 @@ function VideoCard({ data }: { data: VideoCard[] }) {
                   </div>
                 </div>
               </div>
-              {openPopUp && (
+              {openPopUp && activeVideoSrc !== null && (
                 <VideoPopupGlobal
-                  src={ele.link}
-                  onClose={() => setpopup(false)}
+                  src={activeVideoSrc}
+                  onClose={() => {
+                    setpopup(false);
+                    setActiveVideoSrc(null);
+                  }}
                 />
               )}
             </>
