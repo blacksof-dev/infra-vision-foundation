@@ -10,7 +10,7 @@ export default function ContactBanner() {
                 image={banner}
                 heading="Get Involved"
                 title="Get Involved"
-                subdesc="We are here to assist you with inquiries regarding our initiatives, publications, collaborations, or anything else."
+                subdesc="Join our community, ask questions, or participate in building a resilient India."
             />
         </>
     )
