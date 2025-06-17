@@ -21,9 +21,7 @@ export default function Mobilenav({ onClose }: { onClose: () => void }) {
           <Image src={logo} alt="Infravision Foundation Logo" />
         </div>
         <div className="flex gap-3">
-          <div className="w-9 h-9 rounded-full bg-pink flex items-center justify-center">
-            <FaSearch className="text-white" />
-          </div>
+          
           <button onClick={onClose}>
             <RxCross1 className="text-2xl cursor-pointer" />
           </button>
@@ -87,7 +85,8 @@ export default function Mobilenav({ onClose }: { onClose: () => void }) {
         {/* Static Link */}
         <Link
           href="/get-involved"
-          className="block text-lg text-darkgray font-medium py-6 no-underline hover:text-opacity-100"
+          onClick={onClose}
+          className="block text-lg  text-darkgray font-medium py-6 no-underline hover:text-opacity-100"
         >
           Get Involved
         </Link>
