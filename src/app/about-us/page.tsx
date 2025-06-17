@@ -36,10 +36,10 @@ const AboutUs = () => {
         <div id='vision_and_mission' ref={sectionRefs.vision_and_mission}>
             <VisionMission />
         </div>
-        <div id='our_pulse' ref={sectionRefs.our_pulse}>
+        <div id='our-pulse' ref={sectionRefs.our_pulse}>
             <Pulse />
         </div>
-        <div id='project_pathway' ref={sectionRefs.project_pathway}>
+        <div id='project-pathway' ref={sectionRefs.project_pathway}>
             <Pathway />
         </div>
         <Involved />
