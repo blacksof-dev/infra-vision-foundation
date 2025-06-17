@@ -3,6 +3,9 @@ import { useEffect, useState, useMemo, useRef } from "react";
 
 import Image from "next/image";
 import { NewsCard } from "@/_components/molecules/newsCard";
+import { Portal } from "@radix-ui/react-select";
+import { MoveLeft, MoveRight, X } from "lucide-react";
+import { BlobOptions } from "buffer";
 
 // Gallery image data with random year and event type
 const galleryImages = [
@@ -10,76 +13,91 @@ const galleryImages = [
     image: "assets/archive/gallery/image1.png",
     year: 2025,
     event: "Infrashakti",
+    description: "Mr Vinayak Chatterjee in discussion with NDTV Editor-in-Chief Mr Sanjay Pugalia."
   },
   {
     image: "assets/archive/gallery/image6.png",
     year: 2025,
     event: "Infrashakti",
+    description: "Mr Jagan Shah, CEO, The Infravision Foundation, at the Annual Get-together."
   },
   {
     image: "assets/archive/gallery/image8.png",
     year: 2025,
     event: "Infrashakti",
+    description: "The Infravision community at the Foundation’s annual get-together."
   },
   {
     image: "assets/archive/gallery/image2.png",
     year: 2025,
     event: "Infrashakti",
+    description: "Union Minister Mr Nitin Gadkari presenting the Transport Trailblazer Award to Mr Giridhar Rajagopalan, Deputy Managing Director at AFCONS Infrastructure Limited."
   },
   {
     image: "assets/archive/gallery/image7.png",
     year: 2025,
     event: "Infrashakti",
+    description: "The Infravision community at the Foundation’s Annual Get-together."
   },
   {
     image: "assets/archive/gallery/image10.png",
     year: 2025,
     event: "Infrashakti",
+    description: "Ms Rumjhum Chatterjee, co-founder, The Infravision Foundation; at CII’s Corporate Women Leadership Awards, along with Ms Radhika Gupta, MD and CEO, Edelweiss Asset Management; Ms Ameera Shah, Promoter and MD, Metropolis Healthcare; Ms Rituparna Chakraborty, co-founder, Teamlease Services; and others."
   },
   {
     image: "assets/archive/gallery/image3.png",
     year: 2025,
     event: "Infrashakti",
+    description: "Mr Vinayak Chatterjee in discussion with NDTV Editor-in-Chief Mr Sanjay Pugalia."
   },
   {
     image: "assets/archive/gallery/image5.png",
     year: 2025,
     event: "Infrashakti",
+    description: "NDTV Editor-in-Chief Mr Sanjay Pugalia with three-time Grammy Award winner and  Padma Shri awardee Mr Ricky Kej."
   },
   {
     image: "assets/archive/gallery/image12.png",
     year: 2025,
     event: "Infrashakti",
+    description: ""
   },
   {
     image: "assets/archive/gallery/image4.png",
     year: 2025,
     event: "Infrashakti",
+    description: "Urban Infra Hero Mr Sandeep Patel from NEPRA Resource Management Pvt Ltd at the ceremony."
   },
   {
     image: "assets/archive/gallery/image11.png",
     year: 2025,
     event: "Infrashakti",
+    description: "The Infravision Foundation co-founder, Ms Rumjhum Chatterjee, at an interactive discussion with employees from Suzuki Motor Corporation, Japan, at IIM Ahmedabad’s Next Bharat Thinking programme."
   },
   {
     image: "assets/archive/gallery/image9.png",
     year: 2025,
     event: "Infrashakti",
+    description: "The Infravision community at the Foundation’s Annual Get-together."
   },
   {
     image: "assets/archive/gallery/image13.png",
     year: 2025,
     event: "Infrashakti",
+    description: ""
   },
   {
     image: "assets/archive/gallery/image14.png",
     year: 2025,
     event: "Infrashakti",
+    description: "Ms Rumjhum Chatterjee during a panel discussion on “Sustainable infra that will build Bharat”."
   },
   {
     image: "assets/archive/gallery/image15.png",
     year: 2025,
     event: "Infrashakti",
+    description: ""
   },
 ];
 
@@ -115,7 +133,7 @@ const SECTORS: EventType[] = [
   "Annual GetTogether 2025",
   "TIF Meetings",
 ];
-const INITIAL_VISIBLE_COUNT = 19;
+// const INITIAL_VISIBLE_COUNT = 19;
 
 export default function Gallery() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -123,8 +141,9 @@ export default function Gallery() {
   const [selectedTab, setSelectedTab] = useState<FilterType>("All");
   // Default filter: if Year tab, default to 2025, else All
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
-  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
-
+  // const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const scrollToCenter = (index: number) => {
     const tab = tabRefs.current[index];
     const container = containerRef.current;
@@ -160,15 +179,20 @@ export default function Gallery() {
     } else {
       setSelectedFilter("All");
     }
-    setVisibleCount(INITIAL_VISIBLE_COUNT);
+    // setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
 
   // Filter button click handler
   const handleFilterClick = (filter: string, index: number) => {
     setSelectedFilter(filter);
-    setVisibleCount(INITIAL_VISIBLE_COUNT);
+    // setVisibleCount(INITIAL_VISIBLE_COUNT);
     scrollToCenter(index)
   };
+
+  const handleClickOnImage = (index: number) => {
+    setCurrentIndex(index)
+    setIsOpen(true)
+  }
 
   // Render filter buttons for Year or Event
   const renderFilterButtons = (filters: readonly string[]) => (
@@ -241,9 +265,10 @@ export default function Gallery() {
             filteredImages.length === 0 && <div className="flex justify-center"> No results </div>
           }
           <div className="columns-2  sm:columns-3 lg:columns-4 xl:columns-5 gap-1 sm:gap-3 space-y-1 sm:space-y-3">
-            {filteredImages.slice(0, visibleCount).map((img, idx) => (
+            {filteredImages.map((img, idx) => (
               <div
                 key={idx}
+                onClick={() => handleClickOnImage(idx)}
                 className="overflow-hidden mb-1 sm:mb-3 break-inside-avoid shadow-sm bg-white"
               >
                 <Image
@@ -257,6 +282,30 @@ export default function Gallery() {
               </div>
             ))}
           </div>
+          {
+            isOpen &&
+            <Portal>
+              <div className="w-screen h-screen p-3  fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] flex">
+                <div className="relative w-[30rem] h-[38rem] bg-black m-auto">
+                  <Image className="object-cover z-0 [mask-image:linear-gradient(to_bottom,black,transparent)]" fill src={filteredImages[currentIndex].image} unoptimized quality={100} alt={filteredImages[currentIndex].event}></Image>
+                  <div className="absolute bottom-4 z-10 w-full">
+                    <p className="px-3 text-base xl:text-lg text-white text-center font-light">{filteredImages[currentIndex].description}</p>
+                  </div>
+                  <div className="z-10 absolute top-1/2 -translate-y-1/2 flex w-full px-3 sm:px-4 justify-between">
+                    <button disabled={currentIndex === 0} onClick={() => setCurrentIndex(prev => prev - 1)} className="bg-white p-2 rounded-full text-pink hover:bg-pink hover:text-white transition-all duration-300 ease-linear disabled:opacity-[50%] cursor-pointer disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-pink">
+                      <MoveLeft />
+                    </button>
+                    <button disabled={currentIndex >= filteredImages.length - 1} onClick={() => setCurrentIndex(prev => prev + 1)} className="bg-white p-2 rounded-full text-pink hover:bg-pink hover:text-white transition-all duration-300 ease-linear disabled:opacity-[50%] cursor-pointer disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-pink">
+                      <MoveRight />
+                    </button>
+                  </div>
+                  <button onClick={() => setIsOpen(false)} className="absolute top-2 right-2 z-10 bg-pink p-1  rounded-full text-white hover:bg-white hover:text-pink transition-all duration-300 ease-linear   cursor-pointer hover:scale-[1.05] ">
+                    <X />
+                  </button>
+                </div>
+              </div>
+            </Portal>
+          }
         </div>
       </div>
     </section>
