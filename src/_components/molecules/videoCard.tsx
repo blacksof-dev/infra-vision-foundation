@@ -7,7 +7,7 @@ import Portal from "../atoms/popupPortal";
 import { RxCross2 } from "react-icons/rx";
 import { useState } from "react";
 import Link from "next/link";
-import VideoPopupGlobal from "@/_components/molecules/videopopup"
+import VideoPopupGlobal from "@/_components/molecules/videopopup";
 
 type VideoProps = {
   name: string;
@@ -25,9 +25,21 @@ type VideoCardProps = {
 };
 
 export default function VideoCard({ data }: VideoCardProps) {
-  const [selectedVideoPopUp, setSelectedVideoPopUp] =
-    useState<VideoProps | null>(null);
-  
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [currentIndex, setcurrentIndex] = useState(0);
+
+  const handleNextClick = () => {
+    if (currentIndex < data.length - 1) {
+      setcurrentIndex((prev) => prev + 1);
+    } else {
+      setIsOpen(false);
+    }
+  };
+
+  const handleClick = (index: number) => {
+    setcurrentIndex(index);
+    setIsOpen(true);
+  };
 
   return (
     <>
@@ -42,9 +54,9 @@ export default function VideoCard({ data }: VideoCardProps) {
                 alt="Image"
                 className="w-full h-full object-cover object-top rounded-md"
               />
-              <div className="group absolute right-4 bottom-4">
+              <div className="group  absolute right-4 bottom-4">
                 <button
-                  onClick={() => setSelectedVideoPopUp(elem)}
+                  onClick={() => handleClick(index)}
                   className="w-12 h-12 rounded-full cursor-pointer ring-1 ring-pink bg-white flex justify-center items-center group-hover:bg-pink transition-all duration-100"
                 >
                   <FaPlay className="text-pink text-lg group-hover:text-white" />
@@ -79,10 +91,11 @@ export default function VideoCard({ data }: VideoCardProps) {
         ))}
       </div>
 
-      {selectedVideoPopUp && (
+      {isOpen && (
         <VideoCardPopup
-          onclose={() => setSelectedVideoPopUp(null)}
-          videoPopupDetails={selectedVideoPopUp}
+          onclose={() => setIsOpen(false)}
+          videoPopupDetails={data[currentIndex]}
+          handleNextClick={handleNextClick}
         />
       )}
     </>
@@ -92,19 +105,14 @@ export default function VideoCard({ data }: VideoCardProps) {
 const VideoCardPopup = ({
   onclose,
   videoPopupDetails,
+  handleNextClick,
 }: {
   onclose: () => void;
   videoPopupDetails: VideoProps;
-   
+  handleNextClick: () => void;
 }) => {
+  const [videoPopUp, setvideoPopup] = useState<boolean>(false);
 
-  
-  
-    const [videoPopUp,setvideoPopup] = useState<boolean>(false);
-  
-
- 
-  
   return (
     <Portal>
       <div className="flex justify-center md:items-center fixed inset-0 bg-black/90 z-[999] py-4 overflow-y-auto">
@@ -124,16 +132,14 @@ const VideoCardPopup = ({
               height={50}
               className="rounded-lg  w-full h-full object-cover"
             />
-             <div className="group absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
-             
-                <button
-                  onClick={()=>setvideoPopup(true)}    className="w-12 h-12 rounded-full d cursor-pointer ring-1 ring-pink bg-white flex justify-center items-center group-hover:bg-pink transition-all duration-100"
-                >
-
-                  <FaPlay  className="text-pink text-lg  group-hover:text-white" />
-                </button>
-                
-              </div>
+            <div className="group absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+              <button
+                onClick={() => setvideoPopup(true)}
+                className="w-12 h-12 rounded-full d cursor-pointer ring-1 ring-pink bg-white flex justify-center items-center group-hover:bg-pink transition-all duration-100"
+              >
+                <FaPlay className="text-pink text-lg  group-hover:text-white" />
+              </button>
+            </div>
           </div>
 
           <div className="w-full  md:w-1/2 flex flex-col justify-center">
@@ -145,7 +151,7 @@ const VideoCardPopup = ({
               className="py-6 "
             />
 
-            <div className="w-full h-full  lg:py-14">
+            <div className="w-full h-full   lg:py-14">
               <div className="flex flex-row gap-3 ">
                 <Image
                   src={videoPopupDetails.awardslogo}
@@ -169,19 +175,29 @@ const VideoCardPopup = ({
                 <p className="text-black text-sm w-full  pt-2 opacity-[0.9]">
                   {videoPopupDetails.desc}
                 </p>
-              
               </div>
             </div>
-              
-          </div>
 
-          
+            <div onClick={handleNextClick} className="pt-3 pb-6 xl:py-4">
+              <BorderGrayHeroBtn
+                text="Next"
+                role="button"
+                borderColor="darkgray/40"
+                color="black"
+                bgColor="white"
+                size="base"
+                classes="font-medium"
+              />
+            </div>
+          </div>
         </div>
-      
       </div>
-        {videoPopUp && (
-             <VideoPopupGlobal src={videoPopupDetails.link} onClose={()=>setvideoPopup(false)}/>
-          )}
+      {videoPopUp && (
+        <VideoPopupGlobal
+          src={videoPopupDetails.link}
+          onClose={() => setvideoPopup(false)}
+        />
+      )}
     </Portal>
   );
 };
