@@ -269,14 +269,14 @@ export default function Gallery() {
               <div
                 key={idx}
                 onClick={() => handleClickOnImage(idx)}
-                className="overflow-hidden mb-1 sm:mb-3 break-inside-avoid shadow-sm bg-white"
+                className="overflow-hidden group cursor-pointer  mb-1 sm:mb-3 break-inside-avoid shadow-sm bg-white"
               >
                 <Image
                   src={img.image}
                   alt={`Gallery Photo ${idx + 1}`}
                   width={300}
                   height={256}
-                  className="w-full h-auto object-cover"
+                  className="w-full h-auto object-cover transition-all duration-300 ease-linear group-hover:scale-[1.05]"
                   unoptimized
                 />
               </div>
