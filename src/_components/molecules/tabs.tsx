@@ -88,10 +88,11 @@ export default function OutreachTabs({ sectionRefs, tabs }: Props) {
   }, [sectionRefs, activeTab]);
 
   return (
+
     <div
       ref={containerRef}
       className={clsx(
-        "border-b overflow-hidden w-container  border-darkgray/16 transition-all duration-200 ease-linear",
+        "border-b overflow-hidden  border-darkgray/16 transition-all duration-200 ease-linear",
         "bg-white",
         "z-50",
         "sticky",
@@ -100,7 +101,7 @@ export default function OutreachTabs({ sectionRefs, tabs }: Props) {
         isHeaderVisible ? "sticky top-20 xl:top-24" : "top-0"
       )}
     >
-      <div className="flex gap-5  sm:gap-20 md:pt-8  justify-start    z-40  w-fit ">
+      <div className="flex gap-5 w-container w-full sm:gap-20 md:pt-8  justify-start    z-40  ">
         {tabs.map((tab, index) => (
           <button
             key={tab.id}
@@ -120,5 +121,6 @@ export default function OutreachTabs({ sectionRefs, tabs }: Props) {
         ))}
       </div>
     </div>
+
   );
 }
