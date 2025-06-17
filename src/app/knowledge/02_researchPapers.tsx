@@ -7,6 +7,9 @@ import img_03 from "@/../public/assets/knowledeg/researchPapers/03.jpg";
 import img_04 from "@/../public/assets/knowledeg/researchPapers/04.jpg";
 import img_05 from "@/../public/assets/knowledeg/researchPapers/05.jpg";
 import img_06 from "@/../public/assets/knowledeg/researchPapers/06.jpg";
+import img_07 from "@/../public/assets/knowledeg/researchPapers/07.jpg";
+import img_08 from "@/../public/assets/knowledeg/researchPapers/08.jpg";
+import img_09 from "@/../public/assets/knowledeg/researchPapers/09.jpg";
 
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 
@@ -22,6 +25,7 @@ type SectorType =
   | "Urban Planning"
   | "Rural and Agri Infra"
   | "Education"
+  | "Finance"
   | "Health Infra";
 
 interface NewsletterCard {
@@ -47,20 +51,11 @@ const SECTORS: SectorType[] = [
   "Rural and Agri Infra",
   "Education",
   "Health Infra",
+  "Finance"
 ];
 const INITIAL_VISIBLE_COUNT = 3;
 
-const secondFilter = ["2025", "2024"];
-const thridFilter = [
-  "All",
-  "Transportation",
-  "Water and Sanitation",
-  "Energy",
-  "Urban Planning",
-  "Rural and Agri Infra",
-  "Education",
-  "Health Infra",
-];
+
 const allcards = [
   {
     id: 1,
@@ -71,7 +66,7 @@ const allcards = [
     date: "November, 2024",
     description:
       "Study on the implementation of compensatory afforestation in India",
-    link: "/assets/knowledeg/researchPapers/Study-on-Implementation-of-Compensatory-Afforestation-in-India.pdf",
+    link: "/assets/pdf/Study-on-Implementation-of-Compensatory-Afforestation-in-India.pdf",
   },
   {
     id: 2,
@@ -79,7 +74,7 @@ const allcards = [
     category: "Transportation",
     title: "",
     sectors: "Transportation",
-    date: "January, 2025",
+    date: " ",
     description: "The case for developing high-speed rail corridors in India",
     link: "/assets/pdf/The-Case-For-Developing-High-Speed-Rail-Corridors-In-India.pdf",
   },
@@ -89,7 +84,7 @@ const allcards = [
     category: "Transportation",
     title: "",
     sectors: "Transportation",
-    date: "January, 2025",
+    date: " ",
     description: "Safe highways in India: Challenges and solutions",
     link: "/assets/pdf/Safe-Highways-in-India-Challenges-and-Solutions_August-2024.pdf",
   },
@@ -99,7 +94,7 @@ const allcards = [
     category: "Transportation",
     title: "",
     sectors: "Transportation",
-    date: "January, 2025",
+    date: " ",
     description:
       "Strategies to improve the financial performance of the metro rail system",
     link: "/assets/pdf/Metro-Rail-Systems-Whitepaper.pdf",
@@ -110,7 +105,7 @@ const allcards = [
     category: "Urban Planning",
     title: "",
     sectors: "Urban Planning",
-    date: "January, 2025",
+    date: " ",
     description: "Sustainability ratings for Infrastructure projects in India",
     link: "/assets/pdf/Sustainability-Rating-Infra-Whitepaper-2.pdf",
   },
@@ -120,9 +115,39 @@ const allcards = [
     category: "Energy",
     title: "",
     sectors: "Energy",
-    date: "January, 2025",
+    date: " ",
     description: "Mass scale rooftop solar programme for poverty alleviation",
     link: "/assets/pdf/solar.pdf",
+  },
+  {
+    id: 7,
+    img: img_07,
+    category: "Transportation",
+    title: "",
+    sectors: "Transportation",
+    date: " ",
+    description: "A framework for selecting an appropriate urban transport system",
+    link: "/assets/pdf/Urban-Transport-Project-White-Paper.pdf",
+  },
+  {
+    id: 8,
+    img: img_08,
+    category: "Finance",
+    title: "",
+    sectors: "Finance",
+    date: " ",
+    description: "Surety bonds: Evaluation for diversifying risk in infrastructure financing",
+    link: "/assets/pdf/Surety-Bond-White-Paper.pdf",
+  },
+  {
+    id: 9,
+    img: img_09,
+    category: "Rural and Agri Infra",
+    title: "",
+    sectors: "Rural and Agri Infra",
+    date: " ",
+    description: "Ways to enhance warehouse-based sales and lending for agriculture commodities",
+    link: "/assets/pdf/Warehousing-Whitepaper.pdf",
   },
 ];
 
@@ -205,7 +230,7 @@ export default function ResearchPapers() {
 
   return (
     <section id="research-papers">
-      <div className="w-container blade-top-padding-sm blade-bottom-padding-sm">
+      <div className="w-container blade-top-padding-sm blade-bottom-padding">
         {/* Header Section */}
         <div className="flex flex-row items-center gap-2 md:gap-3">
           <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
@@ -278,7 +303,7 @@ export default function ResearchPapers() {
               ))}
             </div>
             {visibleCount < filteredCards.length && (
-              <div className="flex justify-center mt-8">
+              <div className="flex justify-center mb-4 ">
                 <UnderlineWithHover
                   size="xxlsize"
                   color="pink"

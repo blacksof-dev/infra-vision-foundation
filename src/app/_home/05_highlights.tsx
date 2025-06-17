@@ -149,7 +149,7 @@ export const TabSwitch = ({
 
   return (
     <div>
-      <div ref={containerRef} className={`blade-top-padding-sm overflow-x-scroll bg-whitesmoke no-scrollbar sticky ${isHeaderVisible ? "top-20   lg:top-24" : "top-0"} `}>
+      <div ref={containerRef} className={`blade-top-padding-sm overflow-x-scroll bg-whitesmoke no-scrollbar z-[999] sticky ${isHeaderVisible ? "top-20   lg:top-24" : "top-0"} `}>
         <div className="flex flex-row gap-6 sm:gap-12  lg:gap-12 md:gap-18 border-b   border-darkgray/16 w-fit ">
           <button
             ref={(el: HTMLButtonElement | null) => { tabRefs.current[0] = el }}
