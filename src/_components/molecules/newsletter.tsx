@@ -97,7 +97,7 @@ export default function Newsletter({
                   </h4>
                 </div>
               </div>
-              <div className="w-fit">
+              <div className="w-fit ">
                 <Link href={ctaLink}>
                   <HeroBtn
                     text={ctatext}

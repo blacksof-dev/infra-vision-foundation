@@ -32,7 +32,7 @@ export default function Overview() {
 
   return (
     <>
-      <div className="blade-top-padding-lg blade-bottom-padding-lg overflow-hidden">
+      <div className="blade-top-padding-sm blade-bottom-padding-lg overflow-hidden">
         <div className="w-container ">
           <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
@@ -47,7 +47,7 @@ export default function Overview() {
               <br /> practices across the nation
             </h1>
           </div>
-          <div className="w-full md:w-[50%] lg:w-[70%] pt-5">
+          <div className="w-full md:w-[60%] xl:w-[50%] pt-5">
             <h6>
             The InfraShakti Awards, a flagship initiative of The Infravision Foundation and NDTV, celebrates individuals and organisations turning the tide in India’s infrastructure landscape. These pioneers harness the true power of infrastructure to ease citizens' lives and catalyse holistic development.
 
@@ -121,7 +121,7 @@ export default function Overview() {
                       <h6 className="text-black text-lg font-semibold mb-1">
                         {elem.title}
                       </h6>
-                      <p className="text-sm text-black/80 font-light">
+                      <p className="text-sm text-black/80 ">
                         {elem.description}
                       </p>
 
@@ -161,19 +161,20 @@ const OberviewDetails = [
     logo: urbanAwards,
   },
   {
-    image: transport,
-    title: "Transport Trailblazer Award",
-    description:
-      "For sustainable and innovative actions in transportation infrastructure, enhancing urban connectivity and mobility with progressive innovation.",
-    logo: transportAward,
-  },
-  {
     image: ruralInfra,
     title: "Rural Infra Pioneer Award",
     description:
       "For inventive and high-impact initiativ es in rural infrastructure that significantly improve liveability across India’s hinterlands.",
     logo: ruralInfraAward,
   },
+  {
+    image: transport,
+    title: "Transport Trailblazer Award",
+    description:
+      "For sustainable and innovative actions in transportation infrastructure, enhancing urban connectivity and mobility with progressive innovation.",
+    logo: transportAward,
+  },
+  
   {
     image: renewable,
     title: "Renewable Energy Star Award",
@@ -182,17 +183,18 @@ const OberviewDetails = [
     logo: renewableAward,
   },
   {
-    image: peopleChoice,
-    title: "People’s Choice Award for Inclusive Infrastructure",
-    description:
-      "For the empowerment of disabled people through accessible and inclusive infrastructure initiatives, driving independence and equity.",
-    logo: peopleChoiceAward,
-  },
-  {
     image: infravisionaryAward,
     title: "Infravisionary Award",
     description:
       "For key initiatives that have left a lasting impact on India's infrastructure and changed lives as well as livelihoods substantively.",
     logo: infravisionary,
   },
+  {
+    image: peopleChoice,
+    title: "People’s Choice Award for Inclusive Infrastructure",
+    description:
+      "For the empowerment of disabled people through accessible and inclusive infrastructure initiatives, driving independence and equity.",
+    logo: peopleChoiceAward,
+  },
+  
 ];
