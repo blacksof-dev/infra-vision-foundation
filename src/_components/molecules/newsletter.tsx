@@ -91,7 +91,7 @@ export default function Newsletter({
                   />
                 </div>
 
-                <div className="max-w-lg w-full">
+                <div className="max-w-xl w-full">
                   <h4 className="text-white font-light py-1 md:py-3 ">
                     {desc}
                   </h4>

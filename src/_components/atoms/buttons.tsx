@@ -301,23 +301,34 @@ export function UnderlineWithHover<T extends "submit" | "button">({
 }: MasterBtnProps<T>) {
   const sizeClass: string = sizeMap[size];
   return (
-    <>
+    <div className="group relative">
+      {
+        (role === "link") ?
+          <Link className={`${sizeClass}  text-${color} cursor-pointer  text-nowrap w-40 px-1 py-3 font-medium relative  overflow-hidden  group-hover:text-white transition-all duration-300`}
+            href={link}>
+            {text}
+            <span
+              className={`w-full  h-[1px] bg-${bgColor} absolute bottom-0 left-0 transition-all duration-300`}
+            ></span>
+            <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5] transition-all duration-700 ease-in-out -z-[1]"></span>
+
+          </Link>
+          :
+          <button
+            onClick={handlefun}
+            className={`${sizeClass} text-${color} cursor-pointer  text-nowrap w-40 px-1 py-3 font-medium relative  overflow-hidden  group-hover:text-white transition-all duration-300`}
+          >
+            {text}
+            <span
+              className={`w-full  h-[1px] bg-${bgColor} absolute bottom-0 left-0 transition-all duration-300`}
+            ></span>
+            <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5] transition-all duration-700 ease-in-out -z-[1]"></span>
+          </button>
+      }
+    </div>
 
 
-      <div className="group relative">
-        <button
-          onClick={handlefun}
-          className={`${sizeClass} text-${color} cursor-pointer  text-nowrap w-40 px-1 py-3 font-medium relative  overflow-hidden  group-hover:text-white transition-all duration-300`}
-        >
-          {text}
-          <span
-            className={`w-full  h-[1px] bg-${bgColor} absolute bottom-0 left-0 transition-all duration-300`}
-          ></span>
-          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5] transition-all duration-700 ease-in-out -z-[1]"></span>
-        </button>
-      </div>
 
-    </>
   );
 }
 

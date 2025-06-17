@@ -16,6 +16,7 @@ import EventTemplate from "@/_components/molecules/eventTemplate";
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import InfrapanditAward from "./infraPanditAward";
 import { useHeader } from "@/context/useHeader";
+import Link from "next/link"
 
 const newsletters = [
   {
@@ -191,27 +192,19 @@ export const TabSwitch = ({
         {activeTab === "Newsletters" && <TabContent data={newsletters} />}
         {activeTab === "In the News" && <TabContent data={news} />}
       </div>
-      {/* <div className="mt-7">
-        {activeTab === "Outreach and Engagements" ? (
-          <UnderlineWithHover
-            size="extralarge"
-            color="pink"
-            bgColor="pink"
-            text="View all events"
-            role="button"
-            borderColor="white"
-          />
-        ) : (
-          <UnderlineWithHover
-            size="extralarge"
-            color="pink"
-            bgColor="pink"
-            text="View all"
-            role="button"
-            borderColor="white"
-          />
-        )}
-      </div> */}
+      <div className="mt-2 md:mt-5 ">
+        <div className="flex">
+          <Link className={`group  text-xl lg:text-2xl text-pink hover:text-white cursor-pointer  text-nowrap px-2  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
+            href={activeTab === "Outreach and Engagements" ? "/outreach-and-engagements" : activeTab === "Newsletters" ? "/archive#newsletters" : activeTab === "In the News" ? "/archive#news-and-media" : ""}>
+            <span className="z-50 relative">{`${activeTab === "Outreach and Engagements" ? "View all events" : "Read more"}`}</span>
+            <span
+              className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
+            ></span>
+            <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5.5] transition-all duration-700 ease-in-out z-0"></span>
+          </Link>
+        </div>
+
+      </div>
     </div>
   );
 };
