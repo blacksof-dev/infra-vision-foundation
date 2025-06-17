@@ -14,6 +14,7 @@ interface bannerProps {
 
 import { RiArrowRightSLine } from "react-icons/ri";
 import { HeroBtnPink } from "../atoms/buttons";
+import Link from "next/link";
 export default function Banner({
   image,
   heading,
@@ -48,9 +49,10 @@ export default function Banner({
           )}
           <div className="w-container overflow-hidden">
             <div className="absolute w-auto sm:w-auto top-9  sm:top-12 md:top-18 flex flex-col  justify-between h-[88%] sm:h-[80%]">
-              <div className="flex flex-row gap-1">
+              <div className="flex flex-row gap-1 ">
+                <Link href="/">
                 <svg
-                  className="fill-black sm:fill-white "
+                  className="fill-black  sm:fill-white "
                   width="28"
                   height="24"
                   viewBox="0 0 28 24"
@@ -63,6 +65,7 @@ export default function Banner({
 
                   />
                 </svg>
+                </Link>
                 <h5 className="text-black sm:text-white font-light flex flex-row">
                   <RiArrowRightSLine className="text-[24px]" />
                   {heading}

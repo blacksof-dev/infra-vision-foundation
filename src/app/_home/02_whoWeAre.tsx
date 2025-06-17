@@ -10,6 +10,8 @@ import infraPandit from "@/../public/assets/infrapandit/bannerBg.png";
 import { useState } from "react";
 import Card from "@/_components/molecules/cardTemplate";
 import { useHeader } from "@/context/useHeader";
+import { UnderlineWithHover } from "@/_components/atoms/buttons";
+import Link from "next/link";
 
 export type TabItem = {
   id: number;
@@ -150,7 +152,7 @@ export const TabSwitch = ({
     <div>
       <div className={`${isHeaderVisible ? "top-20 xl:top-24" : "top-0"} sticky bg-whitesmoke py-6 xl:py-8 z-[99] transition-all duration-200 ease-linear`}>
 
-        <div className=" flex flex-row justify-center items-center gap-12 md:gap-18 border-b mx-auto  border-darkgray/16 w-fit">
+        <div className=" flex flex-row sm:justify-center  items-center gap-12 md:gap-18 border-b sm:mx-auto  border-darkgray/16 w-fit">
           <button
             onClick={() => setActiveTab("Knowledge")}
             className={`text-base cursor-pointer  md:text-xl   ${activeTab === "Knowledge"
@@ -174,17 +176,18 @@ export const TabSwitch = ({
 
       <div className="">
         {activeTab === "Knowledge" ? (
-          <TabContent data={knowledge} />
+          <TabContent data={knowledge} link="/knowledge" />
         ) : (
           <TabContent data={advocacy} />
         )}
       </div>
+
     </div>
   );
 };
 
-export const TabContent = ({ data }: { data: TabItem[] }) => {
-  return (
+export const TabContent = ({ data, link }: { data: TabItem[], link?: string }) => {
+  return (<>
     <div className="grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-2 sm:gap-8 lg:gap-9  md:blade-top-padding-sm">
       {data.map((item) => (
         <Card
@@ -199,6 +202,23 @@ export const TabContent = ({ data }: { data: TabItem[] }) => {
           classes=" text-lg md:text-xl text-black"
         />
       ))}
-    </div>
+    </div> {
+      link &&
+
+      <div className="flex justify-center xl:mt-4">
+        <div className="">
+          <Link className={`group  text-xl lg:text-2xl   text-pink hover:text-white cursor-pointer  text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
+            href={link}>
+            <span className="z-50 relative">  Read more</span>
+            <span
+              className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
+            ></span>
+            <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5] transition-all duration-700 ease-in-out z-0"></span>
+
+          </Link>
+        </div>
+      </div>
+    }
+  </>
   );
 };

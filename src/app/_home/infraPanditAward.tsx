@@ -25,7 +25,7 @@ export default function InfrapanditAward() {
             </h2>
 
             <div className="py-3 sm:pt-6">
-              <h2 className=" text-pink">June 20, 2025</h2>
+              <h3 className=" text-pink">June 20, 2025</h3>
             </div>
           </div>
         </div>

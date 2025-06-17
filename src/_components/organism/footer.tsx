@@ -42,7 +42,7 @@ const footer = () => {
                     className="flex-1 w-[12.5rem]  h-[3rem] my-auto md:h-full px-1 sm:px-4   text-base tracking-[-0.3px] outline-none text-darkgray"
                   />
 
-                  <div className="border-l-1 sm:px-6 border-darkgray/20 ">
+                  <div className="border-l-1  px-2 py-2 sm:px-6 border-darkgray/20 flex justify-center items-center">
                     <HeroBtn
                       text="Subscribe"
                       role="link"
@@ -50,7 +50,7 @@ const footer = () => {
                       color="pink"
                       bgColor="white"
                       size="extralarge"
-                      classes="w-full w-auto  p-3 sm:p-2 text-sm font-medium"
+                      classes="w-full w-auto text-sm font-medium"
                     />
                   </div>
                 </div>
@@ -251,7 +251,7 @@ const footer = () => {
                           size="base"
                           className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                           href="/archive#news-and-media"
-                          text="News and Media"
+                          text="In the News"
                         />
                       </li>
                       <li>
@@ -269,7 +269,7 @@ const footer = () => {
                 <li className="flex items-center gap-3 mt-4 xl:mt-6 2xl:mt-8">
                   <div className="w-3 h-3 rounded-full bg-darkgray opacity-30"></div>
                   <span className="text-black hover:text-pink text-xl">
-                    <Link href="/get-involved">Get involved</Link>
+                    <Link href="/get-involved">Get Involved</Link>
                   </span>
                 </li>
 
@@ -309,7 +309,7 @@ const footer = () => {
                     <h5 className="text-black 2xl:text-lg ">Phone</h5>
                   </div>
 
-                  <h6 className="text-darkgray ps-1 py-1  pl-6">
+                  <h6 className="text-darkgray ps-1 py-1 text-base pl-6">
                     +91 98107 50745
                   </h6>
                 </div>

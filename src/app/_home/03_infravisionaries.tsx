@@ -273,7 +273,7 @@ export default function Infravisionaries() {
           />
 
           <MobileMembersSlider
-            title="Advisory"
+            title="Advisory Council"
             data={advisory}
             navClass="advisory"
             setShowPopup={setShowPopup}
@@ -284,7 +284,7 @@ export default function Infravisionaries() {
           />
 
           <MobileMembersSlider
-            title="Fellows"
+            title="Distinguished Fellows"
             data={fellow}
             navClass="fellow"
             setShowPopup={setShowPopup}
@@ -332,7 +332,7 @@ export const MobileMembersSlider = ({
     <div className="md:hidden block pb-7 px-3 overflow-hidden">
       <div className="py-5">
         <button
-          className="text-white text-md text-nowrap lg:text-xl relative font-medium"
+          className="text-white text-lg text-nowrap lg:text-xl relative font-medium"
           onClick={onSelectTab}
         >
           {title}
@@ -353,7 +353,7 @@ export const MobileMembersSlider = ({
             nextEl: `.nextbtn${navClass}`,
           }}
           breakpoints={{
-            425: { slidesPerView: 1.3, spaceBetween: 20 },
+            425: { slidesPerView: 1.3, spaceBetween: 10 },
             640: { slidesPerView: 1.5, spaceBetween: 20 },
             768: { slidesPerView: 2.2, spaceBetween: 10 },
             1024: { slidesPerView: 2.5, spaceBetween: 50 },

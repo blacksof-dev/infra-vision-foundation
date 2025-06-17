@@ -57,7 +57,7 @@ export const trustee = [
     title: "Vinayak Chatterjee",
     desig: "Founder & Managing Trustee",
     popupImg: vinayakImg.src,
-
+    link: "",
     popupdesc:
       `Vinayak Chatterjee co-founded Feedback Infra Pvt Ltd in 1990 and served as its Chairman from 1990 to 2021. Since stepping down from active management, he now dedicates his time and energy to infrastructure policy and advocacy, as well as to nurturing educational institutions.\n
 
@@ -155,7 +155,7 @@ Mr Kothari is the Founder, Chairman and Managing Trustee of the Wildlife Conserv
     title: "Dr. Janmejaya K. Sinha",
     desig: "Member, Council of Advisors",
     popupImg: vinayakImg.src,
-
+    link: "https://www.linkedin.com/in/janmejaya-sinha-591259120",
     popupdesc:
       `Dr Janmejaya Sinha is Chairman of BCG's India Practice and also a BCG Fellow researching Family Businesses. He is a member of The Boston Consulting Group’s Henderson Institute Innovation Sounding Board, dedicated to supporting, inspiring, and guiding upstream innovation at BCG. He previously served as Chairman of the Asia-Pacific region between 2009 and 2018 and as a member of the firm's Executive Committee between 2006 and 2018.\n
 
@@ -195,7 +195,7 @@ He currently holds Board positions as Chairman of Narotam Sekhsaria Foundation a
     title: "Rajnish Kumar",
     desig: "Member, Council of Advisors",
     popupImg: vinayakImg.src,
-
+    link: "https://www.linkedin.com/in/sunil-mathur",
     popupdesc:
       `
      Rajnish Kumar is the former Chairman of the State Bank of India, completing his three-year term in October 2020. He is credited with steering the bank successfully through challenging times. During his tenure, SBI developed YONO, a digital platform that established the bank as a global leader in the adoption of technology and innovation.\n
@@ -215,7 +215,7 @@ Born in January 1958, Mr Kumar holds an MSc in Physics from Meerut University an
     title: "Professor G. Raghuram",
     desig: "Member, Council of Advisors",
     popupImg: vinayakImg.src,
-
+    link: "https://www.linkedin.com/in/g-raghuram-aa103750 ",
     popupdesc:
       `
       Professor Raghuram is Principal Academic Advisor and Distinguished Visiting Faculty at the National Rail and Transportation Institute, a university promoted by the Indian Ministry of Railways. He is Professor (Emeritus) at the Gujarat Maritime University, a university promoted by the Gujarat Maritime Board. He was Director, IIM Bangalore, from February 2017 to July 2020.\n
@@ -278,6 +278,7 @@ Mr Mathur is on the National Councils of the Confederation of Indian Industry (C
     title: "Ashish Dhawan",
     desig: "Member, Council of Advisors",
     popupImg: vinayakImg.src,
+    link: "https://www.linkedin.com/in/ashish-dhawan-241112",
     popupdesc:
       `Ashish Dhawan is the Founder-CEO of The Convergence Foundation (TCF), which focuses on accelerating India’s economic growth and development. TCF incubates non-profits focused on creating system-wide impact in the areas of economic growth, equality of opportunity, and sustainability. Its current portfolio includes organisations working on jobs and investment, the rule of law, governance and state capacity, economic empowerment of women, science and technology, air pollution, unlocking philanthropic capital, and improving the effectiveness of non-profits.\n
 
@@ -315,6 +316,7 @@ SNS serves as one of the nine founding members of the Climate Finance Leadership
     title: "Sameer Gupta",
     desig: "Member, Council of Advisors",
     popupImg: vinayakImg.src,
+    link: "https://www.linkedin.com/in/sameer-gupta-jakson",
     popupdesc:
       `
 Sameer Gupta is Chairman and Managing Director of Jakson Group — India’s leading energy and infrastructure company specialising in distributed energy, solar, and EPC solutions. The business interests of Jakson span multiple lines, including generating set manufacturing, solar module manufacturing, solar off-grid products, hybrid solutions, battery-based energy storage systems, solar rooftops, solar land-based EPC, electrical EPC in areas of substation, transmission & distribution, and defence solutions. Jakson also has business interests in civil infrastructure in India, real estate in the UK, and hospitality.\n
@@ -330,6 +332,7 @@ He is a graduate in Electronics Engineering from Pune University and an alumnus 
     title: "D. K. Sen",
     desig: "Member, Council of Advisors",
     popupImg: vinayakImg.src,
+    link: "https://www.linkedin.com/in/dip-kishore-sen-876ab640",
     popupdesc:
       `
      Dip Kishore Sen is a Whole-time Director and Senior Executive Vice President (Development Projects), L&T. He is Chairman on the board of Nabha Power Ltd, Power Development Ltd, L&T Special Steels & Heavy Forgings Pvt Ltd (LTSSHF), L&T Infrastructure Engineering Company, L&T Oman LLC, L&T Aviation Services Pvt Ltd, and Construction Skill Development Council of India (CSDCI). He is a Director on the board of L&T Qatar LLC and Raykal Aluminium Company Pvt Ltd, and is also Managing Director for L&T Infrastructure Development Projects Ltd (L&T IDPL). The Minerals & Metals (M&M) Strategic Business Group of L&T comes under his charge.\n
@@ -506,6 +509,7 @@ She was a faculty for a Distribution Reforms training programme by USAID from 20
     title: "Supratim Sarkar",
     desig: "Distinguished Fellow (Financial Services)",
     popupImg: vinayakImg.src,
+    link: "https://www.linkedin.com/in/supratim-sarkar-577a0629b",
     popupdesc:
       `
     Supratim Sarkar brings over 25 years of experience in the financial services sector. He joined IDBI in 1995 and moved to SBICAPS in November 2000, where he served for 12 years as Executive Vice President and Group Head. In this role, he led a team of approximately 300 professionals across diverse areas, including Project Finance, Corporate Finance, Structured Finance, and Advisory services for project bidding, mine auctions, and disinvestments.\n
@@ -524,6 +528,7 @@ After graduating as a Mechanical Engineer from Jadavpur University in 1988, Mr S
     image: rajivRanjanMishra,
     title: "Rajiv Ranjan Mishra",
     popupImg: vinayakImg.src,
+    link: "https://www.linkedin.com/in/rajiv-mishra-48413553",
     desig: "Distinguished Fellow (Water Conservation)",
     popupdesc:
       `
@@ -640,6 +645,7 @@ Mr Chatterjee graduated in Economics (Hons.) from St. Stephen's College, Delhi U
     title: "Rumjhum Chatterjee",
     desig: "Co-Founder & Managing Trustee",
     popupImg: vinayakImg.src,
+    link: "https://www.linkedin.com/in/rumjhum-chatterjee-396041268",
     popupdesc:
       `
       Rumjhum Chatterjee co-founded the Feedback Infra Group. Following a successful tenure, she recently stepped down from her role as Group Managing Director and Head — Human Capital within the organisation.\n

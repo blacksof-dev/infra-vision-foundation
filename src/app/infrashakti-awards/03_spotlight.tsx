@@ -22,7 +22,7 @@ import ruralInfraAward from "@/../public/assets/infraShakti/overview/ruralInfraA
 
 export default function Spotlight() {
   const YEARS = ["2024"] as const;
-  const [selectedTab, setSelectedTab] = useState("2025");
+  const [selectedTab, setSelectedTab] = useState("2024");
   return (
     <>
       <div className="bg-whitesmoke">
@@ -38,18 +38,18 @@ export default function Spotlight() {
               </span>
             </h1>
           </div>
-          <div className="flex flex-col sm:flex-row gap-6 border-b border-darkgray/20">
+          <div className="flex flex-col    sm:flex-row gap-6 border-b border-darkgray/20">
             <div className="sm:border-r sm:border-darkgray/20">
               <h5 className="text-darkgray/80 sm:py-5 pr-5 text-nowrap">
                 Filter by year
               </h5>
             </div>
 
-            <div className="flex flex-row gap-5">
+            <div className="flex flex-row gap-5 ">
               {YEARS.map((tab) => (
                 <button
                   key={tab}
-                  className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4
+                  className={`my-auto text-base  cursor-pointer rounded-[50px] px-4 py-2  sm:px-6 sm:py-3 
                     ${
                       selectedTab === tab
                         ? "border border-pink text-pink font-medium"
@@ -98,16 +98,17 @@ export default function Spotlight() {
                     <div className="pt-8">
                       <HeroBtn
                         text="Watch video"
-                        target="_self"
+                        target="_blank"
                         role="link"
-                        borderColor="white"
+                      borderColor="white"
                         color="white"
                         bgColor="pink"
                         size="base"
-                         link="https://www.youtube.com/embed/9DIAhTDim9Y?start=15332&end=15430"
+                         link="https://www.youtube.com/embed/9DIAhTDim9Y?start=13850&end=13887"
                         aarowColor="white"
-                        classes="font-medium cursor-pointer"
+                        classes="font-medium cursor-pointer "
                       />
+                      
                     </div>
                   </div>
                 </div>

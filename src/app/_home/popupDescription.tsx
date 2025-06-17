@@ -43,7 +43,7 @@ export default function PopupDescription({
                 <h2 className=" font-semibold">{data.title}</h2>
                 <h6 className="text-pink font-medium sm:pt-1">{data.desig}</h6>
                 {data?.popupdesc && (
-                  <div className="overflow-y-auto h-full pr-2 pt-4">
+                  <div className="overflow-y-auto h-full pr-2 mt-2 sm:mt-3">
                     {data.popupdesc.split('\n').map((paragraph, index) => (
                       paragraph.trim() && (
                         <p
