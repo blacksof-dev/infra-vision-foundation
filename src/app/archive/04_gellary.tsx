@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 
 import Image from "next/image";
 import { NewsCard } from "@/_components/molecules/newsCard";
@@ -118,10 +118,26 @@ const SECTORS: EventType[] = [
 const INITIAL_VISIBLE_COUNT = 19;
 
 export default function Gallery() {
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [selectedTab, setSelectedTab] = useState<FilterType>("All");
   // Default filter: if Year tab, default to 2025, else All
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
+
+  const scrollToCenter = (index: number) => {
+    const tab = tabRefs.current[index];
+    const container = containerRef.current;
+
+    if (tab && container) {
+      // const containerRect = container.getBoundingClientRect();
+      // const tabRect = tab.getBoundingClientRect();
+      const offset =
+        tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
+      container.scrollTo({ left: offset, behavior: 'smooth' });
+    }
+  };
+
 
   // Filtering logic
   const filteredImages = useMemo(() => {
@@ -148,24 +164,27 @@ export default function Gallery() {
   };
 
   // Filter button click handler
-  const handleFilterClick = (filter: string) => {
+  const handleFilterClick = (filter: string, index: number) => {
     setSelectedFilter(filter);
     setVisibleCount(INITIAL_VISIBLE_COUNT);
+    scrollToCenter(index)
   };
 
   // Render filter buttons for Year or Event
   const renderFilterButtons = (filters: readonly string[]) => (
-    <div className="pt-5">
-      <div className="flex flex-wrap gap-3">
-        {filters.map((filter) => (
+    <div ref={containerRef} className="pt-5 overflow-scroll no-scrollbar">
+      <div className="flex  gap-3">
+        {filters.map((filter, index) => (
           <button
             key={filter}
-            className={`text-base cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3 ${
-              selectedFilter === filter.toString()
-                ? "border border-pink text-white bg-pink font-medium"
-                : "border border-lightgray/30"
-            }`}
-            onClick={() => handleFilterClick(filter.toString())}
+            ref={(el: HTMLButtonElement | null) => {
+              tabRefs.current[index] = el;
+            }}
+            className={`text-base cursor-pointer text-nowrap rounded-[50px] px-3 py-1 sm:px-6 sm:py-3 ${selectedFilter === filter.toString()
+              ? "border border-pink text-white bg-pink font-medium"
+              : "border border-lightgray/30"
+              }`}
+            onClick={() => handleFilterClick(filter.toString(), index)}
           >
             {filter}
           </button>
@@ -202,11 +221,10 @@ export default function Gallery() {
             {FILTER_TYPES.map((tab) => (
               <button
                 key={tab}
-                className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4 ${
-                  selectedTab === tab
-                    ? "border border-pink text-pink font-medium"
-                    : "border border-lightgray/30"
-                }`}
+                className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4 ${selectedTab === tab
+                  ? "border border-pink text-pink font-medium"
+                  : "border border-lightgray/30"
+                  }`}
                 onClick={() => handleTabClick(tab)}
               >
                 {tab}
@@ -219,6 +237,9 @@ export default function Gallery() {
         {selectedTab === "Event" && renderFilterButtons(SECTORS)}
         {/* Gallery Grid */}
         <div className="pt-8">
+          {
+            filteredImages.length === 0 && <div className="flex justify-center"> No results </div>
+          }
           <div className="columns-2  sm:columns-3 lg:columns-4 xl:columns-5 gap-1 sm:gap-3 space-y-1 sm:space-y-3">
             {filteredImages.slice(0, visibleCount).map((img, idx) => (
               <div
