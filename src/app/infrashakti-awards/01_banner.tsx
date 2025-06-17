@@ -7,7 +7,7 @@ export default function BannerSection() {
             image={banner}
             heading="InfraShakti Awards"
             title="InfraShakti Awards"
-            subdesc="Celebrating the champions of infrastructure."
+            subdesc="From innovation, impact, and beyond— Celebrating the champions of infrastructure."
             buttonText="Watch the ceremony "
             link="https://www.youtube.com/embed/9DIAhTDim9Y"
         />

@@ -18,11 +18,7 @@ export default function InfraShakti() {
   return (
     <>
       <BannerSection />
-
- 
        <Overview/>
-  
-     
       <Spotlight/>
       <Ceremony/>
       <Luminaries/>

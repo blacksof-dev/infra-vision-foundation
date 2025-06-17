@@ -28,7 +28,7 @@ const videoCardDetails = [
     image: raghuram.src,
     title: "Juror’s speak",
     name: "Prof G Raghuram",
-    designation: "Former Director IIMB and Dean IIMA",
+    designation: "Former Director, IIMB and Dean, IIMA",
     link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=265&end=321",
   },
   {
@@ -46,7 +46,7 @@ export default function Ceremony() {
       <div className="blade-top-padding-lg blade-bottom-padding-lg w-container">
         <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
           <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-          <h5 className="font-medium text-pink">Snippets from the ceremony</h5>
+          <h5 className="font-medium text-pink">Scenes from the Ceremony</h5>
         </div>
         <div className="py-2 ">
           <h1 className="text-black  font-light">

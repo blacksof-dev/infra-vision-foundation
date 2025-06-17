@@ -87,7 +87,7 @@ export const Preeminent = [
 export const jury = [
     {
     image: renu,
-    title: "Mrs. Renu Sud Karnad",
+    title: "Mrs Renu Sud Karnad",
     desig:
       "Chairperson, GSK Pharmaceuticals; Former MD, HDFC",
       popupImg:vinayakImg.src,
@@ -96,7 +96,7 @@ export const jury = [
   },
   {
     image: gul,
-    title: "Mrs. Gul Panag",
+    title: "Ms Gul Panag",
     desig:
       "Actor, Entrepreneur, and Sustainability Advocate",
       popupImg:vinayakImg.src,
@@ -105,7 +105,7 @@ export const jury = [
   },
   {
     image: bibek,
-    title: "Dr. Bibek Debroy",
+    title: "The Late Dr Bibek Debroy",
     desig:
       "Chairman, Economic Advisory Council, Prime Minister of India",
       popupImg:vinayakImg.src,
@@ -123,7 +123,7 @@ export const jury = [
   },
   {
     image: dilip,
-    title: "Mr. Dilip Cherian",
+    title: "Mr Dilip Cherian",
     desig:
       "Image Guru, Litigation Landscaping and Policy Analyst",
       popupImg:vinayakImg.src,

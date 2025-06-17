@@ -41,7 +41,7 @@ export default function Spotlight() {
           <div className="flex flex-col sm:flex-row gap-6 border-b border-darkgray/20">
             <div className="sm:border-r sm:border-darkgray/20">
               <h5 className="text-darkgray/80 sm:py-5 pr-5 text-nowrap">
-                Filter by
+                Filter by year
               </h5>
             </div>
 

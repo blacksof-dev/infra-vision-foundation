@@ -40,26 +40,22 @@ export default function Overview() {
           </div>
           <div className="py-2 ">
             <h1 className="text-black  font-light">
+              Recognising
               <span className="text-black/90 font-medium ">
-                Recognising excellence
+               {' '}outstanding infrastructure
               </span>
-              <br /> that’s dedicated to the nation
+              <br /> practices across the nation
             </h1>
           </div>
           <div className="w-full md:w-[50%] lg:w-[70%] pt-5">
             <h6>
-              The InfraShakti Awards, a flagship initiative of The Infravision
-              Foundation and NDTV, celebrates individuals and organisations
-              turning the tide in India’s infrastructure landscape. These
-              pioneers harness the true power of infrastructure to ease
-              citizens' lives and catalyse holistic development.
+            The InfraShakti Awards, a flagship initiative of The Infravision Foundation and NDTV, celebrates individuals and organisations turning the tide in India’s infrastructure landscape. These pioneers harness the true power of infrastructure to ease citizens' lives and catalyse holistic development.
+
             </h6>
 
             <h6 className="pt-4">
-              Featuring six jury-selected and one citizens’ choice categories,
-              the inaugural 2024 edition honoured seven outstanding awardees for
-              their momentous contributions through accessibility, connectivity,
-              liveability, and sustainability.
+             It features seven outstanding winners for their best infrastructure practices. They are selected based on a strict matrix of collaboration, impact, replicability, sustainability, and scalability.
+
             </h6>
           </div>
         </div>
@@ -121,7 +117,7 @@ export default function Overview() {
                       unoptimized={true}
                     />
 
-                    <div className="absolute bottom-2 left-2 z-40  bg-white rounded-xl p-2  2xl:p-4  2xl:pr-20 w-[85%] max-w-[32rem]   md:h-[10rem]  2xl:h-[11rem]">
+                    <div className="absolute bottom-2 left-2 z-40  bg-white rounded-xl p-2  2xl:p-4  2xl:pr-20 w-[85%] max-w-[32rem]   md:h-[10rem]   2xl:h-[9rem]">
                       <h6 className="text-black text-lg font-semibold mb-1">
                         {elem.title}
                       </h6>
@@ -161,42 +157,42 @@ const OberviewDetails = [
     image: urban,
     title: "Urban Infra Hero Award",
     description:
-      "For transformative urban infrastructure development led by improved urban environments through innovative and sustainable practices.",
+      "For transformative urban infrastructure development led through innovative and sustainable practices.",
     logo: urbanAwards,
   },
   {
     image: transport,
     title: "Transport Trailblazer Award",
     description:
-      "For high-impact sustainable and innovative actions in transportation infrastructure, enhancing urban connectivity and mobility with progressive innovation.",
+      "For sustainable and innovative actions in transportation infrastructure, enhancing urban connectivity and mobility with progressive innovation.",
     logo: transportAward,
   },
   {
     image: ruralInfra,
     title: "Rural Infra Pioneer Award",
     description:
-      "For inventive and high-impact initiatives in rural infrastructure that significantly improve liveability across India’s hinterlands.",
+      "For inventive and high-impact initiativ es in rural infrastructure that significantly improve liveability across India’s hinterlands.",
     logo: ruralInfraAward,
   },
   {
     image: renewable,
     title: "Renewable Energy Star Award",
     description:
-      "For out-of-the-box, pro-planet initiatives in the renewable energy sector that are redefining the future of sustainable energy.",
+      "For out-of-the-box, pro-planet initiatives in the renewable energy sector that are redefining the future of sustainability. ",
     logo: renewableAward,
   },
   {
     image: peopleChoice,
     title: "People’s Choice Award for Inclusive Infrastructure",
     description:
-      "For the exceptional empowerment of disabled people through accessible and inclusive infrastructure initiatives, driving independence and equity.",
+      "For the empowerment of disabled people through accessible and inclusive infrastructure initiatives, driving independence and equity.",
     logo: peopleChoiceAward,
   },
   {
     image: infravisionaryAward,
     title: "Infravisionary Award",
     description:
-      "For monumental and seminal contributions that leave a profound, lasting impact across infrastructure, sustainability, and community development.",
+      "For key initiatives that have left a lasting impact on India's infrastructure and changed lives as well as livelihoods substantively.",
     logo: infravisionary,
   },
 ];

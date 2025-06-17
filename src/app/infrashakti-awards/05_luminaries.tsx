@@ -10,7 +10,6 @@ import "swiper/css/pagination";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { MemberCard } from "@/_components/molecules/memberCard";
 import { CardData, Guests, Preeminent, jury } from "./static";
-import PopupDescription from "../_home/popupDescription";
 
 type ButtonTabProps = {
   label: string;
@@ -134,9 +133,13 @@ export default function Luminaries() {
 
         <div className=" blade-top-padding-lg blade-bottom-padding-lg">
           <div className="w-container">
+            <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
+              <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-white "></span>
+              <h5 className="font-medium text-white">The jurors and guests of honour</h5>
+            </div>
             <div className="pt-4 pb-2 md:py-5 ">
               <h1 className="text-white font-medium">
-                The luminaries{" "}
+               Luminaries{" "}
                 <span className="font-light">
                   at the <br />
                   InfraShakti Awards
@@ -147,6 +150,12 @@ export default function Luminaries() {
 
           <div className="md:flex flex-row blade-top-padding-sm w-container hidden ">
             <div className=" border-r-1 pe-20 border-white/40">
+             <ButtonTab
+                label="The esteemed jury"
+                value="jury"
+                data={data}
+                setdata={setdata}
+              />
               <ButtonTab
                 label="Guests of honour"
                 value="Guests"
@@ -159,12 +168,7 @@ export default function Luminaries() {
                 data={data}
                 setdata={setdata}
               />
-              <ButtonTab
-                label="The esteemed jury"
-                value="jury"
-                data={data}
-                setdata={setdata}
-              />
+             
             </div>
 
             <div className="w-full overflow-x-hidden  ml-[4%]">
@@ -200,10 +204,7 @@ export default function Luminaries() {
                         key={index}
                         className="w-screen overflow-hidden"
                       >
-                        <div
-                          
-                          className="h-fit w-fit hover:cursor-pointer"
-                        >
+                        <div className="h-fit w-fit hover:cursor-pointer">
                           <MemberCard
                             image={ele.image}
                             title={ele.title}
@@ -230,7 +231,6 @@ export default function Luminaries() {
                   <GoArrowRight />
                 </button>
               </div>
-              
             </div>
           </div>
 
@@ -358,7 +358,6 @@ export const MobileMembersSlider = ({
           </button>
         </div>
       </div>
-     
     </div>
   );
 };
