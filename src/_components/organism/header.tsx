@@ -10,6 +10,8 @@ import { AnimatePresence, motion } from "motion/react";
 import Mobilenav from "./mobileNav";
 import { usePathname } from "next/navigation";
 import { useHeader } from "@/context/useHeader";
+import { GoChevronDown, GoChevronUp } from "react-icons/go";
+import { GoArrowRight } from "react-icons/go";
 
 interface NavItem {
   label: string;
@@ -171,61 +173,67 @@ function Header() {
             </div>
             <div className=" flex flex-row  gap-5">
               <div className="hidden  xl:flex flex-row gap-9 2xl:gap-15  items-center">
-                
-                  <div
-                    className="relative  flex items-center gap-2"
-                    onMouseEnter={() => setOpenDropdown("About us")}
-                    onMouseLeave={() => setOpenDropdown(null)}
-                  >
-                    
-                    <span className="text-darkgray  text-lg cursor-pointer hover:text-pink hover:font-medium ">
-                      About us
-                    </span>
-                    <AnimatePresence>
-                      
-                        {openDropdown === "About us" && (
-                       
-                          <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 10 }}
-                            transition={{ duration: 0.2 }}
-                            className="absolute  left-0 top-full mt-2 w-72 bg-white shadow-lg rounded-lg z-50 px-2 py-2"
-                          >
-                            <div className="">
-                              <ul className="">
-                              {AboutUsDropDown.map((item, index) => (
-                                <li
-                                  key={index}
-                                  className="text-darkgray group py-2 text-md hover:text-pink hover:font-medium"
-                                >
-                                  <div className="flex items-center gap-2">
-                                    <span className="w-1.5 h-1.5 bg-transparent rounded-full transition-all duration-200 group-hover:bg-pink"></span>
-                                    <Link href={item.href} target={item.target}>
-                                      {item.label}
-                                    </Link>
-                                  </div>
-                                </li>
-                              ))}
-                            </ul>
-                            </div>
-                            
-                          </motion.div>
-                          
-                        )}
-                     
-                    </AnimatePresence>
-                  </div>
-              
+                <div
+                  className="relative  flex items-center gap-2"
+                  onMouseEnter={() => setOpenDropdown("About us")}
+                  onMouseLeave={() => setOpenDropdown(null)}
+                >
+                  <span className="text-darkgray flex justify-center items-center gap-2  text-lg cursor-pointer hover:text-pink hover:font-medium ">
+                    <Link href="/about-us">About us </Link>
+                    {openDropdown === "About us" ? (
+                      <GoChevronUp />
+                    ) : (
+                      <GoChevronDown />
+                    )}
+                  </span>
+                  <AnimatePresence>
+                    {openDropdown === "About us" && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute  left-0 top-full mt-2 w-96 h-auto bg-white shadow-lg rounded-lg z-50 px-4 py-2"
+                      >
+                        <div className="">
+                          <ul className="">
+                            {AboutUsDropDown.map((item, index) => (
+                              <li
+                                key={index}
+                                className="text-darkgray group py-5 text-xl last:border-0 border-b border-darkgray/20 hover:text-pink hover:font-medium"
+                              >
+                                <div className="flex group justify-between items-center gap-2">
+                                  {/* <span className="w-1.5 h-1.5 bg-transparent rounded-full transition-all duration-200 group-hover:bg-pink"></span> */}
+                                  <Link href={item.href} target={item.target}>
+                                    {item.label}
+                                  </Link>
+                                  <button className="w-8 h-8 border-1 group-hover:bg-pink group-hover:border-pink   border-darkgray/40 rounded-full">
+                                    <GoArrowRight className="mx-auto group-hover:text-white " />
+                                  </button>
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
 
                 <div
                   className="relative "
                   onMouseEnter={() => setOpenDropdown("Advocacy")}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <span className="text-darkgray text-lg cursor-pointer hover:text-pink hover:font-medium">
+                  <span className="text-darkgray flex justify-center items-center gap-2 text-lg cursor-pointer hover:text-pink hover:font-medium">
                     Advocacy
+                    {openDropdown === "Advocacy" ? (
+                      <GoChevronUp />
+                    ) : (
+                      <GoChevronDown />
+                    )}
                   </span>
+
                   <AnimatePresence>
                     {openDropdown === "Advocacy" && (
                       <motion.div
@@ -233,19 +241,22 @@ function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute left-0 top-full mt-2  w-72 bg-white shadow-lg rounded-lg z-50 px-2 py-2"
+                        className="absolute left-0 top-full mt-2  w-96 h-auto bg-white shadow-lg rounded-lg z-50 px-4 py-2"
                       >
                         <ul className="">
                           {AdvocacyDropDown.map((item, index) => (
-                             <li
+                            <li
                               key={index}
-                              className="text-darkgray group py-2 text-md hover:text-pink hover:font-medium"
+                              className="text-darkgray group py-5 text-xl last:border-0 border-b border-darkgray/20 hover:text-pink hover:font-medium"
                             >
-                              <div className="flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 bg-transparent rounded-full transition-all duration-200 group-hover:bg-pink"></span>
+                              <div className="flex group justify-between items-center gap-2">
+                                {/* <span className="w-1.5 h-1.5 bg-transparent rounded-full transition-all duration-200 group-hover:bg-pink"></span> */}
                                 <Link href={item.href} target={item.target}>
                                   {item.label}
                                 </Link>
+                                <button className="w-8 h-8 border-1 group-hover:bg-pink group-hover:border-pink   border-darkgray/40 rounded-full">
+                                  <GoArrowRight className="mx-auto group-hover:text-white " />
+                                </button>
                               </div>
                             </li>
                           ))}
@@ -260,8 +271,13 @@ function Header() {
                   onMouseEnter={() => setOpenDropdown("Knowledge")}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <span className="text-darkgray text-lg  cursor-pointer hover:text-pink hover:font-medium">
-                    Knowledge
+                  <span className="text-darkgray text-lg  flex justify-center items-center gap-2 cursor-pointer hover:text-pink hover:font-medium">
+                    <Link href="/knowledge">Knowledge</Link>
+                    {openDropdown === "Knowledge" ? (
+                      <GoChevronUp />
+                    ) : (
+                      <GoChevronDown />
+                    )}
                   </span>
 
                   <AnimatePresence>
@@ -271,19 +287,22 @@ function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute left-0 top-full mt-2 w-72 bg-white shadow-lg rounded-lg z-50 px-2 py-1"
+                        className="absolute left-0 top-full mt-2 w-96 h-auto bg-white shadow-lg rounded-lg z-50 px-4 py-2"
                       >
                         <ul className="space-y-2 ">
                           {KnowledgeDropDown.map((item, index) => (
                             <li
                               key={index}
-                              className="text-darkgray group py-2 text-md hover:text-pink hover:font-medium"
+                              className="text-darkgray group py-5 text-xl last:border-0 border-b border-darkgray/20 hover:text-pink hover:font-medium"
                             >
-                              <div className="flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 bg-transparent rounded-full transition-all duration-200 group-hover:bg-pink"></span>
+                              <div className="flex group justify-between items-center gap-2">
+                                {/* <span className="w-1.5 h-1.5 bg-transparent rounded-full transition-all duration-200 group-hover:bg-pink"></span> */}
                                 <Link href={item.href} target={item.target}>
                                   {item.label}
                                 </Link>
+                                <button className="w-8 h-8 border-1 group-hover:bg-pink group-hover:border-pink   border-darkgray/40 rounded-full">
+                                  <GoArrowRight className="mx-auto group-hover:text-white " />
+                                </button>
                               </div>
                             </li>
                           ))}

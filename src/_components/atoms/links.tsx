@@ -86,8 +86,8 @@ export function TextNavAnchor({
       {...rest}
       className={`${sizeClass} ${colorClass} ${className} group relative flex flex-row gap-1 justify-center items-center `}
     >
-      <span className="absolute -left-1 w-0 h-0 group-hover:w-2 group-hover:h-2 group-hover:rounded group-hover:bg-pink"></span>
-      <div className="group-hover:text-darkgray hover:font-medium">{text}</div>
+      
+      <div className="group-hover:text-pink hover:font-medium">{text}</div>
 
       <div>  {showArrow ? <GoChevronDown /> : null}</div>
     </Link>
