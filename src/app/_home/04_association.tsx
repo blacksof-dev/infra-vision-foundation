@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import "../../_components/molecules/infiniteCarousel.css";
+import "@/_components/molecules/infiniteCarousel.css";
 import cii from "@/../public/assets/home/association/cii.png";
 import iim from "@/../public/assets/home/association/iim.png";
 import iima from "@/../public/assets/home/association/iima.png";
@@ -21,13 +21,13 @@ export default function Association() {
         <div className=" w-container">
           <div className="flex  flex-row  items-center gap-2 md:gap-3">
             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-            <h5 className="font-medium text-pink">Our associations</h5>
+            <h5 className="font-medium text-pink">Our Associations</h5>
           </div>
           <div>
             <h1 className="text-black pt-2">
-              An echoing{" "}
+
               <span className="font-medium text-black">
-                synergy of progress
+                The Synergy of Collaboration
               </span>
             </h1>
           </div>
@@ -48,7 +48,7 @@ export default function Association() {
             spaceBetween={20}
             centerInsufficientSlides={true}
             breakpoints={{
-               456: {
+              456: {
                 slidesPerView: "auto",
                 spaceBetween: 60,
               },
@@ -68,7 +68,7 @@ export default function Association() {
                 slidesPerView: "auto",
                 spaceBetween: 40,
               },
-               1400: {
+              1400: {
                 slidesPerView: "auto",
                 spaceBetween: 50,
               },

@@ -9,94 +9,120 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import Mobilenav from "./mobileNav";
 import { usePathname } from "next/navigation";
+import { useHeader } from "@/context/useHeader";
 
 function Header() {
   const pathname = usePathname();
-
   const [open, setopen] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [showNavBg, setshowNavBg] = useState<boolean>(false);
   const [lastScrollY, setlastScrollY] = useState(0);
-  const [showNavbar, setShowNavbar] = useState<boolean>(true);
   const [scrolled, setScrolled] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [mounted, setMounted] = useState(false);
+  const { setIsHeaderVisible: setShowNavbar, isHeaderVisible: showNavbar } = useHeader();
 
-  /*************** For Up and down nav hide code ***********************/
-
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY;
-    if (currentScrollY > lastScrollY) {
-      setShowNavbar(false);
-    } else {
-      setShowNavbar(true);
-    }
-
-    setlastScrollY(currentScrollY);
-  };
-
-
-  const handlehamberg = () => {
-    setIsMenuOpen((prev) => !prev);
-  };
-
+  // Set mounted state to true after component mounts
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
+    setMounted(true);
+  }, []);
+
+  // Reset header visibility when pathname changes
+  useEffect(() => {
+    if (!mounted) return;
+    setShowNavbar(true);
+    setlastScrollY(window.scrollY);
+  }, [pathname, setShowNavbar, mounted]);
+
+  // Handle mobile detection and scroll events
+  useEffect(() => {
+    if (!mounted) return;
+
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
     };
-  }, [lastScrollY, handleScroll]);
 
-  /****************************************************************** */
+    const handleResize = () => {
+      checkMobile();
+      if (window.innerWidth <= 768) {
+        setShowNavbar(true); // Always show navbar on mobile
+      }
+    };
 
-  //scroll should be avoid if mobile view navbar is open
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > 100 && !isMobile) {
+        setShowNavbar(false);
+      } else {
+        setShowNavbar(true);
+      }
+      setlastScrollY(currentScrollY);
 
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [isMenuOpen]);
-
-  useEffect(() => {
-    const homeNavScroll = () => {
-      const offset = window.scrollY;
-      if (offset > 120) {
+      // Handle scrolled state
+      if (currentScrollY > 50) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
     };
 
-    window.addEventListener("scroll", homeNavScroll);
-    return () => window.removeEventListener("scroll", homeNavScroll);
-  }, []);
+    checkMobile(); // Initial check
+    window.addEventListener('resize', handleResize);
 
-  //Navbar color change for specifice routes
 
+    window.addEventListener("scroll", handleScroll);
+
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [lastScrollY, isMobile, mounted, setShowNavbar]);
+
+  // Handle body scroll lock for mobile menu
   useEffect(() => {
-    const activeUrl = ["/home"];
+    if (!mounted) return;
 
-    if (!activeUrl.includes(pathname)) {
-      setshowNavBg(false);
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
     } else {
-      setshowNavBg(true);
+      document.body.style.overflow = "auto";
     }
-  }, [pathname]);
+  }, [isMenuOpen, mounted]);
+
+  //Navbar color change for specific routes
+  useEffect(() => {
+    if (!mounted) return;
+
+    const activeUrl = [
+      "/home",
+      "/infrakatha",
+      "/get-involved",
+      "/knowledge",
+      "/archive",
+    ];
+
+    setshowNavBg(activeUrl.includes(pathname));
+  }, [pathname, mounted]);
+
+  // Don't render anything until mounted to prevent hydration mismatch
+  if (!mounted) {
+    return null;
+  }
+
+  const handlehamberg = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full transition-transform duration-300 p-3 z-[999] ${
-          showNavbar ? "translate-y-0 " : "-translate-y-full "
-        } ${
-          showNavBg
+        className={`fixed top-0 left-0 w-full transition-all ease-linear duration-200 p-3 z-[9999] ${isMobile ? "translate-y-0" : showNavbar ? "translate-y-0" : "-translate-y-full"
+          } ${showNavBg
             ? "bg-white border-b-1 border-lightgray/20 shadow-sm"
             : "bg-transparent"
-        } 
-
-          ${scrolled ? "bg-white shadow-md" : "bg-transparent"}
-
-        `}
+          } ${scrolled ? "bg-white shadow-md" : ""
+          }`}
       >
         <div className="w-container">
           <div className="flex flex-row justify-between ">
@@ -121,39 +147,11 @@ function Header() {
                       size="large"
                       className="block whitespace-nowrap px-3 py-1 md:py-2"
                       text="About us"
-                      status={open}
+                      href="/about-us"
+                      showArrow={true}
                     />
 
-                    {/* <AnimatePresence>
-                      {open && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -10 }}
-                          transition={{ duration: 0.3 }}
-                          className="absolute  left-0 top-full mt-2 w-[300px] bg-white shadow-lg rounded-md z-50"
-                        >
-                          {What_drives.map((item, index) => (
-                            <div
-                              key={index}
-                              className="border-b last:border-none border-gray-200 px-6 py-4 hover:bg-gray-50 flex justify-between items-center"
-                            >
-                              <h5 className="text-lg text-darkgray">{item}</h5>
-                              <span>
-                                <BorderGrayHeroBtn
-                                  text=""
-                                  role="link"
-                                  borderColor="darkgray/40"
-                                  color="black"
-                                  bgColor="white"
-                                  size="base"
-                                />
-                              </span>
-                            </div>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence> */}
+                
                   </li>
                 </ul>
 
@@ -164,6 +162,7 @@ function Header() {
                       size="large"
                       className="block whitespace-nowrap px-3 py-1 md:py-2"
                       text="Advocacy"
+                      showArrow={true}
                     />
                   </li>
                 </ul>
@@ -175,8 +174,9 @@ function Header() {
                       size="large"
                       className="block whitespace-nowrap px-3 py-1 md:py-2"
                       text="Knowledge"
-                      href="/publication"
+                      href="/knowledge"
                       target="_self"
+                      showArrow={true}
                     />
                   </li>
                 </ul>
@@ -188,6 +188,8 @@ function Header() {
                       size="large"
                       className="block whitespace-nowrap px-3 py-1 md:py-2"
                       text="Get Involved"
+                      href="/get-involved"
+                      showArrow={false}
                     />
                   </li>
                 </ul>
@@ -221,7 +223,7 @@ function Header() {
                     initial={{ opacity: 0, x: "100%" }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: "100%" }}
-                    transition={{ duration: 0.9 }}
+                    transition={{ duration: 0.7, ease: "linear" }}
                     className="fixed top-0 left-0 w-screen h-screen z-[9999] bg-white p-4"
                   >
                     <Mobilenav onClose={() => setIsMenuOpen(false)} />

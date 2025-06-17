@@ -56,9 +56,9 @@ export default function EventTemplate() {
             </div>
 
             <div
-              className="pt-6 cursor-pointer xl:pt-9 flex flex-wrap gap-9 items-center"
+              className="pt-6 xl:pt-9 flex flex-wrap gap-9 items-center "
             >
-              <div onClick={() => setPopup("notified")}>
+              <div className="cursor-pointer" tabIndex={0} role="button" onClick={() => setPopup("notified")}>
                 <HeroBtnPink
                   text="Get notified"
                   role="button"
@@ -71,13 +71,14 @@ export default function EventTemplate() {
                 />
               </div>
 
-              <div onClick={() => setPopup("details")}>
+              <div className="cursor-pointer" onClick={() => setPopup("details")}>
                 <UnderlineCta
                   title="Know more"
                   color="black"
                   underlineColor="#C82249"
                   role="link"
                   size="extralarge"
+                  classes=""
                 />
               </div>
             </div>
@@ -172,24 +173,24 @@ function NotifiedPopup({ onclose }: { onclose: () => void }) {
               />
               <button
                 type="submit"
-                className="w-full sm:w-fit px-14 mt-2 h-14 rounded-md bg-[#C82249] text-white text-xl font-medium transition hover:bg-[#a81b3a]"
+                className="cursor-pointer w-full sm:w-fit px-14 mt-2 h-14 rounded-md bg-[#C82249] text-white text-xl font-medium transition hover:bg-[#a81b3a]"
               >
                 Submit
               </button>
               <div className="flex flex-col gap-3 mt-4">
-                <label className="flex items-center gap-3 text-gray-600 text-base font-normal">
+                <label className="cursor-pointer flex items-center gap-3 text-gray-600 text-base font-normal">
                   <Checkbox
                     checked={form.notifyEvents}
                     onCheckedChange={(checked) => handleCheckbox("notifyEvents", !!checked)}
-                    className="size-6 border-gray-300"
+                    className="size-6 border-gray-300 cursor-pointer"
                   />
                   Get notified about upcoming events
                 </label>
-                <label className="flex items-center gap-3 text-gray-600 text-base font-normal">
+                <label className="cursor-pointer flex items-center gap-3 text-gray-600 text-base font-normal">
                   <Checkbox
                     checked={form.subscribeNewsletter}
                     onCheckedChange={(checked) => handleCheckbox("subscribeNewsletter", !!checked)}
-                    className="size-6 border-gray-300"
+                    className="size-6 border-gray-300 cursor-pointer"
                   />
                   Subscribe to our newsletter
                 </label>
@@ -205,15 +206,15 @@ function NotifiedPopup({ onclose }: { onclose: () => void }) {
 function DetailsPopup({ onclose }: { onclose: () => void }) {
   return (
     <Portal>
-      <div className="flex justify-center md:items-center fixed inset-0 bg-black/70 z-[999] py-4 overflow-y-auto">
-        <div className="bg-white my-auto rounded-lg w-full max-w-lg md:max-w-4xl h-auto sm:h-auto relative md:m-4 m-2 p-3 sm:p-4  flex flex-col md:flex-row md:gap-8 overflow-auto">
+      <div className="flex justify-center  md:items-center fixed inset-0 bg-black/70 z-[999] py-4 overflow-y-auto">
+        <div className="bg-white my-auto  rounded-lg w-full max-w-lg md:max-w-4xl h-auto sm:h-auto relative md:m-4 m-2 p-3 sm:p-4  flex flex-col md:flex-row md:gap-8 overflow-auto">
           <button
             onClick={onclose}
             className="scale-75 sm:scale-90 z-1 hover:scale-100 absolute top-1 right-1 sm:top-4 sm:right-4 h-10 w-10 text-pink bg-white border border-pink transition-all duration-300 ease-linear rounded-full flex justify-center items-center text-xl cursor-pointer"
           >
             <RxCross2 className=" text-2xl" />
           </button>
-          <div className="w-full h-auto md:w-1/2 rounded-lg flex flex-col items-center justify-center relative  ">
+          <div className="w-full  h-auto md:w-1/2 rounded-lg flex flex-col items-center justify-center relative  ">
             <Image
               src={montek}
               alt="Mr Montek Singh Ahluwalia"
@@ -226,7 +227,7 @@ function DetailsPopup({ onclose }: { onclose: () => void }) {
               <h6 className="text-[#5D6468] font-normal text-sm">Former Deputy Chairman, the Planning Commission</h6>
             </div>
           </div>
-          <div className="w-full md:w-1/2 flex flex-col justify-center">
+          <div className="w-full  md:w-1/2 flex flex-col justify-center">
             <Image
               src={infraKatha}
               alt="Infra Katha"

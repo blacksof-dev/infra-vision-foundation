@@ -6,42 +6,55 @@ import { TabItem } from "./02_whoWeAre";
 import telling from "@/../public/assets/home/newsletter/telling.png";
 import forests from "@/../public/assets/home/newsletter/forests.png";
 import caira from "@/../public/assets/home/newsletter/caira.png";
-
+import newsletter_1 from "@/../public/assets/archive/newsletter/01.png";
+import newsletter_2 from "@/../public/assets/archive/newsletter/02.png";
+import newsletter_3 from "@/../public/assets/archive/newsletter/03.png";
 import budget from "@/../public/assets/home/news/budget.png";
 import outlays from "@/../public/assets/home/news/outlays.png";
 import taxation from "@/../public/assets/home/news/taxation.png";
 import EventTemplate from "@/_components/molecules/eventTemplate";
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
+import InfrapanditAward from "./infraPanditAward";
 
 const newsletters = [
   {
     id: 1,
-    img: forests.src,
-    category: "Volume 20",
-    date: "January, 2025",
-    title:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
-    link: "",
-  },
-  {
-    id: 3,
-    img: telling.src,
-    category: "Volume 19",
-    date: "December, 2024",
-    title:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+    img: newsletter_1.src,
+    category: "Volume 24",
 
-    link: "",
+    date: "May 2025",
+    title:
+      "The Infravision Foundation’s quadruple impact, Rumjhum Chatterjee at The Edge and more.",
+    link: "/assets/archive/newsletter/INFRAVISION-TALK-May-2025.pdf",
   },
   {
     id: 2,
-    img: caira.src,
-    category: "Volume 18",
-    date: "November, 2024",
+    img: newsletter_2.src,
+    category: "Volume 23",
+
+    date: "April 2025",
     title:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
-    link: "",
+      "From urban decarbonisation and Noida to CAIRA’s first-ever engagement in Arunachal Pradesh and beyond.",
+    link: "/assets/archive/newsletter/INFRAVISION-TALK-April-2025.pdf",
   },
+  {
+    id: 3,
+    img: newsletter_3.src,
+    category: "Volume 22",
+
+    date: "March 2025",
+    title: "New Report urges fast tracking of High-Speed Rail.",
+    link: "/assets/archive/newsletter/INFRAVISION-TALK-March-2025.pdf",
+  },
+  // {
+  //   id: 2,
+  //   img: caira.src,
+  //   category: "Volume 18",
+  //   date: "November, 2024",
+  //   title:
+  //     "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+  //   link: "",
+  // },
 ];
 
 const news = [
@@ -49,9 +62,9 @@ const news = [
     id: 1,
     img: taxation.src,
     category: "News",
-    date: "October, 2024",
+    date: "Aug 15, 2024",
     title: "Group taxation regime for infrastructure",
-    link: "",
+    link: "https://www.business-standard.com/opinion/columns/group-taxation-regime-for-infrastructure-124081500813_1.html",
   },
   {
     id: 2,
@@ -59,7 +72,7 @@ const news = [
     category: "News",
     date: "July 24, 2024",
     title: "Infra outlays: A strategic downplay",
-    link: "",
+    link: "https://www.financialexpress.com/opinion/nbspinfra-outlays-a-strategic-downplay-the-budget-signals-a-move-out-of-the-era-of-large-infra-spends-pump-priming-the-economy/3563263/#:~:text=stressful%20Covid%20period.-,Across%20the%20last%20few%20years%2C%20India%20saw%20Union%20Budget%20infra,11%25%20to%20Rs%2011.1%20trillion.",
   },
   {
     id: 3,
@@ -67,12 +80,12 @@ const news = [
     date: " July 24, 2024",
     category: "News",
     title: "Budget signals shift in infra strategy",
-    link: "",
+    link: "https://www.moneycontrol.com/news/business/economy/budget-signals-shift-in-infra-strategy-as-govt-pushes-states-private-sector-to-pitch-in-12777120.html",
   },
 ];
 
 export default function Highlights() {
-  const [activeTab, setActiveTab] = useState("Outreach and engagement");
+  const [activeTab, setActiveTab] = useState("Outreach and Engagements");
   const mobileview = 3;
   const [visiblecountmobile, setvisiblecountmobile] = useState(mobileview);
 
@@ -92,9 +105,8 @@ export default function Highlights() {
             <h5 className="font-medium text-pink">Highlights</h5>
           </div>
           <div>
-            <h1 className="text-black pt-2">
-              See <span className="font-medium text-black">what’s on</span> the
-              horizon
+            <h1 className="text-black font-light pt-2">
+              A Quick Look at <span className="font-medium">What We Do</span>
             </h1>
           </div>
           <div className="blade-top-padding-sm">
@@ -117,65 +129,62 @@ export const TabSwitch = ({
     <div>
       <div className="flex flex-row gap-6 sm:gap-12  lg:gap-12 md:gap-18 border-b   border-darkgray/16 w-fit">
         <button
-          onClick={() => setActiveTab("Outreach and engagement")}
-          className={` cursor-pointer text-sm sm:text-xl text-wrap  ${
-            activeTab === "Outreach and engagement"
+          onClick={() => setActiveTab("Outreach and Engagements")}
+          className={` cursor-pointer text-sm sm:text-xl text-wrap  ${activeTab === "Outreach and Engagements"
               ? "font-medium  border-b-2 border-pink pb-3 text-pink"
               : "text-darkgray  pb-3"
-          }`}
+            }`}
         >
-          Outreach and engagement
+          Outreach and Engagements
         </button>
 
         <button
           onClick={() => setActiveTab("Newsletters")}
-          className={` text-sm cursor-pointer  sm:text-xl text-wrap ${
-            activeTab === "Newsletters"
+          className={` text-sm cursor-pointer  sm:text-xl text-wrap ${activeTab === "Newsletters"
               ? "font-medium  border-b-2 pb-3 border-pink text-pink"
               : "text-darkgray  pb-3"
-          }`}
+            }`}
         >
           Newsletters
         </button>
         <button
-          onClick={() => setActiveTab("In the news")}
-          className={` text-sm cursor-pointer  sm:text-xl text-wrap ${
-            activeTab === "In the news"
+          onClick={() => setActiveTab("In the News")}
+          className={` text-sm cursor-pointer  sm:text-xl text-wrap ${activeTab === "In the News"
               ? "font-medium  border-b-2 pb-3 border-pink text-pink"
               : "text-darkgray  pb-3"
-          }`}
+            }`}
         >
-          In the news
+          In the News
         </button>
       </div>
 
       <div className="pt-6 xl:pt-14">
-        {activeTab === "Outreach and engagement" && <EventTemplate />}
+        {activeTab === "Outreach and Engagements" && <InfrapanditAward />}
 
         {activeTab === "Newsletters" && <TabContent data={newsletters} />}
-        {activeTab === "In the news" && <TabContent data={news} />}
+        {activeTab === "In the News" && <TabContent data={news} />}
       </div>
-      <div className="mt-7">
-        {activeTab==="Outreach and engagement"?(
+      {/* <div className="mt-7">
+        {activeTab === "Outreach and Engagements" ? (
           <UnderlineWithHover
-          size="extralarge"
-          color="pink"
-          bgColor="pink"
-          text="View all events"
-          role="button"
-          borderColor="white"
-        />
-        ):(
+            size="extralarge"
+            color="pink"
+            bgColor="pink"
+            text="View all events"
+            role="button"
+            borderColor="white"
+          />
+        ) : (
           <UnderlineWithHover
-          size="extralarge"
-          color="pink"
-          bgColor="pink"
-          text="View all"
-          role="button"
-          borderColor="white"
-        />
+            size="extralarge"
+            color="pink"
+            bgColor="pink"
+            text="View all"
+            role="button"
+            borderColor="white"
+          />
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
@@ -192,6 +201,7 @@ export const TabContent = ({ data }: { data: TabItem[] }) => {
           link={item.link}
           category={item.category}
           subtitle={item.subtitle}
+          ctaText="Read more"
           classes="line-clamp-2 xl:line-clamp-3 text-lg md:text-xl text-black"
         />
       ))}

@@ -1,75 +1,95 @@
-"use client"
+'use client';
 import Image from "next/image";
 import logo from "@/../public/assets/globals/logo.png";
 import { RxCross1 } from "react-icons/rx";
 import { FaSearch } from "react-icons/fa";
-import { TextMobileNavAnchor } from "../atoms/links";
+import Link from "next/link";
 import { useState } from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/_components/ui/accordion";
 
-export default function Mobilenav({ onClose }: { onClose: () => void; }) {
-   const[mobilepopup,setmobilepopup] = useState(false);
+export default function Mobilenav({ onClose }: { onClose: () => void }) {
   return (
-    <div>
-      <div className="flex justify-between items-center blade-top-margin-sm ">
-        <div className="w-[12rem] sm:w-[13rem]">
-          <Image src={logo} alt="Infravision Foundation Logo" className="" />
+    <div className="px-4">
+      {/* Top Bar */}
+      <div className="flex justify-between items-center blade-top-margin-sm">
+        <div className="w-[9rem] sm:w-[13rem]">
+          <Image src={logo} alt="Infravision Foundation Logo" />
         </div>
         <div className="flex gap-3">
-          <div className="w-9 h-9 rounded-full  bg-pink flex items-center justify-center">
-            <FaSearch className="text-white" />
-          </div>
+          
           <button onClick={onClose}>
             <RxCross1 className="text-2xl cursor-pointer" />
           </button>
         </div>
       </div>
 
-      {/* Your mobile nav links go here */}
-      <div className="h-[70%] flex flex-col justify-center ">
-        <ul>
-          <li>
-            <TextMobileNavAnchor
-              color="dark"
-              className="block whitespace-nowrap py-6"
-              text="About us"
-              status={mobilepopup}
-            />
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <TextMobileNavAnchor
-              color="dark"
-              className="block whitespace-nowrap py-6"
-              text="Advocacy"
-              status={mobilepopup}
-            />
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <TextMobileNavAnchor
-              color="dark"
-              className="block whitespace-nowrap py-6"
-              text="Knowledge"
-              status={mobilepopup}
-            />
-          </li>
-        </ul>
-     
-     
-        <ul>
-          <li>
-            <TextMobileNavAnchor
-              color="dark"
-              className="block whitespace-nowrap py-6"
-              text="Get Involved"
-              status={mobilepopup}
-            />
-          </li>
-        </ul>
-       
-    
+      {/* Mobile Nav */}
+      <div className="pt-12 flex flex-col justify-center">
+        <Accordion type="single" collapsible className="w-full">
+          {/* About Us Dropdown */}
+          <AccordionItem value="about">
+            <AccordionTrigger className="py-4 text-lg text-left text-darkgray">About us</AccordionTrigger>
+            <AccordionContent className="">
+              <ul onClick={onClose} className="space-y-3 text-base ">
+                <li><Link href="/about-us#who-we-are" className="text-darkgray font-poppins ">Who we are</Link></li>
+                <li><Link href="/about-us#infravisionaries" className="text-darkgray font-poppins ">The Infravisionaries</Link></li>
+                <li><Link href="/about-us#mission-and-vision" className="text-darkgray font-poppins ">Vision and Mission</Link></li>
+                <li><Link href="/about-us#our-pulse" className="text-darkgray font-poppins ">Our pulse</Link></li>
+                <li><Link href="/about-us#project-pathway" className="text-darkgray font-poppins ">The project pathway</Link></li>
+              </ul>
+            </AccordionContent>
+          </AccordionItem>
+
+          {/* Advocacy */}
+          <AccordionItem value="advocacy">
+            <AccordionTrigger className="py-4 text-lg text-left text-darkgray">Advocacy</AccordionTrigger>
+            <AccordionContent className="">
+              <ul onClick={onClose} className="space-y-3 text-base ">
+                <li><Link href="/infrashakti-awards" className="text-darkgray font-poppins ">InfraShakti Awards</Link></li>
+                <li><Link href="/infrakatha" className="text-darkgray font-poppins ">InfraKatha</Link></li>
+                <li><Link href="/infrapandit-awards" className="text-darkgray font-poppins ">InfraPandit Awards</Link></li>
+                <li><Link href="/outreach-and-engagements" className="text-darkgray font-poppins ">Outreach and engagement</Link></li>
+              </ul>
+            </AccordionContent>
+          </AccordionItem>
+
+          {/* Knowledge */}
+          <AccordionItem value="knowledge">
+            <AccordionTrigger className="py-4 text-lg text-left text-darkgray">Knowledge</AccordionTrigger>
+            <AccordionContent className="">
+              <ul onClick={onClose} className="space-y-3 text-base ">
+                <li><Link href="/knowledge#research-papers" className="text-darkgray font-poppins ">Research papers</Link></li>
+                <li><Link href="/knowledge#infravision-conversations" className="text-darkgray font-poppins ">Infravision Conversations</Link></li>
+                <li><Link href="/knowledge#blogs" className="text-darkgray font-poppins py-2">Blogs</Link></li>
+              </ul>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="Archives">
+            <AccordionTrigger className="py-4 text-lg text-left text-darkgray">Archives</AccordionTrigger>
+            <AccordionContent className="">
+              <ul onClick={onClose} className="space-y-3 text-base ">
+                <li><Link href="/archive#newsletters" className="text-darkgray font-poppins ">Newsletters</Link></li>
+                <li><Link href="/archive#news-and-media" className="text-darkgray font-poppins ">News and Media</Link></li>
+                <li><Link href="/archive#gallery" className="text-darkgray font-poppins py-2">Gallery</Link></li>
+              </ul>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+
+        {/* Static Link */}
+        <Link
+          href="/get-involved"
+          onClick={onClose}
+          className="block text-lg  text-darkgray font-medium py-6 no-underline hover:text-opacity-100"
+        >
+          Get Involved
+        </Link>
       </div>
     </div>
   );
