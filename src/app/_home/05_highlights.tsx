@@ -1,6 +1,6 @@
 "use client";
 import Card from "@/_components/molecules/cardTemplate";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TabItem } from "./02_whoWeAre";
 
 import telling from "@/../public/assets/home/newsletter/telling.png";
@@ -15,6 +15,7 @@ import taxation from "@/../public/assets/home/news/taxation.png";
 import EventTemplate from "@/_components/molecules/eventTemplate";
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import InfrapanditAward from "./infraPanditAward";
+import { useHeader } from "@/context/useHeader";
 
 const newsletters = [
   {
@@ -109,7 +110,7 @@ export default function Highlights() {
               A Quick Look at <span className="font-medium">What We Do</span>
             </h1>
           </div>
-          <div className="blade-top-padding-sm">
+          <div className="">
             <TabSwitch setActiveTab={setActiveTab} activeTab={activeTab} />
           </div>
         </div>
@@ -125,39 +126,65 @@ export const TabSwitch = ({
   setActiveTab: (value: string) => void;
   activeTab: string;
 }) => {
+  const { isHeaderVisible } = useHeader()
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const scrollToCenter = (index: number) => {
+    const tab = tabRefs.current[index];
+    const container = containerRef.current;
+
+    if (tab && container) {
+      // const containerRect = container.getBoundingClientRect();
+      // const tabRect = tab.getBoundingClientRect();
+      const offset =
+        tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
+      container.scrollTo({ left: offset, behavior: 'smooth' });
+    }
+  };
+
+  const handleFilterClick = (tabname: string, index: number) => {
+    setActiveTab(tabname);
+    scrollToCenter(index);
+  };
+
   return (
     <div>
-      <div className="flex flex-row gap-6 sm:gap-12  lg:gap-12 md:gap-18 border-b   border-darkgray/16 w-fit">
-        <button
-          onClick={() => setActiveTab("Outreach and Engagements")}
-          className={` cursor-pointer text-sm sm:text-xl text-wrap  ${activeTab === "Outreach and Engagements"
+      <div ref={containerRef} className={`blade-top-padding-sm overflow-x-scroll bg-whitesmoke no-scrollbar sticky ${isHeaderVisible ? "top-20   lg:top-24" : "top-0"} `}>
+        <div className="flex flex-row gap-6 sm:gap-12  lg:gap-12 md:gap-18 border-b   border-darkgray/16 w-fit ">
+          <button
+            ref={(el: HTMLButtonElement | null) => { tabRefs.current[0] = el }}
+            onClick={() => handleFilterClick("Outreach and Engagements", 0)}
+            className={` cursor-pointer text-sm sm:text-xl text-nowrap  ${activeTab === "Outreach and Engagements"
               ? "font-medium  border-b-2 border-pink pb-3 text-pink"
               : "text-darkgray  pb-3"
-            }`}
-        >
-          Outreach and Engagements
-        </button>
+              }`}
+          >
+            Outreach and Engagements
+          </button>
 
-        <button
-          onClick={() => setActiveTab("Newsletters")}
-          className={` text-sm cursor-pointer  sm:text-xl text-wrap ${activeTab === "Newsletters"
+          <button
+            ref={(el: HTMLButtonElement | null) => { tabRefs.current[1] = el }}
+
+            onClick={() => handleFilterClick("Newsletters", 1)}
+            className={` text-sm cursor-pointer  sm:text-xl text-nowrap ${activeTab === "Newsletters"
               ? "font-medium  border-b-2 pb-3 border-pink text-pink"
               : "text-darkgray  pb-3"
-            }`}
-        >
-          Newsletters
-        </button>
-        <button
-          onClick={() => setActiveTab("In the News")}
-          className={` text-sm cursor-pointer  sm:text-xl text-wrap ${activeTab === "In the News"
+              }`}
+          >
+            Newsletters
+          </button>
+          <button
+            ref={(el: HTMLButtonElement | null) => { tabRefs.current[2] = el }}
+            onClick={() => handleFilterClick("In the News", 2)}
+            className={` text-sm cursor-pointer  sm:text-xl text-nowrap ${activeTab === "In the News"
               ? "font-medium  border-b-2 pb-3 border-pink text-pink"
               : "text-darkgray  pb-3"
-            }`}
-        >
-          In the News
-        </button>
+              }`}
+          >
+            In the News
+          </button>
+        </div>
       </div>
-
       <div className="pt-6 xl:pt-14">
         {activeTab === "Outreach and Engagements" && <InfrapanditAward />}
 

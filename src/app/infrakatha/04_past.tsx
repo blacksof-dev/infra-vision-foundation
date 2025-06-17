@@ -12,12 +12,12 @@ import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import Image from "next/image";
 import { NewsCard } from "@/_components/molecules/newsCard";
 
-const yearFilters = ["2025", "2024"];
+const yearFilters = ["2024", "2025"];
 
 const allcards = [
   {
     img: image1.src,
-    category: "InfraKatha #8",
+    category: "InfraKatha #1",
     date: "29 May, 2024",
     title: "Mythology & Infrastructure",
     link: "#",
@@ -40,30 +40,30 @@ const allcards = [
     link: "#",
     description: "Featuring Mr. Gurucharan Das, Author",
   },
-  {
-    img: image4.src,
-    category: "InfraKatha #4",
-    date: "January, 2025",
-    title: "Sample Title 4",
-    link: "#",
-    description: "Sample description 4",
-  },
-  {
-    img: image5.src,
-    category: "InfraKatha #5",
-    date: "January, 2025",
-    title: "Sample Title 5",
-    link: "#",
-    description: "Sample description 5",
-  },
-  {
-    img: image6.src,
-    category: "InfraKatha #6",
-    date: "January, 2025",
-    title: "Sample Title 6",
-    link: "#",
-    description: "Sample description 6",
-  },
+  // {
+  //   img: image4.src,
+  //   category: "InfraKatha #4",
+  //   date: "January, 2025",
+  //   title: "Sample Title 4",
+  //   link: "#",
+  //   description: "Sample description 4",
+  // },
+  // {
+  //   img: image5.src,
+  //   category: "InfraKatha #5",
+  //   date: "January, 2025",
+  //   title: "Sample Title 5",
+  //   link: "#",
+  //   description: "Sample description 5",
+  // },
+  // {
+  //   img: image6.src,
+  //   category: "InfraKatha #6",
+  //   date: "January, 2025",
+  //   title: "Sample Title 6",
+  //   link: "#",
+  //   description: "Sample description 6",
+  // },
 ];
 
 export default function PastEvents() {
@@ -94,7 +94,7 @@ export default function PastEvents() {
       <div className="w-container blade-top-padding-lg blade-bottom-padding-lg">
         <div className="flex flex-row items-center gap-2 md:gap-3 ">
           <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-          <h5 className="font-medium text-pink">Past InfraKatha sessions</h5>
+          <h5 className="font-medium text-pink">Past InfraKatha Sessions</h5>
         </div>
         <div className="py-3 ">
           <h1 className="text-black  font-light">
@@ -113,11 +113,10 @@ export default function PastEvents() {
               {yearFilters.map((year) => (
                 <button
                   key={year}
-                  className={`mt-auto text-sm md:text-base cursor-pointer rounded-[50px] px-4 py-2  sm:px-6 sm:py-3  ${
-                    selectedYear === year
-                      ? "border border-pink text-pink font-medium"
-                      : "border border-lightgray/30"
-                  }`}
+                  className={`mt-auto text-sm md:text-base cursor-pointer rounded-[50px] px-4 py-2  sm:px-6 sm:py-3  ${selectedYear === year
+                    ? "border border-pink text-pink font-medium"
+                    : "border border-lightgray/30"
+                    }`}
                   onClick={() => handleYearClick(year)}
                 >
                   {year}

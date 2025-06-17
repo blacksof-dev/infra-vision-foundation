@@ -5,9 +5,9 @@ export default function BannerSection() {
     return (
         <Banner
             image={image}
-            heading="InfraKatha"
-            title="InfraKatha"
-            subdesc="A forum advancing infrastructure through dialogue, insights, and thought leadership"
+            heading="Infrakatha"
+            title="Infrakatha"
+            subdesc="A series of conversations on infrastructure with brilliant minds, exclusive insights, and compelling stories."
         />
     )
 }

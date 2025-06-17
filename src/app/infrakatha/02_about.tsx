@@ -19,26 +19,18 @@ export default function About() {
         <div className="flex flex-col 2xl:justify-center ">
           <div className="flex flex-row items-center gap-2 mb-2">
             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
-            <h5 className="font-medium text-pink">About InfraKatha</h5>
+            <h5 className="font-medium text-pink">About Infrakatha</h5>
           </div>
-          <h1 className="text-black font-light">
-            Driving conversations
-            <br />
-            that spark <span className="font-medium">change</span>
-            <br />
-            <span className="font-medium">and awareness</span>
+          <h1 className="text-black font-light max-w-xl">
+            <span className="font-medium"> Conversations </span> that make infrastructure part of the national discourse
           </h1>
           <h5 className="text-black  mt-4 md:mt-6 md:max-w-xl xl:pr-8">
-            InfraKatha is a key initiative of The Infravision Foundation
-            dedicated to familiarising and uplifting infrastructural discourse
-            for meaningful outcomes.
+            Infrakatha is a key initiative fostering thought leadership in infrastructure-related public policies and programmes. It features distinguished experts sharing their perspectives on various aspects of infrastructure growth and innovation.
+
           </h5>
           <h6 className="text-darkgray  mt-2 md:max-w-xl xl:pr-8">
-            The event features renowned cross-disciplinary experts and our
-            Infravisionaries diving deep into the pressing challenges and
-            pivotal developments in infrastructure. Each session nudges
-            perceptions and public policymaking with deep thought and holistic
-            understanding.
+            The event digs deep into issues of national importance, from the centrality of pilgrim towns in ancient India to the lessons for climate change from the lost Saraswati river, from the advent of AI in reshaping the digital infra landscape to whether public private partnerships in infrastructure can be revitalised. It provides the perfect blend of storytelling, scholarship, and strategy.
+
           </h6>
           <div className="mt-2 sm:mt-6">
             <a
