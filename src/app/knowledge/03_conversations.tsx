@@ -185,10 +185,11 @@ export default function Conversations() {
               prevEl: ".swiper-conv-prev-btn",
               nextEl: ".swiper-conv-next-btn",
             }}
-            pagination={{
-              el: ".custom-pagination-bullets-conv",
-              clickable: true,
-            }}
+            // pagination={{
+            //   dynamicBullets: true,
+            //   el: ".convs-custom-pagination-bullets",
+            //   clickable: true,
+            // }}
             // onSwiper={handleSwiperInit}
             onSlideChange={handleSlideChange}
             spaceBetween={30}
@@ -247,6 +248,7 @@ export default function Conversations() {
                 </div>
               </SwiperSlide>
             ))}
+
           </Swiper>
           {/* Navigation & Pagination */}
           <div className="flex items-center justify-between mt-6">
@@ -268,7 +270,6 @@ export default function Conversations() {
                 <GoArrowRight />
               </button>
             </div>
-            {/* <div className="custom-pagination-bullets-conv flex gap-2"></div> */}
           </div>
         </div>
       </div>
