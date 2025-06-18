@@ -16,8 +16,9 @@ import img3 from "@/../public/assets/knowledeg/conversations/03.jpg";
 import img4 from "@/../public/assets/knowledeg/conversations/04.jpg";
 import img5 from "@/../public/assets/knowledeg/conversations/05.jpg";
 import img6 from "@/../public/assets/knowledeg/conversations/06.jpg";
-import img7 from "@/../public/assets/knowledeg/conversations/07.jpg";
+import img7 from "@/../public/assets/knowledeg/conversations/07.png";
 import img8 from "@/../public/assets/knowledeg/conversations/08.png";
+import img9 from "@/../public/assets/knowledeg/conversations/09.png";
 
 const people = [
   {
@@ -81,7 +82,7 @@ const people = [
     desc: "How to improve warehousing in India and enhance credit availability",
   },
   {
-    image: img2.src,
+    image: img9.src,
     videoLink:
       "https://www.youtube.com/watch?v=OjrOlknqzu4&ab_channel=TheInfravisionFoundation",
     name: "Jagan Shah",

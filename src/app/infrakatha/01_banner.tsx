@@ -9,7 +9,7 @@ export default function BannerSection() {
              mobileimage={mobileBanner}
             heading="Infrakatha"
             title="Infrakatha"
-            subdesc="A series of conversations on infrastructure with brilliant minds, exclusive insights, and compelling stories."
+            subdesc="A series of conversations <br/> on infrastructure with  brilliant minds, <br/> exclusive insights, and compelling stories."
         />
     )
 }

@@ -34,7 +34,7 @@ export default function Banner({
             <Image
               src={image}
               alt="Publication Banner"
-              className="w-full h-full object-cover [mask-image:linear-gradient(to_top,transparent,black_40%)] 2xl:object-bottom"
+              className="w-full h-full object-cover  2xl:object-bottom"
               unoptimized={true}
             ></Image>
           </div>
@@ -74,9 +74,9 @@ export default function Banner({
               <div className="  w-full ">
                 <h1 className="text-white font-medium ">{title}</h1>
                 <div className={` py-2 sm:py-4 w-full  max-w-lg`}>
-                  <h5 className="text-white font-light ">
-                    <Balancer>{subdesc}</Balancer>
-                  </h5>
+                  <h5 className="text-white font-light "   dangerouslySetInnerHTML={{ __html: subdesc }}  />
+               
+              
                 </div>
                 {buttonText && (
                   <HeroBtnPink
