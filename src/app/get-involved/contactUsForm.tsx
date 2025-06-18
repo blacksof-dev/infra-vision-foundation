@@ -297,7 +297,7 @@ export default function ContactForm() {
                   <div className="pt-4 sm:pt-7 flex">
                     <button
                       type="submit"
-                      className="bg-pink text-white font-poppins mx-auto md:mx-0 px-14 font-medium text-xl py-4 rounded-md"
+                      className="bg-pink hover:bg-[#9c082a] cursor-pointer text-white font-poppins mx-auto md:mx-0 px-14 font-medium text-xl py-4 rounded-md transition-all duration-300 ease-linear"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? <Loader /> : "Submit"}
