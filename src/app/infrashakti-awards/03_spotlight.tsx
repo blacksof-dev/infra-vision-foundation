@@ -39,14 +39,14 @@ export default function Spotlight() {
               </span>
             </h1>
           </div>
-          <div className="flex flex-col    sm:flex-row gap-6 border-b border-darkgray/20">
-            <div className="sm:border-r sm:border-darkgray/20">
+          <div className="flex    flex-row gap-6 border-b border-darkgray/20">
+            <div className="border-r border-darkgray/20">
               <h5 className="text-darkgray/80 sm:py-5 pr-5 text-nowrap">
                 Filter by year
               </h5>
             </div>
 
-            <div className="flex flex-row gap-5 ">
+            <div className="flex flex-row gap-5 mb-3 sm:mb-0">
               {YEARS.map((tab) => (
                 <button
                   key={tab}
