@@ -14,7 +14,7 @@ export default function StayConnected() {
           <div className="w-full lg:w-[50%] xl:w-[40%] ">
             <div className="flex  flex-row  items-center gap-2 md:gap-3">
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-              <h5 className="font-medium text-black">Social Media</h5>
+              <h5 className="font-medium text-black">Social media</h5>
             </div>
             <div className=" pt-4 pb-2 sm:py-4">
               <h1 className="font-light text-black">

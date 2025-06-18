@@ -108,7 +108,7 @@ export default function Highlights() {
           </div>
           <div>
             <h1 className="text-black font-light pt-2">
-              A Quick Look at <span className="font-medium">What We Do</span>
+              A quick look at <span className="font-medium">what we do</span>
             </h1>
           </div>
           <div className="">

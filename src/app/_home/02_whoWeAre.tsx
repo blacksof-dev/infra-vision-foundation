@@ -1,7 +1,7 @@
 "use client";
 import rail from "@/../public/assets/home/whoWeAre/knowledge/rail.png";
 import highway from "@/../public/assets/home/whoWeAre/knowledge/highway.png";
-import rajivRanjan from "@/../public/assets/home/whoWeAre/knowledge/rajivRanjan.png";
+import jagan from "@/../public/assets/home/whoWeAre/knowledge/jagan.png";
 // import infraKatha from "@/../public/assets/home/whoWeAre/advocacy/infraKatha.png";
 import infraKatha from "@/../public/assets/infrakatha/banner/banner.jpg";
 import infraShakti from "@/../public/assets/home/whoWeAre/advocacy/infraPandit.png";
@@ -36,23 +36,23 @@ const knowledge = [
   },
   {
     id: 3,
-    img: rajivRanjan.src,
+    img: jagan.src,
     category: "Infravision Conversations",
-    date: "January, 2025",
+    date: "June, 2025",
     title:
-      "How to save our hill cities? What does carrying capacity mean for planners",
-    subtitle: "Rajiv Ranjan Mishra",
-    link: "https://www.youtube.com/watch?v=ZdLcdjJShW8&ab_channel=TheInfravisionFoundation",
+      "Why India needs a national plan to build new cities",
+    subtitle: "Jagan Shah",
+    link: "https://www.youtube.com/watch?v=g5aA3Q3af1g&ab_channel=TheInfravisionFoundation",
     ctaText: "Watch now"
   },
   {
     id: 2,
     img: highway.src,
     category: "Blogs",
-    date: "October, 2024",
-    title: "How to make India’s highways safe",
+    date: "September 25, 2023",
+    title: "India Needs Sustainability Ratings for Infrastructure Projects",
     subtitle: "",
-    link: "https://theinfravisionfoundation.org/2024/10/16/a-national-road-safety-authority-crucial-for-improving-indias-deteriorating-road-safety/",
+    link: "https://theinfravisionfoundation.org/2023/09/25/india-needs-sustainability-ratings-for-infrastructure-projects/",
   },
 ];
 
@@ -62,7 +62,7 @@ const advocacy = [
     img: infraKatha.src,
     category: "InfraKatha",
     title:
-      "Conversations with cross-sectoral experts aimed at mainstreaming the discourse around infrastructure.",
+      "A forum of conversations with cross-sectoral experts aimed at mainstreaming the discourse around infrastructure.",
     link: "/infrakatha",
     ctaText: "Know more"
   },
@@ -109,7 +109,7 @@ export default function WhoWeAre() {
                 </h1>
               </div>
             </div>
-            <div className="w-full md:w-1/2 lg:md:w-[45%] pt-2">
+            <div className="w-full md:w-1/2 lg:md:w-[46%] pt-2">
               <h6 className="text-black font-light">
                 Established in 2022 by Vinayak Chatterjee and Rumjhum
                 Chatterjee,{" "}
@@ -123,14 +123,7 @@ export default function WhoWeAre() {
                 </span>
               </h6>
               <h6 className="text-black font-light py-2 md:py-3">
-                Founded by professionals and embellished with an ecosystem of
-                thought leaders and experts from various infra sectors, The
-                Infravision Foundation stands for upholding the impartial,
-                enlightened, and respected voice of reason. It addresses deeply
-                rooted challenges to enable steadfast infrastructure
-                policy-making through rigorous{" "}
-                <span className="font-semibold"> knowledge sharing </span> and{" "}
-                <span className="font-semibold"> advocacy.</span>
+                Founded by professionals and embellished with an ecosystem of thought leaders and experts from academia, civil services, and business,  <span className="font-semibold">The Infravision Foundation</span> is a hub for the exchange of knowledge and policy options. It stands for upholding the impartial, enlightened, and respected voice of reason. The Foundation addresses deeply rooted challenges to enable steadfast infrastructure policy-making through rigorous  <span className="font-semibold"> knowledge sharing and advocacy.</span>
               </h6>
             </div>
           </div>
@@ -212,7 +205,7 @@ export const TabContent = ({ data, link }: { data: TabItem[], link?: string }) =
         <div className="">
           <Link className={`group  text-xl lg:text-2xl   text-pink hover:text-white cursor-pointer  text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
             href={link}>
-            <span className="z-50 relative">  Read more</span>
+            <span className="z-50 relative"> View all</span>
             <span
               className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
             ></span>
