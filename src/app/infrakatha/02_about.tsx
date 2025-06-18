@@ -6,14 +6,15 @@ import image_03 from "@/../public/assets/infrakatha/about/jagan-shah.jpg";
 import image_04 from "@/../public/assets/infrakatha/about/bonny-mukerjea.jpg";
 import { MemberCard } from "@/_components/molecules/memberCard";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { BorderGrayHeroBtn } from "@/_components/atoms/buttons";
+import Link from "next/link";
 
 export default function About() {
   const members = [
@@ -22,7 +23,7 @@ export default function About() {
       title: "Dilip Cherian",
       desig: "Member, Council of Advisors",
       link: "https://www.linkedin.com/in/dilipcherian/",
-      socialMedia: "linkedin"
+      socialMedia: "linkedin",
     },
     {
       image: image_02,
@@ -36,14 +37,13 @@ export default function About() {
       title: "Jagan Shah",
       desig: "Chief Executive Officer",
       link: "https://www.linkedin.com/in/jagan-shah/",
-      socialMedia: "linkedin"
+      socialMedia: "linkedin",
     },
     {
       image: image_04,
       title: "Bonny Mukerjea",
       desig: "Senior Media Executive",
-
-    }
+    },
   ];
 
   return (
@@ -61,34 +61,36 @@ export default function About() {
             <h5 className="font-medium text-pink">About Infrakatha</h5>
           </div>
           <h1 className="text-black font-light max-w-xl">
-            <span className="font-medium"> Conversations </span> that make infrastructure part of the national discourse
+            <span className="font-medium"> Conversations </span> that make
+            infrastructure part of the national discourse
           </h1>
           <h5 className="text-black  mt-4 md:mt-6 md:max-w-xl xl:pr-8">
-            Infrakatha is a key initiative fostering thought leadership in infrastructure-related public policies and programmes. It features distinguished experts sharing their perspectives on various aspects of infrastructure growth and innovation.
-
+            Infrakatha is a key initiative fostering thought leadership in
+            infrastructure-related public policies and programmes. It features
+            distinguished experts sharing their perspectives on various aspects
+            of infrastructure growth and innovation.
           </h5>
           <h6 className="text-darkgray  mt-2 md:max-w-xl xl:pr-8">
-            The event digs deep into issues of national importance, from the centrality of pilgrim towns in ancient India to the lessons for climate change from the lost Saraswati river, from the advent of AI in reshaping the digital infra landscape to whether public private partnerships in infrastructure can be revitalised. It provides the perfect blend of storytelling, scholarship, and strategy.
-
+            The event digs deep into issues of national importance, from the
+            centrality of pilgrim towns in ancient India to the lessons for
+            climate change from the lost Saraswati river, from the advent of AI
+            in reshaping the digital infra landscape to whether public private
+            partnerships in infrastructure can be revitalised. It provides the
+            perfect blend of storytelling, scholarship, and strategy.
           </h6>
           <div className="mt-2 sm:mt-6">
-            <a
-              href="#"
-              className="inline-flex text-lg items-center gap-2 text-black font-medium group hover:underline hover:text-pink"
-            >
-              Watch the videos
-              <span className=" w-6 h-6 bg-pink rounded-full flex items-center justify-center transition-colors group-hover:bg-pink">
-                <svg
-                  width="16"
-                  height="16"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  className="text-white"
-                >
-                  <path d="M8 5v14l11-7z" fill="currentColor" />
-                </svg>
-              </span>
-            </a>
+           <Link href="https://www.youtube.com/watch?v=o6nb3IejARc&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&ab_channel=TheInfravisionFoundation">
+            <BorderGrayHeroBtn
+              text="Watch the videos"
+              role="link"
+              borderColor="darkgray/40"
+              color="black"
+              bgColor="white"
+              size="large"
+              target="_blank"
+              classes="font-medium text-lg"
+            />
+            </Link>
           </div>
         </div>
         {/* Right: Hosts Cards */}
@@ -100,14 +102,13 @@ export default function About() {
                 modules={[Navigation, Pagination]}
                 spaceBetween={16}
                 slidesPerView={1.2}
-
                 // navigation={{
                 //   nextEl: '.swiper-button-next',
                 //   prevEl: '.swiper-button-prev',
                 // }}
                 pagination={{
                   clickable: true,
-                  el: '.custom-swiper-pagination',
+                  el: ".custom-swiper-pagination",
                 }}
                 breakpoints={{
                   640: {
@@ -152,10 +153,8 @@ export default function About() {
                 ))}
               </Swiper>
 
-
               {/* <div className="swiper-button-prev !text-pink !w-10 !h-10 !bg-white !rounded-full !shadow-md hover:!bg-pink hover:!text-white transition-colors duration-300"></div>
               <div className="swiper-button-next !text-pink !w-10 !h-10 !bg-white !rounded-full !shadow-md hover:!bg-pink hover:!text-white transition-colors duration-300"></div> */}
-
 
               <div className="custom-swiper-pagination space-x-2 w-fit mx-auto sm:ml-auto sm:mr-4 mt-4 "></div>
             </div>
