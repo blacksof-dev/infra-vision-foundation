@@ -87,21 +87,27 @@ export default function OutreachTabs({ sectionRefs, tabs }: Props) {
     };
   }, [sectionRefs, activeTab]);
 
+  // Add effect to scroll to center when activeTab changes
+  useEffect(() => {
+    const activeIndex = tabs.findIndex(tab => tab.id === activeTab);
+    if (activeIndex !== -1) {
+      scrollToCenter(activeIndex);
+    }
+  }, [activeTab, tabs]);
+
   return (
 
     <div
       ref={containerRef}
       className={clsx(
-        "border-b overflow-hidden  border-darkgray/16 transition-all duration-200 ease-linear",
+        "border-b overflow-hidden border-darkgray/16 transition-all duration-200 ease-linear",
         "bg-white",
         "z-50",
-        "sticky",
-        "top-0",
-        isStickyVisible ? "block" : "hidden",
-        isHeaderVisible ? "sticky top-20 xl:top-24" : "top-0"
+        " sticky top-0",
+        isHeaderVisible ? " top-20 xl:top-24" : "top-0"
       )}
     >
-      <div className="flex gap-5 w-container w-full sm:gap-20 md:pt-8  justify-start    z-40  ">
+      <div className="flex gap-2   w-container sm:gap-20 md:pt-8  justify-start    z-40  ">
         {tabs.map((tab, index) => (
           <button
             key={tab.id}
@@ -110,7 +116,7 @@ export default function OutreachTabs({ sectionRefs, tabs }: Props) {
             }}
             onClick={() => handleTabClick(tab.id, index)}
             className={clsx(
-              "py-4 text-nowrap text-sm md:text-lg cursor-pointer  text-darkgray border-b-2 transition-all",
+              "py-4 px-2 text-nowrap text-sm md:text-lg cursor-pointer  text-darkgray border-b-2 transition-all",
               activeTab === tab.id
                 ? "text-pink border-pink font-medium"
                 : "border-transparent"

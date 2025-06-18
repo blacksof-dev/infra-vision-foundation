@@ -16,7 +16,7 @@ import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import { NewsCard } from "@/_components/molecules/newsCard";
 
 // Types
-type FilterType = "All" | "Publication Year" | "sectors";
+type FilterType = "All" | "sectors";
 type SectorType =
   | "All"
   | "Transportation"
@@ -25,7 +25,7 @@ type SectorType =
   | "Urban Planning"
   | "Rural and Agri Infra"
   | "Education"
-  | "Finance"
+  | "Infrastructure"
   | "Health Infra";
 
 interface NewsletterCard {
@@ -40,8 +40,8 @@ interface NewsletterCard {
 }
 
 // Constants
-const FILTER_TYPES: FilterType[] = ["All", "Publication Year", "sectors"];
-const YEARS = ["2025", "2024"] as const;
+const FILTER_TYPES: FilterType[] = ["All", "sectors"];
+// const YEARS = ["2025", "2024"] as const;
 const SECTORS: SectorType[] = [
   "All",
   "Transportation",
@@ -51,7 +51,7 @@ const SECTORS: SectorType[] = [
   "Rural and Agri Infra",
   "Education",
   "Health Infra",
-  "Finance"
+  "Infrastructure"
 ];
 const INITIAL_VISIBLE_COUNT = 3;
 
@@ -63,7 +63,7 @@ const allcards = [
     category: "Rural and Agri Infra",
     title: "",
     sectors: "Rural and Agri Infra",
-    date: "November, 2024",
+    date: "",
     description:
       "Study on the implementation of compensatory afforestation in India",
     link: "/assets/pdf/Study-on-Implementation-of-Compensatory-Afforestation-in-India.pdf",
@@ -132,9 +132,9 @@ const allcards = [
   {
     id: 8,
     img: img_08,
-    category: "Finance",
+    category: "Infrastructure",
     title: "",
-    sectors: "Finance",
+    sectors: "Infrastructure",
     date: " ",
     description: "Surety bonds: Evaluation for diversifying risk in infrastructure financing",
     link: "/assets/pdf/Surety-Bond-White-Paper.pdf",
@@ -174,11 +174,14 @@ export default function ResearchPapers() {
   const handleTabClick = (tab: FilterType) => {
     setSelectedTab(tab);
     setSelectedFilter(
-      tab === "Publication Year"
-        ? YEARS[0]
-        : tab === "sectors"
-          ? SECTORS[0]
-          : "All"
+      tab === "sectors"
+        ? SECTORS[0]
+        : "All"
+      // tab === "Publication Year"
+      //   ? YEARS[0]
+      //   : tab === "sectors"
+      //     ? SECTORS[0]
+      //     : "All"
     );
     setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
@@ -189,11 +192,11 @@ export default function ResearchPapers() {
   };
 
   const filteredCards = useMemo(() => {
-    if (selectedTab === "Publication Year") {
-      return allcards.filter(
-        (card) => card.date.split(" ").pop() === selectedFilter
-      );
-    }
+    // if (selectedTab === "Publication Year") {
+    //   return allcards.filter(
+    //     (card) => card.date.split(" ").pop() === selectedFilter
+    //   );
+    // }
     if (selectedTab === "sectors" && selectedFilter !== "All") {
       return allcards.filter((card) => card.sectors === selectedFilter);
     }
@@ -234,7 +237,7 @@ export default function ResearchPapers() {
         {/* Header Section */}
         <div className="flex flex-row items-center gap-2 md:gap-3">
           <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
-          <h5 className="font-medium text-pink">Research Papers</h5>
+          <h5 className="font-medium text-pink">Research papers</h5>
         </div>
 
         <div className="py-3 max-w-4xl">
@@ -274,13 +277,12 @@ export default function ResearchPapers() {
           </div>
 
           {/* Filter Buttons */}
-          {selectedTab === "Publication Year" && renderFilterButtons(YEARS)}
+          {/* {selectedTab === "Publication Year" && renderFilterButtons(YEARS)} */}
           {selectedTab === "sectors" && renderFilterButtons(SECTORS)}
 
           {/* Newsletter Cards */}
           <div
-            className={`${selectedTab === "Publication Year" ? "pt-8" : "pt-8"
-              }`}
+            className={`pt-8`}
           >
             {
               filteredCards.length === 0 && <div className="flex justify-center"> No results </div>

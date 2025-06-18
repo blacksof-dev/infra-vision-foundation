@@ -9,8 +9,8 @@ import PublicationTabs from "@/_components/molecules/tabs";
 type TabId = "researchPapers" | "infravisionConversations" | "blogs";
 
 const tabs: { id: TabId; label: string }[] = [
-    { id: "researchPapers", label: "Research Papers" },
-    { id: "infravisionConversations", label: "Infravision Conversations" },
+    { id: "researchPapers", label: "Research papers" },
+    { id: "infravisionConversations", label: "Infravision conversations" },
     { id: "blogs", label: "Blogs" },
 ];
 

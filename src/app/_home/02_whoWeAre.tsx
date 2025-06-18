@@ -5,7 +5,7 @@ import jagan from "@/../public/assets/home/whoWeAre/knowledge/jagan.png";
 // import infraKatha from "@/../public/assets/home/whoWeAre/advocacy/infraKatha.png";
 import infraKatha from "@/../public/assets/infrakatha/banner/banner.jpg";
 import infraShakti from "@/../public/assets/home/whoWeAre/advocacy/infraPandit.png";
-import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infrashaktiAwards.png";
+import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infraPanditAward.png";
 
 import { useState } from "react";
 import Card from "@/_components/molecules/cardTemplate";

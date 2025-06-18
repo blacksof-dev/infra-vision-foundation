@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import montek from "@/../public/assets/globals/infrapanditAward.jpg";
+import { BorderGrayHeroBtn } from "@/_components/atoms/buttons";
 
 export default function InfrapanditAward() {
   return (
@@ -19,13 +20,25 @@ export default function InfrapanditAward() {
             InfraPandit Awards
           </h2>
 
-          <div className="max-w-sm pt-2 sm:pt-6">
+          <div className="max-w-sm sm:pt-2 xlg:pt-6">
             <h2 className="font-medium pt-2 lg:pt-4 xl:pt-6">
               Nurturing the Next Generation of Infra Talent and Ideas
             </h2>
 
-            <div className="py-3 sm:pt-6">
-              <h3 className=" text-pink">June 20, 2025</h3>
+            <div className=" mt-2 sm:mt-4">
+              <h4 className=" text-pink">Mumbai, June 20, 2025</h4>
+              <div className="cursor-pointer mt-6">
+                <BorderGrayHeroBtn
+                  text="See details"
+                  role="link"
+                  link="/infrapandit-awards"
+                  borderColor="pink"
+                  color="black"
+                  bgColor="white"
+                  size="large"
+                  classes="font-medium"
+                />
+              </div>
             </div>
           </div>
         </div>
