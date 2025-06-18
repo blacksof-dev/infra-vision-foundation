@@ -33,7 +33,7 @@ export default function Mobilenav({ onClose }: { onClose: () => void }) {
         <Accordion type="single" collapsible className="w-full">
           {/* About Us Dropdown */}
           <AccordionItem value="about">
-            <AccordionTrigger className="py-4 text-lg text-left text-darkgray">About us</AccordionTrigger>
+            <AccordionTrigger className="py-4 text-lg text-left  text-darkgray">About us</AccordionTrigger>
             <AccordionContent className="">
               <ul onClick={onClose} className="space-y-3 text-base ">
                 <li><Link href="/about-us#who-we-are" className="text-darkgray font-poppins ">Who we are</Link></li>

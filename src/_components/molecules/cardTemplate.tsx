@@ -22,7 +22,7 @@ export default function Card({
 }: CardProps) {
   return (
     <>
-      <div className="xl:max-w-[29rem]  ">
+      <div className="xl:max-w-[29rem] flex flex-col  relative ">
         <div className="w-full h-[16rem] ">
           <Image
             src={image}
@@ -33,7 +33,7 @@ export default function Card({
           />
         </div>
 
-        <div className="  flex justify-between flex-col">
+        <div className="  flex justify-between flex-col ">
           <div>
             <div className="flex flex-row justify-between pt-2 pb-1 md:py-3">
               <div className="flex  flex-row  items-center gap-3 ">
@@ -57,7 +57,7 @@ export default function Card({
             )}
           </div>
 
-          <div className="pt-3  pb-6 xl:py-4 h">
+          {/* <div className="pt-3  pb-6 xl:py-4 mt-auto d">
             <BorderGrayHeroBtn
               text={ctaText}
               role="link"
@@ -68,7 +68,19 @@ export default function Card({
               target="_blank"
               link={link}
             />
-          </div>
+          </div> */}
+        </div>
+        <div className="pt-3  pb-6 xl:py-4 mt-auto ">
+          <BorderGrayHeroBtn
+            text={ctaText}
+            role="link"
+            borderColor="darkgray/40"
+            color="black"
+            bgColor="white"
+            size="base"
+            target="_blank"
+            link={link}
+          />
         </div>
       </div>
     </>
