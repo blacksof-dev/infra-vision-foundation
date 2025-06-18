@@ -53,7 +53,7 @@ const ButtonTab = ({ label, value, data, setdata }: ButtonTabProps) => {
 
 export default function Luminaries() {
   const swiperRef = useRef<SwiperType | null>(null);
-  const [data, setdata] = useState("Guests");
+  const [data, setdata] = useState("jury");
   const [isLastSlide, setIsLastSlide] = useState(false);
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [carddata, setcarddata] = useState<CardData[]>([]);
