@@ -4,6 +4,12 @@ import { useEffect, useState, useMemo, useRef } from "react";
 import img_01 from "@/../public/assets/knowledeg/blogs/01.jpg";
 import img_02 from "@/../public/assets/knowledeg/blogs/02.jpg";
 import img_03 from "@/../public/assets/knowledeg/blogs/03.jpg";
+import img_04 from "@/../public/assets/knowledeg/blogs/04.png";
+import img_05 from "@/../public/assets/knowledeg/blogs/05.jpg";
+import img_06 from "@/../public/assets/knowledeg/blogs/06.jpg";
+import img_07 from "@/../public/assets/knowledeg/blogs/07.jpg";
+import img_08 from "@/../public/assets/knowledeg/blogs/08.jpg";
+
 
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 
@@ -77,6 +83,56 @@ const allcards = [
     date: "October 9, 2023",
     description: "Multi-utility Infra, the way to go!",
     link: "https://theinfravisionfoundation.org/2023/10/09/newsletter-images-do-not-remove/",
+  },
+  {
+    id: 4,
+    img: img_04,
+    category: "Transportation",
+    title: "",
+    sectors: "Transportation",
+    date: "October 5, 2023",
+    description: "Our metro rail systems must be sustainable, financially",
+    link: "https://theinfravisionfoundation.org/2023/10/05/our-metro-rail-systems-must-be-sustainable-financially/",
+  },
+  {
+    id: 5,
+    img: img_05,
+    category: "Urban Planning",
+    title: "",
+    sectors: "Urban Planning",
+    date: "September 25, 2023",
+    description: "India needs sustainability ratings for Infrastructure projects",
+    link: "https://theinfravisionfoundation.org/2023/09/25/india-needs-sustainability-ratings-for-infrastructure-projects/",
+  },
+  {
+    id: 6,
+    img: img_06,
+    category: "Transportation",
+    title: "",
+    sectors: "Transportation",
+    date: "August 26, 2023",
+    description: "Urban mobility in India – Why metro is not the only solution!",
+    link: "https://theinfravisionfoundation.org/2023/08/26/urban-mobility-in-india-why-metro-is-not-the-only-solution/",
+  },
+  {
+    id: 7,
+    img: img_07,
+    category: "Infrastructure",
+    title: "",
+    sectors: "Infrastructure",
+    date: "May 18, 2023",
+    description: "Getting Surety Bonds Market Ready",
+    link: "https://theinfravisionfoundation.org/2023/05/18/getting-surety-bonds-market-ready/",
+  },
+  {
+    id: 8,
+    img: img_08,
+    category: "Energy",
+    title: "",
+    sectors: "Energy",
+    date: "March 2, 2023",
+    description: "Rooftop Solar for Poverty Alleviation",
+    link: "https://theinfravisionfoundation.org/2023/03/02/rooftop-solar-for-poverty-alleviation/",
   },
 ];
 
@@ -158,7 +214,7 @@ export default function Blogs() {
 
   return (
     <section id="blogs">
-      <div className="w-container blade-top-padding-sm blade-bottom-padding-sm">
+      <div className="w-container blade-top-padding-sm blade-bottom-padding-lg">
         {/* Header Section */}
         <div className="flex flex-row items-center gap-2 md:gap-3">
           <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
@@ -231,7 +287,7 @@ export default function Blogs() {
               ))}
             </div>
             {visibleCount < filteredCards.length && (
-              <div className="flex justify-center mt-8">
+              <div className="flex justify-center sm:mt-4 mb-4">
                 <UnderlineWithHover
                   size="xxlsize"
                   color="pink"

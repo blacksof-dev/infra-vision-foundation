@@ -21,6 +21,24 @@ import img8 from "@/../public/assets/knowledeg/conversations/08.png";
 
 const people = [
   {
+    image: img8.src,
+    videoLink:
+      "https://www.youtube.com/watch?v=w6oJTRqeB4A&list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em&index=9&ab_channel=TheInfravisionFoundation",
+    name: "Pratap Padode",
+    title:
+      "Founder and President, First Construction Council, and author, Tarmac to Towers: India’s Infrastructure Story",
+    desc: "Infra projects in India are invariably only 90 percent complete",
+  },
+  {
+    image: img2.src,
+    videoLink:
+      "https://www.youtube.com/watch?v=g5aA3Q3af1g&list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em&index=8&ab_channel=TheInfravisionFoundation",
+    name: "Jagan Shah",
+    title:
+      "The Infravision Foundation CEO and senior expert in urban development policy, Jagan Shah",
+    desc: "Why India needs a national plan to build new cities",
+  },
+  {
     image: img1.src,
     videoLink:
       "https://www.youtube.com/playlist?list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em",
@@ -28,6 +46,39 @@ const people = [
     title:
       "TRIPP Chair Professor at the Department of Civil Engineering, Indian Institute of Technology in New Delhi, India.",
     desc: "Selecting the appropriate urban transport system for India's cities",
+  },
+  {
+    image: img7.src,
+    videoLink:
+      "https://www.youtube.com/watch?v=Jis2Q7oOfr0&list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em&index=6&ab_channel=TheInfravisionFoundation",
+    name: "Rajaji Meshram",
+    title: "Transport and Logistic Experts",
+    desc: "Sustainability Ratings : an idea whose time has come",
+  },
+  {
+    image: img5.src,
+    videoLink:
+      "https://www.youtube.com/watch?v=H34LNACsKZw&list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em&index=5&ab_channel=TheInfravisionFoundation",
+    name: "Prof Sandip Chakrabarti",
+    title: "Faculty Member, Public Systems Group, IIMA",
+    desc: "Making metro systems financially viable, what needs to be done?",
+  },
+  {
+    image: img4.src,
+    videoLink:
+      "https://www.youtube.com/watch?v=ZdLcdjJShW8&t=14s&ab_channel=TheInfravisionFoundation",
+    name: "Rajiv Ranjan Mishra",
+    title:
+      "Distinguished Fellow, The Infravision Foundation, and former Director General, National Mission for Clean Ganga     ",
+    desc: "Selecting the appropriate urban transport system for India's cities",
+  },
+  {
+    image: img6.src,
+    videoLink:
+      "https://www.youtube.com/watch?v=5A-JtJ-jDzw&list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em&index=3&ab_channel=TheInfravisionFoundation",
+    name: "Prof Gopal Naik",
+    title: "Economics and Social Science, IIM Bangalore",
+    desc: "How to improve warehousing in India and enhance credit availability",
   },
   {
     image: img2.src,
@@ -47,48 +98,11 @@ const people = [
       "Member, Council of Advisors, TIF, and Former Director, IIM Bangalore",
     desc: "Indian Railways : Why innovation matters",
   },
-  {
-    image: img4.src,
-    videoLink:
-      "https://www.youtube.com/watch?v=ZdLcdjJShW8&t=14s&ab_channel=TheInfravisionFoundation",
-    name: "Rajiv Ranjan Mishra",
-    title:
-      "Distinguished Fellow, The Infravision Foundation, and former Director General, National Mission for Clean Ganga     ",
-    desc: "Selecting the appropriate urban transport system for India's cities",
-  },
-  {
-    image: img5.src,
-    videoLink:
-      "https://www.youtube.com/watch?v=H34LNACsKZw&list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em&index=5&ab_channel=TheInfravisionFoundation",
-    name: "Prof Sandip Chakrabarti",
-    title: "Faculty Member, Public Systems Group, IIMA",
-    desc: "Making metro systems financially viable, what needs to be done?",
-  },
-  {
-    image: img6.src,
-    videoLink:
-      "https://www.youtube.com/watch?v=5A-JtJ-jDzw&list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em&index=3&ab_channel=TheInfravisionFoundation",
-    name: "Prof Gopal Naik",
-    title: "Economics and Social Science, IIM Bangalore",
-    desc: "How to improve warehousing in India and enhance credit availability",
-  },
-  {
-    image: img7.src,
-    videoLink:
-      "https://www.youtube.com/watch?v=Jis2Q7oOfr0&list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em&index=6&ab_channel=TheInfravisionFoundation",
-    name: "Rajaji Meshram",
-    title: "Transport and Logistic Experts",
-    desc: "Sustainability Ratings : an idea whose time has come",
-  },
-  {
-    image: img8.src,
-    videoLink:
-      "https://www.youtube.com/watch?v=w6oJTRqeB4A&list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em&index=9&ab_channel=TheInfravisionFoundation",
-    name: "Pratap Padode",
-    title:
-      "Founder and President, First Construction Council, and author, Tarmac to Towers: India’s Infrastructure Story",
-    desc: "Infra projects in India are invariably only 90 percent complete",
-  },
+
+
+
+
+
 ];
 
 export default function Conversations() {
@@ -119,7 +133,7 @@ export default function Conversations() {
             <div className="flex flex-row items-center gap-2 md:gap-3">
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
               <h5 className="font-medium text-pink">
-                Infravision Conversations
+                Infravision conversations
               </h5>
             </div>
             <div className="py-3 max-w-4xl">
@@ -171,10 +185,11 @@ export default function Conversations() {
               prevEl: ".swiper-conv-prev-btn",
               nextEl: ".swiper-conv-next-btn",
             }}
-            pagination={{
-              el: ".custom-pagination-bullets-conv",
-              clickable: true,
-            }}
+            // pagination={{
+            //   dynamicBullets: true,
+            //   el: ".convs-custom-pagination-bullets",
+            //   clickable: true,
+            // }}
             // onSwiper={handleSwiperInit}
             onSlideChange={handleSlideChange}
             spaceBetween={30}
@@ -204,6 +219,7 @@ export default function Conversations() {
                     {/* <div className="absolute inset-0 bg-black/30 z-10"></div> */}
                     <div className="absolute bottom-0 left-0 z-10 w-[85%] sm:w-[80%] pl-3 pb-3">
                       <Link
+                        target="_blank"
                         href={person.videoLink}
                         className="absolute -top-10 -right-8 bg-white group rounded-lg p-3  z-20 w-fit"
                       >
@@ -232,9 +248,10 @@ export default function Conversations() {
                 </div>
               </SwiperSlide>
             ))}
+
           </Swiper>
           {/* Navigation & Pagination */}
-          <div className="flex items-center justify-between mt-6">
+          <div className="flex items-center  justify-end mt-6">
             <div className="flex gap-3">
               <button
                 className={`swiper-conv-prev-btn cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white transition-opacity duration-200 ${isBeginning ? "opacity-50 cursor-not-allowed" : "opacity-100"
@@ -253,7 +270,6 @@ export default function Conversations() {
                 <GoArrowRight />
               </button>
             </div>
-            {/* <div className="custom-pagination-bullets-conv flex gap-2"></div> */}
           </div>
         </div>
       </div>

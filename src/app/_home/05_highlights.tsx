@@ -66,6 +66,7 @@ const news = [
     category: "News",
     date: "Aug 15, 2024",
     title: "Group taxation regime for infrastructure",
+    subtitle: "Vinayak Chatterjee",
     link: "https://www.business-standard.com/opinion/columns/group-taxation-regime-for-infrastructure-124081500813_1.html",
   },
   {
@@ -74,15 +75,17 @@ const news = [
     category: "News",
     date: "July 24, 2024",
     title: "Infra outlays: A strategic downplay",
+    subtitle: "Vinayak Chatterjee",
     link: "https://www.financialexpress.com/opinion/nbspinfra-outlays-a-strategic-downplay-the-budget-signals-a-move-out-of-the-era-of-large-infra-spends-pump-priming-the-economy/3563263/#:~:text=stressful%20Covid%20period.-,Across%20the%20last%20few%20years%2C%20India%20saw%20Union%20Budget%20infra,11%25%20to%20Rs%2011.1%20trillion.",
   },
   {
     id: 3,
     img: budget.src,
-    date: " July 24, 2024",
+    date: "Jan 4, 2023",
     category: "News",
-    title: "Budget signals shift in infra strategy",
-    link: "https://www.moneycontrol.com/news/business/economy/budget-signals-shift-in-infra-strategy-as-govt-pushes-states-private-sector-to-pitch-in-12777120.html",
+    title: "Infra brushstrokes for the Budget",
+    subtitle: "Vinayak Chatterjee",
+    link: "/assets/pdf/InfraBrushstrokes-Business-Standard_04012023.pdf",
   },
 ];
 
@@ -150,7 +153,7 @@ export const TabSwitch = ({
 
   return (
     <div>
-      <div ref={containerRef} className={`blade-top-padding-sm overflow-x-scroll bg-whitesmoke no-scrollbar z-[999] sticky ${isHeaderVisible ? "top-20   lg:top-24" : "top-0"} `}>
+      <div ref={containerRef} className={`blade-top-padding-sm overflow-x-scroll bg-whitesmoke no-scrollbar transition-all duration-300 ease-linear z-[999] sticky ${isHeaderVisible ? "top-20   lg:top-24" : "top-0"} `}>
         <div className="flex flex-row gap-6 sm:gap-12  lg:gap-12 md:gap-18 border-b   border-darkgray/16 w-fit ">
           <button
             ref={(el: HTMLButtonElement | null) => { tabRefs.current[0] = el }}
@@ -192,15 +195,15 @@ export const TabSwitch = ({
         {activeTab === "Newsletters" && <TabContent data={newsletters} />}
         {activeTab === "In the News" && <TabContent data={news} />}
       </div>
-      <div className="mt-2 md:mt-5 ">
-        <div className="flex">
+      <div className="mt-4 md:mt-8">
+        <div className="flex  justify-center">
           <Link className={`group  text-xl lg:text-2xl text-pink hover:text-white cursor-pointer  text-nowrap px-2  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
             href={activeTab === "Outreach and Engagements" ? "/outreach-and-engagements" : activeTab === "Newsletters" ? "/archive#newsletters" : activeTab === "In the News" ? "/archive#news-and-media" : ""}>
-            <span className="z-50 relative">{`${activeTab === "Outreach and Engagements" ? "View all events" : "Read more"}`}</span>
+            <span className="z-50 relative">{`${activeTab === "Outreach and Engagements" ? "View all events" : activeTab === "Newsletters" ? "Browse newsletters" : activeTab === "In the News" ? "Browse news" : "Read more"}`}</span>
             <span
               className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
             ></span>
-            <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5.5] transition-all duration-700 ease-in-out z-0"></span>
+            <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[6.5] transition-all duration-700 ease-in-out z-0"></span>
           </Link>
         </div>
 
@@ -221,6 +224,7 @@ export const TabContent = ({ data }: { data: TabItem[] }) => {
           link={item.link}
           category={item.category}
           subtitle={item.subtitle}
+
           ctaText="Read more"
           classes="line-clamp-2 xl:line-clamp-3 text-lg md:text-xl text-black"
         />

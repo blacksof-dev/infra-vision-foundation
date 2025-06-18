@@ -5,7 +5,7 @@ import jagan from "@/../public/assets/home/whoWeAre/knowledge/jagan.png";
 // import infraKatha from "@/../public/assets/home/whoWeAre/advocacy/infraKatha.png";
 import infraKatha from "@/../public/assets/infrakatha/banner/banner.jpg";
 import infraShakti from "@/../public/assets/home/whoWeAre/advocacy/infraPandit.png";
-import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infrashaktiAwards.png";
+import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infraPanditAward.png";
 
 import { useState } from "react";
 import Card from "@/_components/molecules/cardTemplate";
@@ -201,11 +201,11 @@ export const TabContent = ({ data, link }: { data: TabItem[], link?: string }) =
     </div> {
       link &&
 
-      <div className="flex justify-center xl:mt-4">
+      <div className="flex justify-center xl:mt-6">
         <div className="">
           <Link className={`group  text-xl lg:text-2xl   text-pink hover:text-white cursor-pointer  text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
             href={link}>
-            <span className="z-50 relative"> View all</span>
+            <span className="z-50 relative">Explore</span>
             <span
               className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
             ></span>

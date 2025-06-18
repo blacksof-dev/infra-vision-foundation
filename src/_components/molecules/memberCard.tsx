@@ -11,7 +11,7 @@ interface MemberCardProps {
 }
 
 export const MemberCard = ({ image, title, desig, link, socialMedia }: MemberCardProps) => {
-  console.log(socialMedia)
+
   return (
     <div className="flex relative flex-col w-[19rem] h-[19rem] group-first">
       <Image
