@@ -11,13 +11,13 @@ import Link from "next/link";
 import { FaYoutube } from "react-icons/fa";
 
 import img1 from "@/../public/assets/knowledeg/conversations/01.jpg";
-import img2 from "@/../public/assets/knowledeg/conversations/02.jpg";
+import img2 from "@/../public/assets/knowledeg/conversations/02.png";
 import img3 from "@/../public/assets/knowledeg/conversations/03.jpg";
 import img4 from "@/../public/assets/knowledeg/conversations/04.jpg";
 import img5 from "@/../public/assets/knowledeg/conversations/05.jpg";
 import img6 from "@/../public/assets/knowledeg/conversations/06.jpg";
 import img7 from "@/../public/assets/knowledeg/conversations/07.jpg";
-import img8 from "@/../public/assets/knowledeg/conversations/08.jpg";
+import img8 from "@/../public/assets/knowledeg/conversations/08.png";
 
 const people = [
   {

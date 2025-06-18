@@ -221,7 +221,7 @@ Born in January 1958, Mr Kumar holds an MSc in Physics from Meerut University an
     title: "Professor G. Raghuram",
     desig: "Member, Council of Advisors",
     popupImg: vinayakImg.src,
-    link: "https://www.linkedin.com/in/g-raghuram-aa103750 ",
+    link: "https://www.linkedin.com/in/g-raghuram-aa103750/",
     socialMedia: "linkedin",
     popupdesc:
       `

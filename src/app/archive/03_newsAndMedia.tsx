@@ -1,15 +1,9 @@
 "use client";
-import { useEffect, useState, useMemo, useRef } from "react";
-
-import image_01 from "@/../public/assets/archive/newsAndMedia/01.jpg";
-import image_02 from "@/../public/assets/archive/newsAndMedia/02.jpg";
-import image_03 from "@/../public/assets/archive/newsAndMedia/03.jpg";
-
+import { useState, useMemo, useRef } from "react";
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
-import Card from "@/_components/molecules/cardTemplate";
-import Image from "next/image";
 import { NewsCard } from "@/_components/molecules/newsCard";
 
+import newsMedia1 from "@/../public/assets/archive/newsAndMedia/newsMedia1.png"
 // Types
 type FilterType = "All" | "Publication Year" | "sectors";
 type SectorType =
@@ -51,7 +45,7 @@ const INITIAL_VISIBLE_COUNT = 3;
 const allcards = [
   {
     id: 1,
-    img: image_01,
+    img:newsMedia1.src,
     category: "News",
     title: "",
     sectors: "",
@@ -59,26 +53,7 @@ const allcards = [
     description: "Group taxation regime for infrastructure",
     link: "https://www.business-standard.com/opinion/columns/group-taxation-regime-for-infrastructure-124081500813_1.html",
   },
-  {
-    id: 2,
-    img: image_02,
-    category: "News",
-    title: "",
-    sectors: "",
-    date: "July 24, 2024",
-    description: "Infra outlays: A strategic downplay",
-    link: "https://www.financialexpress.com/opinion/nbspinfra-outlays-a-strategic-downplay-the-budget-signals-a-move-out-of-the-era-of-large-infra-spends-pump-priming-the-economy/3563263/#:~:text=stressful%20Covid%20period.-,Across%20the%20last%20few%20years%2C%20India%20saw%20Union%20Budget%20infra,11%25%20to%20Rs%2011.1%20trillion.",
-  },
-  {
-    id: 3,
-    img: image_03,
-    category: "News",
-    title: "",
-    sectors: "",
-    date: "July 24, 2024",
-    description: "Budget signals shift in infra strategy",
-    link: "https://www.moneycontrol.com/news/business/economy/budget-signals-shift-in-infra-strategy-as-govt-pushes-states-private-sector-to-pitch-in-12777120.html",
-  },
+ 
 ];
 
 export default function NewsAndMedia() {
@@ -220,7 +195,7 @@ export default function NewsAndMedia() {
                   <NewsCard
                     date={card.date}
                     title={card.title}
-                    image={card.img.src}
+                    image={card.img}
                     link={card.link}
                     category={card.category}
                     description={card.description}

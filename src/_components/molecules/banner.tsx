@@ -34,7 +34,7 @@ export default function Banner({
             <Image
               src={image}
               alt="Publication Banner"
-              className="w-full h-full object-cover [mask-image:linear-gradient(to_top,transparent,black_40%)]"
+              className="w-full h-full object-cover [mask-image:linear-gradient(to_top,transparent,black_40%)] 2xl:object-bottom"
               unoptimized={true}
             ></Image>
           </div>
