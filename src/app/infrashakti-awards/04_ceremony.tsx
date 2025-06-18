@@ -94,7 +94,7 @@ function VideoCard({ data }: { data: VideoCard[] }) {
                 </div>
                 <div className="w-full h-auto  absolute bottom-0">
                   <div>
-                    <ul className="text-white list-disc pl-3 md:pl-5 list-inside text-lg">
+                    <ul className="text-white font-semibold list-disc pl-3 md:pl-5 list-inside text-lg">
                       <li className="">{ele.title}</li>
                     </ul>
                   </div>

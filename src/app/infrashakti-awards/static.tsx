@@ -21,8 +21,8 @@ export type CardData = {
   title: string;
   desig: string;
   link?: string;
-  popupImg: string;
-  popupdesc: string;
+  socialMedia?: string;
+
 };
 
 export const Guests = [
@@ -30,18 +30,18 @@ export const Guests = [
     image: nitin,
     title: "Mr. Nitin Gadkari",
     desig: "Minister of Road Transport and Highways, GoI",
-    popupImg:vinayakImg.src,
-
-    popupdesc:"Born in 1959, Vinayak Chatterjee graduated in Economics (Hons.) from St. Stephen's College, Delhi University (1976-1979) and did his MBA from the Indian Institute of Management, Ahmedabad (1979 – 1981). He co-founded Feedback Infra Pvt. Ltd. in 1990 and served as its Chairman from 1990 to 2021. Since stepping down from active management, he now devotes his time and energy to Infrastructure Policy and Advocacy; as well as to nurturing educational institutions.He has often been called upon to play a strategic advisory role to leading domestic and international corporates, the Government of India, various Ministries dealing with infrastructure, as well as multilateral and bilateral institutions in the areas of infrastructure policy, planning, and implementation. He is one of the leading proponents of the Public-Private Partnership (PPP) model for developing India’s infrastructure. His more recent engagements with the Government of India relate to being a Member of the Committee on Setting up a Development Finance Institution (DFI), and a member of the Consultative Group on PPPs at NITI Aayog.In 1998, the World Economic Forum at Davos recognized him as one of the 100 Global Leaders of Tomorrow. In 2011, the Indian Institute of Management, Ahmedabad conferred on him the “Distinguished Alumnus Award”. He is currently the Chairman of the Confederation of Indian Industry’s (CII) “National Council on Infrastructure” and has chaired various Infrastructure and Economic Committees at the national level of CII since 2001. He is on the Board of Directors of ACC Limited, Apollo Hospitals Enterprise Limited, KEC International Limited, and L&T Infotech Limited; and is a member of the Advisory Board of JCB India. He serves as the Chairman of the Board of Governors of Indian Institute of Technology, Dharwad, and on the Boards of Indian Institute of Management, Sirmaur and the National Rail and Transportation Institute, Vadodara.He is a well-read columnist and writes a monthly column on infrastructure for Business Standard called “INFRATALK”. He has also authored a book titled <span class='font-semibold teaxt-black'>“Getting it Right – India’s Unfolding Infrastructure Agenda”</span> published in 2011."
+    link:"https://x.com/nitin_gadkari",
+    socialMedia:"X"
+  
   },
   {
     image: hardeep,
     title: "Mr. Hardeep Singh Puri",
     desig:
       "Minister of Housing and Urban Affairs & Petroleum and Natural Gas, GoI",
-      popupImg:vinayakImg.src,
-
-    popupdesc:"Born in 1959, Vinayak Chatterjee graduated in Economics (Hons.) from St. Stephen's College, Delhi University (1976-1979) and did his MBA from the Indian Institute of Management, Ahmedabad (1979 – 1981). He co-founded Feedback Infra Pvt. Ltd. in 1990 and served as its Chairman from 1990 to 2021. Since stepping down from active management, he now devotes his time and energy to Infrastructure Policy and Advocacy; as well as to nurturing educational institutions.He has often been called upon to play a strategic advisory role to leading domestic and international corporates, the Government of India, various Ministries dealing with infrastructure, as well as multilateral and bilateral institutions in the areas of infrastructure policy, planning, and implementation. He is one of the leading proponents of the Public-Private Partnership (PPP) model for developing India’s infrastructure. His more recent engagements with the Government of India relate to being a Member of the Committee on Setting up a Development Finance Institution (DFI), and a member of the Consultative Group on PPPs at NITI Aayog.In 1998, the World Economic Forum at Davos recognized him as one of the 100 Global Leaders of Tomorrow. In 2011, the Indian Institute of Management, Ahmedabad conferred on him the “Distinguished Alumnus Award”. He is currently the Chairman of the Confederation of Indian Industry’s (CII) “National Council on Infrastructure” and has chaired various Infrastructure and Economic Committees at the national level of CII since 2001. He is on the Board of Directors of ACC Limited, Apollo Hospitals Enterprise Limited, KEC International Limited, and L&T Infotech Limited; and is a member of the Advisory Board of JCB India. He serves as the Chairman of the Board of Governors of Indian Institute of Technology, Dharwad, and on the Boards of Indian Institute of Management, Sirmaur and the National Rail and Transportation Institute, Vadodara.He is a well-read columnist and writes a monthly column on infrastructure for Business Standard called “INFRATALK”. He has also authored a book titled <span class='font-semibold teaxt-black'>“Getting it Right – India’s Unfolding Infrastructure Agenda”</span> published in 2011."
+      link:"https://x.com/hardeepspuri?lang=en",
+      socialMedia:"X"
+      
   },
 ];
 
@@ -51,36 +51,36 @@ export const Preeminent = [
     title: "Mr. Sanjay Pugalia",
     desig:
       "CEO and Editor-in-Chief, NDTV",
-      popupImg:vinayakImg.src,
-
-    popupdesc:"Born in 1959, Vinayak Chatterjee graduated in Economics (Hons.) from St. Stephen's College, Delhi University (1976-1979) and did his MBA from the Indian Institute of Management, Ahmedabad (1979 – 1981). He co-founded Feedback Infra Pvt. Ltd. in 1990 and served as its Chairman from 1990 to 2021. Since stepping down from active management, he now devotes his time and energy to Infrastructure Policy and Advocacy; as well as to nurturing educational institutions.He has often been called upon to play a strategic advisory role to leading domestic and international corporates, the Government of India, various Ministries dealing with infrastructure, as well as multilateral and bilateral institutions in the areas of infrastructure policy, planning, and implementation. He is one of the leading proponents of the Public-Private Partnership (PPP) model for developing India’s infrastructure. His more recent engagements with the Government of India relate to being a Member of the Committee on Setting up a Development Finance Institution (DFI), and a member of the Consultative Group on PPPs at NITI Aayog.In 1998, the World Economic Forum at Davos recognized him as one of the 100 Global Leaders of Tomorrow. In 2011, the Indian Institute of Management, Ahmedabad conferred on him the “Distinguished Alumnus Award”. He is currently the Chairman of the Confederation of Indian Industry’s (CII) “National Council on Infrastructure” and has chaired various Infrastructure and Economic Committees at the national level of CII since 2001. He is on the Board of Directors of ACC Limited, Apollo Hospitals Enterprise Limited, KEC International Limited, and L&T Infotech Limited; and is a member of the Advisory Board of JCB India. He serves as the Chairman of the Board of Governors of Indian Institute of Technology, Dharwad, and on the Boards of Indian Institute of Management, Sirmaur and the National Rail and Transportation Institute, Vadodara.He is a well-read columnist and writes a monthly column on infrastructure for Business Standard called “INFRATALK”. He has also authored a book titled <span class='font-semibold teaxt-black'>“Getting it Right – India’s Unfolding Infrastructure Agenda”</span> published in 2011."
+      link:"https://x.com/sanjaypugalia",
+      socialMedia:"X"
+    
   },
   {
     image: pranav,
     title: "Mr. Pranav Adani",
     desig:
       "MD (Agro, Oil & Gas) and Director of Adani Enterprises",
-      popupImg:vinayakImg.src,
-
-    popupdesc:"Born in 1959, Vinayak Chatterjee graduated in Economics (Hons.) from St. Stephen's College, Delhi University (1976-1979) and did his MBA from the Indian Institute of Management, Ahmedabad (1979 – 1981). He co-founded Feedback Infra Pvt. Ltd. in 1990 and served as its Chairman from 1990 to 2021. Since stepping down from active management, he now devotes his time and energy to Infrastructure Policy and Advocacy; as well as to nurturing educational institutions.He has often been called upon to play a strategic advisory role to leading domestic and international corporates, the Government of India, various Ministries dealing with infrastructure, as well as multilateral and bilateral institutions in the areas of infrastructure policy, planning, and implementation. He is one of the leading proponents of the Public-Private Partnership (PPP) model for developing India’s infrastructure. His more recent engagements with the Government of India relate to being a Member of the Committee on Setting up a Development Finance Institution (DFI), and a member of the Consultative Group on PPPs at NITI Aayog.In 1998, the World Economic Forum at Davos recognized him as one of the 100 Global Leaders of Tomorrow. In 2011, the Indian Institute of Management, Ahmedabad conferred on him the “Distinguished Alumnus Award”. He is currently the Chairman of the Confederation of Indian Industry’s (CII) “National Council on Infrastructure” and has chaired various Infrastructure and Economic Committees at the national level of CII since 2001. He is on the Board of Directors of ACC Limited, Apollo Hospitals Enterprise Limited, KEC International Limited, and L&T Infotech Limited; and is a member of the Advisory Board of JCB India. He serves as the Chairman of the Board of Governors of Indian Institute of Technology, Dharwad, and on the Boards of Indian Institute of Management, Sirmaur and the National Rail and Transportation Institute, Vadodara.He is a well-read columnist and writes a monthly column on infrastructure for Business Standard called “INFRATALK”. He has also authored a book titled <span class='font-semibold teaxt-black'>“Getting it Right – India’s Unfolding Infrastructure Agenda”</span> published in 2011."
+      link:"https://in.linkedin.com/in/pranav-adani-9b1279331?original_referer=https%3A%2F%2Fwww.google.com%2F",
+      socialMedia:"linkedin"
+    
   },
   {
     image: vinayak,
     title: "Mr. Vinayak Chatterjee",
     desig:
       "Founder and Managing Trustee, The Infravision Foundation",
-      popupImg:vinayakImg.src,
-
-    popupdesc:"Born in 1959, Vinayak Chatterjee graduated in Economics (Hons.) from St. Stephen's College, Delhi University (1976-1979) and did his MBA from the Indian Institute of Management, Ahmedabad (1979 – 1981). He co-founded Feedback Infra Pvt. Ltd. in 1990 and served as its Chairman from 1990 to 2021. Since stepping down from active management, he now devotes his time and energy to Infrastructure Policy and Advocacy; as well as to nurturing educational institutions.He has often been called upon to play a strategic advisory role to leading domestic and international corporates, the Government of India, various Ministries dealing with infrastructure, as well as multilateral and bilateral institutions in the areas of infrastructure policy, planning, and implementation. He is one of the leading proponents of the Public-Private Partnership (PPP) model for developing India’s infrastructure. His more recent engagements with the Government of India relate to being a Member of the Committee on Setting up a Development Finance Institution (DFI), and a member of the Consultative Group on PPPs at NITI Aayog.In 1998, the World Economic Forum at Davos recognized him as one of the 100 Global Leaders of Tomorrow. In 2011, the Indian Institute of Management, Ahmedabad conferred on him the “Distinguished Alumnus Award”. He is currently the Chairman of the Confederation of Indian Industry’s (CII) “National Council on Infrastructure” and has chaired various Infrastructure and Economic Committees at the national level of CII since 2001. He is on the Board of Directors of ACC Limited, Apollo Hospitals Enterprise Limited, KEC International Limited, and L&T Infotech Limited; and is a member of the Advisory Board of JCB India. He serves as the Chairman of the Board of Governors of Indian Institute of Technology, Dharwad, and on the Boards of Indian Institute of Management, Sirmaur and the National Rail and Transportation Institute, Vadodara.He is a well-read columnist and writes a monthly column on infrastructure for Business Standard called “INFRATALK”. He has also authored a book titled <span class='font-semibold teaxt-black'>“Getting it Right – India’s Unfolding Infrastructure Agenda”</span> published in 2011."
+      link:"https://x.com/infra_vinayakch?lang=en",
+      socialMedia:"X"
+     
   },
   {
     image: rumjhum,
     title: "Rumjhum Chatterjee",
     desig:
       "Co-Founder and Managing Trustee, The Infravision Foundation",
-      popupImg:vinayakImg.src,
-
-    popupdesc:"Born in 1959, Vinayak Chatterjee graduated in Economics (Hons.) from St. Stephen's College, Delhi University (1976-1979) and did his MBA from the Indian Institute of Management, Ahmedabad (1979 – 1981). He co-founded Feedback Infra Pvt. Ltd. in 1990 and served as its Chairman from 1990 to 2021. Since stepping down from active management, he now devotes his time and energy to Infrastructure Policy and Advocacy; as well as to nurturing educational institutions.He has often been called upon to play a strategic advisory role to leading domestic and international corporates, the Government of India, various Ministries dealing with infrastructure, as well as multilateral and bilateral institutions in the areas of infrastructure policy, planning, and implementation. He is one of the leading proponents of the Public-Private Partnership (PPP) model for developing India’s infrastructure. His more recent engagements with the Government of India relate to being a Member of the Committee on Setting up a Development Finance Institution (DFI), and a member of the Consultative Group on PPPs at NITI Aayog.In 1998, the World Economic Forum at Davos recognized him as one of the 100 Global Leaders of Tomorrow. In 2011, the Indian Institute of Management, Ahmedabad conferred on him the “Distinguished Alumnus Award”. He is currently the Chairman of the Confederation of Indian Industry’s (CII) “National Council on Infrastructure” and has chaired various Infrastructure and Economic Committees at the national level of CII since 2001. He is on the Board of Directors of ACC Limited, Apollo Hospitals Enterprise Limited, KEC International Limited, and L&T Infotech Limited; and is a member of the Advisory Board of JCB India. He serves as the Chairman of the Board of Governors of Indian Institute of Technology, Dharwad, and on the Boards of Indian Institute of Management, Sirmaur and the National Rail and Transportation Institute, Vadodara.He is a well-read columnist and writes a monthly column on infrastructure for Business Standard called “INFRATALK”. He has also authored a book titled <span class='font-semibold teaxt-black'>“Getting it Right – India’s Unfolding Infrastructure Agenda”</span> published in 2011."
+      link:"https://www.linkedin.com/in/rumjhum-chatterjee-396041268/",
+      socialMedia:"linkedin"
+    
   },
 ];
 
@@ -90,44 +90,43 @@ export const jury = [
     title: "Mrs Renu Sud Karnad",
     desig:
       "Chairperson, GSK Pharmaceuticals; Former MD, HDFC",
-      popupImg:vinayakImg.src,
-
-    popupdesc:"Born in 1959, Vinayak Chatterjee graduated in Economics (Hons.) from St. Stephen's College, Delhi University (1976-1979) and did his MBA from the Indian Institute of Management, Ahmedabad (1979 – 1981). He co-founded Feedback Infra Pvt. Ltd. in 1990 and served as its Chairman from 1990 to 2021. Since stepping down from active management, he now devotes his time and energy to Infrastructure Policy and Advocacy; as well as to nurturing educational institutions.He has often been called upon to play a strategic advisory role to leading domestic and international corporates, the Government of India, various Ministries dealing with infrastructure, as well as multilateral and bilateral institutions in the areas of infrastructure policy, planning, and implementation. He is one of the leading proponents of the Public-Private Partnership (PPP) model for developing India’s infrastructure. His more recent engagements with the Government of India relate to being a Member of the Committee on Setting up a Development Finance Institution (DFI), and a member of the Consultative Group on PPPs at NITI Aayog.In 1998, the World Economic Forum at Davos recognized him as one of the 100 Global Leaders of Tomorrow. In 2011, the Indian Institute of Management, Ahmedabad conferred on him the “Distinguished Alumnus Award”. He is currently the Chairman of the Confederation of Indian Industry’s (CII) “National Council on Infrastructure” and has chaired various Infrastructure and Economic Committees at the national level of CII since 2001. He is on the Board of Directors of ACC Limited, Apollo Hospitals Enterprise Limited, KEC International Limited, and L&T Infotech Limited; and is a member of the Advisory Board of JCB India. He serves as the Chairman of the Board of Governors of Indian Institute of Technology, Dharwad, and on the Boards of Indian Institute of Management, Sirmaur and the National Rail and Transportation Institute, Vadodara.He is a well-read columnist and writes a monthly column on infrastructure for Business Standard called “INFRATALK”. He has also authored a book titled <span class='font-semibold teaxt-black'>“Getting it Right – India’s Unfolding Infrastructure Agenda”</span> published in 2011."
+     link:"https://in.linkedin.com/in/renu-sud-karnad-41bb2112a",
+      socialMedia:"linkedin"
   },
   {
     image: gul,
     title: "Ms Gul Panag",
     desig:
       "Actor, Entrepreneur, and Sustainability Advocate",
-      popupImg:vinayakImg.src,
-
-    popupdesc:"Born in 1959, Vinayak Chatterjee graduated in Economics (Hons.) from St. Stephen's College, Delhi University (1976-1979) and did his MBA from the Indian Institute of Management, Ahmedabad (1979 – 1981). He co-founded Feedback Infra Pvt. Ltd. in 1990 and served as its Chairman from 1990 to 2021. Since stepping down from active management, he now devotes his time and energy to Infrastructure Policy and Advocacy; as well as to nurturing educational institutions.He has often been called upon to play a strategic advisory role to leading domestic and international corporates, the Government of India, various Ministries dealing with infrastructure, as well as multilateral and bilateral institutions in the areas of infrastructure policy, planning, and implementation. He is one of the leading proponents of the Public-Private Partnership (PPP) model for developing India’s infrastructure. His more recent engagements with the Government of India relate to being a Member of the Committee on Setting up a Development Finance Institution (DFI), and a member of the Consultative Group on PPPs at NITI Aayog.In 1998, the World Economic Forum at Davos recognized him as one of the 100 Global Leaders of Tomorrow. In 2011, the Indian Institute of Management, Ahmedabad conferred on him the “Distinguished Alumnus Award”. He is currently the Chairman of the Confederation of Indian Industry’s (CII) “National Council on Infrastructure” and has chaired various Infrastructure and Economic Committees at the national level of CII since 2001. He is on the Board of Directors of ACC Limited, Apollo Hospitals Enterprise Limited, KEC International Limited, and L&T Infotech Limited; and is a member of the Advisory Board of JCB India. He serves as the Chairman of the Board of Governors of Indian Institute of Technology, Dharwad, and on the Boards of Indian Institute of Management, Sirmaur and the National Rail and Transportation Institute, Vadodara.He is a well-read columnist and writes a monthly column on infrastructure for Business Standard called “INFRATALK”. He has also authored a book titled <span class='font-semibold teaxt-black'>“Getting it Right – India’s Unfolding Infrastructure Agenda”</span> published in 2011."
+      link:"https://x.com/GulPanag",
+      socialMedia:"X"
+     
   },
   {
     image: bibek,
-    title: "The Late Dr Bibek Debroy",
+    title: " Dr Bibek Debroy",
     desig:
       "Chairman, Economic Advisory Council, Prime Minister of India",
-      popupImg:vinayakImg.src,
-
-    popupdesc:"Born in 1959, Vinayak Chatterjee graduated in Economics (Hons.) from St. Stephen's College, Delhi University (1976-1979) and did his MBA from the Indian Institute of Management, Ahmedabad (1979 – 1981). He co-founded Feedback Infra Pvt. Ltd. in 1990 and served as its Chairman from 1990 to 2021. Since stepping down from active management, he now devotes his time and energy to Infrastructure Policy and Advocacy; as well as to nurturing educational institutions.He has often been called upon to play a strategic advisory role to leading domestic and international corporates, the Government of India, various Ministries dealing with infrastructure, as well as multilateral and bilateral institutions in the areas of infrastructure policy, planning, and implementation. He is one of the leading proponents of the Public-Private Partnership (PPP) model for developing India’s infrastructure. His more recent engagements with the Government of India relate to being a Member of the Committee on Setting up a Development Finance Institution (DFI), and a member of the Consultative Group on PPPs at NITI Aayog.In 1998, the World Economic Forum at Davos recognized him as one of the 100 Global Leaders of Tomorrow. In 2011, the Indian Institute of Management, Ahmedabad conferred on him the “Distinguished Alumnus Award”. He is currently the Chairman of the Confederation of Indian Industry’s (CII) “National Council on Infrastructure” and has chaired various Infrastructure and Economic Committees at the national level of CII since 2001. He is on the Board of Directors of ACC Limited, Apollo Hospitals Enterprise Limited, KEC International Limited, and L&T Infotech Limited; and is a member of the Advisory Board of JCB India. He serves as the Chairman of the Board of Governors of Indian Institute of Technology, Dharwad, and on the Boards of Indian Institute of Management, Sirmaur and the National Rail and Transportation Institute, Vadodara.He is a well-read columnist and writes a monthly column on infrastructure for Business Standard called “INFRATALK”. He has also authored a book titled <span class='font-semibold teaxt-black'>“Getting it Right – India’s Unfolding Infrastructure Agenda”</span> published in 2011."
+      link:"https://x.com/bibekdebroy?lang=en",
+      socialMedia:"linkedin"
+      
   },
   {
     image: raghuram,
     title: "Prof G Raghuram",
     desig:
       "Former Director, IIMB and Dean, IIMA",
-      popupImg:vinayakImg.src,
-
-    popupdesc:"Born in 1959, Vinayak Chatterjee graduated in Economics (Hons.) from St. Stephen's College, Delhi University (1976-1979) and did his MBA from the Indian Institute of Management, Ahmedabad (1979 – 1981). He co-founded Feedback Infra Pvt. Ltd. in 1990 and served as its Chairman from 1990 to 2021. Since stepping down from active management, he now devotes his time and energy to Infrastructure Policy and Advocacy; as well as to nurturing educational institutions.He has often been called upon to play a strategic advisory role to leading domestic and international corporates, the Government of India, various Ministries dealing with infrastructure, as well as multilateral and bilateral institutions in the areas of infrastructure policy, planning, and implementation. He is one of the leading proponents of the Public-Private Partnership (PPP) model for developing India’s infrastructure. His more recent engagements with the Government of India relate to being a Member of the Committee on Setting up a Development Finance Institution (DFI), and a member of the Consultative Group on PPPs at NITI Aayog.In 1998, the World Economic Forum at Davos recognized him as one of the 100 Global Leaders of Tomorrow. In 2011, the Indian Institute of Management, Ahmedabad conferred on him the “Distinguished Alumnus Award”. He is currently the Chairman of the Confederation of Indian Industry’s (CII) “National Council on Infrastructure” and has chaired various Infrastructure and Economic Committees at the national level of CII since 2001. He is on the Board of Directors of ACC Limited, Apollo Hospitals Enterprise Limited, KEC International Limited, and L&T Infotech Limited; and is a member of the Advisory Board of JCB India. He serves as the Chairman of the Board of Governors of Indian Institute of Technology, Dharwad, and on the Boards of Indian Institute of Management, Sirmaur and the National Rail and Transportation Institute, Vadodara.He is a well-read columnist and writes a monthly column on infrastructure for Business Standard called “INFRATALK”. He has also authored a book titled <span class='font-semibold teaxt-black'>“Getting it Right – India’s Unfolding Infrastructure Agenda”</span> published in 2011."
+      link:"https://in.linkedin.com/in/g-raghuram-aa103750",
+      socialMedia:"linkedin"
+    
   },
   {
     image: dilip,
     title: "Mr Dilip Cherian",
     desig:
       "Image Guru, Litigation Landscaping and Policy Analyst",
-      popupImg:vinayakImg.src,
-
-    popupdesc:"Born in 1959, Vinayak Chatterjee graduated in Economics (Hons.) from St. Stephen's College, Delhi University (1976-1979) and did his MBA from the Indian Institute of Management, Ahmedabad (1979 – 1981). He co-founded Feedback Infra Pvt. Ltd. in 1990 and served as its Chairman from 1990 to 2021. Since stepping down from active management, he now devotes his time and energy to Infrastructure Policy and Advocacy; as well as to nurturing educational institutions.He has often been called upon to play a strategic advisory role to leading domestic and international corporates, the Government of India, various Ministries dealing with infrastructure, as well as multilateral and bilateral institutions in the areas of infrastructure policy, planning, and implementation. He is one of the leading proponents of the Public-Private Partnership (PPP) model for developing India’s infrastructure. His more recent engagements with the Government of India relate to being a Member of the Committee on Setting up a Development Finance Institution (DFI), and a member of the Consultative Group on PPPs at NITI Aayog.In 1998, the World Economic Forum at Davos recognized him as one of the 100 Global Leaders of Tomorrow. In 2011, the Indian Institute of Management, Ahmedabad conferred on him the “Distinguished Alumnus Award”. He is currently the Chairman of the Confederation of Indian Industry’s (CII) “National Council on Infrastructure” and has chaired various Infrastructure and Economic Committees at the national level of CII since 2001. He is on the Board of Directors of ACC Limited, Apollo Hospitals Enterprise Limited, KEC International Limited, and L&T Infotech Limited; and is a member of the Advisory Board of JCB India. He serves as the Chairman of the Board of Governors of Indian Institute of Technology, Dharwad, and on the Boards of Indian Institute of Management, Sirmaur and the National Rail and Transportation Institute, Vadodara.He is a well-read columnist and writes a monthly column on infrastructure for Business Standard called “INFRATALK”. He has also authored a book titled <span class='font-semibold teaxt-black'>“Getting it Right – India’s Unfolding Infrastructure Agenda”</span> published in 2011."
+      link:"https://in.linkedin.com/in/dilipcherian",
+      socialMedia:"linkedin"
+      
   },
 ];

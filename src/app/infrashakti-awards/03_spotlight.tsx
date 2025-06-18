@@ -187,7 +187,7 @@ const videoCard = [
     thumbnailImage: swarnalatha.src,
     awardName: "People’s Choice Award for Inclusive Infrastructure",
     name: "Swarnalatha J",
-    link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=13850&end=13887",
+    link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=15332&end=15430",
     title: " Ensuring Accessibility",
     logo: infraShaktiAward.src,
     awardslogo: peopleChoiceAward.src,
