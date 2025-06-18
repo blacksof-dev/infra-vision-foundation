@@ -51,7 +51,7 @@ const knowledge = [
     category: "Blogs",
     date: "October, 2024",
     title: "How to make India’s highways safe",
-    subtitle: "Jagan Shah",
+    subtitle: "",
     link: "https://theinfravisionfoundation.org/2024/10/16/a-national-road-safety-authority-crucial-for-improving-indias-deteriorating-road-safety/",
   },
 ];

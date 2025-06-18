@@ -148,17 +148,15 @@ function Header() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full transition-all ease-linear duration-200 p-3 z-[9999] ${
-          isMobile
+        className={`fixed top-0 left-0 w-full transition-all ease-linear duration-200 p-3 z-[9999] ${isMobile
             ? "translate-y-0"
             : showNavbar
-            ? "translate-y-0"
-            : "-translate-y-full"
-        } ${
-          showNavBg
+              ? "translate-y-0"
+              : "-translate-y-full"
+          } ${showNavBg
             ? "bg-white border-b-1 border-lightgray/20 shadow-sm"
             : "bg-transparent"
-        } ${scrolled ? "bg-white shadow-md" : ""}`}
+          } ${scrolled ? "bg-white shadow-md" : ""}`}
       >
         <div className="w-container">
           <div className="flex flex-row justify-between ">

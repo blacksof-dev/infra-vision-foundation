@@ -26,6 +26,7 @@ interface MobileMembersSliderProps {
   title: string;
   data: CardData[];
   navClass: string;
+  socialMedia?: string;
   onSelectTab: () => void;
   setShowPopup: (show: boolean) => void;
   popupData?: CardData;
@@ -230,6 +231,7 @@ export default function Infravisionaries() {
                             title={ele.title}
                             desig={ele.desig}
                             link={ele.link}
+                            socialMedia={ele.socialMedia}
                           />
                         </div>
                       </SwiperSlide>
@@ -375,6 +377,7 @@ export const MobileMembersSlider = ({
                   title={ele.title}
                   desig={ele.desig}
                   link={ele.link}
+                  socialMedia={ele.socialMedia}
                 />
               </div>
             </SwiperSlide>
