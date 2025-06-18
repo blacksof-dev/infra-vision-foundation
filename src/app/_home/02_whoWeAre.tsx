@@ -205,7 +205,7 @@ export const TabContent = ({ data, link }: { data: TabItem[], link?: string }) =
         <div className="">
           <Link className={`group  text-xl lg:text-2xl   text-pink hover:text-white cursor-pointer  text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
             href={link}>
-            <span className="z-50 relative"> View all</span>
+            <span className="z-50 relative">Explore</span>
             <span
               className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
             ></span>

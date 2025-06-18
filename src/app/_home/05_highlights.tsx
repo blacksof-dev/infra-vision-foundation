@@ -199,11 +199,11 @@ export const TabSwitch = ({
         <div className="flex">
           <Link className={`group  text-xl lg:text-2xl text-pink hover:text-white cursor-pointer  text-nowrap px-2  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
             href={activeTab === "Outreach and Engagements" ? "/outreach-and-engagements" : activeTab === "Newsletters" ? "/archive#newsletters" : activeTab === "In the News" ? "/archive#news-and-media" : ""}>
-            <span className="z-50 relative">{`${activeTab === "Outreach and Engagements" ? "View all events" : "Read more"}`}</span>
+            <span className="z-50 relative">{`${activeTab === "Outreach and Engagements" ? "View all events" : activeTab === "Newsletters" ? "Browse newsletters" : activeTab === "In the News" ? "Browse news" : "Read more"}`}</span>
             <span
               className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
             ></span>
-            <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5.5] transition-all duration-700 ease-in-out z-0"></span>
+            <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[6.5] transition-all duration-700 ease-in-out z-0"></span>
           </Link>
         </div>
 

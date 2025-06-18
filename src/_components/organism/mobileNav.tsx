@@ -14,14 +14,14 @@ import {
 
 export default function Mobilenav({ onClose }: { onClose: () => void }) {
   return (
-    <div className="px-4">
+    <div className="">
       {/* Top Bar */}
-      <div className="flex justify-between items-center blade-top-margin-sm">
-        <div className="w-[9rem] sm:w-[13rem]">
+      <div className="flex justify-between border-b pb-3 border-b-gray">
+        <div className="w-[9rem] sm:w-[13rem] ">
           <Image src={logo} alt="Infravision Foundation Logo" />
         </div>
-        <div className="flex gap-3">
-          
+        <div className="h-fit mt-3">
+
           <button onClick={onClose}>
             <RxCross1 className="text-2xl cursor-pointer" />
           </button>
@@ -29,7 +29,7 @@ export default function Mobilenav({ onClose }: { onClose: () => void }) {
       </div>
 
       {/* Mobile Nav */}
-      <div className="pt-12 flex flex-col justify-center">
+      <div className="pt-4 sm:pt-12 flex flex-col justify-center">
         <Accordion type="single" collapsible className="w-full">
           {/* About Us Dropdown */}
           <AccordionItem value="about">

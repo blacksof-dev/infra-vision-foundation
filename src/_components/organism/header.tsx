@@ -153,18 +153,18 @@ function Header() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full transition-all ease-linear duration-200 p-3 z-[9999] ${isMobile
+        className={`fixed top-0 left-0 w-full transition-all ease-linear duration-200 px-0 sm:px-3 py-3 z-[9999] ${isMobile
+          ? "translate-y-0"
+          : showNavbar
             ? "translate-y-0"
-            : showNavbar
-              ? "translate-y-0"
-              : "-translate-y-full"
+            : "-translate-y-full"
           } ${showNavBg
             ? "bg-white border-b-1 border-lightgray/20 shadow-sm"
             : "bg-transparent"
           } ${scrolled ? "bg-white shadow-md" : ""}`}
       >
         <div className="w-container">
-          <div className="flex flex-row justify-between ">
+          <div className="flex flex-row justify-between">
             <div className="w-[10rem] md:w-[10rem] xl:w-[14rem] h-full">
               <Link href="/">
                 <Image
@@ -205,17 +205,17 @@ function Header() {
                                 key={index}
                                 className="text-darkgray group py-5  text-xl last:border-0 border-b border-darkgray/20 hover:text-pink "
                               >
-                                 <Link href={item.href} target={item.target}>
-                                <div className="flex group justify-between items-center gap-2">
-                               
-                                 
+                                <Link href={item.href} target={item.target}>
+                                  <div className="flex group justify-between items-center gap-2">
+
+
                                     {item.label}
-                                 
-                                  <button className="w-8 h-8 cursor-pointer border-1 group-hover:bg-pink group-hover:border-pink   border-darkgray/40 rounded-full">
-                                    <GoArrowRight className="mx-auto group-hover:text-white " />
-                                  </button>
-                                </div>
-                                 </Link>
+
+                                    <button className="w-8 h-8 cursor-pointer border-1 group-hover:bg-pink group-hover:border-pink   border-darkgray/40 rounded-full">
+                                      <GoArrowRight className="mx-auto group-hover:text-white " />
+                                    </button>
+                                  </div>
+                                </Link>
                               </li>
                             ))}
                           </ul>
@@ -254,17 +254,17 @@ function Header() {
                               key={index}
                               className="text-darkgray group py-5 text-xl last:border-0 border-b border-darkgray/20 hover:text-pink "
                             >
-                               <Link href={item.href} target={item.target}>
-                              <div className="flex group justify-between items-center gap-2">
-                                {/* <span className="w-1.5 h-1.5 bg-transparent rounded-full transition-all duration-200 group-hover:bg-pink"></span> */}
-                               
+                              <Link href={item.href} target={item.target}>
+                                <div className="flex group justify-between items-center gap-2">
+                                  {/* <span className="w-1.5 h-1.5 bg-transparent rounded-full transition-all duration-200 group-hover:bg-pink"></span> */}
+
                                   {item.label}
-                              
-                                <button className="w-8 h-8 cursor-pointer border-1 group-hover:bg-pink group-hover:border-pink   border-darkgray/40 rounded-full">
-                                  <GoArrowRight className="mx-auto group-hover:text-white " />
-                                </button>
-                              </div>
-                            </Link>
+
+                                  <button className="w-8 h-8 cursor-pointer border-1 group-hover:bg-pink group-hover:border-pink   border-darkgray/40 rounded-full">
+                                    <GoArrowRight className="mx-auto group-hover:text-white " />
+                                  </button>
+                                </div>
+                              </Link>
                             </li>
                           ))}
                         </ul>
@@ -302,14 +302,14 @@ function Header() {
                               key={index}
                               className="text-darkgray group py-5 text-xl last:border-0 border-b border-darkgray/20 hover:text-pink"
                             >
-                                <Link href={item.href} target={item.target}>
-                              <div className="flex group justify-between items-center gap-2">
+                              <Link href={item.href} target={item.target}>
+                                <div className="flex group justify-between items-center gap-2">
                                   {item.label}
-                                <button className="w-8 cursor-pointer h-8 border-1 group-hover:bg-pink group-hover:border-pink   border-darkgray/40 rounded-full">
-                                  <GoArrowRight className="mx-auto group-hover:text-white " />
-                                </button>
-                              </div>
-                                </Link>
+                                  <button className="w-8 cursor-pointer h-8 border-1 group-hover:bg-pink group-hover:border-pink   border-darkgray/40 rounded-full">
+                                    <GoArrowRight className="mx-auto group-hover:text-white " />
+                                  </button>
+                                </div>
+                              </Link>
                             </li>
                           ))}
                         </ul>
@@ -347,17 +347,17 @@ function Header() {
                               key={index}
                               className="text-darkgray group py-5 text-xl last:border-0 border-b border-darkgray/20 hover:text-pink "
                             >
-                               <Link href={item.href} target={item.target}>
-                              <div className="flex group justify-between items-center gap-2">
-                                {/* <span className="w-1.5 h-1.5 bg-transparent rounded-full transition-all duration-200 group-hover:bg-pink"></span> */}
-                               
+                              <Link href={item.href} target={item.target}>
+                                <div className="flex group justify-between items-center gap-2">
+                                  {/* <span className="w-1.5 h-1.5 bg-transparent rounded-full transition-all duration-200 group-hover:bg-pink"></span> */}
+
                                   {item.label}
-                              
-                                <button className="w-8 h-8 border-1 group-hover:bg-pink cursor-pointer group-hover:border-pink   border-darkgray/40 rounded-full">
-                                  <GoArrowRight className="mx-auto group-hover:text-white " />
-                                </button>
-                              </div>
-                                </Link>
+
+                                  <button className="w-8 h-8 border-1 group-hover:bg-pink cursor-pointer group-hover:border-pink   border-darkgray/40 rounded-full">
+                                    <GoArrowRight className="mx-auto group-hover:text-white " />
+                                  </button>
+                                </div>
+                              </Link>
                             </li>
                           ))}
                         </ul>
@@ -393,17 +393,17 @@ function Header() {
               </div>
               <div className="block xl:hidden">
                 <button onClick={handlehamberg}>
-                  <RxHamburgerMenu className="text-lg cursor-pointer" />
+                  <RxHamburgerMenu className="text-3xl cursor-pointer" />
                 </button>
               </div>
               <AnimatePresence>
                 {isMenuOpen && (
                   <motion.div
-                    initial={{ opacity: 0, x: "100%" }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: "100%" }}
-                    transition={{ duration: 0.9, ease: "linear" }}
-                    className="fixed top-0 left-0 w-screen h-screen z-[9999] bg-white p-4"
+                    initial={{ x: "100%" }}
+                    animate={{ x: 0 }}
+                    exit={{ x: "100%" }}
+                    transition={{ duration: 0.4, ease: "linear" }}
+                    className="fixed top-0 left-0 w-screen h-screen z-[9999] bg-white px-3 py-3"
                   >
                     <Mobilenav onClose={() => setIsMenuOpen(false)} />
                   </motion.div>
