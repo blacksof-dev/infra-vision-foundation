@@ -258,3 +258,11 @@ body {
 .shadow-blur {
   box-shadow: -2.501px -2.501px 125.035px 0px rgba(255, 255, 255, 0.02) inset;
 }
+
+.swiper-pagination-bullet {
+  background: #c82249 !important;
+  opacity: 0.3;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+}

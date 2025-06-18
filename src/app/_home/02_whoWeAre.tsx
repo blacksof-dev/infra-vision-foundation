@@ -5,8 +5,8 @@ import rajivRanjan from "@/../public/assets/home/whoWeAre/knowledge/rajivRanjan.
 // import infraKatha from "@/../public/assets/home/whoWeAre/advocacy/infraKatha.png";
 import infraKatha from "@/../public/assets/infrakatha/banner/banner.jpg";
 import infraShakti from "@/../public/assets/home/whoWeAre/advocacy/infraPandit.png";
-// import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infraShakti.png";
-import infraPandit from "@/../public/assets/infrapandit/bannerBg.png";
+import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infrashaktiAwards.png";
+
 import { useState } from "react";
 import Card from "@/_components/molecules/cardTemplate";
 import { useHeader } from "@/context/useHeader";
@@ -62,24 +62,27 @@ const advocacy = [
     img: infraKatha.src,
     category: "InfraKatha",
     title:
-      "A forum of cross-sectoral experts sparking insightful conversations around the vivid dimensions of infrastructure.",
+      "Conversations with cross-sectoral experts aimed at mainstreaming the discourse around infrastructure.",
     link: "/infrakatha",
+    ctaText: "Know more"
   },
   {
     id: 2,
     img: infraShakti.src,
     category: "InfraShakti Awards",
     title:
-      "A flagship initiative in association with NDTV, celebrating changemakers unlocking impact at scale through infrastructure-led innovation.",
+      "A flagship initiative in association with NDTV, celebrating changemakers unlocking impact at scale through innovative projects.",
     link: "/infrashakti-awards",
+    ctaText: "Know more"
   },
   {
     id: 3,
     img: infraPandit.src,
     category: "InfraPandit Awards",
     title:
-      "Another flagship initiative recognising outstanding doctoral research on infrastructure, fostering youth participation in India's infra evolution",
+      "Another flagship initiative recognising outstanding doctoral research on infrastructure, fostering youth participation in India's infra evolution.",
     link: "/infrapandit-awards",
+    ctaText: "Know more"
   },
 ];
 

@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import logo from "@/../public/assets/globals/logo.png";
-import { TextNavAnchor } from "../atoms/links";
 import { FaSearch } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useEffect, useState } from "react";
@@ -314,14 +313,7 @@ function Header() {
 
                 <ul>
                   <li>
-                    <TextNavAnchor
-                      color="dark"
-                      size="large"
-                      className="block whitespace-nowrap px-3 py-1 md:py-2"
-                      text="Get Involved"
-                      href="/get-involved"
-                      showArrow={false}
-                    />
+                    <Link href="/get-involved">Get Involved</Link>
                   </li>
                 </ul>
               </div>

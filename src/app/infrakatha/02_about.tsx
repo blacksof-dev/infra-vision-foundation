@@ -3,10 +3,45 @@ import bg from "@/../public/assets/infrakatha/about/bgcircle.png";
 import image_01 from "@/../public/assets/infrakatha/about/dilip-cherian.jpg";
 import image_02 from "@/../public/assets/infrakatha/about/vinayak-chatterjee.jpg";
 import image_03 from "@/../public/assets/infrakatha/about/jagan-shah.jpg";
+import image_04 from "@/../public/assets/infrakatha/about/bonny-mukerjea.jpg";
 import { MemberCard } from "@/_components/molecules/memberCard";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 export default function About() {
+  const members = [
+    {
+      image: image_01,
+      title: "Dilip Cherian",
+      desig: "Member, Council of Advisors",
+      link: "https://www.linkedin.com/in/dilipcherian/"
+    },
+    {
+      image: image_02,
+      title: "Vinayak Chatterjee",
+      desig: "Founder & Managing Trustee"
+      // link: "#"
+    },
+    {
+      image: image_03,
+      title: "Jagan Shah",
+      desig: "Chief Executive Officer",
+      link: "https://www.linkedin.com/in/jagan-shah/"
+    },
+    {
+      image: image_04,
+      title: "Bonny Mukerjea",
+      desig: "Senior Media Executive",
+
+    }
+  ];
+
   return (
     <section className="relative blade-top-padding-lg blade-bottom-padding-lg bg-whitesmoke">
       <Image
@@ -14,7 +49,7 @@ export default function About() {
         src={bg}
         alt="background circle"
       ></Image>
-      <div className="w-container flex flex-col xl:flex-row gap-y-6 sm:gap-y-10 ">
+      <div className="w-container flex flex-col xl:flex-row gap-y-6 sm:gap-y-10 overflow-hidden">
         {/* Left: Text Content */}
         <div className="flex flex-col 2xl:justify-center ">
           <div className="flex flex-row items-center gap-2 mb-2">
@@ -56,29 +91,82 @@ export default function About() {
         <div className="flex flex-col justify-end ">
           <div className="lg:border-l border-l-gray lg:pl-8">
             <h6 className="text-pink font-medium mb-4">The hosts</h6>
-            <div className="flex flex-wrap justify-center lg:min-w-[40rem]  md:justify-start xl:grid grid-cols-2 2xl:grid-cols-3 2xl:space-x-6 gap-4 relative ">
-              <MemberCard
-                image={image_01}
-                title="Dilip Cherian"
-                desig="Member, Council of Advisors"
-                link="#"
-              />
-              <MemberCard
-                image={image_02}
-                title="Vinayak Chatterjee"
-                desig="Founder & Managing Trustee"
-                link="#"
-              />
-              <MemberCard
-                image={image_03}
-                title="Jagan Shah"
-                desig="Chief Executive Officer"
-                link="#"
-              />
+            <div className="relative w-full xl:max-w-2xl 2xl:max-w-4xl ">
+              <Swiper
+                modules={[Navigation, Pagination]}
+                spaceBetween={16}
+                slidesPerView={1.2}
+
+                // navigation={{
+                //   nextEl: '.swiper-button-next',
+                //   prevEl: '.swiper-button-prev',
+                // }}
+                pagination={{
+                  clickable: true,
+                  el: '.custom-swiper-pagination',
+                }}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 2,
+                    spaceBetween: 16,
+                  },
+                  768: {
+                    slidesPerView: 2.3,
+                    spaceBetween: 10,
+                  },
+                  840: {
+                    slidesPerView: 2.7,
+                    spaceBetween: 10,
+                  },
+                  1024: {
+                    slidesPerView: 3.1,
+                    spaceBetween: 10,
+                  },
+                  1280: {
+                    slidesPerView: 2.2,
+                    spaceBetween: 24,
+                  },
+                  1536: {
+                    slidesPerView: 3,
+                    spaceBetween: 24,
+                  },
+                }}
+                className="!overflow-visible sm:!overflow-hidden"
+              >
+                {members.map((member, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="flex justify-center">
+                      <MemberCard
+                        image={member.image}
+                        title={member.title}
+                        desig={member.desig}
+                        link={member.link}
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+
+              {/* <div className="swiper-button-prev !text-pink !w-10 !h-10 !bg-white !rounded-full !shadow-md hover:!bg-pink hover:!text-white transition-colors duration-300"></div>
+              <div className="swiper-button-next !text-pink !w-10 !h-10 !bg-white !rounded-full !shadow-md hover:!bg-pink hover:!text-white transition-colors duration-300"></div> */}
+
+
+              <div className="custom-swiper-pagination space-x-2 w-fit mx-auto sm:ml-auto sm:mr-4 mt-4 "></div>
             </div>
           </div>
         </div>
       </div>
+      {/* <style jsx global>{`
+        .swiper-pagination-bullet {
+          background: #C82249 !important;
+          opacity: 0.3; 
+          
+        }
+        .swiper-pagination-bullet-active {
+          opacity: 1 !important;
+        }
+      `}</style> */}
     </section>
   );
 }
