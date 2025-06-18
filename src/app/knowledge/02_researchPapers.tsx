@@ -305,7 +305,7 @@ export default function ResearchPapers() {
               ))}
             </div>
             {visibleCount < filteredCards.length && (
-              <div className="flex justify-center mb-4 ">
+              <div className="flex justify-center mb-4 sm:mt-4">
                 <UnderlineWithHover
                   size="xxlsize"
                   color="pink"

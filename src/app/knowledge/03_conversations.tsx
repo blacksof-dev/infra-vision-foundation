@@ -251,7 +251,7 @@ export default function Conversations() {
 
           </Swiper>
           {/* Navigation & Pagination */}
-          <div className="flex items-center justify-between mt-6">
+          <div className="flex items-center  justify-end mt-6">
             <div className="flex gap-3">
               <button
                 className={`swiper-conv-prev-btn cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white transition-opacity duration-200 ${isBeginning ? "opacity-50 cursor-not-allowed" : "opacity-100"

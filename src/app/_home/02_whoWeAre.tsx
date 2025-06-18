@@ -201,7 +201,7 @@ export const TabContent = ({ data, link }: { data: TabItem[], link?: string }) =
     </div> {
       link &&
 
-      <div className="flex justify-center xl:mt-4">
+      <div className="flex justify-center xl:mt-6">
         <div className="">
           <Link className={`group  text-xl lg:text-2xl   text-pink hover:text-white cursor-pointer  text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
             href={link}>

@@ -287,7 +287,7 @@ export default function Blogs() {
               ))}
             </div>
             {visibleCount < filteredCards.length && (
-              <div className="flex justify-center ">
+              <div className="flex justify-center sm:mt-4 mb-4">
                 <UnderlineWithHover
                   size="xxlsize"
                   color="pink"

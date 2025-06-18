@@ -195,7 +195,7 @@ export const TabSwitch = ({
         {activeTab === "Newsletters" && <TabContent data={newsletters} />}
         {activeTab === "In the News" && <TabContent data={news} />}
       </div>
-      <div className="mt-2 md:mt-5 ">
+      <div className="mt-4 md:mt-8">
         <div className="flex  justify-center">
           <Link className={`group  text-xl lg:text-2xl text-pink hover:text-white cursor-pointer  text-nowrap px-2  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
             href={activeTab === "Outreach and Engagements" ? "/outreach-and-engagements" : activeTab === "Newsletters" ? "/archive#newsletters" : activeTab === "In the News" ? "/archive#news-and-media" : ""}>
