@@ -17,7 +17,7 @@ type Props = {
 export default function OutreachTabs({ sectionRefs, tabs }: Props) {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [activeTab, setActiveTab] = useState<TabId>("highlight");
+  const [activeTab, setActiveTab] = useState<TabId>("");
   const [isStickyVisible, setStickyVisible] = useState(true);
   const { isHeaderVisible } = useHeader()
   const handleTabClick = (id: TabId, index: number) => {
@@ -31,8 +31,6 @@ export default function OutreachTabs({ sectionRefs, tabs }: Props) {
     const container = containerRef.current;
 
     if (tab && container) {
-      // const containerRect = container.getBoundingClientRect();
-      // const tabRect = tab.getBoundingClientRect();
       const offset =
         tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
       container.scrollTo({ left: offset, behavior: 'smooth' });
