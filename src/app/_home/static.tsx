@@ -42,11 +42,13 @@ import VrindaSingh from "@/../public/assets/home/team/VrindaSingh.png";
 
 import { StaticImageData } from "next/image";
 
+
 export type CardData = {
   image: StaticImageData;
   title: string;
   desig: string;
   link?: string;
+  socialMedia?: string;
   popupImg: string;
   popupdesc: string;
 };
@@ -57,7 +59,8 @@ export const trustee = [
     title: "Vinayak Chatterjee",
     desig: "Founder & Managing Trustee",
     popupImg: vinayakImg.src,
-    link: "",
+    link: "https://x.com/infra_vinayakch?lang=en",
+    socialMedia: "X",
     popupdesc:
       `Vinayak Chatterjee co-founded Feedback Infra Pvt Ltd in 1990 and served as its Chairman from 1990 to 2021. Since stepping down from active management, he now dedicates his time and energy to infrastructure policy and advocacy, as well as to nurturing educational institutions.\n
 
@@ -77,6 +80,7 @@ Mr Chatterjee graduated in Economics (Hons.) from St. Stephen's College, Delhi U
     title: "Rumjhum Chatterjee",
     desig: "Co-Founder & Managing Trustee",
     link: "https://www.linkedin.com/in/rumjhum-chatterjee-396041268/",
+    socialMedia: "linkedin",
     popupImg: rumjhumImg.src,
 
     popupdesc:
@@ -97,7 +101,6 @@ Currently, she co-chairs CII’s National Committee on CSR. She previously serve
     title: "Kiran Karnik",
     desig: "Trustee",
     popupImg: kiranImg.src,
-
     popupdesc:
       `Kiran Karnik is a distinguished professional with a career spanning public service and the corporate world, known for his pioneering contributions to India's communications industry. He has consistently operated at the cutting edge of technology, from working with the great Vikram Sarabhai to establish the Satellite Instructional Television Experiment, to laying the foundations of the Discovery Channel and Animal Planet in India.\n
 
@@ -115,6 +118,7 @@ export const advisory = [
     title: "Nasser Munjee",
     desig: "Member, Council of Advisors",
     link: "https://www.linkedin.com/in/nasser-munjee-8aaa5316/",
+    socialMedia: "linkedin",
     popupImg: vinayakImg.src,
 
     popupdesc:
@@ -156,6 +160,7 @@ Mr Kothari is the Founder, Chairman and Managing Trustee of the Wildlife Conserv
     desig: "Member, Council of Advisors",
     popupImg: vinayakImg.src,
     link: "https://www.linkedin.com/in/janmejaya-sinha-591259120",
+    socialMedia: "linkedin",
     popupdesc:
       `Dr Janmejaya Sinha is Chairman of BCG's India Practice and also a BCG Fellow researching Family Businesses. He is a member of The Boston Consulting Group’s Henderson Institute Innovation Sounding Board, dedicated to supporting, inspiring, and guiding upstream innovation at BCG. He previously served as Chairman of the Asia-Pacific region between 2009 and 2018 and as a member of the firm's Executive Committee between 2006 and 2018.\n
 
@@ -195,7 +200,8 @@ He currently holds Board positions as Chairman of Narotam Sekhsaria Foundation a
     title: "Rajnish Kumar",
     desig: "Member, Council of Advisors",
     popupImg: vinayakImg.src,
-    link: "https://www.linkedin.com/in/sunil-mathur",
+    link: "https://x.com/rkumar1958",
+    socialMedia: "X",
     popupdesc:
       `
      Rajnish Kumar is the former Chairman of the State Bank of India, completing his three-year term in October 2020. He is credited with steering the bank successfully through challenging times. During his tenure, SBI developed YONO, a digital platform that established the bank as a global leader in the adoption of technology and innovation.\n
@@ -216,6 +222,7 @@ Born in January 1958, Mr Kumar holds an MSc in Physics from Meerut University an
     desig: "Member, Council of Advisors",
     popupImg: vinayakImg.src,
     link: "https://www.linkedin.com/in/g-raghuram-aa103750 ",
+    socialMedia: "linkedin",
     popupdesc:
       `
       Professor Raghuram is Principal Academic Advisor and Distinguished Visiting Faculty at the National Rail and Transportation Institute, a university promoted by the Indian Ministry of Railways. He is Professor (Emeritus) at the Gujarat Maritime University, a university promoted by the Gujarat Maritime Board. He was Director, IIM Bangalore, from February 2017 to July 2020.\n
@@ -239,6 +246,7 @@ He has offered consultancy services to over 100 organisations, including multila
     title: "Manoj K. Singh",
     desig: "Member, Council of Advisors",
     link: "https://www.linkedin.com/in/manoj-k-singh-72817a9/",
+    socialMedia: "linkedin",
     popupImg: vinayakImg.src,
     popupdesc:
       `
@@ -260,6 +268,7 @@ Apart from being a prolific columnist in his field, Mr Singh has also authored t
     title: "Sunil Mathur",
     desig: "Member, Council of Advisors",
     link: "https://www.linkedin.com/in/sunil-mathur/",
+    socialMedia: "linkedin",
     popupImg: vinayakImg.src,
     popupdesc:
       `
@@ -279,6 +288,7 @@ Mr Mathur is on the National Councils of the Confederation of Indian Industry (C
     desig: "Member, Council of Advisors",
     popupImg: vinayakImg.src,
     link: "https://www.linkedin.com/in/ashish-dhawan-241112",
+    socialMedia: "linkedin",
     popupdesc:
       `Ashish Dhawan is the Founder-CEO of The Convergence Foundation (TCF), which focuses on accelerating India’s economic growth and development. TCF incubates non-profits focused on creating system-wide impact in the areas of economic growth, equality of opportunity, and sustainability. Its current portfolio includes organisations working on jobs and investment, the rule of law, governance and state capacity, economic empowerment of women, science and technology, air pollution, unlocking philanthropic capital, and improving the effectiveness of non-profits.\n
 
@@ -317,6 +327,7 @@ SNS serves as one of the nine founding members of the Climate Finance Leadership
     desig: "Member, Council of Advisors",
     popupImg: vinayakImg.src,
     link: "https://www.linkedin.com/in/sameer-gupta-jakson",
+    socialMedia: "linkedin",
     popupdesc:
       `
 Sameer Gupta is Chairman and Managing Director of Jakson Group — India’s leading energy and infrastructure company specialising in distributed energy, solar, and EPC solutions. The business interests of Jakson span multiple lines, including generating set manufacturing, solar module manufacturing, solar off-grid products, hybrid solutions, battery-based energy storage systems, solar rooftops, solar land-based EPC, electrical EPC in areas of substation, transmission & distribution, and defence solutions. Jakson also has business interests in civil infrastructure in India, real estate in the UK, and hospitality.\n
@@ -333,6 +344,7 @@ He is a graduate in Electronics Engineering from Pune University and an alumnus 
     desig: "Member, Council of Advisors",
     popupImg: vinayakImg.src,
     link: "https://www.linkedin.com/in/dip-kishore-sen-876ab640",
+    socialMedia: "linkedin",
     popupdesc:
       `
      Dip Kishore Sen is a Whole-time Director and Senior Executive Vice President (Development Projects), L&T. He is Chairman on the board of Nabha Power Ltd, Power Development Ltd, L&T Special Steels & Heavy Forgings Pvt Ltd (LTSSHF), L&T Infrastructure Engineering Company, L&T Oman LLC, L&T Aviation Services Pvt Ltd, and Construction Skill Development Council of India (CSDCI). He is a Director on the board of L&T Qatar LLC and Raykal Aluminium Company Pvt Ltd, and is also Managing Director for L&T Infrastructure Development Projects Ltd (L&T IDPL). The Minerals & Metals (M&M) Strategic Business Group of L&T comes under his charge.\n
@@ -373,6 +385,7 @@ Mr Nanda was honoured with the "Chevalier de la Légion d'Honneur" (Knight of th
     title: "Arun Maira",
     desig: "Member, Council of Advisors",
     link: "https://www.linkedin.com/in/arun-maira-5499711b4/",
+    socialMedia: "linkedin",
     popupImg: vinayakImg.src,
     popupdesc:
       `
@@ -389,6 +402,7 @@ Currently, Mr Maira is Chairman of HelpAge International and an advisor to sever
     title: "Dilip Cherian",
     desig: "Member, Council of Advisors",
     link: "https://www.linkedin.com/in/dilipcherian/",
+    socialMedia: "linkedin",
     popupImg: vinayakImg.src,
     popupdesc:
       `
@@ -407,6 +421,7 @@ As an independent director, Mr Cherian serves on the boards of prominent organis
     title: "Geetanjali Vikram Kirloskar",
     desig: "Member, Council of Advisors",
     link: "https://www.linkedin.com/in/geetanjali-kirloskar-b04203154/",
+    socialMedia: "linkedin",
     popupImg: vinayakImg.src,
     popupdesc:
       `
@@ -428,6 +443,7 @@ As Honorary Consul for Finland in Karnataka, she was awarded a Knighthood from t
     title: "Vishal Kampani",
     desig: "Member, Council of Advisors",
     link: "https://www.linkedin.com/in/vishal-kampani-0a94942a6/",
+    socialMedia: "linkedin",
     popupImg: vinayakImg.src,
     popupdesc:
       `
@@ -447,6 +463,7 @@ Mr Kampani holds a Master of Commerce from the University of Mumbai and has comp
     title: "Cyril Shroff",
     desig: "Member, Council of Advisors",
     link: "https://www.linkedin.com/in/cyrilshroff/",
+    socialMedia: "linkedin",
     popupImg: vinayakImg.src,
     popupdesc:
       `
@@ -466,6 +483,7 @@ He has authored several publications on legal topics. Mr Shroff is a member of t
     title: "Khurshed Daruvala",
     desig: "Member, Council of Advisors",
     link: "https://www.linkedin.com/in/khurshed-daruvala/",
+    socialMedia: "linkedin",
     popupImg: vinayakImg.src,
     popupdesc:
       `
@@ -489,6 +507,7 @@ export const fellow = [
     desig: "Distinguished Fellow (Power)",
     popupImg: vinayakImg.src,
     link: "https://www.linkedin.com/in/rasika-athawale-5072ab1/",
+    socialMedia: "linkedin",
     popupdesc:
       `
      Rasika Athawale is a management professional with approximately two decades of experience in the energy and utilities sector, having worked as a power utility executive, a strategy consultant with Big Four management consulting firms, a research programme manager at a Big Ten US State University, and a US think tank.\n
@@ -510,6 +529,7 @@ She was a faculty for a Distribution Reforms training programme by USAID from 20
     desig: "Distinguished Fellow (Financial Services)",
     popupImg: vinayakImg.src,
     link: "https://www.linkedin.com/in/supratim-sarkar-577a0629b",
+    socialMedia: "linkedin",
     popupdesc:
       `
     Supratim Sarkar brings over 25 years of experience in the financial services sector. He joined IDBI in 1995 and moved to SBICAPS in November 2000, where he served for 12 years as Executive Vice President and Group Head. In this role, he led a team of approximately 300 professionals across diverse areas, including Project Finance, Corporate Finance, Structured Finance, and Advisory services for project bidding, mine auctions, and disinvestments.\n
@@ -529,6 +549,7 @@ After graduating as a Mechanical Engineer from Jadavpur University in 1988, Mr S
     title: "Rajiv Ranjan Mishra",
     popupImg: vinayakImg.src,
     link: "https://www.linkedin.com/in/rajiv-mishra-48413553",
+    socialMedia: "linkedin",
     desig: "Distinguished Fellow (Water Conservation)",
     popupdesc:
       `
@@ -554,6 +575,7 @@ Currently, he serves as Chief Advisor and Chairman of the Strategy & Policy Unit
     popupImg: vinayakImg.src,
     desig: "Distinguished Fellow(Transport & Logistics)",
     link: "https://www.linkedin.com/in/rajaji-meshram-9aa3437/",
+    socialMedia: "linkedin",
     popupdesc:
       `
      Mr Rajaji Meshram has over 25 years of experience in strategy development, business planning, and the development of regulatory frameworks. His expertise spans large infrastructure projects in India, as well as countries such as Bangladesh, Saudi Arabia, Mongolia, Kenya, the UAE, and Sri Lanka.\n
@@ -585,6 +607,7 @@ Rajaji holds an MBA from IIM Ahmedabad and participated in the prestigious Guruk
     desig: "Distinguished Fellow (Economic Policy)",
     popupImg: vinayakImg.src,
     link: "https://www.linkedin.com/in/soumya-kanti-ghosh-2043921a/",
+    socialMedia: "linkedin",
     popupdesc:
       `
      Dr Soumya Kanti Ghosh is currently the Group Chief Economic Advisor at the State Bank of India. Previously, he has worked at Tata AIA, American Express, and ICRA, among other organisations.\n
@@ -602,6 +625,7 @@ Dr Ghosh has an extensive list of publications in media and international and na
     title: "Akhilesh Tilotia",
     desig: "Distinguished Fellow (Public Policy)",
     link: "https://www.linkedin.com/in/atilotia/",
+    socialMedia: "linkedin",
     popupImg: vinayakImg.src,
     popupdesc:
       `
@@ -622,6 +646,8 @@ export const team = [
     image: Vinayak,
     title: "Vinayak Chatterjee",
     desig: "Founder & Managing Trustee",
+    link: "https://x.com/infra_vinayakch?lang=en",
+    socialMedia: "X",
     popupImg: vinayakImg.src,
     popupdesc:
       `
@@ -646,6 +672,7 @@ Mr Chatterjee graduated in Economics (Hons.) from St. Stephen's College, Delhi U
     desig: "Co-Founder & Managing Trustee",
     popupImg: vinayakImg.src,
     link: "https://www.linkedin.com/in/rumjhum-chatterjee-396041268",
+    socialMedia: "linkedin",
     popupdesc:
       `
       Rumjhum Chatterjee co-founded the Feedback Infra Group. Following a successful tenure, she recently stepped down from her role as Group Managing Director and Head — Human Capital within the organisation.\n
@@ -663,6 +690,7 @@ Currently, she co-chairs CII’s National Committee on CSR. She previously serve
     title: "Jagan Shah",
     desig: "CEO",
     link: "https://www.linkedin.com/in/jagan-shah/",
+    socialMedia: "linkedin",
     popupImg: vinayakImg.src,
     popupdesc:
       `
@@ -682,6 +710,7 @@ Mr Shah received his education and training at the School of Planning and Archit
     title: "Kaveree Bamzai",
     desig: "Head — Advocacy",
     link: "https://www.linkedin.com/in/kavereebamzai/",
+    socialMedia: "linkedin",
     popupImg: vinayakImg.src,
     popupdesc:
       `
@@ -706,6 +735,7 @@ She was designated a ‘game-changer’ by Save the Children, is a member of the
     desig: "Head — Programmes",
     popupImg: vinayakImg.src,
     link: "https://www.linkedin.com/in/dr-mutum-chaobisana-83647017/",
+    socialMedia: "linkedin",
     popupdesc:
       `Dr Mutum Chaobisana is an Architect-Urban Planner with a PhD in Urban Planning and a career marked by significant contributions to the urban sector and the development of Himalayan ecosystems in India.\n
 
@@ -723,6 +753,7 @@ Throughout her professional tenure, Dr Mutum has been affiliated with esteemed e
     title: "Vrinda Singh",
     desig: "Research Associate",
     link: "https://www.linkedin.com/in/vrinda-singh-3951951b4/",
+    socialMedia: "linkedin",
     popupImg: vinayakImg.src,
     popupdesc:
       `
@@ -741,6 +772,7 @@ In addition to her professional pursuits, Ms Singh holds a strong interest in in
     title: "Lawrence Cardoza",
     desig: "Research Associate",
     link: "https://www.linkedin.com/in/lawrence-cardoza/",
+    socialMedia: "linkedin",
     popupImg: vinayakImg.src,
     popupdesc:
       `
@@ -760,6 +792,7 @@ His background also includes a focus on public policy evaluation and the socio-e
     desig: "Research Associate",
     popupImg: vinayakImg.src,
     link: "https://www.linkedin.com/in/priyanka-bains-b070607b/",
+    socialMedia: "linkedin",
     popupdesc:
       `
      Priyanka Bains is an economist by training and a problem-solver. She graduated from Lady Shri Ram College for Women with a degree in Economics and pursued her Master’s in Economics at Jawaharlal Nehru University.\n

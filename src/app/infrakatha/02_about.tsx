@@ -14,25 +14,29 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+
 export default function About() {
   const members = [
     {
       image: image_01,
       title: "Dilip Cherian",
       desig: "Member, Council of Advisors",
-      link: "https://www.linkedin.com/in/dilipcherian/"
+      link: "https://www.linkedin.com/in/dilipcherian/",
+      socialMedia: "linkedin"
     },
     {
       image: image_02,
       title: "Vinayak Chatterjee",
-      desig: "Founder & Managing Trustee"
-      // link: "#"
+      desig: "Founder & Managing Trustee",
+      link: "https://x.com/infra_vinayakch?lang=en",
+      socialMedia: "X",
     },
     {
       image: image_03,
       title: "Jagan Shah",
       desig: "Chief Executive Officer",
-      link: "https://www.linkedin.com/in/jagan-shah/"
+      link: "https://www.linkedin.com/in/jagan-shah/",
+      socialMedia: "linkedin"
     },
     {
       image: image_04,
@@ -141,6 +145,7 @@ export default function About() {
                         title={member.title}
                         desig={member.desig}
                         link={member.link}
+                        socialMedia={member.socialMedia}
                       />
                     </div>
                   </SwiperSlide>

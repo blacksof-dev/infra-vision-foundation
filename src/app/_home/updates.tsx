@@ -176,8 +176,9 @@ const EventsDetails = [
   {
     image: agriWarehousing,
     category: "Blog",
-    title: "How to make India’s highways safe",
+    title: "Agri-Warehousing: A problem of capacity",
     btnTitle: "Read more",
-    link: "/knowledge#blogs",
+    link: "https://theinfravisionfoundation.org/2023/11/25/poor-regulatory-capacity-of-the-warehousing-and-development-regulatory-authority-impacts-warehouse-based-sales-of-agri-commodities-and-issue-of-e-negotiable-warehouse-receipts/",
+
   },
 ];
