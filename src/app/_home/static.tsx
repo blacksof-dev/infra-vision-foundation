@@ -37,7 +37,7 @@ import KavereeBamzai from "@/../public/assets/home/team/KavereeBamzai.png";
 import LawrenceCardoza from "@/../public/assets/home/team/LawrenceCardoza.jpg";
 import PriyankaBains from "@/../public/assets/home/team/PriyankaBains.jpg";
 import RumjhumChatterjee from "@/../public/assets/home/team/RumjhumChatterjee.jpg";
-import Vinayak from "@/../public/assets/home/team/Vinayak.jpg";
+// import Vinayak from "@/../public/assets/home/team/Vinayak.png";
 import VrindaSingh from "@/../public/assets/home/team/VrindaSingh.png";
 
 import { StaticImageData } from "next/image";
@@ -55,7 +55,7 @@ export type CardData = {
 
 export const trustee = [
   {
-    image: Vinayak,
+    image: vinayakImg,
     title: "Vinayak Chatterjee",
     desig: "Founder & Managing Trustee",
     popupImg: vinayakImg.src,
@@ -200,8 +200,8 @@ He currently holds Board positions as Chairman of Narotam Sekhsaria Foundation a
     title: "Rajnish Kumar",
     desig: "Member, Council of Advisors",
     popupImg: vinayakImg.src,
-    link: "https://x.com/rkumar1958",
-    socialMedia: "X",
+    link: "https://in.linkedin.com/in/rajnish-kumar-0a1663bb",
+    socialMedia: "linkedin",
     popupdesc:
       `
      Rajnish Kumar is the former Chairman of the State Bank of India, completing his three-year term in October 2020. He is credited with steering the bank successfully through challenging times. During his tenure, SBI developed YONO, a digital platform that established the bank as a global leader in the adoption of technology and innovation.\n
@@ -643,7 +643,7 @@ Akhilesh holds an MBA from IIM Ahmedabad and is an alumnus of MITx.
 
 export const team = [
   {
-    image: Vinayak,
+    image: vinayakImg,
     title: "Vinayak Chatterjee",
     desig: "Founder & Managing Trustee",
     link: "https://x.com/infra_vinayakch?lang=en",

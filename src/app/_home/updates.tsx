@@ -138,7 +138,7 @@ export default function Updates() {
 const EventsDetails = [
   {
     image: taxation,
-    category: "Research report ",
+    category: "Research Report ",
     title: "Analysing the effectiveness of compensatory afforestation in India",
     btnTitle: "Read more",
     link: "/assets/pdf/Study-on-Implementation-of-Compensatory-Afforestation-in-India.pdf",
