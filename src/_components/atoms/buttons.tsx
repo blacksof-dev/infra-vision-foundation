@@ -199,7 +199,7 @@ export function BorderGrayHeroBtn<T extends "submit" | "button">({
   isDisabled,
   role = "button",
   link = "/",
-  target = "_self",
+  target = "_blank",
   borderColor,
   bgColor,
   color,

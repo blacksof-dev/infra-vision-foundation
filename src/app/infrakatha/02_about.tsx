@@ -41,8 +41,10 @@ export default function About() {
     },
     {
       image: image_04,
-      title: "Bonny Mukerjea",
+      title: "DN 'Bonny' Mukerjea",
       desig: "Senior Media Executive",
+      link:"https://www.linkedin.com/in/d-n-bonny-mukerjea-a4009a3/",
+      socialMedia: "linkedin",
     },
   ];
 
@@ -79,7 +81,7 @@ export default function About() {
             perfect blend of storytelling, scholarship, and strategy.
           </h6>
           <div className="mt-2 sm:mt-6">
-           <Link href="https://www.youtube.com/watch?v=o6nb3IejARc&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&ab_channel=TheInfravisionFoundation">
+         
             <BorderGrayHeroBtn
               text="Watch the videos"
               role="link"
@@ -88,9 +90,10 @@ export default function About() {
               bgColor="white"
               size="large"
               target="_blank"
+              link="https://www.youtube.com/watch?v=o6nb3IejARc&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&ab_channel=TheInfravisionFoundation"
               classes="font-medium text-lg"
             />
-            </Link>
+           
           </div>
         </div>
         {/* Right: Hosts Cards */}
@@ -106,6 +109,7 @@ export default function About() {
                 //   nextEl: '.swiper-button-next',
                 //   prevEl: '.swiper-button-prev',
                 // }}
+                grabCursor={true}
                 pagination={{
                   clickable: true,
                   el: ".custom-swiper-pagination",
