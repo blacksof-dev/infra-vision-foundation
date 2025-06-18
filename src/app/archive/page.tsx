@@ -2,7 +2,7 @@
 import BannerSection from "./01_banner";
 import NewsAndMedia from "./03_newsAndMedia";
 import Newsletter from "./02_newsletter";
-import Gallery from "./04_gellary";
+import Gallery from "./04_gallery";
 import { useRef } from "react";
 import PublicationTabs from "@/_components/molecules/tabs";
 

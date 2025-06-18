@@ -35,6 +35,14 @@ export default function VideoCard({ data }: VideoCardProps) {
       setIsOpen(false);
     }
   };
+  const handlePrevClick = () => {
+    if (currentIndex!=0) {
+      setcurrentIndex((prev) => prev - 1);
+    }
+    else {
+      setIsOpen(false);
+    }
+  };
 
   const handleClick = (index: number) => {
     setcurrentIndex(index);
@@ -52,14 +60,15 @@ export default function VideoCard({ data }: VideoCardProps) {
                 width={500}
                 height={500}
                 alt="Image"
+                quality={100}
                 className="w-full h-full object-cover object-top rounded-md"
               />
-              <div className="group  absolute right-4 bottom-4">
+              <div className="group absolute right-4 bottom-4">
                 <button
                   onClick={() => handleClick(index)}
-                  className="w-12 h-12 rounded-full cursor-pointer ring-1 ring-pink bg-white flex justify-center items-center group-hover:bg-pink transition-all duration-100"
+                  className="w-12 h-12 rounded-full cursor-pointer  bg-white flex items-center justify-center group-hover:bg-pink transition-all duration-100"
                 >
-                  <FaPlay className="text-pink text-lg group-hover:text-white" />
+                  <FaPlay className="text-pink text-base group-hover:text-white" />
                 </button>
               </div>
             </div>
@@ -73,18 +82,18 @@ export default function VideoCard({ data }: VideoCardProps) {
                   {elem.name}
                 </h6>
               </div>
-              <div className="pt-3 pb-6 xl:py-4">
-                <BorderGrayHeroBtn
-                  text="Read more"
-                  role="link"
-                  borderColor="darkgray/40"
-                  color="black"
-                  bgColor="white"
-                  size="base"
-                  classes="font-medium"
-                  target="_blank"
-                  link={elem.link}
-                />
+              <div className="pt-3 pb-6 xl:py-4 ">
+                <div onClick={() => handleClick(index)} className=" w-fit">
+                  <BorderGrayHeroBtn
+                    text="Read more"
+                    role="button"
+                    borderColor="darkgray/40"
+                    color="black"
+                    bgColor="white"
+                    size="base"
+                    classes="font-medium"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -96,6 +105,7 @@ export default function VideoCard({ data }: VideoCardProps) {
           onclose={() => setIsOpen(false)}
           videoPopupDetails={data[currentIndex]}
           handleNextClick={handleNextClick}
+          handlePrevClick={handlePrevClick}
         />
       )}
     </>
@@ -106,10 +116,12 @@ const VideoCardPopup = ({
   onclose,
   videoPopupDetails,
   handleNextClick,
+  handlePrevClick,
 }: {
   onclose: () => void;
   videoPopupDetails: VideoProps;
   handleNextClick: () => void;
+  handlePrevClick:()=> void;
 }) => {
   const [videoPopUp, setvideoPopup] = useState<boolean>(false);
 
@@ -135,7 +147,7 @@ const VideoCardPopup = ({
             <div className="group absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
               <button
                 onClick={() => setvideoPopup(true)}
-                className="w-12 h-12 rounded-full d cursor-pointer ring-1 ring-pink bg-white flex justify-center items-center group-hover:bg-pink transition-all duration-100"
+                className="w-12 h-12 rounded-full  cursor-pointer  bg-white flex items-center justify-center group-hover:bg-pink transition-all duration-100"
               >
                 <FaPlay className="text-pink text-lg  group-hover:text-white" />
               </button>
@@ -178,16 +190,32 @@ const VideoCardPopup = ({
               </div>
             </div>
 
-            <div onClick={handleNextClick} className="pt-3 pb-6 xl:py-4">
-              <BorderGrayHeroBtn
-                text="Next"
-                role="button"
-                borderColor="darkgray/40"
-                color="black"
-                bgColor="white"
-                size="base"
-                classes="font-medium"
-              />
+            <div  className="pt-3 pb-6 xl:py-4  flex justify-between">
+              <div onClick={handlePrevClick} className="w-fit flex justify-center items-center gap-4">
+                <span className="text-black font-medium cursor-pointer">Prev</span>
+                <span className="rotate-180">
+                <BorderGrayHeroBtn
+                  text=""
+                  role="button"
+                  borderColor="darkgray/40"
+                  color="black"
+                  bgColor="white"
+                  size="base"
+                  classes="font-medium"
+                />
+                </span>
+              </div>
+              <div onClick={handleNextClick} className="w-fit ">
+                <BorderGrayHeroBtn
+                  text="Next"
+                  role="button"
+                  borderColor="darkgray/40"
+                  color="black"
+                  bgColor="white"
+                  size="base"
+                  classes="font-medium"
+                />
+              </div>
             </div>
           </div>
         </div>

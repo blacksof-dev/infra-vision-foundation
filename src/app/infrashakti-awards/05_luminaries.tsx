@@ -22,6 +22,7 @@ interface MobileMembersSliderProps {
   title: string;
   data: CardData[];
   navClass: string;
+  socialMedia?: string;
   onSelectTab: () => void;
   setShowPopup: (show: boolean) => void;
   popupData?: CardData;
@@ -53,7 +54,7 @@ const ButtonTab = ({ label, value, data, setdata }: ButtonTabProps) => {
 
 export default function Luminaries() {
   const swiperRef = useRef<SwiperType | null>(null);
-  const [data, setdata] = useState("Guests");
+  const [data, setdata] = useState("jury");
   const [isLastSlide, setIsLastSlide] = useState(false);
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [carddata, setcarddata] = useState<CardData[]>([]);
@@ -210,6 +211,7 @@ export default function Luminaries() {
                             title={ele.title}
                             desig={ele.desig}
                             link={ele.link}
+                            socialMedia={ele.socialMedia}
                           />
                         </div>
                       </SwiperSlide>
@@ -335,6 +337,7 @@ export const MobileMembersSlider = ({
                   title={ele.title}
                   desig={ele.desig}
                   link={ele.link}
+                  socialMedia={ele.socialMedia}
                 />
               </div>
             </SwiperSlide>

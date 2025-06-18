@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import sudhanshuBanner from "@/../public/assets/infraShakti/awardees/sudhanshuBanner.png";
+import sudhanshuMobileView from "@/../public/assets/infraShakti/awardees/sudhanshuMobileView.png";
 import Image from "next/image";
 import award from "@/../public/assets/infraShakti/awardees/award.png";
 import { HeroBtn } from "@/_components/atoms/buttons";
@@ -63,13 +64,19 @@ export default function Spotlight() {
           </div>
 
           <div className="blade-top-padding-sm  ">
-            <div className="sm:relative overflow-hidden sm:h-[27rem]">
+            <div className="sm:relative overflow-hidden sm:h-[22rem] lg:h-[27rem]">
               <Image
                 src={sudhanshuBanner}
                 alt="Sudhanshu Mani"
-                className="w-full h-[27rem] object-cover    rounded-md"
+                className="w-full h-[27rem] object-cover   hidden sm:block   rounded-md" 
+                style={{ objectPosition: "20% center" }}
               />
-              <div className="w-full sm:w-[45%] h-auto md:h-[23rem] d sm:absolute right-3 bottom-14 md:bottom-8 ">
+               <Image
+                src={sudhanshuMobileView}
+                alt="Sudhanshu Mani"
+                className="w-full h-[27rem] object-cover block sm:hidden   rounded-md"
+              />
+              <div className="w-full sm:w-[45%] h-auto lg:h-[23rem]  sm:absolute right-3 top-1/2 -translate-y-1/2 ">
                 <div className="w-full h-full  p-2 md:p-8 bg-pink">
                   <div className="flex flex-row gap-3  ">
                     <div>
@@ -95,7 +102,7 @@ export default function Spotlight() {
                       the creation of the country's fastest train, Vande Bharat,
                       in a mere 18 months, despite all odds.
                     </p>
-                    <div className="pt-8">
+                    <div className="py-4">
                       <HeroBtn
                         text="Watch video"
                         target="_blank"
@@ -180,7 +187,7 @@ const videoCard = [
     thumbnailImage: swarnalatha.src,
     awardName: "People’s Choice Award for Inclusive Infrastructure",
     name: "Swarnalatha J",
-    link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=13850&end=13887",
+    link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=15332&end=15430",
     title: " Ensuring Accessibility",
     logo: infraShaktiAward.src,
     awardslogo: peopleChoiceAward.src,

@@ -285,21 +285,21 @@ export default function Gallery() {
           {
             isOpen &&
             <Portal>
-              <div className="w-screen h-screen p-3  fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] flex">
+              <div className="w-screen h-screen p-3   fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] flex">
                 <div className="relative w-[30rem] h-[38rem] bg-black m-auto">
-                  <Image className="object-cover z-0 [mask-image:linear-gradient(to_bottom,black,transparent)]" fill src={filteredImages[currentIndex].image} unoptimized quality={100} alt={filteredImages[currentIndex].event}></Image>
+                  <Image className=" object-cover z-0 [mask-image:linear-gradient(to_bottom,black,transparent)]" fill src={filteredImages[currentIndex].image} unoptimized quality={100} alt={filteredImages[currentIndex].event}></Image>
                   <div className="absolute bottom-4 z-10 w-full">
                     <p className="px-3 text-base xl:text-lg text-white text-center font-light">{filteredImages[currentIndex].description}</p>
                   </div>
-                  <div className="z-10 absolute top-1/2 -translate-y-1/2 flex w-full px-3 sm:px-4 justify-between">
-                    <button disabled={currentIndex === 0} onClick={() => setCurrentIndex(prev => prev - 1)} className="bg-white p-2 rounded-full text-pink hover:bg-pink hover:text-white transition-all duration-300 ease-linear disabled:opacity-[50%] cursor-pointer disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-pink">
+                  <div className="z-10  absolute top-1/2 -translate-y-1/2 flex w-full px-3 sm:px-4 justify-between">
+                    <button  disabled={currentIndex === 0} onClick={() => setCurrentIndex(prev => prev - 1)} className="bg-white p-2 rounded-full text-pink hover:bg-pink hover:text-white transition-all duration-300 ease-linear disabled:opacity-[50%] cursor-pointer disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-pink">
                       <MoveLeft />
                     </button>
                     <button disabled={currentIndex >= filteredImages.length - 1} onClick={() => setCurrentIndex(prev => prev + 1)} className="bg-white p-2 rounded-full text-pink hover:bg-pink hover:text-white transition-all duration-300 ease-linear disabled:opacity-[50%] cursor-pointer disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-pink">
                       <MoveRight />
                     </button>
                   </div>
-                  <button onClick={() => setIsOpen(false)} className="absolute top-2 right-2 z-10 bg-pink p-1  rounded-full text-white hover:bg-white hover:text-pink transition-all duration-300 ease-linear   cursor-pointer hover:scale-[1.05] ">
+                  <button onClick={() => setIsOpen(false)} className=" absolute top-2 right-2 z-10 bg-pink p-1  rounded-full text-white hover:bg-white hover:text-pink transition-all duration-300 ease-linear   cursor-pointer hover:scale-[1.05] ">
                     <X />
                   </button>
                 </div>
