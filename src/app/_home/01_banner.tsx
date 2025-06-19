@@ -8,7 +8,7 @@ export default function Banner() {
     <>
       <section>
         <main className="relative overflow-hidden">
-          <div className=" w-full h-[40rem]  md:h-auto xl:h-full">
+          <div className=" w-full h-[40rem]  lg:h-auto xl:h-full">
             <Image
               src={BannerBg}
               alt="InfraVision Foundation"
@@ -16,8 +16,8 @@ export default function Banner() {
             ></Image>
           </div>
           <div className="w-container">
-            <div className="absolute top-[24%]  md:top-[30%] xl:top-[25%]">
-              <div className="w-full    ">
+            <div className="  absolute top-[24%]  md:top-[30%] xl:top-[25%]">
+              <div className="w-full   ">
                 <h1 className="tracking-[-4%] font-light txt-black/90 ">
                   {" "}
                   An{" "}
@@ -50,7 +50,7 @@ export default function Banner() {
                 </button>
               </Link>
             </div>
-            <div className="absolute bottom-8 xl:bottom-8 ">
+            <div className="absolute bottom-8 xl:bottom-8 w-screen p-1">
               <Updates />
             </div>
           </div>

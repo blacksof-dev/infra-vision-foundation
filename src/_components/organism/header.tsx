@@ -160,9 +160,9 @@ function Header() {
             ? "translate-y-0"
             : "-translate-y-full"
           } ${showNavBg
-            ? "bg-white border-b-1 border-lightgray/20 shadow-sm"
+            ? "bg-white "
             : "bg-transparent"
-          } ${scrolled ? "bg-white shadow-md" : ""}`}
+          } ${scrolled ? "bg-white" : ""}`}
       >
         <div className="w-container">
           <div className="flex flex-row justify-between">

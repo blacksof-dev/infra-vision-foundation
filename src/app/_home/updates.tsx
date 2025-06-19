@@ -26,10 +26,10 @@ export default function Updates() {
 
   return (
     <section>
-      <div className="flex flex-row gap-8">
+      <div className="xl:flex flex-row gap-8 ">
         {/* Left Column */}
         <div className="border-r border-white/50 xl:block hidden">
-          <div className="   hidden xl:block">
+          <div className="">
             <h4 className="text-white me-4 text-nowrap ">Latest updates</h4>
             <div className="flex gap-5 py-4 justify-center  lg:justify-start md:gap-4 ">
               <button
@@ -49,7 +49,7 @@ export default function Updates() {
         </div>
 
         {/* Right Column */}
-        <div className="w-screen">
+        <div className="xl:max-w-[80rem] xlg:max-w-[100rem]">
           <Swiper
             className="!overflow-visible xl:!overflow-hidden"
             modules={[Navigation, Autoplay, Pagination]}
@@ -59,34 +59,47 @@ export default function Updates() {
             }}
             pagination={{
               el: ".custom-pagination-bullets-banner",
-              type: "fraction",
+              // type: "fraction",
             }}
             loop
             grabCursor={true}
             speed={500}
-            centeredSlides={true}
-            spaceBetween={20}
-            slidesPerView={1.5}
+            centeredSlides={false}
+            spaceBetween={10}
+            slidesPerView={1.1}
             breakpoints={{
               200: {
-                slidesPerView: 1.2,
+                slidesPerView: 1.15,
+                spaceBetween: 10
               },
               435: {
                 slidesPerView: 1.2,
+                spaceBetween: 10
               },
-              500: { slidesPerView: 2 },
-              768: { slidesPerView: 2.2 },
-              1024: { slidesPerView: 2.9 },
-              1280: { slidesPerView: 3.5 },
-              1536: { slidesPerView: 3.5 },
+
+              640: {
+                slidesPerView: 1.8,
+                spaceBetween: 20
+
+              },
+              768: {
+                slidesPerView: 1.9,
+                spaceBetween: 20
+
+              },
+              1024: { slidesPerView: 2 },
+              1120: { slidesPerView: 2.3 },
+              1280: { slidesPerView: 2.1 },
+              1440: { slidesPerView: 2.3 },
+              1536: { slidesPerView: 2.3 },
             }}
             onSlideChange={handleSlideChange}
           >
             {EventsDetails.map((ele, index) => (
-              <SwiperSlide key={index} className="!w-fit group ">
+              <SwiperSlide key={index} className="  group ">
                 <Link href={ele.link} target="_blank">
-                  <div className="flex flex-row gap-4 bg-[#0000005e]  backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4 w-[22rem] sm:w-[24rem] lg:w-[30rem] xl:w-[40rem] xlg:w-[50rem]  h-[9rem]  lg:h-[10rem] xl:h-[13rem] xlg:h-[16rem] 2xl:h-[18rem] group-hover:bg-white transition-all duration-500 ease-linear">
-                    <div className="w-[6rem]   h-full md:w-[14rem] lg:w-[13rem]  xl:w-[20rem]  xlg:w-[30rem]   relative ">
+                  <div className="flex flex-row gap-4 bg-[#0000005e] backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4  h-[8rem] sm:h-[9rem]  lg:h-[10rem] xl:h-[13rem] xlg:h-[16rem] 2xl:h-[18rem] group-hover:bg-white transition-all duration-500 ease-linear">
+                    <div className="w-[6rem]   h-full md:w-[14rem] lg:w-[13rem]  xl:w-[20rem] xlg:w-[30rem]  relative ">
                       <Image
                         src={ele.image}
                         alt={ele.title}
@@ -97,19 +110,19 @@ export default function Updates() {
                     <div className="my-auto w-[60%] flex flex-col h-full  ">
                       <div className="flex items-center gap-3">
                         <span className="w-[10px] h-[10px] rounded-full bg-white group-hover:bg-pink" />
-                        <p className="font-light text-white group-hover:text-black">
+                        <p className="font-light text-sm md:text-lg text-white group-hover:text-black">
                           {ele.category}
                         </p>
                       </div>
                       <div className="mt-auto">
                         <div className="py-2 ">
-                          <h5 className="text-white font-medium lg:font-normal group-hover:text-black line-clamp-   truncate  xl:whitespace-normal">
+                          <h5 className="text-white font-medium text-base xl:text-xl lg:font-normal group-hover:text-black  line-clamp-2 xl:line-clamp-4   xl:whitespace-normal">
                             {ele.title}
                           </h5>
                         </div>
 
                         <div className="flex gap-2 lg:gap-4 items-center justify-center group cursor-pointer  w-fit">
-                          <h5 className="smallText text-white group-hover:text-black">
+                          <h5 className="text-sm sm:text-lg text-white group-hover:text-black">
                             {ele.btnTitle}
                           </h5>
 
