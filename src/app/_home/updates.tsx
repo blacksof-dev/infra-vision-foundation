@@ -108,13 +108,13 @@ export default function Updates() {
                           </h5>
                         </div>
 
-                        <div className="flex gap-2 lg:gap-4 items-center justify-center group  w-fit">
+                        <div className="flex gap-2 lg:gap-4 items-center justify-center group cursor-pointer  w-fit">
                           <h5 className="smallText text-white group-hover:text-black">
                             {ele.btnTitle}
                           </h5>
 
                           <button
-                            className={`rounded-sm p-1 relative overflow-hidden md:p-2 border-2 bg-white border-white group-hover:border-transparent   w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 group-hover:bg-pink `}
+                            className={`rounded-sm p-1 cursor-pointer  relative overflow-hidden md:p-2 border-2 bg-white border-white group-hover:border-transparent   w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 group-hover:bg-pink `}
                           >
                             <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
                             <GoArrowRight

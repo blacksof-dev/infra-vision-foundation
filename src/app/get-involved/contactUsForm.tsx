@@ -29,7 +29,14 @@ const dropdownOptions = [
   "Others",
 ];
 
-
+const designationDropdownOptions = [
+  "Student",
+  "Research Professional",
+  "Policymaker",
+  "Private Sector Employee",
+  "Donor",
+  "Other"
+]
 
 const formSchema = z.object({
   firstName: z
@@ -49,6 +56,7 @@ const formSchema = z.object({
   message: z.string(),
 
   interest: z.string().min(2, { message: "Select any Option" }),
+  designation: z.string().min(2, { message: "Select any Option" }),
 
   links: z.string(),
 
@@ -63,6 +71,7 @@ export default function ContactForm() {
   const [setsuccess, setIsSuccess] = useState<boolean>(false);
   const [Isopen, setIsopen] = useState<boolean>(false);
   const [interest, setInterest] = useState("");
+  const [designation, setDesignation] = useState("");
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -71,6 +80,7 @@ export default function ContactForm() {
       lastName: "",
       email: "",
       interest: "",
+      designation: "",
       contactNumber: "",
       links: "",
       file: "",
@@ -98,6 +108,7 @@ export default function ContactForm() {
       formData.append("email", data.email);
       formData.append("contactNumber", data.contactNumber);
       formData.append("interest", data.interest);
+      formData.append("designation", data.designation);
       formData.append("message", data.message);
       formData.append("links", data.links);
 
@@ -145,7 +156,7 @@ export default function ContactForm() {
                   className="pt-4 md:pt-7  space-y-2  md:space-y-4"
                 >
                   {/* First name and last name */}
-                  <div className="flex gap-3 md:gap-4  w-full ">
+                  <div className="flex sm:flex-row flex-col gap-2 sm:gap-3 md:gap-4  w-full mb-2 md:mb-4">
                     <div className="w-full">
                       <Input
                         id="firstName"
@@ -204,6 +215,36 @@ export default function ContactForm() {
                   {/* Dropdown */}
                   <div className="relative">
                     <Select
+                      value={designation}
+                      onValueChange={(value) => {
+                        setDesignation(value);
+                        setValue("designation", value);
+                      }}
+                    >
+                      <SelectTrigger id="designation">
+                        <SelectValue placeholder="I am a*" />
+                      </SelectTrigger>
+                      <SelectContent className=" bg-white border-lightgray rounded-sm">
+                        {designationDropdownOptions.map((role) => (
+                          <SelectItem
+                            key={role}
+                            value={role}
+                            className="cursor-pointer"
+                          >
+                            {role}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+
+                    {errors.designation && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.designation.message}
+                      </p>
+                    )}
+                  </div>
+                  <div className="relative">
+                    <Select
                       value={interest}
                       onValueChange={(value) => {
                         setInterest(value);
@@ -254,7 +295,7 @@ export default function ContactForm() {
                         <span className="text-darkgray font-poppins my-auto ps-3 inline-block">
                           {filename}
                         </span>
-                        <div className="absolute right-6 bottom-4 w-8 h-8 flex bg-pink rounded-sm">
+                        <div className="absolute right-3 bottom-4 w-8 h-8 flex bg-pink rounded-sm">
                           <TbUpload className="text-white text-xl m-auto" />
                         </div>
                       </div>
@@ -299,7 +340,7 @@ export default function ContactForm() {
                   <div className="pt-4 sm:pt-7 flex">
                     <button
                       type="submit"
-                      className="bg-pink hover:bg-[#9c082a] cursor-pointer text-white font-poppins mx-auto md:mx-0 px-14 font-medium text-xl py-4 rounded-md transition-all duration-300 ease-linear"
+                      className="bg-pink hover:bg-[#9c082a] cursor-pointer sm:w-fit w-full text-white font-poppins mx-auto md:mx-0 px-14 font-medium text-xl py-4 rounded-md transition-all duration-300 ease-linear"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? <Loader /> : "Submit"}
