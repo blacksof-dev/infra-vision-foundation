@@ -90,16 +90,16 @@ export function HeroBtn<T extends "submit" | "button">({
         >
           <h5 className={`text-${color}  ${sizeClass}`}>{text}</h5>
           <div
-             className={`rounded-sm relative p-1 md:p-2 border-2 border-${borderColor} overflow-hidden text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 ${classes} `}
+            className={`rounded-sm relative p-1 md:p-2 border-2 border-${borderColor} overflow-hidden text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 ${classes} `}
           >
-             <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
+            <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
             <GoArrowRight
               className={`   ${aarowColor} group-hover:text-white text-2xl z-[2]`}
             />
           </div>
         </Link>
       ) : (
-        <div className="flex gap-2 lg:gap-4 items-center justify-center  w-fit">
+        <div className="flex gap-2 lg:gap-4 items-center justify-center cursor-pointer  w-fit">
           <h5 className={`text-${color} ${sizeClass}`}>{text}</h5>
           <button
             role={role}
@@ -107,7 +107,7 @@ export function HeroBtn<T extends "submit" | "button">({
             onClick={handleClick}
             {...rest}
             type={type === "button" ? "button" : "submit"}
-            className={`rounded-sm relative p-1 md:p-2 border-2 border-${borderColor} overflow-hidden text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 ${classes} `}
+            className={`rounded-sm cursor-pointer relative p-1 md:p-2 border-2 border-${borderColor} overflow-hidden text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 ${classes} `}
           >
             <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
             <GoArrowRight
@@ -165,7 +165,11 @@ export function HeroBtnPink<T extends "submit" | "button">({
           >
             <span className="absolute cursor-pointer w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
             <GoArrowRight
-              className={`cursor-pointer ${aarowColor ? `text-${aarowColor} group-hover:text-white` : `text-white group-hover:text-pink`}     text-2xl z-[2]`}
+              className={`cursor-pointer ${
+                aarowColor
+                  ? `text-${aarowColor} group-hover:text-white`
+                  : `text-white group-hover:text-pink`
+              }     text-2xl z-[2]`}
             />
           </div>
         </Link>
@@ -182,7 +186,11 @@ export function HeroBtnPink<T extends "submit" | "button">({
           >
             <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
             <GoArrowRight
-              className={` ${aarowColor ? `text-${aarowColor} group-hover:text-white` : `text-white group-hover:text-pink`}     text-2xl z-[2]`}
+              className={` ${
+                aarowColor
+                  ? `text-${aarowColor} group-hover:text-white`
+                  : `text-white group-hover:text-pink`
+              }     text-2xl z-[2]`}
             />
           </button>
         </div>
@@ -242,13 +250,18 @@ export function BorderGrayHeroBtn<T extends "submit" | "button">({
           </div>
         </Link>
       ) : (
-        <div onClick={handlepopup} className="flex gap-2 lg:gap-4 items-center justify-center  w-fit">
-          <h5 className={`text-${color} ${sizeClass} cursor-pointer font-medium`}>{text}</h5>
+        <div
+          onClick={handlepopup}
+          className="flex gap-2 lg:gap-4 items-center justify-center  w-fit"
+        >
+          <h5
+            className={`text-${color} ${sizeClass} cursor-pointer font-medium`}
+          >
+            {text}
+          </h5>
           <button
             role={role}
             disabled={isDisabled}
-
-
             {...rest}
             type={type === "button" ? "button" : "submit"}
             className={`cursor-pointer  relative p-1 md:p-2 border-2 border-darkgray/50  rounded overflow-hidden text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center group-hover:border-transparent transition-all duration-300 ${classes} `}
@@ -272,7 +285,9 @@ export function UnderlineCta<T extends "submit" | "button">(
 
   return (
     <div className="group cursor-pointer">
-      <button className={`text-${color}  ${sizeClass} relative font-medium cursor-pointer`}>
+      <button
+        className={`text-${color}  ${sizeClass} relative font-medium cursor-pointer`}
+      >
         {title}
         <span
           className="w-10 sm:w-15 h-[1px] sm:h-[2px]  absolute bottom-0 left-0 top-7 group-hover:w-full transition-all duration-1000"
@@ -302,36 +317,32 @@ export function UnderlineWithHover<T extends "submit" | "button">({
   const sizeClass: string = sizeMap[size];
   return (
     <div className="group relative">
-      {
-        (role === "link") ?
-          <Link className={`${sizeClass}  text-${color} cursor-pointer  text-nowrap w-40 px-1 py-3 font-medium relative  overflow-hidden  group-hover:text-white transition-all duration-300`}
-            href={link}>
-            {text}
-            <span
-              className={`w-full  h-[1px] bg-${bgColor} absolute bottom-0 left-0 transition-all duration-300`}
-            ></span>
-            <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5] transition-all duration-700 ease-in-out -z-[1]"></span>
-
-          </Link>
-          :
-          <button
-            onClick={handlefun}
-            className={`${sizeClass} text-${color} cursor-pointer  text-nowrap w-40 px-1 py-3 font-medium relative  overflow-hidden  group-hover:text-white transition-all duration-300`}
-          >
-            {text}
-            <span
-              className={`w-full  h-[1px] bg-${bgColor} absolute bottom-0 left-0 transition-all duration-300`}
-            ></span>
-            <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5] transition-all duration-700 ease-in-out -z-[1]"></span>
-          </button>
-      }
+      {role === "link" ? (
+        <Link
+          className={`${sizeClass}  text-${color} cursor-pointer  text-nowrap w-40 px-1 py-3 font-medium relative  overflow-hidden  group-hover:text-white transition-all duration-300`}
+          href={link}
+        >
+          {text}
+          <span
+            className={`w-full  h-[1px] bg-${bgColor} absolute bottom-0 left-0 transition-all duration-300`}
+          ></span>
+          <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5] transition-all duration-700 ease-in-out -z-[1]"></span>
+        </Link>
+      ) : (
+        <button
+          onClick={handlefun}
+          className={`${sizeClass} text-${color} cursor-pointer  text-nowrap w-40 px-1 py-3 font-medium relative  overflow-hidden  group-hover:text-white transition-all duration-300`}
+        >
+          {text}
+          <span
+            className={`w-full  h-[1px] bg-${bgColor} absolute bottom-0 left-0 transition-all duration-300`}
+          ></span>
+          <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5] transition-all duration-700 ease-in-out -z-[1]"></span>
+        </button>
+      )}
     </div>
-
-
-
   );
 }
-
 
 export function NavgHeroBtn<T extends "submit" | "button">({
   text,
@@ -351,8 +362,6 @@ export function NavgHeroBtn<T extends "submit" | "button">({
   const sizeClass: string = sizeMap[size];
   const colorClass = colorMap[bgColor ?? "white"];
 
-
-
   function handleClick() {
     if (role == "link") {
       console.log("Button for external links");
@@ -363,11 +372,9 @@ export function NavgHeroBtn<T extends "submit" | "button">({
     }
   }
 
-
-
   return (
     <div className="w-fit group">
-      {(role === "link" && link != ' ') ? (
+      {role === "link" && link != " " ? (
         <Link
           href={link}
           target={target}
@@ -381,11 +388,12 @@ export function NavgHeroBtn<T extends "submit" | "button">({
             className={`rounded-sm p-1 relative md:p-2 border-2 border-pink overflow-hidden   w-7 h-7 md:w-8 md:h-8 flex items-center justify-center transition-all duration-300  `}
           >
             <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
-            <GoArrowRight className={`   text-pink  group-hover:text-white text-2xl z-[2]`} />
+            <GoArrowRight
+              className={`   text-pink  group-hover:text-white text-2xl z-[2]`}
+            />
           </div>
         </Link>
       ) : (
-
         <div className="flex gap-2 lg:gap-4 items-center justify-center  w-fit">
           <h5 className={`text-${color} ${sizeClass}`}>{text}</h5>
           <button
@@ -397,10 +405,11 @@ export function NavgHeroBtn<T extends "submit" | "button">({
             className={`rounded-sm relative p-1 md:p-2 border-2 border-${borderColor} overflow-hidden text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 ${classes} `}
           >
             <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
-            <GoArrowRight className={`   text-pink  group-hover:text-white text-2xl z-[2]`} />
+            <GoArrowRight
+              className={`   text-pink  group-hover:text-white text-2xl z-[2]`}
+            />
           </button>
         </div>
-
       )}
     </div>
   );

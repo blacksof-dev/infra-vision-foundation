@@ -7,6 +7,7 @@ export default function InfraPanditBanner() {
     <>
       <Banner
         image={bannerBg}
+        link="https://docs.google.com/forms/d/e/1FAIpQLSdjpffzJCT6qmQXNUmoUau7giN4qVTsm5j3ysGZ0r8QxiG05g/viewform?usp=sharing&ouid=118204303619309850521"
         mobileimage={bannerBgMobile}
         buttonText="Register now"
         heading="InfraPandit Awards"
@@ -14,5 +15,5 @@ export default function InfraPanditBanner() {
         subdesc="Celebrating the next generation of infrastructure changemakers"
       />
     </>
-  )
+  );
 }

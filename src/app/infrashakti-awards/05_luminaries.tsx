@@ -136,11 +136,13 @@ export default function Luminaries() {
           <div className="w-container">
             <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-white "></span>
-              <h5 className="font-medium text-white">The jurors and guests of honour</h5>
+              <h5 className="font-medium text-white">
+                The jurors and guests of honour
+              </h5>
             </div>
             <div className="pt-4 pb-2 md:py-5 ">
               <h1 className="text-white font-medium">
-               Luminaries{" "}
+                Luminaries{" "}
                 <span className="font-light">
                   at the <br />
                   InfraShakti Awards
@@ -151,7 +153,7 @@ export default function Luminaries() {
 
           <div className="md:flex flex-row blade-top-padding-sm w-container hidden ">
             <div className=" border-r-1 pe-20 border-white/40">
-             <ButtonTab
+              <ButtonTab
                 label="The esteemed jury"
                 value="jury"
                 data={data}
@@ -169,7 +171,6 @@ export default function Luminaries() {
                 data={data}
                 setdata={setdata}
               />
-             
             </div>
 
             <div className="w-full overflow-x-hidden  ml-[4%]">
@@ -205,7 +206,7 @@ export default function Luminaries() {
                         key={index}
                         className="w-screen overflow-hidden"
                       >
-                        <div className="h-fit w-fit hover:cursor-pointer">
+                        <div className="h-fit w-fit">
                           <MemberCard
                             image={ele.image}
                             title={ele.title}
@@ -219,7 +220,7 @@ export default function Luminaries() {
                   })}
                 </Swiper>
               </div>
-              <div className="flex pt-3  h-[80px] flex-wrap gap-5 mt-4 justify-start md:gap-4 2xl:mt-1">
+              <div className="flex pt-3  h-[80px] flex-wrap gap-5 mt-4 justify-end md:gap-4 2xl:mt-1">
                 <button
                   className={`swiper-prev-btn-members  cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
                   aria-label="Previous slide"
@@ -345,7 +346,7 @@ export const MobileMembersSlider = ({
         </Swiper>
       </div>
 
-      <div className="flex flex-row justify-between mt-4 px-2">
+      <div className="flex flex-row  justify-end   mt-4 ">
         <div className="flex w-fit gap-3">
           <button
             className={`prevbtn${navClass} cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}

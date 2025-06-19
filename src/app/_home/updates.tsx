@@ -70,22 +70,20 @@ export default function Updates() {
             breakpoints={{
               200: {
                 slidesPerView: 1.15,
-                spaceBetween: 10
+                spaceBetween: 10,
               },
               435: {
                 slidesPerView: 1.2,
-                spaceBetween: 10
+                spaceBetween: 10,
               },
 
               640: {
                 slidesPerView: 1.8,
-                spaceBetween: 20
-
+                spaceBetween: 20,
               },
               768: {
                 slidesPerView: 1.9,
-                spaceBetween: 20
-
+                spaceBetween: 20,
               },
               1024: { slidesPerView: 2 },
               1120: { slidesPerView: 2.3 },
@@ -116,7 +114,7 @@ export default function Updates() {
                       </div>
                       <div className="mt-auto">
                         <div className="py-2 ">
-                          <h5 className="text-white font-medium text-base xl:text-xl lg:font-normal group-hover:text-black  line-clamp-2 xl:line-clamp-4   xl:whitespace-normal">
+                          <h5 className="text-white font-medium text-base xl:text-xl lg:font-normal group-hover:text-black  line-clamp-2  xl:line-clamp-3 xlg:line-clamp-4   xl:whitespace-normal">
                             {ele.title}
                           </h5>
                         </div>
@@ -192,6 +190,5 @@ const EventsDetails = [
     title: "Agri-Warehousing: A problem of capacity",
     btnTitle: "Read more",
     link: "https://theinfravisionfoundation.org/2023/11/25/poor-regulatory-capacity-of-the-warehousing-and-development-regulatory-authority-impacts-warehouse-based-sales-of-agri-commodities-and-issue-of-e-negotiable-warehouse-receipts/",
-
   },
 ];

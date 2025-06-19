@@ -64,7 +64,7 @@ export default function VideoCard({ data }: VideoCardProps) {
               />
               <div className="group absolute right-4 bottom-4">
                 <button
-                  onClick={() => setvideoPopup(true)}
+                  onClick={() => setIsOpen(true)}
                   className="w-12 h-12 rounded-full cursor-pointer  bg-white flex items-center justify-center group-hover:bg-pink transition-all duration-100"
                 >
                   <FaPlay className="text-pink text-base group-hover:text-white" />
@@ -131,7 +131,7 @@ const VideoCardPopup = ({
 
   return (
     <Portal>
-      <div className="flex justify-center md:items-center fixed inset-0 bg-black/90 z-[999] py-4 overflow-y-auto">
+      <div className="flex justify-center md:items-center fixed inset-0 bg-black/90 z-[9999] py-4 overflow-y-auto">
         <div className="bg-white my-auto  rounded-lg w-full max-w-lg md:max-w-4xl h-auto relative m-2 md:m-4 p-3 sm:p-4 flex flex-col md:flex-row md:gap-8 overflow-auto">
           <button
             onClick={onclose}
