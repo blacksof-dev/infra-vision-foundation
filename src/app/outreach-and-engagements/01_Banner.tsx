@@ -1,4 +1,5 @@
 import bannerBg from "@/../public/assets/outreach-and-engagements/bannerBg.png";
+import mobileBanner from "@/../public/assets/outreach-and-engagements/mobileBanner.png";
 import Banner from "@/_components/molecules/banner";
 
 export default function OutreachBanner() {
@@ -6,7 +7,7 @@ export default function OutreachBanner() {
     <>
       <Banner
         image={bannerBg}
-        mobileimage={bannerBg}
+        mobileimage={mobileBanner}
         buttonText="Get notified"
         heading="Outreach and engagements"
         title="Outreach and engagements"

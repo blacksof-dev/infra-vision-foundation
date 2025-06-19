@@ -27,7 +27,7 @@ interface NewsletterCard {
 }
 
 // Constants
-const FILTER_TYPES: FilterType[] = ["All", "Publication Year", "sectors"];
+const FILTER_TYPES: FilterType[] = ["All", "Publication Year"];
 const YEARS = ["2025", "2024"] as const;
 const SECTORS: SectorType[] = [
   "All",
@@ -464,7 +464,7 @@ export default function Newsletters() {
               ))}
             </div>
             {visibleCount < filteredCards.length && (
-              <div className="flex justify-center mb-4">
+              <div className="flex justify-center mb-4  blade-top-padding-sm">
                 <UnderlineWithHover
                   size="xxlsize"
                   color="pink"

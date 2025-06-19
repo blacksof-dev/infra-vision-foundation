@@ -2,7 +2,7 @@
 import { useState, useMemo, useRef } from "react";
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import { NewsCard } from "@/_components/molecules/newsCard";
-
+import Link from "next/link";
 
 // Types
 type FilterType = "All" | "Publication Year" | "sectors";
@@ -28,8 +28,8 @@ interface NewsletterCard {
 }
 
 // Constants
-const FILTER_TYPES: FilterType[] = ["All", "Publication Year", "sectors"];
-const YEARS = ["2025", "2024"] as const;
+const FILTER_TYPES: FilterType[] = ["All", "Publication Year"];
+const YEARS = ["2022", "2023"] as const;
 const SECTORS: SectorType[] = [
   "All",
   "Transportation",
@@ -45,47 +45,51 @@ const INITIAL_VISIBLE_COUNT = 3;
 const allcards = [
   {
     id: 1,
-    img:"/assets/archive/newsAndMedia/newsMedia1.png",
+    img: "/assets/archive/newsAndMedia/newsMedia1.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
     date: "Nov 11, 2022",
-    description: "Infravisioning: Nine Reasons India Needs A New Highway Services Authority",
+    description:
+      "Infravisioning: Nine Reasons India Needs A New Highway Services Authority",
     link: "https://www.ndtvprofit.com/opinion/infravisioning-nine-reasons-india-needs-a-new-highway-services-authority",
   },
-    {
+  {
     id: 2,
-    img:"/assets/archive/newsAndMedia/newsMedia2.png",
+    img: "/assets/archive/newsAndMedia/newsMedia2.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
     date: "Oct 28, 2022",
-    description: "Infravisioning: Why Green Is The Best Among Many Colours Of Hydrogen",
+    description:
+      "Infravisioning: Why Green Is The Best Among Many Colours Of Hydrogen",
     link: "https://www.ndtvprofit.com/opinion/infravisioning-why-green-is-the-best-among-many-colours-of-hydrogen",
   },
-   {
+  {
     id: 3,
-    img:"/assets/archive/newsAndMedia/newsMedia3.png",
+    img: "/assets/archive/newsAndMedia/newsMedia3.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
     date: "Dec 9, 2022",
-    description: "Infravisioning: It's Time To Embrace The Idea Of Coastal Economic Zones",
+    description:
+      "Infravisioning: It's Time To Embrace The Idea Of Coastal Economic Zones",
     link: "https://www.ndtvprofit.com/business/its-time-to-embrace-the-idea-of-coastal-economic-zones-infravisioning-with-vinayak-chatterjee",
   },
   {
     id: 4,
-    img:"/assets/archive/newsAndMedia/newsMedia4.png",
+    img: "/assets/archive/newsAndMedia/newsMedia4.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
     date: "Nov 25, 2022",
-    description: "Infravisioning: Funding Done, Focus Now Must Shift To Project Execution",
+    description:
+      "Infravisioning: Funding Done, Focus Now Must Shift To Project Execution",
     link: "https://www.ndtvprofit.com/opinion/funding-done-focus-now-must-shift-to-project-execution-infravisioning",
   },
   {
     id: 5,
-    img:"/assets/archive/newsAndMedia/newsMedia5.png",
+    img: "/assets/archive/newsAndMedia/newsMedia5.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -95,7 +99,7 @@ const allcards = [
   },
   {
     id: 6,
-    img:"/assets/archive/newsAndMedia/newsMedia6.png",
+    img: "/assets/archive/newsAndMedia/newsMedia6.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -105,27 +109,29 @@ const allcards = [
   },
   {
     id: 7,
-    img:"/assets/archive/newsAndMedia/newsMedia7.png",
+    img: "/assets/archive/newsAndMedia/newsMedia7.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
     date: "Sept 16, 2022",
-    description: "Infravisioning: How The Screws Are Getting Tightened On Power Discoms",
+    description:
+      "Infravisioning: How The Screws Are Getting Tightened On Power Discoms",
     link: "https://www.ndtvprofit.com/opinion/infravisioning-how-the-screws-are-getting-tightened-on-power-discoms",
   },
   {
     id: 8,
-    img:"/assets/archive/newsAndMedia/newsMedia8.png",
+    img: "/assets/archive/newsAndMedia/newsMedia8.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
     date: "Sept 29, 2022",
-    description: "Infravisioning: India’s Big Attempt To Fix Its Logistics Snarl",
+    description:
+      "Infravisioning: India’s Big Attempt To Fix Its Logistics Snarl",
     link: "",
   },
   {
     id: 9,
-    img:"/assets/archive/newsAndMedia/newsMedia9.png",
+    img: "/assets/archive/newsAndMedia/newsMedia9.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -135,7 +141,7 @@ const allcards = [
   },
   {
     id: 10,
-    img:"/assets/archive/newsAndMedia/newsMedia10.png",
+    img: "/assets/archive/newsAndMedia/newsMedia10.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -145,7 +151,7 @@ const allcards = [
   },
   {
     id: 11,
-    img:"/assets/archive/newsAndMedia/newsMedia11.png",
+    img: "/assets/archive/newsAndMedia/newsMedia11.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -155,7 +161,7 @@ const allcards = [
   },
   {
     id: 12,
-    img:"/assets/archive/newsAndMedia/newsMedia12.png",
+    img: "/assets/archive/newsAndMedia/newsMedia12.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -165,7 +171,7 @@ const allcards = [
   },
   {
     id: 13,
-    img:"/assets/archive/newsAndMedia/newsMedia13.png",
+    img: "/assets/archive/newsAndMedia/newsMedia13.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -175,7 +181,7 @@ const allcards = [
   },
   {
     id: 14,
-    img:"/assets/archive/newsAndMedia/newsMedia14.png",
+    img: "/assets/archive/newsAndMedia/newsMedia14.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -185,7 +191,7 @@ const allcards = [
   },
   {
     id: 15,
-    img:"/assets/archive/newsAndMedia/newsMedia18.png",
+    img: "/assets/archive/newsAndMedia/newsMedia18.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -195,7 +201,7 @@ const allcards = [
   },
   {
     id: 16,
-    img:"/assets/archive/newsAndMedia/newsMedia17.png",
+    img: "/assets/archive/newsAndMedia/newsMedia17.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -205,7 +211,7 @@ const allcards = [
   },
   {
     id: 17,
-    img:"/assets/archive/newsAndMedia/newsMedia16.png",
+    img: "/assets/archive/newsAndMedia/newsMedia16.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -215,7 +221,7 @@ const allcards = [
   },
   {
     id: 18,
-    img:"/assets/archive/newsAndMedia/newsMedia15.png",
+    img: "/assets/archive/newsAndMedia/newsMedia15.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -223,7 +229,6 @@ const allcards = [
     description: "Measures to Rejunevate Public-Private Partnerships",
     link: "https://www.business-standard.com/article/opinion/measures-to-rejuvenate-public-private-partnerships-122040501433_1.html",
   },
- 
 ];
 
 export default function NewsAndMedia() {
@@ -242,7 +247,7 @@ export default function NewsAndMedia() {
       // const tabRect = tab.getBoundingClientRect();
       const offset =
         tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
-      container.scrollTo({ left: offset, behavior: 'smooth' });
+      container.scrollTo({ left: offset, behavior: "smooth" });
     }
   };
 
@@ -252,15 +257,15 @@ export default function NewsAndMedia() {
       tab === "Publication Year"
         ? YEARS[0]
         : tab === "sectors"
-          ? SECTORS[0]
-          : "All"
+        ? SECTORS[0]
+        : "All"
     );
     setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
 
   const handleFilterClick = (filterName: string, index: number) => {
     setSelectedFilter(filterName);
-    scrollToCenter(index)
+    scrollToCenter(index);
   };
 
   const filteredCards = useMemo(() => {
@@ -289,10 +294,11 @@ export default function NewsAndMedia() {
               tabRefs.current[index] = el;
             }}
             className={`text-base cursor-pointer text-nowrap rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
-                            ${selectedFilter === filter
-                ? "border border-pink text-white bg-pink font-medium"
-                : "border border-lightgray/30"
-              }`}
+                            ${
+                              selectedFilter === filter
+                                ? "border border-pink text-white bg-pink font-medium"
+                                : "border border-lightgray/30"
+                            }`}
             onClick={() => handleFilterClick(filter, index)}
           >
             {filter}
@@ -303,12 +309,12 @@ export default function NewsAndMedia() {
   );
 
   return (
-    <section id="news-and-media">
-      <div className="w-container blade-top-padding-sm blade-bottom-padding">
+    <section id="news-and-media " className="bg-whitesmoke">
+      <div className="w-container blade-top-padding-sm blade-bottom-padding ">
         {/* Header Section */}
         <div className="flex flex-row items-center gap-2 md:gap-3">
           <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
-          <h5 className="font-medium text-pink">In the News</h5>
+          <h5 className="font-medium text-pink">In the News and Media</h5>
         </div>
 
         <div className="py-3 max-w-3xl">
@@ -335,10 +341,11 @@ export default function NewsAndMedia() {
                 <button
                   key={tab}
                   className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4
-                                        ${selectedTab === tab
-                      ? "border border-pink text-pink font-medium"
-                      : "border border-lightgray/30"
-                    }`}
+                                        ${
+                                          selectedTab === tab
+                                            ? "border border-pink text-pink font-medium"
+                                            : "border border-lightgray/30"
+                                        }`}
                   onClick={() => handleTabClick(tab)}
                 >
                   {tab}
@@ -353,12 +360,13 @@ export default function NewsAndMedia() {
 
           {/* Newsletter Cards */}
           <div
-            className={`${selectedTab === "Publication Year" ? "pt-8" : "pt-8"
-              }`}
+            className={`${
+              selectedTab === "Publication Year" ? "pt-8" : "pt-8"
+            }`}
           >
-            {
-              filteredCards.length === 0 && <div className="flex justify-center"> No results </div>
-            }
+            {filteredCards.length === 0 && (
+              <div className="flex justify-center"> No results </div>
+            )}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 xlg:gap-24">
               {filteredCards.slice(0, visibleCount).map((card) => (
                 <div key={card.id}>
@@ -376,17 +384,17 @@ export default function NewsAndMedia() {
               ))}
             </div>
             {visibleCount < filteredCards.length && (
-              <div className="flex justify-center mb-4">
-                <UnderlineWithHover
-                  size="xxlsize"
-                  color="pink"
-                  bgColor="pink"
-                  text="See more"
-                  role="button"
-                  borderColor="white"
-                  handlefun={handleSeeMore}
-                />
-              </div>
+               <div className="flex w-full blade-top-padding-sm">
+          <button className={`group mx-auto text-xl lg:text-2xl   text-pink hover:text-white   text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
+            >
+            <span className="z-50 relative">See more</span>
+            <span
+              className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
+            ></span>
+            <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5] transition-all duration-700 ease-in-out z-0"></span>
+
+          </button>
+          </div>
             )}
           </div>
         </div>

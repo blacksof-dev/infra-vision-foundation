@@ -16,7 +16,7 @@ const VisionMission = () => {
             desc: "To be the hub of choice for obtaining impartial and independent advice from acknowledged experts."
         },
         {
-            icon: "/assets/about-us/vision-mission/icon-1.png",
+            icon: "/assets/about-us/vision-mission/icon-3.png",
             desc: "To be India’s pre-eminent independent think-tank on infrastructure issues."
         },
     ]

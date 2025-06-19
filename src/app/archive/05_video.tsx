@@ -7,15 +7,14 @@ import {
   BorderGrayHeroBtn,
   UnderlineWithHover,
 } from "@/_components/atoms/buttons";
-import {allCards} from "./static"
-
-
+import { allCards } from "./static";
+import Link from "next/link";
 
 export default function Video() {
   const [tab, setTab] = useState("All");
 
   return (
-    <div className="bg-whitesmoke blade-top-padding-lg blade-bottom-padding-lg">
+    <div className=" blade-top-padding-lg blade-bottom-padding-lg">
       <div className="w-container">
         <div>
           <div className="flex flex-row items-center gap-2 md:gap-3">
@@ -33,9 +32,11 @@ export default function Video() {
             </div>
             <div className="flex flex-row gap-3 mt-auto py-4 md:py-0">
               <FaYoutube className="text-red-700 text-2xl md:text-3xl my-auto" />
-              <button className="text-black text-lg lg:text-xl justify-center items-center cursor-pointer relative font-medium tracking-[-1%] border-b border-pink pb-1">
-                Subscribe to our YouTube channel
-              </button>
+              <Link href="https://www.youtube.com/@theinfravisionfoundation">
+                <button className="text-black text-lg lg:text-xl justify-center items-center cursor-pointer relative font-medium tracking-[-1%] border-b border-pink pb-1">
+                  Subscribe to our YouTube channel
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -52,8 +53,8 @@ const filter = [
   "All",
   "Projects",
   "Quaterly Meet",
-  "InfraKatha",
-  "Infravision Conversations",
+  "Infrakatha",
+  "Infravision conversations",
 ];
 
 function TabsSection({
@@ -86,8 +87,6 @@ function TabsSection({
     </div>
   );
 }
-
-
 
 function CardSection({ tab }: { tab: string }) {
   const FilterCards = () => {
@@ -160,20 +159,21 @@ function CardSection({ tab }: { tab: string }) {
             </>
           ))}
 
+      
+      </div>
         {visiblecountmobile < FilterCards().length && (
-          <div className="col-span-full flex justify-center mt-8">
-            <UnderlineWithHover
-              size="xxlsize"
-              color="pink"
-              bgColor="pink"
-              text="See more"
-              role="button"
-              borderColor="white"
-              handlefun={handleSeeMoreCta}
-            />
+          <div className="flex w-full blade-top-padding-sm">
+          <button className={`group mx-auto text-xl lg:text-2xl   text-pink hover:text-white   text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
+>
+            <span className="z-50 relative">See more</span>
+            <span
+              className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
+            ></span>
+            <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5] transition-all duration-700 ease-in-out z-0"></span>
+
+          </button>
           </div>
         )}
-      </div>
       {popupOpen && (
         <VideoPopup src={videoLink} onClose={() => setPopupOpen(false)} />
       )}

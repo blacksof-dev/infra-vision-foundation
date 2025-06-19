@@ -2,7 +2,7 @@
 import React, { useRef } from 'react'
 import AboutUsBanner from './01_banner'
 import WhoWeAre from './02_who_we_are';
-import AboutUsTabs from './tabs';
+import PublicationTabs from "@/_components/molecules/tabs";
 import Infravisionaries from './03_infravisionaries';
 import VisionMission from './04_vision_mission';
 import './page.css'
@@ -12,6 +12,15 @@ import Involved from './07_involved';
 
 
 type TabId = 'who_we_are' | 'infravisionaries' | 'vision_and_mission' | 'our_pulse' | 'project_pathway';
+
+const tabs: { id: TabId; label: string }[] = [
+  { id: "who_we_are", label: "Who we are" },
+  { id: "infravisionaries", label: "The Infravisionaries" },
+  { id: "vision_and_mission", label: "Vision and Mission" },
+  { id: "our_pulse", label: "Our pulse" },
+  { id: "project_pathway", label: "The project pathway" },
+];
+
 
 const AboutUs = () => {
 
@@ -26,7 +35,7 @@ const AboutUs = () => {
   return (
     <>
         <AboutUsBanner />
-        <AboutUsTabs sectionRefs={sectionRefs} />
+        <PublicationTabs tabs={tabs}  sectionRefs={sectionRefs} />
         <div id='who_we_are' ref={sectionRefs.who_we_are}>
             <WhoWeAre />
         </div>

@@ -97,12 +97,13 @@ export default function Newsletter({
                   </h4>
                 </div>
               </div>
-              <div className="w-fit ">
-                <Link href={ctaLink}>
+              <div className="w-fit">
+                
                   <HeroBtn
                     text={ctatext}
-                    role="button"
+                    role="link"
                     borderColor="white"
+                    link="/get-involved"
                     color="white"
                     bgColor="pink"
                     size="extralarge"
@@ -110,7 +111,7 @@ export default function Newsletter({
                     aarowColor="text-pink"
                     classes="font-medium cursor-pointer bg-white"
                   />
-                </Link>
+              
               </div>
             </div>
 

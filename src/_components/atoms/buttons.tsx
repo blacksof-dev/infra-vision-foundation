@@ -83,18 +83,18 @@ export function HeroBtn<T extends "submit" | "button">({
         <Link
           href={link}
           target={target}
-          className={`flex gap-2 lg:gap-4 items-center justify-center ${classes}`}
+          className={`flex  gap-2 lg:gap-4 items-center justify-center `}
           role={role}
           onClick={handleClick}
           {...rest}
         >
-          <h5 className={`text-${color} ${sizeClass}`}>{text}</h5>
+          <h5 className={`text-${color}  ${sizeClass}`}>{text}</h5>
           <div
-            className={`rounded-sm relative p-1 md:p-2 border-2 border-${borderColor} overflow-hidden text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 ${classes}  `}
+             className={`rounded-sm relative p-1 md:p-2 border-2 border-${borderColor} overflow-hidden text-${color} ${colorClass} w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 ${classes} `}
           >
-            <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
+             <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
             <GoArrowRight
-              className={`    ${aarowColor} group-hover:text-white text-2xl z-[2]`}
+              className={`   ${aarowColor} group-hover:text-white text-2xl z-[2]`}
             />
           </div>
         </Link>

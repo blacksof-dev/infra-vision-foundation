@@ -10,7 +10,7 @@ import Video from "./05_video";
 type TabId = "newsletter" | "newsandMedia" | "video" | "gallery";
 
 const tabs: { id: TabId; label: string }[] = [
-  { id: "newsletter", label: "Newsletter" },
+  { id: "newsletter", label: "Newsletters" },
   { id: "newsandMedia", label: "News and media" },
   { id: "video", label: "Video" },
   { id: "gallery", label: "Gallery" },

@@ -107,6 +107,7 @@ function Header() {
       "/knowledge",
       "/archive",
       "/infrapandit-awards",
+      "/about-us"
     ];
 
     setshowNavBg(activeUrl.includes(pathname));
@@ -375,7 +376,7 @@ function Header() {
             </div>
 
             <div className="flex justify-center items-center  gap-4">
-              <div className="border border-darkgray p-2 sm:block hidden  w-[10rem] rounded my-auto ">
+              {/* <div className="border border-darkgray p-2 sm:block hidden  w-[10rem] rounded my-auto ">
                 <div className="flex flex-row ">
                   <div className=" flex items-center">
                     <FaSearch className="text-darkgray block " />
@@ -387,10 +388,10 @@ function Header() {
                     className="outline-none  pl-2 w-full "
                   />
                 </div>
-              </div>
-              <div className="w-9 h-9 rounded-full  sm:hidden bg-pink flex items-center justify-center">
+              </div> */}
+              {/* <div className="w-9 h-9 rounded-full  sm:hidden bg-pink flex items-center justify-center">
                 <FaSearch className="text-white" />
-              </div>
+              </div> */}
               <div className="block xl:hidden">
                 <button onClick={handlehamberg}>
                   <RxHamburgerMenu className="text-3xl cursor-pointer" />

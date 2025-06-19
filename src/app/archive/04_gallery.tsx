@@ -231,7 +231,7 @@ export default function Gallery() {
   );
 
   return (
-    <section id="gallery" className="bg-white">
+    <section id="gallery" className="bg-whitesmoke">
       <div className="w-container blade-top-padding-sm blade-bottom-padding-sm">
         {/* Header Section */}
         <div className="flex flex-row items-center gap-2 md:gap-3">

@@ -5,9 +5,9 @@ export default function BannerSection() {
   return (
     <Banner
       image={image}
-      heading="Archive"
-      title="Archive"
-      subdesc="Knowledge resources shaping India's infrastructure growth story."
+      heading="Archives"
+      title="Archives"
+      subdesc="Knowledge resources shaping India's <br/> infrastructure growth story."
     />
   );
 }
