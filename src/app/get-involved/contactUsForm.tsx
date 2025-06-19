@@ -55,8 +55,8 @@ const formSchema = z.object({
 
   message: z.string(),
 
-  interest: z.string().min(2, { message: "Select any Option" }),
-  designation: z.string().min(2, { message: "Select any Option" }),
+  interest: z.string().min(2, { message: "Select any option" }),
+  designation: z.string().min(2, { message: "Select any option" }),
 
   links: z.string(),
 
@@ -331,7 +331,7 @@ export default function ContactForm() {
                         {errors.links.message}
                       </p>
                     )}
-                    <div className="absolute right-8 bottom-5 ">
+                    <div className="absolute right-3 bottom-5 ">
                       <HiOutlineLink className="text-lightgray text-2xl" />
                     </div>
                   </div>
