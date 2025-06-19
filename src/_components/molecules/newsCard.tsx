@@ -40,11 +40,12 @@ export function NewsCard({ date, title, image, link, category, description, ctaT
                             <h6 className="text-xs md:text-base text-darkgray ">{date}</h6>
                         </div>
                     </div>
-                    <div className="pt-1 ">
-                        <h5 className={`text-black font-medium ${classes}`}>{title}</h5>
-                    </div>
+                  
                     <div className="pt-1">
-                        <p className={`${title === '' ? "text-black font-medium" : "text-darkgray"} text-base md:text-lg line-clamp-2`}>{description}</p>
+                        <p className={`text-black font-medium text-base md:text-lg line-clamp-2`}>{description}</p>
+                    </div>
+                      <div className="pt-1 ">
+                        <h6 className={`text-darkgray font-medium ${classes}`}>{title}</h6>
                     </div>
                 </div>
             </div>

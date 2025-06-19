@@ -3,17 +3,14 @@ import Card from "@/_components/molecules/cardTemplate";
 import React, { useEffect, useRef, useState } from "react";
 import { TabItem } from "./02_whoWeAre";
 
-import telling from "@/../public/assets/home/newsletter/telling.png";
-import forests from "@/../public/assets/home/newsletter/forests.png";
-import caira from "@/../public/assets/home/newsletter/caira.png";
-import newsletter_1 from "@/../public/assets/archive/newsletter/01.png";
-import newsletter_2 from "@/../public/assets/archive/newsletter/02.png";
-import newsletter_3 from "@/../public/assets/archive/newsletter/03.png";
+
+import newsletter_1 from "@/../public/assets/home/newsletter/newsletter_1.png";
+import newsletter_2 from "@/../public/assets/home/newsletter/newsletter_2.png";
+import newsletter_3 from "@/../public/assets/home/newsletter/newsletter_3.png";
 import budget from "@/../public/assets/home/news/budget.png";
 import outlays from "@/../public/assets/home/news/outlays.png";
 import taxation from "@/../public/assets/home/news/taxation.png";
-import EventTemplate from "@/_components/molecules/eventTemplate";
-import { UnderlineWithHover } from "@/_components/atoms/buttons";
+
 import InfrapanditAward from "./infraPanditAward";
 import { useHeader } from "@/context/useHeader";
 import Link from "next/link"
