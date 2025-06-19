@@ -14,7 +14,7 @@ const galleryImages = [
     year: 2025,
     event: "Infrashakti",
     description:
-      "Vinayak Chatterjee sharing his views in a panel discussion on 'Futureproofing Bharat with resilient infrastructure",
+      "The Infravision Foundation CEO Jagan Shah, at the CII South India Annual Convention 2025. ",
   },
   {
     image: "assets/archive/gallery/image6.png",
@@ -48,14 +48,14 @@ const galleryImages = [
     image: "assets/archive/gallery/new1.png",
     year: 2025,
     event: "Infrashakti",
-    description: "",
+    description: "The second Municipal Finance Champions Lab, organised by The Infravision Foundation, underway at IIM Mumbai with key stakeholders.",
   },
   {
-    image: "assets/archive/gallery/image3.png",
+    image: "assets/archive/gallery/new4.png",
     year: 2025,
     event: "Infrashakti",
     description:
-      "Mr Vinayak Chatterjee in discussion with NDTV Editor-in-Chief Mr Sanjay Pugalia.",
+      "The Infravision Foundation team presenting the study on “Implementation of Compensatory Afforestation in India” to the Union Minister of Environment, Forest and Climate Change,  Mr Bhupender Yadav.",
   },
 
   {
@@ -69,13 +69,13 @@ const galleryImages = [
     image: "assets/archive/gallery/image13.png",
     year: 2025,
     event: "Infrashakti",
-    description: "",
+    description: "The Infravision community at the Foundation’s Annual Get-together.",
   },
   {
     image: "assets/archive/gallery/new2.png",
     year: 2025,
     event: "Infrashakti",
-    description: "",
+    description: "Kaveree Bamzai, Head of Advocacy at The Infravision Foundation, facilitating IIT Delhi Professor Emeritus Dr Geetam Tiwari at a national seminar on Decarbonising Urban Transport.",
   },
   {
     image: "assets/archive/gallery/image9.png",
@@ -89,7 +89,7 @@ const galleryImages = [
     year: 2025,
     event: "Infrashakti",
     description:
-      "The Infravision community at the Foundation’s Annual Get-together.",
+      "Debasish Panda, Chairman of the Insurance Regulatory and Development Authority of India (IRDAI), speaking at the roundtable on Surety Bonds organised by the CII under the auspices of The Infravision Foundation.",
   },
   {
     image: "assets/archive/gallery/image5.png",
