@@ -335,7 +335,7 @@ const footer = () => {
         </div>
       </footer>
 
-      <ArrowScope />
+      {/* <ArrowScope /> */}
     </>
   );
 };

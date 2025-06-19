@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
-// import BannerBg from "@/../public/assets/home/BannerBg.png";
-// import Banner from "../../../public/assets/home/BannerBg.png";
+import BannerBg from "@/../public/assets/infrapandit/background.png"
+
 
 
 const Goal = () => {
@@ -30,19 +30,20 @@ const Goal = () => {
     ]
 
     return (
-        <section className='background-image'>
-            <div className=' blade-top-padding blade-bottom-padding-lg w-container'>
-                <div className="w-container flex flex-col md:flex-row gap-y-5 md:gap-y-0 justify-between md:items-center blade-bottom-margin">
+        <section className="relative">
+            <Image className='w-full h-full object-cover absolute' src={BannerBg} alt='background'></Image>
+            <div className=' blade-top-padding blade-bottom-padding-lg w-container relative'>
+                <div className="sm:w-container flex flex-col md:flex-row gap-y-5 md:gap-y-0 justify-between md:items-center blade-bottom-margin">
                     <div>
                         <div className="flex  flex-row  items-center gap-2 md:gap-3">
                             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
                             <h5 className="font-medium text-pink text-sm xl:text-lg">The goal</h5>
                         </div>
                         <div className="pt-1 md:pt-4 pb-2 md:py-5 flex justify-between">
-                            <h1 className="text-black font-light">Forging a foundation for <span className='font-medium'>infrastructure excellence</span></h1>
+                            <h1 className="text-black font-light max-w-2xl">Forging a foundation for <span className='font-medium'>infrastructure excellence</span></h1>
                         </div>
                     </div>
-                    <div className="w-[90%] xl:w-[45%]">
+                    <div className="w-full sm:w-[90%] xl:w-[45%]">
                         <h6 className="text-black  tracking-[1%] mb-4 text-sm xl:text-lg">
                             India’s infrastructural landscape is evolving into an <span className='font-medium'>economy catalyst.</span> The youth, a crucial aspect of this transition, brings the much-needed innovative thinking and academic rigour to the table.
                         </h6>
@@ -50,15 +51,15 @@ const Goal = () => {
                     </div>
                 </div>
 
-                <div className='blade-top-margin-lg'>
+                <div className='blade-top-margin-lg blade-bottom-margin-lg'>
                     <div className='pt-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3'>
                         {
                             data.map((elem, idx) => {
                                 return (
                                     <div key={idx} className='bg-[#FFFFFFB2] backdrop-blur-[10px] shadow-blur px-5 wcontainer py-10 rounded-md'>
                                         <img className='max-xl:h-10' src={elem.icon} alt="icons" />
-                                        <div className='blade-top-margin-sm'>
-                                            <h4>{elem.title}</h4>
+                                        <div className='blade-top-margin sm:blade-top-margin-sm space-y-2'>
+                                            <h5 className='font-medium'>{elem.title}</h5>
                                             <h5 className='text-sm xl:text-base'>{elem.desc}</h5>
 
                                         </div>

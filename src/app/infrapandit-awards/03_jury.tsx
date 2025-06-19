@@ -43,12 +43,12 @@ const Jury = () => {
           </h1>
         </div>
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 blade-top-margin gap-10'>
-          {data.map((elem,idx)=>{
-            return(
+          {data.map((elem, idx) => {
+            return (
               <div className='flex flex-col items-center' key={idx}>
                 <img src={elem.image} alt={elem.name} />
                 <h6 className='font-semibold mt-4 mb-1'>{elem.name}</h6>
-                <p className='text-sm text-center w-[85%] text-[#0A0A0A]'>{elem.position}</p>
+                <p className='text-sm text-center max-w-[17rem] sm:w-[85%] text-[#0A0A0A]'>{elem.position}</p>
               </div>
             )
           })}

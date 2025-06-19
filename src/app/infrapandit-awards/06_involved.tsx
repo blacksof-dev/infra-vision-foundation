@@ -1,18 +1,18 @@
 import infravisionfoundationBg from "@/../public/assets/home/infravisionfoundationBg.png";
 import infravisionTalkMobile from "@/../public/assets/home/infravisionTalkMobile.jpg";
-import SubFooter from "@/_components/molecules/subFooter";
+import Newsletter from "@/_components/molecules/newsletter";
 
-export default function Involved() {
+export default function InfravisionTalks() {
   return (
     <>
-      <SubFooter
-       bgImage={infravisionfoundationBg}
-       mobilebg={infravisionTalkMobile}
-       tag="Get involved"
-       title="Engage and contribute to change with <span class='font-medium text-white'>The Infravision Foundation</span>"
-       desc="Join our community, ask questions, or <br/> participate in building a resilient India."
-       herobtntitle="Connect with us"
-       UnderlineCtatitle="Explore all newsletters" 
+      <Newsletter
+        bgImage={infravisionfoundationBg}
+        mobilebg={infravisionTalkMobile}
+        tag="Get involved"
+        title="Engage and contribute to change with  <span class='font-medium text-white'> The Infravision Foundation</span>"
+        desc="Join our family, ask questions, suggest solutions, and participate in building a resilient India."
+        ctatext="Connect with us"
+        ctaLink="/get-involved"
       />
     </>
   );
