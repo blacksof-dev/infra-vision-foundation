@@ -2,7 +2,7 @@
 import Portal from "@/_components/atoms/popupPortal";
 import { RxCross2 } from "react-icons/rx";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Swiper imports
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -18,7 +18,7 @@ import { MdClose } from "react-icons/md";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-const images = [image_01, image_02, image_03, image_04];
+
 
 // const data = {
 //     title: "Annual get-together",
@@ -30,7 +30,16 @@ const images = [image_01, image_02, image_03, image_04];
 // The evening demonstrated the Foundation's belief that creativity, ideas, and inspiration extend beyond boardrooms and conference halls into cultural expression and community building.`
 // };
 
-export default function EventDetailsPopup({ onClose, data }: { onClose: () => void, data?: any }) {
+export default function EventDetailsPopup({ onClose, data }: { onClose: () => void, data: any }) {
+    const [images, setImages] = useState([image_01.src, image_02.src, image_03.src, image_04.src]);
+
+    useEffect(() => {
+        if (data?.details?.images) {
+            setImages(data.details.images);
+        } else {
+            setImages([image_01.src, image_02.src, image_03.src, image_04.src]);
+        }
+    }, [data?.details?.images]);
     return (
         <Portal>
             <div className="fixed inset-0 p-2 sm:p-3 flex overflow-aut bg-darkgray/40 backdrop-blur-sm z-[9999]">
@@ -54,6 +63,7 @@ export default function EventDetailsPopup({ onClose, data }: { onClose: () => vo
                                                 src={img}
                                                 alt={`Event image ${idx + 1}`}
                                                 fill
+                                                unoptimized
                                                 className="object-cover object-top rounded-md w-full"
                                             />
                                         </div>

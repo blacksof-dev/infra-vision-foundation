@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import {
   Select,
   SelectContent,
@@ -51,7 +52,7 @@ const Upcoming = () => {
             details: {
               date: "January 18, 2025, New Delhi",
               images: [
-                "", "", ""
+                "/assets/infrapandit/eventImages/caira_01.png", "/assets/infrapandit/eventImages/caira_02.png", "/assets/infrapandit/eventImages/caira_03.png", "/assets/infrapandit/eventImages/caira_04.png"
               ],
               content: `
               CAIRA’s first Roundtable on “Boosting India's agri exports by transforming infrastructure” brought together a distinguished assembly of public and private sector leaders. The event featured key decision-makers, including Subrata Gupta, Secretary of Food Processing; Santosh Sarangi, Director General of Foreign Trade; Abhishek Dev, Chairman of APEDA; and Siraj Hussain, former Union Agriculture Secretary and Chairman of CAIRA's Governing Council.\n
@@ -93,7 +94,7 @@ Notable industry voices included representatives from ITC, Tata Consumer Product
             details: {
               date: "April 17, 2025",
               images: [
-                "", "", ""
+                "/assets/infrapandit/eventImages/dummy.png"
               ],
               content: `
                 
@@ -126,10 +127,11 @@ The dual-purpose gathering strengthened the Foundation's governance while establ
             desc: "Conclave-cum-Buyer-Seller meet on Expanding Arunachal Pradesh's agriculture through infrastructure development",
             ctaText: "See details",
             details: {
-              date: "April 10, 2025",
               images: [
-                "", "", ""
+                "/assets/infrapandit/eventImages/Conclave-cum-Buyer-Seller.png"
               ],
+              date: "April 10, 2025",
+
               content: `
 The Infravision Foundation made a field visit and did a detailed report on the potential in the state's agri exports and the infrastructure bottlenecks for the Agricultural & Processed Food Products Export Development Authority (APEDA).
 
@@ -143,10 +145,11 @@ The Infravision Foundation made a field visit and did a detailed report on the p
             desc: "High-level roundtable: Decarbonising urban transport using ITMS data",
             ctaText: "See details",
             details: {
-              date: "April 8, 2025",
               images: [
-                "", "", ""
+                "/assets/infrapandit/eventImages/High-level-roundtable-5.png"
               ],
+              date: "April 8, 2025",
+
               content: `
 The Infravision Foundation organised a national seminar on “Decarbonising Urban Transport using ITMS data” based on a pioneering study conducted jointly by The Infravision Foundation and IIT Delhi.\n
 
@@ -163,7 +166,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "April 1, 2025",
               images: [
-                "", "", ""
+                "/assets/infrapandit/eventImages/Formal-presentation.png"
               ],
               content: `
               The Infravision Foundation’s Co-Founder Rumjhum Chatterjee, CEO Jagan Shah, and Advocacy Head Kaveree Bamzai presented crucial findings to Union Environment Minister Shri Bhupender Yadav, recommending comprehensive reforms to the Compensatory Afforestation Management and Planning Authority (CAMPA). This collaborative research with The Energy and Resources Institute (TERI) identified systemic weaknesses, including poor fund utilisation, inadequate plantation outcomes, and fragmented institutional record-keeping.
@@ -188,13 +191,14 @@ The study identified Noida as having exceptional potential to become a model cit
             desc: "InfraPandit Awards",
             ctaText: "See details",
             details: {
+
               date: "June 20, 2025",
               cta: {
                 ctaText: "Tell me more",
                 link: "/infrapandit-awards"
               },
               images: [
-                "", "", ""
+                "/assets/infrapandit/eventImages/InfraPandit-awards.png"
               ],
               content: `
              The first InfraPandit Awards will honour and celebrate groundbreaking doctoral research critical for India's infrastructure growth. Discover future leaders shaping India's development.
@@ -211,7 +215,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "June 10, 2025",
               images: [
-                "", "", ""
+                "/assets/infrapandit/eventImages/dummy.png"
               ],
               cta: {
                 ctaText: "Watch video",
@@ -231,7 +235,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "June 5, 2025",
               images: [
-                "", "", ""
+                "/assets/infrapandit/eventImages/dummy.png"
               ],
               cta: {
                 ctaText: "Watch video",
@@ -343,7 +347,8 @@ The study identified Noida as having exceptional potential to become a model cit
         <div className='bg-[#F6F6F6] blade-top-margin-sm p4 rounded-lg grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap6'>
           {filterData.map((monthData: MonthData, idx: number) => (
             <div className='p-4 border-l border-t border-[#E0E0E0] first:border-l-0' key={idx}>
-              <h4 className="font-medium text-[#C82249] mb-3 text-lg">{monthData.month}</h4>
+              <h4 className="font-medium text-[#C82249] mb-3 text-lg inline-block">{monthData.month},</h4>{" "}
+              <h4 className="font-medium text-[#C82249] mb-3 text-lg inline-block">{year}</h4>
               {monthData.events.map((event: EventData, eventIdx: number) => (
                 <div
                   key={eventIdx}
@@ -380,7 +385,7 @@ The study identified Noida as having exceptional potential to become a model cit
         </div>
       </div>
       {
-        isOpen &&
+        (isOpen && popupDate) &&
         <EventDetailsPopup onClose={() => setIsOpen(false)} data={popupDate} />
       }
     </section>
