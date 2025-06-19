@@ -5,8 +5,8 @@ const WhoWeAre = () => {
   return (
     <section className="bg-pink overflow-hidden">
       <div className="w-container blade-top-padding blade-bottom-padding-lg ">
-        <div className="flex md:flex-row flex-col gap-4 md:gap-15">
-          <div className="w-full max-w-4xl  ">
+        <div className="flex xl:flex-row flex-col gap-4 md:gap-15">
+          <div className="w-full xl:w-[50%]  ">
             <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-white "></span>
               <h5 className="font-medium text-white">Who we are</h5>
@@ -42,11 +42,11 @@ const WhoWeAre = () => {
               </h4>
             </div>
           </div>
-          <div className="w-2xl ">
+          <div className="w-full  xl:w-[50%] h-full">
             <Image
               src={circle}
               alt="Who we Are"
-              className="object-contain"
+              className="object-contain w-full h-full"
             />
           </div>
         </div>
