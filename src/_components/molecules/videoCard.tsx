@@ -27,7 +27,7 @@ type VideoCardProps = {
 export default function VideoCard({ data }: VideoCardProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [currentIndex, setcurrentIndex] = useState(0);
-
+  const [videoPopUp, setvideoPopup] = useState<boolean>(false);
   const handleNextClick = () => {
     if (currentIndex < data.length - 1) {
       setcurrentIndex((prev) => prev + 1);
@@ -36,10 +36,9 @@ export default function VideoCard({ data }: VideoCardProps) {
     }
   };
   const handlePrevClick = () => {
-    if (currentIndex!=0) {
+    if (currentIndex != 0) {
       setcurrentIndex((prev) => prev - 1);
-    }
-    else {
+    } else {
       setIsOpen(false);
     }
   };
@@ -65,14 +64,19 @@ export default function VideoCard({ data }: VideoCardProps) {
               />
               <div className="group absolute right-4 bottom-4">
                 <button
-                  onClick={() => handleClick(index)}
+                  onClick={() => setvideoPopup(true)}
                   className="w-12 h-12 rounded-full cursor-pointer  bg-white flex items-center justify-center group-hover:bg-pink transition-all duration-100"
                 >
                   <FaPlay className="text-pink text-base group-hover:text-white" />
                 </button>
               </div>
             </div>
-
+            {videoPopUp && (
+              <VideoPopupGlobal
+                src={elem.link}
+                onClose={() => setvideoPopup(false)}
+              />
+            )}
             <div className="flex justify-between flex-col">
               <div>
                 <div className="pt-3">
@@ -121,7 +125,7 @@ const VideoCardPopup = ({
   onclose: () => void;
   videoPopupDetails: VideoProps;
   handleNextClick: () => void;
-  handlePrevClick:()=> void;
+  handlePrevClick: () => void;
 }) => {
   const [videoPopUp, setvideoPopup] = useState<boolean>(false);
 
@@ -190,19 +194,24 @@ const VideoCardPopup = ({
               </div>
             </div>
 
-            <div  className="pt-3 pb-6 xl:py-4  flex justify-between">
-              <div onClick={handlePrevClick} className="w-fit flex justify-center items-center gap-4">
-                <span className="text-black font-medium cursor-pointer">Prev</span>
+            <div className="pt-3 pb-6 xl:py-4  flex justify-between">
+              <div
+                onClick={handlePrevClick}
+                className="w-fit flex justify-center items-center gap-4"
+              >
+                <span className="text-black font-medium cursor-pointer">
+                  Prev
+                </span>
                 <span className="rotate-180">
-                <BorderGrayHeroBtn
-                  text=""
-                  role="button"
-                  borderColor="darkgray/40"
-                  color="black"
-                  bgColor="white"
-                  size="base"
-                  classes="font-medium"
-                />
+                  <BorderGrayHeroBtn
+                    text=""
+                    role="button"
+                    borderColor="darkgray/40"
+                    color="black"
+                    bgColor="white"
+                    size="base"
+                    classes="font-medium"
+                  />
                 </span>
               </div>
               <div onClick={handleNextClick} className="w-fit ">
