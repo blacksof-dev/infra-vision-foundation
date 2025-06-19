@@ -106,6 +106,7 @@ function Header() {
       "/get-involved",
       "/knowledge",
       "/archive",
+      "/infrapandit-awards",
     ];
 
     setshowNavBg(activeUrl.includes(pathname));

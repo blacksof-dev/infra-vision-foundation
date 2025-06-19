@@ -1,4 +1,5 @@
 import bannerBg from "@/../public/assets/infrapandit/bannerBg.png";
+import bannerBgMobile from "@/../public/assets/infrapandit/BannerBgMobile.png";
 import Banner from "@/_components/molecules/banner";
 
 export default function InfraPanditBanner() {
@@ -6,7 +7,7 @@ export default function InfraPanditBanner() {
     <>
       <Banner
         image={bannerBg}
-        mobileimage={bannerBg}
+        mobileimage={bannerBgMobile}
         buttonText="Register now"
         heading="InfraPandit Awards"
         title="InfraPandit Awards"
