@@ -7,8 +7,8 @@ import { BorderGrayHeroBtn } from "@/_components/atoms/buttons";
 export default function InfrapanditAward({ ctaText = "See details", link = "/infrapandit-awards" }: { ctaText?: string, link?: string }) {
   return (
     <>
-      <div className="relative  bg-white  rounded-lg   flex flex-col sm:flex-row items-cente sm:gap-4 md:gap-7 xl:gap-10 min-h-[22rem] lg:min-h-[25rem] overflow-hidden">
-        <div className="w-full h-auto sm:w-[45%] lg:w-[38%]  sm:p-5 ">
+      <div className="relative    rounded-lg   flex flex-col sm:flex-row items-cente sm:gap-4 md:gap-7 xl:gap-10 min-h-[22rem] lg:min-h-[25rem] overflow-hidden">
+        <div className="w-full h-auto sm:w-[45%] lg:w-[38%]  ">
           <Image
             src={montek}
             alt="Mr Montek Singh Ahluwalia"
@@ -42,11 +42,7 @@ export default function InfrapanditAward({ ctaText = "See details", link = "/inf
             </div>
           </div>
         </div>
-        <img
-          className="absolute opacity-60 top-0 right-0 hidden lg:block"
-          src="/assets/outreach-and-engagements/highlight/circle.png"
-          alt="Decorative Circle"
-        />
+
       </div>
     </>
   );

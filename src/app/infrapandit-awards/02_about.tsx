@@ -217,7 +217,7 @@ const EligibilityProcessPopup = ({ onClose }: { onClose: () => void }) => {
                     </div>
                     <p className="text-base sm:text-lg font-medium mt-4">6. Jury deliberation and final decision</p>
                     <p className="text-base sm:text-lg font-medium mt-4">7. Announcement of results</p>
-                    <p className="text-base sm:text-lg font-medium mt-4">7. The awards ceremony</p>
+                    <p className="text-base sm:text-lg font-medium mt-4">8. The awards ceremony</p>
 
                 </div>
             </div>

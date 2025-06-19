@@ -12,9 +12,9 @@ import OutreachTabs from '@/_components/molecules/tabs';
 type TabId = "highlight" | "upcoming" | "past";
 
 const tabs: { id: TabId; label: string }[] = [
-  { id: "highlight", label: "The highlight" },
+  // { id: "highlight", label: "The highlight" },
   { id: "upcoming", label: "Upcoming programmes" },
-  { id: "past", label: "Past programmes" },
+  // { id: "past", label: "Past programmes" },
 ];
 
 
@@ -35,16 +35,16 @@ const OutreachAndEngagements = () => {
   return (
     <>
       <OutreachBanner />
-      <OutreachTabs tabs={tabs} sectionRefs={sectionRefs} />
-      <div id="highlight" ref={sectionRefs.highlight}>
+      {/* <OutreachTabs tabs={tabs} sectionRefs={sectionRefs} /> */}
+      {/* <div id="highlight" ref={sectionRefs.highlight}>
         <Highlight />
-      </div>
+      </div> */}
       <div id='upcoming' ref={sectionRefs.upcoming}>
         <Upcoming />
       </div>
-      <div id='past' ref={sectionRefs.past}>
+      {/* <div id='past' ref={sectionRefs.past}>
         <Past />
-      </div>
+      </div> */}
       <Involved />
     </>
   )

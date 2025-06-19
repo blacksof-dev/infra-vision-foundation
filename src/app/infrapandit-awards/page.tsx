@@ -10,12 +10,12 @@ import Goal from './04_goal';
 import Gallery from './05_gallery';
 import Involved from './06_involved';
 
-type TabId = 'about' | 'jury' | 'goal';
+type TabId = 'about' | 'goal';
 
 
 const tabs: { id: TabId; label: string }[] = [
   { id: "about", label: "About InfraPandit Awards" },
-  { id: "jury", label: "The jury" },
+  // { id: "jury", label: "The jury" },
   { id: "goal", label: "The goal" },
 ];
 
@@ -23,7 +23,7 @@ const InfraPandit = () => {
 
   const sectionRefs: Record<TabId, React.RefObject<HTMLDivElement | null>> = {
     about: useRef<HTMLDivElement | null>(null),
-    jury: useRef<HTMLDivElement | null>(null),
+    // jury: useRef<HTMLDivElement | null>(null),
     goal: useRef<HTMLDivElement | null>(null),
     // gallery: useRef<HTMLDivElement | null>(null),
   };
@@ -35,9 +35,9 @@ const InfraPandit = () => {
       <div id='about' ref={sectionRefs.about}>
         <AboutInfraPandit />
       </div>
-      <div id='jury' ref={sectionRefs.jury}>
+      {/* <div id='jury' ref={sectionRefs.jury}>
         <Jury />
-      </div>
+      </div> */}
       <div id='goal' ref={sectionRefs.goal}>
         <Goal />
       </div>
