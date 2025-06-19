@@ -104,8 +104,8 @@ const Footer = () => {
                       </div>
                     )}
                     {!loading && (
-                      <button className="text-pink cursor-pointer gap-1 text-lg flex items-center group">
-                        Submit
+                      <button className="text-pink cursor-pointer gap-2 text-lg flex items-center group">
+                        Subscribe
                         <span className="inline-block p-0.5 sm:p-1 rounded border border-darkgray/30 group-hover:bg-pink group-hover:text-white group-hover:border-pink transition-all duration-300 ease-linear">
                           <ArrowRightIcon />
                         </span>
