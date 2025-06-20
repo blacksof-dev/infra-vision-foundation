@@ -62,6 +62,7 @@ export default function Infravisionaries() {
   const [carddata, setcarddata] = useState<CardData[]>([]);
   const [showPopup, setShowPopup] = useState<boolean>(false);
   const [popupData, setPopUpData] = useState<CardData | undefined>();
+
   const handleSlideChange = (swiper: SwiperClass) => {
     setIsLastSlide(swiper.isEnd);
     setIsFirstSlide(swiper.isBeginning);
@@ -242,13 +243,15 @@ export default function Infravisionaries() {
               </div>
               <div className="flex pt-3 pr-1 h-[80px] flex-wrap gap-5 mt-4 justify-end md:gap-4 2xl:mt-1">
                 <button
-                  className={`swiper-prev-btn-members  cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink  hover:ring-1 hover:ring-white transition-all duration-300 ease-linear`}
+                  disabled={isFirstSlide}
+                  className={`swiper-prev-btn-members disabled:opacity-50 cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink  hover:ring-1 hover:ring-white transition-all duration-300 ease-linear`}
                   aria-label="Previous slide"
                 >
                   <GoArrowLeft />
                 </button>
                 <button
-                  className={`swiper-next-btn-members  cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink hover:ring-1 hover:ring-white transition-all duration-300 ease-linear`}
+                  disabled={isLastSlide}
+                  className={`swiper-next-btn-members disabled:opacity-50  cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink hover:ring-1 hover:ring-white transition-all duration-300 ease-linear`}
                   aria-label="Next slide"
                 >
                   <GoArrowRight />
@@ -322,6 +325,12 @@ export const MobileMembersSlider = ({
   popupData,
   showPopup,
 }: MobileMembersSliderProps) => {
+  const [isLastSlide, setIsLastSlide] = useState(false);
+  const [isFirstSlide, setIsFirstSlide] = useState(true);
+  const handleSlideChange = (swiper: SwiperClass) => {
+    setIsLastSlide(swiper.isEnd);
+    setIsFirstSlide(swiper.isBeginning);
+  };
   useEffect(() => {
     if (showPopup) {
       document.body.style.overflow = "hidden";
@@ -348,6 +357,7 @@ export const MobileMembersSlider = ({
           className="!overflow-visible sm:!overflow-hidden"
           grabCursor
           slideToClickedSlide
+          onSlideChange={handleSlideChange}
           slidesPerView={1.1}
           centeredSlides={false}
           navigation={{
@@ -394,13 +404,15 @@ export const MobileMembersSlider = ({
       <div className="flex flex-row justify-end mt-4 ">
         <div className="flex w-fit gap-3">
           <button
-            className={`prevbtn${navClass} cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
+            disabled={isFirstSlide}
+            className={`prevbtn${navClass} disabled:opacity-50 cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
             aria-label="Previous slide"
           >
             <GoArrowLeft />
           </button>
           <button
-            className={`nextbtn${navClass} cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
+            disabled={isLastSlide}
+            className={`nextbtn${navClass} disabled:opacity-50 cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
             aria-label="Next slide"
           >
             <GoArrowRight />
