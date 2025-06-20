@@ -7,7 +7,7 @@ import { useState } from "react";
 const galleryImages = [
   {
     image: "assets/infraShakti/gallery/image1.png",
-    description: "Vinayak Chatterjee sharing his views in a panel discussion on 'Futureproofing Bharat with resilient infrastructure"
+    description: "Vinayak Chatterjee sharing his views in a panel discussion on 'Futureproofing Bharat with resilient infrastructure."
   },
   {
     image: "assets/infraShakti/gallery/image6.png",
@@ -19,7 +19,7 @@ const galleryImages = [
   },
   {
     image: "assets/infraShakti/gallery/image2.png",
-    description: "Union Minister Mr Nitin Gadkari presenting the Transport Trailblazer Award to Mr Giridhar Rajagopalan, Deputy Managing Director at AFCONS Infrastructure Limited."
+    description: "Hon'ble Union Minister Mr Nitin Gadkari presenting the Transport Trailblazer Award to Mr Giridhar Rajagopalan, Deputy Managing Director at AFCONS Infrastructure Limited."
   },
   {
     image: "assets/infraShakti/gallery/image7.png",
@@ -59,11 +59,11 @@ const galleryImages = [
   },
   {
     image: "assets/infraShakti/gallery/image14.png",
-    description: "NDTV Editor-in-Chief Mr Sanjay Pugalia in conversations with Union Minister Mr Nitin Gadkari."
+    description: "NDTV Editor-in-Chief Mr Sanjay Pugalia in conversations with Hon'ble Union Minister Mr Nitin Gadkari."
   },
   {
     image: "assets/infraShakti/gallery/image15.png",
-    description: "Union Minister Mr Hardeep Singh Puri presenting the Renewable Energy Star Award to Mr Pankaj Kumar and Mr Siddhant Agarwal from Quant Solar."
+    description: "Hon'ble Union Minister Mr Hardeep Singh Puri presenting the Renewable Energy Star Award to Mr Pankaj Kumar and Mr Siddhant Agarwal from Quant Solar."
   },
 
 ];
@@ -87,7 +87,7 @@ export default function Gallery() {
             <h1 className="text-black  font-light">
               In frames
               <span className="text-black/90 font-medium ">
-                — The spirit of change
+                —The spirit of change
               </span>
             </h1>
           </div>
@@ -100,7 +100,8 @@ export default function Gallery() {
                   width={600}
                   height={600}
                   className="w-full h-full object-cover rounded"
-                  unoptimized
+                  unoptimized={true}
+                  quality={100}
                 />
               </div>
             ))}
@@ -113,8 +114,8 @@ export default function Gallery() {
                     className="object-cover z-0 [mask-image:linear-gradient(to_bottom,black,transparent)]"
                     fill
                     src={galleryImages[currentIndex].image}
-                    unoptimized
-                    quality={100}
+                    unoptimized={true}
+                  quality={100}
                     alt={galleryImages[currentIndex].description}
                   ></Image>
                   <div className="absolute bottom-4 z-10 w-full">

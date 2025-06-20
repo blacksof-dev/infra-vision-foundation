@@ -13,7 +13,7 @@ export default function Association() {
         <div className="blade-top-padding-sm ">
           <Swiper className="" slidesPerView={1} autoplay modules={[Autoplay]}>
             {data.map((obj, index) => (
-              <SwiperSlide key={index} className="!w-auto">
+              <SwiperSlide key={index} className="">
                 <div className="relative w-screen h-screen sm:block hidden">
                   <Image
                     src={obj.logo}

@@ -50,11 +50,14 @@ export default function Overview() {
           </div>
           <div className="w-full md:w-[60%] xl:w-[50%] pt-5">
             <h6>
-              The InfraShakti Awards, a flagship initiative of The Infravision
-              Foundation and NDTV, celebrates individuals and organisations
-              turning the tide in India’s infrastructure landscape. These
-              pioneers harness the true power of infrastructure to ease
-              citizens' lives and catalyse holistic development.
+              The <span className="font-medium">InfraShakti Awards,</span> a
+              flagship initiative of{" "}
+              <span className="font-medium">The Infravision Foundation </span>
+              and <span className="font-medium">NDTV</span>, celebrates
+              individuals and organisations turning the tide in India’s
+              infrastructure landscape. These pioneers harness the true power of
+              infrastructure to ease citizens' lives and catalyse holistic
+              development.
             </h6>
 
             <h6 className="pt-4">
@@ -67,7 +70,7 @@ export default function Overview() {
         </div>
 
         <div className="overflow-visible">
-          <div className="flex justify-end w-container ">
+            <div className="flex justify-end w-container ">
             <div className="flex gap-5 py-2 sm:py-4 justify-center  lg:justify-start md:gap-4 ">
               <button
                 disabled={isFirstSlide}

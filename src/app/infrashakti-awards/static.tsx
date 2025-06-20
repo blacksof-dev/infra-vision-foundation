@@ -28,17 +28,17 @@ export type CardData = {
 export const Guests = [
   {
     image: nitin,
-    title: "Mr. Nitin Gadkari",
-    desig: "Minister of Road Transport and Highways, GoI",
+    title: "Mr Nitin Gadkari",
+    desig: "Hon'ble Minister of Road Transport and Highways, GoI",
     link:"https://x.com/nitin_gadkari",
     socialMedia:"X"
   
   },
   {
     image: hardeep,
-    title: "Mr. Hardeep Singh Puri",
+    title: "Mr Hardeep Singh Puri",
     desig:
-      "Minister of Housing and Urban Affairs & Petroleum and Natural Gas, GoI",
+      "Hon'ble Minister of Housing and Urban Affairs & Petroleum and Natural Gas, GoI",
       link:"https://x.com/hardeepspuri?lang=en",
       socialMedia:"X"
       
@@ -48,7 +48,7 @@ export const Guests = [
 export const Preeminent = [
     {
     image: sanjay,
-    title: "Mr. Sanjay Pugalia",
+    title: "Mr Sanjay Pugalia",
     desig:
       "CEO and Editor-in-Chief, NDTV",
       link:"https://x.com/sanjaypugalia",
@@ -57,7 +57,7 @@ export const Preeminent = [
   },
   {
     image: pranav,
-    title: "Mr. Pranav Adani",
+    title: "Mr Pranav Adani",
     desig:
       "MD (Agro, Oil & Gas) and Director of Adani Enterprises",
       link:"https://in.linkedin.com/in/pranav-adani-9b1279331?original_referer=https%3A%2F%2Fwww.google.com%2F",
@@ -66,7 +66,7 @@ export const Preeminent = [
   },
   {
     image: vinayak,
-    title: "Mr. Vinayak Chatterjee",
+    title: "Mr Vinayak Chatterjee",
     desig:
       "Founder and Managing Trustee, The Infravision Foundation",
       link:"https://x.com/infra_vinayakch?lang=en",
@@ -75,7 +75,7 @@ export const Preeminent = [
   },
   {
     image: rumjhum,
-    title: "Rumjhum Chatterjee",
+    title: "Ms Rumjhum Chatterjee",
     desig:
       "Co-Founder and Managing Trustee, The Infravision Foundation",
       link:"https://www.linkedin.com/in/rumjhum-chatterjee-396041268/",
@@ -108,7 +108,7 @@ export const jury = [
     desig:
       "Chairman, Economic Advisory Council, Prime Minister of India",
       link:"https://x.com/bibekdebroy?lang=en",
-      socialMedia:"linkedin"
+      socialMedia:"X"
       
   },
   {

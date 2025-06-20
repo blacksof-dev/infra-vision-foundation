@@ -20,7 +20,7 @@ export default function VideoPopupGlobal({
 
   return (
     <Portal>
-      <section className="fixed inset-0 flex items-center justify-center bg-darkgray/30 backdrop-blur-md  z-[9999]">
+      <section className="fixed inset-0 flex items-center justify-center bg-darkgray/40 backdrop-blur-md  z-[9999]">
         <div className="bg-white rounded-lg w-full mx-auto max-w-2xl xl:max-w-3xl 2xl:max-w-5xl relative md:m-4 m-2">
           <button
             onClick={onClose}
@@ -31,7 +31,7 @@ export default function VideoPopupGlobal({
           <div className="relative w-full aspect-video">
             <iframe
               className="absolute top-0 left-0 w-full h-full"
-              src={`${src}&autoplay=1&mute=1`}
+              src={`${src}&autoplay=1`}
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
