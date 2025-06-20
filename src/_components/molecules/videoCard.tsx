@@ -69,9 +69,9 @@ export default function VideoCard({ data }: VideoCardProps) {
                     setcurrentIndex(index);
                     setvideoPopup(true);
                   }}
-                  className="w-12 h-12 rounded-full cursor-pointer  bg-white flex items-center justify-center group-hover:bg-pink transition-all duration-100"
+                  className="w-12 h-12 rounded-full cursor-pointer mx-auto bg-white flex items-center justify-center group-hover:bg-pink transition-all duration-100"
                 >
-                  <FaPlay className="text-pink text-base group-hover:text-white" />
+                  <FaPlay className="text-pink  text-base group-hover:text-white" />
                 </button>
               </div>
             </div>
@@ -155,10 +155,10 @@ const VideoCardPopup = ({
               quality={100}
               className="rounded-lg  w-full h-full object-cover"
             />
-            <div className="group absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+            <div className="group ">
               <button
                 onClick={() => setvideoPopup(true)}
-                className="w-12 h-12 rounded-full  cursor-pointer  bg-white flex items-center justify-center group-hover:bg-pink transition-all duration-100"
+                className="w-12 h-12 rounded-full  absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2  cursor-pointer  bg-white flex items-center justify-center group-hover:bg-pink transition-all duration-100"
               >
                 <FaPlay className="text-pink text-lg  group-hover:text-white" />
               </button>

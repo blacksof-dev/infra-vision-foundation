@@ -189,7 +189,7 @@ function Header() {
                 >
                   <Link href="/about-us">
                     <button className="text-darkgray flex justify-center items-center gap-2 text-lg cursor-pointer hover:text-pink">
-                      About us
+                      About Us
                       {openDropdown === "About us" ? (
                         <GoChevronUp />
                       ) : (
@@ -211,7 +211,7 @@ function Header() {
                           {AboutUsDropDown.map((item, index) => (
                             <li
                               key={index}
-                              className="text-darkgray group py-5 text-xl last:border-0 border-b border-darkgray/20 hover:text-pink"
+                              className="text-darkgray group py-5 text-lg last:border-0 border-b border-darkgray/20 hover:text-pink"
                               onClick={() => setOpenDropdown(null)}
                             >
                               <Link href={item.href} target={item.target}>
@@ -259,7 +259,7 @@ function Header() {
                             <li
                               key={index}
                               onClick={() => setOpenDropdown(null)}
-                              className="text-darkgray group py-5 text-xl last:border-0 border-b border-darkgray/20 hover:text-pink"
+                              className="text-darkgray group py-5 text-lg last:border-0 border-b border-darkgray/20 hover:text-pink"
                             >
                               <Link href={item.href} target={item.target}>
                                 <div className="flex justify-between items-center gap-2">
@@ -306,7 +306,7 @@ function Header() {
                             <li
                               key={index}
                               onClick={() => setOpenDropdown(null)}
-                              className="text-darkgray group py-5 text-xl last:border-0 border-b border-darkgray/20 hover:text-pink"
+                              className="text-darkgray group py-5 text-lg last:border-0 border-b border-darkgray/20 hover:text-pink"
                             >
                               <Link href={item.href} target={item.target}>
                                 <div className="flex justify-between items-center gap-2">
@@ -353,7 +353,7 @@ function Header() {
                             <li
                               key={index}
                               onClick={() => setOpenDropdown(null)}
-                              className="text-darkgray group py-5 text-xl last:border-0 border-b border-darkgray/20 hover:text-pink"
+                              className="text-darkgray group py-5 text-lg last:border-0 border-b border-darkgray/20 hover:text-pink"
                             >
                               <Link href={item.href} target={item.target}>
                                 <div className="flex justify-between items-center gap-2">

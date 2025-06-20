@@ -20,8 +20,8 @@ const allcards = [
   {
     img: montek.src,
     category: "InfraKatha #8",
-    date: "14 Dec, 2024",
-    title: "Can Public Private Partnerships be Revitalised?",
+    date: "December 2024",
+    title: "Can Public Private Partnerships be revitalised?",
     link: "https://www.youtube.com/watch?v=o6nb3IejARc&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=1&ab_channel=TheInfravisionFoundation",
     description:
       "Featuring Mr. Montek Singh Ahluwalia, Former Deputy Chairman, the Planning Commission",
@@ -29,7 +29,7 @@ const allcards = [
   {
     img: william.src,
     category: "InfraKatha #7",
-    date: "24 Nov, 2024",
+    date: "November 2024",
     title: "Indosphere: How Indian trade grew",
     link: "https://www.youtube.com/watch?v=ae8InU9IGgk&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=2&ab_channel=TheInfravisionFoundation",
     description: "Featuring Mr. William Dalrymple, Historian and Author",
@@ -37,15 +37,15 @@ const allcards = [
   {
     img: shailesh.src,
     category: "InfraKatha #6",
-    date: "5 Oct, 2024",
-    title: "Artificial Intelligence: Reshaping the Digital Infra Landscape",
+    date: " October 2024",
+    title: "Artificial Intelligence: Reshaping the digital infra landscape",
     link: "https://www.youtube.com/watch?v=hIzp4YhZcMo&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=3&ab_channel=TheInfravisionFoundation",
     description: "Featuring Mr. Gurucharan Das, Author",
   },
   {
     img: aman.src,
     category: "InfraKatha #5",
-    date: "7 Sep, 2024",
+    date: "September 2024",
     title: "Heritage Tourism Infrastructure",
     link: "https://www.youtube.com/watch?v=u-SEobnWU6U&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=4&ab_channel=TheInfravisionFoundation",
     description:
@@ -54,7 +54,7 @@ const allcards = [
   {
     img: sanjeev.src,
     category: "InfraKatha #4",
-    date: "17 Aug, 2024",
+    date: "August 2024",
     title: "Saraswati, The Lost River",
     link: "https://www.youtube.com/watch?v=sygLq4cccIY&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=5&ab_channel=TheInfravisionFoundation",
     description:
@@ -63,7 +63,7 @@ const allcards = [
   {
     img: gurucharan.src,
     category: "InfraKatha #3",
-    date: "19 July, 2024",
+    date: "July 2024",
     title: "Indian Infrastructure — The difficulty of being good",
     link: "https://www.youtube.com/watch?v=FCDeGlsb7q0&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=6&ab_channel=TheInfravisionFoundation",
     description: "Featuring Mr. Gurucharan Das, Author",
@@ -71,7 +71,7 @@ const allcards = [
   {
     img: deepaMalik.src,
     category: "InfraKatha #2",
-    date: "19 June, 2024",
+    date: "June 2024",
     title: "Inclusive Infrastructure",
     link: "https://www.youtube.com/watch?v=5uzHmHzU7q0&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=7&ab_channel=TheInfravisionFoundation",
     description:
@@ -80,7 +80,7 @@ const allcards = [
   {
     img: devdutt.src,
     category: "InfraKatha #1",
-    date: "29 may, 2024",
+    date: "May 2024",
     title: "Mythology & Infrastructure ",
     link: "https://www.youtube.com/watch?v=9v61vpPmXEk&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=8&ab_channel=TheInfravisionFoundation",
     description: "Featuring Mr. Devdutt Pattanaik, Author",
@@ -115,7 +115,7 @@ export default function PastEvents() {
       <div className="w-container blade-top-padding-lg blade-bottom-padding-lg">
         <div className="flex flex-row items-center gap-2 md:gap-3 ">
           <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-          <h5 className="font-medium text-pink">Past Infrakatha sessions</h5>
+          <h5 className="font-medium text-pink">Past Infrakatha Sessions</h5>
         </div>
         <div className="py-3 ">
           <h1 className="text-black  font-light">

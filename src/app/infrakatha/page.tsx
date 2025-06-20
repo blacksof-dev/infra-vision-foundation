@@ -10,9 +10,9 @@ import PublicationTabs from "@/_components/molecules/tabs";
 type TabId = "about" | "upcoming" | "past";
 
 const tabs: { id: TabId; label: string }[] = [
-    { id: "about", label: "About InfraKatha" },
+    { id: "about", label: "About Infrakatha" },
     // { id: "upcoming", label: "Upcoming sessions" },
-    { id: "past", label: "Past sessions" },
+    { id: "past", label: "Past Sessions" },
 ];
 
 

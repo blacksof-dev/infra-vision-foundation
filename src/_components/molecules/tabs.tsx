@@ -105,7 +105,7 @@ export default function OutreachTabs({ sectionRefs, tabs }: Props) {
         isHeaderVisible ? " top-20 xl:top-24" : "top-0"
       )}
     >
-      <div className="flex gap-2   w-container sm:gap-20 md:pt-8  justify-start    z-40  ">
+      <div className="flex gap-2   w-container sm:gap-20   justify-start    z-40  ">
         {tabs.map((tab, index) => (
           <button
             key={tab.id}

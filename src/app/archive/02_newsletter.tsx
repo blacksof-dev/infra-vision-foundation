@@ -61,7 +61,7 @@ const allcards = [
     sectors: "",
     date: "May 2025",
     description:
-      "The Infravision Foundation’s quadruple impact, Rumjhum Chatterjee at The Edge and more.",
+      "Making change happen",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/05/INFRAVISION-TALK-May-2025.pdf",
   },
    {
@@ -72,7 +72,7 @@ const allcards = [
     sectors: "",
     date: "April 2025",
     description:
-      "From urban decarbonisation and Noida to CAIRA’s first-ever engagement in Arunachal Pradesh and beyond.",
+      "Decarbonising urban transport",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/04/INFRAVISION-TALK-April-2025.pdf",
   },
    {
@@ -83,7 +83,7 @@ const allcards = [
     sectors: "",
     date: "March 2025",
     description:
-      "New Report urges fast tracking of High-Speed Rail",
+      "Fast-tracking High-Speed Rail",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/04/INFRAVISION-TALK-March-2025.pdf",
   },
   {
@@ -94,7 +94,7 @@ const allcards = [
     sectors: "",
     date: "February 2025",
     description:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+      "CAIRA Roundtable on agri exports is a success",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/03/INFRAVISION-TALK-February-2025-Newsletter.pdf",
   },
   {
@@ -105,7 +105,7 @@ const allcards = [
     sectors: "",
     date: "january 2025",
     description:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+      "Workshop on Trees Outside Forests",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/01/INFRAVISION-TALK-January-2025.pdf",
   },
    {
@@ -116,7 +116,7 @@ const allcards = [
     sectors: "",
     date: "December 2024",
     description:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+      "Telling the story of India",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/01/INFRAVISION-TALK-December-2024.pdf",
   },
    {
@@ -127,7 +127,7 @@ const allcards = [
     sectors: "",
     date: "November 2024",
     description:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+      "CAIRA takes shape",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/11/INFRAVISION-TALK-November-2024.pdf",
   },
    {
@@ -138,18 +138,18 @@ const allcards = [
     sectors: "",
     date: "October 2024",
     description:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+      "The Infravision Fellowship",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/11/INFRAVISION-TALK-November-2024.pdf",
   },
    {
     id: 8,
     img: "/assets/archive/newsletter/newsletter9.png",
-    category: "Volume 17",
+    category: "Volume 16",
     title: " ",
     sectors: "",
     date: "September 2024",
     description:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+      "Understanding Land Value Capture in urban India",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/10/INFRAVISION-TALK-September-2024.pdf",
   },
     {
@@ -160,7 +160,7 @@ const allcards = [
     sectors: "",
     date: "August 2024",
     description:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+      "The need for high-speed rail corridors",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/08/INFRAVISION-TALK-August-2024.pdf",
   },
   {
@@ -171,7 +171,7 @@ const allcards = [
     sectors: "",
     date: "July 2024",
     description:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+      "Champions Lab takes off",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/08/INFRAVISION-TALK-July-2024.pdf",
   },
   {
@@ -182,7 +182,7 @@ const allcards = [
     sectors: "",
     date: "June 2024",
     description:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+      "The building blocks of mythology",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/06/June-2024.pdf",
   },
   {
@@ -193,8 +193,19 @@ const allcards = [
     sectors: "",
     date: "May 2024",
     description:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+      "Diving into the water bodies census",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/06/May-2024.pdf",
+  },
+  {
+    id: 13,
+    img: "/assets/archive/newsletter/mumbai.png",
+    category: "Volume 11",
+    title: " ",
+    sectors: "",
+    date: "April 2024",
+    description:
+      "Sustainability Ratings is the buzz in Mumbai",
+    link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/06/11.-INFRAVISION-TALK-April-2024.pdf",
   },
   {
     id: 13,
@@ -204,7 +215,7 @@ const allcards = [
     sectors: "",
     date: "March 2024",
     description:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+      "No grain drain",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/06/10.-INFRAVISION-TALK-March-2024.pdf",
   },
   {
@@ -215,7 +226,7 @@ const allcards = [
     sectors: "",
     date: "February 2024",
     description:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+      "Sooraj Se Rozgari gets PM nod",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/06/9.-INFRAVISION-TALK-February-2024.pdf",
   },
 
@@ -227,7 +238,7 @@ const allcards = [
     sectors: "",
     date: "january 2024",
     description:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+      "Taking Surety Bonds and Sustainability Ratings to industry audience in Bangalore",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/06/8.-INFRAVISION-TALK-January-2024.pdf",
   },
      {
@@ -238,7 +249,7 @@ const allcards = [
     sectors: "",
     date: "December 2023",
     description:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+      "Making commodities count for more",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/06/7.-INFRAVISION-TALK-December-2023.pdf",
   },
     {
@@ -249,7 +260,7 @@ const allcards = [
     sectors: "",
     date: "November 2023",
     description:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+      "Ideas aplenty at quarterly meeting",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/06/6.-INFRAVISION-TALK-November-2023.pdf",
   },
    {
@@ -260,7 +271,7 @@ const allcards = [
     sectors: "",
     date: "October 2023",
     description:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+      "Green signal for green ratings",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/09/5.-INFRAVISION-TALK-October-2023.pdf",
   },
    {
@@ -271,7 +282,7 @@ const allcards = [
     sectors: "",
     date: "September 2023",
     description:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+      "Smart city, smart PT",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/06/4.-INFRAVISION-TALK-September-2023.pdf",
   },
     {
@@ -282,7 +293,7 @@ const allcards = [
     sectors: "",
     date: "August 2023",
     description:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+      "The quarterly meeting",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/09/3.-INFRAVISION-TALK-August-2023.pdf",
   },
    {
@@ -293,7 +304,7 @@ const allcards = [
     sectors: "",
     date: "July 2023",
     description:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+      "City mobility",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/09/2.-INFRAVISION-TALK-July-2023.pdf",
   },
      {
@@ -304,7 +315,7 @@ const allcards = [
     sectors: "",
     date: "June 2023",
     description:
-      "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
+      "Here comes the sun",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/09/1.-INFRAVISION-TALK-June-2023.pdf",
   },
 

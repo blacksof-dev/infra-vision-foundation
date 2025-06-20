@@ -72,7 +72,7 @@ export default function About() {
             distinguished experts sharing their perspectives on various aspects
             of infrastructure growth and innovation.
           </h5>
-          <h6 className="text-darkgray  mt-2 md:max-w-xl xl:pr-8">
+          <h6 className="text-black  mt-2 md:max-w-xl xl:pr-8">
             The event digs deep into issues of national importance, from the
             centrality of pilgrim towns in ancient India to the lessons for
             climate change from the lost Saraswati river, from the advent of AI
@@ -90,7 +90,7 @@ export default function About() {
               bgColor="white"
               size="large"
               target="_blank"
-              link="https://www.youtube.com/watch?v=o6nb3IejARc&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&ab_channel=TheInfravisionFoundation"
+              link="https://www.youtube.com/playlist?list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa"
               classes="font-medium text-lg"
             />
            
