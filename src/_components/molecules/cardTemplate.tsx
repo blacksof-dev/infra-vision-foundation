@@ -22,7 +22,7 @@ export default function Card({
 }: CardProps) {
   return (
     <>
-      <div className="xl:max-w-[29rem] flex flex-col  relative ">
+      <div data-aos="fade-up" className="xl:max-w-[29rem] flex flex-col  relative ">
         <div className="w-full h-[16rem] ">
           <Image
             src={image}
