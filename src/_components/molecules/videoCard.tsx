@@ -18,6 +18,7 @@ type VideoProps = {
   desc: string;
   awardslogo: string;
   logo: string;
+  companyName?: string;
 };
 
 type VideoCardProps = {
@@ -27,7 +28,7 @@ type VideoCardProps = {
 export default function VideoCard({ data }: VideoCardProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [currentIndex, setcurrentIndex] = useState(0);
-
+  const [videoPopUp, setvideoPopup] = useState<boolean>(false);
   const handleNextClick = () => {
     if (currentIndex < data.length - 1) {
       setcurrentIndex((prev) => prev + 1);
@@ -64,14 +65,17 @@ export default function VideoCard({ data }: VideoCardProps) {
               />
               <div className="group absolute right-4 bottom-4">
                 <button
-                  onClick={() => setIsOpen(true)}
+                  onClick={() => {
+                    setcurrentIndex(index);
+                    setvideoPopup(true);
+                  }}
                   className="w-12 h-12 rounded-full cursor-pointer  bg-white flex items-center justify-center group-hover:bg-pink transition-all duration-100"
                 >
                   <FaPlay className="text-pink text-base group-hover:text-white" />
                 </button>
               </div>
             </div>
-           
+
             <div className="flex justify-between flex-col">
               <div>
                 <div className="pt-3">
@@ -105,6 +109,12 @@ export default function VideoCard({ data }: VideoCardProps) {
           videoPopupDetails={data[currentIndex]}
           handleNextClick={handleNextClick}
           handlePrevClick={handlePrevClick}
+        />
+      )}
+      {videoPopUp && (
+        <VideoPopupGlobal
+          src={data[currentIndex].link}
+          onClose={() => setvideoPopup(false)}
         />
       )}
     </>
@@ -141,6 +151,8 @@ const VideoCardPopup = ({
               alt="Thumbnail"
               width={160}
               height={50}
+              unoptimized={true}
+              quality={100}
               className="rounded-lg  w-full h-full object-cover"
             />
             <div className="group absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
@@ -162,7 +174,7 @@ const VideoCardPopup = ({
               className="py-6 "
             />
 
-            <div className="w-full h-full   lg:py-14">
+            <div className="w-full h-full  pe-9   lg:py-14">
               <div className="flex flex-row gap-3 ">
                 <Image
                   src={videoPopupDetails.awardslogo}
@@ -175,7 +187,12 @@ const VideoCardPopup = ({
                   <p className="text-pink text-sm font-semibold">
                     {videoPopupDetails.awardName}
                   </p>
-                  <p className="text-pink text-sm">{videoPopupDetails.name}</p>
+                  <p className="text-pink/90 text-sm">
+                    {videoPopupDetails.name}
+                  </p>
+                  <p className="text-pink text-sm">
+                    {videoPopupDetails.companyName}
+                  </p>
                 </div>
               </div>
 

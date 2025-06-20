@@ -19,22 +19,22 @@ const videoCardDetails = [
   {
     image: pranav.src,
     title: "The keynote speech",
-    name: "Mr. Pranav Adani",
+    name: "Mr Pranav Adani",
     designation:
       "Managing Director (Agro, Oil & Gas) and Director of Adani Enterprises",
     link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=8400&end=9063",
   },
   {
     image: raghuram.src,
-    title: "Juror’s speak",
+    title: "Juror talk",
     name: "Prof G Raghuram",
     designation: "Former Director, IIMB and Dean, IIMA",
     link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=265&si=uTJRwlzGhyjpn4_a",
   },
   {
     image: dilip.src,
-    title: "Juror’s speak",
-    name: "Mr. Dilip Cherian",
+    title: "Juror talk",
+    name: "Mr Dilip Cherian",
     designation: "Image Guru, Litigation Landscaping and Policy Analyst",
     link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=214&si=uTJRwlzGhyjpn4_a",
   },
@@ -46,7 +46,7 @@ export default function Ceremony() {
       <div className="blade-top-padding-lg blade-bottom-padding-lg w-container">
         <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
           <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-          <h5 className="font-medium text-pink">Scenes from the ceremony</h5>
+          <h5 className="font-medium text-pink">Scenes from the Ceremony</h5>
         </div>
         <div className="py-2 ">
           <h1 className="text-black  font-light">
@@ -104,18 +104,18 @@ function VideoCard({ data }: { data: VideoCard[] }) {
                   </div>
                 </div>
               </div>
-              {openPopUp && activeVideoSrc !== null && (
-                <VideoPopupGlobal
-                  src={activeVideoSrc}
-                  onClose={() => {
-                    setpopup(false);
-                    setActiveVideoSrc(null);
-                  }}
-                />
-              )}
             </>
           );
         })}
+        {openPopUp && activeVideoSrc !== null && (
+          <VideoPopupGlobal
+            src={activeVideoSrc}
+            onClose={() => {
+              setpopup(false);
+              setActiveVideoSrc(null);
+            }}
+          />
+        )}
       </div>
     </>
   );

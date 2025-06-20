@@ -1,7 +1,6 @@
-import Image from 'next/image'
+
 import React from 'react'
-import BannerBg from "@/../public/assets/home/BannerBg.png";
-import Banner from "../../../public/assets/home/BannerBg.png";
+
 
 
 const VisionMission = () => {
