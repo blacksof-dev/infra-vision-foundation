@@ -163,7 +163,7 @@ function CardSection({ tab }: { tab: string }) {
       </div>
         {visiblecountmobile < FilterCards().length && (
           <div className="flex w-full blade-top-padding-sm">
-          <button className={`group mx-auto text-xl lg:text-2xl   text-pink hover:text-white   text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
+          <button  onClick={handleSeeMoreCta} className={`group mx-auto text-xl lg:text-2xl   text-pink hover:text-white   text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
 >
             <span className="z-50 relative">See more</span>
             <span
