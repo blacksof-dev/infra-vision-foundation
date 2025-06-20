@@ -44,6 +44,8 @@ export default function Banner({
                 src={mobileimage}
                 alt="Publication Banner"
                 className="w-full h-full object-cover object-right"
+                unoptimized={true}
+                quality={100}
               ></Image>
             </div>
           )}

@@ -96,6 +96,10 @@ function Header() {
     }
   }, [isMenuOpen, mounted]);
 
+  useEffect(() => {
+    setOpenDropdown(null)
+  }, [window.scrollY])
+
   //Navbar color change for specific routes
   useEffect(() => {
     if (!mounted) return;
@@ -128,7 +132,7 @@ function Header() {
     { label: "Who we are", href: "/about-us#who-we-are" },
     { label: "The Infravisionaries", href: "/about-us#infravisionaries" },
     { label: "Vision and Mission", href: "/about-us#mission-and-vision" },
-    { label: "Our pulse", href: "/about-us#our-pulse" },
+    { label: "Our Foundational Pillars", href: "/about-us#our-pulse" },
     { label: "The Project Pathway", href: "/about-us#project-pathway" },
   ];
 
@@ -183,14 +187,16 @@ function Header() {
                   onMouseEnter={() => setOpenDropdown("About us")}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <button className="text-darkgray flex justify-center items-center gap-2 text-lg cursor-pointer hover:text-pink">
-                    About Us
-                    {openDropdown === "About us" ? (
-                      <GoChevronUp />
-                    ) : (
-                      <GoChevronDown />
-                    )}
-                  </button>
+                  <Link href="/about-us">
+                    <button className="text-darkgray flex justify-center items-center gap-2 text-lg cursor-pointer hover:text-pink">
+                      About us
+                      {openDropdown === "About us" ? (
+                        <GoChevronUp />
+                      ) : (
+                        <GoChevronDown />
+                      )}
+                    </button>
+                  </Link>
 
                   <AnimatePresence>
                     {openDropdown === "About us" && (

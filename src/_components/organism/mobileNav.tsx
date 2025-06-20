@@ -68,7 +68,7 @@ export default function Mobilenav({ onClose }: { onClose: () => void }) {
                     href="/about-us#our-pulse"
                     className="text-darkgray font-poppins"
                   >
-                    Our pulse
+                   Our Foundational Pillars
                   </Link>
                 </li>
                 <li>

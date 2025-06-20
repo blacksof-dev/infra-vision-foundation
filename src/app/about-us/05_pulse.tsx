@@ -18,17 +18,17 @@ const Pulse = () => {
 
     const data = [
         {
-            icon: "/assets/about-us/pulse/icon-1.png",
+            icon: "/assets/about-us/pulse/icon-1.svg",
             title: "Research",
             desc: "To deconstruct key infrastructure issues with in-depth evaluation, analysis, and recommendations across the spectrum."
         },
         {
-            icon: "/assets/about-us/pulse/icon-2.png",
+            icon: "/assets/about-us/pulse/icon-2.svg",
             title: "Knowledge",
             desc: "To deconstruct key infrastructure issues with in-depth evaluation, analysis, and recommendations across the spectrum."
         },
         {
-            icon: "/assets/about-us/pulse/icon-3.png",
+            icon: "/assets/about-us/pulse/icon-3.svg",
             title: "Capacity building",
             desc: "To enable impactful implementation of recommendations through capacity-building programmes, revitalising on-ground operations and governance."
         },
@@ -55,16 +55,16 @@ const Pulse = () => {
                 </div>
             </div>
             <div className='w-container'>
-                <div className=' border-[#5D6468] border-t border-b py-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3'>
+                <div className=' border-darkgray/20 border-t border-b  grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3'>
                     {
                         data.map((elem, idx) => {
                             return (
                                 <div key={idx} className={` w-container py-10
-                                    ${idx === 1 ? ' xl:border-r xl:border-[#5D6468]' : ''} 
-                                    ${idx !== data.length - 1 ? 'xl:border-r xl:border-[#5D6468]' : ''}
+                                    ${idx === 1 ? ' xl:border-r xl:border-darkgray/20' : ''} 
+                                    ${idx !== data.length - 1 ? 'xl:border-r xl:border-darkgray/20' : ''}
                                 `}>
                                     <img src={elem.icon} alt="" />
-                                    <h4 className='font-medium my-5'>{elem.title}</h4>
+                                    <h4 className='font-medium my-5 '>{elem.title}</h4>
                                     <p className='lg:max-w-[350px] 2xl:max-w-full'>{elem.desc}</p>
                                 </div>
                             )
@@ -116,25 +116,25 @@ const Pulse = () => {
                             grabCursor={true}
                             speed={500}
                             spaceBetween={20}
-                            slidesPerView={1.5}
+                            slidesPerView={1.2}
                             breakpoints={{
                                 200: {
                                     slidesPerView: 1.2,
                                 },
                                 435: {
-                                    slidesPerView: 1.2,
+                                    slidesPerView: 1,
                                 },
                                 500: { slidesPerView: 2 },
                                 768: { slidesPerView: 2.2 },
-                                1024: { slidesPerView: 2.9 },
+                                1024: { slidesPerView: 3 },
                                 1280: { slidesPerView: 3.5 },
                                 1536: { slidesPerView: 4.23 },
                             }}
                         // onSlideChange={handleSlideChange}
                         >
                             {EventsDetails.map((elem, index) => (
-                                <SwiperSlide key={index} className="!w-fit group ">
-                                    <div className="relative flex flex-row gap-4 rounded-lg p-2 md:p-4 w-[19rem]  xl:w-[35rem]  h-[17rem]   xl:h-[22rem] group-hover:bg-white">
+                                <SwiperSlide key={index} className=" group ">
+                                    <div className="relative flex flex-row gap-4 rounded-lg p-2 md:p-4   h-[17rem]   xl:h-[22rem] group-hover:bg-white">
                                         <Image
                                             src={elem.image}
                                             alt={elem.title}

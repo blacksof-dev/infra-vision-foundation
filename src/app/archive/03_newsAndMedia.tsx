@@ -384,17 +384,18 @@ export default function NewsAndMedia() {
               ))}
             </div>
             {visibleCount < filteredCards.length && (
-               <div className="flex w-full blade-top-padding-sm">
-          <button className={`group mx-auto text-xl lg:text-2xl   text-pink hover:text-white   text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
-            >
-            <span className="z-50 relative">See more</span>
-            <span
-              className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
-            ></span>
-            <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5] transition-all duration-700 ease-in-out z-0"></span>
-
-          </button>
-          </div>
+              <div className="flex w-full blade-top-padding-sm">
+                <button
+                onClick={handleSeeMore}
+                  className={`group mx-auto text-xl lg:text-2xl   text-pink hover:text-white   text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
+                >
+                  <span className="z-50 relative">See more</span>
+                  <span
+                    className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
+                  ></span>
+                  <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5] transition-all duration-700 ease-in-out z-0"></span>
+                </button>
+              </div>
             )}
           </div>
         </div>

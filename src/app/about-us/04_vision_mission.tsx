@@ -8,15 +8,15 @@ const VisionMission = () => {
 
     const data = [
         {
-            icon: "/assets/about-us/vision-mission/icon-1.png",
+            icon: "/assets/about-us/vision-mission/icon-1.svg",
             desc: "To contribute thought leadership in helping shape and evaluate infrastructure-related public policies and programmes."
         },
         {
-            icon: "/assets/about-us/vision-mission/icon-2.png",
+            icon: "/assets/about-us/vision-mission/icon-2.svg",
             desc: "To be the hub of choice for obtaining impartial and independent advice from acknowledged experts."
         },
         {
-            icon: "/assets/about-us/vision-mission/icon-3.png",
+            icon: "/assets/about-us/vision-mission/icon-3.svg",
             desc: "To be India’s pre-eminent independent think-tank on infrastructure issues."
         },
     ]

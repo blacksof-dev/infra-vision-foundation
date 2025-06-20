@@ -27,7 +27,7 @@ type VideoCardProps = {
 export default function VideoCard({ data }: VideoCardProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [currentIndex, setcurrentIndex] = useState(0);
-  const [videoPopUp, setvideoPopup] = useState<boolean>(false);
+
   const handleNextClick = () => {
     if (currentIndex < data.length - 1) {
       setcurrentIndex((prev) => prev + 1);
@@ -71,12 +71,7 @@ export default function VideoCard({ data }: VideoCardProps) {
                 </button>
               </div>
             </div>
-            {videoPopUp && (
-              <VideoPopupGlobal
-                src={elem.link}
-                onClose={() => setvideoPopup(false)}
-              />
-            )}
+           
             <div className="flex justify-between flex-col">
               <div>
                 <div className="pt-3">
