@@ -107,7 +107,9 @@ function Header() {
       "/knowledge",
       "/archive",
       "/infrapandit-awards",
-      "/about-us"
+      "/about-us",
+      "/outreach-and-engagements",
+      "/infrashakti-awards",
     ];
 
     setshowNavBg(activeUrl.includes(pathname));
@@ -161,10 +163,9 @@ function Header() {
             : showNavbar
             ? "translate-y-0"
             : "-translate-y-full"
-          } ${showNavBg
-            ? "bg-white "
-            : "bg-transparent"
-          } ${scrolled ? "bg-white" : ""}`}
+        } ${showNavBg ? "bg-white " : "bg-transparent"} ${
+          scrolled ? "bg-white" : ""
+        }`}
       >
         <div className="w-container">
           <div className="flex flex-row justify-between">

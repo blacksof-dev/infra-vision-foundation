@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import logo from "@/../public/assets/globals/logo.png";
 import { Anchor, TextAnchor } from "../atoms/links";
@@ -9,10 +10,51 @@ import Link from "next/link";
 import SocialMedia from "../atoms/socialMedia";
 import { GoArrowUp } from "react-icons/go";
 import ArrowScope from "../atoms/visiblityScope";
-import { LocateIcon, MapPin } from "lucide-react";
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  Loader,
+  LocateIcon,
+  MapPin,
+} from "lucide-react";
 import { Checkbox } from "../ui/checkbox";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 
-const footer = () => {
+const newsletterSchema = z.object({
+  email: z.string().email({ message: "Please enter a valid email address" }),
+  agree: z
+    .boolean()
+    .refine((val) => val, { message: "You must agree to receive updates." }),
+});
+
+type NewsletterForm = z.infer<typeof newsletterSchema>;
+
+const Footer = () => {
+  const [loading, setLoading] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    setValue,
+    watch,
+  } = useForm<NewsletterForm>({
+    resolver: zodResolver(newsletterSchema),
+    defaultValues: { email: "", agree: false },
+  });
+  const agreeValue = watch("agree");
+
+  const onSubmit = async (data: NewsletterForm) => {
+    setLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setLoading(false);
+    console.log("Newsletter form data:", data);
+    reset();
+  };
+
   return (
     <>
       <footer className="blade-top-padding ">
@@ -34,37 +76,68 @@ const footer = () => {
               <h6 className="text-black py-2 font-medium">
                 Subscribe to our newsletter
               </h6>
-              <form className="w-full sm:w-[70%] lg:w-full ">
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="w-full sm:w-[70%] lg:w-full "
+              >
                 <div className="flex flex-row lg:w-[32rem]   xl:w-[35rem]  bg-white rounded md:rounded-md overflow-hidden border border-darkgray/30 ">
                   <input
                     type="email"
                     placeholder="Enter email address"
                     className="flex-1 w-[12.5rem]  h-[3rem] my-auto md:h-full px-1 sm:px-4   text-base tracking-[-0.3px] outline-none text-darkgray"
+                    {...register("email")}
                   />
-
-                  <div className="border-l-1  px-2 py-2 sm:px-6 border-darkgray/20 flex justify-center items-center">
-                    <HeroBtn
-                      text="Subscribe"
-                      role="link"
+                  <div className="border-l-1  px-2 py-2 sm:px-6 border-darkgray/30 flex justify-center items-center">
+                    {/* <HeroBtn
+                      text={loading ? <Loader /> : ("Subscribe" as any)}
+                      role="submit"
                       borderColor="pink"
                       color="pink"
                       bgColor="white"
                       size="extralarge"
                       classes="w-full w-auto text-sm font-medium"
-                    />
+                      isDisabled={loading}
+                    /> */}
+                    {loading && (
+                      <div className="text-lg p-1 text-pink flex w-24 items-center justify-center">
+                        <Loader className="animate-spin " />
+                      </div>
+                    )}
+                    {!loading && (
+                      <button className="text-pink cursor-pointer gap-2 text-lg flex items-center group">
+                        Subscribe
+                        <span className="inline-block p-0.5 sm:p-1 rounded border border-darkgray/30 group-hover:bg-pink group-hover:text-white group-hover:border-pink transition-all duration-300 ease-linear">
+                          <ArrowRightIcon />
+                        </span>
+                      </button>
+                    )}
                   </div>
                 </div>
-                <div className="flex gap-2  pt-5">
-                  {/* input
-                  <label className="w-5 h-4 mt-1 sm:mt-0  sm:w-5 sm:h-5 border-1 border-pink"></label> */}
-                  {/* <che */} <Checkbox
-                    className="w-5 h-5 rounded border border-pink cursor-pointer"
-                  />
-                  <p className="text-darkgray text-sm">
-                    I agree to receive updates on newsletters from The Infravision
-                    Foundation.
+                {errors.email && (
+                  <p className="text-red-500 text-xs pt-1">
+                    {errors.email.message}
                   </p>
+                )}
+                <div className="flex gap-2  pt-5">
+                  <Checkbox
+                    className="w-5 h-5 rounded border border-pink cursor-pointer"
+                    id="newsletter-agree"
+                    checked={!!agreeValue}
+                    onCheckedChange={(v) => setValue("agree", !!v)}
+                  />
+                  <label
+                    htmlFor="newsletter-agree"
+                    className="text-darkgray text-sm cursor-pointer select-none"
+                  >
+                    I agree to receive updates on newsletters from The
+                    Infravision Foundation.
+                  </label>
                 </div>
+                {errors.agree && (
+                  <p className="text-red-500 text-xs pt-1">
+                    {errors.agree.message}
+                  </p>
+                )}
               </form>
             </div>
           </div>
@@ -74,9 +147,7 @@ const footer = () => {
                 <li className="flex items-center gap-3">
                   <div className="w-3 h-3 rounded-full bg-darkgray/30 "></div>
                   <span className="text-black hover:text-pink text-xl ">
-                    <Link href="/about-us">
-                      About us
-                    </Link>
+                    <Link href="/about-us">About us</Link>
                   </span>
                 </li>
 
@@ -184,9 +255,7 @@ const footer = () => {
                 <li className="flex items-center gap-3 ">
                   <div className="w-3 h-3 rounded-full bg-darkgray opacity-30"></div>
                   <span className="text-black hover:text-pink text-xl">
-                    <Link href="/knowledge">
-                      Knowledge
-                    </Link>
+                    <Link href="/knowledge">Knowledge</Link>
                   </span>
                 </li>
 
@@ -228,9 +297,7 @@ const footer = () => {
                   <li className="flex items-center gap-3 ">
                     <div className="w-3 h-3 rounded-full bg-darkgray opacity-30"></div>
                     <span className="text-black hover:text-pink text-xl">
-                      <Link href="/archive">
-                        Archives
-                      </Link>
+                      <Link href="/archive">Archives</Link>
                     </span>
                   </li>
 
@@ -272,7 +339,6 @@ const footer = () => {
                     <Link href="/get-involved">Get Involved</Link>
                   </span>
                 </li>
-
               </ul>
             </div>
             <div className="mt-4 xl:mt-0">
@@ -340,4 +406,4 @@ const footer = () => {
   );
 };
 
-export default footer;
+export default Footer;

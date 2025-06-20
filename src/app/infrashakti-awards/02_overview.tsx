@@ -42,27 +42,33 @@ export default function Overview() {
             <h1 className="text-black  font-light">
               Recognising
               <span className="text-black/90 font-medium ">
-               {' '}outstanding infrastructure
+                {" "}
+                outstanding infrastructure
               </span>
               <br /> practices across the nation
             </h1>
           </div>
           <div className="w-full md:w-[60%] xl:w-[50%] pt-5">
             <h6>
-            The InfraShakti Awards, a flagship initiative of The Infravision Foundation and NDTV, celebrates individuals and organisations turning the tide in India’s infrastructure landscape. These pioneers harness the true power of infrastructure to ease citizens' lives and catalyse holistic development.
-
+              The InfraShakti Awards, a flagship initiative of The Infravision
+              Foundation and NDTV, celebrates individuals and organisations
+              turning the tide in India’s infrastructure landscape. These
+              pioneers harness the true power of infrastructure to ease
+              citizens' lives and catalyse holistic development.
             </h6>
 
             <h6 className="pt-4">
-             It features seven outstanding winners for their best infrastructure practices. They are selected based on a strict matrix of collaboration, impact, replicability, sustainability, and scalability.
-
+              It features seven outstanding winners for their best
+              infrastructure practices. They are selected based on a strict
+              matrix of collaboration, impact, replicability, sustainability,
+              and scalability.
             </h6>
           </div>
         </div>
 
         <div className="overflow-visible">
           <div className="flex justify-end w-container ">
-            <div className="flex gap-5 py-4 justify-center  lg:justify-start md:gap-4 ">
+            <div className="flex gap-5 py-2 sm:py-4 justify-center  lg:justify-start md:gap-4 ">
               <button
                 disabled={isFirstSlide}
                 className={`swiper-solution-prev-btn-overview cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white
@@ -80,7 +86,7 @@ export default function Overview() {
             </div>
           </div>
 
-          <div className="w-container overflow-visible pt-10">
+          <div className="w-container overflow-visible pt-6 sm:pt-10">
             <Swiper
               modules={[Navigation, Pagination]}
               className="!overflow-visible  w-full"
@@ -174,7 +180,7 @@ const OberviewDetails = [
       "For sustainable and innovative actions in transportation infrastructure, enhancing urban connectivity and mobility with progressive innovation.",
     logo: transportAward,
   },
-  
+
   {
     image: renewable,
     title: "Renewable Energy Star Award",
@@ -196,5 +202,4 @@ const OberviewDetails = [
       "For the empowerment of disabled people through accessible and inclusive infrastructure initiatives, driving independence and equity.",
     logo: peopleChoiceAward,
   },
-  
 ];
