@@ -211,7 +211,7 @@ export const TabSwitch = ({
 
 export const TabContent = ({ data }: { data: TabItem[] }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-2 sm:gap-8 lg:gap-9  md:blade-top-padding-sm">
+    <div className="grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-2 sm:gap-8 lg:gap-12  md:blade-top-padding-sm">
       {data.map((item) => (
         <Card
           key={item.id}

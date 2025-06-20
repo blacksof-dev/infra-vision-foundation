@@ -157,15 +157,13 @@ function Header() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full transition-all ease-linear duration-200 px-0 sm:px-3 py-3 z-[9999] ${
-          isMobile
+        className={`fixed top-0 left-0 w-full transition-all ease-linear duration-200 px-0 sm:px-3 py-3 z-[9999] ${isMobile
             ? "translate-y-0"
             : showNavbar
-            ? "translate-y-0"
-            : "-translate-y-full"
-        } ${showNavBg ? "bg-white " : "bg-transparent"} ${
-          scrolled ? "bg-white" : ""
-        }`}
+              ? "translate-y-0"
+              : "-translate-y-full"
+          } ${showNavBg ? "bg-white " : "bg-transparent"} ${scrolled ? "bg-white" : ""
+          }`}
       >
         <div className="w-container">
           <div className="flex flex-row justify-between">
@@ -186,7 +184,7 @@ function Header() {
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   <button className="text-darkgray flex justify-center items-center gap-2 text-lg cursor-pointer hover:text-pink">
-                    About us
+                    About Us
                     {openDropdown === "About us" ? (
                       <GoChevronUp />
                     ) : (

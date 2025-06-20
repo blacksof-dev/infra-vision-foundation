@@ -20,17 +20,17 @@ const Pulse = () => {
         {
             icon: "/assets/about-us/pulse/icon-1.png",
             title: "Research",
-            desc: "To decongest key infrastructure issues with in-depth evaluation, analysis, and recommendations across the historical, current, and future perspectives."
+            desc: "To deconstruct key infrastructure issues with in-depth evaluation, analysis, and recommendations across the spectrum."
         },
         {
             icon: "/assets/about-us/pulse/icon-2.png",
             title: "Knowledge",
-            desc: "Emanating from national and international domain experts, the knowledge and counsel inform and shape public policymaking in infrastructure."
+            desc: "To deconstruct key infrastructure issues with in-depth evaluation, analysis, and recommendations across the spectrum."
         },
         {
             icon: "/assets/about-us/pulse/icon-3.png",
             title: "Capacity building",
-            desc: "Targeted to enable impactful implementation of the recommendations, capacity-building programmes revitalise on-ground operations spanning management, execution, and governance."
+            desc: "To enable impactful implementation of recommendations through capacity-building programmes, revitalising on-ground operations and governance."
         },
     ]
 
@@ -40,7 +40,8 @@ const Pulse = () => {
                 <div>
                     <div className="flex  flex-row  items-center gap-2 md:gap-3">
                         <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-                        <h5 className="font-medium text-pink text-sm xl:text-lg">Our pulse</h5>
+                        <h5 className="font-medium text-pink text-sm xl:text-lg">Our Foundational Pillars
+                        </h5>
                     </div>
                     <div className="pt-4 pb-2 md:py-5 flex justify-between">
                         <h1 className="text-black font-light">Transformation <br className='md:block hidden' /> grounded in <span className='font-medium'>insights, <br /> knowledge, and action</span></h1>
@@ -133,15 +134,15 @@ const Pulse = () => {
                         >
                             {EventsDetails.map((elem, index) => (
                                 <SwiperSlide key={index} className="!w-fit group ">
-                                        <div className="relative flex flex-row gap-4 rounded-lg p-2 md:p-4 w-[19rem]  xl:w-[35rem]  h-[17rem]   xl:h-[22rem] group-hover:bg-white">
-                                            <Image
-                                                src={elem.image}
-                                                alt={elem.title}
-                                                fill
-                                                className="object-cover object-left rounded"
-                                            />
-                                            <h4 className='text-white absolute bottom-5'>{elem.title}</h4>
-                                        </div>
+                                    <div className="relative flex flex-row gap-4 rounded-lg p-2 md:p-4 w-[19rem]  xl:w-[35rem]  h-[17rem]   xl:h-[22rem] group-hover:bg-white">
+                                        <Image
+                                            src={elem.image}
+                                            alt={elem.title}
+                                            fill
+                                            className="object-cover object-left rounded"
+                                        />
+                                        <h4 className='text-white absolute bottom-5'>{elem.title}</h4>
+                                    </div>
                                 </SwiperSlide>
                             ))}
                         </Swiper>
