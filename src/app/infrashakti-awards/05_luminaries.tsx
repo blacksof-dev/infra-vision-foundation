@@ -60,11 +60,11 @@ export default function Luminaries() {
   const [carddata, setcarddata] = useState<CardData[]>([]);
   const [showPopup, setShowPopup] = useState<boolean>(false);
   const [popupData, setPopUpData] = useState<CardData | undefined>();
+
   const handleSlideChange = (swiper: SwiperClass) => {
     setIsLastSlide(swiper.isEnd);
     setIsFirstSlide(swiper.isBeginning);
   };
-
   useEffect(() => {
     const swiperInstance = swiperRef.current;
     if (swiperInstance) {
@@ -222,13 +222,15 @@ export default function Luminaries() {
               </div>
               <div className="flex pt-3  h-[80px] flex-wrap gap-5 mt-4 justify-end md:gap-4 2xl:mt-1">
                 <button
-                  className={`swiper-prev-btn-members  cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
+                  disabled={isFirstSlide}
+                  className={`swiper-prev-btn-members  disabled:opacity-50 cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
                   aria-label="Previous slide"
                 >
                   <GoArrowLeft />
                 </button>
                 <button
-                  className={`swiper-next-btn-members  cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink `}
+                  disabled={isLastSlide}
+                  className={`swiper-next-btn-members  disabled:opacity-50 cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink `}
                   aria-label="Next slide"
                 >
                   <GoArrowRight />

@@ -26,7 +26,6 @@ export default function Overview() {
 
   const handleSlideChange = (swiper: SwiperClass) => {
     setIsLastSlide(swiper.isEnd);
-    console.log(swiper.isEnd);
     setIsFirstSlide(swiper.isBeginning);
   };
 
@@ -70,19 +69,19 @@ export default function Overview() {
         </div>
 
         <div className="overflow-visible">
-            <div className="flex justify-end w-container ">
-            <div className="flex gap-5 py-2 sm:py-4 justify-center  lg:justify-start md:gap-4 ">
+          <div className="flex flex-row justify-end mt-4 ">
+            <div className="flex w-fit gap-3">
               <button
                 disabled={isFirstSlide}
-                className={`swiper-solution-prev-btn-overview cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white
-                                }`}
+                className={`swiper-solution-prev-btn-overview disabled:opacity-50 cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white`}
+                aria-label="Previous slide"
               >
                 <GoArrowLeft />
               </button>
               <button
                 disabled={isLastSlide}
-                className={`swiper-solution-next-btn-overview cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white
-                                }`}
+                className={`swiper-solution-next-btn-overview disabled:opacity-50 cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white`}
+                aria-label="Next slide"
               >
                 <GoArrowRight />
               </button>
