@@ -140,7 +140,7 @@ export default function Infravisionaries() {
           <div className="w-container">
             <div className="flex  flex-row  items-center gap-2 md:gap-3">
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-white "></span>
-              <h5 className="font-medium text-white">Our core</h5>
+              <h5 className="font-medium text-white">Our Core</h5>
             </div>
             <div className="pt-4 md:pt-5 ">
               <h1 className="text-white font-medium">The Infravisionaries</h1>

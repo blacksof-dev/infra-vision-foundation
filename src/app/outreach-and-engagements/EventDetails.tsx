@@ -10,10 +10,10 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import image_01 from "@/../public/assets/infrapandit/eventImages/17_april_01.png";
-import image_02 from "@/../public/assets/infrapandit/eventImages/17_april_02.png";
-import image_03 from "@/../public/assets/infrapandit/eventImages/17_april_03.png";
-import image_04 from "@/../public/assets/infrapandit/eventImages/17_april_04.png";
+import image_01 from "@/../public/assets/outreach-and-engagements/eventImages/17_april_01.png";
+import image_02 from "@/../public/assets/outreach-and-engagements/eventImages/17_april_02.png";
+import image_03 from "@/../public/assets/outreach-and-engagements/eventImages/17_april_03.png";
+import image_04 from "@/../public/assets/outreach-and-engagements/eventImages/17_april_04.png";
 import { MdClose } from "react-icons/md";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -95,7 +95,7 @@ export default function EventDetailsPopup({ onClose, data }: { onClose: () => vo
                             {
                                 data?.details?.cta &&
                                 <div>
-                                    <Link href={data?.details?.cta?.link}
+                                    <Link target="_blank" href={data?.details?.cta?.link}
                                         className='pt-3 text-pink flex items-center gap-2 cursor-pointer  group'>
                                         {data?.details?.cta?.ctaText} <span className='flex justify-center items-center border border-lightgray rounded-sm p-1 group-hover:bg-pink group-hover:text-white group-hover:border-pink transition duration-300 ease-linear'><ArrowRight width={14} height={14} className='text-sm' /></span>
                                     </Link>

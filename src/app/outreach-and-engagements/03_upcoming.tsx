@@ -51,10 +51,10 @@ const Upcoming = () => {
             details: {
               date: "January 18, 2025, New Delhi",
               images: [
-                "/assets/infrapandit/eventImages/caira_01.png",
-                "/assets/infrapandit/eventImages/caira_02.png",
-                "/assets/infrapandit/eventImages/caira_03.png",
-                "/assets/infrapandit/eventImages/caira_04.png",
+                "/assets/outreach-and-engagements/eventImages/caira_01.png",
+                "/assets/outreach-and-engagements/eventImages/caira_02.png",
+                "/assets/outreach-and-engagements/eventImages/caira_03.png",
+                "/assets/outreach-and-engagements/eventImages/caira_04.png",
               ],
               content: `
               CAIRA’s first Roundtable on “Boosting India's agri exports by transforming infrastructure” brought together a distinguished assembly of public and private sector leaders. The event featured key decision-makers, including Subrata Gupta, Secretary of Food Processing; Santosh Sarangi, Director General of Foreign Trade; Abhishek Dev, Chairman of APEDA; and Siraj Hussain, former Union Agriculture Secretary and Chairman of CAIRA's Governing Council.\n
@@ -83,12 +83,12 @@ Notable industry voices included representatives from ITC, Tata Consumer Product
           {
             date: "17",
             dayTime: "Thursday",
-            meetingType: "Internal Meeting",
+            meetingType: "Internal engagements",
             desc: "Annual get-together",
             ctaText: "See details",
             details: {
               date: "April 17, 2025",
-              images: ["/assets/infrapandit/eventImages/dummy.png"],
+              images: ["/assets/outreach-and-engagements/eventImages/dummy.png"],
               content: `
                 
 The Infravision Community huddled to celebrate achievements and strengthen collaborative networks to advance India's infrastructure agenda. This annual gathering showcased the Foundation's growing influence while fostering deeper connections among policy practitioners and thought leaders.\n
@@ -121,7 +121,7 @@ The dual-purpose gathering strengthened the Foundation's governance while establ
             ctaText: "See details",
             details: {
               images: [
-                "/assets/infrapandit/eventImages/Conclave-cum-Buyer-Seller.png",
+                "/assets/outreach-and-engagements/eventImages/Conclave-cum-Buyer-Seller.png",
               ],
               date: "April 10, 2025",
 
@@ -139,7 +139,7 @@ The Infravision Foundation made a field visit and did a detailed report on the p
             ctaText: "See details",
             details: {
               images: [
-                "/assets/infrapandit/eventImages/High-level-roundtable-5.png",
+                "/assets/outreach-and-engagements/eventImages/High-level-roundtable-5.png",
               ],
               date: "April 8, 2025",
 
@@ -160,7 +160,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "April 1, 2025",
               images: [
-                "/assets/infrapandit/eventImages/Formal-presentation.png",
+                "/assets/outreach-and-engagements/eventImages/Formal-presentation.png",
               ],
               content: `
               The Infravision Foundation’s Co-Founder Rumjhum Chatterjee, CEO Jagan Shah, and Advocacy Head Kaveree Bamzai presented crucial findings to Union Environment Minister Shri Bhupender Yadav, recommending comprehensive reforms to the Compensatory Afforestation Management and Planning Authority (CAMPA). This collaborative research with The Energy and Resources Institute (TERI) identified systemic weaknesses, including poor fund utilisation, inadequate plantation outcomes, and fragmented institutional record-keeping.
@@ -190,7 +190,7 @@ The study identified Noida as having exceptional potential to become a model cit
                 link: "/infrapandit-awards",
               },
               images: [
-                "/assets/infrapandit/eventImages/InfraPandit-awards.png",
+                "/assets/outreach-and-engagements/eventImages/InfraPandit-awards.png",
               ],
               content: `
              The first InfraPandit Awards will honour and celebrate groundbreaking doctoral research critical for India's infrastructure growth. Discover future leaders shaping India's development.
@@ -206,7 +206,7 @@ The study identified Noida as having exceptional potential to become a model cit
             ctaText: "See details",
             details: {
               date: "June 10, 2025",
-              images: ["/assets/infrapandit/eventImages/dummy.png"],
+              images: ["/assets/outreach-and-engagements/eventImages/dummy.png"],
               cta: {
                 ctaText: "Watch video",
                 link: "https://www.youtube.com/watch?v=w6oJTRqeB4A",
@@ -225,7 +225,7 @@ The study identified Noida as having exceptional potential to become a model cit
             ctaText: "See details",
             details: {
               date: "June 5, 2025",
-              images: ["/assets/infrapandit/eventImages/dummy.png"],
+              images: ["/assets/outreach-and-engagements/eventImages/dummy.png"],
               cta: {
                 ctaText: "Watch video",
                 link: "https://www.youtube.com/watch?v=g5aA3Q3af1g&t=8s",
@@ -285,7 +285,7 @@ The study identified Noida as having exceptional potential to become a model cit
   return (
     <section className="blade-top-padding blade-bottom-padding-lg relative">
       <img
-        className="absolute opacity-60 top-0 right-0 hidden lg:block"
+        className="absolute opacity-60 z-0 top-0 right-0 hidden lg:block"
         src="/assets/outreach-and-engagements/highlight/circle.png"
         alt="Decorative Circle"
       />
@@ -301,7 +301,7 @@ The study identified Noida as having exceptional potential to become a model cit
             </h1>
           </div>
         </div>
-        <div className="blade-top-margin-sm blade-bottom-margin-sm p-2 border border-gray-300 bg-white rounded">
+        <div className="blade-top-margin-sm blade-bottom-margin-sm p-2 border border-gray-300 bg-white rounded relative">
           <InfrapanditAward
             ctaText="Register now"
             link="https://docs.google.com/forms/d/e/1FAIpQLSdjpffzJCT6qmQXNUmoUau7giN4qVTsm5j3ysGZ0r8QxiG05g/viewform?usp=sharing&ouid=118204303619309850521"
