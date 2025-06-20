@@ -8,7 +8,7 @@ export default function InfravisionTalks() {
       <Newsletter
         bgImage={infravisionfoundationBg}
         mobilebg={infravisionTalkMobile}
-        tag="Get involved"
+        tag="Get Involved"
         title="Engage and contribute to change with  <span class='font-medium text-white'> The Infravision Foundation</span>"
         desc="Join our family, ask questions, suggest solutions, and participate in building a resilient India."
         ctatext="Connect with us"
