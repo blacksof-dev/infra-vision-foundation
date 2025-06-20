@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Image from "next/image"
 const Pathway = () => {
   return (
     <section className="blade-top-padding blade-bottom-padding-lg w-container">
@@ -31,10 +31,15 @@ const Pathway = () => {
         />
       </div>
       <div className="sm:hidden flex justify-center ">
-        <img
+        <Image
           className="w-full h-full"
+          width={1000}
+          height={1000}
           src="/assets/about-us/pulse/mobileViewChat.png"
           alt="Project Pathway Chart"
+          quality={100}
+          unoptimized={true}
+       
         />
       </div>
     </section>

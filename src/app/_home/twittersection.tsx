@@ -17,7 +17,7 @@ export default function TwitterPost() {
           >
             <h5 className="text-pink">View more on</h5>
           </Link>
-          <div>
+          <div className="">
             <svg
               className="w-7 h-7 lg:w-10 lg:h-10"
               viewBox="0 0 42 42"

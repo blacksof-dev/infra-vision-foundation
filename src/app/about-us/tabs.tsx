@@ -10,7 +10,7 @@ const tabs: { id: TabId; label: string }[] = [
   { id: "who_we_are", label: "Who we are" },
   { id: "infravisionaries", label: "The Infravisionaries" },
   { id: "vision_and_mission", label: "Vision and Mission" },
-  { id: "our_pulse", label: "Our pulse" },
+  { id: "our_pulse", label: "Our Foundational Pillars" },
   { id: "project_pathway", label: "The project pathway" },
 ];
 
