@@ -26,15 +26,6 @@ export type TabItem = {
 
 const knowledge = [
   {
-    id: 1,
-    img: rail.src,
-    category: "Research Papers",
-    date: "January, 2025",
-    title: "The case for developing high-speed rail corridors in India",
-    subtitle: "Dr. Ramakrishnan T.S",
-    link: "/assets/home/whoWeAre/knowledge/The-Case-For-Developing-High-Speed-Rail-Corridors-In-India.pdf",
-  },
-  {
     id: 3,
     img: jagan.src,
     category: "Infravision Conversations",
@@ -46,9 +37,19 @@ const knowledge = [
     ctaText: "Watch now"
   },
   {
+    id: 1,
+    img: rail.src,
+    category: "Research Paper",
+    date: "January, 2025",
+    title: "The case for developing high-speed rail corridors in India",
+    subtitle: "Dr. Ramakrishnan T.S",
+    link: "/assets/home/whoWeAre/knowledge/The-Case-For-Developing-High-Speed-Rail-Corridors-In-India.pdf",
+  },
+
+  {
     id: 2,
     img: highway.src,
-    category: "Blogs",
+    category: "Blog",
     date: "September 25, 2023",
     title: "India Needs Sustainability Ratings for Infrastructure Projects",
     subtitle: "",
@@ -184,7 +185,7 @@ export const TabSwitch = ({
 
 export const TabContent = ({ data, link }: { data: TabItem[], link?: string }) => {
   return (<>
-    <div className="grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-2 sm:gap-8 lg:gap-9  md:blade-top-padding-sm">
+    <div className="grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-2 sm:gap-8 lg:gap-12  md:blade-top-padding-sm">
       {data.map((item) => (
         <Card
           key={item.id}

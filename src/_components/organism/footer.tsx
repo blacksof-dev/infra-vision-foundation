@@ -147,7 +147,7 @@ const Footer = () => {
                 <li className="flex items-center gap-3">
                   <div className="w-3 h-3 rounded-full bg-darkgray/30 "></div>
                   <span className="text-black hover:text-pink text-xl ">
-                    <Link href="/about-us">About us</Link>
+                    <Link href="/about-us">About Us</Link>
                   </span>
                 </li>
 
@@ -187,7 +187,8 @@ const Footer = () => {
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         href="/about-us#our-pulse"
-                        text="Our pulse"
+                        text="Our Foundational Pillars"
+
                       />
                     </li>
                     <li>
