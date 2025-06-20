@@ -129,7 +129,7 @@ function Header() {
     { label: "The Infravisionaries", href: "/about-us#infravisionaries" },
     { label: "Vision and Mission", href: "/about-us#mission-and-vision" },
     { label: "Our pulse", href: "/about-us#our-pulse" },
-    { label: "The project pathway", href: "/about-us#project-pathway" },
+    { label: "The Project Pathway", href: "/about-us#project-pathway" },
   ];
 
   const AdvocacyDropDown: NavItem[] = [
@@ -158,10 +158,10 @@ function Header() {
     <>
       <nav
         className={`fixed top-0 left-0 w-full transition-all ease-linear duration-200 px-0 sm:px-3 py-3 z-[9999] ${isMobile
+          ? "translate-y-0"
+          : showNavbar
             ? "translate-y-0"
-            : showNavbar
-              ? "translate-y-0"
-              : "-translate-y-full"
+            : "-translate-y-full"
           } ${showNavBg ? "bg-white " : "bg-transparent"} ${scrolled ? "bg-white" : ""
           }`}
       >

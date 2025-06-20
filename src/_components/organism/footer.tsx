@@ -24,7 +24,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 
 const newsletterSchema = z.object({
-  email: z.string().email({ message: "Please enter a valid email address" }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
   agree: z
     .boolean()
     .refine((val) => val, { message: "You must agree to receive updates." }),
@@ -197,7 +197,7 @@ const Footer = () => {
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         href="/about-us#project-pathway"
-                        text="The project pathway"
+                        text="The Project Pathway"
                       />
                     </li>
                   </ul>
