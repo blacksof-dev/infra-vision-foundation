@@ -2,10 +2,12 @@
 import Home from "./_home";
 
 
-export default function Page(){
-  return(
+
+
+export default function Page() {
+  return (
     <>
-     <Home />
+      <Home />
     </>
   )
 }

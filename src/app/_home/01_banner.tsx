@@ -17,7 +17,7 @@ export default function Banner() {
           </div>
           <div className="w-container">
             <div className="  absolute top-[24%]  md:top-[30%] xl:top-[25%]">
-              <div className="w-full   ">
+              <div data-aos="fade-up" className="w-full   ">
                 <h1 className="tracking-[-4%] font-light txt-black/90 ">
                   {" "}
                   An{" "}
