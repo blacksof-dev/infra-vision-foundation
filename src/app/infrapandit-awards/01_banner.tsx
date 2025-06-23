@@ -1,5 +1,5 @@
 import bannerBg from "@/../public/assets/infrapandit/bannerBg.png";
-import bannerBgMobile from "@/../public/assets/infrapandit/bannerBgMobile.png";
+import bannerBgMobile from "@/../public/assets/infrapandit/BannerBgMobile.png";
 import Banner from "@/_components/molecules/banner";
 
 export default function InfraPanditBanner() {
