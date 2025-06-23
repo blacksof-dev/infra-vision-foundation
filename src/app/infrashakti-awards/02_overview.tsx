@@ -47,7 +47,7 @@ export default function Overview() {
               <br /> practices across the nation
             </h1>
           </div>
-          <div className="w-full md:w-[60%] xl:w-[50%] pt-5">
+          <div className="w-full md:w-[60%]  xl:w-[50%] pt-5">
             <h6>
               The <span className="font-medium">InfraShakti Awards,</span> a
               flagship initiative of{" "}
@@ -60,10 +60,7 @@ export default function Overview() {
             </h6>
 
             <h6 className="pt-4">
-              It features seven outstanding winners for their best
-              infrastructure practices. They are selected based on a strict
-              matrix of collaboration, impact, replicability, sustainability,
-              and scalability.
+             Featuring seven outstanding winners for best infrastructure practices fulfilling a strict matrix of collaboration, innovation, replicability, sustainability and scalability.
             </h6>
           </div>
         </div>
@@ -172,7 +169,7 @@ const OberviewDetails = [
     image: ruralInfra,
     title: "Rural Infra Pioneer Award",
     description:
-      "For inventive and high-impact initiativ es in rural infrastructure that significantly improve liveability across India’s hinterlands.",
+      "For inventive and high-impact initiatives in rural infrastructure that significantly improve liveability across India’s hinterlands.",
     logo: ruralInfraAward,
   },
   {
