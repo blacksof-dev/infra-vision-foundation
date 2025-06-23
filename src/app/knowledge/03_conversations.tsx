@@ -36,7 +36,7 @@ const people = [
       "https://www.youtube.com/watch?v=g5aA3Q3af1g&list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em&index=8&ab_channel=TheInfravisionFoundation",
     name: "Jagan Shah",
     title:
-      "The Infravision Foundation CEO and senior expert in urban development policy, Jagan Shah",
+      "The Infravision Foundation CEO and senior expert in urban development policy",
     desc: "Why India needs a national plan to build new cities",
   },
   {

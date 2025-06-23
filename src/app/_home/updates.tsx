@@ -63,11 +63,11 @@ export default function Updates() {
               el: ".custom-pagination-bullets-banner",
               // type: "fraction",
             }}
-            //  loop
-            // autoplay={{
-            //   delay: 3000,
-            //   disableOnInteraction: false, 
-            // }}
+             loop
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false, 
+            }}
             grabCursor={true}
             speed={500}
             centeredSlides={false}

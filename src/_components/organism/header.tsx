@@ -236,15 +236,16 @@ function Header() {
                   onMouseEnter={() => setOpenDropdown("Advocacy")}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <span className="text-darkgray flex justify-center items-center gap-2 text-lg cursor-pointer hover:text-pink">
+                 
+                  <button className="text-darkgray flex justify-center items-center gap-2 text-lg cursor-pointer hover:text-pink">
                     Advocacy
                     {openDropdown === "Advocacy" ? (
                       <GoChevronUp />
                     ) : (
                       <GoChevronDown />
                     )}
-                  </span>
-
+                  </button>
+                
                   <AnimatePresence>
                     {openDropdown === "Advocacy" && (
                       <motion.div
@@ -283,14 +284,16 @@ function Header() {
                   onMouseEnter={() => setOpenDropdown("Knowledge")}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <span className="text-darkgray text-lg flex justify-center items-center gap-2 cursor-pointer hover:text-pink">
+                  <Link href="/knowledge">
+                  <button className="text-darkgray text-lg flex justify-center items-center gap-2 cursor-pointer hover:text-pink">
                     Knowledge
                     {openDropdown === "Knowledge" ? (
                       <GoChevronUp />
                     ) : (
                       <GoChevronDown />
                     )}
-                  </span>
+                  </button>
+                  </Link>
 
                   <AnimatePresence>
                     {openDropdown === "Knowledge" && (
@@ -330,14 +333,16 @@ function Header() {
                   onMouseEnter={() => setOpenDropdown("Archives")}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <span className="text-darkgray flex justify-center items-center gap-2 text-lg cursor-pointer hover:text-pink">
+                  <Link href="/archive">
+                  <button className="text-darkgray flex justify-center items-center gap-2 text-lg cursor-pointer hover:text-pink">
                     Archives
                     {openDropdown === "Archives" ? (
                       <GoChevronUp />
                     ) : (
                       <GoChevronDown />
                     )}
-                  </span>
+                  </button>
+                  </Link>
 
                   <AnimatePresence>
                     {openDropdown === "Archives" && (

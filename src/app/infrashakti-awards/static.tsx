@@ -93,6 +93,15 @@ export const jury = [
      link:"https://in.linkedin.com/in/renu-sud-karnad-41bb2112a",
       socialMedia:"linkedin"
   },
+   {
+    image: bibek,
+    title: "The late Dr Bibek Debroy",
+    desig:
+      "Chairman, Economic Advisory Council, Prime Minister of India",
+      link:"https://x.com/bibekdebroy?lang=en",
+      socialMedia:"X"
+      
+  },
   {
     image: gul,
     title: "Ms Gul Panag",
@@ -102,15 +111,7 @@ export const jury = [
       socialMedia:"X"
      
   },
-  {
-    image: bibek,
-    title: "The late Dr Bibek Debroy",
-    desig:
-      "Chairman, Economic Advisory Council, Prime Minister of India",
-      link:"https://x.com/bibekdebroy?lang=en",
-      socialMedia:"X"
-      
-  },
+ 
   {
     image: raghuram,
     title: "Prof G Raghuram",
