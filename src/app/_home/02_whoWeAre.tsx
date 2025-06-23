@@ -50,7 +50,7 @@ const knowledge = [
     id: 2,
     img: highway.src,
     category: "Blog",
-    date: "September 25, 2023",
+    date: "September, 2023",
     title: "India Needs Sustainability Ratings for Infrastructure Projects",
     subtitle: "",
     link: "https://theinfravisionfoundation.org/2023/09/25/india-needs-sustainability-ratings-for-infrastructure-projects/",
@@ -61,7 +61,7 @@ const advocacy = [
   {
     id: 1,
     img: infraKatha.src,
-    category: "InfraKatha",
+    category: "Infrakatha",
     title:
       "A forum of conversations with cross-sectoral experts aimed at mainstreaming the discourse around infrastructure.",
     link: "/infrakatha",

@@ -88,7 +88,7 @@ export default function Spotlight() {
                     </div>
                     <div className="border-l-1   border-white">
                       <div className="ms-4">
-                        <p className="text-white">Infravisionary Award</p>
+                        <h6 className="text-white font-medium">Infravisionary Award</h6>
                         <h6 className="text-white">Sudhanshu Mani</h6>
                       </div>
                     </div>
@@ -137,7 +137,7 @@ const videoCard = [
     awardName: "Water Saviour Award",
     name: "Arun Krishnamurthy, EFI ",
     link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=14821&end=14880",
-    title: "From Decomposing to Regenerating",
+    title: "From decomposing to regenerating",
     logo: infraShaktiAward.src,
     awardslogo: waterSaviourAward.src,
     desc: " For engaging and empowering local communities to replenish 460+ lakes and water bodies in their neighbourhood across 18 states.",
@@ -146,7 +146,7 @@ const videoCard = [
   {
     thumbnailImage: sandeep.src,
     awardName: "Urban Infra Hero Award",
-    name: "Sandeep Patel, NEPRA Resource Management Pvt. Ltd",
+    name: "Sandeep Patel, NEPRA Resource Management Pvt Ltd",
     link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=14132&end=14161",
     title: "Making waste useful",
     logo: infraShaktiAward.src,
@@ -190,7 +190,7 @@ const videoCard = [
   },
    {
     thumbnailImage: swarnalatha.src,
-    awardName: "Renewable Energy Star Award",
+    awardName: "People’s Choice Award for Inclusive Infrastructure",
     name: "Swarnalatha J, Swarga Foundation",
     link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=15332&end=15430",
     title: "Ensuring accessibility",

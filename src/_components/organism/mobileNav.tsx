@@ -44,7 +44,7 @@ export default function Mobilenav({ onClose }: { onClose: () => void }) {
                     href="/about-us#who-we-are"
                     className="text-darkgray font-poppins"
                   >
-                    Who we are
+                    Who We Are
                   </Link>
                 </li>
                 <li>

@@ -85,9 +85,9 @@ export default function Gallery() {
           </div>
           <div className="py-2 ">
             <h1 className="text-black  font-light">
-              In frames
+              In frames{" "}
               <span className="text-black/90 font-medium ">
-                —The spirit of change
+                — The spirit of change
               </span>
             </h1>
           </div>

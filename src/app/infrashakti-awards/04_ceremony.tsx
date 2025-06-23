@@ -91,14 +91,15 @@ function VideoCard({ data }: { data: VideoCard[] }) {
                   >
                     <FaPlay className="text-pink text-lg group-hover:text-white" />
                   </button>
-                </div>
+                </div> 
+                
                 <div className="w-full h-auto  absolute bottom-0">
-                  <div>
+                  <div className="">
                     <ul className="text-white font-semibold list-disc pl-3 md:pl-5 list-inside text-lg">
                       <li className="">{ele.title}</li>
                     </ul>
                   </div>
-                  <div className="text-white  pl-3 md:pl-5 py-2">
+                  <div className="text-white  pl-3 md:pl-5 py-2  md:h-[7rem]">
                     <p className="text-base sm:text-md">{ele.name}</p>
                     <p className="text-base sm:text-md">{ele.designation}</p>
                   </div>

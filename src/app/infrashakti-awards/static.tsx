@@ -87,9 +87,9 @@ export const Preeminent = [
 export const jury = [
     {
     image: renu,
-    title: "Mrs Renu Sud Karnad",
+    title: "Ms Renu Sud Karnad",
     desig:
-      "Chairperson, GSK Pharmaceuticals; Former MD, HDFC",
+      "Chairperson, GSK Pharmaceuticals and Former MD, HDFC",
      link:"https://in.linkedin.com/in/renu-sud-karnad-41bb2112a",
       socialMedia:"linkedin"
   },
@@ -104,7 +104,7 @@ export const jury = [
   },
   {
     image: bibek,
-    title: " Dr Bibek Debroy",
+    title: "The late Dr Bibek Debroy",
     desig:
       "Chairman, Economic Advisory Council, Prime Minister of India",
       link:"https://x.com/bibekdebroy?lang=en",

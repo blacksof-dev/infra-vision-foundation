@@ -20,8 +20,8 @@ export default function Updates() {
   const [isLastSlide, setIsLastSlide] = useState(false);
 
   const handleSlideChange = (swiper: SwiperClass) => {
-    // setIsFirstSlide(swiper.isBeginning);
-    // setIsLastSlide(swiper.isEnd);
+    setIsLastSlide(swiper.isEnd);
+    setIsFirstSlide(swiper.isBeginning);
   };
 
   return (
@@ -33,13 +33,15 @@ export default function Updates() {
             <h4 className="text-white me-4 text-nowrap ">Latest updates</h4>
             <div className="flex gap-5 py-4 justify-center  lg:justify-start md:gap-4 ">
               <button
-                className={`swiper-solution-prev-btn-hero cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink
+                disabled={isFirstSlide}
+                className={`swiper-solution-prev-btn-hero disabled:opacity-50 cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink
                 }`}
               >
                 <GoArrowLeft />
               </button>
               <button
-                className={`swiper-solution-next-btn-hero cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink
+                disabled={isLastSlide}
+                className={`swiper-solution-next-btn-hero disabled:opacity-50 cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink
                 }`}
               >
                 <GoArrowRight />
@@ -61,7 +63,11 @@ export default function Updates() {
               el: ".custom-pagination-bullets-banner",
               // type: "fraction",
             }}
-            loop
+            //  loop
+            // autoplay={{
+            //   delay: 3000,
+            //   disableOnInteraction: false, 
+            // }}
             grabCursor={true}
             speed={500}
             centeredSlides={false}
@@ -125,7 +131,7 @@ export default function Updates() {
                           </h5>
 
                           <button
-                            className={`rounded-sm p-1 cursor-pointer  relative overflow-hidden md:p-2 border-2 bg-white border-white group-hover:border-transparent   w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 group-hover:bg-pink `}
+                            className={`rounded-sm p-1 cursor-pointer   relative overflow-hidden md:p-2 border-2 bg-white border-white group-hover:border-transparent   w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 group-hover:bg-pink `}
                           >
                             <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
                             <GoArrowRight

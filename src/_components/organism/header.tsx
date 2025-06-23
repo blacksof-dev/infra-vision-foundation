@@ -129,7 +129,7 @@ function Header() {
   };
 
   const AboutUsDropDown: NavItem[] = [
-    { label: "Who we are", href: "/about-us#who-we-are" },
+    { label: "Who We Are", href: "/about-us#who-we-are" },
     { label: "The Infravisionaries", href: "/about-us#infravisionaries" },
     { label: "Vision and Mission", href: "/about-us#mission-and-vision" },
     { label: "Our Foundational Pillars", href: "/about-us#our-pulse" },

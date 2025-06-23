@@ -159,7 +159,7 @@ const Footer = () => {
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         href="/about-us#who-we-are"
-                        text="Who we are"
+                        text="Who We Are"
                       />
                     </li>
                     <li>
@@ -245,7 +245,7 @@ const Footer = () => {
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         href="/outreach-and-engagements"
-                        text="Outreach and Engagement"
+                        text="Outreach and Engagements"
                       />
                     </li>
                   </ul>
@@ -385,10 +385,11 @@ const Footer = () => {
           </div>
 
           <div className="flex sm:flex-row  flex-col justify-between py-5  lg:pt-9 ">
-            <div className=" my-auto">
+            <div className=" my-auto ">
               <p className="text-darkgray/80   smallText">
                 Copyright 2025. All rights reserved.
               </p>
+              <Link href="https://www.blacksof.com/"><p className="text-darkgray/80 smallText py-1 sm:py-2 underline underline-offset-1">Made by <span className="font-semibold">Blacksof</span></p></Link>
             </div>
             <div className="flex flex-row gap-5   justify-start sm:justify-center sm:items-center pt-4 sm:pt-0">
               <h5 className="text-darkgray/60 mr-5 sm:block hidden  ">

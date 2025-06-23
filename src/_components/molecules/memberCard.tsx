@@ -18,8 +18,8 @@ export const MemberCard = ({ image, title, desig, link, socialMedia }: MemberCar
         src={image}
         alt={title}
         className="w-full h-full object-cover rounded"
-        unoptimized={true}
-        quality={100}
+        // unoptimized={true}
+        quality={90}
       />
       <div className="absolute bottom-0 left-0 w-[17rem]">
         {(link && socialMedia) && (

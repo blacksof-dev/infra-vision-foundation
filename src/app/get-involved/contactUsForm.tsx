@@ -160,6 +160,8 @@ export default function ContactForm() {
                   <div className="flex sm:flex-row flex-col gap-2 sm:gap-3 md:gap-4  w-full mb-2 md:mb-4">
                     <div className="w-full">
                       <Input
+                       pattern="[A-Za-z\s]*"
+                        type="text"
                         id="firstName"
                         placeholder="First name*"
                         {...register("firstName")}
@@ -172,6 +174,8 @@ export default function ContactForm() {
                     </div>
                     <div className="w-full">
                       <Input
+                       pattern="[A-Za-z\s]*"
+                        type="text"
                         id="lastName"
                         placeholder="Last name*"
                         {...register("lastName")}
@@ -279,6 +283,7 @@ export default function ContactForm() {
                   {/* textarea */}
                   <div>
                     <Textarea
+                     
                       id="message"
                       placeholder="Message "
                       {...register("message")}
