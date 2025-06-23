@@ -62,6 +62,7 @@ export default function Infravisionaries() {
   const [carddata, setcarddata] = useState<CardData[]>([]);
   const [showPopup, setShowPopup] = useState<boolean>(false);
   const [popupData, setPopUpData] = useState<CardData | undefined>();
+
   const handleSlideChange = (swiper: SwiperClass) => {
     setIsLastSlide(swiper.isEnd);
     setIsFirstSlide(swiper.isBeginning);
@@ -151,7 +152,7 @@ export default function Infravisionaries() {
                 </div>
               </div>
               <div className="w-full lg:w-[50%] pt-4 md:pt-0 xl:w-[45%]">
-                <div >
+                <div>
                   <h6 className="text-black  tracking-[1%]">
                     <span className="font-semibold">
                       {" "}
@@ -160,7 +161,7 @@ export default function Infravisionaries() {
                     is a confluence of seasoned thought leaders and experts from
                     across the infrastructure domain.
                   </h6>
-                  <h6 className="text-black  tracking-[1%] ">
+                  <h6 className="text-black  tracking-[1%] pt-3">
                     It draws strength from the collective wisdom and a shared
                     purpose. As a flagbearer of thought leadership in India’s
                     infrastructural landscape, The Infravision Foundation is
@@ -208,8 +209,8 @@ export default function Infravisionaries() {
                   className="!pl-10%"
                   watchOverflow={true}
                   navigation={{
-                    prevEl: ".swiper-prev-btn-members",
-                    nextEl: ".swiper-next-btn-members",
+                    prevEl: ".swiper-prev-btn-aboutUs",
+                    nextEl: ".swiper-next-btn-aboutUs",
                   }}
                   grabCursor={true}
                   spaceBetween={10}
@@ -255,13 +256,15 @@ export default function Infravisionaries() {
               </div>
               <div className="flex pt-3 pr-1 h-[80px] flex-wrap gap-5 mt-4 justify-end md:gap-4 2xl:mt-1">
                 <button
-                  className={`swiper-prev-btn-members  cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white   transition-all duration-300 ease-linear`}
+                  disabled={isFirstSlide}
+                  className={`swiper-prev-btn-aboutUs disabled:opacity-50  cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white   transition-all duration-300 ease-linear`}
                   aria-label="Previous slide"
                 >
                   <GoArrowLeft />
                 </button>
                 <button
-                  className={`swiper-next-btn-members  cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white  transition-all duration-300 ease-linear`}
+                  disabled={isLastSlide}
+                  className={`swiper-next-btn-aboutUs  disabled:opacity-50 cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white  transition-all duration-300 ease-linear`}
                   aria-label="Next slide"
                 >
                   <GoArrowRight />
@@ -335,6 +338,9 @@ export const MobileMembersSlider = ({
   popupData,
   showPopup,
 }: MobileMembersSliderProps) => {
+  const [isLastSlide, setIsLastSlide] = useState(false);
+  const [isFirstSlide, setIsFirstSlide] = useState(true);
+
   useEffect(() => {
     if (showPopup) {
       document.body.style.overflow = "hidden";
@@ -342,6 +348,11 @@ export const MobileMembersSlider = ({
       document.body.style.overflow = "";
     }
   }, [showPopup]);
+
+  const handleSlideChange = (swiper: SwiperClass) => {
+    setIsLastSlide(swiper.isEnd);
+    setIsFirstSlide(swiper.isBeginning);
+  };
 
   return (
     <div className="md:hidden block pb-7 px-3 overflow-hidden">
@@ -364,9 +375,10 @@ export const MobileMembersSlider = ({
           slidesPerView={1.1}
           centeredSlides={false}
           navigation={{
-            prevEl: `.prevbtn${navClass}`,
-            nextEl: `.nextbtn${navClass}`,
+            prevEl: ".swiper-prev-btn-aboutUs-mobile",
+            nextEl: ".swiper-next-btn-aboutUs-mobile",
           }}
+          onSlideChange={handleSlideChange}
           breakpoints={{
             425: { slidesPerView: 1.3, spaceBetween: 10 },
             640: { slidesPerView: 1.5, spaceBetween: 20 },
@@ -407,13 +419,15 @@ export const MobileMembersSlider = ({
       <div className="flex flex-row justify-end mt-4 ">
         <div className="flex w-fit gap-3">
           <button
-            className={`prevbtn${navClass} cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white`}
+            disabled={isFirstSlide}
+            className={`swiper-prev-btn-aboutUs-mobile disabled:opacity-50  cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white`}
             aria-label="Previous slide"
           >
             <GoArrowLeft />
           </button>
           <button
-            className={`nextbtn${navClass} cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white`}
+            disabled={isLastSlide}
+            className={`swiper-next-btn-aboutUs-mobile disabled:opacity-50  cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white`}
             aria-label="Next slide"
           >
             <GoArrowRight />

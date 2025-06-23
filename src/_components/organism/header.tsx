@@ -140,7 +140,7 @@ function Header() {
     { label: "InfraShakti Awards", href: "/infrashakti-awards" },
     { label: "Infrakatha", href: "/infrakatha" },
     { label: "InfraPandit Awards", href: "/infrapandit-awards" },
-    { label: "Outreach and Engagement", href: "/outreach-and-engagements" },
+    { label: "Outreach and Engagements", href: "/outreach-and-engagements" },
   ];
 
   const KnowledgeDropDown: NavItem[] = [

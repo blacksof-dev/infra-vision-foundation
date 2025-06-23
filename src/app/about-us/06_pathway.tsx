@@ -26,7 +26,7 @@ const Pathway = () => {
       <div className="overflow-x-auto sm:block hidden">
         <img
           className="min-w-[600px] sm:min-w-[700px] md:min-w-0 w-full h-auto"
-          src="/assets/about-us/pulse/chart.png"
+          src="/assets/about-us/pulse/chart.svg"
           alt="Project Pathway Chart"
         />
       </div>
@@ -35,7 +35,7 @@ const Pathway = () => {
           className="w-full h-full"
           width={1000}
           height={1000}
-          src="/assets/about-us/pulse/mobileViewChat.png"
+          src="/assets/about-us/pulse/mobileViewChat.svg"
           alt="Project Pathway Chart"
           quality={100}
           unoptimized={true}

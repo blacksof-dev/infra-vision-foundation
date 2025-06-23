@@ -418,7 +418,7 @@ As an independent director, Mr Cherian serves on the boards of prominent organis
   },
   {
     image: GeetanjaliKirloskar,
-    title: "Geetanjali Vikram Kirloskar",
+    title: "Geetanjali V. Kirloskar",
     desig: "Member, Council of Advisors",
     link: "https://www.linkedin.com/in/geetanjali-kirloskar-b04203154/",
     socialMedia: "linkedin",

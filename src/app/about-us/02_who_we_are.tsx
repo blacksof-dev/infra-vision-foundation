@@ -31,7 +31,7 @@ const WhoWeAre = () => {
                 investments.
               </h4>
 
-              <h4 className="text-white py-3">
+              <h4 className="text-white font-light py-3">
                 The Foundation was set in 2022 and is driven by renowned thought
                 leaders and experts from different dimensions of infrastructure.
                 Together, they advocate transformative solutions through

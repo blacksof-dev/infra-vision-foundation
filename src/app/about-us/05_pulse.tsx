@@ -25,7 +25,7 @@ const Pulse = () => {
         {
             icon: "/assets/about-us/pulse/icon-2.svg",
             title: "Knowledge",
-            desc: "To deconstruct key infrastructure issues with in-depth evaluation, analysis, and recommendations across the spectrum."
+            desc: "To inform and shape public policymaking in infrastructure, leveraging insights and counsel from national and international domain experts."
         },
         {
             icon: "/assets/about-us/pulse/icon-3.svg",
@@ -48,10 +48,10 @@ const Pulse = () => {
                     </div>
                 </div>
                 <div className="w-full md:w-[45%]">
-                    <h6 className="text-black  tracking-[1%] mb-4 text-sm xl:text-lg">
-                        To become ‘Viksit Bharat’ by 2047, India needs to address its infrastructure gaps swiftly and efficiently through proportionate, need-specific developments. Developments that are innovative, inclusive, steadfast, and sustainable. This demands an active link between policymakers, private institutions, and citizens through increased awareness and collaboration.
+                    <h6 className="text-black font-light tracking-[1%] mb-4 text-sm xl:text-lg">
+                       To become ‘Viksit Bharat’ by 2047, India needs to address its infrastructure gaps swiftly and efficiently through proportionate, need-specific developments. Developments that are innovative, inclusive, steadfast, and sustainable. This demands active collaboration among policymakers, the private sector, and citizens, driven by increased awareness.
                     </h6>
-                    <h6><span className='font-medium text-sm xl:text-lg'>The Infravision Foundation</span> thrusts this journey forward with pragmatic reasoning, remedial approach, and strategic advocacy. The fluent voice of wisdom here stands on three essential pillars.</h6>
+                    <h6 className="font-light text-black"><span className='font-medium text-sm xl:text-lg'>The Infravision Foundation</span> fosters this link, upholding an impartial and enlightened voice of reason through its three essential pillars.</h6>
                 </div>
             </div>
             <div className='w-container'>

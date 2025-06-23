@@ -56,11 +56,11 @@ export default function Association() {
               </Link>
               <h5 className="text-white font-light flex flex-row z-[22]">
                 <RiArrowRightSLine className="text-[24px]" />
-                About us
+                About Us
               </h5>
             </div>
             <div className="  w-full ">
-              <h1 className="text-white font-medium ">About us</h1>
+              <h1 className="text-white font-medium ">About Us</h1>
               <div className={` py-2 sm:py-4 w-full  max-w-lg`}>
                 <h5 className="text-white font-light ">
                   Nation at heart. Infrastructure in mind.<br/> Economic prosperity

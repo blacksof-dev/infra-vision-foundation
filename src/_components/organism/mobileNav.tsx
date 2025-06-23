@@ -34,7 +34,7 @@ export default function Mobilenav({ onClose }: { onClose: () => void }) {
           <AccordionItem value="about">
             <AccordionTrigger className="py-4 text-lg text-left text-darkgray">
 
-              About us
+              About Us
 
             </AccordionTrigger>
             <AccordionContent>
@@ -119,7 +119,7 @@ export default function Mobilenav({ onClose }: { onClose: () => void }) {
                     href="/outreach-and-engagements"
                     className="text-darkgray font-poppins "
                   >
-                    Outreach and engagement
+                    Outreach and Engagements
                   </Link>
                 </li>
               </ul>
