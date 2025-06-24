@@ -786,7 +786,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "Mar 4, 2023",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/march4_2023.png",
                 ,
               ],
               content: `
@@ -828,7 +828,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "July 2 and 3, 2023",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/july2&3_2023.png",
                 ,
               ],
               content: `
@@ -860,7 +860,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "August 27, 2023",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/aug27_2023.png",
                 ,
               ],
               content: `
@@ -889,7 +889,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "September 18, 2023",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/sept18_2023.png",
                 ,
               ],
               content: `
@@ -910,7 +910,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "Sep 15, 2023",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/sep15_2023.png",
                 ,
               ],
               content: `
@@ -939,9 +939,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "October 7, 2023",
               images: [
-                "/assets/outreach-and-engagements/eventImages/december1_2023.png",
-                "/assets/outreach-and-engagements/eventImages/december2_2023.png",
-                "/assets/outreach-and-engagements/eventImages/december3_2023.png",
+                "/assets/outreach-and-engagements/eventImages/oct7_2023.png",
               ],
               content: `
                   
@@ -962,7 +960,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "Oct 11, 2023",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/oct11_2023.png",
                 ,
               ],
               content: `
@@ -988,7 +986,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "Oct 11, 2023",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/octImg2_11_2023.png",
                 ,
               ],
               content: `
@@ -1020,7 +1018,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "November 14, 2023",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/nov14_2023.png",
                 ,
               ],
               content: `
@@ -1050,9 +1048,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "December 4, 2023",
               images: [
-                "/assets/outreach-and-engagements/eventImages/december1_2023.png",
-                "/assets/outreach-and-engagements/eventImages/december2_2023.png",
-                "/assets/outreach-and-engagements/eventImages/december3_2023.png",
+                "/assets/outreach-and-engagements/eventImages/dec4_2023.png",
               ],
               content: `
                   
