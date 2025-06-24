@@ -209,7 +209,7 @@ The study identified Noida as having exceptional potential to become a model cit
           {
             date: "10",
             dayTime: "Tuesday",
-            meetingType: "External engagements",
+            meetingType: "Virtual Conversations",
             desc: "Infra projects in India are invariably only 90% complete",
             ctaText: "See details",
             details: {
@@ -231,7 +231,7 @@ The study identified Noida as having exceptional potential to become a model cit
           {
             date: "5",
             dayTime: "Thursday",
-            meetingType: "External engagements",
+            meetingType: "Virtual Conversations",
             desc: "Why India needs a national plan to build new cities",
             ctaText: "See details",
             details: {
