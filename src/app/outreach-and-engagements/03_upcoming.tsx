@@ -243,7 +243,7 @@ The study identified Noida as having exceptional potential to become a model cit
           {
             date: "10",
             dayTime: "Tuesday",
-            meetingType: "External engagements",
+            meetingType: "Virtual Conversations",
             desc: "Infra projects in India are invariably only 90% complete",
             ctaText: "See details",
             details: {
@@ -268,7 +268,7 @@ The study identified Noida as having exceptional potential to become a model cit
           {
             date: "5",
             dayTime: "Thursday",
-            meetingType: "External engagements",
+            meetingType: "Virtual Conversations",
             desc: "Why India needs a national plan to build new cities",
             ctaText: "See details",
             details: {
@@ -333,14 +333,9 @@ The study identified Noida as having exceptional potential to become a model cit
                 
                 "/assets/outreach-and-engagements/eventImages/januray12_2024.png",
               ],
-              content: `
-                  
+              content: `               
               Join energy expert Nitin Zamre as he discusses India's evolving energy landscape with Kaveree Bamzai, Head of Advocacy at The Infravision Foundation. The discussion highlights the ongoing reliance on coal despite a strong push for renewable energy. While coal provides domestic energy security, its use is slowly declining as India commits to cleaner sources and emission reduction targets.\n
               The discussion also touches upon the uneven access to 24/7 power and the decreasing cost of solar energy. Ultimately, the conversation underscores a shift towards a diversified energy mix, with a notable acceleration in electric vehicle adoption and the potential for decentralised, solar-powered solutions to empower rural communities.\n
-            
-
-
-    
               `,
               cta: {
                 ctaText: "Watch video",
@@ -363,18 +358,12 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "February 17, 2024",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/feb17_2024.png",
               ],
-              content: `
-                  
+              content: `   
                 The Infravision Foundation’s third quarterly meeting provided fascinating insights into ongoing and future projects.\n
                Among the members of the Council of Advisers and Distinguished Fellows who attended for the first time were former Planning Commission member Arun Maira, Toyota Kirloskar Systems Chairperson Geetanjali Kirloskar, JM Financial Vice Chairman Vishal Kampani, former DG Namami Gange Rajiv Ranjan Mishra, and SBI Chief Economic Adviser Soumya Kanti Ghosh.\n
                Many new ideas were born, and many died a quick death. A defining insight emerged: "Do not gauge your impact by what the government says but by how you impact people." This principle now guides the Foundation's approach to measuring meaningful change in India's infrastructure landscape.
-
-
-
-    
               `,
             },
           },
@@ -393,8 +382,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "March 22, 2024",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/march22_2024.png",
               ],
               content: `
                   
@@ -430,11 +418,6 @@ The study identified Noida as having exceptional potential to become a model cit
               content: `
                Join Anita Mani, founder of Indian Pitta Books, as she converses with Kaveree Bamzai, Head of Advocacy at The Infravision Foundation, in this Infravision Conversation.\n
                Mani discusses the critical need for biodiversity and natural spaces within urban environments, highlighting the alarming rate at which green habitats are disappearing due to unchecked urbanisation, citing the poignant example of the Basai wetland. She advocates for allowing wild places to simply "be", rather than converting them into manicured parks or tourism complexes. The discussion also touches upon the limitations of "compensatory afforestation" and praises successful models like the Aravalli Biodiversity Park, arguing for a shift in urban planning philosophy to prioritise ecological preservation alongside development.
-             
-
-
-
-   
               `,
               cta: {
                 ctaText: "Watch video",
@@ -459,13 +442,6 @@ The study identified Noida as having exceptional potential to become a model cit
               Join Gita Balakrishnan, an architect and author, as she converses with Kaveree Bamzai, Head of Advocacy at The Infravision Foundation, in this Infravision Conversation. Balakrishnan discusses her book, "1700 in 70: A Walk for a Cause," which chronicles her 70-day, 1,700-kilometre walk from Kolkata to Delhi\n
               The interaction highlights Balakrishnan's motivation to experience India on foot and understand its diverse realities, particularly concerning urban design, infrastructure, and social dynamics. She discusses six key areas of focus identified during her walk, including the plight of construction workers, the need for Universal Design and design literacy, the preservation of traditional wisdom, and environmental concerns.\n
               The conversation also delves into Balakrishnan's remarkable resilience in overcoming personal trauma and her commitment to fostering empathy and driving policy change through her work.
-
-
-             
-
-
-
-   
               `,
               cta: {
                 ctaText: "Watch video",
@@ -495,10 +471,6 @@ The study identified Noida as having exceptional potential to become a model cit
                  Catch renowned mythologist Devdutt Pattanaik and The Infravision Foundation’s Founder and Managing Trustee Vinayak Chatterjee in the inaugural session of InfraKatha.\n
                  The discussion on the topic “Mythology & Infrastructure" evolves into an awe-inspiring journey of thoughts, facts, and perspectives. They delve into the profound connections between ancient Indian mythology and the concept of infrastructure.\n
                  Pattanaik emphasises that infrastructure is a man-made phenomenon shaped by underlying belief systems, trade, and the human need for connection. Through mythical stories and historical examples, from the Ram Setu to the ancient Harappan cities, the discussion explores the philosophical and practical aspects of building, exchanging, and coexisting, underscoring that true societal well-being stems from a mindset of "give and receive."
-
-
-
-   
               `,
               cta: {
                 ctaText: "Watch video",
@@ -517,7 +489,7 @@ The study identified Noida as having exceptional potential to become a model cit
               date: "June 13, 2024, New Delhi",
               images: [
                 "/assets/outreach-and-engagements/eventImages/dummy.png",
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+            
               ],
               content: `
                  The Municipal Finance Champions Lab on Integrated Wastewater Management and Circularity convened key stakeholders across government, industry, and academia to accelerate project preparation for water reuse in Indian cities. Organised by The Infravision Foundation and The World Bank, the Lab underscored the urgent need to address urban water scarcity through innovative, finance-ready reuse projects.
@@ -539,8 +511,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "July 3, 2024",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/july3_2024.png",
               ],
               content: `
                   The NDTV Infra Shakti Awards 2024 is a significant initiative by The Infravision Foundation in association with NDTV, dedicated to promoting equitable and sustainable infrastructure development across India. Watch the first edition of the awards celebrate "change makers" — individuals, institutions, and projects — that have made substantial contributions to improving connectivity, livability, and sustainability within the nation's infrastructure landscape   
@@ -556,13 +527,12 @@ The study identified Noida as having exceptional potential to become a model cit
 
             dayTime: "Friday",
             meetingType: "External engagements",
-            desc: "Infrashakti Awards: The first edition",
+            desc: "Inclusive infrastructure with Dr Deepa Malik",
             ctaText: "See details",
             details: {
               date: "July 5, 2024",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/july5_2024.png",
               ],
               content: `
                  The second session of Infrakatha featured Dr Deepa Malik, para-athlete, former President of the Paralympic Committee of India, and a prominent figure in inclusive infrastructure and disability advocacy.\n
@@ -585,8 +555,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "July 26, 2024",
               images: [
-                "/assets/outreach-and-engagements/eventImages/august1_2024.png",
-                "/assets/outreach-and-engagements/eventImages/august2_2024.png",
+                "/assets/outreach-and-engagements/eventImages/july26_2024.png",
               ],
               content: `
                  Join eminent author Gurcharan Das and “Image Guru” Dilip Cherian in this InfraKatha session as they delve into "Indian infrastructure: The difficulty of being good." They explore India's economic journey since 1991, highlighting impressive growth in services and agriculture, contrasting it with a critical failure in manufacturing.\n
@@ -681,8 +650,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "September 17, 2024",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/september17_2024.png",
               ],
               content: `
               Catch Aman Nath, founder of Nimrana Hotels and a renowned expert in heritage tourism, at Infrakatha. The discussion highlights the nation's often poor relationship with its rich historical sites due to a lack of investment, imaginative marketing, and a "colonised mindset." Nath advocates for a "revitalisation" approach, transforming ruined sites into experiential destinations that blend history with present-day needs.\n 
@@ -712,9 +680,6 @@ The study identified Noida as having exceptional potential to become a model cit
               Founder Vinayak Chatterjee presented certificates of excellence to Distinguished Fellows Supratim Sarkar and Akhilesh Tilotia, recognising their outstanding contributions to the Foundation’s mission. The ceremony celebrated expertise spanning banking, public policy, and cross-sector leadership.\n
                Tilotia emphasised The Infravision Foundation's unique value proposition: "We need to support the public policy process via well-thought-out analyses and appropriate conceptual frameworks." He praised the diverse professional network, noting how multiple perspectives enable robust solution design across infrastructure challenges.\n
                Certificates were also announced for Rajiv Ranjan Mishra for excellence in water conservation, Rajaji Meshram in transport, and Dr Soumya Kanti Ghosh in economic policy.
-
-
-              
               `,
             },
           },
@@ -733,8 +698,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "October 14, 2024",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/october14_2024.png",
               ],
               content: `
               Catch  AI specialist Shailesh Kochhar and Jagan Shah, CEO of The Infravision Foundation, in the sixth InfraKatha session as they delve into “Artificial intelligence: Reshaping the digital infrastructure landscape”. The discussion highlights AI's pervasive impact, its potential to automate global jobs, and fundamentally alter the nature of work. From AI's current limitations to the importance of competition, it projects the profound questions AI raises for the future of labour and education. The speakers also touch upon AI's practical applications in infrastructure and its ethical considerations.\n 
@@ -790,8 +754,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "Dec 14, 2024",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/dec14_2024.png",
               ],
               content: `
               Watch Montek Singh Ahluwalia, a distinguished Indian economist and former Deputy Chairman of the Planning Commission and Vinayak Chatterjee, Founder and Managing Trustee, The Infravision Foundation, as they discuss the evolution and challenges of Public-Private Partnerships (PPPs) in India. The discussion shares insights into the historical context of infrastructure development, the reasons for involving private capital, and the institutional and political hurdles that have impacted PPP success, such as issues with contract renegotiation, environmental clearances, and judicial intervention.\n`,
@@ -1108,7 +1071,7 @@ The study identified Noida as having exceptional potential to become a model cit
       Drawing inspiration from London's successful long-term efforts to combat smog through a dedicated metropolitan agency, Shah argues for a multi-sectoral, national approach to solutions. He highlights the inadequacy of isolated, reactive measures and advocates for proactive strategies involving various government ministries and public consensus.
               `,
               cta: {
-                ctaText: "Download report",
+                ctaText: "Watch video",
                 link: "https://www.youtube.com/watch?v=OjrOlknqzu4",
               },
             },
