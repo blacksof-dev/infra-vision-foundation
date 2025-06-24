@@ -884,8 +884,12 @@ The study identified Noida as having exceptional potential to become a model cit
             ctaText: "See details",
             details: {
               date: "January 21, 2023",
-              images: [ 
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+              images: [  
+                {
+                  image:
+                  "/assets/outreach-and-engagements/eventImages/dummy.png",
+                  description:""
+                }
                 ,
               ],
               content: `
@@ -912,8 +916,12 @@ The study identified Noida as having exceptional potential to become a model cit
             ctaText: "See details",
             details: {
               date: "Mar 4, 2023",
-              images: [
-                "/assets/outreach-and-engagements/eventImages/march4_2023.png",
+              images: [ 
+                {
+                  image:
+                  "/assets/outreach-and-engagements/eventImages/march4_2023.png",
+                  description:""
+                }
                 ,
               ],
               content: `
@@ -954,8 +962,12 @@ The study identified Noida as having exceptional potential to become a model cit
             ctaText: "See details",
             details: {
               date: "July 2 and 3, 2023",
-              images: [
-                "/assets/outreach-and-engagements/eventImages/july2&3_2023.png",
+              images: [ 
+                {
+                  image:
+                  "/assets/outreach-and-engagements/eventImages/july2&3_2023.png",
+                  description:""
+                }
                 ,
               ],
               content: `
@@ -986,8 +998,12 @@ The study identified Noida as having exceptional potential to become a model cit
             ctaText: "See details",
             details: {
               date: "August 27, 2023",
-              images: [
-                "/assets/outreach-and-engagements/eventImages/aug27_2023.png",
+              images: [ 
+                {
+                  image:
+                  "/assets/outreach-and-engagements/eventImages/aug27_2023.png",
+                  description:""
+                }
                 ,
               ],
               content: `
@@ -1016,7 +1032,11 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "September 18, 2023",
               images: [
-                "/assets/outreach-and-engagements/eventImages/sept18_2023.png",
+                {
+                  image:
+                  "/assets/outreach-and-engagements/eventImages/sept18_2023.png",
+                  description:"Debasish Panda, Chairman of the Insurance Regulatory and Development Authority of India (IRDAI), speaking at the roundtable on Surety Bonds organised by the CII under the auspices of The Infravision Foundation."
+                }
                 ,
               ],
               content: `
@@ -1036,8 +1056,12 @@ The study identified Noida as having exceptional potential to become a model cit
             ctaText: "See details",
             details: {
               date: "Sep 15, 2023",
-              images: [
-                "/assets/outreach-and-engagements/eventImages/sep15_2023.png",
+              images: [ 
+                {
+                  image:
+                  "/assets/outreach-and-engagements/eventImages/sep15_2023.png",
+                  description:""
+                }
                 ,
               ],
               content: `
@@ -1065,8 +1089,12 @@ The study identified Noida as having exceptional potential to become a model cit
             ctaText: "See details",
             details: {
               date: "October 7, 2023",
-              images: [
-                "/assets/outreach-and-engagements/eventImages/oct7_2023.png",
+              images: [ 
+                {
+                  image:
+                  "/assets/outreach-and-engagements/eventImages/oct7_2023.png",
+                 description:""
+                }
               ],
               content: `
                   
@@ -1087,7 +1115,11 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "Oct 11, 2023",
               images: [
-                "/assets/outreach-and-engagements/eventImages/oct11_2023.png",
+                {
+                  image:
+                  "/assets/outreach-and-engagements/eventImages/oct11_2023.png",
+                description:""
+                }
                 ,
               ],
               content: `
@@ -1113,8 +1145,12 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "Oct 11, 2023",
               images: [
-                "/assets/outreach-and-engagements/eventImages/octImg2_11_2023.png",
-                ,
+                  {
+
+                    image:"/assets/outreach-and-engagements/eventImages/octImg2_11_2023.png",
+                description:""
+                  }
+                
               ],
               content: `
                   
@@ -1144,8 +1180,12 @@ The study identified Noida as having exceptional potential to become a model cit
             ctaText: "See details",
             details: {
               date: "November 14, 2023",
-              images: [
-                "/assets/outreach-and-engagements/eventImages/nov14_2023.png",
+              images: [ 
+                {
+                  image:
+                  "/assets/outreach-and-engagements/eventImages/nov14_2023.png",
+                description:""
+                }
                 ,
               ],
               content: `
@@ -1174,8 +1214,12 @@ The study identified Noida as having exceptional potential to become a model cit
             ctaText: "See details",
             details: {
               date: "December 4, 2023",
-              images: [
-                "/assets/outreach-and-engagements/eventImages/dec4_2023.png",
+              images: [ 
+                {
+                  
+                  image:"/assets/outreach-and-engagements/eventImages/dec4_2023.png",
+                 description:"The Infravision Foundation CEO Jagan Shah, along with speakers Rana Amani, Rahul Nilosey, Palash Srivastava, Tushar Arora, and Sandip Chakrabarti, at the conference."
+                }
               ],
               content: `
                   
