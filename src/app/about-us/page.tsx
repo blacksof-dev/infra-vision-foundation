@@ -14,11 +14,11 @@ import Involved from './07_involved';
 type TabId = 'who_we_are' | 'infravisionaries' | 'vision_and_mission' | 'our_pulse' | 'project_pathway';
 
 const tabs: { id: TabId; label: string }[] = [
-  { id: "who_we_are", label: "Who we are" },
+  { id: "who_we_are", label: "Who We Are" },
   { id: "infravisionaries", label: "The Infravisionaries" },
   { id: "vision_and_mission", label: "Vision and Mission" },
   { id: "our_pulse", label: "Our Foundational Pillars" },
-  { id: "project_pathway", label: "The project pathway" },
+  { id: "project_pathway", label: "The Project Pathway" },
 ];
 
 

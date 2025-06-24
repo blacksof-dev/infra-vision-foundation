@@ -31,13 +31,13 @@ export default function EventDetailsPopup({ onClose, data }: { onClose: () => vo
     }, [data?.details?.images]);
     return (
         <Portal>
-            <div className="fixed inset-0 p-2 sm:p-3 flex overflow-aut bg-darkgray/40 backdrop-blur-sm z-[9999]">
+            <div className="fixed inset-0 p-2  sm:p-3 flex overflow-aut bg-darkgray/40 backdrop-blur-sm z-[9999]">
                 <div className="bg-white rounded-lg w-full max-w-lg my-auto mx-auto lg:w-full h-full lg:max-h-[44rem] lg:max-w-screen-xl relative ">
                     <button onClick={onClose} className="absolute right-2 top-2 z-[10] bg-pink cursor-pointer rounded-full p-1 text-white text-2xl ml-auto focus:outline-none"><MdClose /></button>
 
                     <div className="flex flex-col lg:flex-row gap-4 md:gap-8 p-3 md:p-6 h-full overflow-hidden">
                         {/* IMAGE SWIPER SECTION */}
-                        <div className="relative w-full min-h-[19rem] sm:min-h-[21rem] md:h-[25rem] lg:w-[50%] lg:h-full ">
+                        <div className="relative  w-full min-h-[19rem] sm:min-h-[21rem] md:h-[25rem] lg:w-[50%] lg:h-full ">
                             <Swiper
                                 modules={[Autoplay, Pagination]}
                                 autoplay={{ delay: 2500, disableOnInteraction: false }}

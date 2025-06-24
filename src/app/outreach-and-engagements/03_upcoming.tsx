@@ -101,7 +101,10 @@ const Upcoming = () => {
             details: {
               date: "April 17, 2025",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/april1_2025.png",
+                "/assets/outreach-and-engagements/eventImages/april2_2025.png",
+                "/assets/outreach-and-engagements/eventImages/april3_2025.png",
+                "/assets/outreach-and-engagements/eventImages/april4_2025.png",
               ],
               content: `
                 
@@ -205,7 +208,9 @@ The study identified Noida as having exceptional potential to become a model cit
                 link: "/infrapandit-awards",
               },
               images: [
-                "/assets/outreach-and-engagements/eventImages/InfraPandit-awards.png",
+                "/assets/outreach-and-engagements/eventImages/june1_2025.jpg",
+                "/assets/outreach-and-engagements/eventImages/june2_2025.jpg",
+                "/assets/outreach-and-engagements/eventImages/june3_2025.jpg",
               ],
               content: `
              The first InfraPandit Awards will honour and celebrate groundbreaking doctoral research critical for India's infrastructure growth. Discover future leaders shaping India's development.
@@ -222,7 +227,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "June 10, 2025",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/june10_2025.png",
               ],
               cta: {
                 ctaText: "Watch video",
@@ -244,7 +249,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "June 5, 2025",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/june5_2025.png",
               ],
               cta: {
                 ctaText: "Watch video",
@@ -253,7 +258,7 @@ The study identified Noida as having exceptional potential to become a model cit
               content: `
               Watch Jagan Shah, CEO of The Infravision Foundation, and Kaveree Bamzai, Head of Advocacy at The Infravision Foundation, discuss India's critical need for a comprehensive national urban plan. They underscore the vital role of historical "brownfield" cities and renewed and newly developed "greenfield" cities in managing rapid population growth and urban chaos.\n
                Learn why effective planning, resource utilisation, and local self-governance are essential to transform India's urban landscape and achieve prosperity.
-`,
+               `,
             },
           },
         ],
@@ -297,8 +302,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "Jan 12, 2024",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/januray12_2024.png",
               ],
               content: `
                   
@@ -391,8 +395,8 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "May 30, 2024",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/mayImg1_30_2024.png",
+                "/assets/outreach-and-engagements/eventImages/mayImg2_30_2024.png",
               ],
               content: `
                Join Anita Mani, founder of Indian Pitta Books, as she converses with Kaveree Bamzai, Head of Advocacy at The Infravision Foundation, in this Infravision Conversation.\n
@@ -455,8 +459,8 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "June 7, 2024",
               images: [
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
-                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/june7_2024.png",
+             
               ],
               content: `
                  Catch renowned mythologist Devdutt Pattanaik and The Infravision Foundation’s Founder and Managing Trustee Vinayak Chatterjee in the inaugural session of InfraKatha.\n
@@ -471,6 +475,24 @@ The study identified Noida as having exceptional potential to become a model cit
                 ctaText: "Watch video",
                 link: "https://www.youtube.com/watch?v=9v61vpPmXEk",
               },
+            },
+          },
+          {
+            date: "13",
+
+            dayTime: "Thursday",
+            meetingType: "External engagements",
+            desc: "Wastewater Reuse",
+            ctaText: "See details",
+            details: {
+              date: "June 13, 2024, New Delhi",
+              images: [
+                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                "/assets/outreach-and-engagements/eventImages/dummy.png",
+              ],
+              content: `
+                 The Municipal Finance Champions Lab on Integrated Wastewater Management and Circularity convened key stakeholders across government, industry, and academia to accelerate project preparation for water reuse in Indian cities. Organised by The Infravision Foundation and The World Bank, the Lab underscored the urgent need to address urban water scarcity through innovative, finance-ready reuse projects.
+              `,
             },
           },
         ],
@@ -583,8 +605,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "August 22, 2024",
               images: [
-                "/assets/outreach-and-engagements/eventImages/august1_2024.png",
-                "/assets/outreach-and-engagements/eventImages/august2_2024.png",
+                "/assets/outreach-and-engagements/eventImages/august22_2024.png",
               ],
               content: `
                   Join economist, author, and historian Sanjeev Sanyal in this InfraKatha session alongside Vinayak Chatterjee, Founder and Managing Trustee, The Infravision Foundation. Sanyal presents compelling geological, archaeological, and textual evidence to argue for the now lost Saraswati River’s historical existence and its profound influence on ancient Indian civilisation, particularly the Harappan cities.\n
@@ -767,6 +788,326 @@ The study identified Noida as having exceptional potential to become a model cit
               ],
               content: `
               A consultation workshop on “Revising building codes and evolving strategies to enhance demand for TOF-based products in India’s construction sector” under the Trees Outside Forests in India (TOFI) Program, organised by CIFOR-ICRAF in collaboration with The Infravision Foundation.\n`,
+            },
+          },
+        ],
+      },
+    ],
+    "2023": [
+      {
+        month: "January",
+        events: [
+          {
+            date: "21",
+
+            dayTime: "Saturday",
+            meetingType: "Internal engagements",
+            desc: "The Infravision Foundation’s first annual meeting",
+            ctaText: "See details",
+            details: {
+              date: "January 21, 2023",
+              images: [
+                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                ,
+              ],
+              content: `
+                  
+        Along with its Council of Advisors and Distinguished Fellows, The Infravision Foundation took stock of the studies undertaken and the future direction of research and advocacy. Opinions were sought and feedback noted.\n
+              `,
+            },
+          },
+        ],
+      },
+      {
+        month: "Feburary",
+        events: [],
+      },
+      {
+        month: "March",
+        events: [
+          {
+            date: "4",
+
+            dayTime: "Saturday",
+            meetingType: "External engagements",
+            desc: "Panel discussion: The challenges ahead for core & social infra",
+            ctaText: "See details",
+            details: {
+              date: "Mar 4, 2023",
+              images: [
+                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                ,
+              ],
+              content: `
+                  
+          Join a distinguished panel of experts from government, academia, industry, and finance in this panel discussion facilitated by Vinayak Chatterjee, Founder and Managing Trustee, The Infravision Foundation.\n
+        Centred on the topic "The Challenges Ahead for Core & Social Infra," the panel explores the revival of Public Private Partnerships (PPP) and the successes and challenges in India's infrastructure development, particularly in roads and railways. The panellists highlight the crucial role of private sector involvement and the often-overlooked importance of social infrastructure and "the people" as a "fourth P" in successful partnerships. The discussion emphasises the need for clearer policy roadmaps, equitable risk allocation, efficient contract execution, and institutional reform to drive future growth and ensure infrastructure truly serves its beneficiaries.\n
+
+              `,
+              cta: {
+                ctaText: "Watch video",
+                link: "https://www.youtube.com/watch?v=PX-s_58ixLk",
+              },
+            },
+          },
+        ],
+      },
+      {
+        month: "April",
+        events: [],
+      },
+      {
+        month: "May",
+        events: [],
+      },
+      {
+        month: "June",
+        events: [],
+      },
+      {
+        month: "July",
+        events: [
+          {
+            date: "2 & 3",
+
+            dayTime: "Sunday & Monday",
+            meetingType: "Internal engagements",
+            desc: "First quarterly meeting: Infrastructure investment priorities",
+            ctaText: "See details",
+            details: {
+              date: "July 2 and 3, 2023",
+              images: [
+                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                ,
+              ],
+              content: `
+                  
+           A provocative question launched The Infravision Foundation's inaugural quarterly meeting: "Is there enough butter to spread on the infrastructure toast?" This foundational gathering examined whether social infrastructure investment has been sacrificed for core infrastructure development, sparking unprecedented policy discourse.\n
+          The panel, convened by Founder and Managing Trustee Vinayak Chatterjee, revealed striking perspectives on India's infrastructure priorities and investment strategies.\n
+          Diverse expert viewpoints emerged. PK Sinha highlighted budget disparities (INR 2 lakh crore in health and education versus INR 10 lakh crore in core infrastructure), while Rajnish Kumar defended prioritising core infrastructure in developing economies. Ashish Dhawan advocated higher core infrastructure investment to boost GDP and Human Development Index scores.\n
+          Dynamic floor interventions enriched the debate. Amarjeet Sinha emphasised the multiplier effect of educating girls, citing East Asian success stories. Kiran Karnik posed a critical question: "Do we need more highways or i-ways?"\n
+          The second day of our inaugural quarterly meeting on transformed organisational thinking through comprehensive realignment and refinement.
+              `,
+              cta: {
+                ctaText: "Watch video",
+                link: "https://www.youtube.com/watch?v=-INuUJJwYdk",
+              },
+            },
+          },
+        ],
+      },
+      {
+        month: "August",
+        events: [
+          {
+            date: "27",
+
+            dayTime: "Sunday",
+            meetingType: "Virtual Conversations",
+            desc: "Selecting the appropriate urban transport system for India's cities with Prof Geetam Tiwari",
+            ctaText: "See details",
+            details: {
+              date: "August 27, 2023",
+              images: [
+                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                ,
+              ],
+              content: `
+                  
+         Watch a transportation expert’s perspective as Professor Geetam Tiwari engages in a discussion focused on “Selecting the appropriate urban transport system for India's cities”, particularly Delhi with Kaveree Bamzai, Head of Advocacy at The Infravision Foundation. Tiwari argues that metro is not the only solution for urban mobility. shes emphasises the need for a holistic and integrated approach that considers diverse travel demands, highlighting Delhi's decline in public transport ridership despite significant investment.\n
+        The expert stresses the importance of government commitment to providing safe, reliable public transport and infrastructure for active travel, advocating for a shift in mindset from private to public assets, and the establishment of overarching institutional mechanisms to plan and integrate different transport modes based on actual city travel patterns.\n
+              `,
+              cta: {
+                ctaText: "Watch Video",
+                link: "https://www.youtube.com/watch?v=Sr17ZN7FLA4",
+              },
+            },
+          },
+        ],
+      },
+      {
+        month: "September",
+        events: [
+          {
+            date: "18",
+
+            dayTime: "Monday",
+            meetingType: "External engagements",
+            desc: "High-level Roundtable: Interactive session on Surety Bonds with Debasish Panda, Chairman, IRDAI",
+            ctaText: "See details",
+            details: {
+              date: "September 18, 2023",
+              images: [
+                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                ,
+              ],
+              content: `
+                  
+            The Infravision Foundation and Confederation of Indian Industry (CII) organised a roundtable in which the Foundation presented its research, developed in collaboration with the SP Jain Institute of Management and Research.\n
+           Presented by Distinguished Fellow Supratim Sarkar, the research outlined key recommendations for effective surety bond implementation. With India's National Infrastructure Pipeline (NIP) requiring INR 100 lakh crore investment over five years, the discussions revealed that banks lack capacity for traditional guarantees, positioning surety bonds as an essential complement. IRDAI Chairman Debasish Panda emphasised the regulatory framework's readiness, noting recent guidelines that opened the sector and removed business restrictions.\n
+           
+              `,
+            },
+          },
+          {
+            date: "15",
+
+            dayTime: "Friday",
+            meetingType: "Virtual Conversations",
+            desc: "Sustainability ratings: An idea whose time has come with Rajaji Meshram",
+            ctaText: "See details",
+            details: {
+              date: "Sep 15, 2023",
+              images: [
+                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                ,
+              ],
+              content: `
+                  
+          Join Rajaji, a transport and logistics expert and Distinguished Fellow at The Infravision Foundation, as he shares his thoughts on the critical need for Sustainability Ratings for infrastructure projects in India. Rajaji explains that as India aims for significant economic growth and a "step jump in infrastructure," this growth must be sustainable and not at the environment's or society's expense. The core idea is to implement a standardised rating system, similar to financial credit ratings, that would simplify the assessment of a project's environmental, social, and long-term climate impact.\n
+           The discussion also highlights the importance of systematic processes, building trust in the ratings, and securing buy-in from key stakeholders like the government and financial institutions to ensure the successful adoption and effectiveness of these sustainability ratings.\n
+              `,
+              cta: {
+                ctaText: "Watch Video",
+                link: "https://www.youtube.com/watch?v=Jis2Q7oOfr0&t=1s",
+              },
+            },
+          },
+        ],
+      },
+      {
+        month: "October",
+        events: [
+          {
+            date: "7",
+
+            dayTime: "Saturday",
+            meetingType: "Internal engagements",
+            desc: "Second quarterly meeting: Ideas aplenty",
+            ctaText: "See details",
+            details: {
+              date: "October 7, 2023",
+              images: [
+                "/assets/outreach-and-engagements/eventImages/december1_2023.png",
+                "/assets/outreach-and-engagements/eventImages/december2_2023.png",
+                "/assets/outreach-and-engagements/eventImages/december3_2023.png",
+              ],
+              content: `
+                  
+              The Infravision Foundation transformed ambition into actionable roadmaps during an intensive ideas marathon that redefined our trajectory. This session brought together the Council of Advisors and Distinguished Fellows to crystallise the Foundation’s evolving mission and operational framework.\n
+             The meeting established ambitious institutional benchmarks: positioning The Infravision Foundation among India's most respected infrastructure policy destinations, with a strategic balance of 40% constituting intellectual output and 60% advocacy work. Many suggestions were made and accepted with alacrity.\n
+             A pivotal discussion between Distinguished Fellow Jagan Shah and World Bank expert Bhavna Bhatia explored two critical focus areas — energy and urban infrastructure — generating actionable insights for future initiatives.\n
+             Key participants included Trustee PK Sinha, Advisory Council members Arun Nanda, Sunil Mathur, Ashish Dhawan, DK Sen, Rajnish Kumar, Dilip Cherian, and G Raghuram, alongside Distinguished Fellows Supratim Sarkar, Rajaji Meshram, and Shah.
+              `,
+            },
+          },
+          {
+            date: "11",
+
+            dayTime: "Wednesday",
+            meetingType: "Virtual Conversations",
+            desc: "Making metro systems financially viable with Prof Sandip Chakrabarti",
+            ctaText: "See details",
+            details: {
+              date: "Oct 11, 2023",
+              images: [
+                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                ,
+              ],
+              content: `
+                  
+      Most metro systems, especially in smaller Indian cities, are not financially viable due to low ridership, insufficient fare revenues, and a lack of non-fare income. Watch Professor Sandip Chakrabarti from IIM-Ahmedabad share his thoughts and insights on the financial sustainability of India's Metro systems. The core issue discussed is that\n
+     Professor Chakrabarti advocates for a comprehensive, integrated approach to urban transportation through the concept of "AMTA 2.0," which envisions a single entity responsible for planning, owning, building, operating, and setting policy for all modes of public transit in a city, including innovative funding mechanisms like land value capture and congestion pricing.\n
+    The overall purpose is to encourage a shift towards sustainable, financially healthy urban mobility by making beneficiaries pay and fostering a strategic vision for integrated public transport.
+
+              `,
+              cta: {
+                ctaText: "Watch Video",
+                link: "https://www.youtube.com/watch?v=H34LNACsKZw&t=51s",
+              },
+            },
+          },
+          {
+            date: "11",
+
+            dayTime: "Wednesday",
+            meetingType: "Virtual Conversations",
+            desc: "How to save our hill cities with Rajiv Ranjan Mishra",
+            ctaText: "See details",
+            details: {
+              date: "Oct 11, 2023",
+              images: [
+                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                ,
+              ],
+              content: `
+                  
+   Rajiv Ranjan Mishra - Distinguished Fellow, The Infravision Foundation, and former Director General, National Mission for Clean Ganga.\n
+ Join Rajiv Ranjan Mishra, former Director General of the National Mission for Clean Ganga and Distinguished Fellow, The Infravision Foundation, as he converses with Kaveree Bamzai, Head of Advocacy at The Infravision Foundation. The discussion focuses on the carrying capacity of Himalayan hill cities in India, emphasising the urgent need to assess and manage human impact on these fragile ecosystems due to recent environmental damage. Mishra talks about the multidimensional nature of carrying capacity, encompassing resource availability, environmental assimilation, and infrastructure, and the necessity of integrating ecological sensitivity into urban planning. \n
+   The conversation also highlights the challenges of implementation across diverse states and the critical role of capacity building for city managers and regional planning to foster sustainable development in these vital regions.
+
+
+              `,
+              cta: {
+                ctaText: "Watch video",
+                link: "https://www.youtube.com/watch?v=ZdLcdjJShW8",
+              },
+            },
+          },
+        ],
+      },
+      {
+        month: "November",
+        events: [
+          {
+            date: "14",
+
+            dayTime: "Tuesday",
+            meetingType: "Virtual Conversations",
+            desc: "Air pollution: The solution has to be multi-sectoral",
+            ctaText: "See details",
+            details: {
+              date: "November 14, 2023",
+              images: [
+                "/assets/outreach-and-engagements/eventImages/dummy.png",
+                ,
+              ],
+              content: `
+                  
+      Join Jagan Shah, urban planning expert and CEO of The Infravision Foundation, alongside Kaveree Bamzai, Head of Advocacy at The Infravision Foundation, in this episode of the Infravision Conversation.\n
+      The discussion addresses air pollution as a critical human development issue with far-reaching consequences, extending beyond immediate health impacts to long-term societal and economic burdens. They emphasise air pollution as a complex outcome of current development models, with significant contributors including construction dust, vehicular emissions, and solid waste.\n
+      Drawing inspiration from London's successful long-term efforts to combat smog through a dedicated metropolitan agency, Shah argues for a multi-sectoral, national approach to solutions. He highlights the inadequacy of isolated, reactive measures and advocates for proactive strategies involving various government ministries and public consensus.
+              `,
+              cta: {
+                ctaText: "Download report",
+                link: "https://www.youtube.com/watch?v=OjrOlknqzu4",
+              },
+            },
+          },
+        ],
+      },
+      {
+        month: "December",
+        events: [
+          {
+            date: "4",
+
+            dayTime: "Monday",
+            meetingType: "External engagements ",
+            desc: "High-level Roundtable on Urban mobility: Towards seamless integration",
+            ctaText: "See details",
+            details: {
+              date: "December 4, 2023",
+              images: [
+                "/assets/outreach-and-engagements/eventImages/december1_2023.png",
+                "/assets/outreach-and-engagements/eventImages/december2_2023.png",
+                "/assets/outreach-and-engagements/eventImages/december3_2023.png",
+              ],
+              content: `
+                  
+              Partnering with the Confederation of Indian Industry (CII), The Infravision Foundation convened "Urban mobility: Towards seamless integration", bringing together policymakers, academics, technology providers, and metro operators.\n
+             The conference examined two critical knowledge papers developed with IIT Delhi's Prof Geetam Tiwari and IIM Ahmedabad's Prof Sandip Chakrabarti, analysing appropriate urban transport systems and metro financial sustainability. Twenty-two speakers over six hours delivered comprehensive insights, revealing that most metros face insufficient ridership and financial unsustainability.
+              `,
             },
           },
         ],
