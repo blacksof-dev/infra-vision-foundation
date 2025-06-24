@@ -101,10 +101,18 @@ const Upcoming = () => {
             details: {
               date: "April 17, 2025",
               images: [
-                "/assets/outreach-and-engagements/eventImages/april1_2025.png",
-                "/assets/outreach-and-engagements/eventImages/april2_2025.png",
-                "/assets/outreach-and-engagements/eventImages/april3_2025.png",
-                "/assets/outreach-and-engagements/eventImages/april4_2025.png",
+                 {
+                image:"/assets/outreach-and-engagements/eventImages/april1_2025.png",
+                description:"The Infravision community at the Foundation’s annual get-together."},
+                 {
+                image:"/assets/outreach-and-engagements/eventImages/april2_2025.png",
+                description:"The Infravision community at the Foundation’s annual get-together."},
+                 {
+                image:"/assets/outreach-and-engagements/eventImages/april2_2025.png",
+                description:"The Infravision community at the Foundation’s annual get-together."},
+                 {
+                image:"/assets/outreach-and-engagements/eventImages/april4_2025.png",
+                description:"The Infravision community at the Foundation’s annual get-together."},
               ],
               content: `
                 
@@ -137,9 +145,12 @@ The dual-purpose gathering strengthened the Foundation's governance while establ
             desc: "Conclave-cum-Buyer-Seller meet on Expanding Arunachal Pradesh's agriculture through infrastructure development",
             ctaText: "See details",
             details: {
-              images: [
+              images: [{
+                image:
+              
                 "/assets/outreach-and-engagements/eventImages/Conclave-cum-Buyer-Seller.png",
-              ],
+                description:"Hon. Chief Minister of Arunachal Pradesh, Pema Khandu; Minister of Agriculture, Government of Arunachal Pradesh, Gabriel Denwang Wangsu; Chief Secretary (CS), Government of Arunachal Pradesh, Manish Gupta; Former Union Secretary, Government of India, Siraj Hussain, and Chairman of APEDA, Abhishek Dev, and other guests."
+              } ],
               date: "April 10, 2025",
 
               content: `
@@ -155,9 +166,11 @@ The Infravision Foundation made a field visit and did a detailed report on the p
             desc: "High-level roundtable: Decarbonising urban transport using ITMS data",
             ctaText: "See details",
             details: {
-              images: [
-                "/assets/outreach-and-engagements/eventImages/High-level-roundtable-5.png",
-              ],
+              images: [{ 
+                image:"/assets/outreach-and-engagements/eventImages/High-level-roundtable-5.png",
+                description:"A diverse audience of participants and students keenly attending the national seminar."
+              }
+             ],
               date: "April 8, 2025",
 
               content: `
@@ -176,8 +189,10 @@ The study identified Noida as having exceptional potential to become a model cit
             ctaText: "See details",
             details: {
               date: "April 1, 2025",
-              images: [
-                "/assets/outreach-and-engagements/eventImages/Formal-presentation.png",
+              images: [ {
+               image: "/assets/outreach-and-engagements/eventImages/Formal-presentation.png",
+               description:"The Infravision Foundation team, including Kaveree Bamzai, Head of Advocacy; Rumjhum Chatterjee, Co-Founder & Managing Trustee; and CEO Jagan Shah, presenting the study on 'Implementation of Compensatory Afforestation in India' to the Union Minister of Environment, Forest and Climate Change, Shri Bhupender Yadav.",
+              }
               ],
               content: `
               The Infravision Foundation’s Co-Founder Rumjhum Chatterjee, CEO Jagan Shah, and Advocacy Head Kaveree Bamzai presented crucial findings to Union Environment Minister Shri Bhupender Yadav, recommending comprehensive reforms to the Compensatory Afforestation Management and Planning Authority (CAMPA).\n
@@ -207,10 +222,17 @@ The study identified Noida as having exceptional potential to become a model cit
                 ctaText: "Tell me more",
                 link: "/infrapandit-awards",
               },
-              images: [
-                "/assets/outreach-and-engagements/eventImages/june1_2025.jpg",
-                "/assets/outreach-and-engagements/eventImages/june2_2025.jpg",
-                "/assets/outreach-and-engagements/eventImages/june3_2025.jpg",
+              images: [ 
+                {image:"/assets/outreach-and-engagements/eventImages/june1_2025.jpg",
+                  description:""
+                },
+                {image:"/assets/outreach-and-engagements/eventImages/june2_2025.jpg",
+                  description:""
+                },
+                {image:"/assets/outreach-and-engagements/eventImages/june3_2025.jpg",
+                  description:""
+                }
+              
               ],
               content: `
              The first InfraPandit Awards will honour and celebrate groundbreaking doctoral research critical for India's infrastructure growth. Discover future leaders shaping India's development.
@@ -227,7 +249,10 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "June 10, 2025",
               images: [
-                "/assets/outreach-and-engagements/eventImages/june10_2025.png",
+                {image:"/assets/outreach-and-engagements/eventImages/june10_2025.png",
+                  description:""
+                },
+              
               ],
               cta: {
                 ctaText: "Watch video",
@@ -248,8 +273,11 @@ The study identified Noida as having exceptional potential to become a model cit
             ctaText: "See details",
             details: {
               date: "June 5, 2025",
-              images: [
-                "/assets/outreach-and-engagements/eventImages/june5_2025.png",
+              images: [ 
+                {image: "/assets/outreach-and-engagements/eventImages/june5_2025.png",
+                  description:""
+                },
+               
               ],
               cta: {
                 ctaText: "Watch video",
@@ -301,7 +329,8 @@ The study identified Noida as having exceptional potential to become a model cit
             ctaText: "See details",
             details: {
               date: "Jan 12, 2024",
-              images: [
+              images: [ 
+                
                 "/assets/outreach-and-engagements/eventImages/januray12_2024.png",
               ],
               content: `

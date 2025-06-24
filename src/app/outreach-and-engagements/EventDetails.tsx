@@ -55,7 +55,7 @@ export default function EventDetailsPopup({ onClose, data }: { onClose: () => vo
                                                 unoptimized
                                                 className="object-cover object-top rounded-md w-full"
                                             /> 
-                                            <p className="absolute bottom-6 text-white px-4 text-center">{obj.description}</p>
+                                            <p className="absolute bottom-6 text-white px-4 text-center lg:block hidden">{obj.description}</p>
                                         </div>
                                     </SwiperSlide>
                                 ))}
