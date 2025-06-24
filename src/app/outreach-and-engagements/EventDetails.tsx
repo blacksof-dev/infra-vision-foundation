@@ -10,10 +10,8 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import image_01 from "@/../public/assets/outreach-and-engagements/eventImages/17_april_01.png";
-import image_02 from "@/../public/assets/outreach-and-engagements/eventImages/17_april_02.png";
-import image_03 from "@/../public/assets/outreach-and-engagements/eventImages/17_april_03.png";
-import image_04 from "@/../public/assets/outreach-and-engagements/eventImages/17_april_04.png";
+import image_01 from "@/../public/assets/outreach-and-engagements/eventImages/dummy.png";
+
 import { MdClose } from "react-icons/md";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -22,13 +20,13 @@ import { ArrowRight } from "lucide-react";
 
 
 export default function EventDetailsPopup({ onClose, data }: { onClose: () => void, data: any }) {
-    const [images, setImages] = useState([image_01.src, image_02.src, image_03.src, image_04.src]);
+    const [images, setImages] = useState([{image:image_01.src,description:""}]);
 
     useEffect(() => {
         if (data?.details?.images) {
             setImages(data.details.images);
         } else {
-            setImages([image_01.src, image_02.src, image_03.src, image_04.src]);
+            setImages([{image:image_01.src,description:""}]);
         }
     }, [data?.details?.images]);
     return (
@@ -47,17 +45,17 @@ export default function EventDetailsPopup({ onClose, data }: { onClose: () => vo
                                 loop={true}
                                 className="h-full w-full rounded-md"
                             >
-                                {images.map((img, idx) => (
+                                {images.map((obj, idx) => (
                                     <SwiperSlide key={idx}>
                                         <div className="relative  w-full h-[19rem] sm:h-[21rem] md:h-[25rem] lg:h-full">
                                             <Image
-                                                src={img}
+                                                src={obj.image}
                                                 alt={`Event image ${idx + 1}`}
                                                 fill
                                                 unoptimized
                                                 className="object-cover object-top rounded-md w-full"
-                                            />
-                                            {/* <p className="absolute bottom-0 text-white">{img.title}</p> */}
+                                            /> 
+                                            <p className="absolute bottom-6 text-white px-4 text-center">{obj.description}</p>
                                         </div>
                                     </SwiperSlide>
                                 ))}

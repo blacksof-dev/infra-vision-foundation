@@ -50,11 +50,23 @@ const Upcoming = () => {
             ctaText: "See details",
             details: {
               date: "January 18, 2025, New Delhi",
-              images: [
-                "/assets/outreach-and-engagements/eventImages/caira_01.png",
-                "/assets/outreach-and-engagements/eventImages/caira_02.png",
-                "/assets/outreach-and-engagements/eventImages/caira_03.png",
-                "/assets/outreach-and-engagements/eventImages/caira_04.png",
+              images: [ 
+                {
+                 image: "/assets/outreach-and-engagements/eventImages/caira_01.png",
+                 description:"Vinayak Chatterjee, Founder and Managing Trustee, The Infravision Foundation; Siraj Hussain, Chairman, CAIRA; Santosh Kumar Sarangi, DG, DGFT; Dr Subrata Gupta Secretary, Food Processing; Abhishek Dev, Chairman, APEDA; Siraj Chaudhry, Chairman, SATS India; S. Sivakumar, Group Head, ITC Limited, unveiling CIARA’s first background paper."
+                },
+                {
+                 image: "/assets/outreach-and-engagements/eventImages/caira_02.png",
+                 description:"Azhar Tambuwala, Head, International Business, Sahyadri Farms; Atul Chhura, Chief Business Officer, Agribazaar; Aneesh Jain,CEO and MD, Gram Unnati; Harvir Singh, Editor in Chief, Rural Voice; Andrew Goodland, Lead Agriculture Specialist, The World Bank; and Akhilesh Tilotia, Public Policy Expert and Member, Governing Council, CAIRA."
+                },
+                {
+                 image: "/assets/outreach-and-engagements/eventImages/caira_03.png",
+                 description:"Thomas Jose, Director, Choice Group; RK Boyal, Secretary General, AIMLEA; Rajeev Pandey, Director, Millets for Health; and Dr Seema Bathla, Professor, JNU, and Member, Governing Council, CAIRA."
+                },
+                {
+                 image: "/assets/outreach-and-engagements/eventImages/caira_04.png",
+                 description:"Jagan Shah, CEO, The Infravision Foundation and Amit Pant, Senior Vice President and Head, Soluble Business, Tata Consumer Products."
+                },
               ],
               content: `
               CAIRA’s first Roundtable on “Boosting India's agri exports by transforming infrastructure” brought together a distinguished assembly of public and private sector leaders. The event featured key decision-makers, including Subrata Gupta, Secretary of Food Processing; Santosh Sarangi, Director General of Foreign Trade; Abhishek Dev, Chairman of APEDA; and Siraj Hussain, former Union Agriculture Secretary and Chairman of CAIRA's Governing Council.\n
@@ -841,7 +853,7 @@ The study identified Noida as having exceptional potential to become a model cit
                 {monthData.month},
               </h4>{" "}
               <h4 className="font-medium text-[#C82249] mb-3 text-lg inline-block">
-                {year}
+                {year} 
               </h4>
               {monthData.events.map((event: EventData, eventIdx: number) => (
                 <div
