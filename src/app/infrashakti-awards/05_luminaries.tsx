@@ -142,7 +142,7 @@ export default function Luminaries() {
             </div>
             <div className="pt-4 pb-2 md:py-5 ">
               <h1 className="text-white font-medium">
-                Luminaries{" "}
+                The Luminaries{" "}
                 <span className="font-light">
                   at the <br />
                   InfraShakti Awards

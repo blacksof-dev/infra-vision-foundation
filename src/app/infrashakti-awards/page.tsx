@@ -14,7 +14,7 @@ type TabId = "overview" | "spotlight" | "ceremony" | "luminaries" | "gallery";
 const tabs: { id: TabId; label: string }[] = [
   { id: "overview", label: "Overview" },
   { id: "spotlight", label: "The InfraShakti Awardees" },
-  { id: "ceremony", label: "Snippets from the Ceremony" },
+  { id: "ceremony", label: "Scenes from the Ceremony" },
   { id: "luminaries", label: "The Luminaries" },
   { id: "gallery", label: "Gallery" },
 ];
