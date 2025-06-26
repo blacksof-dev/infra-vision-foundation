@@ -24,7 +24,7 @@ export default function Video() {
           <div className="flex flex-col md:flex-row justify-between py-4">
             <div>
               <h1 className="font-light xl:tracking-[-3%]">
-                Enkindling public policymaking with <br />
+                Kindling public policymaking with <br />
                 <span className="text-black font-medium xl:tracking-[-3%]">
                   thought leadership and action
                 </span>
