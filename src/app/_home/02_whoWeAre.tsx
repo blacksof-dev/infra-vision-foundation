@@ -28,7 +28,7 @@ const knowledge = [
   {
     id: 3,
     img: jagan.src,
-    category: "Infravision Conversations",
+    category: "The Infravision Conversations",
     date: "June, 2025",
     title:
       "Why India needs a national plan to build new cities",
