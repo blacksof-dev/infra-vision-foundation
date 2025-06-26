@@ -1289,10 +1289,10 @@ The study identified Noida as having exceptional potential to become a model cit
           </div>
           <div className=" pt-2 sm:pt-4 flex flex-col md:flex-row justify-between gap-4 ">
             <h1 className="text-black font-light ">
-              A glance at our <br />
+              A glance at our 
               <span className="font-medium">
                 {" "}
-                past and upcoming engagements
+                past and <br/> upcoming engagements
               </span>
             </h1>
           </div>

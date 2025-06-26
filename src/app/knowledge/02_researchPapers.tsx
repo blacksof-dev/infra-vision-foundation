@@ -16,7 +16,7 @@ import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import { NewsCard } from "@/_components/molecules/newsCard";
 
 // Types
-type FilterType = "All" | "sectors";
+type FilterType = "All" | "Sectors";
 type SectorType =
   | "All"
   | "Transportation"
@@ -40,7 +40,7 @@ interface NewsletterCard {
 }
 
 // Constants
-const FILTER_TYPES: FilterType[] = ["All", "sectors"];
+const FILTER_TYPES: FilterType[] = ["All", "Sectors"];
 // const YEARS = ["2025", "2024"] as const;
 const SECTORS: SectorType[] = [
   "All",
@@ -174,7 +174,7 @@ export default function ResearchPapers() {
   const handleTabClick = (tab: FilterType) => {
     setSelectedTab(tab);
     setSelectedFilter(
-      tab === "sectors"
+      tab === "Sectors"
         ? SECTORS[0]
         : "All"
       // tab === "Publication Year"
@@ -197,7 +197,7 @@ export default function ResearchPapers() {
     //     (card) => card.date.split(" ").pop() === selectedFilter
     //   );
     // }
-    if (selectedTab === "sectors" && selectedFilter !== "All") {
+    if (selectedTab === "Sectors" && selectedFilter !== "All") {
       return allcards.filter((card) => card.sectors === selectedFilter);
     }
     return allcards;
@@ -278,7 +278,7 @@ export default function ResearchPapers() {
 
           {/* Filter Buttons */}
           {/* {selectedTab === "Publication Year" && renderFilterButtons(YEARS)} */}
-          {selectedTab === "sectors" && renderFilterButtons(SECTORS)}
+          {selectedTab === "Sectors" && renderFilterButtons(SECTORS)}
 
           {/* Newsletter Cards */}
           <div
