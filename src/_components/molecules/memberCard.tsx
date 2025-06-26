@@ -76,9 +76,10 @@ export const MemberCard = ({ image, title, desig, link, socialMedia }: MemberCar
           //   </div>
           // )}
         }
-        <div className="bg-white w-[14rem]  lg:h-auto rounded">
+        <div className="bg-white w-[14rem]  lg:h-auto rounded ">
           <h6 className="pt-1 2xl:pt-2 px-2 font-medium hover:text-pink  transition-all duration">{title}</h6>
           <p className="px-2 text-sm font-light text-black pb-1">{desig}</p>
+          
         </div>
       </div>
     </div>

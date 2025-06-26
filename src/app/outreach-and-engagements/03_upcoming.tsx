@@ -45,7 +45,7 @@ const Upcoming = () => {
             date: "18",
 
             dayTime: "Saturday",
-            meetingType: "External engagements",
+            meetingType: "External engagement",
             desc: "Centre for Agri Infrastructure Research and Action's (CAIRA) first Roundtable on Boosting India's agri exports by transforming infrastructure",
             ctaText: "See details",
             details: {
@@ -95,7 +95,7 @@ const Upcoming = () => {
           {
             date: "17",
             dayTime: "Thursday",
-            meetingType: "Internal engagements",
+            meetingType: "Internal engagement",
             desc: "Annual get-together",
             ctaText: "See details",
             details: {
@@ -141,7 +141,7 @@ The dual-purpose gathering strengthened the Foundation's governance while establ
           {
             date: "10",
             dayTime: "Thursday",
-            meetingType: "External engagements",
+            meetingType: "External engagement",
             desc: "Conclave-cum-Buyer-Seller meet on Expanding Arunachal Pradesh's agriculture through infrastructure development",
             ctaText: "See details",
             details: {
@@ -162,7 +162,7 @@ The Infravision Foundation made a field visit and did a detailed report on the p
           {
             date: "8",
             dayTime: "Tuesday",
-            meetingType: "External engagements",
+            meetingType: "External engagement",
             desc: "High-level roundtable: Decarbonising urban transport using ITMS data",
             ctaText: "See details",
             details: {
@@ -184,7 +184,7 @@ The study identified Noida as having exceptional potential to become a model cit
           {
             date: "1",
             dayTime: "Tuesday",
-            meetingType: "External engagements",
+            meetingType: "External engagement",
             desc: "Formal presentation of the Compensatory Afforestation Management and Planning Authority (CAMPA) report",
             ctaText: "See details",
             details: {
@@ -213,7 +213,7 @@ The study identified Noida as having exceptional potential to become a model cit
           {
             date: "20",
             dayTime: "Friday",
-            meetingType: "External engagements",
+            meetingType: "External engagement",
             desc: "InfraPandit Awards",
             ctaText: "See details",
             details: {
@@ -355,7 +355,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "17",
 
             dayTime: "Saturday",
-            meetingType: "Internal engagements ",
+            meetingType: "Internal engagement ",
             desc: "Third quarterly meeting: Brainstorming for the future",
             ctaText: "See details",
             details: {
@@ -382,7 +382,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "22",
 
             dayTime: "Friday",
-            meetingType: "External engagements ",
+            meetingType: "External engagement ",
             desc: "High-level Roundtable on ESG ratings for infrastructure projects",
             ctaText: "See details",
             details: {
@@ -480,7 +480,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "29",
 
             dayTime: "Saturday",
-            meetingType: "External engagements",
+            meetingType: "Infrakatha",
             desc: "Mythology & infrastructure with Devdutt Pattanaik",
             ctaText: "See details",
             details: {
@@ -507,7 +507,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "13",
 
             dayTime: "Thursday",
-            meetingType: "External engagements",
+            meetingType: "External engagement",
             desc: "Wastewater Reuse",
             ctaText: "See details",
             details: {
@@ -532,7 +532,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "3",
 
             dayTime: "Wednesday",
-            meetingType: "External engagements",
+            meetingType: "External engagement",
             desc: "Infrashakti Awards: The first edition",
             ctaText: "See details",
             details: {
@@ -556,7 +556,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "19",
 
             dayTime: "Friday",
-            meetingType: "External engagements",
+            meetingType: "Infrakatha",
             desc: "Inclusive infrastructure with Dr Deepa Malik",
             ctaText: "See details",
             details: {
@@ -582,7 +582,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "26",
 
             dayTime: "Friday",
-            meetingType: "External engagements",
+            meetingType: "Infrakatha",
             desc: "Indian infrastructure: The difficulty of being good with Gurcharan Das",
             ctaText: "See details",
             details: {
@@ -614,7 +614,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "13",
 
             dayTime: "Tuesday",
-            meetingType: "External engagements",
+            meetingType: "External engagement",
             desc: "Land Value Capture (LVC) Lab",
             ctaText: "See details",
             details: {
@@ -640,7 +640,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "17",
 
             dayTime: "Saturday",
-            meetingType: "External engagements",
+            meetingType: "Infrakatha",
             desc: "Saraswati, the lost river: Lessons for today with Sanjeev Sanyal",
             ctaText: "See details",
             details: {
@@ -673,7 +673,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "2",
 
             dayTime: "Monday",
-            meetingType: "External engagements ",
+            meetingType: "External engagement ",
             desc: "High-level roundtable on “Warehousing infrastructure as a service: Opportunities & challenges” ",
             ctaText: "See details",
             details: {
@@ -703,7 +703,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "7",
 
             dayTime: "Saturday",
-            meetingType: "External engagements ",
+            meetingType: "Infrakatha",
             desc: "Heritage tourism infrastructure with Aman Nath",
             ctaText: "See details",
             details: {
@@ -727,7 +727,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "28",
 
             dayTime: "Saturday",
-            meetingType: "Internal engagements",
+            meetingType: "Internal engagement",
             desc: "The Infravision Foundation half-yearly meeting 2024",
             ctaText: "See details",
             details: {
@@ -761,7 +761,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "14",
 
             dayTime: "Monday",
-            meetingType: "External engagements ",
+            meetingType: "Infrakatha",
             desc: "Artificial Intelligence: Reshaping the digital infra landscape with Shailesh Kochhar",
             ctaText: "See details",
             details: {
@@ -792,7 +792,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "24",
 
             dayTime: "Sunday",
-            meetingType: "External engagements ",
+            meetingType: "Infrakatha",
             desc: "Indosphere: How Indian trade grew with William Dalrymple",
             ctaText: "See details",
             details: {
@@ -828,7 +828,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "14",
 
             dayTime: "Saturday",
-            meetingType: "External engagements",
+            meetingType: "Infrakatha",
             desc: "Can Public Private Partnerships (PPP) be revitalised? with Montek Singh Ahluwalia",
             ctaText: "See details",
             details: {
@@ -853,7 +853,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "16",
 
             dayTime: "Monday",
-            meetingType: "External engagements",
+            meetingType: "External engagement",
             desc: "Trees Outside Forests in India (TOFI) Workshop",
             ctaText: "See details",
             details: {
@@ -884,7 +884,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "21",
 
             dayTime: "Saturday",
-            meetingType: "Internal engagements",
+            meetingType: "Internal engagement",
             desc: "The Infravision Foundation’s first annual meeting",
             ctaText: "See details",
             details: {
@@ -916,7 +916,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "4",
 
             dayTime: "Saturday",
-            meetingType: "External engagements",
+            meetingType: "External engagement",
             desc: "Panel discussion: The challenges ahead for core & social infra",
             ctaText: "See details",
             details: {
@@ -962,7 +962,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "2 & 3",
 
             dayTime: "Sunday & Monday",
-            meetingType: "Internal engagements",
+            meetingType: "Internal engagement",
             desc: "First quarterly meeting: Infrastructure investment priorities",
             ctaText: "See details",
             details: {
@@ -1031,7 +1031,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "18",
 
             dayTime: "Monday",
-            meetingType: "External engagements",
+            meetingType: "External engagement",
             desc: "High-level Roundtable: Interactive session on Surety Bonds with Debasish Panda, Chairman, IRDAI",
             ctaText: "See details",
             details: {
@@ -1094,7 +1094,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "7",
 
             dayTime: "Saturday",
-            meetingType: "Internal engagements",
+            meetingType: "Internal engagement",
             desc: "Second quarterly meeting: Ideas aplenty",
             ctaText: "See details",
             details: {
@@ -1224,7 +1224,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "4",
 
             dayTime: "Monday",
-            meetingType: "External engagements ",
+            meetingType: "External engagement ",
             desc: "High-level Roundtable on Urban mobility: Towards seamless integration",
             ctaText: "See details",
             details: {

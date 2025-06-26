@@ -26,13 +26,13 @@ const AboutInfraPandit = () => {
             <div className="">
               <h4 className="font-light text-base xl:text-xl">
                 {" "}
-                The InfraPandit Awards honour and reward first-rate research
+                The <span className="font-medium">InfraPandit Awards</span> honour and reward first-rate research
                 that can accelerate India towards becoming a{" "}
                 <span className="font-semibold">Viksit Bharat</span>. It
                 identifies and recognises young minds for their fresh outlook on
                 core infrastructure issues and groundbreaking insights.
               </h4>
-              <h4 className="font-normal mt-5 text-base xl:text-xl">
+              <h4 className="font-light mt-5 text-base xl:text-xl">
                 Instituted by The Infravision Foundation, the awards aim to
                 foster tangible outcomes in infrastructure research and
                 development through effective collaboration among industry,
@@ -40,9 +40,9 @@ const AboutInfraPandit = () => {
               </h4>
             </div>
             <div className="mt-4">
-              <h4 className="font-medium  mb-4">For the awardees</h4>
+              <h4 className="font-medium  mb-1">For the awardees</h4>
               <div className="flex items-center gap-2 md:gap-3 mb-2">
-                <span className="w-[6px] h-[6px] md:w-[13px] md:h-[13px] rounded-full bg-pink"></span>
+                <span className="w-[6px] h-[6px] md:w-[10px] md:h-[10px] rounded-full bg-pink"></span>
                 <h5 className="font-light text-sm xl:text-xl">
                   The{" "}
                   <span className="font-medium">Uttam Award (INR 5 lakh)</span>{" "}
@@ -53,7 +53,7 @@ const AboutInfraPandit = () => {
                 </h5>
               </div>
               <div className="flex items-start gap-2 md:gap-3 ">
-                <span className="w-[6px] h-[6px] md:w-[13px] md:h-[13px] rounded-full mt-2 bg-pink shrink-0"></span>
+                <span className="w-[6px] h-[6px] md:w-[10px] md:h-[10px] rounded-full mt-2 bg-pink shrink-0"></span>
                 <h5 className="font-light text-sm xl:text-xl">
                   A citation by{" "}
                   <span className="font-medium">
@@ -85,7 +85,8 @@ const AboutInfraPandit = () => {
                   color="black"
                   underlineColor="pink"
                   role="link"
-                  size="extralarge"
+                  size="extralarge" 
+              
                 />
               </div>
             </div>
@@ -167,6 +168,11 @@ const EligibilityProcessPopup = ({ onClose }: { onClose: () => void }) => {
                   Mahaan Award (INR 3 lakh)
                 </li>
               </ul>
+              <li className=" text-base font-light sm:text-lg">
+                <span className="text-black">
+                  The winners of the InfraPandit Award will be felicitated at an event in the presence of high-profile guests from academia, industry, and government. The event will receive extensive coverage and publicity.
+                </span>
+              </li>
             </ul>
           </div>
           <div className="">
@@ -178,32 +184,32 @@ const EligibilityProcessPopup = ({ onClose }: { onClose: () => void }) => {
                 <span className="text-black">
                   The awards program will be announced along with a call for
                   online applications on 20th June 2025 on The
-                  <span className="font-medium">
-                    {" "}
-                    Infravision Foundation’s official website.
-                  </span>
+                  
+                    Infravision Foundation’s {" "}
+                  
+                     official website.
                 </span>
               </li>
               <li className=" text-base font-light sm:text-lg">
                 <span className="text-black">
                   The <span className="font-medium">last date</span> for
-                  submitting the applications will be 14th August, 2025.
+                  submitting the applications will be  August 14, 2025.
                 </span>
               </li>
               <li className=" text-base font-light sm:text-lg">
                 <span className="text-black">
                   The <span className="font-medium">results</span> will be
-                  announced latest by 15th November, 2025.
+                  announced latest by November 15, 2025.
                 </span>
               </li>
-              <ul className="pl-5">
+              {/* <ul className="pl-5">
                 <li className="list-disc text-black text-base">
                   Uttam Award (INR 5 lakh)
                 </li>
                 <li className="list-disc text-black text-base">
                   Mahaan Award (INR 3 lakh)
                 </li>
-              </ul>
+              </ul> */}
             </ul>
           </div>
           <div>
@@ -219,29 +225,29 @@ const EligibilityProcessPopup = ({ onClose }: { onClose: () => void }) => {
                 innovation, industry, and finance.
               </span>
             </p>
-            <p className="text-base sm:text-lg font-light">
+            <p className="text-base sm:text-lg font-light mt-2">
               While the members of the jury may change in later cycles of the
               award, the sectors they represent will remain constant.
             </p>
           </div>
-          <div>
-            <h2 className="text-pink font-semibold mb-2 mt-6 md:mt-10">
+          <div className="space-y-3">
+            <h2 className="text-pink font-semibold  mb-2 mt-6 md:mt-10">
               Process
             </h2>
-            <p className="text-base sm:text-lg font-light">
+            <p className="text-base sm:text-lg font-light pl-3">
               The process to be followed is described below:
             </p>
-            <p className="text-base sm:text-lg ">
+            <p className="text-base sm:text-lg font-medium">
               1. Receipt of applications as per the standard online format
             </p>
-            <p className="text-base sm:text-lg ">
+            <p className="text-base sm:text-lg font-medium">
               2. Screening of applications
             </p>
             <p className="text-base sm:text-lg font-light pl-5">
               Verification of authentic documents and confirmation of
               eligibility.
             </p>
-            <p className="text-base sm:text-lg ">
+            <p className="text-base sm:text-lg font-medium">
               3. Evaluation of dissertation (Stage 1: Desk Review)
             </p>
             <p className="text-base sm:text-lg font-light pl-5">
@@ -249,7 +255,7 @@ const EligibilityProcessPopup = ({ onClose }: { onClose: () => void }) => {
               the marks.
             </p>
           </div>
-          <div className=" mt-6 md:mt-10">
+          <div className=" mt-2">
             <h5 className="text-pink font-semibold relative flex items-center">
               <span className="inline-block w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-pink my-auto mr-2"></span>
               Quality (30%)
@@ -292,7 +298,7 @@ const EligibilityProcessPopup = ({ onClose }: { onClose: () => void }) => {
             <p className="text-base sm:text-lg font-medium">
               4. Shortlisting of candidates for interview
             </p>
-            <p className="text-base sm:text-lg font-light pl-5">
+            <p className="text-base sm:text-lg font-light pl-5 pt-2">
               Based on the Stage 1 evaluation, shortlisted candidates will be
               invited to present before the jury. The candidates must cover
               their own travelling costs when invited to appear for the

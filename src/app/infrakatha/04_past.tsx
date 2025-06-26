@@ -21,16 +21,16 @@ const allcards = [
     img: montek.src,
     category: "InfraKatha #8",
     date: "December 14, 2024",
-    title: "Featuring Mr. Montek Singh Ahluwalia, Former Deputy Chairman, the Planning Commission",
+    title: "Featuring Mr Montek Singh Ahluwalia, Former Deputy Chairman, the Planning Commission",
     link: "https://www.youtube.com/watch?v=o6nb3IejARc&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=1&ab_channel=TheInfravisionFoundation",
     description:
-      "Can Public Private Partnerships be Revitalised?",
+      "Can Public Private Partnerships be revitalised?",
   },
   {
     img: william.src,
     category: "InfraKatha #7",
     date: "November 24, 2024",
-    title: "Featuring Mr. William Dalrymple, Historian and Author",
+    title: "Featuring Mr William Dalrymple, Historian and Author",
     link: "https://www.youtube.com/watch?v=ae8InU9IGgk&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=2&ab_channel=TheInfravisionFoundation",
     description: "Indosphere: How Indian trade grew",
   },
@@ -38,44 +38,44 @@ const allcards = [
     img: shailesh.src,
     category: "InfraKatha #6",
     date: " October 14, 2024",
-    title: "Featuring Mr. Shailesh Kochhar, AI Specialist",
+    title: "Featuring Mr Shailesh Kochhar, AI Specialist",
     link: "https://www.youtube.com/watch?v=hIzp4YhZcMo&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=3&ab_channel=TheInfravisionFoundation",
-    description: "Artificial Intelligence: Reshaping the Digital Infra Landscape",
+    description: "Artificial Intelligence: Reshaping the digital infra landscape",
   },
   {
     img: aman.src,
     category: "InfraKatha #5",
     date: "September 7, 2024",
-    title: "Featuring Mr. Aman Nath, Co-founder and Chairman, Neemrana Hotels and noted heritage restorer",
+    title: "Featuring Mr Aman Nath, Co-Founder and Chairman, Neemrana Hotels and noted heritage restorer",
     link: "https://www.youtube.com/watch?v=u-SEobnWU6U&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=4&ab_channel=TheInfravisionFoundation",
     description:
-      "Heritage Tourism Infrastructure",
+      "Heritage tourism infrastructure",
   },
   {
     img: sanjeev.src,
     category: "InfraKatha #4",
     date: "August 17, 2024",
-    title: "Featuring Mr. Sanjeev Sanyal, Author, Economist, Member of the PM’s Advisory Economic Council",
+    title: "Featuring Mr Sanjeev Sanyal, Author, Economist, Member of the PM’s Advisory Economic Council",
     link: "https://www.youtube.com/watch?v=sygLq4cccIY&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=5&ab_channel=TheInfravisionFoundation",
     description:
-      "Saraswati, The Lost River",
+      "Saraswati, the lost river",
   },
   {
     img: gurucharan.src,
     category: "InfraKatha #3",
     date: " July 19, 2024",
-    title: "Featuring Mr. Gurucharan Das, Author",
+    title: "Featuring Mr Gurucharan Das, Author",
     link: "https://www.youtube.com/watch?v=FCDeGlsb7q0&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=6&ab_channel=TheInfravisionFoundation",
-    description: "Indian Infrastructure — The difficulty of being good",
+    description: "Indian infrastructure — The difficulty of being good",
   },
   {
     img: deepaMalik.src,
     category: "InfraKatha #2",
     date: "June 19, 2024",
-    title: "Featuring Padma Shri Dr. Deepa Malik, Para-athlete and Former President of the Paralympic Committee of India",
+    title: "Featuring Padma Shri Dr Deepa Malik, Para-athlete and Former President of the Paralympic Committee of India",
     link: "https://www.youtube.com/watch?v=5uzHmHzU7q0&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=7&ab_channel=TheInfravisionFoundation",
     description:
-      "Inclusive Infrastructure",
+      "Inclusive infrastructure",
   },
   {
     img: devdutt.src,
@@ -83,7 +83,7 @@ const allcards = [
     date: "May 29, 2024",
     title: "Featuring Mr. Devdutt Pattanaik, Author",
     link: "https://www.youtube.com/watch?v=9v61vpPmXEk&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=8&ab_channel=TheInfravisionFoundation",
-    description: "Mythology & Infrastructure",
+    description: "Mythology & infrastructure",
   },
 ];
 
@@ -115,7 +115,7 @@ export default function PastEvents() {
       <div className="w-container blade-top-padding-lg blade-bottom-padding-lg">
         <div className="flex flex-row items-center gap-2 md:gap-3 ">
           <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-          <h5 className="font-medium text-pink">Past Infrakatha Sessions</h5>
+          <h5 className="font-medium text-pink">Past Sessions</h5>
         </div>
         <div className="py-3 ">
           <h1 className="text-black  font-light">
@@ -125,7 +125,7 @@ export default function PastEvents() {
           </h1>
         </div>
         <div className="md:pt-5">
-          <div className="flex flex-row items-center gap-4  pb-4 mb-4 sm:mb-8">
+          {/* <div className="flex flex-row items-center gap-4  pb-4 mb-4 sm:mb-8">
             <div className="border-r border-darkgray/20">
               <h5 className="text-darkgray/80 sm:py-5 pr-5 text-nowrap">
                 Filter by year
@@ -146,7 +146,7 @@ export default function PastEvents() {
                 </button>
               ))}
             </div>
-          </div>
+          </div> */}
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-24">
             {FilteredCard()
               .slice(0, visiblecountmobile)

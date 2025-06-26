@@ -81,7 +81,7 @@ const advocacy = [
     img: infraPandit.src,
     category: "InfraPandit Awards",
     title:
-      "Another flagship initiative recognising outstanding doctoral research on infrastructure, fostering youth participation in India's infra evolution.",
+      "A national effort at recognising outstanding doctoral research on infrastructure, fostering youth participation in India's infra evolution.",
     link: "/infrapandit-awards",
     ctaText: "Know more"
   },
