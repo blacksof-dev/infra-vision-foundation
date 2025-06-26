@@ -146,7 +146,7 @@ function Header() {
   const KnowledgeDropDown: NavItem[] = [
     { label: "Research Papers", href: "/knowledge#research-papers" },
     {
-      label: "Infravision Conversations",
+      label: "The Infravision Conversations",
       href: "/knowledge#infravision-conversations",
     },
     { label: "Blogs", href: "/knowledge#blogs" },
