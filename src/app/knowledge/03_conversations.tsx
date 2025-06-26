@@ -29,6 +29,7 @@ const people = [
     title:
       "Founder and President, First Construction Council, and author, Tarmac to Towers: India’s Infrastructure Story",
     desc: "Infra projects in India are invariably only 90 percent complete",
+    date:"June 10, 2025",
   },
   {
     image: img2.src,
@@ -38,6 +39,7 @@ const people = [
     title:
       "The Infravision Foundation CEO and senior expert in urban development policy",
     desc: "Why India needs a national plan to build new cities",
+     date:"June 5, 2025",
   },
   {
     image: img1.src,
@@ -47,6 +49,7 @@ const people = [
     title:
       "TRIPP Chair Professor at the Department of Civil Engineering, Indian Institute of Technology in New Delhi, India.",
     desc: "Selecting the appropriate urban transport system for India's cities",
+     date:"May 30, 2024",
   },
   {
     image: img7.src,
@@ -55,6 +58,7 @@ const people = [
     name: "Rajaji Meshram",
     title: "Transport and Logistic Experts",
     desc: "Sustainability Ratings : an idea whose time has come",
+     date:"September 15, 2023",
   },
   {
     image: img5.src,
@@ -63,6 +67,7 @@ const people = [
     name: "Prof Sandip Chakrabarti",
     title: "Faculty Member, Public Systems Group, IIMA",
     desc: "Making metro systems financially viable, what needs to be done?",
+     date:"October 11, 2023",
   },
   {
     image: img4.src,
@@ -72,6 +77,7 @@ const people = [
     title:
       "Distinguished Fellow, The Infravision Foundation, and former Director General, National Mission for Clean Ganga     ",
     desc: "Selecting the appropriate urban transport system for India's cities",
+     date:"October 11, 2023",
   },
   {
     image: img6.src,
@@ -80,6 +86,7 @@ const people = [
     name: "Prof Gopal Naik",
     title: "Economics and Social Science, IIM Bangalore",
     desc: "How to improve warehousing in India and enhance credit availability",
+     date:"December 14, 2023",
   },
   {
     image: img9.src,
@@ -88,7 +95,8 @@ const people = [
     name: "Jagan Shah",
     title:
       "The Infravision Foundation CEO and senior expert in urban development policy, Jagan Shah",
-    desc: "Air Pollution: The solution has to be multi-sectoral",
+    desc: "Air pollution: The solution has to be multi-sectoral",
+     date:"November 14, 2023",
   },
   {
     image: img3.src,
@@ -98,6 +106,7 @@ const people = [
     title:
       "Member, Council of Advisors, TIF, and Former Director, IIM Bangalore",
     desc: "Indian Railways : Why innovation matters",
+     date:"November 6,2023",
   },
 
 
@@ -134,7 +143,7 @@ export default function Conversations() {
             <div className="flex flex-row items-center gap-2 md:gap-3">
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
               <h5 className="font-medium text-pink">
-               The Infravision Conversations
+               The Infravision Conversation
               </h5>
             </div>
             <div className="py-3 max-w-4xl">
@@ -142,7 +151,7 @@ export default function Conversations() {
                 Decoding infrastructure, <br />
                 <span className="text-black font-medium">
                   {" "}
-                  one topic at a time.
+                  one topic at a time
                 </span>
               </h1>
             </div>
@@ -241,10 +250,13 @@ export default function Conversations() {
                       </div>
                     </div>
                   </div>
-                  <div className=" text-black/90">
-                    <h5 className="font-medium max-w-sm  mt-4">
+                  <div className=" text-black/90 flex flex-col xl:flex-row xl:justify-between py-3">
+                    <h6 className="font-medium w-full xl:max-w-xs ">
                       {person.desc}
-                    </h5>
+                    </h6>
+                    <h6 className="text-darkgray py-1">
+                       {person.date}
+                    </h6>
                   </div>
                 </div>
               </SwiperSlide>

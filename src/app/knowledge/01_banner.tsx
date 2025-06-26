@@ -9,7 +9,7 @@ export default function BannerSection() {
             mobileimage={bannerMobile}
             heading="Knowledge"
             title="Knowledge"
-            subdesc="In-depth and independent analyses of India's infrastructure-related issues"
+            subdesc="In-depth and independent analyses of India's infrastructure-related issues."
         />
     )
 }

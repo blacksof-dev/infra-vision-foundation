@@ -9,8 +9,9 @@ export const allCards = [
     image:image1,
     subtitle: "The Infravision Conversation",
     subdesc:
-      "Padode discusses India's urban infrastructure challenges and project completion hurdles.",
+      "Pratap Padode discusses India's urban infrastructure challenges and project completion hurdles.",
     link: "https://www.youtube.com/embed/w6oJTRqeB4A?si=N86EFRkUe3hYGdUQ",
+    date:"June 10, 2025",
   },
 
   {
@@ -18,12 +19,14 @@ export const allCards = [
     subtitle: "Infrakatha",
     subdesc: "Renowned historian and author William Dalrymple explores India's deep impact on ancient global trade and ideas.",
     link: "https://www.youtube.com/embed/ae8InU9IGgk?si=KT5qQRB9wnZ6suzu",
+    date:"November 24, 2024",
   },
   {
     image: infrakatha2,
     subtitle: "Infrakatha",
     subdesc: "Montek Singh Ahluwalia’s critical look at PPPs: From historical challenges to future infrastructure strategies.",
     link: "https://www.youtube.com/embed/o6nb3IejARc?si=AutQRmVfpzK1bMe5",
+    date:"December 14, 2024",
   },
 
   {
@@ -32,6 +35,7 @@ export const allCards = [
     subdesc:
       "Physical vs. social infrastructure: Debating India's development priorities at The Infravision Foundation’s quarterly meet.",
     link: "https://www.youtube.com/embed/-INuUJJwYdk?si=lxMu8cwCXOqCU-b0",
+    date:"",
   },
 
   {
@@ -40,6 +44,7 @@ export const allCards = [
     subdesc:
       "Vinayak Chatterjee throws light on the Foundation's innovative model for Poverty Alleviation through solar energy.",
     link: "https://www.youtube.com/embed/SGoq2OpxMuA?si=fe6_lv4EmxFiYNXL",
+    date:"",
   },
 ];
 

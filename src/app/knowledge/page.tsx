@@ -10,7 +10,7 @@ type TabId = "researchPapers" | "infravisionConversations" | "blogs";
 
 const tabs: { id: TabId; label: string }[] = [
     { id: "researchPapers", label: "Research Papers" },
-    { id: "infravisionConversations", label: "The Infravision Conversations" },
+    { id: "infravisionConversations", label: "The Infravision Conversation" },
     { id: "blogs", label: "Blogs" },
 ];
 

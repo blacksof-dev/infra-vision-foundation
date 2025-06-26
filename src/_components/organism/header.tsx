@@ -152,7 +152,7 @@ function Header() {
     { label: "Blogs", href: "/knowledge#blogs" },
   ];
 
-  const Archives: NavItem[] = [
+   const Archives: NavItem[] = [
     { label: "Newsletters", href: "/archive#newsletters" },
     { label: "In the News", href: "/archive#news-and-media" },
     { label: "Gallery", href: "/archive#gallery" },
