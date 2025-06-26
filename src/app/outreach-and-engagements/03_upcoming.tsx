@@ -802,11 +802,7 @@ The study identified Noida as having exceptional potential to become a model cit
               images: [ 
                 {
                   image:
-                  "/assets/outreach-and-engagements/eventImages/dummy.png",
-                   description:"",
-                },{
-
-                  image:"/assets/outreach-and-engagements/eventImages/dummy.png",
+                  "/assets/outreach-and-engagements/eventImages/Indosphere.png",
                    description:"",
                 }
               ],
