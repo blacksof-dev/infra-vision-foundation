@@ -544,7 +544,8 @@ The study identified Noida as having exceptional potential to become a model cit
                 }
               ],
               content: `
-                  The NDTV Infra Shakti Awards 2024 is a significant initiative by The Infravision Foundation in association with NDTV, dedicated to promoting equitable and sustainable infrastructure development across India. Watch the first edition of the awards celebrate "change makers" — individuals, institutions, and projects — that have made substantial contributions to improving connectivity, livability, and sustainability within the nation's infrastructure landscape   
+                  The NDTV Infra Shakti Awards 2024 is a significant initiative by The Infravision Foundation in association with NDTV, dedicated to promoting equitable and sustainable infrastructure development across India. 
+                  Watch the first edition of the awards celebrate "change makers" — individuals, institutions, and projects — that have made substantial contributions to improving connectivity, livability, and sustainability within the nation's infrastructure landscape.   
               `,
               cta: {
                 ctaText: "Watch video",
@@ -563,8 +564,8 @@ The study identified Noida as having exceptional potential to become a model cit
               date: "July 19, 2024",
               images: [ 
                 {
-                  image:"/assets/outreach-and-engagements/eventImages/july5_2024.png",
-                  description:"Mr Arman Ali, Executive Director, National Centre for Promotion of Employment for Disabled People (NCPEDP), and Mr Tarun Garg, COO, Hyundai Motor India, presenting the Inclusive Infrastructure Award to Ms Swarnalatha J, Managing Trustee, and Dr Guruprasad T S, Trustee, from Swarga Foundation."
+                  image:"/assets/outreach-and-engagements/eventImages/july_2024.png",
+                  description:""
                 }
               ],
               content: `
@@ -774,7 +775,8 @@ The study identified Noida as having exceptional potential to become a model cit
                 }
               ],
               content: `
-              Catch  AI specialist Shailesh Kochhar and Jagan Shah, CEO of The Infravision Foundation, in the sixth InfraKatha session as they delve into “Artificial intelligence: Reshaping the digital infrastructure landscape”. The discussion highlights AI's pervasive impact, its potential to automate global jobs, and fundamentally alter the nature of work. From AI's current limitations to the importance of competition, it projects the profound questions AI raises for the future of labour and education. The speakers also touch upon AI's practical applications in infrastructure and its ethical considerations.\n 
+              Catch  AI specialist Shailesh Kochhar and Jagan Shah, CEO of The Infravision Foundation, in the sixth InfraKatha session as they delve into “Artificial intelligence: Reshaping the digital infrastructure landscape”. The discussion highlights AI's pervasive impact, its potential to automate global jobs, and fundamentally alter the nature of work.\n
+              From AI's current limitations to the importance of competition, it projects the profound questions AI raises for the future of labour and education. The speakers also touch upon AI's practical applications in infrastructure and its ethical considerations.\n 
               `,
 
               cta: {
@@ -809,7 +811,8 @@ The study identified Noida as having exceptional potential to become a model cit
                 }
               ],
               content: `
-              Watch renowned historian William Dalrymple as he passionately argues for a re-evaluation of ancient India's global influence and its "Indosphere." He critiques prevailing historical narratives, particularly the "Silk Road" concept, which he believes minimises India's pivotal role in classical trade and the spread of ideas. Dalrymple meticulously presents evidence of India's significant contributions in the diffusion of Buddhism, the economic dominance of Indian trade with the Roman Empire, and the profound impact of Indian mathematical concepts on the world.\n
+              Watch renowned historian William Dalrymple as he passionately argues for a re-evaluation of ancient India's global influence and its "Indosphere." He critiques prevailing historical narratives, particularly the "Silk Road" concept, which he believes minimises India's pivotal role in classical trade and the spread of ideas.\n
+              Dalrymple meticulously presents evidence of India's significant contributions in the diffusion of Buddhism, the economic dominance of Indian trade with the Roman Empire, and the profound impact of Indian mathematical concepts on the world.\n
                Open yourself to a fresh perspective of India's historical soft power.
               `,
 
@@ -841,7 +844,9 @@ The study identified Noida as having exceptional potential to become a model cit
                 }
               ],
               content: `
-              Watch Montek Singh Ahluwalia, a distinguished Indian economist and former Deputy Chairman of the Planning Commission and Vinayak Chatterjee, Founder and Managing Trustee, The Infravision Foundation, as they discuss the evolution and challenges of Public-Private Partnerships (PPPs) in India. The discussion shares insights into the historical context of infrastructure development, the reasons for involving private capital, and the institutional and political hurdles that have impacted PPP success, such as issues with contract renegotiation, environmental clearances, and judicial intervention.\n`,
+              Watch Montek Singh Ahluwalia, a distinguished Indian economist and former Deputy Chairman of the Planning Commission and Vinayak Chatterjee, Founder and Managing Trustee, The Infravision Foundation, as they discuss the evolution and challenges of Public-Private Partnerships (PPPs) in India. \n
+              The discussion shares insights into the historical context of infrastructure development, the reasons for involving private capital, and the institutional and political hurdles that have impacted PPP success, such as issues with contract renegotiation, environmental clearances, and judicial intervention.
+              `,
 
               cta: {
                 ctaText: "Watch video",

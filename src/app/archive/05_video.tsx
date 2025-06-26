@@ -134,11 +134,18 @@ function CardSection({ tab }: { tab: string }) {
                 </div>
 
                 <div>
-                  <div className="flex flex-row items-center gap-2 md:gap-3 py-3">
+                  <div className="flex flex-col sm:flex-row justify-between py-3">
+                    <div className="flex flex-row items-center gap-2 md:gap-3 ">
                     <span className="w-[7px] h-[7px] md:w-[12px] md:h-[12px] rounded-full bg-darkgray/30"></span>
                     <p className=" text-black">{ele.subtitle}</p>
+                  
                   </div>
-                  <div className="w-full md:w-[70%]">
+                  <div>
+                    <p className="text-darkgray ">{ele.date}</p>
+                  </div>
+                  </div>
+                  
+                  <div className="w-full  md:w-[90%]">
                     <h5 className="text-blacksecond font-medium">
                       {ele.subdesc}
                     </h5>

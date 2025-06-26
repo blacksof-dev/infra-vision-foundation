@@ -11,7 +11,7 @@ type TabId = "newsletter" | "newsandMedia" | "video" | "gallery";
 
 const tabs: { id: TabId; label: string }[] = [
   { id: "newsletter", label: "Newsletters" },
-  { id: "newsandMedia", label: "News and media" },
+  { id: "newsandMedia", label: "In the News" },
   { id: "video", label: "Videos" },
   { id: "gallery", label: "Gallery" },
 ];

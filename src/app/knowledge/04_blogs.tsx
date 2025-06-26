@@ -16,7 +16,7 @@ import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import { NewsCard } from "@/_components/molecules/newsCard";
 
 // Types
-type FilterType = "All" | "Publication Year" | "sectors";
+type FilterType = "All" | "Publication year" | "Sectors";
 type SectorType =
   | "All"
   | "Transportation"
@@ -39,7 +39,7 @@ interface NewsletterCard {
 }
 
 // Constants
-const FILTER_TYPES: FilterType[] = ["All", "Publication Year", "sectors"];
+const FILTER_TYPES: FilterType[] = ["All", "Publication year", "Sectors"];
 const YEARS = ["2025", "2024", "2023"] as const;
 const SECTORS: SectorType[] = [
   "All",
@@ -159,9 +159,9 @@ export default function Blogs() {
   const handleTabClick = (tab: FilterType) => {
     setSelectedTab(tab);
     setSelectedFilter(
-      tab === "Publication Year"
+      tab === "Publication year"
         ? YEARS[0]
-        : tab === "sectors"
+        : tab === "Sectors"
           ? SECTORS[0]
           : "All"
     );
@@ -174,12 +174,12 @@ export default function Blogs() {
   };
 
   const filteredCards = useMemo(() => {
-    if (selectedTab === "Publication Year") {
+    if (selectedTab === "Publication year") {
       return allcards.filter(
         (card) => card.date.split(" ").pop() === selectedFilter
       );
     }
-    if (selectedTab === "sectors" && selectedFilter !== "All") {
+    if (selectedTab === "Sectors" && selectedFilter !== "All") {
       return allcards.filter((card) => card.sectors === selectedFilter);
     }
     return allcards;
@@ -259,12 +259,12 @@ export default function Blogs() {
           </div>
 
           {/* Filter Buttons */}
-          {selectedTab === "Publication Year" && renderFilterButtons(YEARS)}
-          {selectedTab === "sectors" && renderFilterButtons(SECTORS)}
+          {selectedTab === "Publication year" && renderFilterButtons(YEARS)}
+          {selectedTab === "Sectors" && renderFilterButtons(SECTORS)}
 
           {/* Newsletter Cards */}
           <div
-            className={`${selectedTab === "Publication Year" ? "pt-8" : "pt-8"
+            className={`${selectedTab === "Publication year" ? "pt-8" : "pt-8"
               }`}
           >
             {

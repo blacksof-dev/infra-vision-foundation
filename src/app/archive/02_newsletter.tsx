@@ -4,7 +4,7 @@ import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import { NewsCard } from "@/_components/molecules/newsCard";
 
 // Types
-type FilterType = "All" | "Publication Year" | "sectors";
+type FilterType = "All" | "Publication year" | "sectors";
 type SectorType =
   | "All"
   | "Transportation"
@@ -27,7 +27,7 @@ interface NewsletterCard {
 }
 
 // Constants
-const FILTER_TYPES: FilterType[] = ["All", "Publication Year"];
+const FILTER_TYPES: FilterType[] = ["All", "Publication year"];
 const YEARS = ["2025", "2024"] as const;
 const SECTORS: SectorType[] = [
   "All",
@@ -349,7 +349,7 @@ export default function Newsletters() {
   const handleTabClick = (tab: FilterType) => {
     setSelectedTab(tab);
     setSelectedFilter(
-      tab === "Publication Year"
+      tab === "Publication year"
         ? YEARS[0]
         : tab === "sectors"
           ? SECTORS[0]
@@ -364,7 +364,7 @@ export default function Newsletters() {
   };
 
   const filteredCards = useMemo(() => {
-    if (selectedTab === "Publication Year") {
+    if (selectedTab === "Publication year") {
       return allcards.filter(
         (card) => card.date.split(" ").pop() === selectedFilter
       );
@@ -413,9 +413,9 @@ export default function Newsletters() {
 
         <div className="py-3 max-w-[890px] ">
           <h1 className="text-black font-light">
-            Data and findings from the ground,{" "}
+           A Chronicle of Our <br/>
             <span className="text-black font-medium">
-              fuelled by expert foresight
+             {' '} Monthly Dispatches
             </span>
           </h1>
         </div>
@@ -447,12 +447,12 @@ export default function Newsletters() {
           </div>
 
           {/* Filter Buttons */}
-          {selectedTab === "Publication Year" && renderFilterButtons(YEARS)}
+          {selectedTab === "Publication year" && renderFilterButtons(YEARS)}
           {selectedTab === "sectors" && renderFilterButtons(SECTORS)}
 
           {/* Newsletter Cards */}
           <div
-            className={`${selectedTab === "Publication Year" ? "pt-8" : "pt-8"
+            className={`${selectedTab === "Publication year" ? "pt-8" : "pt-8"
               }`}
           >
             {
