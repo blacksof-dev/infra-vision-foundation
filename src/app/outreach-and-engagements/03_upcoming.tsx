@@ -513,7 +513,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "June 13, 2024, New Delhi",
               images: [ {
-                image:"/assets/outreach-and-engagements/eventImages/dummy.png", 
+                image:"/assets/outreach-and-engagements/eventImages/wastewater-reuse.png", 
                 description:"",
               }
             
