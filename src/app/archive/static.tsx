@@ -35,7 +35,7 @@ export const allCards = [
     subdesc:
       "Physical vs. social infrastructure: Debating India's development priorities at The Infravision Foundation’s quarterly meet.",
     link: "https://www.youtube.com/embed/-INuUJJwYdk?si=lxMu8cwCXOqCU-b0",
-    date:"",
+    date:"August 21, 2023",
   },
 
   {
