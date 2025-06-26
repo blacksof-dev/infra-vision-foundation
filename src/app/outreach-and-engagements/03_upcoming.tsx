@@ -243,7 +243,7 @@ The study identified Noida as having exceptional potential to become a model cit
           {
             date: "10",
             dayTime: "Tuesday",
-            meetingType: "External engagements",
+            meetingType: "Virtual Conversations",
             desc: "Infra projects in India are invariably only 90% complete",
             ctaText: "See details",
             details: {
@@ -268,7 +268,7 @@ The study identified Noida as having exceptional potential to become a model cit
           {
             date: "5",
             dayTime: "Thursday",
-            meetingType: "External engagements",
+            meetingType: "Virtual Conversations",
             desc: "Why India needs a national plan to build new cities",
             ctaText: "See details",
             details: {
@@ -324,7 +324,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "12",
 
             dayTime: "Friday",
-            meetingType: "External engagements ",
+            meetingType: "Virtual Conversations ",
             desc: "Renewable energy 2024: Storage will be the main focus with Nitin Zamre",
             ctaText: "See details",
             details: {
@@ -355,7 +355,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "17",
 
             dayTime: "Saturday",
-            meetingType: "External engagements ",
+            meetingType: "Internal engagements ",
             desc: "Third quarterly meeting: Brainstorming for the future",
             ctaText: "See details",
             details: {
@@ -416,7 +416,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "30",
 
             dayTime: "Thursday",
-            meetingType: "External engagements",
+            meetingType: "Virtual Conversations",
             desc: "Wild areas are necessary in cities, they allow nature to breathe with Anita Mani",
             ctaText: "See details",
             details: {
@@ -445,7 +445,7 @@ The study identified Noida as having exceptional potential to become a model cit
             date: "30",
 
             dayTime: "Thursday",
-            meetingType: "External engagements",
+            meetingType: "Virtual Conversations",
             desc: "A walk for a cause with Gita Balakrishnan",
             ctaText: "See details",
             details: {
