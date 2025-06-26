@@ -34,7 +34,7 @@ export default function Banner({
             <Image
               src={image}
               alt="Publication Banner"
-              className="w-full h-full object-cover  2xl:object-bottom"
+              className="w-full h-full object-cover   2xl:object-bottom"
               unoptimized={true}
             ></Image>
           </div>

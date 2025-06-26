@@ -44,12 +44,12 @@ const Upcoming = () => {
           {
             date: "18",
 
-            dayTime: "Saturday, New Delhi",
+            dayTime: "Saturday",
             meetingType: "External engagements",
             desc: "Centre for Agri Infrastructure Research and Action's (CAIRA) first Roundtable on Boosting India's agri exports by transforming infrastructure",
             ctaText: "See details",
             details: {
-              date: "January 18, 2025, New Delhi",
+              date: "January 18, 2025",
               images: [ 
                 {
                  image: "/assets/outreach-and-engagements/eventImages/caira_01.png",
@@ -477,14 +477,14 @@ The study identified Noida as having exceptional potential to become a model cit
         month: "June",
         events: [
           {
-            date: "7",
+            date: "29",
 
-            dayTime: "Friday",
+            dayTime: "Saturday",
             meetingType: "External engagements",
             desc: "Mythology & infrastructure with Devdutt Pattanaik",
             ctaText: "See details",
             details: {
-              date: "June 7, 2024",
+              date: "May 29, 2024",
               images: [{
               
                 image:"/assets/outreach-and-engagements/eventImages/june7_2024.png",
@@ -553,14 +553,14 @@ The study identified Noida as having exceptional potential to become a model cit
             },
           },
           {
-            date: "5",
+            date: "19",
 
             dayTime: "Friday",
             meetingType: "External engagements",
             desc: "Inclusive infrastructure with Dr Deepa Malik",
             ctaText: "See details",
             details: {
-              date: "July 5, 2024",
+              date: "July 19, 2024",
               images: [ 
                 {
                   image:"/assets/outreach-and-engagements/eventImages/july5_2024.png",
@@ -583,7 +583,7 @@ The study identified Noida as having exceptional potential to become a model cit
 
             dayTime: "Friday",
             meetingType: "External engagements",
-            desc: "Indian infrastructure: The difficulty of being good with Dilip Cherian",
+            desc: "Indian infrastructure: The difficulty of being good with Gurcharan Das",
             ctaText: "See details",
             details: {
               date: "July 26, 2024",
@@ -637,14 +637,14 @@ The study identified Noida as having exceptional potential to become a model cit
             },
           },
           {
-            date: "22",
+            date: "17",
 
-            dayTime: "Thursday",
+            dayTime: "Saturday",
             meetingType: "External engagements",
             desc: "Saraswati, the lost river: Lessons for today with Sanjeev Sanyal",
             ctaText: "See details",
             details: {
-              date: "August 22, 2024",
+              date: "August 17, 2024",
               images: [ 
                 {
 
@@ -682,11 +682,16 @@ The study identified Noida as having exceptional potential to become a model cit
                 {
 
                   image:"/assets/outreach-and-engagements/eventImages/september3_2024.png",
-                   description:"",
+                   description:"The Infravision Foundation Founder and Managing Trustee Vinayak Chatterjee addressing the audience.",
                 },{
                   image:
                   "/assets/outreach-and-engagements/eventImages/september4_2024.png",
-                   description:"",
+                   description:"CAIRA Governing Council Head and former Secretary, Ministry of Agriculture Siraj Hussain, in action at the roundtable.",
+                },
+                {
+                  image:
+                  "/assets/outreach-and-engagements/eventImages/septemberImg2_2024.png",
+                   description:"United for India's agriculture: Representatives from various sectors at the recent stakeholder engagement.",
                 }
               ],
               content: `
@@ -695,14 +700,14 @@ The study identified Noida as having exceptional potential to become a model cit
             },
           },
           {
-            date: "17",
+            date: "7",
 
-            dayTime: "Tuesday",
+            dayTime: "Saturday",
             meetingType: "External engagements ",
             desc: "Heritage tourism infrastructure with Aman Nath",
             ctaText: "See details",
             details: {
-              date: "September 17, 2024",
+              date: "September 7, 2024",
               images: [ 
                 {
                   image:"/assets/outreach-and-engagements/eventImages/september17_2024.png",
@@ -731,12 +736,12 @@ The study identified Noida as having exceptional potential to become a model cit
                 {
                   image:
                   "/assets/outreach-and-engagements/eventImages/sepetember1_2024.png",
-                   description:"Distinguished Fellow (Financial Services) Supratim Sarkar receiving a Certificate of Excellence from The Infravision Foundation Founder and CEO Vinayak Chatterjee.",
+                   description:"Distinguished Fellow (Financial Services) Supratim Sarkar receiving the Certificate of Excellence from The Infravision Foundation Founder and CEO Vinayak Chatterjee.",
                 },{
                   image:
 
                   "/assets/outreach-and-engagements/eventImages/sepetember2_2024.png", 
-                   description:"The Infravision Foundation Co-founder Rumjhum Chatterjee, facilitating Distinguished Fellow (Public Policy) Akhilesh Tilotia.",
+                   description:"The Infravision Foundation Co-Founder Rumjhum Chatterjee, facilitating Distinguished Fellow (Public Policy) Akhilesh Tilotia.",
                 }
               ],
               content: `
@@ -755,7 +760,7 @@ The study identified Noida as having exceptional potential to become a model cit
           {
             date: "14",
 
-            dayTime: "Wednesday",
+            dayTime: "Monday",
             meetingType: "External engagements ",
             desc: "Artificial Intelligence: Reshaping the digital infra landscape with Shailesh Kochhar",
             ctaText: "See details",
@@ -1036,6 +1041,11 @@ The study identified Noida as having exceptional potential to become a model cit
                   image:
                   "/assets/outreach-and-engagements/eventImages/sept18_2023.png",
                   description:"Debasish Panda, Chairman of the Insurance Regulatory and Development Authority of India (IRDAI), speaking at the roundtable on Surety Bonds organised by the CII under the auspices of The Infravision Foundation."
+                },
+                {
+                  image:
+                  "/assets/outreach-and-engagements/eventImages/sep2023.png",
+                  description:"The panel in action at the roundtable."
                 }
                 ,
               ],
@@ -1093,7 +1103,12 @@ The study identified Noida as having exceptional potential to become a model cit
                 {
                   image:
                   "/assets/outreach-and-engagements/eventImages/oct7_2023.png",
-                 description:""
+                 description:"The Infravision Foundation Founder and Managing Trustee Vinayak Chatterjee, with Advisory Council members Arun Nanda, P. K. Sinha, and Rajnish Kumar."
+                },
+                 {
+                  image:
+                  "/assets/outreach-and-engagements/eventImages/oct7_2023.jpeg",
+                 description:"The Infravision Foundation family amid a discussion."
                 }
               ],
               content: `

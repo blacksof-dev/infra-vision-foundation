@@ -146,7 +146,7 @@ export default function Mobilenav({ onClose }: { onClose: () => void }) {
                     href="/knowledge#infravision-conversations"
                     className="text-darkgray font-poppins "
                   >
-                   The Infravision Conversations
+                   The Infravision Conversation
                   </Link>
                 </li>
                 <li>

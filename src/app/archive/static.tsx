@@ -7,7 +7,7 @@ import project1 from "@/../public/assets/archive/video/project1.png"
 export const allCards = [
   {
     image:image1,
-    subtitle: "Infravision conversations",
+    subtitle: "The Infravision Conversation",
     subdesc:
       "Padode discusses India's urban infrastructure challenges and project completion hurdles.",
     link: "https://www.youtube.com/embed/w6oJTRqeB4A?si=N86EFRkUe3hYGdUQ",

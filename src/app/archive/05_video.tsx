@@ -54,7 +54,7 @@ const filter = [
   "Projects",
   "Quaterly Meet",
   "Infrakatha",
-  "Infravision conversations",
+  "The Infravision Conversation",
 ];
 
 function TabsSection({
@@ -146,7 +146,7 @@ function CardSection({ tab }: { tab: string }) {
                 </div>
                 <div className="py-2 md:py-4">
                   <BorderGrayHeroBtn
-                    text="Watch videos"
+                    text="Watch video"
                     role="button"
                     borderColor="darkgray/40"
                     color="black"

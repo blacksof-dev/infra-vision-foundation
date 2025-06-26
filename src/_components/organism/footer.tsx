@@ -277,7 +277,7 @@ const Footer = () => {
                         size="base"
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         href="/knowledge#infravision-conversations"
-                        text="The Infravision Conversations"
+                        text="The Infravision Conversation"
                       />
                     </li>
                     <li>

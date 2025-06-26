@@ -16,7 +16,7 @@ type TabId = 'about' | 'goal';
 const tabs: { id: TabId; label: string }[] = [
   { id: "about", label: "About InfraPandit Awards" },
   // { id: "jury", label: "The jury" },
-  { id: "goal", label: "The goal" },
+  { id: "goal", label: "The Goal" },
 ];
 
 const InfraPandit = () => {

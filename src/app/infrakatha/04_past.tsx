@@ -20,7 +20,7 @@ const allcards = [
   {
     img: montek.src,
     category: "InfraKatha #8",
-    date: "December 2024",
+    date: "December 14, 2024",
     title: "Featuring Mr. Montek Singh Ahluwalia, Former Deputy Chairman, the Planning Commission",
     link: "https://www.youtube.com/watch?v=o6nb3IejARc&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=1&ab_channel=TheInfravisionFoundation",
     description:
@@ -29,7 +29,7 @@ const allcards = [
   {
     img: william.src,
     category: "InfraKatha #7",
-    date: "November 2024",
+    date: "November 24, 2024",
     title: "Featuring Mr. William Dalrymple, Historian and Author",
     link: "https://www.youtube.com/watch?v=ae8InU9IGgk&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=2&ab_channel=TheInfravisionFoundation",
     description: "Indosphere: How Indian trade grew",
@@ -37,7 +37,7 @@ const allcards = [
   {
     img: shailesh.src,
     category: "InfraKatha #6",
-    date: " October 2024",
+    date: " October 14, 2024",
     title: "Featuring Mr. Shailesh Kochhar, AI Specialist",
     link: "https://www.youtube.com/watch?v=hIzp4YhZcMo&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=3&ab_channel=TheInfravisionFoundation",
     description: "Artificial Intelligence: Reshaping the Digital Infra Landscape",
@@ -45,7 +45,7 @@ const allcards = [
   {
     img: aman.src,
     category: "InfraKatha #5",
-    date: "September 2024",
+    date: "September 7, 2024",
     title: "Featuring Mr. Aman Nath, Co-founder and Chairman, Neemrana Hotels and noted heritage restorer",
     link: "https://www.youtube.com/watch?v=u-SEobnWU6U&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=4&ab_channel=TheInfravisionFoundation",
     description:
@@ -54,7 +54,7 @@ const allcards = [
   {
     img: sanjeev.src,
     category: "InfraKatha #4",
-    date: "August 2024",
+    date: "August 17, 2024",
     title: "Featuring Mr. Sanjeev Sanyal, Author, Economist, Member of the PM’s Advisory Economic Council",
     link: "https://www.youtube.com/watch?v=sygLq4cccIY&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=5&ab_channel=TheInfravisionFoundation",
     description:
@@ -63,7 +63,7 @@ const allcards = [
   {
     img: gurucharan.src,
     category: "InfraKatha #3",
-    date: "July 2024",
+    date: " July 19, 2024",
     title: "Featuring Mr. Gurucharan Das, Author",
     link: "https://www.youtube.com/watch?v=FCDeGlsb7q0&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=6&ab_channel=TheInfravisionFoundation",
     description: "Indian Infrastructure — The difficulty of being good",
@@ -71,7 +71,7 @@ const allcards = [
   {
     img: deepaMalik.src,
     category: "InfraKatha #2",
-    date: "June 2024",
+    date: "June 19, 2024",
     title: "Featuring Padma Shri Dr. Deepa Malik, Para-athlete and Former President of the Paralympic Committee of India",
     link: "https://www.youtube.com/watch?v=5uzHmHzU7q0&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=7&ab_channel=TheInfravisionFoundation",
     description:
@@ -80,7 +80,7 @@ const allcards = [
   {
     img: devdutt.src,
     category: "InfraKatha #1",
-    date: "May 2024",
+    date: "May 29, 2024",
     title: "Featuring Mr. Devdutt Pattanaik, Author",
     link: "https://www.youtube.com/watch?v=9v61vpPmXEk&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=8&ab_channel=TheInfravisionFoundation",
     description: "Mythology & Infrastructure",
