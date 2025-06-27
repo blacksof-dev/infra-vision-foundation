@@ -328,4 +328,13 @@ export const allCards = [
   },
 ];
 
+// Sort the allCards array by date (latest first)
+allCards.sort((a, b) => {
+  // Parse the date strings into Date objects
+  const dateA = new Date(a.date);
+  const dateB = new Date(b.date);
+  // Sort descending (latest first)
+  return dateB.getTime() - dateA.getTime();
+});
+
 {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/7nkY4yY0I-g?si=6kXh1arx3LUW7B9s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> */}
