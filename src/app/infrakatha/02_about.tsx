@@ -62,7 +62,7 @@ export default function About() {
             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
             <h5 className="font-medium text-pink">About Infrakatha</h5>
           </div>
-          <h1 className="text-black font-light max-w-xl">
+          <h1 className="text-black font-light">
             <span className="font-medium"> Conversations </span> that make
             infrastructure part of the national discourse
           </h1>

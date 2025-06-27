@@ -9,7 +9,7 @@ const WhoWeAre = () => {
           <div className="w-full xl:w-[50%]  ">
             <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-white "></span>
-              <h5 className="font-medium text-white">Who we are</h5>
+              <h5 className="font-medium text-white">Who We Are</h5>
             </div>
             <div className="py-3">
               <h1 className="text-white   font-light">
@@ -37,7 +37,7 @@ const WhoWeAre = () => {
                 Together, they advocate transformative solutions through
                 rigorous
                 <span className="font-semibold">
-                  knowledge sharing
+                  {' '}knowledge sharing
                 </span> and <span className="font-semibold">advocacy.</span>
               </h4>
             </div>

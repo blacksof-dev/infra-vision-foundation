@@ -143,7 +143,7 @@ export default function Infravisionaries() {
               <div>
                 <div className="flex  flex-row  items-center gap-2 md:gap-3">
                   <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-                  <h5 className="font-medium text-pink">Our core</h5>
+                  <h5 className="font-medium text-pink">Our Core</h5>
                 </div>
                 <div className="">
                   <h1 className="text-black font-medium pt-3">

@@ -131,7 +131,7 @@ const allcards = [
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/11/INFRAVISION-TALK-November-2024.pdf",
   },
    {
-    id: 7,
+    id: 8,
     img: "/assets/archive/newsletter/newsletter8.png",
     category: "Volume 17",
     title: " ",
@@ -142,7 +142,7 @@ const allcards = [
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/11/INFRAVISION-TALK-November-2024.pdf",
   },
    {
-    id: 8,
+    id: 9,
     img: "/assets/archive/newsletter/newsletter9.png",
     category: "Volume 16",
     title: " ",
@@ -153,7 +153,7 @@ const allcards = [
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/10/INFRAVISION-TALK-September-2024.pdf",
   },
     {
-    id: 9,
+    id: 10,
     img: "/assets/archive/newsletter/newsletter10.png",
     category: "Volume 15",
     title: " ",
@@ -164,7 +164,7 @@ const allcards = [
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/08/INFRAVISION-TALK-August-2024.pdf",
   },
   {
-    id: 10,
+    id: 11,
     img: "/assets/archive/newsletter/newsletter11.png",
     category: "Volume 14",
     title: " ",
@@ -175,7 +175,7 @@ const allcards = [
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/08/INFRAVISION-TALK-July-2024.pdf",
   },
   {
-    id: 11,
+    id: 12,
     img: "/assets/archive/newsletter/newsletter12.png",
     category: "Volume 13",
     title: " ",
@@ -186,7 +186,7 @@ const allcards = [
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/06/June-2024.pdf",
   },
   {
-    id: 12,
+    id: 13,
     img: "/assets/archive/newsletter/newsletter13.png",
     category: "Volume 12",
     title: " ",
@@ -197,7 +197,7 @@ const allcards = [
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/06/May-2024.pdf",
   },
   {
-    id: 13,
+    id: 14,
     img: "/assets/archive/newsletter/mumbai.png",
     category: "Volume 11",
     title: " ",
@@ -208,7 +208,7 @@ const allcards = [
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/06/11.-INFRAVISION-TALK-April-2024.pdf",
   },
   {
-    id: 13,
+    id: 15,
     img: "/assets/archive/newsletter/newsletter15.png",
     category: "Volume 10",
     title: " ",
@@ -219,7 +219,7 @@ const allcards = [
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/06/10.-INFRAVISION-TALK-March-2024.pdf",
   },
   {
-    id: 14,
+    id: 16,
     img: "/assets/archive/newsletter/newsletter16.png",
     category: "Volume 9",
     title: " ",
@@ -231,18 +231,18 @@ const allcards = [
   },
 
     {
-    id: 15,
+    id: 17,
     img: "/assets/archive/newsletter/newsletter17.png",
     category: "Volume 8",
     title: " ",
     sectors: "",
-    date: "january 2024",
+    date: "January 2024",
     description:
       "Taking Surety Bonds and Sustainability Ratings to industry audience in Bangalore",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/06/8.-INFRAVISION-TALK-January-2024.pdf",
   },
      {
-    id: 16,
+    id: 18,
     img: "/assets/archive/newsletter/newsletter18.png",
     category: "Volume 7",
     title: " ",
@@ -253,7 +253,7 @@ const allcards = [
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/06/7.-INFRAVISION-TALK-December-2023.pdf",
   },
     {
-    id: 16,
+    id: 19,
     img: "/assets/archive/newsletter/newsletter19.png",
     category: "Volume 6",
     title: " ",
@@ -264,7 +264,7 @@ const allcards = [
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/06/6.-INFRAVISION-TALK-November-2023.pdf",
   },
    {
-    id: 17,
+    id: 20,
     img: "/assets/archive/newsletter/newsletter20.png",
     category: "Volume 5",
     title: " ",
@@ -275,7 +275,7 @@ const allcards = [
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/09/5.-INFRAVISION-TALK-October-2023.pdf",
   },
    {
-    id: 18,
+    id: 21,
     img: "/assets/archive/newsletter/newsletter21.png",
     category: "Volume 4",
     title: " ",
@@ -286,7 +286,7 @@ const allcards = [
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/06/4.-INFRAVISION-TALK-September-2023.pdf",
   },
     {
-    id: 19,
+    id: 22,
     img: "/assets/archive/newsletter/newsletter22.png",
     category: "Volume 3",
     title: " ",
@@ -297,7 +297,7 @@ const allcards = [
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/09/3.-INFRAVISION-TALK-August-2023.pdf",
   },
    {
-    id: 20,
+    id: 23,
     img: "/assets/archive/newsletter/newsletter23.png",
     category: "Volume 2",
     title: " ",
@@ -308,7 +308,7 @@ const allcards = [
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2024/09/2.-INFRAVISION-TALK-July-2023.pdf",
   },
      {
-    id: 21,
+    id: 24,
     img: "/assets/archive/newsletter/newsletter24.png",
     category: "Volume 1",
     title: " ",
