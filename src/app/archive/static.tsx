@@ -137,13 +137,13 @@ export const allCards = [
     image: nitin,
     subtitle: "The Infravision Conversation",
     subdesc: "“Renewable energy 2024 - Storage will be the main focus” with Nitin Zamre",
-    link: "https://www.youtube.com/embed/5jrEtMe-t6c?si=gfiLQyf1NwoN8cjJ",
+    link: "https://www.youtube.com/embed/q25SQpLHlDc?si=jNsegPrOT7zBNgAO",
     date: "January 12, 2024",
   },
 {
     image: akhilesh,
     subtitle: "Infrashakti Awards",
-    subdesc: "",
+    subdesc: "The awards ceremony",
     link: "https://www.youtube.com/embed/7nkY4yY0I-g?si=6kXh1arx3LUW7B9s",
     date: "July 3, 2024",
   },
@@ -310,4 +310,3 @@ export const allCards = [
   },
 ];
 
-{/* <iframe width="560" height="315" src="https://www.youtube.com/embed/7nkY4yY0I-g?si=6kXh1arx3LUW7B9s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> */}
