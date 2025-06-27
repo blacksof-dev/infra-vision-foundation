@@ -38,6 +38,7 @@ import img_35 from "@/../public/assets/archive/video/35.jpg";
 import img_36 from "@/../public/assets/archive/video/36.jpg";
 import img_37 from "@/../public/assets/archive/video/37.jpg";
 import img_38 from "@/../public/assets/archive/video/38.jpg";
+import renewable from "@/../public/assets/archive/video/renewable.jpg";
 
 
 
@@ -145,14 +146,14 @@ export const allCards = [
     date: "May 30, 2024",
   },
   {
-    image: gita,
+    image:gita ,
     subtitle: "The Infravision Conversation ",
     subdesc: "“A walk for a cause” with Gita Balakrishnan",
     link: "https://www.youtube.com/embed/5jrEtMe-t6c?si=DTFSYNVFkHydf64i",
     date: "May 30, 2024",
   },
   {
-    image: nitin,
+    image: renewable,
     subtitle: "The Infravision Conversation",
     subdesc: "“Renewable energy 2024 - Storage will be the main focus” with Nitin Zamre",
     link: "https://www.youtube.com/embed/q25SQpLHlDc?si=jNsegPrOT7zBNgAO",

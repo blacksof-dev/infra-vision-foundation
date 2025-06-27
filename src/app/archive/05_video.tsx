@@ -14,7 +14,7 @@ export default function Video() {
   const [tab, setTab] = useState("All");
 
   return (
-    <div className=" blade-top-padding-lg blade-bottom-padding-lg">
+    <section id="videos" className=" blade-top-padding-lg blade-bottom-padding-lg">
       <div className="w-container">
         <div>
           <div className="flex flex-row items-center gap-2 md:gap-3">
@@ -45,7 +45,7 @@ export default function Video() {
           <CardSection tab={tab} />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

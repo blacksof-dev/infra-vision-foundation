@@ -4,29 +4,30 @@ const Jury = () => {
 
   const data = [
     {
-      image: "/assets/infrapandit/jury/image-1.png",
-      name: "Mr Siraj Hussain",
-      position: "Chairman; Former Secretary, Ministry of Agriculture"
+      image: "/assets/infrapandit/jury/savita.png",
+      name: "Ms Savita Mahajan",
+      position: "Advisor and Independent Director"
     },
     {
-      image: "/assets/infrapandit/jury/image-2.png",
-      name: "Mr Vinayak Chatterjee",
-      position: "Member; Founder and Managing Trustee of The Infravision Foundation"
+      image: "/assets/infrapandit/jury/krishnan.png",
+      name: "Dr K.P. Krishnan",
+      position: "Former IAS Officer"
+    },
+     {
+      image: "/assets/infrapandit/jury/raghuram.png",
+      name: "Professor G. Raghuram",
+      position: "Member, Council of Advisors at The Infravision Foundation"
     },
     {
-      image: "/assets/infrapandit/jury/image-3.png",
-      name: "Dr Seema Bathla",
-      position: "Member; Professor, Jawaharlal Nehru University (JNU)"
+      image: "/assets/infrapandit/jury/soumya.png",
+      name: "Dr Soumya Kanti Ghosh",
+      position: "Group Chief Economic Advisor, SBI; Member, PM’s Economic Advisory Council, and Distinguished Fellow, The Infravision Foundation"
     },
+  
     {
-      image: "/assets/infrapandit/jury/image-4.png",
-      name: "Mr Akhilesh Tilotia",
-      position: "Member; Public Policy Expert"
-    },
-    {
-      image: "/assets/infrapandit/jury/image-5.png",
-      name: "Mr Jagan Shah",
-      position: "Member Secretary; CEO of The Infravision Foundation"
+      image: "/assets/infrapandit/jury/janmejaya.png",
+      name: "Dr Janmejaya Sinha",
+      position: "Chairman, BCG India Practice and Member, Council of Advisors at The Infravision Foundation"
     },
   ]
 

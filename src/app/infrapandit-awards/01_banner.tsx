@@ -14,7 +14,7 @@ export default function InfraPanditBanner() {
             className={`md:block d hidden w-full h-[25rem] md:h-[36rem] xl:h-[46rem] bg-black `}
           >
             <Image
-              src="/assets/infrapandit/bannerBg.png"
+              src={bannerBg}
               alt="Publication Banner"
               className="w-full h-full object-cover object-left  "
               unoptimized={true}
