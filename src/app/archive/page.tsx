@@ -27,16 +27,16 @@ export default function Archive() {
     <>
       <BannerSection />
       <PublicationTabs tabs={tabs} sectionRefs={sectionRefs} />
-      <div ref={sectionRefs.newsletter}>
+      <div id="newsletters" ref={sectionRefs.newsletter}>
         <Newsletter />
       </div>
-      <div ref={sectionRefs.newsandMedia}>
+      <div id="newsandMedia" ref={sectionRefs.newsandMedia}>
         <NewsAndMedia />
       </div>
-      <div ref={sectionRefs.video}>
+      <div id="videos" ref={sectionRefs.video}>
         <Video />
       </div>
-      <div ref={sectionRefs.gallery}>
+      <div id="gallery" ref={sectionRefs.gallery}>
         <Gallery />
       </div>
     </>

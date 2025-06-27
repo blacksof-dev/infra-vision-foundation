@@ -154,7 +154,7 @@ function Header() {
 
    const Archives: NavItem[] = [
     { label: "Newsletters", href: "/archive#newsletters" },
-    { label: "In the News", href: "/archive#news-and-media" },
+    { label: "In the News", href: "/archive#newsandMedia" },
     { label: "Gallery", href: "/archive#gallery" },
     { label: "Videos", href: "/archive#videos" },
   ];

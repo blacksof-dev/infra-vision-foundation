@@ -177,7 +177,7 @@ export default function Mobilenav({ onClose }: { onClose: () => void }) {
                 </li>
                 <li>
                   <Link
-                    href="/archive#news-and-media"
+                    href="/archive#ewsandMedia"
                     className="text-darkgray font-poppins "
                   >
                     News and Media
@@ -189,6 +189,14 @@ export default function Mobilenav({ onClose }: { onClose: () => void }) {
                     className="text-darkgray font-poppins py-2"
                   >
                     Gallery
+                  </Link>
+                </li>
+                 <li>
+                  <Link
+                    href="/archive#videos"
+                    className="text-darkgray font-poppins py-2"
+                  >
+                    Videos
                   </Link>
                 </li>
               </ul>

@@ -318,7 +318,7 @@ const Footer = () => {
                           color="dark"
                           size="base"
                           className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
-                          href="/archive#news-and-media"
+                          href="/archive#newsandMedia"
                           text="In the News"
                         />
                       </li>
