@@ -331,6 +331,15 @@ const Footer = () => {
                           text="Gallery"
                         />
                       </li>
+                      <li>
+                        <TextAnchor
+                          color="dark"
+                          size="base"
+                          className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
+                          href="/archive#videos"
+                          text="Videos"
+                        />
+                      </li>
                     </ul>
                   </li>
                 </ul>

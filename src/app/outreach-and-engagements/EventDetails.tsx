@@ -62,7 +62,7 @@ export default function EventDetailsPopup({
                       <Link
                         href={data?.details?.cta?.link}
                         target="_blank"
-                        className="relative w-full h-[19rem] sm:h-[21rem] md:h-[25rem] lg:h-full block"
+                        className="relative w-full h-[19rem] sm:h-[21rem] md:h-[25rem] lg:h-full block bg-black"
                       >
                         <Image
                           src={obj.image}
@@ -70,7 +70,7 @@ export default function EventDetailsPopup({
                           fill
                           unoptimized
                           quality={100}
-                          className="object-cover object-top rounded-md w-full"
+                          className="object-cover object-top rounded-md w-full [mask-image:linear-gradient(to_bottom,black,transparent)] "
                         />
                         <div className="group absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                           <button className="w-12 h-12 xl:w-14 xl:h-14 rounded-full cursor-pointer mx-auto bg-white flex items-center justify-center group-hover:bg-pink transition-all duration-100">
@@ -82,14 +82,14 @@ export default function EventDetailsPopup({
                         </p>
                       </Link>
                     ) : (
-                      <div className="relative w-full h-[19rem] sm:h-[21rem] md:h-[25rem] lg:h-full">
+                      <div className="relative w-full h-[19rem] sm:h-[21rem] md:h-[25rem] lg:h-full bg-black">
                         <Image
                           src={obj.image}
                           alt={`Event image ${idx + 1}`}
                           fill
                           unoptimized
                           quality={100}
-                          className="object-cover object-top rounded-md w-full"
+                          className="object-cover object-top rounded-md w-full [mask-image:linear-gradient(to_bottom,black,transparent)]"
                         />
                         <p className="absolute bottom-6 text-white px-4 text-center lg:block hidden">
                           {obj.description}

@@ -156,6 +156,7 @@ function Header() {
     { label: "Newsletters", href: "/archive#newsletters" },
     { label: "In the News", href: "/archive#news-and-media" },
     { label: "Gallery", href: "/archive#gallery" },
+    { label: "Videos", href: "/archive#videos" },
   ];
 
   return (
