@@ -5,7 +5,7 @@ import { NewsCard } from "@/_components/molecules/newsCard";
 import Link from "next/link";
 
 // Types
-type FilterType = "All" | "Publication Year" | "sectors";
+type FilterType = "All" | "Publication year" | "sectors";
 type SectorType =
   | "All"
   | "Transportation"
@@ -28,7 +28,7 @@ interface NewsletterCard {
 }
 
 // Constants
-const FILTER_TYPES: FilterType[] = ["All", "Publication Year"];
+const FILTER_TYPES: FilterType[] = ["All", "Publication year"];
 const YEARS = ["2022", "2023"] as const;
 const SECTORS: SectorType[] = [
   "All",
@@ -50,7 +50,7 @@ const allcards = [
     title: "Vinayak Chatterjee",
     sectors: "",
     date: "January 4, 2023",
-    description: "Infra brushstrokes for the Budget ",
+    description: "Infra brushstrokes for the budget ",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2023/11/InfraBrushstrokes-Business-Standard_04012023.pdf",
   },
   {
@@ -61,7 +61,7 @@ const allcards = [
     sectors: "",
     date: "December 9, 2022",
     description:
-      "Infravisioning: It's Time To Embrace The Idea Of Coastal Economic Zones",
+      "Infravisioning: It's time to embrace the idea of coastal economic zones",
     link: "https://www.ndtvprofit.com/business/its-time-to-embrace-the-idea-of-coastal-economic-zones-infravisioning-with-vinayak-chatterjee",
   },
   {
@@ -72,7 +72,7 @@ const allcards = [
     sectors: "",
     date: "November 25, 2022",
     description:
-      "Infravisioning: Funding Done, Focus Now Must Shift To Project Execution",
+      "Infravisioning: Funding done, focus now must shift to project execution",
     link: "https://www.ndtvprofit.com/opinion/funding-done-focus-now-must-shift-to-project-execution-infravisioning",
   },
   {
@@ -83,7 +83,7 @@ const allcards = [
     sectors: "",
     date: "November 11, 2022",
     description:
-      "Infravisioning: Nine Reasons India Needs A New Highway Services Authority",
+      "Infravisioning: Nine reasons India needs a new highway services authority",
     link: "https://www.ndtvprofit.com/opinion/infravisioning-nine-reasons-india-needs-a-new-highway-services-authority",
   },
   {
@@ -94,7 +94,7 @@ const allcards = [
     sectors: "",
     date: "October 28, 2022",
     description:
-      "Infravisioning: Why Green Is The Best Among Many Colours Of Hydrogen",
+      "Infravisioning: Why green is the best among many colours of hydrogen",
     link: "https://www.ndtvprofit.com/opinion/infravisioning-why-green-is-the-best-among-many-colours-of-hydrogen",
   },
   {
@@ -104,7 +104,7 @@ const allcards = [
     title: "Vinayak Chatterjee",
     sectors: "",
     date: "October 20, 2022",
-    description: "Infravisioning: How Safe Are India's Dams?",
+    description: "Infravisioning: How safe are India's dams?",
     link: "https://www.ndtvprofit.com/business/infravisioning-how-safe-are-indias-dams",
   },
 
@@ -116,7 +116,7 @@ const allcards = [
     sectors: "",
     date: "September 29, 2022",
     description:
-      "Infravisioning: India’s Big Attempt To Fix Its Logistics Snarl",
+      "Infravisioning: India’s big attempt to fix its logistics snarl",
     link: "",
   },
   {
@@ -127,7 +127,7 @@ const allcards = [
     sectors: "",
     date: "September 16, 2022",
     description:
-      "Infravisioning: How The Screws Are Getting Tightened On Power Discoms",
+      "Infravisioning: How the screws are getting tightened on power Discoms",
     link: "https://www.ndtvprofit.com/opinion/infravisioning-how-the-screws-are-getting-tightened-on-power-discoms",
   },
   {
@@ -147,7 +147,7 @@ const allcards = [
     title: "Vinayak Chatterjee",
     sectors: "",
     date: "August 25, 2022",
-    description: "Infravisioning: A Historic Reform In Public Procurement",
+    description: "Infravisioning: A historic reform in public procurement",
     link: "https://www.ndtvprofit.com/opinion/infravisioning-a-historic-reform-in-public-procurement",
   },
   {
@@ -198,7 +198,7 @@ const allcards = [
     title: "Vinayak Chatterjee",
     sectors: "",
     date: "April 6, 2022",
-    description: "Measures to Rejunevate Public-Private Partnerships",
+    description: "Measures to rejunevate Public-Private Partnerships",
     link: "https://www.business-standard.com/article/opinion/measures-to-rejuvenate-public-private-partnerships-122040501433_1.html",
   },
   {
@@ -256,7 +256,7 @@ export default function NewsAndMedia() {
   const handleTabClick = (tab: FilterType) => {
     setSelectedTab(tab);
     setSelectedFilter(
-      tab === "Publication Year"
+      tab === "Publication year"
         ? YEARS[0]
         : tab === "sectors"
         ? SECTORS[0]
@@ -271,7 +271,7 @@ export default function NewsAndMedia() {
   };
 
   const filteredCards = useMemo(() => {
-    if (selectedTab === "Publication Year") {
+    if (selectedTab === "Publication year") {
       return allcards.filter(
         (card) => card.date.split(" ").pop() === selectedFilter
       );
@@ -357,13 +357,13 @@ export default function NewsAndMedia() {
           </div>
 
           {/* Filter Buttons */}
-          {selectedTab === "Publication Year" && renderFilterButtons(YEARS)}
+          {selectedTab === "Publication year" && renderFilterButtons(YEARS)}
           {selectedTab === "sectors" && renderFilterButtons(SECTORS)}
 
           {/* Newsletter Cards */}
           <div
             className={`${
-              selectedTab === "Publication Year" ? "pt-8" : "pt-8"
+              selectedTab === "Publication year" ? "pt-8" : "pt-8"
             }`}
           >
             {filteredCards.length === 0 && (
