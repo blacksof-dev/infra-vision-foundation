@@ -11,59 +11,59 @@ const galleryImages = [
     },
     {
         image: "assets/infrapandit/gallery/02.png",
-        description: ""
+        description: "Council of Advisors and Distinguished Fellows in conversations at the InfraPandit Awards launch event."
     },
     {
         image: "assets/infrapandit/gallery/03.png",
-        description: ""
+        description: "Founder and Managing Trustee of The Infravision Foundation, Vinayak Chatterjee, announces the launch of the InfraPandit Awards. Also pictured are Co-Founder and  Managing Trustee Rumjhum Chatterjee, Trustee Kiran Karnik, and Council of Advisors members Saumya Kanti Ghosh and Prof G Raghuram."
     },
     {
         image: "assets/infrapandit/gallery/04.png",
-        description: ""
+        description: "Members and key stakeholders of The Infravision Foundation at the launch of the InfraPandit Awards 2025."
     },
     {
         image: "assets/infrapandit/gallery/05.png",
-        description: ""
+        description: "Council of Advisors Member Nasser Munjee in action."
     },
     {
         image: "assets/infrapandit/gallery/06.png",
-        description: ""
+        description: "Strategic discussions underway at the launch event of the InfraPandit Awards launch event."
     },
     {
         image: "assets/infrapandit/gallery/07.png",
-        description: ""
+        description: "Saumya Kanti Ghosh, Member, Council of Advisors and Jury Member, engages with the attendees. Also in the frame are Rumjhum Chatterjee, Co-Founder and  Managing Trustee, with Kiran Karnik, Trustee."
     },
     {
         image: "assets/infrapandit/gallery/08.png",
-        description: ""
+        description: "The Infravision Foundation Co-Founder and Managing Trustee Rumjhum Chatterjee takes the dias."
     },
     {
         image: "assets/infrapandit/gallery/09.png",
-        description: ""
+        description: "Kaveree Bamzai, Head of Advocacy at The Infravision Foundation, delivers her welcome address."
     },
     {
         image: "assets/infrapandit/gallery/10.png",
-        description: ""
+        description: "Rumjhum Chatterjee, Co-Founder and Managing Trustee and Vinayak Chatterjee, Founder and Managing Trustee, engage in conversation with the attendees."
     },
     {
         image: "assets/infrapandit/gallery/11.png",
-        description: ""
+        description: "Jagan Shah, CEO, The Infravision Foundation; Saumya Kanti Ghosh, Member, Council of Advisors and Jury Member; Akhilesh Tilotia, Distinguished Fellow; and Praveen Khangta, Head, Strategy, Investment and Portfolio Development, The Convergence Foundation, during a discussion."
     },
     {
         image: "assets/infrapandit/gallery/12.png",
-        description: ""
+        description: "Key stakeholders and attendees share a light moment."
     },
     {
         image: "assets/infrapandit/gallery/13.png",
-        description: ""
+        description: "Dr. Janmejaya Sinha, Council of Advisors Member, shares his views and insights."
     },
     {
         image: "assets/infrapandit/gallery/14.png",
-        description: ""
+        description: "Dilip Cherian, Top Image Consultant and Council of Advisors Member, addressing his peers."
     },
     {
         image: "assets/infrapandit/gallery/15.png",
-        description: ""
+        description: "Trustee Kiran Karnik (at podium) addresses the audience at the launch of the InfraPandit Awards. Pictured alongside are Council of Advisors member Saumya Kanti Ghosh, Co-Founder and Managing Trustee Rumjhum Chatterjee, Council of Advisors member  Prof G Raghuram, and Founder and Managing Trustee Vinayak Chatterjee."
     },
 
 ];
