@@ -119,7 +119,7 @@ function CardSection({ tab }: { tab: string }) {
         {FilterCards()
           .slice(0, visiblecountmobile)
           .map((ele) => (
-            <div className="pt-4  md:pt-10 xl:pt-12">
+            <div key={ele.link} className="pt-4  md:pt-10 xl:pt-12">
               <div
                 className="h-[18rem] md:h-[20rem] xl:h-[14rem] 2xl:h-[19rem] bg-no-repeat bg-cover bg-center rounded"
                 style={{ backgroundImage: `url(${ele.image})` }}
