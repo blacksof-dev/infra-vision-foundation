@@ -21,6 +21,24 @@ import sudhanshu from "@/../public/assets/archive/video/sudhanshu.jpg";
 import waste from "@/../public/assets/archive/video/waste.jpg";
 import cleaning from "@/../public/assets/archive/video/cleaning.jpg";
 import water from "@/../public/assets/archive/video/water.jpg";
+import img_22 from "@/../public/assets/archive/video/22.jpg";
+import img_23 from "@/../public/assets/archive/video/23.jpg";
+import img_24 from "@/../public/assets/archive/video/24.jpg";
+import img_25 from "@/../public/assets/archive/video/25.jpg";
+import img_26 from "@/../public/assets/archive/video/26.jpg";
+import img_27 from "@/../public/assets/archive/video/27.jpg";
+import img_28 from "@/../public/assets/archive/video/28.jpg";
+import img_29 from "@/../public/assets/archive/video/29.jpg";
+import img_30 from "@/../public/assets/archive/video/30.jpg";
+import img_31 from "@/../public/assets/archive/video/31.jpg";
+import img_32 from "@/../public/assets/archive/video/32.jpg";
+import img_33 from "@/../public/assets/archive/video/33.jpg";
+import img_34 from "@/../public/assets/archive/video/34.jpg";
+import img_35 from "@/../public/assets/archive/video/35.jpg";
+import img_36 from "@/../public/assets/archive/video/36.jpg";
+import img_37 from "@/../public/assets/archive/video/37.jpg";
+import img_38 from "@/../public/assets/archive/video/38.jpg";
+
 
 
 export const allCards = [
@@ -190,119 +208,119 @@ export const allCards = [
     date: "September 15, 2023",
   },
   {
-    image: deepa,
+    image: img_22,
     subtitle: "Projects",
     subdesc: "Solar rooftop for poverty alleviation",
     link: "https://www.youtube.com/embed/SGoq2OpxMuA?si=Sh8-NtTPffSQ8VKh",
     date: "May 16, 2023",
   },
   {
-    image: deepa,
+    image: img_23,
     subtitle: "Projects",
     subdesc: "Sooraj Se Rozgaari",
     link: "https://www.youtube.com/embed/L8DQjjO84KA?si=bE_YosNXZv4CkAIJ",
     date: "May 16, 2023",
   },
   {
-    image: deepa,
+    image: img_24,
     subtitle: "Projects",
     subdesc: "Sooraj Se Rozgaari",
     link: "https://www.youtube.com/embed/XpTj0m03cQk?si=NBQNYWP0AN8d5F9E",
     date: "May 16, 2023",
   },
   {
-    image: deepa,
+    image: img_25,
     subtitle: "Projects",
     subdesc: "Solar rooftop scale-up challenges",
     link: "https://www.youtube.com/embed/j-n-z551_ts?si=w0jyCZ-IoRHDW6va",
     date: "May 16, 2023",
   }, 
   {
-    image: deepa,
+    image: img_26,
     subtitle: "Quarterly meet",
     subdesc: "Solar rooftop scale-up challenges",
     link: "https://www.youtube.com/embed/-INuUJJwYdk?si=fBlesjz6-sotbW6N",
     date: "August 21, 2023",
   },
   {
-    image: deepa,
+    image: img_27,
     subtitle: "Quarterly meet",
     subdesc: "Jagan Shah at the quarterly meet ",
     link: "https://www.youtube.com/embed/JjJNPWFyEcI?si=658FE8bHq_Mi-ZW9",
     date: "July 29, 2023",
   },
 {
-    image: deepa,
+    image: img_28,
     subtitle: "Quarterly meet",
     subdesc: "PK Sinha Part at the quarterly meet",
     link: "https://www.youtube.com/embed/KAnR0Y1F648?si=7DcNoVonOJ1vq5zk",
     date: "July 29, 2023",
   },
   {
-    image: deepa,
+    image: img_29,
     subtitle: "Quarterly meet",
     subdesc: "PK Sinha Part at the quarterly meet",
     link: "https://www.youtube.com/embed/3AHKaWYgl-E?si=Jocd2IuZYavBQ8OJ",
     date: "July 29, 2023",
   },
   {
-    image: deepa,
+    image: img_30,
     subtitle: "Quarterly meet",
     subdesc: "Rajnish Kumar at the quarterly meet",
     link: "https://www.youtube.com/embed/gkzbBcok8Rc?si=DlFGYDR2evCt8OUO",
     date: "July 29, 2023",
   },
   {
-    image: deepa,
+    image: img_31,
     subtitle: "Quarterly meet",
     subdesc: "Ashish Dhawan at the quarterly meet",
     link: "https://www.youtube.com/embed/6FYnql27r6A?si=vo_ixfXiwuJi5_6V",
     date: "July 29, 2023",
   },
    {
-    image: deepa,
+    image: img_32,
     subtitle: "Quarterly meet",
     subdesc: "Ashish Dhawan at the quarterly meet”",
     link: "https://www.youtube.com/embed/RKsWrBXjqX4?si=WGrzdgZiYyav_uT-",
     date: "July 29, 2023",
   },
   {
-    image: deepa,
+    image: img_33,
     subtitle: "Quarterly meet",
     subdesc: "Panel discussion on “The challenges ahead for core & social infra”",
     link: "https://www.youtube.com/embed/PX-s_58ixLk?si=gK5X4pM8ssEPWUA-",
     date: "March 4, 2023",
   },
   {
-    image: deepa,
+    image: img_34,
     subtitle: "The Infravision Conversation",
     subdesc: "“Air pollution: The solution has to be multi-sectoral” with Jagan Shah",
     link: "https://www.youtube.com/embed/OjrOlknqzu4?si=5Q6-IiWLGFifYs7q",
     date: "November 14, 2023",
   },
   {
-    image: deepa,
+    image: img_35,
     subtitle: "The Infravision Conversation",
     subdesc: "How to save our hill cities” with Rajiv Ranjan Mishra",
     link: "https://www.youtube.com/embed/ZdLcdjJShW8?si=SRPBGu8EprseFFew",
     date: "October 11, 2023",
   },
   {
-    image: deepa,
+    image: img_36,
     subtitle: "The Infravision Conversation",
     subdesc: "“Making metro systems financially viable” with Prof Sandip Chakrabarti",
     link: "https://www.youtube.com/embed/H34LNACsKZw?si=OA7wNJwRAxX-SRio",
     date: "October 11, 2023",
   },
   {
-    image: deepa,
+    image: img_37,
     subtitle: "The Infravision Conversation",
     subdesc: "“Sustainability Ratings: An idea whose time has come” with Rajaji Meshram",
     link: "https://www.youtube.com/embed/Jis2Q7oOfr0?si=VXMIcQ5ubUGSpqiA",
     date: "September 15, 2023",
   },
    {
-    image: deepa,
+    image: img_38,
     subtitle: "The Infravision Conversation",
     subdesc: "“Selecting the appropriate urban transport system for India's cities” with Prof Geetam Tiwari",
     link: "https://www.youtube.com/embed/Sr17ZN7FLA4?si=jGz9T1xcEMrcr-Zk",
