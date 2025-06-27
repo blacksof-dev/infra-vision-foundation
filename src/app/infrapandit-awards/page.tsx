@@ -10,13 +10,14 @@ import Goal from './04_goal';
 import Gallery from './05_gallery';
 import Involved from './06_involved';
 
-type TabId = 'about' | 'goal';
+type TabId = 'about' | 'goal'|'gallery';
 
 
 const tabs: { id: TabId; label: string }[] = [
   { id: "about", label: "About InfraPandit Awards" },
   // { id: "jury", label: "The jury" },
   { id: "goal", label: "The Goal" },
+  { id: "gallery", label: "Gallery" },
 ];
 
 const InfraPandit = () => {
@@ -25,7 +26,7 @@ const InfraPandit = () => {
     about: useRef<HTMLDivElement | null>(null),
     // jury: useRef<HTMLDivElement | null>(null),
     goal: useRef<HTMLDivElement | null>(null),
-    // gallery: useRef<HTMLDivElement | null>(null),
+     gallery: useRef<HTMLDivElement | null>(null),
   };
 
   return (
@@ -41,9 +42,9 @@ const InfraPandit = () => {
       <div id='goal' ref={sectionRefs.goal}>
         <Goal />
       </div>
-      {/* <div id='gallery' ref={sectionRefs.gallery}>
+      <div id='gallery' ref={sectionRefs.gallery}>
         <Gallery />
-      </div> */}
+      </div>
       <Involved />
     </>
   )

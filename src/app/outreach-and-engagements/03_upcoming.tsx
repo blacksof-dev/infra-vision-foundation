@@ -224,14 +224,24 @@ The study identified Noida as having exceptional potential to become a model cit
               },
               images: [ 
                 {image:"/assets/outreach-and-engagements/eventImages/june1_2025.jpg",
-                  description:""
+                  description:"Council of Advisors and Distinguished Fellows in conversations at the InfraPandit Awards launch event."
                 },
-                {image:"/assets/outreach-and-engagements/eventImages/june2_2025.jpg",
-                  description:""
-                },
+                // {image:"/assets/outreach-and-engagements/eventImages/june2_2025.jpg",
+                //   description:""
+                // },
                 {image:"/assets/outreach-and-engagements/eventImages/june3_2025.jpg",
-                  description:""
-                }
+                  description:"Trustee Kiran Karnik (at podium) addresses the audience at the launch of the InfraPandit Awards. Pictured alongside are Council of Advisors member Saumya Kanti Ghosh, Co-Founder and Managing Trustee Rumjhum Chatterjee, Council of Advisors member  Prof G Raghuram, and Founder and Managing Trustee Vinayak Chatterjee."
+                },
+                 {image:"/assets/outreach-and-engagements/eventImages/infrapandit_2025.jpg",
+                  description:"Founder and Managing Trustee of The Infravision Foundation, Vinayak Chatterjee, announces the launch of the InfraPandit Awards. Also pictured are Co-Founder and  Managing Trustee Rumjhum Chatterjee, Trustee Kiran Karnik, and Council of Advisors members Saumya Kanti Ghosh and Prof G Raghuram."
+                },
+                {image:"/assets/outreach-and-engagements/eventImages/infrapanditImg2_2025.jpg",
+                  description:"The Infravision Foundation team members Vrinda Singh, Research Associate, Rumjhum Chatterjee, TIF Co-Founder and Managing Trustee, Vinayak Chatterjee, Founder and Managing Trustee, Jagan Shah, CEO, and Kaveree Bamzai, Head, Advocacy."
+                },
+                 {image:"/assets/outreach-and-engagements/eventImages/infrapanditImg3_2025.jpeg",
+                  description:"Members and key stakeholders of The Infravision Foundation at the launch of the InfraPandit Awards 2025."
+                },
+                 
               
               ],
               content: `
@@ -391,7 +401,7 @@ The study identified Noida as having exceptional potential to become a model cit
                 {
 
                   image:"/assets/outreach-and-engagements/eventImages/march22_2024.png", 
-                   description:"",
+                   description:"Key stakeholders engaged in discussions on sustainable infrastructure development.",
                 }
               ],
               content: `
@@ -488,7 +498,7 @@ The study identified Noida as having exceptional potential to become a model cit
               images: [{
               
                 image:"/assets/outreach-and-engagements/eventImages/june7_2024.png",
-               description:"",
+               description:"“Mythology & infrastructure” with Devdutt Pattanaik",
               }
              
               ],
@@ -514,7 +524,7 @@ The study identified Noida as having exceptional potential to become a model cit
               date: "June 13, 2024, New Delhi",
               images: [ {
                 image:"/assets/outreach-and-engagements/eventImages/wastewater-reuse.png", 
-                description:"",
+                description:"Jagan Shah, CEO of The Infravision Foundation addressing the audience.",
               }
             
               ],
@@ -565,7 +575,7 @@ The study identified Noida as having exceptional potential to become a model cit
               images: [ 
                 {
                   image:"/assets/outreach-and-engagements/eventImages/july_2024.png",
-                  description:""
+                  description:"“Inclusive infrastructure” with Deepa Malik"
                 }
               ],
               content: `
@@ -589,7 +599,7 @@ The study identified Noida as having exceptional potential to become a model cit
             details: {
               date: "July 26, 2024",
               images: [{
-                  description:"",
+                  description:"“Indian infrastructure - The difficulty of being good” with Gurcharan Das",
                 image:"/assets/outreach-and-engagements/eventImages/july26_2024.png",
               }
               ],
@@ -650,7 +660,7 @@ The study identified Noida as having exceptional potential to become a model cit
                 {
 
                   image:"/assets/outreach-and-engagements/eventImages/august22_2024.png",
-                   description:"",
+                   description:"“Saraswati, the lost river: Lessons for today” with Sanjeev Sanyal",
                 }
               ],
               content: `
@@ -712,7 +722,7 @@ The study identified Noida as having exceptional potential to become a model cit
               images: [ 
                 {
                   image:"/assets/outreach-and-engagements/eventImages/september17_2024.png",
-                  description:""
+                  description:"“Heritage tourism infrastructure” with Aman Nath"
                 }
               ],
               content: `
@@ -771,7 +781,7 @@ The study identified Noida as having exceptional potential to become a model cit
                 {
 
                   image:"/assets/outreach-and-engagements/eventImages/october14_2024.png",
-                   description:"",
+                   description:"AI specialist Mr Shailesh Kochhar, during his session on “Artificial Intelligence: Reshaping the digital infra landscape” at Infrakatha’s sixth edition.",
                 }
               ],
               content: `
@@ -803,7 +813,7 @@ The study identified Noida as having exceptional potential to become a model cit
                 {
                   image:
                   "/assets/outreach-and-engagements/eventImages/Indosphere.png",
-                   description:"",
+                   description:"“Indosphere: How Indian trade grew” with William Dalrymple",
                 }
               ],
               content: `
@@ -836,7 +846,7 @@ The study identified Noida as having exceptional potential to become a model cit
                 {
                   image:
                   "/assets/outreach-and-engagements/eventImages/dec14_2024.png",
-                   description:"",
+                   description:"“Can Public-Private Partnerships be revitalised?” with Montek Singh Ahluwalia",
                 }
               ],
               content: `
@@ -926,7 +936,7 @@ The study identified Noida as having exceptional potential to become a model cit
                 {
                   image:
                   "/assets/outreach-and-engagements/eventImages/march4_2023.png",
-                  description:""
+                  description:"Panel discussion on “The challenges ahead for core & social infra” March 4,2023"
                 }
                 ,
               ],
@@ -971,10 +981,14 @@ The study identified Noida as having exceptional potential to become a model cit
               images: [ 
                 {
                   image:
-                  "/assets/outreach-and-engagements/eventImages/july2&3_2023.png",
-                  description:""
-                }
-                ,
+                  "/assets/outreach-and-engagements/eventImages/july2and3Img1.png",
+                  description:"The Infravision Foundation family during an active discussion."
+                },
+                 {
+                  image:
+                  "/assets/outreach-and-engagements/eventImages/july2and3Img2.png",
+                  description:"(From left) Jagan Shah, Ashish Dhawan, Rajnish Kumar, PK Sinha, Vinayak Chatterjee"
+                },
               ],
               content: `
                   

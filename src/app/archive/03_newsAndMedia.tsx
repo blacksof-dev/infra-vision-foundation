@@ -43,21 +43,13 @@ const SECTORS: SectorType[] = [
 const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
-
- 
-
-
-
-
-
- 
   {
     id: 9,
     img: "/assets/archive/newsAndMedia/newsMedia9.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
-    date: "Jan 4, 2023",
+    date: "January 4, 2023",
     description: "Infra brushstrokes for the Budget ",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2023/11/InfraBrushstrokes-Business-Standard_04012023.pdf",
   },
@@ -67,73 +59,73 @@ const allcards = [
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
-    date: "Dec 9, 2022",
+    date: "December 9, 2022",
     description:
       "Infravisioning: It's Time To Embrace The Idea Of Coastal Economic Zones",
     link: "https://www.ndtvprofit.com/business/its-time-to-embrace-the-idea-of-coastal-economic-zones-infravisioning-with-vinayak-chatterjee",
   },
-    {
+  {
     id: 4,
     img: "/assets/archive/newsAndMedia/newsMedia4.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
-    date: "Nov 25, 2022",
+    date: "November 25, 2022",
     description:
       "Infravisioning: Funding Done, Focus Now Must Shift To Project Execution",
     link: "https://www.ndtvprofit.com/opinion/funding-done-focus-now-must-shift-to-project-execution-infravisioning",
   },
-      {
+  {
     id: 1,
     img: "/assets/archive/newsAndMedia/newsMedia1.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
-    date: "Nov 11, 2022",
+    date: "November 11, 2022",
     description:
       "Infravisioning: Nine Reasons India Needs A New Highway Services Authority",
     link: "https://www.ndtvprofit.com/opinion/infravisioning-nine-reasons-india-needs-a-new-highway-services-authority",
   },
-   {
+  {
     id: 2,
     img: "/assets/archive/newsAndMedia/newsMedia2.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
-    date: "Oct 28, 2022",
+    date: "October 28, 2022",
     description:
       "Infravisioning: Why Green Is The Best Among Many Colours Of Hydrogen",
     link: "https://www.ndtvprofit.com/opinion/infravisioning-why-green-is-the-best-among-many-colours-of-hydrogen",
   },
-    {
+  {
     id: 5,
     img: "/assets/archive/newsAndMedia/newsMedia5.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
-    date: "Oct 20, 2022",
+    date: "October 20, 2022",
     description: "Infravisioning: How Safe Are India's Dams?",
     link: "https://www.ndtvprofit.com/business/infravisioning-how-safe-are-indias-dams",
   },
-  
-     {
+
+  {
     id: 8,
     img: "/assets/archive/newsAndMedia/newsMedia8.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
-    date: "Sept 29, 2022",
+    date: "September 29, 2022",
     description:
       "Infravisioning: India’s Big Attempt To Fix Its Logistics Snarl",
     link: "",
   },
-    {
+  {
     id: 7,
     img: "/assets/archive/newsAndMedia/newsMedia7.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
-    date: "Sept 16, 2022",
+    date: "September 16, 2022",
     description:
       "Infravisioning: How The Screws Are Getting Tightened On Power Discoms",
     link: "https://www.ndtvprofit.com/opinion/infravisioning-how-the-screws-are-getting-tightened-on-power-discoms",
@@ -144,7 +136,7 @@ const allcards = [
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
-    date: "Aug 31, 2022",
+    date: "August 31, 2022",
     description: "A quarter century of PPP",
     link: "https://www.business-standard.com/article/opinion/a-quarter-century-of-public-private-partnership-122083101156_1.html",
   },
@@ -154,7 +146,7 @@ const allcards = [
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
-    date: "Aug 25, 2022",
+    date: "August 25, 2022",
     description: "Infravisioning: A Historic Reform In Public Procurement",
     link: "https://www.ndtvprofit.com/opinion/infravisioning-a-historic-reform-in-public-procurement",
   },
@@ -164,13 +156,11 @@ const allcards = [
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
-    date: "Aug 03, 2022",
+    date: "August 03, 2022",
     description: "IFS: Getting set to make an impact ",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2023/11/IFS.pdf",
   },
- 
- 
- 
+
   {
     id: 17,
     img: "/assets/archive/newsAndMedia/newsMedia16.png",
@@ -187,7 +177,7 @@ const allcards = [
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
-    date: "Jun 07, 2022",
+    date: "June 07, 2022",
     description: "Urban mining",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2023/11/UrbanMining.pdf",
   },
@@ -207,37 +197,37 @@ const allcards = [
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
-    date: "Apr 6, 2022",
+    date: "April 6, 2022",
     description: "Measures to Rejunevate Public-Private Partnerships",
     link: "https://www.business-standard.com/article/opinion/measures-to-rejuvenate-public-private-partnerships-122040501433_1.html",
   },
-   {
+  {
     id: 15,
     img: "/assets/archive/newsAndMedia/newsMedia18.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
-    date: "Mar 02, 2022",
+    date: "March 02, 2022",
     description: "Procurement policy needs to cover more ground",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2023/11/Procurement.pdf",
   },
-   {
+  {
     id: 16,
     img: "/assets/archive/newsAndMedia/newsMedia17.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
-    date: "Feb 04, 2022",
+    date: "Feburary 04, 2022",
     description: "Time to focus on project execution ",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2023/11/Time-To.pdf",
   },
-   {
+  {
     id: 14,
     img: "/assets/archive/newsAndMedia/newsMedia14.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
-    date: "Jan 10, 2022",
+    date: "January 10, 2022",
     description: "Infra expectations from Budget",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2023/11/Infra.pdf",
   },
@@ -398,7 +388,7 @@ export default function NewsAndMedia() {
             {visibleCount < filteredCards.length && (
               <div className="flex w-full blade-top-padding-sm">
                 <button
-                onClick={handleSeeMore}
+                  onClick={handleSeeMore}
                   className={`group mx-auto text-xl lg:text-2xl   text-pink hover:text-white   text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
                 >
                   <span className="z-50 relative">See more</span>

@@ -7,7 +7,7 @@ import { useState } from "react";
 const galleryImages = [
     {
         image: "assets/infrapandit/gallery/01.png",
-        description: ""
+        description: "The Infravision Foundation team members Vrinda Singh, Research Associate, Rumjhum Chatterjee, TIF Co-Founder and Managing Trustee, Vinayak Chatterjee, Founder and Managing Trustee, Jagan Shah, CEO, and Kaveree Bamzai, Head, Advocacy."
     },
     {
         image: "assets/infrapandit/gallery/02.png",

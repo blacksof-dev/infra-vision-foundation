@@ -52,7 +52,7 @@ export default function Video() {
 const filter = [
   "All",
   "Projects",
-  "Quaterly Meet",
+  "Quarterly meet",
   "Infrakatha",
   "The Infravision Conversation",
 ];
@@ -118,69 +118,65 @@ function CardSection({ tab }: { tab: string }) {
       <div className="grid grid-cols-1  sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-6 md:gap-10 xl:gap-10 ">
         {FilterCards()
           .slice(0, visiblecountmobile)
-          .map((ele, index) => (
-            <>
-              <div key={index} className="pt-4  md:pt-10 xl:pt-12">
-                <div
-                  className="h-[18rem] md:h-[20rem] xl:h-[14rem] 2xl:h-[19rem]  bg-no-repeat bg-cover bg-center rounded "
-                  style={{ backgroundImage: `url(${ele.image.src})` }}
-                >
-                  <Image
-                    src={ele.image}
-                    alt={ele.subtitle}
-                    className="w-full h-full cursor-pointer"
-                    onClick={() => handleVideoClick(ele.link)}
-                  ></Image>
-                </div>
+          .map((ele) => (
+            <div className="pt-4  md:pt-10 xl:pt-12">
+              <div
+                className="h-[18rem] md:h-[20rem] xl:h-[14rem] 2xl:h-[19rem] bg-no-repeat bg-cover bg-center rounded"
+                style={{ backgroundImage: `url(${ele.image})` }}
+              >
+                <Image
+                  src={ele.image}
+                  alt={ele.subtitle}
+                  className="w-full h-full cursor-pointer"
+                  onClick={() => handleVideoClick(ele.link)}
+                />
+              </div>
 
-                <div>
-                  <div className="flex flex-col sm:flex-row justify-between py-3">
-                    <div className="flex flex-row items-center gap-2 md:gap-3 ">
+              <div>
+                <div className="flex flex-col sm:flex-row justify-between py-3">
+                  <div className="flex flex-row items-center gap-2 md:gap-3">
                     <span className="w-[7px] h-[7px] md:w-[12px] md:h-[12px] rounded-full bg-darkgray/30"></span>
                     <p className=" text-black">{ele.subtitle}</p>
-                  
                   </div>
                   <div>
                     <p className="text-darkgray ">{ele.date}</p>
                   </div>
-                  </div>
-                  
-                  <div className="w-full  md:w-[90%]">
-                    <h5 className="text-blacksecond font-medium">
-                      {ele.subdesc}
-                    </h5>
-                  </div>
                 </div>
-                <div className="py-2 md:py-4">
-                  <BorderGrayHeroBtn
-                    text="Watch video"
-                    role="button"
-                    borderColor="darkgray/40"
-                    color="black"
-                    bgColor="white"
-                    size="base"
-                    handlepopup={() => handleVideoClick(ele.link)}
-                  />
+
+                <div className="w-full  md:w-[90%]">
+                  <h5 className="text-blacksecond font-medium">
+                    {ele.subdesc}
+                  </h5>
                 </div>
               </div>
-            </>
+              <div className="py-2 md:py-4">
+                <BorderGrayHeroBtn
+                  text="Watch video"
+                  role="button"
+                  borderColor="darkgray/40"
+                  color="black"
+                  bgColor="white"
+                  size="base"
+                  handlepopup={() => handleVideoClick(ele.link)}
+                />
+              </div>
+            </div>
           ))}
-
-      
       </div>
-        {visiblecountmobile < FilterCards().length && (
-          <div className="flex w-full blade-top-padding-sm">
-          <button  onClick={handleSeeMoreCta} className={`group mx-auto text-xl lg:text-2xl   text-pink hover:text-white   text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
->
+      {visiblecountmobile < FilterCards().length && (
+        <div className="flex w-full blade-top-padding-sm">
+          <button
+            onClick={handleSeeMoreCta}
+            className={`group mx-auto text-xl lg:text-2xl   text-pink hover:text-white   text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
+          >
             <span className="z-50 relative">See more</span>
             <span
               className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
             ></span>
             <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5] transition-all duration-700 ease-in-out z-0"></span>
-
           </button>
-          </div>
-        )}
+        </div>
+      )}
       {popupOpen && (
         <VideoPopup src={videoLink} onClose={() => setPopupOpen(false)} />
       )}
