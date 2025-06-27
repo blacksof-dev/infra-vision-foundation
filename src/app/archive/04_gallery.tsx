@@ -20,29 +20,26 @@ const galleryImages = [
     image: "assets/archive/gallery/image6.png",
     year: 2025,
     event: "Infrashakti",
-    description:
-      "Mr Jagan Shah, CEO, The Infravision Foundation, at the Annual Get-together.",
+    description:"The Infravision Foundation CEO Jagan Shah, delivering the welcome address.",
   },
   {
     image: "assets/archive/gallery/image11.png",
-    year: 2025,
+    year: 2023,
     event: "Infrashakti",
     description:
-      "The Infravision Foundation co-founder, Ms Rumjhum Chatterjee, at an interactive discussion with employees from Suzuki Motor Corporation, Japan, at IIM Ahmedabad’s Next Bharat Thinking programme.",
+      "The Infravision Foundation Co-Founder, Rumjhum Chatterjee, at an interactive discussion with employees from Suzuki Motor Corporation, Japan, at IIM Ahmedabad’s Next Bharat Thinking programme.",
   },
   {
     image: "assets/archive/gallery/image2.png",
-    year: 2025,
+    year: 2024,
     event: "Infrashakti",
-    description:
-      "Union Minister Mr Nitin Gadkari presenting the Transport Trailblazer Award to Mr Giridhar Rajagopalan, Deputy Managing Director at AFCONS Infrastructure Limited.",
+    description:" Hon'ble Union Minister Mr Nitin Gadkari presenting the Transport Trailblazer Award to Mr Giridhar Rajagopalan, Deputy Managing Director at AFCONS Infrastructure Limited.",
   },
   {
     image: "assets/archive/gallery/image7.png",
     year: 2025,
     event: "Infrashakti",
-    description:
-      "The Infravision community at the Foundation’s Annual Get-together.",
+    description:"The Infravision community at the Foundation’s annual get-together.",
   },
   {
     image: "assets/archive/gallery/new1.png",
@@ -62,14 +59,14 @@ const galleryImages = [
     image: "assets/archive/gallery/image8.png",
     year: 2025,
     event: "Infrashakti",
-    description:
-      "The Infravision community at the Foundation’s annual get-together.",
+    description:"The Infravision community at the Foundation’s annual get-together.",
   },
+
   {
     image: "assets/archive/gallery/image13.png",
     year: 2025,
     event: "Infrashakti",
-    description: "The Infravision community at the Foundation’s Annual Get-together.",
+    description: "The Infravision community at the Foundation’s annual get-together.",
   },
   {
     image: "assets/archive/gallery/new2.png",
@@ -82,7 +79,7 @@ const galleryImages = [
     year: 2025,
     event: "Infrashakti",
     description:
-      "The Infravision community at the Foundation’s Annual Get-together.",
+      "The Infravision community at the Foundation’s annual get-together.",
   },
   {
     image: "assets/archive/gallery/new3.png",
@@ -101,16 +98,16 @@ const galleryImages = [
 
   {
     image: "assets/archive/gallery/image10.png",
-    year: 2025,
+    year: 2023,
     event: "Infrashakti",
     description:
-      "Ms Rumjhum Chatterjee, co-founder, The Infravision Foundation; at CII’s Corporate Women Leadership Awards, along with Ms Radhika Gupta, MD and CEO, Edelweiss Asset Management; Ms Ameera Shah, Promoter and MD, Metropolis Healthcare; Ms Rituparna Chakraborty, co-founder, Teamlease Services; and others.",
+      "Ms Rumjhum Chatterjee, Co-Founder, The Infravision Foundation; at CII’s Corporate Women Leadership Awards, along with Ms Radhika Gupta, MD and CEO, Edelweiss Asset Management; Ms Ameera Shah, Promoter and MD, Metropolis Healthcare; Ms Rituparna Chakraborty, Co-Founder, Teamlease Services; and others.",
   },
   {
     image: "assets/archive/gallery/image15.png",
-    year: 2025,
+    year: 2023,
     event: "Infrashakti",
-    description: "",
+    description: "JCB CEO Deepak Shetty, The Infravision Foundation Founder and Managing Trustee Vinayak Chatterjee, IRDAI Chairman Debasish Panda, and Bajaj Allianz CEO Tapan Singhel at a roundtable on Surety Bonds organised by CII.",
   },
 ];
 
@@ -137,7 +134,7 @@ interface NewsletterCard {
 
 // Constants
 const FILTER_TYPES: FilterType[] = ["All", "Year", "Event"];
-const YEARS = [2024, 2025] as const;
+const YEARS = [2023, 2024, 2025 ] as const;
 const SECTORS: EventType[] = [
   "All",
   "Infrashakti",
@@ -241,10 +238,11 @@ export default function Gallery() {
 
         <div className="py-3 mb-4">
           <h1 className="text-black font-light">
-            In frames
+          
             <span className="text-black font-medium">
-              — The spirit of change
+           Images of {' '}
             </span>
+             impact
           </h1>
         </div>
         {/* Filter Bar */}

@@ -7,7 +7,7 @@ import { useState } from "react";
 const galleryImages = [
     {
         image: "assets/infrapandit/gallery/01.png",
-        description: "The Infravision Foundation team members Vrinda Singh, Research Associate, Rumjhum Chatterjee, TIF Co-Founder and Managing Trustee, Vinayak Chatterjee, Founder and Managing Trustee, Jagan Shah, CEO, and Kaveree Bamzai, Head, Advocacy."
+        description: "The Infravision Foundation team members Vrinda Singh, Research Associate; Rumjhum Chatterjee, Co-Founder and Managing Trustee; Vinayak Chatterjee, Founder and Managing Trustee; Jagan Shah, CEO; and Kaveree Bamzai, Head, Advocacy."
     },
     {
         image: "assets/infrapandit/gallery/02.png",
@@ -15,7 +15,7 @@ const galleryImages = [
     },
     {
         image: "assets/infrapandit/gallery/03.png",
-        description: "Founder and Managing Trustee of The Infravision Foundation, Vinayak Chatterjee, announces the launch of the InfraPandit Awards. Also pictured are Co-Founder and  Managing Trustee Rumjhum Chatterjee, Trustee Kiran Karnik, and Council of Advisors members Saumya Kanti Ghosh and Prof G Raghuram."
+        description: "Founder and Managing Trustee of The Infravision Foundation, Vinayak Chatterjee, announces the launch of the InfraPandit Awards. Also pictured are Co-Founder and  Managing Trustee Rumjhum Chatterjee, Trustee Kiran Karnik, and Council of Advisors members Somya Kanti Ghosh and Prof G Raghuram."
     },
     {
         image: "assets/infrapandit/gallery/04.png",
@@ -27,15 +27,15 @@ const galleryImages = [
     },
     {
         image: "assets/infrapandit/gallery/06.png",
-        description: "Strategic discussions underway at the launch event of the InfraPandit Awards launch event."
+        description: "Strategic discussions underway at the launch event of the InfraPandit Awards."
     },
     {
         image: "assets/infrapandit/gallery/07.png",
-        description: "Saumya Kanti Ghosh, Member, Council of Advisors and Jury Member, engages with the attendees. Also in the frame are Rumjhum Chatterjee, Co-Founder and  Managing Trustee, with Kiran Karnik, Trustee."
+        description: "Soumya Kanti Ghosh, Member, Council of Advisors and Jury Member, engages with the attendees. Also in the frame are Rumjhum Chatterjee, Co-Founder and  Managing Trustee, with Kiran Karnik, Trustee."
     },
     {
         image: "assets/infrapandit/gallery/08.png",
-        description: "The Infravision Foundation Co-Founder and Managing Trustee Rumjhum Chatterjee takes the dias."
+        description: "The Infravision Foundation Co-Founder and Managing Trustee Rumjhum Chatterjee takes the podium."
     },
     {
         image: "assets/infrapandit/gallery/09.png",
@@ -47,7 +47,7 @@ const galleryImages = [
     },
     {
         image: "assets/infrapandit/gallery/11.png",
-        description: "Jagan Shah, CEO, The Infravision Foundation; Saumya Kanti Ghosh, Member, Council of Advisors and Jury Member; Akhilesh Tilotia, Distinguished Fellow; and Praveen Khangta, Head, Strategy, Investment and Portfolio Development, The Convergence Foundation, during a discussion."
+        description: "Jagan Shah, CEO, The Infravision Foundation; Somya Kanti Ghosh, Member, Council of Advisors and Jury Member; Akhilesh Tilotia, Distinguished Fellow; and Praveen Khangta, Head, Strategy, Investment, and Portfolio Development, The Convergence Foundation, during a discussion."
     },
     {
         image: "assets/infrapandit/gallery/12.png",
@@ -55,7 +55,7 @@ const galleryImages = [
     },
     {
         image: "assets/infrapandit/gallery/13.png",
-        description: "Dr. Janmejaya Sinha, Council of Advisors Member, shares his views and insights."
+        description: "Dr Janmejaya Sinha, Council of Advisors Member, shares his views and insights."
     },
     {
         image: "assets/infrapandit/gallery/14.png",
@@ -63,7 +63,7 @@ const galleryImages = [
     },
     {
         image: "assets/infrapandit/gallery/15.png",
-        description: "Trustee Kiran Karnik (at podium) addresses the audience at the launch of the InfraPandit Awards. Pictured alongside are Council of Advisors member Saumya Kanti Ghosh, Co-Founder and Managing Trustee Rumjhum Chatterjee, Council of Advisors member  Prof G Raghuram, and Founder and Managing Trustee Vinayak Chatterjee."
+        description: "Trustee Kiran Karnik (at podium) addresses the audience at the launch of the InfraPandit Awards. Pictured alongside are Council of Advisors member Somya Kanti Ghosh, Co-Founder and Managing Trustee Rumjhum Chatterjee, Council of Advisors member Prof G Raghuram, and Founder and Managing Trustee Vinayak Chatterjee."
     },
 
 ];
@@ -85,7 +85,7 @@ export default function Gallery() {
                     </div>
                     <div className="py-2 ">
                         <h1 className="text-black  font-light">
-                            From the
+                            From the{' '}
                             <span className="text-black/90 font-medium ">
                                 ceremony
                             </span>

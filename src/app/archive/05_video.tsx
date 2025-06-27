@@ -55,6 +55,7 @@ const filter = [
   "Quarterly meet",
   "Infrakatha",
   "The Infravision Conversation",
+  "InfraShakti Awards"
 ];
 
 function TabsSection({

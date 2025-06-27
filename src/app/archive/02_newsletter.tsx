@@ -103,7 +103,7 @@ const allcards = [
     category: "Volume 20",
     title: " ",
     sectors: "",
-    date: "january 2025",
+    date: "January 2025",
     description:
       "Workshop on Trees Outside Forests",
     link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/01/INFRAVISION-TALK-January-2025.pdf",
@@ -413,9 +413,9 @@ export default function Newsletters() {
 
         <div className="py-3 max-w-[890px] ">
           <h1 className="text-black font-light">
-           A Chronicle of Our <br/>
+           A chronicle of Our <br/>
             <span className="text-black font-medium">
-             {' '} Monthly Dispatches
+             {' '} monthly dispatches
             </span>
           </h1>
         </div>

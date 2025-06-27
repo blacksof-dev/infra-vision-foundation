@@ -150,7 +150,7 @@ Mr Kothari is the Founder, Chairman and Managing Trustee of the Wildlife Conserv
   },
   {
     image: JanmejayaKSinha,
-    title: "Dr. Janmejaya K. Sinha",
+    title: "Dr Janmejaya K. Sinha",
     desig: "Member, Council of Advisors",
     popupImg: vinayakImg.src,
     link: "https://www.linkedin.com/in/janmejaya-sinha-591259120",
@@ -159,13 +159,17 @@ Mr Kothari is the Founder, Chairman and Managing Trustee of the Wildlife Conserv
 
 He possesses deep expertise in managing conflict in family-owned businesses. He has worked extensively with clients worldwide on a range of issues encompassing large-scale organisation transformation, strategy, governance, family business matters, and operations turnaround.\n
 
-Dr Sinha has been a member of various committees set up by the Government of India, Reserve Bank of India (RBI), and Indian Banks' Association (IBA). He chairs the Confederation of Indian Industry's Committee on Financial Inclusion and Fintech. He was also a member of the Committee of Chief Ministers on the adoption of Digital Payments.\n
+Dr Sinha has been a member of various committees set up by the Government of India, Reserve Bank of India (RBI), and Indian Banks' Association (IBA). He chairs the Confederation of Indian Industry's (CII) Committee on Financial Inclusion and Fintech. He was also a member of the Committee of Chief Ministers on the adoption of Digital Payments.
+\n
 
-He writes extensively in the press and is a regular speaker at the WEF, CII, IBA, FICCI, RBI, and other media events. He is a co-author of the book titled "Your Strategy Needs a Strategy", published by Harvard Business Review Press, and has co-edited the book titled "Own The Future", published by Wiley. In 2010, Consulting Magazine named him one of the Top 25 most influential consultants in the world.\n
+He writes extensively in the press and is a regular speaker at the WEF, CII, IBA, FICCI, RBI, and other media events. He is the co-author of the books titled “Untangling Conflict: An Introspective Guide for Families in Business” published by Penguin and "Your Strategy Needs a Strategy", published by Harvard Business Review Press. He has also co-edited the book titled "Own The Future", published by Wiley. In 2010, Consulting Magazine named him one of the Top 25 most influential consultants in the world.
+\n
 
-Before joining The Boston Consulting Group, he worked with the Reserve Bank of India for several years across different departments. He has also worked briefly for the World Bank.\n
+Before joining The Boston Consulting Group, he worked with the Reserve Bank of India for several years across different departments. He has also worked briefly for the World Bank.
+\n
 
-Dr Sinha holds a PhD from the Woodrow Wilson School of Public and International Affairs, Princeton University, US; a BA and an MA in Economics from Clare College, Cambridge University, UK; and a BA and an MA in History from St Stephen’s College, Delhi University, India.
+Dr Sinha holds a PhD from the Woodrow Wilson School of Public and International Affairs, Princeton University, the US; a BA and an MA in Economics from Clare College, Cambridge University, the UK; and a BA and an MA in History from St Stephen’s College, Delhi University, India.
+
 `,
   },
   {
@@ -576,19 +580,22 @@ Rajaji holds an MBA from IIM Ahmedabad and participated in the prestigious Guruk
 
   {
     image: SoumyaKantiGhosh,
-    title: "Soumya Kanti Ghosh",
+    title: "Dr Soumya Kanti Ghosh",
     desig: "Distinguished Fellow (Economic Policy)",
     popupImg: vinayakImg.src,
     link: "https://www.linkedin.com/in/soumya-kanti-ghosh-2043921a/",
     socialMedia: "linkedin",
     popupdesc: `
-     Dr Soumya Kanti Ghosh is currently the Group Chief Economic Advisor at the State Bank of India. Previously, he has worked at Tata AIA, American Express, and ICRA, among other organisations.\n
+    Dr Soumya Kanti Ghosh is currently the Group Chief Economic Advisor at the State Bank of India. He was recently appointed as a member of the Prime Minister’s Economic Advisory Council and is also a member of the Sixteenth Finance Commission. Previously, he has worked at Tata AIA, American Express, and ICRA, among other organisations.\n
 
-Dr Ghosh was an instrumental co-author in a key initiative that, for the first time, captured payroll data in India, covering both formal and informal sectors. He contributed to the design of schemes such as the PMKISAN for farmers and the Emergency Credit Line Guarantee Scheme (ECLGS) for MSME borrowers, and the restructuring of the Credit Guarantee Fund Trust for Micro and Small Enterprises (CGTSME) scheme, among others. These initiatives proved effective during and after the pandemic. Following his report, EPFO and ESIC began publishing monthly payroll data.\n
+Dr Ghosh was an instrumental co-author in a key initiative that, for the first time, captured payroll data in India, covering both formal and informal sectors. He contributed to the design of schemes such as the PMKISAN for farmers and the Emergency Credit Line Guarantee Scheme (ECLGS) for MSME borrowers, and the restructuring of the Credit Guarantee Fund Trust for Micro and Small Enterprises (CGTSME) scheme, among others. These initiatives proved effective during and after the pandemic. Following his report, EPFO and ESIC began publishing monthly payroll data.
+\n
 
-He serves as Chairman of the Indian Banks’ Association’s Economist Group. He is also a member of the Insolvency Board Committee on Research and the Editorial Advisory Board of the Indian Institute of Banking and Finance (IIBF). Additionally, Dr Ghosh is a member of the Governing Board at the Indian Institute of Corporate Affairs (IICA). For six successive years, ending in 2023, Dr Ghosh was ranked as one of the best individuals in research in India by The Asset magazine.\n
+He serves as Chairman of the Indian Banks’ Association’s Economist Group. He is also a member of the Insolvency Board Committee on Research and the Editorial Advisory Board of the Indian Institute of Banking and Finance (IIBF). Additionally, Dr Ghosh is a member of the Governing Board at the Indian Institute of Corporate Affairs (IICA), Technical Advisory Committee for revision of Index of Industrial Production, Working Group for the revision of current series of WPI, and the Expert Committee for revision of Economic classifications (NIC and NPC). For eight successive years, ending in 2025, Dr Ghosh was ranked as one of the best individuals in research in India by The Asset magazine.
+\n
 
-Dr Ghosh has an extensive list of publications in media and international and national journals. He completed his doctoral thesis at Jawaharlal Nehru University (JNU).
+Dr Ghosh has an extensive list of publications in media and international and national journals. He completed his doctoral thesis at Jawaharlal Nehru University (JNU) and is currently a Distinguished Fellow at The Infravision Foundation.
+
 
      `,
   },

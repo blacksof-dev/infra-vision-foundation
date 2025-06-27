@@ -230,13 +230,13 @@ The study identified Noida as having exceptional potential to become a model cit
                 //   description:""
                 // },
                 {image:"/assets/outreach-and-engagements/eventImages/june3_2025.jpg",
-                  description:"Trustee Kiran Karnik (at podium) addresses the audience at the launch of the InfraPandit Awards. Pictured alongside are Council of Advisors member Saumya Kanti Ghosh, Co-Founder and Managing Trustee Rumjhum Chatterjee, Council of Advisors member  Prof G Raghuram, and Founder and Managing Trustee Vinayak Chatterjee."
+                  description:"Trustee Kiran Karnik (at podium) addresses the audience at the launch of the InfraPandit Awards. Pictured alongside are Council of Advisors member Somya Kanti Ghosh, Co-Founder and Managing Trustee Rumjhum Chatterjee, Council of Advisors member  Prof G Raghuram, and Founder and Managing Trustee Vinayak Chatterjee."
                 },
                  {image:"/assets/outreach-and-engagements/eventImages/infrapandit_2025.jpg",
-                  description:"Founder and Managing Trustee of The Infravision Foundation, Vinayak Chatterjee, announces the launch of the InfraPandit Awards. Also pictured are Co-Founder and  Managing Trustee Rumjhum Chatterjee, Trustee Kiran Karnik, and Council of Advisors members Saumya Kanti Ghosh and Prof G Raghuram."
+                  description:"Founder and Managing Trustee of The Infravision Foundation, Vinayak Chatterjee, announces the launch of the InfraPandit Awards. Also pictured are Co-Founder and  Managing Trustee Rumjhum Chatterjee, Trustee Kiran Karnik, and Council of Advisors members Somya Kanti Ghosh and Prof G Raghuram."
                 },
                 {image:"/assets/outreach-and-engagements/eventImages/infrapanditImg2_2025.jpg",
-                  description:"The Infravision Foundation team members Vrinda Singh, Research Associate, Rumjhum Chatterjee, TIF Co-Founder and Managing Trustee, Vinayak Chatterjee, Founder and Managing Trustee, Jagan Shah, CEO, and Kaveree Bamzai, Head, Advocacy."
+                  description:"The Infravision Foundation team members Vrinda Singh, Research Associate; Rumjhum Chatterjee, Co-Founder and Managing Trustee; Vinayak Chatterjee, Founder and Managing Trustee; Jagan Shah, CEO; and Kaveree Bamzai, Head, Advocacy."
                 },
                  {image:"/assets/outreach-and-engagements/eventImages/infrapanditImg3_2025.jpeg",
                   description:"Members and key stakeholders of The Infravision Foundation at the launch of the InfraPandit Awards 2025."

@@ -36,7 +36,7 @@ const Jury = () => {
       <div className='w-container'>
         <div className="flex items-center gap-2 md:gap-3 text-pink">
           <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
-          <h5 className="font-medium text-sm xl:text-lg">The jury</h5>
+          <h5 className="font-medium text-sm xl:text-lg">The Jury</h5>
         </div>
         <div className="pt-4 pb-2 md:py-5 flex flex-col md:flex-row justify-between gap-4">
           <h1 className="leading-snug font-light text-2xl md:text-3xl xl:text-5xl">

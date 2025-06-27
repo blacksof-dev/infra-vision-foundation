@@ -391,7 +391,7 @@ export default function NewsAndMedia() {
                   onClick={handleSeeMore}
                   className={`group mx-auto text-xl lg:text-2xl   text-pink hover:text-white   text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
                 >
-                  <span className="z-50 relative">See more</span>
+                  <span className="z-20 relative">See more</span>
                   <span
                     className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
                   ></span>
