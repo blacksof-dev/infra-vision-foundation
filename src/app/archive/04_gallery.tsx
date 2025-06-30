@@ -14,12 +14,12 @@ const galleryImages = [
     year: 2025,
     event: "Infrashakti",
     description:
-      "The Infravision Foundation CEO Jagan Shah, at the CII South India Annual Convention 2025. ",
+      "The Infravision Foundation CEO Jagan Shah, at the CII South India Annual Convention 2025.",
   },
   {
     image: "assets/archive/gallery/image6.png",
     year: 2025,
-    event: "Infrashakti",
+    event: "Annual Get-together 2025",
     description:"The Infravision Foundation CEO Jagan Shah, delivering the welcome address.",
   },
   {
@@ -32,25 +32,25 @@ const galleryImages = [
   {
     image: "assets/archive/gallery/image2.png",
     year: 2024,
-    event: "Infrashakti",
+    event: "Infrashakti Awards",
     description:" Hon'ble Union Minister Mr Nitin Gadkari presenting the Transport Trailblazer Award to Mr Giridhar Rajagopalan, Deputy Managing Director at AFCONS Infrastructure Limited.",
   },
   {
     image: "assets/archive/gallery/image7.png",
     year: 2025,
-    event: "Infrashakti",
+    event: "Annual Get-together 2025",
     description:"The Infravision community at the Foundation’s annual get-together.",
   },
   {
     image: "assets/archive/gallery/new1.png",
-    year: 2025,
+    year: 2024,
     event: "Infrashakti",
     description: "The second Municipal Finance Champions Lab, organised by The Infravision Foundation, underway at IIM Mumbai with key stakeholders.",
   },
   {
     image: "assets/archive/gallery/new4.png",
     year: 2025,
-    event: "Infrashakti",
+    event: "Infrapandit Awards",
     description:
       "The Infravision Foundation team presenting the study on “Implementation of Compensatory Afforestation in India” to the Union Minister of Environment, Forest and Climate Change,  Mr Bhupender Yadav.",
   },
@@ -58,14 +58,14 @@ const galleryImages = [
   {
     image: "assets/archive/gallery/image8.png",
     year: 2025,
-    event: "Infrashakti",
+    event: "Annual Get-together 2025",
     description:"The Infravision community at the Foundation’s annual get-together.",
   },
 
   {
     image: "assets/archive/gallery/image13.png",
     year: 2025,
-    event: "Infrashakti",
+    event: "Annual Get-together 2025",
     description: "The Infravision community at the Foundation’s annual get-together.",
   },
   {
@@ -77,13 +77,13 @@ const galleryImages = [
   {
     image: "assets/archive/gallery/image9.png",
     year: 2025,
-    event: "Infrashakti",
+    event: "Annual Get-together 2025",
     description:
       "The Infravision community at the Foundation’s annual get-together.",
   },
   {
     image: "assets/archive/gallery/new3.png",
-    year: 2025,
+    year: 2023,
     event: "Infrashakti",
     description:
       "Debasish Panda, Chairman of the Insurance Regulatory and Development Authority of India (IRDAI), speaking at the roundtable on Surety Bonds organised by the CII under the auspices of The Infravision Foundation.",
@@ -91,7 +91,7 @@ const galleryImages = [
   {
     image: "assets/archive/gallery/image5.png",
     year: 2025,
-    event: "Infrashakti",
+    event: "Infrashakti Awards",
     description:
       "NDTV Editor-in-Chief Mr Sanjay Pugalia with three-time Grammy Award winner and  Padma Shri awardee Mr Ricky Kej.",
   },
@@ -115,10 +115,9 @@ const galleryImages = [
 type FilterType = "All" | "Year" | "Event";
 type EventType =
   | "All"
-  | "Infrashakti"
-  | "Infrapandit"
-  | "Awards"
-  | "Annual GetTogether 2025"
+  | "Infrashakti Awards"
+  | "Infrapandit Awards"
+  | "Annual Get-together 2025"
   | "TIF Meetings";
 
 interface NewsletterCard {
@@ -137,10 +136,9 @@ const FILTER_TYPES: FilterType[] = ["All", "Year", "Event"];
 const YEARS = [2023, 2024, 2025 ] as const;
 const SECTORS: EventType[] = [
   "All",
-  "Infrashakti",
-  "Infrapandit",
-  "Awards",
-  "Annual GetTogether 2025",
+ "Infrashakti Awards",
+  "Infrapandit Awards",
+  "Annual Get-together 2025",
   "TIF Meetings",
 ];
 // const INITIAL_VISIBLE_COUNT = 19;

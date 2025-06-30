@@ -413,7 +413,7 @@ export default function Newsletters() {
 
         <div className="py-3 max-w-[890px] ">
           <h1 className="text-black font-light">
-           A chronicle of Our <br/>
+           A chronicle of our <br/>
             <span className="text-black font-medium">
              {' '} monthly dispatches
             </span>
