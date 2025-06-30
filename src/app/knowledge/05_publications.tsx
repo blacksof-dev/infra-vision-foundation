@@ -16,9 +16,9 @@ export default function Publications() {
           <h5 className="font-medium text-pink"> Using Our Publications</h5>
         </div>
 
-        <div className="py-3 max-w-[40rem]">
+        <div className="py-3 ">
           <h1 className="text-black font-light">
-            Permission for
+            Permission for <br/>
             <span className="text-black font-medium">
               {" "}
               reproduction and use

@@ -44,7 +44,7 @@ const people = [
   {
     image: img1.src,
     videoLink:
-      "https://www.youtube.com/playlist?list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em",
+      "https://www.youtube.com/embed/Sr17ZN7FLA4?si=DFB5whTWLmjG50EK",
     name: "Professor Geetam Tiwari",
     title:
       "TRIPP Chair Professor at the Department of Civil Engineering, Indian Institute of Technology in New Delhi, India.",
