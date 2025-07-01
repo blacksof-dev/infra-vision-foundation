@@ -7,17 +7,21 @@ const VisionMission = () => {
 
     const data = [
         {
+            icon: "/assets/about-us/vision-mission/icon-3.svg",
+             title:"Policy Intervention",
+            desc: "To be India’s pre-eminent independent think-tank on infrastructure issues."
+        },
+        {
             icon: "/assets/about-us/vision-mission/icon-1.svg",
+            title:"Thought Leadership",
             desc: "To contribute thought leadership in helping shape and evaluate infrastructure-related public policies and programmes."
         },
         {
             icon: "/assets/about-us/vision-mission/icon-2.svg",
+             title:"Independent Advice",
             desc: "To be the hub of choice for obtaining impartial and independent advice from acknowledged experts."
         },
-        {
-            icon: "/assets/about-us/vision-mission/icon-3.svg",
-            desc: "To be India’s pre-eminent independent think-tank on infrastructure issues."
-        },
+        
     ]
 
     return (
@@ -47,7 +51,11 @@ const VisionMission = () => {
                             data.map((elem, idx) => {
                                 return (
                                     <div key={idx} className='bg-[#FFFFFFB2] backdrop-blur-[10px] shadow-blur w-container py-10 rounded-md'>
-                                        <img className='max-xl:h-10' src={elem.icon} alt="icons" />
+                                        <div className="flex gap-4 lg:gap-8  justify-center items-center">
+                                             <img className='max-xl:h-10' src={elem.icon} alt="icons" />
+                                              <h5>{elem.title}</h5>
+                                        </div>
+                                        
                                         <h5 className='blade-top-margin text-sm xl:text-lg'>{elem.desc}</h5>
                                     </div>
                                 )

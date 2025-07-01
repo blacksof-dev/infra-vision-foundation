@@ -104,9 +104,7 @@ const Upcoming = () => {
                  {
                 image:"/assets/outreach-and-engagements/eventImages/april1_2025.png",
                 description:"The Infravision community at the Foundation’s annual get-together."},
-                 {
-                image:"/assets/outreach-and-engagements/eventImages/april2_2025.png",
-                description:"The Infravision community at the Foundation’s annual get-together."},
+                 
                  {
                 image:"/assets/outreach-and-engagements/eventImages/april2_2025.png",
                 description:"The Infravision community at the Foundation’s annual get-together."},
@@ -422,6 +420,33 @@ The study identified Noida as having exceptional potential to become a model cit
       {
         month: "May",
         events: [
+          {
+            date: "29",
+
+            dayTime: "Saturday",
+            meetingType: "Infrakatha",
+            desc: "Mythology & infrastructure with Devdutt Pattanaik",
+            ctaText: "See details",
+            details: {
+              date: "May 29, 2024",
+              images: [{
+              
+                image:"/assets/outreach-and-engagements/eventImages/june7_2024.png",
+               description:"“Mythology & infrastructure” with Devdutt Pattanaik",
+              }
+             
+              ],
+              content: `
+                 Catch renowned mythologist Devdutt Pattanaik and The Infravision Foundation’s Founder and Managing Trustee Vinayak Chatterjee in the inaugural session of InfraKatha.\n
+                 The discussion on the topic “Mythology & Infrastructure" evolves into an awe-inspiring journey of thoughts, facts, and perspectives. They delve into the profound connections between ancient Indian mythology and the concept of infrastructure.\n
+                 Pattanaik emphasises that infrastructure is a man-made phenomenon shaped by underlying belief systems, trade, and the human need for connection. Through mythical stories and historical examples, from the Ram Setu to the ancient Harappan cities, the discussion explores the philosophical and practical aspects of building, exchanging, and coexisting, underscoring that true societal well-being stems from a mindset of "give and receive."
+              `,
+              cta: {
+                ctaText: "Watch video",
+                link: "https://www.youtube.com/watch?v=9v61vpPmXEk",
+              },
+            },
+          },
           // {
           //   date: "30",
 
@@ -486,33 +511,7 @@ The study identified Noida as having exceptional potential to become a model cit
       {
         month: "June",
         events: [
-          {
-            date: "29",
-
-            dayTime: "Saturday",
-            meetingType: "Infrakatha",
-            desc: "Mythology & infrastructure with Devdutt Pattanaik",
-            ctaText: "See details",
-            details: {
-              date: "May 29, 2024",
-              images: [{
-              
-                image:"/assets/outreach-and-engagements/eventImages/june7_2024.png",
-               description:"“Mythology & infrastructure” with Devdutt Pattanaik",
-              }
-             
-              ],
-              content: `
-                 Catch renowned mythologist Devdutt Pattanaik and The Infravision Foundation’s Founder and Managing Trustee Vinayak Chatterjee in the inaugural session of InfraKatha.\n
-                 The discussion on the topic “Mythology & Infrastructure" evolves into an awe-inspiring journey of thoughts, facts, and perspectives. They delve into the profound connections between ancient Indian mythology and the concept of infrastructure.\n
-                 Pattanaik emphasises that infrastructure is a man-made phenomenon shaped by underlying belief systems, trade, and the human need for connection. Through mythical stories and historical examples, from the Ram Setu to the ancient Harappan cities, the discussion explores the philosophical and practical aspects of building, exchanging, and coexisting, underscoring that true societal well-being stems from a mindset of "give and receive."
-              `,
-              cta: {
-                ctaText: "Watch video",
-                link: "https://www.youtube.com/watch?v=9v61vpPmXEk",
-              },
-            },
-          },
+          
           {
             date: "13",
 
@@ -903,8 +902,8 @@ The study identified Noida as having exceptional potential to become a model cit
               images: [  
                 {
                   image:
-                  "/assets/outreach-and-engagements/eventImages/dummy.png",
-                  description:""
+                  "/assets/outreach-and-engagements/eventImages/january_2023.jpg",
+                  description:"The Infravision Foundation’s first annual meeting"
                 }
                 ,
               ],

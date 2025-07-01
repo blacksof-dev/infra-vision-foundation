@@ -51,7 +51,7 @@ const allcards = [
     sectors: "",
     date: "January 4, 2023",
     description: "Infra brushstrokes for the budget ",
-    link: "https://theinfravisionfoundation.org/wp-content/uploads/2023/11/InfraBrushstrokes-Business-Standard_04012023.pdf",
+    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2023/11/InfraBrushstrokes-Business-Standard_04012023.pdf",
   },
   {
     id: 3,
@@ -105,7 +105,7 @@ const allcards = [
     sectors: "",
     date: "October 20, 2022",
     description: "Infravisioning: How safe are India's dams?",
-    link: "https://www.ndtvprofit.com/business/infravisioning-how-safe-are-indias-dams",
+    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2023/11/HowSafe.pdf",
   },
 
   {
@@ -158,7 +158,7 @@ const allcards = [
     sectors: "",
     date: "August 3, 2022",
     description: "IFS: Getting set to make an impact ",
-    link: "https://theinfravisionfoundation.org/wp-content/uploads/2023/11/IFS.pdf",
+    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2023/11/IFS.pdf",
   },
 
   {
@@ -169,7 +169,7 @@ const allcards = [
     sectors: "",
     date: "July 6, 2022",
     description: "Unleashing the ropeways",
-    link: "https://theinfravisionfoundation.org/wp-content/uploads/2023/11/Unleashing-The.pdf",
+    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2023/11/Unleashing-The.pdf",
   },
   {
     id: 10,
@@ -179,7 +179,7 @@ const allcards = [
     sectors: "",
     date: "June 7, 2022",
     description: "Urban mining",
-    link: "https://theinfravisionfoundation.org/wp-content/uploads/2023/11/UrbanMining.pdf",
+    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2023/11/UrbanMining.pdf",
   },
   {
     id: 12,
@@ -189,7 +189,7 @@ const allcards = [
     sectors: "",
     date: "May 4, 2022",
     description: "How safe are India’s dams?",
-    link: "https://theinfravisionfoundation.org/wp-content/uploads/2023/11/HowSafe.pdf",
+    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2023/11/HowSafe.pdf",
   },
   {
     id: 18,
@@ -209,7 +209,7 @@ const allcards = [
     sectors: "",
     date: "March 2, 2022",
     description: "Procurement policy needs to cover more ground",
-    link: "https://theinfravisionfoundation.org/wp-content/uploads/2023/11/Procurement.pdf",
+    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2023/11/Procurement.pdf",
   },
   {
     id: 16,
@@ -219,7 +219,7 @@ const allcards = [
     sectors: "",
     date: "Feburary 4, 2022",
     description: "Time to focus on project execution ",
-    link: "https://theinfravisionfoundation.org/wp-content/uploads/2023/11/Time-To.pdf",
+    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2023/11/Time-To.pdf",
   },
   {
     id: 14,
@@ -229,7 +229,7 @@ const allcards = [
     sectors: "",
     date: "January 10, 2022",
     description: "Infra expectations from Budget",
-    link: "https://theinfravisionfoundation.org/wp-content/uploads/2023/11/Infra.pdf",
+    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2023/11/Infra.pdf",
   },
 ];
 

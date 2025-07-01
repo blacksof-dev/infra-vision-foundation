@@ -4,20 +4,22 @@ const Jury = () => {
 
   const data = [
     {
-      image: "/assets/infrapandit/jury/savita.png",
-      name: "Ms Savita Mahajan",
-      position: "Advisor and Independent Director"
+      image: "/assets/infrapandit/jury/raghuram.png",
+      name: "Jury Chair Professor G. Raghuram",
+      position: "Member, Council of Advisors at The Infravision Foundation"
     },
     {
       image: "/assets/infrapandit/jury/krishnan.png",
       name: "Dr K.P. Krishnan",
       position: "Former IAS Officer"
     },
-     {
-      image: "/assets/infrapandit/jury/raghuram.png",
-      name: "Professor G. Raghuram",
-      position: "Member, Council of Advisors at The Infravision Foundation"
+    {
+      image: "/assets/infrapandit/jury/savita.png",
+      name: "Ms Savita Mahajan",
+      position: "Advisor and Independent Director"
     },
+    
+     
     {
       image: "/assets/infrapandit/jury/soumya.png",
       name: "Dr Soumya Kanti Ghosh",

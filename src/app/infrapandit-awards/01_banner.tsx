@@ -65,7 +65,7 @@ export default function InfraPanditBanner() {
                 </div>
 
                 <HeroBtnPink
-                  text="Register now"
+                  text="Apply now"
                   role="link"
                   borderColor="pink"
                   color="white"

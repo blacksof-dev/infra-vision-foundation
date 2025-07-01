@@ -31,7 +31,7 @@ const galleryImages = [
   },
   {
     image: "assets/infraShakti/gallery/image3.png",
-    description: "Mr Vinayak Chatterjee in discussion with NDTV Editor-in-Chief Mr Sanjay Pugalia."
+    description: "Mr Vinayak Chatterjee in discussion with Former NDTV Editor-in-Chief Mr Sanjay Pugalia."
   },
   {
     image: "assets/infraShakti/gallery/image5.png",
@@ -39,7 +39,7 @@ const galleryImages = [
   },
   {
     image: "assets/infraShakti/gallery/image12.png",
-    description: "Jurors Mr Dilip Cherian, Image Guru, Litigation Landscaping and Policy Analyst with Prof G Raghuram, Former Director, IIMB and Dean, IIMA."
+    description: "Jurors Mr Dilip Cherian, Image Guru and Policy Analyst with Prof G Raghuram, Former Director, IIMB and Dean, IIMA."
   },
   {
     image: "assets/infraShakti/gallery/image4.png",
@@ -55,11 +55,11 @@ const galleryImages = [
   },
   {
     image: "assets/infraShakti/gallery/image13.png",
-    description: "NDTV Editor-in-Chief Mr Sanjay Pugalia with three-time Grammy Award winner and  Padma Shri awardee Mr Ricky Kej."
+    description: "Former NDTV Editor-in-Chief Mr Sanjay Pugalia with three-time Grammy Award winner and  Padma Shri awardee Mr Ricky Kej."
   },
   {
     image: "assets/infraShakti/gallery/image14.png",
-    description: "NDTV Editor-in-Chief Mr Sanjay Pugalia in conversations with Hon'ble Union Minister Mr Nitin Gadkari."
+    description: "Former NDTV Editor-in-Chief Mr Sanjay Pugalia in conversations with Hon'ble Union Minister Mr Nitin Gadkari."
   },
   {
     image: "assets/infraShakti/gallery/image15.png",
@@ -109,13 +109,14 @@ export default function Gallery() {
           {isOpen && (
             <Portal>
               <div className="w-screen h-screen p-3  fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] flex">
-                <div className="relative w-[30rem] h-[38rem] bg-black m-auto">
+                <div className="relative w-[38rem] h-[38rem] bg-black m-auto">
                   <Image
-                    className="object-cover z-0 [mask-image:linear-gradient(to_bottom,black,transparent)]"
+                    className="object-contain z-0 [mask-image:linear-gradient(to_bottom,black,transparent)]"
                     fill
                     src={galleryImages[currentIndex].image}
                     unoptimized={true}
-                  quality={100}
+                     quality={100}
+                    
                     alt={galleryImages[currentIndex].description}
                   ></Image>
                   <div className="absolute bottom-4 z-10 w-full">

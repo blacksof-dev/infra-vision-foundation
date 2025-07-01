@@ -8,8 +8,7 @@ import "swiper/css/navigation";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import taxation from "@/../public/assets/home/updates/afforestation.png";
-import infraKathaEvent from "@/../public/assets/home/updates/infraKathaEvent.png";
-import afforestation from "@/../public/assets/home/updates/afforestation.png";
+import InfrapanditAward from "@/../public/assets/home/infrapanditAward.webp";
 import infraKatha from "@/../public/assets/home/updates/infraKatha.png";
 import article from "@/../public/assets/home/updates/article.png";
 import agriWarehousing from "@/../public/assets/home/updates/agriWarehousing.png";
@@ -196,5 +195,12 @@ const EventsDetails = [
     title: "Agri-Warehousing: A problem of capacity",
     btnTitle: "Read more",
     link: "https://theinfravisionfoundation.org/2023/11/25/poor-regulatory-capacity-of-the-warehousing-and-development-regulatory-authority-impacts-warehouse-based-sales-of-agri-commodities-and-issue-of-e-negotiable-warehouse-receipts/",
+  },
+  {
+    image: InfrapanditAward,
+    category: "InfraPandit Awards",
+    title: "Nurturing the Next Generation of Infra Talent and Ideas",
+    btnTitle: "See details",
+    link: "/infrapandit-awards",
   },
 ];

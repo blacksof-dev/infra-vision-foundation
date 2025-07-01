@@ -166,7 +166,7 @@ export default function Luminaries() {
                 setdata={setdata}
               />
               <ButtonTab
-                label="Preeminent leaders"
+                label="Pre-eminent leaders"
                 value="Preeminent"
                 data={data}
                 setdata={setdata}

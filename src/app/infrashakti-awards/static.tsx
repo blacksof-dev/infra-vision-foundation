@@ -50,7 +50,7 @@ export const Preeminent = [
     image: sanjay,
     title: "Mr Sanjay Pugalia",
     desig:
-      "CEO and Editor-in-Chief, NDTV",
+      "CEO and Former NDTV Editor-in-Chief",
       link:"https://x.com/sanjaypugalia",
       socialMedia:"X"
     
@@ -125,7 +125,7 @@ export const jury = [
     image: dilip,
     title: "Mr Dilip Cherian",
     desig:
-      "Image Guru, Litigation Landscaping and Policy Analyst",
+      "Image Guru and Policy Analyst",
       link:"https://in.linkedin.com/in/dilipcherian",
       socialMedia:"linkedin"
       

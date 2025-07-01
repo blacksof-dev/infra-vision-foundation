@@ -35,7 +35,7 @@ const videoCardDetails = [
     image: dilip.src,
     title: "Juror talk",
     name: "Mr Dilip Cherian",
-    designation: "Image Guru, Litigation Landscaping and Policy Analyst",
+    designation: "Image Guru and Policy Analyst",
     link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=214&si=uTJRwlzGhyjpn4_a",
   },
 ];

@@ -20,12 +20,9 @@ type FilterType = "All" | "Publication year" | "Sectors";
 type SectorType =
   | "All"
   | "Transportation"
-  | "Water and Sanitation"
   | "Energy"
   | "Urban Planning"
   | "Rural and Agri Infra"
-  | "Education"
-  | "Health Infra";
 
 interface NewsletterCard {
   id: number;
@@ -40,16 +37,13 @@ interface NewsletterCard {
 
 // Constants
 const FILTER_TYPES: FilterType[] = ["All", "Publication year", "Sectors"];
-const YEARS = ["2025", "2024", "2023"] as const;
+const YEARS = ["2024", "2023"] as const;
 const SECTORS: SectorType[] = [
   "All",
   "Transportation",
-  "Water and Sanitation",
   "Energy",
   "Urban Planning",
   "Rural and Agri Infra",
-  "Education",
-  "Health Infra",
 ];
 const INITIAL_VISIBLE_COUNT = 3;
 
@@ -62,7 +56,7 @@ const allcards = [
     sectors: "Transportation",
     date: "October 16, 2024",
     description: "How to make India’s highways safe",
-    link: "https://theinfravisionfoundation.org/2024/10/16/a-national-road-safety-authority-crucial-for-improving-indias-deteriorating-road-safety/",
+    link: "https://explore.theinfravisionfoundation.org/2024/10/16/a-national-road-safety-authority-crucial-for-improving-indias-deteriorating-road-safety/",
   },
   {
     id: 2,
@@ -72,7 +66,7 @@ const allcards = [
     sectors: "Rural and Agri Infra",
     date: "November 25, 2023",
     description: "Agri-warehousing: A problem of capacity",
-    link: "https://theinfravisionfoundation.org/2023/11/25/poor-regulatory-capacity-of-the-warehousing-and-development-regulatory-authority-impacts-warehouse-based-sales-of-agri-commodities-and-issue-of-e-negotiable-warehouse-receipts/",
+    link: "https://explore.theinfravisionfoundation.org/2023/11/25/poor-regulatory-capacity-of-the-warehousing-and-development-regulatory-authority-impacts-warehouse-based-sales-of-agri-commodities-and-issue-of-e-negotiable-warehouse-receipts/",
   },
   {
     id: 3,
@@ -82,7 +76,7 @@ const allcards = [
     sectors: "Transportation",
     date: "October 9, 2023",
     description: "Multi-utility Infra, the way to go!",
-    link: "https://theinfravisionfoundation.org/2023/10/09/newsletter-images-do-not-remove/",
+    link: "https://explore.theinfravisionfoundation.org/2023/10/09/newsletter-images-do-not-remove/",
   },
   {
     id: 4,
@@ -92,7 +86,7 @@ const allcards = [
     sectors: "Transportation",
     date: "October 5, 2023",
     description: "Our metro rail systems must be sustainable, financially",
-    link: "https://theinfravisionfoundation.org/2023/10/05/our-metro-rail-systems-must-be-sustainable-financially/",
+    link: "https://explore.theinfravisionfoundation.org/2023/10/05/our-metro-rail-systems-must-be-sustainable-financially/",
   },
   {
     id: 5,
@@ -102,7 +96,7 @@ const allcards = [
     sectors: "Urban Planning",
     date: "September 25, 2023",
     description: "India needs sustainability ratings for Infrastructure projects",
-    link: "https://theinfravisionfoundation.org/2023/09/25/india-needs-sustainability-ratings-for-infrastructure-projects/",
+    link: "https://explore.theinfravisionfoundation.org/2023/09/25/india-needs-sustainability-ratings-for-infrastructure-projects/",
   },
   {
     id: 6,
@@ -112,7 +106,7 @@ const allcards = [
     sectors: "Transportation",
     date: "August 26, 2023",
     description: "Urban mobility in India – Why metro is not the only solution!",
-    link: "https://theinfravisionfoundation.org/2023/08/26/urban-mobility-in-india-why-metro-is-not-the-only-solution/",
+    link: "https://explore.theinfravisionfoundation.org/2023/08/26/urban-mobility-in-india-why-metro-is-not-the-only-solution/",
   },
   {
     id: 7,
@@ -122,7 +116,7 @@ const allcards = [
     sectors: "Infrastructure",
     date: "May 18, 2023",
     description: "Getting Surety Bonds Market Ready",
-    link: "https://theinfravisionfoundation.org/2023/05/18/getting-surety-bonds-market-ready/",
+    link: "https://explore.theinfravisionfoundation.org/2023/05/18/getting-surety-bonds-market-ready/",
   },
   {
     id: 8,
@@ -132,7 +126,7 @@ const allcards = [
     sectors: "Energy",
     date: "March 2, 2023",
     description: "Rooftop Solar for Poverty Alleviation",
-    link: "https://theinfravisionfoundation.org/2023/03/02/rooftop-solar-for-poverty-alleviation/",
+    link: "https://explore.theinfravisionfoundation.org/2023/03/02/rooftop-solar-for-poverty-alleviation/",
   },
 ];
 

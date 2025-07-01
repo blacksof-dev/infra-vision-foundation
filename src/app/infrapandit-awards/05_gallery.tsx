@@ -100,7 +100,8 @@ export default function Gallery() {
                                     width={600}
                                     height={600}
                                     className="w-full h-full object-cover rounded hover:scale-105 transition-all duration-300 ease-linear"
-                                    unoptimized
+                                    unoptimized={true}
+                                    quality={100}
                                 />
                             </div>
                         ))}
@@ -108,9 +109,9 @@ export default function Gallery() {
                     {isOpen && (
                         <Portal>
                             <div className="w-screen h-screen p-3  fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] flex">
-                                <div className="relative w-[30rem] h-[38rem] bg-black m-auto">
+                                <div className="relative w-[38rem] h-[38rem] bg-black m-auto">
                                     <Image
-                                        className="object-cover z-0 [mask-image:linear-gradient(to_bottom,black,transparent)]"
+                                        className="object-contain z-0 [mask-image:linear-gradient(to_bottom,black,transparent)]"
                                         fill
                                         src={galleryImages[currentIndex].image}
                                         unoptimized

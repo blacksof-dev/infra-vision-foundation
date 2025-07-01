@@ -34,6 +34,7 @@ type NewsletterForm = z.infer<typeof newsletterSchema>;
 
 const Footer = () => {
   const [loading, setLoading] = useState(false);
+  const [message,setMessage] = useState<string>("");
   const {
     register,
     handleSubmit,
@@ -52,7 +53,12 @@ const Footer = () => {
     await new Promise((resolve) => setTimeout(resolve, 2000));
     setLoading(false);
     console.log("Newsletter form data:", data);
+    setMessage("Thanks for joining our newsletter.")  
+    setTimeout(()=>{
+       setMessage(" ")
+    },2000)
     reset();
+   
   };
 
   return (
@@ -118,6 +124,7 @@ const Footer = () => {
                     {errors.email.message}
                   </p>
                 )}
+               
                 <div className="flex gap-2  pt-5">
                   <Checkbox
                     className="w-5 h-5 rounded border border-pink cursor-pointer"
@@ -138,6 +145,11 @@ const Footer = () => {
                     {errors.agree.message}
                   </p>
                 )}
+                 {
+                  message && (
+                    <p className="text-pink py-4">{message}</p>
+                  )
+                }
               </form>
             </div>
           </div>
