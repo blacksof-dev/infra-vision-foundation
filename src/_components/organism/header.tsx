@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 import { useHeader } from "@/context/useHeader";
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
 import { GoArrowRight } from "react-icons/go";
+import { useRouter } from "next/navigation";
 
 interface NavItem {
   label: string;
@@ -29,6 +30,8 @@ function Header() {
   const [mounted, setMounted] = useState(false);
   const { setIsHeaderVisible: setShowNavbar, isHeaderVisible: showNavbar } =
     useHeader();
+  const router = useRouter();
+  const [searchItem, setsearchItem] = useState("");
 
   // Set mounted state to true after component mounts
   useEffect(() => {
@@ -97,8 +100,8 @@ function Header() {
   }, [isMenuOpen, mounted]);
 
   useEffect(() => {
-    setOpenDropdown(null)
-  }, [window.scrollY])
+    setOpenDropdown(null);
+  }, [window.scrollY]);
 
   //Navbar color change for specific routes
   useEffect(() => {
@@ -152,7 +155,7 @@ function Header() {
     { label: "Blogs", href: "/knowledge#blogs" },
   ];
 
-   const Archives: NavItem[] = [
+  const Archives: NavItem[] = [
     { label: "Newsletters", href: "/archive#newsletters" },
     { label: "In the News", href: "/archive#newsandMedia" },
     { label: "Gallery", href: "/archive#gallery" },
@@ -162,13 +165,15 @@ function Header() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full transition-all ease-linear duration-200 px-0 sm:px-3 py-3 z-[9999] ${isMobile
-          ? "translate-y-0"
-          : showNavbar
+        className={`fixed top-0 left-0 w-full transition-all ease-linear duration-200 px-0 sm:px-3 py-3 z-[9999] ${
+          isMobile
+            ? "translate-y-0"
+            : showNavbar
             ? "translate-y-0"
             : "-translate-y-full"
-          } ${showNavBg ? "bg-white " : "bg-transparent"} ${scrolled ? "bg-white" : ""
-          }`}
+        } ${showNavBg ? "bg-white " : "bg-transparent"} ${
+          scrolled ? "bg-white" : ""
+        }`}
       >
         <div className="w-container">
           <div className="flex flex-row justify-between">
@@ -237,7 +242,6 @@ function Header() {
                   onMouseEnter={() => setOpenDropdown("Advocacy")}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                 
                   <button className="text-darkgray flex justify-center items-center gap-2 text-lg cursor-pointer hover:text-pink">
                     Advocacy
                     {openDropdown === "Advocacy" ? (
@@ -246,7 +250,7 @@ function Header() {
                       <GoChevronDown />
                     )}
                   </button>
-                
+
                   <AnimatePresence>
                     {openDropdown === "Advocacy" && (
                       <motion.div
@@ -286,14 +290,14 @@ function Header() {
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   <Link href="/knowledge">
-                  <button className="text-darkgray text-lg flex justify-center items-center gap-2 cursor-pointer hover:text-pink">
-                    Knowledge
-                    {openDropdown === "Knowledge" ? (
-                      <GoChevronUp />
-                    ) : (
-                      <GoChevronDown />
-                    )}
-                  </button>
+                    <button className="text-darkgray text-lg flex justify-center items-center gap-2 cursor-pointer hover:text-pink">
+                      Knowledge
+                      {openDropdown === "Knowledge" ? (
+                        <GoChevronUp />
+                      ) : (
+                        <GoChevronDown />
+                      )}
+                    </button>
                   </Link>
 
                   <AnimatePresence>
@@ -335,14 +339,14 @@ function Header() {
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   <Link href="/archive">
-                  <button className="text-darkgray flex justify-center items-center gap-2 text-lg cursor-pointer hover:text-pink">
-                    Archives
-                    {openDropdown === "Archives" ? (
-                      <GoChevronUp />
-                    ) : (
-                      <GoChevronDown />
-                    )}
-                  </button>
+                    <button className="text-darkgray flex justify-center items-center gap-2 text-lg cursor-pointer hover:text-pink">
+                      Archives
+                      {openDropdown === "Archives" ? (
+                        <GoChevronUp />
+                      ) : (
+                        <GoChevronDown />
+                      )}
+                    </button>
                   </Link>
 
                   <AnimatePresence>
@@ -386,7 +390,7 @@ function Header() {
             </div>
 
             <div className="flex justify-center items-center  gap-4">
-              {/* <div className="border border-darkgray p-2 sm:block hidden  w-[10rem] rounded my-auto ">
+              <div className="border border-darkgray p-2 sm:block hidden  w-[10rem] rounded my-auto ">
                 <div className="flex flex-row ">
                   <div className=" flex items-center">
                     <FaSearch className="text-darkgray block " />
@@ -395,13 +399,22 @@ function Header() {
                   <input
                     type="text"
                     placeholder="Search"
-                    className="outline-none  pl-2 w-full "
+                    className="outline-none pl-2 w-full"
+                    value={searchItem}
+                    onChange={(e) => setsearchItem(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && searchItem.trim() !== "") {
+                        router.push(
+                          `/search?q=${encodeURIComponent(searchItem.trim())}`
+                        );
+                      }
+                    }}
                   />
                 </div>
-              </div> */}
-              {/* <div className="w-9 h-9 rounded-full  sm:hidden bg-pink flex items-center justify-center">
+              </div>
+              <div className="w-9 h-9 rounded-full  sm:hidden bg-pink flex items-center justify-center">
                 <FaSearch className="text-white" />
-              </div> */}
+              </div>
               <div className="block xl:hidden">
                 <button onClick={handlehamberg}>
                   <RxHamburgerMenu className="text-3xl cursor-pointer" />
