@@ -6,8 +6,8 @@ import Link from "next/link";
 export default function Banner() {
   return (
     <>
-      <section>
-        <main className="relative overflow-hidden">
+      <section id="homepage-section-01">
+        <div className="relative overflow-hidden">
           <div className=" w-full h-[40rem]  lg:h-auto xl:h-full">
             <Image
               src={BannerBg}
@@ -54,7 +54,7 @@ export default function Banner() {
               <Updates />
             </div>
           </div>
-        </main>
+        </div>
       </section>
     </>
   );

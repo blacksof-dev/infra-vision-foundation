@@ -113,7 +113,7 @@ const EligibilityProcessPopup = ({ onClose }: { onClose: () => void }) => {
     <div className="fixed inset-0  flex items-cente  justify-center bg-black/70 backdrop-blur-sm px-2 py-10 z-[9999]">
       <div className="relative bg-white rounded-md  max-w-[800px]  h-full my-auto flex flex-col">
         {/* Header with close button */}
-        <div className="flex items-center justify-between px-2 py-2 sm:px-6 sm:py-4 ">
+        <div className="flex items-center  justify-between px-2 py-2 sm:px-6 sm:py-4 ">
           <button
             onClick={onClose}
             className="bg-pink cursor-pointer rounded-full p-1 text-white text-2xl ml-auto focus:outline-none"

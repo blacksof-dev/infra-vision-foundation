@@ -108,7 +108,7 @@ export default function Infravisionaries() {
 
   return (
     <>
-      <section id="infravisionaries" className="bg-pink relative">
+      <section id="homepage-section-03" className="bg-pink relative">
         <div className=" absolute top-0 xl:right-8 2xl:right-28 xl:block hidden">
           <svg
             width="594"

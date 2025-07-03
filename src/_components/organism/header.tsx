@@ -2,7 +2,7 @@
 import Image from "next/image";
 import logo from "@/../public/assets/globals/logo.png";
 import { FaSearch } from "react-icons/fa";
-import { RxHamburgerMenu } from "react-icons/rx";
+import { RxCross1, RxHamburgerMenu } from "react-icons/rx";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
@@ -11,7 +11,8 @@ import { usePathname } from "next/navigation";
 import { useHeader } from "@/context/useHeader";
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
 import { GoArrowRight } from "react-icons/go";
-import { useRouter } from "next/navigation";
+import SearchContent from "@/app/search/searchContents";
+import gsap from "gsap";
 
 interface NavItem {
   label: string;
@@ -28,24 +29,38 @@ function Header() {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [mounted, setMounted] = useState(false);
+  const [toggle, settoggle] = useState<boolean>(false);
   const { setIsHeaderVisible: setShowNavbar, isHeaderVisible: showNavbar } =
     useHeader();
-  const router = useRouter();
-  const [searchItem, setsearchItem] = useState("");
 
-  // Set mounted state to true after component mounts
+
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Reset header visibility when pathname changes
+useEffect(()=>{
+  gsap.from("#searchFunctioanlity",{
+     opacity:0,
+     y:-20
+  })
+  
+  return(()=>{
+
+    gsap.from("#navbar",{
+       opacity:0,
+       y:20,
+    })
+  })
+},[toggle])
+
   useEffect(() => {
     if (!mounted) return;
     setShowNavbar(true);
     setlastScrollY(window.scrollY);
   }, [pathname, setShowNavbar, mounted]);
 
-  // Handle mobile detection and scroll events
+ 
+
   useEffect(() => {
     if (!mounted) return;
 
@@ -90,7 +105,7 @@ function Header() {
 
   // Handle body scroll lock for mobile menu
   useEffect(() => {
-    if (!mounted) return;
+      if (typeof window === "undefined") return;
 
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -131,6 +146,19 @@ function Header() {
     setIsMenuOpen((prev) => !prev);
   };
 
+  // useEffect(()=>{
+  //     if (typeof window === "undefined") return;
+  //   const handleSearchScroll=()=>{
+  //      if(toggle){
+  //       settoggle(false); 
+  //      }
+  //   }
+  //   window.addEventListener("scroll",handleSearchScroll);
+  //   return(()=>{
+  //     window.removeEventListener('scroll',handleSearchScroll);
+  //   })
+  // },[toggle])
+
   const AboutUsDropDown: NavItem[] = [
     { label: "Who We Are", href: "/about-us#who-we-are" },
     { label: "The Infravisionaries", href: "/about-us#infravisionaries" },
@@ -162,6 +190,8 @@ function Header() {
     { label: "Videos", href: "/archive#videos" },
   ];
 
+  
+
   return (
     <>
       <nav
@@ -186,235 +216,238 @@ function Header() {
                 ></Image>
               </Link>
             </div>
-            <div className=" flex flex-row  gap-5">
-              <div className="hidden  xl:flex flex-row gap-9 2xl:gap-15  items-center">
+            <div className=" flex w-full flex-row items-center justify-center  gap-5">
+              {toggle ? (
                 <div
-                  className="relative flex items-center gap-2"
-                  onMouseEnter={() => setOpenDropdown("About us")}
-                  onMouseLeave={() => setOpenDropdown(null)}
+                  id="navbar" className={`hidden  xl:flex flex-row gap-9 2xl:gap-15  items-center`}
                 >
-                  <Link href="/about-us">
+                  <div
+                    className="relative flex items-center gap-2"
+                    onMouseEnter={() => setOpenDropdown("About us")}
+                    onMouseLeave={() => setOpenDropdown(null)}
+                  >
+                    <Link href="/about-us">
+                      <button className="text-darkgray flex justify-center items-center gap-2 text-lg cursor-pointer hover:text-pink">
+                        About Us
+                        {openDropdown === "About us" ? (
+                          <GoChevronUp />
+                        ) : (
+                          <GoChevronDown />
+                        )}
+                      </button>
+                    </Link>
+
+                    <AnimatePresence>
+                      {openDropdown === "About us" && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute left-0 top-full mt-2 w-96 h-auto bg-white shadow-lg rounded-lg z-50 px-4 py-2"
+                        >
+                          <ul>
+                            {AboutUsDropDown.map((item, index) => (
+                              <li
+                                key={index}
+                                className="text-darkgray group py-5 text-lg last:border-0 border-b border-darkgray/20 hover:text-pink"
+                                onClick={() => setOpenDropdown(null)}
+                              >
+                                <Link href={item.href} target={item.target}>
+                                  <div className="flex justify-between items-center gap-2">
+                                    {item.label}
+                                    <button className="w-8 h-8 cursor-pointer border-1 group-hover:bg-pink group-hover:border-pink border-darkgray/40 rounded-full">
+                                      <GoArrowRight className="mx-auto group-hover:text-white" />
+                                    </button>
+                                  </div>
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Advocacy */}
+                  <div
+                    className="relative"
+                    onMouseEnter={() => setOpenDropdown("Advocacy")}
+                    onMouseLeave={() => setOpenDropdown(null)}
+                  >
                     <button className="text-darkgray flex justify-center items-center gap-2 text-lg cursor-pointer hover:text-pink">
-                      About Us
-                      {openDropdown === "About us" ? (
+                      Advocacy
+                      {openDropdown === "Advocacy" ? (
                         <GoChevronUp />
                       ) : (
                         <GoChevronDown />
                       )}
                     </button>
-                  </Link>
 
-                  <AnimatePresence>
-                    {openDropdown === "About us" && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute left-0 top-full mt-2 w-96 h-auto bg-white shadow-lg rounded-lg z-50 px-4 py-2"
-                      >
-                        <ul>
-                          {AboutUsDropDown.map((item, index) => (
-                            <li
-                              key={index}
-                              className="text-darkgray group py-5 text-lg last:border-0 border-b border-darkgray/20 hover:text-pink"
-                              onClick={() => setOpenDropdown(null)}
-                            >
-                              <Link href={item.href} target={item.target}>
-                                <div className="flex justify-between items-center gap-2">
-                                  {item.label}
-                                  <button className="w-8 h-8 cursor-pointer border-1 group-hover:bg-pink group-hover:border-pink border-darkgray/40 rounded-full">
-                                    <GoArrowRight className="mx-auto group-hover:text-white" />
-                                  </button>
-                                </div>
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                {/* Advocacy */}
-                <div
-                  className="relative"
-                  onMouseEnter={() => setOpenDropdown("Advocacy")}
-                  onMouseLeave={() => setOpenDropdown(null)}
-                >
-                  <button className="text-darkgray flex justify-center items-center gap-2 text-lg cursor-pointer hover:text-pink">
-                    Advocacy
-                    {openDropdown === "Advocacy" ? (
-                      <GoChevronUp />
-                    ) : (
-                      <GoChevronDown />
-                    )}
-                  </button>
-
-                  <AnimatePresence>
-                    {openDropdown === "Advocacy" && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute left-0 top-full mt-2 w-96 h-auto bg-white shadow-lg rounded-lg z-50 px-4 py-2"
-                      >
-                        <ul>
-                          {AdvocacyDropDown.map((item, index) => (
-                            <li
-                              key={index}
-                              onClick={() => setOpenDropdown(null)}
-                              className="text-darkgray group py-5 text-lg last:border-0 border-b border-darkgray/20 hover:text-pink"
-                            >
-                              <Link href={item.href} target={item.target}>
-                                <div className="flex justify-between items-center gap-2">
-                                  {item.label}
-                                  <button className="w-8 h-8 border-1 cursor-pointer group-hover:bg-pink group-hover:border-pink border-darkgray/40 rounded-full">
-                                    <GoArrowRight className="mx-auto group-hover:text-white" />
-                                  </button>
-                                </div>
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                {/* Knowledge */}
-                <div
-                  className="relative"
-                  onMouseEnter={() => setOpenDropdown("Knowledge")}
-                  onMouseLeave={() => setOpenDropdown(null)}
-                >
-                  <Link href="/knowledge">
-                    <button className="text-darkgray text-lg flex justify-center items-center gap-2 cursor-pointer hover:text-pink">
-                      Knowledge
-                      {openDropdown === "Knowledge" ? (
-                        <GoChevronUp />
-                      ) : (
-                        <GoChevronDown />
+                    <AnimatePresence>
+                      {openDropdown === "Advocacy" && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute left-0 top-full mt-2 w-96 h-auto bg-white shadow-lg rounded-lg z-50 px-4 py-2"
+                        >
+                          <ul>
+                            {AdvocacyDropDown.map((item, index) => (
+                              <li
+                                key={index}
+                                onClick={() => setOpenDropdown(null)}
+                                className="text-darkgray group py-5 text-lg last:border-0 border-b border-darkgray/20 hover:text-pink"
+                              >
+                                <Link href={item.href} target={item.target}>
+                                  <div className="flex justify-between items-center gap-2">
+                                    {item.label}
+                                    <button className="w-8 h-8 border-1 cursor-pointer group-hover:bg-pink group-hover:border-pink border-darkgray/40 rounded-full">
+                                      <GoArrowRight className="mx-auto group-hover:text-white" />
+                                    </button>
+                                  </div>
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
                       )}
-                    </button>
-                  </Link>
+                    </AnimatePresence>
+                  </div>
 
-                  <AnimatePresence>
-                    {openDropdown === "Knowledge" && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute left-0 top-full mt-2 w-96 h-auto bg-white shadow-lg rounded-lg z-50 px-4 py-2"
-                      >
-                        <ul>
-                          {KnowledgeDropDown.map((item, index) => (
-                            <li
-                              key={index}
-                              onClick={() => setOpenDropdown(null)}
-                              className="text-darkgray group py-5 text-lg last:border-0 border-b border-darkgray/20 hover:text-pink"
-                            >
-                              <Link href={item.href} target={item.target}>
-                                <div className="flex justify-between items-center gap-2">
-                                  {item.label}
-                                  <button className="w-8 h-8 border-1 cursor-pointer group-hover:bg-pink group-hover:border-pink border-darkgray/40 rounded-full">
-                                    <GoArrowRight className="mx-auto group-hover:text-white" />
-                                  </button>
-                                </div>
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+                  {/* Knowledge */}
+                  <div
+                    className="relative"
+                    onMouseEnter={() => setOpenDropdown("Knowledge")}
+                    onMouseLeave={() => setOpenDropdown(null)}
+                  >
+                    <Link href="/knowledge">
+                      <button className="text-darkgray text-lg flex justify-center items-center gap-2 cursor-pointer hover:text-pink">
+                        Knowledge
+                        {openDropdown === "Knowledge" ? (
+                          <GoChevronUp />
+                        ) : (
+                          <GoChevronDown />
+                        )}
+                      </button>
+                    </Link>
 
-                {/* Archives */}
-                <div
-                  className="relative"
-                  onMouseEnter={() => setOpenDropdown("Archives")}
-                  onMouseLeave={() => setOpenDropdown(null)}
-                >
-                  <Link href="/archive">
-                    <button className="text-darkgray flex justify-center items-center gap-2 text-lg cursor-pointer hover:text-pink">
-                      Archives
-                      {openDropdown === "Archives" ? (
-                        <GoChevronUp />
-                      ) : (
-                        <GoChevronDown />
+                    <AnimatePresence>
+                      {openDropdown === "Knowledge" && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute left-0 top-full mt-2 w-96 h-auto bg-white shadow-lg rounded-lg z-50 px-4 py-2"
+                        >
+                          <ul>
+                            {KnowledgeDropDown.map((item, index) => (
+                              <li
+                                key={index}
+                                onClick={() => setOpenDropdown(null)}
+                                className="text-darkgray group py-5 text-lg last:border-0 border-b border-darkgray/20 hover:text-pink"
+                              >
+                                <Link href={item.href} target={item.target}>
+                                  <div className="flex justify-between items-center gap-2">
+                                    {item.label}
+                                    <button className="w-8 h-8 border-1 cursor-pointer group-hover:bg-pink group-hover:border-pink border-darkgray/40 rounded-full">
+                                      <GoArrowRight className="mx-auto group-hover:text-white" />
+                                    </button>
+                                  </div>
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
                       )}
-                    </button>
-                  </Link>
+                    </AnimatePresence>
+                  </div>
 
-                  <AnimatePresence>
-                    {openDropdown === "Archives" && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute left-0 top-full mt-2 w-96 h-auto bg-white shadow-lg rounded-lg z-50 px-4 py-2"
-                      >
-                        <ul>
-                          {Archives.map((item, index) => (
-                            <li
-                              key={index}
-                              onClick={() => setOpenDropdown(null)}
-                              className="text-darkgray group py-5 text-lg last:border-0 border-b border-darkgray/20 hover:text-pink"
-                            >
-                              <Link href={item.href} target={item.target}>
-                                <div className="flex justify-between items-center gap-2">
-                                  {item.label}
-                                  <button className="w-8 h-8 border-1 cursor-pointer group-hover:bg-pink group-hover:border-pink border-darkgray/40 rounded-full">
-                                    <GoArrowRight className="mx-auto group-hover:text-white" />
-                                  </button>
-                                </div>
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  {/* Archives */}
+                  <div
+                    className="relative"
+                    onMouseEnter={() => setOpenDropdown("Archives")}
+                    onMouseLeave={() => setOpenDropdown(null)}
+                  >
+                    <Link href="/archive">
+                      <button className="text-darkgray flex justify-center items-center gap-2 text-lg cursor-pointer hover:text-pink">
+                        Archives
+                        {openDropdown === "Archives" ? (
+                          <GoChevronUp />
+                        ) : (
+                          <GoChevronDown />
+                        )}
+                      </button>
+                    </Link>
+
+                    <AnimatePresence>
+                      {openDropdown === "Archives" && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute left-0 top-full mt-2 w-96 h-auto bg-white shadow-lg rounded-lg z-50 px-4 py-2"
+                        >
+                          <ul>
+                            {Archives.map((item, index) => (
+                              <li
+                                key={index}
+                                onClick={() => setOpenDropdown(null)}
+                                className="text-darkgray group py-5 text-lg last:border-0 border-b border-darkgray/20 hover:text-pink"
+                              >
+                                <Link href={item.href} target={item.target}>
+                                  <div className="flex justify-between items-center gap-2">
+                                    {item.label}
+                                    <button className="w-8 h-8 border-1 cursor-pointer group-hover:bg-pink group-hover:border-pink border-darkgray/40 rounded-full">
+                                      <GoArrowRight className="mx-auto group-hover:text-white" />
+                                    </button>
+                                  </div>
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  <ul>
+                    <li className="text-darkgray text-lg hover:text-pink ">
+                      <Link href="/get-involved">Get Involved</Link>
+                    </li>
+                  </ul>
                 </div>
-
-                <ul>
-                  <li className="text-darkgray text-lg hover:text-pink ">
-                    <Link href="/get-involved">Get Involved</Link>
-                  </li>
-                </ul>
-              </div>
+              ) : (
+                <div id="searchFunctioanlity" className="w-full h-full  relative">
+                  <div className="absolute top-2 left-0 right-0 z-[999]">
+                    <SearchContent />
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="flex justify-center items-center  gap-4">
-              <div className="border border-darkgray p-2 sm:block hidden  w-[10rem] rounded my-auto ">
-                <div className="flex flex-row ">
-                  <div className=" flex items-center">
-                    <FaSearch className="text-darkgray block " />
-                  </div>
+              <div>
+                <button
+                  onClick={() => settoggle((prev) => !prev)}
+                  className=" hidden md:flex cursor-pointer items-center gap-4 justify-center"
+                >
+                  {toggle ? (
+                    <div className="w-8 h-8 bg-pink ring-0 ring-pink rounded-full flex items-center justify-center">
+                      <FaSearch className="text-white " />
+                    </div>
+                  ) : (
+                    <div className="w-8 h-8 bg-pink ring-0 ring-pink rounded-full flex items-center justify-center">
+                      <RxCross1 className="text-white " />
+                    </div>
+                  )}
+                  <span className="h-fit my-auto text-lg text-darkgray">Search</span>
+                </button>
+              </div>
 
-                  <input
-                    type="text"
-                    placeholder="Search"
-                    className="outline-none pl-2 w-full"
-                    value={searchItem}
-                    onChange={(e) => setsearchItem(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" && searchItem.trim() !== "") {
-                        router.push(
-                          `/search?q=${encodeURIComponent(searchItem.trim())}`
-                        );
-                      }
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="w-9 h-9 rounded-full  sm:hidden bg-pink flex items-center justify-center">
-                <FaSearch className="text-white" />
-              </div>
               <div className="block xl:hidden">
                 <button onClick={handlehamberg}>
                   <RxHamburgerMenu className="text-3xl cursor-pointer" />
@@ -444,3 +477,5 @@ function Header() {
 Header.displayName = "Header";
 
 export default Header;
+
+

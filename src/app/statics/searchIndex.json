@@ -1,0 +1,28 @@
+[
+  {
+    "slug": "/",
+    "title": "Home",
+    "sections": [
+      {
+        "id": "homepage-section-01",
+        "title": "An independent think tank seeking to impact India’s infrastructure landscape",
+        "content": "An independent think tank seeking to impact India’s infrastructure landscape"
+      },
+      {
+        "id": "homepage-section-02",
+        "title": "A think-and-do tank powering change in India’s infrastructure",
+        "content": "Established in 2022 by Vinayak Chatterjee and Rumjhum Chatterjee, The Infravision Foundation is a non-partisan, not-for-profit think tank driving infrastructure-led economic development."
+      },
+      {
+        "id": "homepage-section-03",
+        "title": "The Infravisionaries",
+        "content": "The Infravision Foundation is a confluence of seasoned professionals with the aim of contributing thought leadership to help shape and evaluate infrastructure-related public policies and programmes."
+      },
+      {
+        "id": "homepage-section-04",
+        "title": "Our Core",
+        "content": "The Infravision Foundation is a confluence of seasoned professionals with the aim of contributing thought leadership to help shape and evaluate infrastructure-related public policies and programmes."
+      }
+    ]
+  }
+]

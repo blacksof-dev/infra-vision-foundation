@@ -35,7 +35,7 @@ export default function GetInvolvedBanner() {
             ></Image>
           </div> */}
 
-          <div className="md:hidden block h-[30rem]">
+          <div className="md:hidden block h-auto">
             <Image
               src={bannerMob}
               alt="Publication Banner"
