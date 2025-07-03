@@ -419,8 +419,8 @@ function Header() {
               )}
             </div>
 
-            <div className="flex justify-center items-center  gap-4">
-              <div>
+           <div className="flex  justify-center items-center gap-4">
+              <div className="md:block hidden">
                 <button
                   onClick={() => settoggle((prev) => !prev)}
                   className=" hidden md:flex cursor-pointer items-center gap-4 justify-center"
