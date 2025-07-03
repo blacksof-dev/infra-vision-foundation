@@ -11,8 +11,10 @@ import { usePathname } from "next/navigation";
 import { useHeader } from "@/context/useHeader";
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
 import { GoArrowRight } from "react-icons/go";
-import SearchContent from "@/app/search/searchContents";
+
 import gsap from "gsap";
+import SearchContent from "@/app/search/searchContent";
+
 
 interface NavItem {
   label: string;
@@ -33,33 +35,29 @@ function Header() {
   const { setIsHeaderVisible: setShowNavbar, isHeaderVisible: showNavbar } =
     useHeader();
 
-
   useEffect(() => {
     setMounted(true);
   }, []);
 
-useEffect(()=>{
-  gsap.from("#searchFunctioanlity",{
-     opacity:0,
-     y:-20
-  })
-  
-  return(()=>{
+  useEffect(() => {
+    gsap.from("#searchFunctioanlity", {
+      opacity: 0,
+      y: -20,
+    });
 
-    gsap.from("#navbar",{
-       opacity:0,
-       y:20,
-    })
-  })
-},[toggle])
+    return () => {
+      gsap.from("#navbar", {
+        opacity: 0,
+        y: 20,
+      });
+    };
+  }, [toggle]);
 
   useEffect(() => {
     if (!mounted) return;
     setShowNavbar(true);
     setlastScrollY(window.scrollY);
   }, [pathname, setShowNavbar, mounted]);
-
- 
 
   useEffect(() => {
     if (!mounted) return;
@@ -71,7 +69,7 @@ useEffect(()=>{
     const handleResize = () => {
       checkMobile();
       if (window.innerWidth <= 768) {
-        setShowNavbar(true); // Always show navbar on mobile
+        setShowNavbar(true); 
       }
     };
 
@@ -90,6 +88,7 @@ useEffect(()=>{
       } else {
         setScrolled(false);
       }
+     
     };
 
     checkMobile(); // Initial check
@@ -105,7 +104,7 @@ useEffect(()=>{
 
   // Handle body scroll lock for mobile menu
   useEffect(() => {
-      if (typeof window === "undefined") return;
+    if (typeof window === "undefined") return;
 
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -146,18 +145,7 @@ useEffect(()=>{
     setIsMenuOpen((prev) => !prev);
   };
 
-  // useEffect(()=>{
-  //     if (typeof window === "undefined") return;
-  //   const handleSearchScroll=()=>{
-  //      if(toggle){
-  //       settoggle(false); 
-  //      }
-  //   }
-  //   window.addEventListener("scroll",handleSearchScroll);
-  //   return(()=>{
-  //     window.removeEventListener('scroll',handleSearchScroll);
-  //   })
-  // },[toggle])
+
 
   const AboutUsDropDown: NavItem[] = [
     { label: "Who We Are", href: "/about-us#who-we-are" },
@@ -190,8 +178,6 @@ useEffect(()=>{
     { label: "Videos", href: "/archive#videos" },
   ];
 
-  
-
   return (
     <>
       <nav
@@ -219,7 +205,8 @@ useEffect(()=>{
             <div className=" flex w-full flex-row items-center justify-center  gap-5">
               {toggle ? (
                 <div
-                  id="navbar" className={`hidden  xl:flex flex-row gap-9 2xl:gap-15  items-center`}
+                  id="navbar"
+                  className={`hidden  xl:flex flex-row gap-9 2xl:gap-15  items-center`}
                 >
                   <div
                     className="relative flex items-center gap-2"
@@ -421,9 +408,12 @@ useEffect(()=>{
                   </ul>
                 </div>
               ) : (
-                <div id="searchFunctioanlity" className="w-full h-full  relative">
+                <div
+                  id="searchFunctioanlity"
+                  className="w-full h-full  relative"
+                >
                   <div className="absolute top-2 left-0 right-0 z-[999]">
-                    <SearchContent />
+                    <SearchContent/>
                   </div>
                 </div>
               )}
@@ -444,7 +434,9 @@ useEffect(()=>{
                       <RxCross1 className="text-white " />
                     </div>
                   )}
-                  <span className="h-fit my-auto text-lg text-darkgray">Search</span>
+                  <span className="h-fit my-auto text-lg text-darkgray">
+                    Search
+                  </span>
                 </button>
               </div>
 
@@ -479,3 +471,7 @@ Header.displayName = "Header";
 export default Header;
 
 
+
+{/* <script async src="https://cse.google.com/cse.js?cx=5231272e638ea4cb6">
+</script>
+<div class="gcse-search"></div> */}

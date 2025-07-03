@@ -4,6 +4,7 @@ import image from "@/../public/assets/archive/banner/banner.jpg";
 export default function BannerSection() {
   return (
     <Banner
+      id="archiveBanner"
       image={image}
       heading="Archives"
       title="Archives"

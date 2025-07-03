@@ -311,7 +311,7 @@ export default function NewsAndMedia() {
   );
 
   return (
-    <section id="news-and-media " className="bg-whitesmoke">
+    <section id="news-and-media" className="bg-whitesmoke">
       <div className="w-container blade-top-padding-sm blade-bottom-padding ">
         {/* Header Section */}
         <div className="flex flex-row items-center gap-2 md:gap-3">

@@ -3,7 +3,7 @@ import ele from "@/../public/assets/knowledeg/element.png";
 import Image from "next/image";
 export default function Publications() {
   return (
-    <section className="bg-whitesmoke relative overflow-hidden">
+    <section id="publication" className="bg-whitesmoke relative overflow-hidden">
       <Image
         className="absolute right-10 xl:right-[10%] top-0 "
         src={ele}

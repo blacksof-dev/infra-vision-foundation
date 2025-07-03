@@ -12,6 +12,7 @@ type Newsletter = {
   mobilebg?: StaticImageData;
   image?: StaticImageData;
   bgColor?: string;
+  id?:string;
 };
 
 export default function Newsletter({
@@ -24,10 +25,11 @@ export default function Newsletter({
   ctatext,
   ctaLink = "#",
   bgColor,
+  id,
 }: Newsletter) {
   return (
     <>
-      <div className={`${bgColor !== "" ? "bg-" + bgColor : ""}`}>
+      <div id={id} className={`${bgColor !== "" ? "bg-" + bgColor : ""}`}>
         <div className="relative h-auto  ">
           {bgImage && mobilebg && (
             <>

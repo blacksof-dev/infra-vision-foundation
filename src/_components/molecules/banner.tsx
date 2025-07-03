@@ -2,6 +2,7 @@ import Image, { StaticImageData } from "next/image";
 import Balancer from "react-wrap-balancer";
 
 interface bannerProps {
+  id?:string;
   image: StaticImageData;
   heading: string;
   title: string;
@@ -24,10 +25,11 @@ export default function Banner({
   classes,
   buttonText,
   link,
+  id,
 }: bannerProps) {
   return (
     <>
-      <div className="pt-[5rem] sm:pt-[6rem]">
+      <div id={id} className="pt-[5rem] sm:pt-[6rem]">
         <div className="relative ">
           {/* <div className={`w-full h-[40rem] md:h-[36rem] xl:h-[40rem] bg-black ${mobileimage ? "md:block hidden" : ""}`}> */}
           <div className={`w-full h-[25rem] md:h-[36rem] xl:h-[40rem] bg-black ${mobileimage ? "md:block hidden" : ""}`}>

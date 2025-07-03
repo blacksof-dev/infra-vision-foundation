@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 import { debounce } from "lodash";
 import Link from "next/link";
 import Fuse from "fuse.js";
-import rawSearchIndex from "@/app/statics/searchIndex.json";
+import rawSearchIndex from "@/../public/searchIndex.json";
 import Highlighter from "react-highlight-words";
 
 interface SearchItem {
@@ -32,38 +32,51 @@ export default function SearchContent() {
   const [contentData, setContentData] = useState<SearchItem[]>([]);
   const [fuse, setFuse] = useState<Fuse<SearchItem> | null>(null);
   const [visibleCount, setVisibleCount] = useState(10);
- const searchIndex = rawSearchIndex as SearchItem[];
+  const searchIndex = rawSearchIndex as SearchItem[];
+const [hasSearched, setHasSearched] = useState(false);
+  useEffect(() => {
+    const fetchData = async () => {
+      const validData = searchIndex.filter(
+        (item: SearchItem) =>
+          item.sections &&
+          item.sections.some((section) => section.content.trim() !== "")
+      );
+      setContentData(validData);
+      const fuseInstance = new Fuse(searchIndex, {
+        keys: [
+          { name: "slug", weight: 0.6 },
+          { name: "title", weight: 0.4 },
+          { name: "sections.title", weight: 0.5 },
+          { name: "sections.content", weight: 0.4 },
+        ],
+        includeMatches: false,
+        threshold: 0.4,
+        distance: 800,
+        minMatchCharLength: 2,
+      });
+      setFuse(fuseInstance);
 
+      setResults([]);
+    };
+    fetchData();
+      
 
+  }, []);
 
-
-useEffect(() => {
-  const fetchData = async () => {
-    const validData = searchIndex.filter(
-      (item: SearchItem) =>
-        item.sections &&
-        item.sections.some((section) => section.content.trim() !== "")
-    );
-    setContentData(validData);
-    const fuseInstance = new Fuse(searchIndex, {
-      keys: [
-        { name: "slug", weight: 0.6 },
-        { name: "title", weight: 0.4 },
-        { name: "sections.title", weight: 0.5 },
-        { name: "sections.content", weight: 0.4 },
-      ],
-      includeMatches: false,
-      threshold: 0.4,
-      distance: 800,
-      minMatchCharLength: 2,
-    });
-    setFuse(fuseInstance);
-
-    
+  useEffect(() => {
+  const handleScroll = () => {
     setResults([]);
+    setHasSearched(false);
   };
-  fetchData();
-}, []);
+
+  if (results.length > 0) {
+    window.addEventListener("scroll", handleScroll);
+  }
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, [results.length]); 
 
 
   const formatSearchResults = (data: SearchItem[]) => {
@@ -83,6 +96,7 @@ useEffect(() => {
       if (!searchQuery) {
         setResults(formatSearchResults(contentData));
         setVisibleCount(8);
+        setHasSearched(false);
         return;
       }
 
@@ -108,7 +122,8 @@ useEffect(() => {
             }))
         );
         setResults(processedResults);
-         setVisibleCount(8);
+        setVisibleCount(8);
+        setHasSearched(true);
       }
     }, 300),
     [contentData, fuse]
@@ -145,45 +160,48 @@ useEffect(() => {
             </button>
           </form>
         </div>
-
-       
       </div>
 
-      {results.length === 0 && query ? (
+      {hasSearched && results.length === 0 && query ? (
         <div className=" flex justify-center items-center">
           <h6 className="text-gray-500 mt-2 font-worksansMedium">
             No results found
           </h6>
         </div>
       ) : (
-        <ul className="sm:mt-2 max-w-4xl mx-auto bg-white max-h-3xl overflow-y-scroll">
+        <ul
+          className={`sm:mt-2 max-w-4xl mx-auto bg-white overflow-y-scroll transition-all duration-300 ${
+            results.length > 0 ? "h-[30rem]" : "h-0"
+          }`}
+        >
           {results.slice(0, visibleCount).map((content, index) => (
-            <li key={index} className="py-3 px-4 last:border-0  border-b border-lightgray/40 -4">
+            <li
+              key={index}
+              className="py-3 px-4 last:border-0  border-b border-lightgray/40 -4"
+            >
               <Highlighter
                 searchWords={[query]}
                 className="capitalize text-black font-medium text-sm hover:text-pink "
                 textToHighlight={content.pageTitle}
                 highlightStyle={{ backgroundColor: "#979797", color: "#fff" }}
-               
               />
               :{" "}
               <Link
                 href={`${content.slug}#${content.id}`}
-                target="_blank"
                 className="text-lightgray  transition-all duration-200"
               >
                 <Highlighter
                   searchWords={[query]}
                   className="text-black font-medium hover:text-pink  text-sm"
                   textToHighlight={content.sectionTitle}
-                  highlightStyle={{ backgroundColor: "#979797", color: "#fff"  }}
+                  highlightStyle={{ backgroundColor: "#979797", color: "#fff" }}
                 />
                 <br />
                 <Highlighter
                   searchWords={[query]}
                   className="text-darkgray text-sm"
-                  textToHighlight={content.content}  
-                  highlightStyle={{ backgroundColor: "#979797", color: "#fff"   }}
+                  textToHighlight={content.content}
+                  highlightStyle={{ backgroundColor: "#979797", color: "#fff" }}
                 />
               </Link>
             </li>

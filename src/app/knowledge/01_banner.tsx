@@ -5,6 +5,7 @@ import Banner from "@/_components/molecules/banner";
 export default function BannerSection() {
     return (
         <Banner
+            id="knowledge-section1"
             image={image}
             mobileimage={bannerMobile}
             heading="Knowledge"

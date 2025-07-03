@@ -1,0 +1,892 @@
+[
+  {
+    "slug": "/",
+    "title": "Home",
+    "sections":[
+      {
+        "id": "homepage-section-01",
+        "title": "An independent think tank seeking to impact India’s infrastructure landscape",
+        "content": "Helping shape public discourse and policy interventions through action research and advocacy."
+      },
+      {
+        "id": "homepage-section-2",
+        "title": "Who We Are| A think-and-do tank powering change in India’s infrastructure",
+        "content": "Established in 2022 by feature - Vinayak Chatterjee and Rumjhum Chatterjee, The Infravision Foundation is a non-partisan, not-for-profit think tank driving infrastructure-led economic development.Founded by professionals and embellished with an ecosystem of thought leaders and experts from academia, civil services, and business, The Infravision Foundation is a hub for the exchange of knowledge and policy options. It stands for upholding the impartial, enlightened, and respected voice of reason. The Foundation addresses deeply rooted challenges to enable steadfast infrastructure policy-making through rigorous knowledge sharing and advocacy."
+      },
+      {
+        "id": "homepage-section-2",
+        "title": "InfraPandit Awards",
+        "content": "A national effort at recognising outstanding doctoral research on infrastructure, fostering youth participation in India's infra evolution."
+      },
+      {
+        "id": "homepage-section-2",
+        "title": "InfraShakti Awards",
+        "content": "A flagship initiative in association with NDTV, celebrating changemakers unlocking impact at scale through innovative projects."
+      },
+      {
+        "id": "homepage-section-2",
+        "title": "Infrakatha",
+        "content": "A forum of conversations with cross-sectoral experts aimed at mainstreaming the discourse around infrastructure."
+      },
+      {
+        "id": "homepage-section-03",
+        "title": "Our Core|The Infravisionaries",
+        "content": "The Infravision Foundation is a confluence of seasoned professionals with the aim of contributing thought leadership to help shape and evaluate infrastructure-related public policies and programmes."
+      },
+      {
+    "id": "homepage-section-03",
+    "title": "feature - Vinayak Chatterjee",
+    "content": "Founder & Managing Trustee"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Rumjhum Chatterjee",
+    "content": "Co-Founder & Managing Trustee"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Kiran Karnik",
+    "content": "Trustee"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Rasika Athawale",
+    "content": "Distinguished Fellow (Power)"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Supratim Sarkar",
+    "content": "Distinguished Fellow (Financial Services)"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Rajaji Meshram",
+    "content": "Distinguished Fellow (Transport & Logistics)"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Rajiv Ranjan Mishra",
+    "content": "Distinguished Fellow (Water Conservation)"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Soumya Kanti Ghosh",
+    "content": "Distinguished Fellow (Economic Policy)"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Akhilesh Tilotia",
+    "content": "Distinguished Fellow (Public Policy)"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Nasser Munjee",
+    "content": "Member, Council of Advisors"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Hemendra Kothari",
+    "content": "Member, Council of Advisors"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Dr. Janmejaya Sinha",
+    "content": "Member, Council of Advisors"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Narotam Sekhsaria",
+    "content": "Member, Council of Advisors"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Rajesh Kumar",
+    "content": "Member, Council of Advisors"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Professor G. Raghuram",
+    "content": "Member, Council of Advisors"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Mony K. Singh",
+    "content": "Member, Council of Advisors"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Sunil Mathur",
+    "content": "Member, Council of Advisors"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Ashish Dhawan",
+    "content": "Member, Council of Advisors"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "S.K. Subrahmanyan",
+    "content": "Member, Council of Advisors"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Sameer Gupta",
+    "content": "Member, Council of Advisors"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "D.K. Sen",
+    "content": "Member, Council of Advisors"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Arun Nanda",
+    "content": "Member, Council of Advisors"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Arun Maira",
+    "content": "Member, Council of Advisors"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Dilip Cherian",
+    "content": "Member, Council of Advisors"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Geetanjali Kirloskar",
+    "content": "Member, Council of Advisors"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Manish Kumar",
+    "content": "Member, Council of Advisors"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Cyril Sitel",
+    "content": "Member, Council of Advisors"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Krishnan Dharmarajan",
+    "content": "Member, Council of Advisors"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Howard C. Packard",
+    "content": "Member, Council of Advisors"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Rumjhum Chatterjee",
+    "content": "Co-Founder & Managing Trustee"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Jagan Shah",
+    "content": "CEO"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Kaveree Bamzai",
+    "content": "Head of Advocacy"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Dr. Anjani Chatterjee",
+    "content": "Senior Research Associate"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Preeti Singh",
+    "content": "Head of Communications"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Lawrence Constans",
+    "content": "Research Associate"
+  },
+  {
+    "id": "homepage-section-03",
+    "title": "Prerana Sahu",
+    "content": "Project Associate"
+  },
+   {
+    "id": "homepage-section-4",
+    "title": "Our Associations",
+    "content": "The synergy of collaboration"
+  },
+  {
+    "id": "homepage-section-5",
+    "title": "Highlights|A quick look at what we do",
+    "content": "The synergy of collaboration"
+  },
+   {
+    "id": "homepage-section-5",
+    "title": "InfraPandit Awards",
+    "content": "Nurturing the Next Generation of Infra Talent and Ideas"
+  },
+  {
+    "id": "homepage-section-6",
+    "title": "Social Media|Stay connected to The Infravision Foundation",
+    "content": "Be part of India's infrastructure transformation. Join our community of infrastructure experts, featuring exclusive conversations, in-depth analysis and research, and more."
+  },
+  {
+    "id": "homepage-section-7",
+    "title": "Get Involved|Engage and contribute to change with The Infravision Foundation",
+    "content": "Join our family, ask questions, suggest solutions, and participate in building a resilient India."
+  }
+   
+    ]
+  },
+  {
+    "slug": "/knowledge",
+    "title": "knowledge",
+    "sections": [
+      {
+        "id": "knowledge-section1",
+        "title": "Knowledge",
+        "content": "In-depth and independent analyses of India's infrastructure-related issues."
+      },
+      {
+        "id": "research-papers",
+        "title": "Research Papers",
+        "content": "Data-powered studies from the ground, fuelled by expert insight"
+      },
+      {
+        "id": "research-papers",
+        "title": "Rural and Agri Infra",
+        "content": "Study on the implementation of compensatory afforestation in India"
+      },
+
+      {
+        "id": "research-papers",
+        "title": "Transportation",
+        "content": "The case for developing high-speed rail corridors in India  "
+      },
+      {
+        "id": "research-papers",
+        "title": "Transportation",
+        "content": "Safe highways in India: Challenges and solutions"
+      },
+      {
+        "id": "research-papers",
+        "title": "Transportation",
+        "content": "Strategies to improve the financial performance of the metro rail system"
+      },
+      {
+        "id": "research-papers",
+        "title": "Urban Planning",
+        "content": "Sustainability ratings for Infrastructure projects in India"
+      },
+      {
+        "id": "research-papers",
+        "title": "Energy",
+        "content": "Mass scale rooftop solar programme for poverty alleviation"
+      },
+      {
+        "id": "research-papers",
+        "title": "Transportation",
+        "content": "A framework for selecting an appropriate urban transport system"
+      },
+      {
+        "id": "research-papers",
+        "title": "Infrastructure",
+        "content": "Surety bonds: Evaluation for diversifying risk in infrastructure financing  "
+      },
+      {
+        "id": "research-papers",
+        "title": "Rural and Agri Infra",
+        "content": "Ways to enhance warehouse-based sales and lending for agriculture commodities"
+      },
+      {
+        "id": "infravision-conversations",
+        "title": "Decoding infrastructure, one topic at a time",
+        "content": "Watch our Head of Advocacy, Kaveree Bamzai, zoom into key topics influencing India's infrastructural evolution with senior experts from various disciplines. From health to transport, from rural planning to warehousing, it's a knowledge hub for all things infrastructure."
+      },
+      {
+        "id": "infravision-conversations",
+        "title": "Pratap Padode",
+        "content": "Founder and President, First Construction Council, and author, Tarmac to Towers: India’s Infrastructure Story | Infra projects in India are invariably only 90 percent complete"
+      },
+      {
+        "id": "infravision-conversations",
+        "title": "Jagan Shah",
+        "content": "The Infravision Foundation CEO and senior expert in urban development policy | Why India needs a national plan to build new cities"
+      },
+      {
+        "id": "infravision-conversations",
+        "title": "Professor Geetam Tiwari",
+        "content": "TRIPP Chair Professor at the Department of Civil Engineering, Indian Institute of Technology in New Delhi, India. | Selecting the appropriate urban transport system for India's cities"
+      },
+      {
+        "id": "infravision-conversations",
+        "title": "Rajaji Meshram",
+        "content": "Transport and Logistic Experts | Sustainability Ratings : an idea whose time has come"
+      },
+      {
+        "id": "infravision-conversations",
+        "title": "Prof Sandip Chakrabarti",
+        "content": "Faculty Member, Public Systems Group, IIMA | Making metro systems financially viable, what needs to be done?"
+      },
+      {
+        "id": "infravision-conversations",
+        "title": "Rajiv Ranjan Mishra",
+        "content": "Distinguished Fellow, The Infravision Foundation, and former Director General, National Mission for Clean Ganga | Selecting the appropriate urban transport system for India's cities"
+      },
+      {
+        "id": "infravision-conversations",
+        "title": "Prof Gopal Naik",
+        "content": "Economics and Social Science, IIM Bangalore | How to improve warehousing in India and enhance credit availability"
+      },
+      {
+        "id": "infravision-conversations",
+        "title": "Jagan Shah",
+        "content": "The Infravision Foundation CEO and senior expert in urban development policy, Jagan Shah | Air pollution: The solution has to be multi-sectoral"
+      },
+      {
+        "id": "infravision-conversations",
+        "title": "Prof. G Raghuram",
+        "content": "Member, Council of Advisors, TIF, and Former Director, IIM Bangalore | Indian Railways : Why innovation matters"
+      },
+      {
+        "id": "blogs",
+        "title": "Blogs",
+        "content": "Championing infrastructure issues and recommending solutions"
+      },
+      {
+        "id": "blogs",
+        "title": "Transportation",
+        "content": "How to make India’s highways safe"
+      },
+      {
+        "id": "blogs",
+        "title": "Rural and Agri Infra",
+        "content": "Agri-warehousing: A problem of capacity"
+      },
+      {
+        "id": "blogs",
+        "title": "Transportation",
+        "content": "Multi-utility Infra, the way to go!"
+      },
+      {
+        "id": "blogs",
+        "title": "Transportation",
+        "content": "Our metro rail systems must be sustainable, financially"
+      },
+      {
+        "id": "blogs",
+        "title": "Urban Planning",
+        "content": "India needs sustainability ratings for Infrastructure projects"
+      },
+      {
+        "id": "blogs",
+        "title": "Transportation",
+        "content": "Urban mobility in India – Why metro is not the only solution!"
+      },
+      {
+        "id": "blogs",
+        "title": "Infrastructure",
+        "content": "Getting Surety Bonds Market Ready"
+      },
+      {
+        "id": "blogs",
+        "title": "Energy",
+        "content": "Rooftop Solar for Poverty Alleviation"
+      },
+      {
+        "id": "publication",
+        "title": "Using Our Publications| Permission for reproduction and use",
+        "content": "The Infravision Foundation welcomes collaboration and knowledge-sharing to create meaningful change.Interested parties can request permission to utilise our publications for their endeavours. This includes reproduction, duplication, translation, or any other use.Please send requests, and any additional inquiries related to our publications, to publications@theinfravisionfoundation.org."
+      }
+    ]
+  },
+  {
+    "slug": "/archive",
+    "title": "Archive",
+    "sections": [
+      {
+        "id": "archiveBanner",
+        "title": "Archives",
+        "content": "Knowledge resources shaping India's infrastructure growth story."
+      },
+      {
+        "id": "newsletters",
+        "title": "Newsletters",
+        "content": "A chronicle of our monthly dispatches"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 24",
+        "content": "Making change happen | May 2025"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 23",
+        "content": "Decarbonising urban transport | April 2025"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 22",
+        "content": "Fast-tracking High-Speed Rail | March 2025"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 21",
+        "content": "CAIRA Roundtable on agri exports is a success | February 2025"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 20",
+        "content": "Workshop on Trees Outside Forests | January 2025"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 19",
+        "content": "Telling the story of India | December 2024"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 18",
+        "content": "CAIRA takes shape | November 2024"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 17",
+        "content": "The Infravision Fellowship | October 2024"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 16",
+        "content": "Understanding Land Value Capture in urban India | September 2024"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 15",
+        "content": "The need for high-speed rail corridors | August 2024"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 14",
+        "content": "Champions Lab takes off | July 2024"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 13",
+        "content": "The building blocks of mythology | June 2024"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 12",
+        "content": "Diving into the water bodies census | May 2024"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 11",
+        "content": "Sustainability Ratings is the buzz in Mumbai | April 2024"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 10",
+        "content": "No grain drain | March 2024"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 9",
+        "content": "Sooraj Se Rozgari gets PM nod | February 2024"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 8",
+        "content": "Taking Surety Bonds and Sustainability Ratings to industry audience in Bangalore | January 2024"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 7",
+        "content": "Making commodities count for more | December 2023"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 6",
+        "content": "Ideas aplenty at quarterly meeting | November 2023"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 5",
+        "content": "Green signal for green ratings | October 2023"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 4",
+        "content": "Smart city, smart PT | September 2023"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 3",
+        "content": "The quarterly meeting | August 2023"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 2",
+        "content": "City mobility | July 2023"
+      },
+      {
+        "id": "newsletters",
+        "title": "Volume 1",
+        "content": "Here comes the sun | June 2023"
+      },
+      {
+        "id": "news-and-media",
+        "title": "In the News",
+        "content": "The Infravision Foundation in the public sphere"
+      },
+      {
+        "id": "news-and-media",
+        "title": "",
+        "content": "Infra brushstrokes for the budget | January 4, 2023"
+      },
+      {
+        "id": "news-and-media",
+        "title": "",
+        "content": "Infravisioning: It's time to embrace the idea of coastal economic zones | December 9, 2022"
+      },
+      {
+        "id": "news-and-media",
+        "title": "",
+        "content": "Infravisioning: Funding done, focus now must shift to project execution | November 25, 2022"
+      },
+      {
+        "id": "news-and-media",
+        "title": "",
+        "content": "Infravisioning: Nine reasons India needs a new highway services authority | November 11, 2022"
+      },
+      {
+        "id": "news-and-media",
+        "title": "",
+        "content": "Infravisioning: Why green is the best among many colours of hydrogen | October 28, 2022"
+      },
+      {
+        "id": "news-and-media",
+        "title": "",
+        "content": "Infravisioning: How safe are India's dams? | October 20, 2022"
+      },
+      {
+        "id": "news-and-media",
+        "title": "",
+        "content": "Infravisioning: India’s big attempt to fix its logistics snarl | September 29, 2022"
+      },
+      {
+        "id": "news-and-media",
+        "title": "",
+        "content": "Infravisioning: How the screws are getting tightened on power Discoms | September 16, 2022"
+      },
+      {
+        "id": "news-and-media",
+        "title": "",
+        "content": "A quarter century of PPP | August 31, 2022"
+      },
+      {
+        "id": "news-and-media",
+        "title": "",
+        "content": "Infravisioning: A historic reform in public procurement | August 25, 2022"
+      },
+      {
+        "id": "news-and-media",
+        "title": "",
+        "content": "IFS: Getting set to make an impact | August 3, 2022"
+      },
+      {
+        "id": "news-and-media",
+        "title": "",
+        "content": "Unleashing the ropeways | July 6, 2022"
+      },
+      {
+        "id": "news-and-media",
+        "title": "",
+        "content": "Urban mining | June 7, 2022"
+      },
+      {
+        "id": "news-and-media",
+        "title": "",
+        "content": "How safe are India’s dams? | May 4, 2022"
+      },
+      {
+        "id": "news-and-media",
+        "title": "",
+        "content": "Measures to rejunevate Public-Private Partnerships | April 6, 2022"
+      },
+      {
+        "id": "news-and-media",
+        "title": "",
+        "content": "Procurement policy needs to cover more ground | March 2, 2022"
+      },
+      {
+        "id": "news-and-media",
+        "title": "",
+        "content": "Time to focus on project execution | Feburary 4, 2022"
+      },
+      {
+        "id": "news-and-media",
+        "title": "",
+        "content": "Infra expectations from Budget | January 10, 2022"
+      },
+      {
+        "id": "videos",
+        "title": "Videos",
+        "content": "Kindling public policymaking with thought leadership and action"
+      },
+      {
+        "id": "videos",
+        "title": "The Infravision Conversation",
+        "content": "Pratap Padode discusses India's urban infrastructure challenges and project completion hurdles. | June 10, 2025"
+      },
+      {
+        "id": "videos",
+        "title": "The Infravision Conversation",
+        "content": "“Why India needs a national plan to build new cities” with Jagan Shah | June 5, 2025"
+      },
+      {
+        "id": "videos",
+        "title": "Infrakatha",
+        "content": "“Can Public-Private Partnerships be revitalised?” with Montek Singh Ahluwalia | December 14, 2024"
+      },
+      {
+        "id": "videos",
+        "title": "Infrakatha",
+        "content": "“Indosphere: How Indian trade grew” with William Dalrymple | November 24, 2024"
+      },
+      {
+        "id": "videos",
+        "title": "Infrakatha",
+        "content": "“Artificial Intelligence: Reshaping the digital infra landscape” with Shailesh Kochhar | October 14, 2024"
+      },
+      {
+        "id": "videos",
+        "title": "Infrakatha",
+        "content": "“Heritage tourism infrastructure” with Aman Nath | September 7, 2024"
+      },
+      {
+        "id": "videos",
+        "title": "Infrakatha",
+        "content": "“Saraswati, the lost river: Lessons for today” with Sanjeev Sanyal | August 17, 2024"
+      },
+      {
+        "id": "videos",
+        "title": "Infrakatha",
+        "content": "“Indian infrastructure - The difficulty of being good” with Gurcharan Das | July 19, 2024"
+      },
+      {
+        "id": "videos",
+        "title": "Infrakatha",
+        "content": "“Inclusive infrastructure” with Deepa Malik | June 19, 2024"
+      },
+      {
+        "id": "videos",
+        "title": "Infrakatha",
+        "content": "“Mythology & infrastructure” with Devdutt Pattanaik | May 29, 2024"
+      },
+      {
+        "id": "videos",
+        "title": "InfraShakti Awards",
+        "content": "Infrashakti Award Nominee Shubhi Sachan | November 30, 2023"
+      },
+      {
+        "id": "videos",
+        "title": "InfraShakti Awards",
+        "content": "InfraShakti Award Nominee Arun Krishnamurthy | November 1, 2023"
+      },
+      {
+        "id": "videos",
+        "title": "InfraShakti Awards",
+        "content": "InfraShakti Award Nominee Prof Thalappil Pradeep | September 15, 2023"
+      },
+      {
+        "id": "videos",
+        "title": "The Infravision Conversation",
+        "content": "“Wild areas are necessary in cities, they allow Nature to breathe” with Anita Mani | May 30, 2024"
+      },
+      {
+        "id": "videos",
+        "title": "The Infravision Conversation",
+        "content": "“A walk for a cause” with Gita Balakrishnan | May 30, 2024"
+      },
+      {
+        "id": "videos",
+        "title": "The Infravision Conversation",
+        "content": "“Renewable energy 2024 - Storage will be the main focus” with Nitin Zamre | January 12, 2024"
+      },
+      {
+        "id": "videos",
+        "title": "InfraShakti Awards",
+        "content": "The awards ceremony | July 3, 2024"
+      },
+      {
+        "id": "videos",
+        "title": "InfraShakti Awards",
+        "content": "Infrashakti Award Nominee Akhilesh Srivastava | March 21, 2024"
+      },
+      {
+        "id": "videos",
+        "title": "InfraShakti Awards",
+        "content": "Infrashakti Award Nominee Chetan Singh Solanki | March 20, 2024"
+      },
+      {
+        "id": "videos",
+        "title": "InfraShakti Awards",
+        "content": "Infrashakti Award Nominee Sudhanshu Mani | January 6, 2024"
+      },
+      {
+        "id": "videos",
+        "title": "Projects",
+        "content": "Solar rooftop for poverty alleviation | May 16, 2023"
+      },
+      {
+        "id": "videos",
+        "title": "Projects",
+        "content": "Sooraj Se Rozgaari | May 16, 2023"
+      },
+      {
+        "id": "videos",
+        "title": "Projects",
+        "content": "Sooraj Se Rozgaari | May 16, 2023"
+      },
+      {
+        "id": "videos",
+        "title": "Projects",
+        "content": "Solar rooftop scale-up challenges | May 16, 2023"
+      },
+      {
+        "id": "videos",
+        "title": "Quarterly meet",
+        "content": "Is there enough butter to spread on the infrastructure toast? | August 21, 2023"
+      },
+      {
+        "id": "videos",
+        "title": "Quarterly meet",
+        "content": "Jagan Shah at the quarterly meet  | July 29, 2023"
+      },
+      {
+        "id": "videos",
+        "title": "Quarterly meet",
+        "content": "P.K. Sinha at the quarterly meet | July 29, 2023"
+      },
+      {
+        "id": "videos",
+        "title": "Quarterly meet",
+        "content": "P.K. Sinha at the quarterly meet | July 29, 2023"
+      },
+      {
+        "id": "videos",
+        "title": "Quarterly meet",
+        "content": "Rajnish Kumar at the quarterly meet | July 29, 2023"
+      },
+      {
+        "id": "videos",
+        "title": "Quarterly meet",
+        "content": "Ashish Dhawan at the quarterly meet | July 29, 2023"
+      },
+      {
+        "id": "videos",
+        "title": "Quarterly meet",
+        "content": "Ashish Dhawan at the quarterly meet | July 29, 2023"
+      },
+      {
+        "id": "videos",
+        "title": "Quarterly meet",
+        "content": "Panel discussion on “The challenges ahead for core & social infra” | March 4, 2023"
+      },
+      {
+        "id": "videos",
+        "title": "The Infravision Conversation",
+        "content": "“Air pollution: The solution has to be multi-sectoral” with Jagan Shah | November 14, 2023"
+      },
+      {
+        "id": "videos",
+        "title": "The Infravision Conversation",
+        "content": "How to save our hill cities” with Rajiv Ranjan Mishra | October 11, 2023"
+      },
+      {
+        "id": "videos",
+        "title": "The Infravision Conversation",
+        "content": "“Making metro systems financially viable” with Prof Sandip Chakrabarti | October 11, 2023"
+      },
+      {
+        "id": "videos",
+        "title": "The Infravision Conversation",
+        "content": "“Sustainability Ratings: An idea whose time has come” with Rajaji Meshram | September 15, 2023"
+      },
+      {
+        "id": "videos",
+        "title": "The Infravision Conversation",
+        "content": "“Selecting the appropriate urban transport system for India's cities” with Prof Geetam Tiwari | August 27, 2023"
+      },
+       {
+        "id": "gallery",
+        "title": "Gallery",
+        "content": "Images of impact"
+      },
+      {
+    "id": "gallery",
+    "title": "Jagan Shah",
+    "content": "The Infravision Foundation CEO Jagan Shah, at the CII South India Annual Convention 2025."
+  },
+  {
+    "id": "gallery",
+    "title": "Jagan Shah",
+    "content": "The Infravision Foundation CEO Jagan Shah, delivering the welcome address."
+  },
+  {
+    "id": "gallery",
+    "title": "Rumjhum Chatterjee",
+    "content": "The Infravision Foundation Co-Founder, Rumjhum Chatterjee, at an interactive discussion with employees from Suzuki Motor Corporation, Japan, at IIM Ahmedabad’s Next Bharat Thinking programme."
+  },
+  {
+    "id": "gallery",
+    "title": "Nitin Gadkari",
+    "content": "Hon'ble Union Minister Mr Nitin Gadkari presenting the Transport Trailblazer Award to Mr Giridhar Rajagopalan, Deputy Managing Director at AFCONS Infrastructure Limited."
+  },
+  {
+    "id": "gallery",
+    "title": "Bhupender Yadav",
+    "content": "The Infravision Foundation team presenting the study on “Implementation of Compensatory Afforestation in India” to the Union Minister of Environment, Forest and Climate Change,  Mr Bhupender Yadav."
+  },
+  {
+    "id": "gallery",
+    "title": "Geetam Tiwari",
+    "content": "Kaveree Bamzai, Head of Advocacy at The Infravision Foundation, facilitating IIT Delhi Professor Emeritus Dr Geetam Tiwari at a national seminar on Decarbonising Urban Transport."
+  },
+  {
+    "id": "gallery",
+    "title": "Debasish Panda",
+    "content": "Debasish Panda, Chairman of the Insurance Regulatory and Development Authority of India (IRDAI), speaking at the roundtable on Surety Bonds organised by the CII under the auspices of The Infravision Foundation."
+  },
+  {
+    "id": "gallery",
+    "title": "Sanjay Pugalia",
+    "content": "NDTV Editor-in-Chief Mr Sanjay Pugalia with three-time Grammy Award winner and  Padma Shri awardee Mr Ricky Kej."
+  },
+  {
+    "id": "gallery",
+    "title": "Rumjhum Chatterjee",
+    "content": "Ms Rumjhum Chatterjee, Co-Founder, The Infravision Foundation; at CII’s Corporate Women Leadership Awards, along with Ms Radhika Gupta, MD and CEO, Edelweiss Asset Management; Ms Ameera Shah, Promoter and MD, Metropolis Healthcare; Ms Rituparna Chakraborty, Co-Founder, Teamlease Services; and others."
+  },
+  {
+    "id": "gallery",
+    "title": "Deepak Shetty",
+    "content": "JCB CEO Deepak Shetty, The Infravision Foundation Founder and Managing Trustee feature - Vinayak Chatterjee, IRDAI Chairman Debasish Panda, and Bajaj Allianz CEO Tapan Singhel at a roundtable on Surety Bonds organised by CII."
+  },
+  {
+    "id": "gallery",
+    "title": "feature - Vinayak Chatterjee",
+    "content": "JCB CEO Deepak Shetty, The Infravision Foundation Founder and Managing Trustee feature - Vinayak Chatterjee, IRDAI Chairman Debasish Panda, and Bajaj Allianz CEO Tapan Singhel at a roundtable on Surety Bonds organised by CII."
+  },
+  {
+    "id": "gallery",
+    "title": "Tapan Singhel",
+    "content": "JCB CEO Deepak Shetty, The Infravision Foundation Founder and Managing Trustee feature - Vinayak Chatterjee, IRDAI Chairman Debasish Panda, and Bajaj Allianz CEO Tapan Singhel at a roundtable on Surety Bonds organised by CII."
+  }
+    ]
+  }
+]

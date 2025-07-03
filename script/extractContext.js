@@ -1,58 +1,61 @@
-import fs from "fs";
-import path from "path";
-import puppeteer from "puppeteer";
+// import fs from "fs";
+// import path from "path";
+// import puppeteer from "puppeteer";
 
-const PAGES = ["/"];
+// const PAGES = ["/"];
 
-async function extractPageContent(url) {
-  const browser = await puppeteer.launch({ headless: "new" });
-  const page = await browser.newPage();
-  await page.goto(url, { waitUntil: "domcontentloaded" });
+// async function extractPageContent(url) {
+//   const browser = await puppeteer.launch({ headless: "new" });
+//   const page = await browser.newPage();
 
-  const sections = await page.evaluate(() => {
-    const extractText = (element, selector) =>
-      Array.from(element.querySelectorAll(selector))
-        .map((el) => el.innerText.trim())
-        .filter((text) => text.length > 0); 
+//   await page.goto(url, { waitUntil: "networkidle0" });
 
-    return Array.from(document.querySelectorAll("section, div"))
-      .map((section, index) => {
-        return {
-          id: `section-${index + 1}`,
-          title: extractText(section, "h1, h2, h4").join(" "), 
-          content: extractText(section, "p").join(" "), 
-        };
-      })
-      .filter((section) => section.title || section.content); 
-  });
+//   // Replaced page.waitForTimeout with a manual wait
+//   await new Promise((resolve) => setTimeout(resolve, 3000));
 
-  await browser.close();
-  return { title: url, sections };
-}
+//   const sections = await page.evaluate(() => {
+//     const extractText = (element, selector) =>
+//       Array.from(element.querySelectorAll(selector))
+//         .map((el) => el.innerText.trim())
+//         .filter((text) => text.length > 0);
 
-async function generateSearchIndex() {
-  const baseURL = "http://localhost:3001"; 
-  let searchIndex = [];
+//     return Array.from(document.querySelectorAll("section"))
+//       .map((section, index) => {
+//         return {
+//           id: `section-${index + 1}`,
+//           title: extractText(section, "h1, h2, h3, h4").join(" "),
+//           content: extractText(section, "p, span, li").join(" "),
+//         };
+//       })
+//       .filter((section) => section.title || section.content);
+//   });
 
-  for (const slug of PAGES) {
-    const url = `${baseURL}${slug}`;
-    console.log(`Extracting content from: ${url}`);
+//   await browser.close();
+//   return { title: url === "http://localhost:3000/" ? "Home" : url, sections };
+// }
 
-    try {
-      const { title, sections } = await extractPageContent(url);
-      searchIndex.push({ slug, title, sections });
-    } catch (error) {
-      console.error(`Failed to extract ${url}:`, error);
-    }
-  }
+// async function generateSearchIndex() {
+//   const baseURL = "http://localhost:3000";
+//   let searchIndex = [];
 
-  fs.writeFileSync(
-    path.join(process.cwd(), "public", "assets", "searchIndex.json"),
+//   for (const slug of PAGES) {
+//     const url = `${baseURL}${slug}`;
+//     console.log(`🔍 Extracting content from: ${url}`);
 
-    JSON.stringify(searchIndex, null, 2)
-  );
+//     try {
+//       const { title, sections } = await extractPageContent(url);
+//       searchIndex.push({ slug, title, sections });
+//     } catch (error) {
+//       console.error(`❌ Failed to extract ${url}:`, error);
+//     }
+//   }
 
-  console.log("✅ Search index updated successfully!");
-}
+//   fs.writeFileSync(
+//     path.join(process.cwd(), "public", "searchIndex.json"),
+//     JSON.stringify(searchIndex, null, 2)
+//   );
 
-generateSearchIndex();
+//   console.log("✅ Search index updated successfully!");
+// }
+
+// generateSearchIndex();

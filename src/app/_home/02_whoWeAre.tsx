@@ -92,7 +92,7 @@ export default function WhoWeAre() {
 
   return (
     <>
-      <section id="homepage-section-02" className="bg-whitesmoke">
+      <section id="homepage-section-2" className="bg-whitesmoke">
         <main className="blade-top-padding-lg blade-bottom-padding-lg w-container">
           <div className="flex md:flex-row flex-col justify-between">
             <div>

@@ -100,7 +100,7 @@ export default function Highlights() {
   }, [activeTab]);
   return (
     <>
-      <div className="bg-whitesmoke">
+      <div id="homepage-section-5" className="bg-whitesmoke">
         <div className="w-container blade-top-padding-lg blade-bottom-padding-lg">
           <div className="flex  flex-row  items-center gap-2 md:gap-3">
             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>

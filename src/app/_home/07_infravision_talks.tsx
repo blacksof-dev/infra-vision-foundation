@@ -6,6 +6,7 @@ export default function InfravisionTalks() {
   return (
     <>
       <Newsletter
+        id="homepage-section-7"
         bgImage={infravisionfoundationBg}
         mobilebg={infravisionTalkMobile}
         tag="Get Involved"
