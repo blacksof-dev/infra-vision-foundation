@@ -6,6 +6,7 @@ export default function OutreachBanner() {
   return (
     <>
       <Banner
+        id="outreactAndEngagement"
         image={bannerBg}
         mobileimage={mobileBanner}
         // buttonText="Get notified"

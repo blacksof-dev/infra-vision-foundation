@@ -4,6 +4,7 @@ import Banner from "@/_components/molecules/banner";
 export default function BannerSection() {
     return (
         <Banner
+            id="infrashaktiBanner"
             image={banner}
             heading="InfraShakti Awards"
             title="InfraShakti Awards"

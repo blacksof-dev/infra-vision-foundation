@@ -9,7 +9,7 @@ import { RiArrowRightSLine } from "react-icons/ri";
 export default function Association() {
   return (
     <>
-      <div className=" relative">
+      <div id="aboutUs" className=" relative">
         <div className="blade-top-padding-sm ">
           <Swiper className="" slidesPerView={1} autoplay modules={[Autoplay]}>
             {data.map((obj, index) => (

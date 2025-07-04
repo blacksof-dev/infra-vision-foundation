@@ -8,7 +8,7 @@ import { RiArrowRightSLine } from "react-icons/ri";
 export default function GetInvolvedBanner() {
   return (
     <>
-      <div className="pt-[5rem] sm:pt-[6rem]">
+      <div id="getInvolvedBanner" className="pt-[5rem] sm:pt-[6rem]">
         <div className="relative ">
           <div
             className={`sm:block  hidden w-full h-auto max-h-[45rem] overflow-hidden bg-black `}

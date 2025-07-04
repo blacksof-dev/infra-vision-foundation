@@ -8,7 +8,7 @@ import { RiArrowRightSLine } from "react-icons/ri";
 export default function InfraPanditBanner() {
   return (
     <>
-      <div className="pt-[5rem] sm:pt-[6rem]">
+      <div id="infrapanditBanner" className="pt-[5rem] sm:pt-[6rem]">
         <div className="relative ">
           <div
             className={`md:block  hidden w-full h-[25rem] md:h-[36rem] xl:h-[46rem] bg-black `}

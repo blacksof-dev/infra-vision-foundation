@@ -649,42 +649,42 @@
       },
       {
         "id": "videos",
-        "title": "Infrakatha",
+        "title": "Infrakatha Videos",
         "content": "“Can Public-Private Partnerships be revitalised?” with Montek Singh Ahluwalia | December 14, 2024"
       },
       {
         "id": "videos",
-        "title": "Infrakatha",
+        "title": "Infrakatha Videos",
         "content": "“Indosphere: How Indian trade grew” with William Dalrymple | November 24, 2024"
       },
       {
         "id": "videos",
-        "title": "Infrakatha",
+        "title": "Infrakatha Videos",
         "content": "“Artificial Intelligence: Reshaping the digital infra landscape” with Shailesh Kochhar | October 14, 2024"
       },
       {
         "id": "videos",
-        "title": "Infrakatha",
+        "title": "Infrakatha Videos",
         "content": "“Heritage tourism infrastructure” with Aman Nath | September 7, 2024"
       },
       {
         "id": "videos",
-        "title": "Infrakatha",
+        "title": "Infrakatha Videos",
         "content": "“Saraswati, the lost river: Lessons for today” with Sanjeev Sanyal | August 17, 2024"
       },
       {
         "id": "videos",
-        "title": "Infrakatha",
+        "title": "Infrakatha Videos",
         "content": "“Indian infrastructure - The difficulty of being good” with Gurcharan Das | July 19, 2024"
       },
       {
         "id": "videos",
-        "title": "Infrakatha",
+        "title": "Infrakatha Videos",
         "content": "“Inclusive infrastructure” with Deepa Malik | June 19, 2024"
       },
       {
         "id": "videos",
-        "title": "Infrakatha",
+        "title": "Infrakatha Videos",
         "content": "“Mythology & infrastructure” with Devdutt Pattanaik | May 29, 2024"
       },
       {
@@ -888,5 +888,72 @@
     "content": "JCB CEO Deepak Shetty, The Infravision Foundation Founder and Managing Trustee feature - Vinayak Chatterjee, IRDAI Chairman Debasish Panda, and Bajaj Allianz CEO Tapan Singhel at a roundtable on Surety Bonds organised by CII."
   }
     ]
-  }
+  },
+
+  {
+     "slug":"/infrakatha",
+      "title": "Infrakatha",
+      "sections":[
+        {
+        "id": "infrakathaBanner",
+        "title": "infrakatha",
+        "content": "A series of conversations on infrastructure with brilliant minds,exclusive insights, and compelling stories"
+      }
+      ]
+  },
+   {
+     "slug":"/infrashakti-awards",
+      "title": "InfraShakti",
+      "sections":[
+        {
+        "id": "infrashaktiBanner",
+        "title": "Infrashakti",
+        "content": "From innovation, impact, and beyond... Celebrating the champions of infrastructure."
+      }
+      ]
+  },
+  {
+     "slug":"/infrapandit-awards",
+      "title": "InfraPandit",
+      "sections":[
+        {
+        "id": "infrapanditBanner",
+        "title": "InfraPandit",
+        "content": "Celebrating the next generation of infrastructure changemakers"
+      }
+      ]
+  },
+  {
+     "slug":"/outreach-and-engagements",
+      "title": "Outreach and Engagements",
+      "sections":[
+        {
+        "id": "outreactAndEngagement",
+        "title": "Outreach and Engagements",
+        "content": "Join the infrastructure discourse, champion ideas, and refine insights into India's transforming economy."
+      }
+      ]
+  },
+  {
+     "slug":"/about-us",
+      "title": "About us",
+      "sections":[
+        {
+        "id": "aboutUs",
+        "title": "About us",
+        "content": "Nation at heart. Infrastructure in mind. Economic prosperity in action."
+      }
+      ]
+  } ,
+  {
+     "slug":"/get-involved",
+      "title": "Get Involved",
+      "sections":[
+        {
+        "id": "getInvolvedBanner",
+        "title": "Get Involved",
+        "content": "Join our community, ask questions, or participate in building a resilient India.  "
+      }
+      ]
+  } 
 ]
