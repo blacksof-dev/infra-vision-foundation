@@ -208,7 +208,7 @@ function Header() {
                   id="searchFunctioanlity"
                   className="w-full h-full  relative"
                 >
-                  <div className="absolute top-3 left-0 right-0 z-[999]">
+                  <div className="absolute top-1 xl:top-3 left-0 right-0 z-[999]">
                     <SearchContent/>
                   </div>
                 </div>
@@ -442,7 +442,7 @@ function Header() {
                 </button>
               </div>
 
-              <div className="block xl:hidden">
+              <div className="block  xl:hidden">
                 <button onClick={handlehamberg}>
                   <RxHamburgerMenu className="text-3xl cursor-pointer" />
                 </button>

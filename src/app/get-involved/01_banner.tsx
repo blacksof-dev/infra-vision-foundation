@@ -11,7 +11,7 @@ export default function GetInvolvedBanner() {
       <div className="pt-[5rem] sm:pt-[6rem]">
         <div className="relative ">
           <div
-            className={`sm:block  hidden w-full h-[45rem] bg-black `}
+            className={`sm:block  hidden w-full h-auto max-h-[45rem] overflow-hidden bg-black `}
           >
             <Image
             // style={{objectPosition:"left 20%"}}
