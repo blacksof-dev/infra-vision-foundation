@@ -313,7 +313,7 @@ const allcards = [
   },
    {
     id: 27,
-    img: "/assets/archive/newsAndMedia/dummy.png",
+    img: "/assets/archive/newsAndMedia/newsMedia27.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -323,7 +323,7 @@ const allcards = [
   },
   {
     id: 28,
-    img: "/assets/archive/newsAndMedia/dummy.png",
+    img: "/assets/archive/newsAndMedia/newsMedia28.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -333,7 +333,7 @@ const allcards = [
   },
    {
     id: 29,
-    img: "/assets/archive/newsAndMedia/dummy.png",
+    img: "/assets/archive/newsAndMedia/newsMedia29.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -343,7 +343,7 @@ const allcards = [
   },
   {
     id:30,
-    img: "/assets/archive/newsAndMedia/dummy.png",
+    img: "/assets/archive/newsAndMedia/newsMedia30.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -353,7 +353,7 @@ const allcards = [
   },
   {
     id:31,
-    img: "/assets/archive/newsAndMedia/dummy.png",
+    img: "/assets/archive/newsAndMedia/newsMedia31.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -363,7 +363,7 @@ const allcards = [
   },
   {
     id:32,
-    img: "/assets/archive/newsAndMedia/dummy.png",
+    img: "/assets/archive/newsAndMedia/newsMedia32.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -373,7 +373,7 @@ const allcards = [
   },
    {
     id:33,
-    img: "/assets/archive/newsAndMedia/dummy.png",
+    img: "/assets/archive/newsAndMedia/newsMedia48.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -383,7 +383,7 @@ const allcards = [
   },
   {
     id:34,
-    img: "/assets/archive/newsAndMedia/dummy.png",
+    img: "/assets/archive/newsAndMedia/newsMedia34.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -393,7 +393,7 @@ const allcards = [
   },
   {
     id:35,
-    img: "/assets/archive/newsAndMedia/dummy.png",
+    img: "/assets/archive/newsAndMedia/newsMedia35.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -403,7 +403,7 @@ const allcards = [
   },
    {
     id:36,
-    img: "/assets/archive/newsAndMedia/dummy.png",
+    img: "/assets/archive/newsAndMedia/newsMedia36.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -413,7 +413,7 @@ const allcards = [
   },
   {
     id:37,
-    img: "/assets/archive/newsAndMedia/dummy.png",
+    img: "/assets/archive/newsAndMedia/newsMedia47.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -423,7 +423,7 @@ const allcards = [
   },
   {
     id:38,
-    img: "/assets/archive/newsAndMedia/dummy.png",
+    img: "/assets/archive/newsAndMedia/newsMedia38.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -433,7 +433,7 @@ const allcards = [
   },
   {
     id:39,
-    img: "/assets/archive/newsAndMedia/dummy.png",
+    img: "/assets/archive/newsAndMedia/newsMedia39.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -443,7 +443,7 @@ const allcards = [
   },
   {
     id:40,
-    img: "/assets/archive/newsAndMedia/dummy.png",
+    img: "/assets/archive/newsAndMedia/newsMedia40.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -453,7 +453,7 @@ const allcards = [
   },
   {
     id:41,
-    img: "/assets/archive/newsAndMedia/dummy.png",
+    img: "/assets/archive/newsAndMedia/newsMedia41.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -463,7 +463,7 @@ const allcards = [
   },
   {
     id:42,
-    img: "/assets/archive/newsAndMedia/dummy.png",
+    img: "/assets/archive/newsAndMedia/newsMedia42.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -473,7 +473,7 @@ const allcards = [
   },
   {
     id:43,
-    img: "/assets/archive/newsAndMedia/dummy.png",
+    img: "/assets/archive/newsAndMedia/newsMedia43.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -483,7 +483,7 @@ const allcards = [
   },
   {
     id:44,
-    img: "/assets/archive/newsAndMedia/dummy.png",
+    img: "/assets/archive/newsAndMedia/newsMedia45.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -492,8 +492,8 @@ const allcards = [
     link: "/assets/pdf/privateEnterprise.pdf",
   },
   {
-    id:44,
-    img: "/assets/archive/newsAndMedia/dummy.png",
+    id:45,
+    img: "/assets/archive/newsAndMedia/newsMedia44.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -502,8 +502,8 @@ const allcards = [
     link: "/assets/pdf/movingGatiShakti.pdf",
   },
   {
-    id:44,
-    img: "/assets/archive/newsAndMedia/dummy.png",
+    id:46,
+    img: "/assets/archive/newsAndMedia/newsMedia46.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
