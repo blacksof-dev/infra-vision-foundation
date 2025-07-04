@@ -322,6 +322,14 @@ const allcards = [
 
 
 
+
+
+
+  // Dummy newsletter 
+
+
+
+
  
 
 ];

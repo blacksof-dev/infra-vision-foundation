@@ -1,6 +1,5 @@
 import banner from "@/../public/assets/contact/banner.png";
 import bannerMob from "@/../public/assets/contact/bannerMobile.png";
-import laptopImg from "@/../public/assets/contact/laptopImg.png";
 import { HeroBtnPink } from "@/_components/atoms/buttons";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,7 +11,7 @@ export default function GetInvolvedBanner() {
       <div className="pt-[5rem] sm:pt-[6rem]">
         <div className="relative ">
           <div
-            className={`md:block  hidden w-full h-auto bg-black `}
+            className={`sm:block  hidden w-full h-[45rem] bg-black `}
           >
             <Image
             // style={{objectPosition:"left 20%"}}
@@ -23,19 +22,9 @@ export default function GetInvolvedBanner() {
               quality={100}
             ></Image>
           </div>
-            {/* <div
-            className={`lg:block   xl:hidden w-full h-[25rem] md:h-[36rem] xl:h-[46rem] bg-black `}
-          >
-            <Image
-              src={laptopImg}
-              alt="Publication Banner"
-              className="w-full h-full object-cover"
-              unoptimized={true}
-              quality={100}
-            ></Image>
-          </div> */}
+          
 
-          <div className="md:hidden block h-auto">
+          <div className="sm:hidden block h-auto">
             <Image
               src={bannerMob}
               alt="Publication Banner"

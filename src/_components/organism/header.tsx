@@ -181,7 +181,7 @@ function Header() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full transition-all ease-linear duration-200 px-0 sm:px-3 py-3 z-[9999] ${
+        className={`fixed  top-0 left-0 w-full transition-all ease-linear duration-200 px-0 sm:px-3 py-3 z-[9999] ${
           isMobile
             ? "translate-y-0"
             : showNavbar
@@ -204,7 +204,17 @@ function Header() {
             </div>
             <div className=" flex w-full flex-row items-center justify-center  gap-5">
               {toggle ? (
-                <div
+                 <div
+                  id="searchFunctioanlity"
+                  className="w-full h-full  relative"
+                >
+                  <div className="absolute top-3 left-0 right-0 z-[999]">
+                    <SearchContent/>
+                  </div>
+                </div>
+               
+              ) : (
+                  <div
                   id="navbar"
                   className={`hidden  xl:flex flex-row gap-9 2xl:gap-15  items-center`}
                 >
@@ -407,36 +417,28 @@ function Header() {
                     </li>
                   </ul>
                 </div>
-              ) : (
-                <div
-                  id="searchFunctioanlity"
-                  className="w-full h-full  relative"
-                >
-                  <div className="absolute top-2 left-0 right-0 z-[999]">
-                    <SearchContent/>
-                  </div>
-                </div>
               )}
             </div>
 
-           <div className="flex  justify-center items-center gap-4">
+           <div className="flex   justify-center items-center gap-4">
               <div className="md:block hidden">
                 <button
                   onClick={() => settoggle((prev) => !prev)}
                   className=" hidden md:flex cursor-pointer items-center gap-4 justify-center"
                 >
                   {toggle ? (
-                    <div className="w-8 h-8 bg-pink ring-0 ring-pink rounded-full flex items-center justify-center">
-                      <FaSearch className="text-white " />
-                    </div>
-                  ) : (
-                    <div className="w-8 h-8 bg-pink ring-0 ring-pink rounded-full flex items-center justify-center">
+                     <div className="w-8 h-8 bg-pink ring-0 ring-pink rounded-full flex items-center justify-center">
                       <RxCross1 className="text-white " />
                     </div>
+                  
+                  ) : (
+                     <div className="w-8 h-8 d bg-pink ring-0 ring-pink rounded-full flex items-center justify-center">
+                      <FaSearch className="text-white " />
+                    </div>
                   )}
-                  <span className="h-fit my-auto text-lg text-darkgray">
-                    Search
-                  </span>
+                  {/* <span className="h-fit my-auto text-lg text-darkgray">
+                   Close
+                  </span> */}
                 </button>
               </div>
 
@@ -472,6 +474,3 @@ export default Header;
 
 
 
-{/* <script async src="https://cse.google.com/cse.js?cx=5231272e638ea4cb6">
-</script>
-<div class="gcse-search"></div> */}
