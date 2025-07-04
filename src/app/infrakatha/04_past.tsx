@@ -37,7 +37,7 @@ const allcards = [
   {
     img: shailesh.src,
     category: "InfraKatha #6",
-    date: "October 14, 2024",
+    date: "October 5, 2024",
     title: "Featuring Mr Shailesh Kochhar, AI Specialist",
     link: "https://www.youtube.com/watch?v=hIzp4YhZcMo&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=3&ab_channel=TheInfravisionFoundation",
     description: "Artificial Intelligence: Reshaping the digital infra landscape",
@@ -63,7 +63,7 @@ const allcards = [
   {
     img: gurucharan.src,
     category: "InfraKatha #3",
-    date: " July 26, 2024",
+    date: " July 19, 2024",
     title: "Featuring Mr Gurcharan Das, Author",
     link: "https://www.youtube.com/watch?v=FCDeGlsb7q0&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=6&ab_channel=TheInfravisionFoundation",
     description: "Indian infrastructure — The difficulty of being good",
@@ -71,7 +71,7 @@ const allcards = [
   {
     img: deepaMalik.src,
     category: "InfraKatha #2",
-    date: "July 19, 2024",
+    date: "June 19, 2024",
     title: "Featuring Padma Shri Dr Deepa Malik, Para-athlete and Former President of the Paralympic Committee of India",
     link: "https://www.youtube.com/watch?v=5uzHmHzU7q0&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=7&ab_channel=TheInfravisionFoundation",
     description:

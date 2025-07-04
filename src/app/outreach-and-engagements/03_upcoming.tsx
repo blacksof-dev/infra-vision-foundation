@@ -532,6 +532,32 @@ The study identified Noida as having exceptional potential to become a model cit
               `,
             },
           },
+           {
+            date: "19",
+
+            dayTime: "Friday",
+            meetingType: "Infrakatha",
+            desc: "Inclusive infrastructure with Dr Deepa Malik",
+            ctaText: "See details",
+            details: {
+              date: "June 19, 2024",
+              images: [ 
+                {
+                  image:"/assets/outreach-and-engagements/eventImages/july_2024.png",
+                  description:"“Inclusive infrastructure” with Deepa Malik"
+                }
+              ],
+              content: `
+                 The second session of Infrakatha featured Dr Deepa Malik, para-athlete, former President of the Paralympic Committee of India, and a prominent figure in inclusive infrastructure and disability advocacy.\n
+                 Learn about her incredible journey from overcoming personal health challenges to becoming a celebrated athlete and champion for accessibility in India. The discussion underlines and expands on the urgent need for inclusive infrastructure that goes beyond physical accessibility to encompass policy, mindset, and equal opportunities for all, particularly for persons with disabilities, the elderly, women, and children.
+  
+              `,
+              cta: {
+                ctaText: "Watch video",
+                link: "https://www.youtube.com/watch?v=5uzHmHzU7q0",
+              },
+            },
+          },
         ],
       },
       {
@@ -562,41 +588,16 @@ The study identified Noida as having exceptional potential to become a model cit
               },
             },
           },
+         
           {
             date: "19",
-
-            dayTime: "Friday",
-            meetingType: "Infrakatha",
-            desc: "Inclusive infrastructure with Dr Deepa Malik",
-            ctaText: "See details",
-            details: {
-              date: "July 19, 2024",
-              images: [ 
-                {
-                  image:"/assets/outreach-and-engagements/eventImages/july_2024.png",
-                  description:"“Inclusive infrastructure” with Deepa Malik"
-                }
-              ],
-              content: `
-                 The second session of Infrakatha featured Dr Deepa Malik, para-athlete, former President of the Paralympic Committee of India, and a prominent figure in inclusive infrastructure and disability advocacy.\n
-                 Learn about her incredible journey from overcoming personal health challenges to becoming a celebrated athlete and champion for accessibility in India. The discussion underlines and expands on the urgent need for inclusive infrastructure that goes beyond physical accessibility to encompass policy, mindset, and equal opportunities for all, particularly for persons with disabilities, the elderly, women, and children.
-  
-              `,
-              cta: {
-                ctaText: "Watch video",
-                link: "https://www.youtube.com/watch?v=5uzHmHzU7q0",
-              },
-            },
-          },
-          {
-            date: "26",
 
             dayTime: "Friday",
             meetingType: "Infrakatha",
             desc: "Indian infrastructure: The difficulty of being good with Gurcharan Das",
             ctaText: "See details",
             details: {
-              date: "July 26, 2024",
+              date: "July 19, 2024",
               images: [{
                   description:"“Indian infrastructure - The difficulty of being good” with Gurcharan Das",
                 image:"/assets/outreach-and-engagements/eventImages/july26_2024.png",
@@ -768,14 +769,14 @@ The study identified Noida as having exceptional potential to become a model cit
         month: "October",
         events: [
           {
-            date: "14",
+            date: "5",
 
             dayTime: "Monday",
             meetingType: "Infrakatha",
             desc: "Artificial Intelligence: Reshaping the digital infra landscape with Shailesh Kochhar",
             ctaText: "See details",
             details: {
-              date: "October 14, 2024",
+              date: "October 5, 2024",
               images: [
                 {
 
