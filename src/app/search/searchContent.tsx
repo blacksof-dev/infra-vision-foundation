@@ -5,6 +5,7 @@ import Link from "next/link";
 import Fuse from "fuse.js";
 import rawSearchIndex from "@/../public/searchIndex.json";
 import Highlighter from "react-highlight-words";
+import { RxCross1 } from "react-icons/rx";
 
 interface SearchItem {
   slug: string;
@@ -31,9 +32,8 @@ export default function SearchContent() {
   const [results, setResults] = useState<FilteredResult[]>([]);
   const [contentData, setContentData] = useState<SearchItem[]>([]);
   const [fuse, setFuse] = useState<Fuse<SearchItem> | null>(null);
-  const [visibleCount, setVisibleCount] = useState(10);
   const searchIndex = rawSearchIndex as SearchItem[];
-const [hasSearched, setHasSearched] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       const validData = searchIndex.filter(
@@ -59,14 +59,15 @@ const [hasSearched, setHasSearched] = useState(false);
       setResults([]);
     };
     fetchData();
-      
-
   }, []);
 
-  useEffect(() => {
+useEffect(() => {
   const handleScroll = () => {
-    setResults([]);
-    setHasSearched(false);
+  
+    if (window.innerWidth >= 768) {
+      setResults([]);
+      setHasSearched(false);
+    }
   };
 
   if (results.length > 0) {
@@ -76,7 +77,7 @@ const [hasSearched, setHasSearched] = useState(false);
   return () => {
     window.removeEventListener("scroll", handleScroll);
   };
-}, [results.length]); 
+}, [results.length]);
 
 
   const formatSearchResults = (data: SearchItem[]) => {
@@ -95,7 +96,6 @@ const [hasSearched, setHasSearched] = useState(false);
     debounce((searchQuery: string) => {
       if (!searchQuery) {
         setResults(formatSearchResults(contentData));
-        setVisibleCount(8);
         setHasSearched(false);
         return;
       }
@@ -122,7 +122,6 @@ const [hasSearched, setHasSearched] = useState(false);
             }))
         );
         setResults(processedResults);
-        setVisibleCount(8);
         setHasSearched(true);
       }
     }, 300),
@@ -135,7 +134,9 @@ const [hasSearched, setHasSearched] = useState(false);
   };
 
   return (
-    <section className="blade-bottom-padding">
+    <section className="blade-bottom-padding relative ">
+      
+
       <div className=" ">
         <div className="w-full px-4">
           <form
@@ -150,11 +151,11 @@ const [hasSearched, setHasSearched] = useState(false);
               placeholder="Enter your query..."
               value={query}
               onChange={handleChange}
-              className="w-full  p-2 px-3 border  border-lightgray/70 rounded-lg shadow-sm  outline-none"
+              className="w-full  p-2 px-3 border  border-lightgray/70 rounded-lg shadow-sm  outline-none "
             />
             <button
               type="submit"
-              className="rounded-lg cursor-pointer bg-pink hover:bg-pink text-white px-6 py-2"
+              className="md:block hidden rounded-lg cursor-pointer bg-pink hover:bg-pink text-white px-6 py-2"
             >
               Search
             </button>
@@ -171,10 +172,10 @@ const [hasSearched, setHasSearched] = useState(false);
       ) : (
         <ul
           className={`sm:mt-2 max-w-4xl mx-auto bg-white overflow-y-scroll transition-all duration-300 ${
-            results.length > 0 ? "h-[30rem]" : "h-0"
+            results.length > 0 ? "pb-8 mb:pb-0 h-[40rem] md:h-[30rem]" : "h-0"
           }`}
         >
-          {results.slice(0, visibleCount).map((content, index) => (
+          {results.map((content, index) => (
             <li
               key={index}
               className="py-3 px-4 last:border-0  border-b border-lightgray/40 -4"
@@ -207,17 +208,6 @@ const [hasSearched, setHasSearched] = useState(false);
             </li>
           ))}
         </ul>
-      )}
-
-      {visibleCount < results.length && (
-        <div className="flex justify-center 2xl:mt-6 mt-4">
-          <button
-            onClick={() => setVisibleCount((prev) => prev + 6)}
-            className="bg-blue hover:bg-blueDark text-white px-5 py-2 rounded-lg"
-          >
-            Load More
-          </button>
-        </div>
       )}
     </section>
   );

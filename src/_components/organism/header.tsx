@@ -15,7 +15,6 @@ import { GoArrowRight } from "react-icons/go";
 import gsap from "gsap";
 import SearchContent from "@/app/search/searchContent";
 
-
 interface NavItem {
   label: string;
   href: string;
@@ -32,6 +31,7 @@ function Header() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [mounted, setMounted] = useState(false);
   const [toggle, settoggle] = useState<boolean>(false);
+  const [searchSidebar, setSearchSIdebar] = useState<boolean>(false);
   const { setIsHeaderVisible: setShowNavbar, isHeaderVisible: showNavbar } =
     useHeader();
 
@@ -69,7 +69,7 @@ function Header() {
     const handleResize = () => {
       checkMobile();
       if (window.innerWidth <= 768) {
-        setShowNavbar(true); 
+        setShowNavbar(true);
       }
     };
 
@@ -88,7 +88,6 @@ function Header() {
       } else {
         setScrolled(false);
       }
-     
     };
 
     checkMobile(); // Initial check
@@ -144,8 +143,6 @@ function Header() {
   const handlehamberg = () => {
     setIsMenuOpen((prev) => !prev);
   };
-
-
 
   const AboutUsDropDown: NavItem[] = [
     { label: "Who We Are", href: "/about-us#who-we-are" },
@@ -204,17 +201,16 @@ function Header() {
             </div>
             <div className=" flex w-full flex-row items-center justify-center  gap-5">
               {toggle ? (
-                 <div
+                <div
                   id="searchFunctioanlity"
                   className="w-full h-full  relative"
                 >
                   <div className="absolute top-1 xl:top-3 left-0 right-0 z-[999]">
-                    <SearchContent/>
+                    <SearchContent />
                   </div>
                 </div>
-               
               ) : (
-                  <div
+                <div
                   id="navbar"
                   className={`hidden  xl:flex flex-row gap-9 2xl:gap-15  items-center`}
                 >
@@ -420,33 +416,40 @@ function Header() {
               )}
             </div>
 
-           <div className="flex   justify-center items-center gap-4">
+            <div className="flex   justify-center items-center gap-4">
               <div className="md:block hidden">
                 <button
                   onClick={() => settoggle((prev) => !prev)}
                   className=" hidden md:flex cursor-pointer items-center gap-4 justify-center"
                 >
                   {toggle ? (
-                     <div className="w-8 h-8 bg-pink ring-0 ring-pink rounded-full flex items-center justify-center">
+                    <div className="w-8 h-8 bg-pink ring-0 ring-pink rounded-full flex items-center justify-center">
                       <RxCross1 className="text-white " />
                     </div>
-                  
                   ) : (
-                     <div className="w-8 h-8 d bg-pink ring-0 ring-pink rounded-full flex items-center justify-center">
+                    <div className="w-8 h-8  bg-pink ring-0 ring-pink rounded-full flex items-center justify-center">
                       <FaSearch className="text-white " />
                     </div>
                   )}
-                  {/* <span className="h-fit my-auto text-lg text-darkgray">
-                   Close
-                  </span> */}
                 </button>
               </div>
 
-              <div className="block  xl:hidden">
-                <button onClick={handlehamberg}>
-                  <RxHamburgerMenu className="text-3xl cursor-pointer" />
-                </button>
+              <div className="flex flex-row gap-4  ">
+                <div className="md:hidden block">
+                  <button
+                    onClick={() => setSearchSIdebar(true)}
+                    className="w-8 h-8  bg-pink ring-0 ring-pink rounded-full flex items-center justify-center"
+                  >
+                    <FaSearch className="text-white " />
+                  </button>
+                </div>
+                <div className="xl:hidden block">
+                  <button onClick={handlehamberg}>
+                    <RxHamburgerMenu className="text-3xl  cursor-pointer" />
+                  </button>
+                </div>
               </div>
+
               <AnimatePresence>
                 {isMenuOpen && (
                   <motion.div
@@ -454,9 +457,32 @@ function Header() {
                     animate={{ x: 0 }}
                     exit={{ x: "100%" }}
                     transition={{ duration: 0.4, ease: "linear" }}
-                    className="fixed top-0 left-0 w-screen h-screen z-[9999] bg-white px-3 py-3"
+                    className="fixed top-0  left-0 w-screen h-screen z-[9999] bg-white px-3 py-3"
                   >
                     <Mobilenav onClose={() => setIsMenuOpen(false)} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <AnimatePresence>
+                {searchSidebar && (
+                  <motion.div
+                    initial={{ x: "100%" }}
+                    animate={{ x: 0 }}
+                    exit={{ x: "100%" }}
+                    transition={{ duration: 0.4, ease: "linear" }}
+                    className="fixed top-0  left-0 w-screen h-screen z-[9999] bg-white px-3 py-3"
+                  >
+                    <div className="">
+                      <div className="absolute top-4 right-3 md:hidden block z-10">
+                        <button onClick={() => setSearchSIdebar(false)}>
+                          <RxCross1 className="text-2xl text-black cursor-pointer" />
+                        </button>
+                      </div>
+                      <div className="blade-top-padding-xl">
+                        <SearchContent />
+                      </div>
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -471,6 +497,3 @@ function Header() {
 Header.displayName = "Header";
 
 export default Header;
-
-
-
