@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import logo from "@/../public/assets/globals/logo.png";
-import { FaSearch } from "react-icons/fa";
-import { RxCross1, RxHamburgerMenu } from "react-icons/rx";
+import { IoSearch } from "react-icons/io5";
+import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
@@ -23,7 +23,6 @@ interface NavItem {
 function Header() {
   const pathname = usePathname();
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [open, setopen] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [showNavBg, setshowNavBg] = useState<boolean>(false);
   const [lastScrollY, setlastScrollY] = useState(0);
@@ -100,6 +99,12 @@ function Header() {
       window.removeEventListener("resize", handleResize);
     };
   }, [lastScrollY, isMobile, mounted, setShowNavbar]);
+
+
+
+
+
+
 
   // Handle body scroll lock for mobile menu
   useEffect(() => {
@@ -418,20 +423,24 @@ function Header() {
 
             <div className="flex   justify-center items-center gap-4">
               <div className="md:block hidden">
-                <button
-                  onClick={() => settoggle((prev) => !prev)}
-                  className=" hidden md:flex cursor-pointer items-center gap-4 justify-center"
-                >
-                  {toggle ? (
-                    <div className="w-8 h-8 bg-pink ring-0 ring-pink rounded-full flex items-center justify-center">
-                      <RxCross1 className="text-white " />
-                    </div>
-                  ) : (
-                    <div className="w-8 h-8  bg-pink ring-0 ring-pink rounded-full flex items-center justify-center">
-                      <FaSearch className="text-white " />
-                    </div>
-                  )}
-                </button>
+                <div className="flex  justify-center  items-center gap-4">
+                  <button
+                    onClick={() => settoggle((prev) => !prev)}
+                    className={`rounded-sm p-1 cursor-pointer relative md:p-2 border-2 border-pink overflow-hidden   w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300  `}
+                  >
+                    <span className="absolute w-4 h-4 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-transparent group-hover:bg-pink  z-[1] transition-all duration-500"></span>
+
+                    {toggle ? (
+                      <RxCross2 className={` text-pink text-2xl`} />
+                    ) : (
+                      <IoSearch className={` text-pink text-2xl`} />
+                    )}
+                  </button>
+                  <h5
+                    onClick={() => settoggle((prev) => !prev)}
+                    className="cursor-pointer w-[4.5rem] text-darkgray text-lg"
+                  >{`${toggle ? "Close" : "Search"}`}</h5>
+                </div>
               </div>
 
               <div className="flex flex-row gap-4  ">
@@ -440,7 +449,7 @@ function Header() {
                     onClick={() => setSearchSIdebar(true)}
                     className="w-8 h-8  bg-pink ring-0 ring-pink rounded-full flex items-center justify-center"
                   >
-                    <FaSearch className="text-white " />
+                    <IoSearch className="text-white " />
                   </button>
                 </div>
                 <div className="xl:hidden block">
@@ -476,7 +485,7 @@ function Header() {
                     <div className="">
                       <div className="absolute top-4 right-3 md:hidden block z-10">
                         <button onClick={() => setSearchSIdebar(false)}>
-                          <RxCross1 className="text-2xl text-black cursor-pointer" />
+                          <RxCross2 className="text-2xl text-black cursor-pointer" />
                         </button>
                       </div>
                       <div className="blade-top-padding-xl">

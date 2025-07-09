@@ -8,7 +8,7 @@ type CardProps = {
     image: string;
     link: string;
     category: string;
-    description: string;
+    description?: string;
     classes?: string;
     ctaType?: 'read more' | 'yt';
 };

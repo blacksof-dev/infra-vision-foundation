@@ -1,17 +1,17 @@
 import image1 from "@/../public/assets/resource/blogs/image1.png";
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import Image from "next/image";
-import CategoryDetailForm from "./03_form";
-import RecentPostDetails from "./02_recentPost";
+import RecentPostDetails from "../02_recentPost";
 
-export default function Details() {
+
+export default function Page() {
   return (
     <>
       <div className="max-w-5xl mx-auto pt-[27%] sm:pt-[20%] lg:pt-[10%] blade-bottom-padding-lg">
         <div className="px-4 ">
-          <h1 className="font-poppins text-black font-medium">
+          <h2 className="font-poppins text-black font-medium">
             How to make India’s highways safe
-          </h1>
+          </h2>
           <div>
             <div className="flex gap-4 py-2 ">
               <h6 className="text-base  text-lightgray ">By Admin</h6>
@@ -28,7 +28,7 @@ export default function Details() {
                 />
               </div>
               <div>
-                <h2 className="text-black font-medium my-7">Description</h2>
+                <h3 className="text-black font-medium my-7">Description</h3>
                 <div>
                   <p className="text-darkgray">
                     A fully empowered National Road Safety Authority, as
@@ -163,29 +163,29 @@ export default function Details() {
                   </p>
 
                   <div className="my-7">
-                    <p className="text-darkgray ">By Jagan Shah </p>
-                    <p className="text-darkgray ">
+                    {/* <p className="text-black/80 font-medium">By Jagan Shah </p>
+                    <p className="text-black/80 font-medium pt-3">
                       [Jagan Shah is the CEO, The Infravision Foundation]{" "}
-                    </p>
-                    <div className="py-5">
+                    </p> */}
+                    <div className="w-fit py-3 px-2 overflow-hidden">
                       <UnderlineWithHover
                         size="small"
                         color="pink"
                         bgColor="pink"
-                        text="Research paper"
+                        text="Read research paper"
                         role="link"
-                        link="https://theinfravisionfoundation.org/wp-content/uploads/2024/08/Safe-Highways-in-India-Challenges-and-Solutions_August-2024.pdf"
                         target="_blank"
+                        link="/assets/knowledeg/blogsPdf/safeHighRailway.pdf"
                         borderColor="white"
-                       
                       />
                     </div>
+                    
                   </div>
                 </div>
               </div>
             </div>
-            <RecentPostDetails/>
-            <CategoryDetailForm/>
+            {/* <RecentPostDetails /> */}
+            {/* <CategoryDetailForm/> */}
           </div>
         </div>
       </div>

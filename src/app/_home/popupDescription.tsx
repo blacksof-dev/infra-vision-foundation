@@ -55,23 +55,7 @@ export default function PopupDescription({
                     ))}
                   </div>
                 )}
-                {/* <p
-                    className={`${showlineclamp
-                      ? "line-clamp-none overflow-y-auto "
-                      : "line-clamp-6"
-                      } text-black 2xl:line-clamp-none text-sm md:text-base lg:overflow-y-auto h-full  pr-2`}
-                    dangerouslySetInnerHTML={{ __html: data.popupdesc }}
-                  />
-                )} */}
-
-                {/* {!showlineclamp && (
-                  <button
-                    onClick={() => setlineclamp(true)}
-                    className="text-pink font-medium lg:hidden block py-4 me-auto"
-                  >
-                    Read More
-                  </button>
-                )} */}
+             
               </div>
             </div>
           </div>

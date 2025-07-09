@@ -1,4 +1,5 @@
 "use client";
+import emailjs from "@emailjs/browser";
 import Image from "next/image";
 import logo from "@/../public/assets/globals/logo.png";
 import { Anchor, TextAnchor } from "../atoms/links";
@@ -21,7 +22,7 @@ import { Checkbox } from "../ui/checkbox";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const newsletterSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address." }),
@@ -33,8 +34,9 @@ const newsletterSchema = z.object({
 type NewsletterForm = z.infer<typeof newsletterSchema>;
 
 const Footer = () => {
+  const formRef = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = useState(false);
-  const [message,setMessage] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
   const {
     register,
     handleSubmit,
@@ -50,15 +52,24 @@ const Footer = () => {
 
   const onSubmit = async (data: NewsletterForm) => {
     setLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+
     setLoading(false);
     console.log("Newsletter form data:", data);
-    setMessage("Thanks for joining our newsletter.")  
-    setTimeout(()=>{
-       setMessage(" ")
-    },2000)
+    if (!formRef.current) return;
+
+    await emailjs.sendForm(
+      "service_zo4m0a8",
+      "template_8dasxyf",
+      formRef.current,
+      {
+        publicKey: "svBJIois6z0vhJqFf",
+      }
+    );
+    setMessage("Thanks for joining our newsletter.");
+    setTimeout(() => {
+      setMessage(" ");
+    }, 2000);
     reset();
-   
   };
 
   return (
@@ -83,6 +94,7 @@ const Footer = () => {
                 Subscribe to our newsletter
               </h6>
               <form
+                ref={formRef}
                 onSubmit={handleSubmit(onSubmit)}
                 className="w-full sm:w-[70%] lg:w-full "
               >
@@ -124,7 +136,7 @@ const Footer = () => {
                     {errors.email.message}
                   </p>
                 )}
-               
+
                 <div className="flex gap-2  pt-5">
                   <Checkbox
                     className="w-5 h-5 rounded border border-pink cursor-pointer"
@@ -145,11 +157,7 @@ const Footer = () => {
                     {errors.agree.message}
                   </p>
                 )}
-                 {
-                  message && (
-                    <p className="text-pink py-4">{message}</p>
-                  )
-                }
+                {message && <p className="text-pink py-4">{message}</p>}
               </form>
             </div>
           </div>
@@ -200,7 +208,6 @@ const Footer = () => {
                         className="block whitespace-nowrap ps-6 py-1 md:py-2 hover:text-black"
                         href="/about-us#our-pulse"
                         text="Our Foundational Pillars"
-
                       />
                     </li>
                     <li>
@@ -410,7 +417,11 @@ const Footer = () => {
               <p className="text-darkgray/80   smallText">
                 Copyright 2025. All rights reserved.
               </p>
-              <Link href="https://www.blacksof.com/"><p className="text-darkgray/80 smallText py-1 sm:py-2 underline underline-offset-1">Made by <span className="font-semibold">Blacksof</span></p></Link>
+              <Link href="https://www.blacksof.com/">
+                <p className="text-darkgray/80 smallText py-1 sm:py-2 underline underline-offset-1">
+                  Made by <span className="font-semibold">Blacksof</span>
+                </p>
+              </Link>
             </div>
             <div className="flex flex-row gap-5   justify-start sm:justify-center sm:items-center pt-4 sm:pt-0">
               <h5 className="text-darkgray/60 mr-5 sm:block hidden  ">

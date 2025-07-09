@@ -61,6 +61,18 @@ export default function SearchContent() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (hasSearched) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [hasSearched]);
+
+
 useEffect(() => {
   const handleScroll = () => {
   
@@ -148,10 +160,10 @@ useEffect(() => {
           >
             <input
               type="text"
-              placeholder="Enter your query..."
+              placeholder="Search"
               value={query}
               onChange={handleChange}
-              className="w-full  p-2 px-3 border  border-lightgray/70 rounded-lg shadow-sm  outline-none "
+              className="w-full  p-2 px-3 border  border-darkgray/50    rounded-lg   outline-none "
             />
             <button
               type="submit"
@@ -171,8 +183,8 @@ useEffect(() => {
         </div>
       ) : (
         <ul
-          className={`sm:mt-2 max-w-4xl mx-auto bg-white overflow-y-scroll transition-all duration-300 ${
-            results.length > 0 ? "pb-8 mb:pb-0 h-[40rem] md:h-[30rem]" : "h-0"
+          className={`sm:mt-2 rounded-md max-w-4xl mx-auto bg-white/60 backdrop-blur-xl overflow-y-scroll transition-all duration-300 ${
+            results.length > 0 ? " py-4 h-[40rem] md:h-[30rem]" : "h-0"
           }`}
         >
           {results.map((content, index) => (

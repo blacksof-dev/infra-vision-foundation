@@ -4,9 +4,11 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Textarea } from "@/_components/ui/textarea";
-import { type ReactNode, useState } from "react";
+import { type ReactNode, useRef, useState } from "react";
 import { HiOutlineLink } from "react-icons/hi";
 import { TbUpload } from "react-icons/tb";
+import emailjs from "@emailjs/browser";
+
 import {
   Select,
   SelectContent,
@@ -35,8 +37,8 @@ const designationDropdownOptions = [
   "Policymaker",
   "Private Sector Employee",
   "Donor",
-  "Other"
-]
+  "Other",
+];
 
 const formSchema = z.object({
   firstName: z
@@ -51,7 +53,8 @@ const formSchema = z.object({
 
   contactNumber: z
     .string()
-    .min(10, "Please enter a 10-digit number").max(10, { message: "Enter a number up to 10 digits long" }),
+    .min(10, "Please enter a 10-digit number")
+    .max(10, { message: "Enter a number up to 10 digits long" }),
 
   message: z.string(),
 
@@ -66,6 +69,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function ContactForm() {
+  const formRef = useRef<HTMLFormElement>(null);
   const [filename, setfilename] = useState("Select a file to upload ");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [setsuccess, setIsSuccess] = useState<boolean>(false);
@@ -83,7 +87,7 @@ export default function ContactForm() {
       designation: "",
       contactNumber: "",
       links: "",
-      file: "",
+      // file: "",
       message: "",
     },
   });
@@ -97,7 +101,7 @@ export default function ContactForm() {
   } = form;
 
   // Handle form submission
-  async function onSubmit(data: FormValues) {
+  async function onSubmit(data: any) {
     setIsSubmitting(true);
 
     try {
@@ -113,19 +117,30 @@ export default function ContactForm() {
       formData.append("links", data.links);
 
       // Append the file if it exists
-      if (data.file.length > 0) {
-        formData.append("file", data.file[0]);
-      }
+      // if (data.file.length > 0) {
+      //   formData.append("file", data.file[0]);
+      // }
 
-      // Here you would normally send the formData to your API
-      // For now, we'll simulate a successful submission
-      await new Promise((resolve) => setTimeout(resolve, 2000));
       console.log("Form submitted:", data);
+      // Email js Setup
+
+      if (!formRef.current) return;
+
+      await emailjs.sendForm(
+        "service_k1cfkwb",
+        "template_wtlbki9",
+        formRef.current,
+        {
+          publicKey: "svBJIois6z0vhJqFf",
+        }
+      );
+
+      console.log("SUCCESS!");
 
       setIsSuccess(true);
       setIsopen(true);
       setInterest("");
-      setDesignation("")
+      setDesignation("");
       setfilename("Select a file to upload  *");
       reset();
     } catch (error) {
@@ -153,6 +168,7 @@ export default function ContactForm() {
                 </h1>
 
                 <form
+                  ref={formRef}
                   onSubmit={handleSubmit(onSubmit)}
                   className="pt-4 md:pt-7  space-y-2  md:space-y-4"
                 >
@@ -160,7 +176,7 @@ export default function ContactForm() {
                   <div className="flex sm:flex-row flex-col gap-2 sm:gap-3 md:gap-4  w-full mb-2 md:mb-4">
                     <div className="w-full">
                       <Input
-                       pattern="[A-Za-z\s]*"
+                        pattern="[A-Za-z\s]*"
                         type="text"
                         id="firstName"
                         placeholder="First name*"
@@ -174,7 +190,7 @@ export default function ContactForm() {
                     </div>
                     <div className="w-full">
                       <Input
-                       pattern="[A-Za-z\s]*"
+                        pattern="[A-Za-z\s]*"
                         type="text"
                         id="lastName"
                         placeholder="Last name*"
@@ -242,7 +258,7 @@ export default function ContactForm() {
                         ))}
                       </SelectContent>
                     </Select>
-
+                    <input type="hidden" name="designation" value={designation} />
                     {errors.designation && (
                       <p className="text-red-500 text-sm mt-1">
                         {errors.designation.message}
@@ -272,7 +288,7 @@ export default function ContactForm() {
                         ))}
                       </SelectContent>
                     </Select>
-
+ <input type="hidden" name="interest" value={interest} />
                     {errors.interest && (
                       <p className="text-red-500 text-sm mt-1">
                         {errors.interest.message}
@@ -283,7 +299,6 @@ export default function ContactForm() {
                   {/* textarea */}
                   <div>
                     <Textarea
-                     
                       id="message"
                       placeholder="Message "
                       {...register("message")}
@@ -378,8 +393,9 @@ export default function ContactForm() {
                 Message Sent!
               </h3>
               <p className="text-gray-600 text-base sm:text-lg pt-2">
-                Thank you for contacting us. We receive a high volume of inquiries. Rest assured, our team is committed to responding to each one. Please allow up to 3 business days to respond.
-
+                Thank you for contacting us. We receive a high volume of
+                inquiries. Rest assured, our team is committed to responding to
+                each one. Please allow up to 3 business days to respond.
               </p>
 
               {/* <button

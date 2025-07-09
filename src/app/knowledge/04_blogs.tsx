@@ -10,7 +10,6 @@ import img_06 from "@/../public/assets/knowledeg/blogs/06.jpg";
 import img_07 from "@/../public/assets/knowledeg/blogs/07.jpg";
 import img_08 from "@/../public/assets/knowledeg/blogs/08.jpg";
 
-
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 
 import { NewsCard } from "@/_components/molecules/newsCard";
@@ -22,7 +21,7 @@ type SectorType =
   | "Transportation"
   | "Energy"
   | "Urban Planning"
-  | "Rural and Agri Infra"
+  | "Rural and Agri Infra";
 
 interface NewsletterCard {
   id: number;
@@ -51,83 +50,93 @@ const allcards = [
   {
     id: 1,
     img: img_01,
+    slug: "how-to-make-india-highways-safe",
     category: "Transportation",
     title: "",
     sectors: "Transportation",
     date: "October 16, 2024",
     description: "How to make India’s highways safe",
-    link: "https://explore.theinfravisionfoundation.org/2024/10/16/a-national-road-safety-authority-crucial-for-improving-indias-deteriorating-road-safety/",
+    link: "/blogs/how-to-make-india-highways-safe",
   },
   {
     id: 2,
     img: img_02,
+    slug: "rural-and-agri-infra",
     category: "Rural and Agri Infra",
     title: "",
     sectors: "Rural and Agri Infra",
     date: "November 25, 2023",
     description: "Agri-warehousing: A problem of capacity",
-    link: "https://explore.theinfravisionfoundation.org/2023/11/25/poor-regulatory-capacity-of-the-warehousing-and-development-regulatory-authority-impacts-warehouse-based-sales-of-agri-commodities-and-issue-of-e-negotiable-warehouse-receipts/",
+    link: "/blogs/rural-and-agri-infra",
   },
   {
     id: 3,
     img: img_03,
+    slug: "multi-utility-infra-the-way-to-go",
     category: "Transportation",
     title: "",
     sectors: "Transportation",
     date: "October 9, 2023",
     description: "Multi-utility Infra, the way to go!",
-    link: "https://explore.theinfravisionfoundation.org/2023/10/09/newsletter-images-do-not-remove/",
+    link: "/blogs/multi-utility-infra-the-way-to-go",
   },
   {
     id: 4,
     img: img_04,
+    slug: "our-metro-rail-systems-must-be-sustainable-financially",
     category: "Transportation",
     title: "",
     sectors: "Transportation",
     date: "October 5, 2023",
     description: "Our metro rail systems must be sustainable, financially",
-    link: "https://explore.theinfravisionfoundation.org/2023/10/05/our-metro-rail-systems-must-be-sustainable-financially/",
+    link: "/blogs/our-metro-rail-systems-must-be-sustainable-financially",
   },
   {
     id: 5,
     img: img_05,
+    slug: "india-needs-sustainability-ratings-for-infrastructure-projects",
     category: "Urban Planning",
     title: "",
     sectors: "Urban Planning",
     date: "September 25, 2023",
-    description: "India needs sustainability ratings for Infrastructure projects",
-    link: "https://explore.theinfravisionfoundation.org/2023/09/25/india-needs-sustainability-ratings-for-infrastructure-projects/",
+    description:
+      "India needs sustainability ratings for Infrastructure projects",
+    link: "/blogs/india-needs-sustainability-ratings-for-infrastructure-projects",
   },
   {
     id: 6,
     img: img_06,
+    slug:"urban-mobility-in-india-why-metro-is-not-the-only-solution",
     category: "Transportation",
     title: "",
     sectors: "Transportation",
     date: "August 26, 2023",
-    description: "Urban mobility in India – Why metro is not the only solution!",
-    link: "https://explore.theinfravisionfoundation.org/2023/08/26/urban-mobility-in-india-why-metro-is-not-the-only-solution/",
+    description:
+      "Urban mobility in India – Why metro is not the only solution!",
+    link: "/blogs/urban-mobility-in-india-why-metro-is-not-the-only-solution",
   },
   {
-    id: 7,
-    img: img_07,
-    category: "Infrastructure",
-    title: "",
+     id: 7,
+     img: img_07,
+     slug:"getting-surety-bonds-market-ready",
+     category: "Infrastructure",
+     title: "",
     sectors: "Infrastructure",
     date: "May 18, 2023",
     description: "Getting Surety Bonds Market Ready",
-    link: "https://explore.theinfravisionfoundation.org/2023/05/18/getting-surety-bonds-market-ready/",
+    link: "/blogs/getting-surety-bonds-market-ready",
   },
   {
     id: 8,
-    img: img_08,
-    category: "Energy",
-    title: "",
+     img: img_08,
+     slug:"rooftop-solar-for-poverty-alleviation",
+     category: "Energy",
+     title: "",
     sectors: "Energy",
     date: "March 2, 2023",
-    description: "Rooftop Solar for Poverty Alleviation",
-    link: "https://explore.theinfravisionfoundation.org/2023/03/02/rooftop-solar-for-poverty-alleviation/",
-  },
+     description: "Rooftop Solar for Poverty Alleviation",
+     link: "/blogs/rooftop-solar-for-poverty-alleviation",
+   },
 ];
 
 export default function Blogs() {
@@ -146,7 +155,7 @@ export default function Blogs() {
       // const tabRect = tab.getBoundingClientRect();
       const offset =
         tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
-      container.scrollTo({ left: offset, behavior: 'smooth' });
+      container.scrollTo({ left: offset, behavior: "smooth" });
     }
   };
 
@@ -156,8 +165,8 @@ export default function Blogs() {
       tab === "Publication year"
         ? YEARS[0]
         : tab === "Sectors"
-          ? SECTORS[0]
-          : "All"
+        ? SECTORS[0]
+        : "All"
     );
     setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
@@ -193,10 +202,11 @@ export default function Blogs() {
               tabRefs.current[index] = el;
             }}
             className={`text-base text-nowrap cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
-                            ${selectedFilter === filter
-                ? "border border-pink text-white bg-pink font-medium"
-                : "border border-lightgray/30"
-              }`}
+                            ${
+                              selectedFilter === filter
+                                ? "border border-pink text-white bg-pink font-medium"
+                                : "border border-lightgray/30"
+                            }`}
             onClick={() => handleFilterClick(filter, index)}
           >
             {filter}
@@ -240,10 +250,11 @@ export default function Blogs() {
                 <button
                   key={tab}
                   className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4
-                                        ${selectedTab === tab
-                      ? "border border-pink text-pink font-medium"
-                      : "border border-lightgray/30"
-                    }`}
+                                        ${
+                                          selectedTab === tab
+                                            ? "border border-pink text-pink font-medium"
+                                            : "border border-lightgray/30"
+                                        }`}
                   onClick={() => handleTabClick(tab)}
                 >
                   {tab}
@@ -258,12 +269,13 @@ export default function Blogs() {
 
           {/* Newsletter Cards */}
           <div
-            className={`${selectedTab === "Publication year" ? "pt-8" : "pt-8"
-              }`}
+            className={`${
+              selectedTab === "Publication year" ? "pt-8" : "pt-8"
+            }`}
           >
-            {
-              filteredCards.length === 0 && <div className="flex justify-center"> No results </div>
-            }
+            {filteredCards.length === 0 && (
+              <div className="flex justify-center"> No results </div>
+            )}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 xlg:gap-24">
               {filteredCards.slice(0, visibleCount).map((card) => (
                 <div key={card.id}>

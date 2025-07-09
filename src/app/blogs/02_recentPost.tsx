@@ -1,24 +1,24 @@
 import image1 from "@/../public/assets/resource/blogs/image1.png";
 import image2 from "@/../public/assets/resource/blogs/image2.png";
 import image3 from "@/../public/assets/resource/blogs/image3.png";
-import Card from "@/_components/molecules/cardTemplate";
+import { NewsCard } from "@/_components/molecules/newsCard";
 
 export default function RecentPostDetails() {
   return (
     <>
       <div>
         <h3 className="text-darkgray font-medium py-3">Recent Post</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {allcards.map((ele, index) => {
             return (
               <div key={index} className="mb-4">
-                <Card
+                <NewsCard
                   date={ele.date}
                   title={ele.title}
                   image={ele.img}
                   link={ele.link}
                   category={ele.category}
-                  ctaText="Read more"
+                  ctaType="read more"
                 />
               </div>
             );
