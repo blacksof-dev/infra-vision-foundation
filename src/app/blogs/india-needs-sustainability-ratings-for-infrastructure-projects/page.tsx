@@ -12,15 +12,18 @@ export default function Page() {
             India Needs Sustainability Ratings for Infrastructure Projects
           </h2>
           <div>
-            <div className="flex gap-4 py-2 ">
-              <h6 className="text-base  text-lightgray ">
-                {" "}
-                Nitin Zamre, Former COO, The Infravision Foundation
-              </h6>
-              <div className="border border-lightgray/30"></div>
-              <h6 className="text-base text-lightgray">September 25, 2023</h6>
+            <div className="flex-col md:flex-row flex justify-between pt-3 ">
+              <div>
+                <h6 className="text-base  text-lightgray max-w-xl">
+                  {" "}
+                  Nitin Zamre, Former COO, The Infravision Foundation
+                </h6>
+              </div>
+              <div>
+                <h6 className="text-base text-lightgray md:border-l md:border-lightgray/30 md:ps-4 py-2">September 25, 2023</h6>
+              </div>
             </div>
-            <div className=" lg:pt-8">
+            <div className=" py-4 md:py-8">
               <div className="w-full h-full ">
                 <Image
                   src={image1}
@@ -30,7 +33,7 @@ export default function Page() {
                 />
               </div>
               <div>
-                <h3 className="text-black font-medium my-7">Description</h3>
+                <h3 className="text-black font-medium my-4 md:my-7">Description</h3>
                 <div>
                   <p className="text-darkgray">
                     India’s ongoing economic transition will make it a $ 5
@@ -184,6 +187,7 @@ export default function Page() {
                         target="_blank"
                         link="/assets/knowledeg/blogsPdf/sustainability.pdf"
                         borderColor="white"
+                         classes="text-[16px]"
                       />
                     </div>
                   </div>

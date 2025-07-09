@@ -11,16 +11,19 @@ export default function Page() {
             Getting Surety Bonds Market Ready
           </h2>
           <div>
-            <div className="flex gap-4 py-2 ">
-              <h6 className="text-base  text-lightgray ">
-                Nitin Zamre, Former COO, The Infravision Foundation, with
-                technical inputs provided from Mr Supratim Sarkar and Prof Manoj
-                Mohan (SPJIMR)
-              </h6>
-              <div className="border border-lightgray/30"></div>
-              <h6 className="text-base text-lightgray">May 18, 2023</h6>
+            <div className="flex-col md:flex-row flex justify-between pt-3">
+              <div>
+                <h6 className="text-base  text-lightgray max-w-xl ">
+                  Nitin Zamre, Former COO, The Infravision Foundation, with
+                  technical inputs provided from Mr Supratim Sarkar and Prof
+                  Manoj Mohan (SPJIMR)
+                </h6>
+              </div>
+              <div className="">
+                <h6 className="text-base text-lightgray md:border-l md:border-lightgray/30 md:ps-4 py-2">May 18, 2023</h6>
+              </div>
             </div>
-            <div className=" lg:pt-8">
+            <div className="py-4 md:py-8">
               <div className="w-full h-full ">
                 <Image
                   src={image2}
@@ -30,7 +33,7 @@ export default function Page() {
                 />
               </div>
               <div>
-                <h3 className="text-black font-medium my-7">Description</h3>
+                <h4 className="text-black font-medium my-4 md:my-7">Description</h4>
                 <div>
                   <p className="text-darkgray font-medium">
                     There is still some distance to go before Surety Bonds start
@@ -219,6 +222,7 @@ export default function Page() {
                         target="_blank"
                         link="/assets/knowledeg/blogsPdf/surety.pdf"
                         borderColor="white"
+                        classes="text-[16px]"
                       />
                     </div>
                   </div>

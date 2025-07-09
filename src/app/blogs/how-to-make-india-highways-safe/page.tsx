@@ -3,7 +3,6 @@ import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import Image from "next/image";
 import RecentPostDetails from "../02_recentPost";
 
-
 export default function Page() {
   return (
     <>
@@ -13,12 +12,21 @@ export default function Page() {
             How to make India’s highways safe
           </h2>
           <div>
-            <div className="flex gap-4 py-2 ">
-              <h6 className="text-base  text-lightgray ">By Admin</h6>
-              <div className="border border-lightgray/30"></div>
-              <h6 className="text-base text-lightgray">October 16, 2024</h6>
+            <div className="flex-col md:flex-row flex justify-between pt-3">
+              <div>
+                <h6 className="text-base  text-lightgray max-w-xl">
+                  {" "}
+                  Jagan Shah, CEO, The Infravision Foundation
+                </h6>
+              </div>
+
+              <div className="">
+                <h6 className="text-base text-lightgray md:border-l md:border-lightgray/30 md:ps-4 py-2">
+                  October 16, 2024
+                </h6>
+              </div>
             </div>
-            <div className=" lg:pt-8">
+            <div className=" py-4 md:py-8">
               <div className="w-full h-full ">
                 <Image
                   src={image1}
@@ -28,7 +36,7 @@ export default function Page() {
                 />
               </div>
               <div>
-                <h3 className="text-black font-medium my-7">Description</h3>
+                <h3 className="text-black font-medium my-4 md:my-7">Description</h3>
                 <div>
                   <p className="text-darkgray">
                     A fully empowered National Road Safety Authority, as
@@ -177,9 +185,9 @@ export default function Page() {
                         target="_blank"
                         link="/assets/knowledeg/blogsPdf/safeHighRailway.pdf"
                         borderColor="white"
+                        classes="text-[16px]"
                       />
                     </div>
-                    
                   </div>
                 </div>
               </div>

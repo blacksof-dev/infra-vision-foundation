@@ -319,7 +319,7 @@ export function UnderlineWithHover<T extends "submit" | "button">({
     <div className="group relative  ">
       {role === "link" ? (
         <Link
-          className={`${sizeClass}  text-${color} cursor-pointer  text-nowrap w-40 px-1 py-3 font-medium relative  overflow-hidden  group-hover:text-white transition-all duration-300`}
+          className={`${sizeClass} ${classes}  text-${color} cursor-pointer  text-nowrap w-40 px-1 py-3 font-medium relative  overflow-hidden  group-hover:text-white transition-all duration-300`}
           href={link}
         >
           {text}
