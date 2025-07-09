@@ -35,7 +35,7 @@ export default function Banner() {
                   through action research and advocacy.
                 </h5>
               </div>
-              <Link
+              {/* <Link
                 href="#who-we-are"
                 className="flex  gap-2 mt-4 lg:gap-4 items-center justify-center group  w-fit cursor-pointer"
               >
@@ -48,7 +48,7 @@ export default function Banner() {
                     className={`   text-pink  group-hover:text-white text-2xl z-[2]`}
                   />
                 </button>
-              </Link>
+              </Link> */}
             </div>
             <div className="absolute bottom-8 xl:bottom-8 w-screen p-1">
               <Updates />

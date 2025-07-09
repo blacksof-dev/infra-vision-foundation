@@ -10,6 +10,10 @@ import img_06 from "@/../public/assets/knowledeg/researchPapers/06.jpg";
 import img_07 from "@/../public/assets/knowledeg/researchPapers/07.jpg";
 import img_08 from "@/../public/assets/knowledeg/researchPapers/08.jpg";
 import img_09 from "@/../public/assets/knowledeg/researchPapers/09.jpg";
+import img_10 from "@/../public/assets/knowledeg/researchPapers/10.png";
+import img_11 from "@/../public/assets/knowledeg/researchPapers/11.jpg";
+import img_12 from "@/../public/assets/knowledeg/researchPapers/12.jpg";
+
 
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 
@@ -148,6 +152,36 @@ const allcards = [
     date: " ",
     description: "Ways to enhance warehouse-based sales and lending for agriculture commodities",
     link: "/assets/pdf/Warehousing-Whitepaper.pdf",
+  },
+  {
+    id: 10,
+    img: img_12,
+    category: "Urban Planning",
+    title: "",
+    sectors: "Urban Planning",
+    date: " ",
+    description:"Relieving urban congestion and promoting tourism through ropeways",
+    link: "/assets/pdf/urbanCongestion.pdf",
+  },
+  {
+    id: 11,
+    img: img_10,
+    category: "Urban Planning",
+    title: "",
+    sectors: "Urban Planning",
+    date: " ",
+    description: "Decarbonizing urban transport using traffic and transport data from ICCC: A Pilot Study in NOIDA",
+    link: "/assets/pdf/decarbonizing.pdf",
+  },
+  {
+    id: 12,
+    img: img_11,
+    category: "Rural and Agri Infra",
+    title: "",
+    sectors: "Rural and Agri Infra",
+    date: " ",
+    description: "Expanding agricultural exports of Arunachal Pradesh through infrastructure development",
+    link: "/assets/pdf/expanding.pdf",
   },
 ];
 

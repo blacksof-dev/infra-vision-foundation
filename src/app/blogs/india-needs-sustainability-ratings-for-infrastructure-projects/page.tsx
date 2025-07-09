@@ -14,7 +14,7 @@ export default function Page() {
           <div>
             <div className="flex-col md:flex-row flex justify-between pt-3 ">
               <div>
-                <h6 className="text-base  text-lightgray max-w-xl">
+                <h6 className="text-sm sm:text-base  text-lightgray max-w-xl">
                   {" "}
                   Nitin Zamre, Former COO, The Infravision Foundation
                 </h6>
@@ -33,9 +33,9 @@ export default function Page() {
                 />
               </div>
               <div>
-                <h3 className="text-black font-medium my-4 md:my-7">Description</h3>
-                <div>
-                  <p className="text-darkgray">
+              
+                <div className="py-3">
+                  <p className="text-darkgray text-sm sm:text-base">
                     India’s ongoing economic transition will make it a $ 5
                     trillion economy by 2026-27 and possibly the third-largest
                     global economy soon. This remarkable growth hinges on
@@ -47,7 +47,7 @@ export default function Page() {
                     yielding a potent multiplier effect of 2.45 in the following
                     year, and 3.14 in subsequent ones.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     The Government is also equally committed to India’s
                     environmental and social (E&S) goals.{" "}
                     <span className="font-medium text-darkgray">
@@ -59,7 +59,7 @@ export default function Page() {
                     Development Goals (SDGs) to be met by 2030.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     <span className="font-medium text-darkgray">
                       An inherent flipside of infrastructure development is its
                       significant negative E&S impact, creating conflict with
@@ -75,7 +75,7 @@ export default function Page() {
                     has already begun.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     <span className="font-medium text-darkgray">
                       However, economic growth can still be achieved without
                       compromising on E&S goals by adopting a sustainable
@@ -89,7 +89,7 @@ export default function Page() {
                     considering the larger E&S goals.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     <span className="font-medium text-darkgray">
                       The Infravision Foundation’s (TIF) research paper,
                       published in collaboration with Envint,
@@ -108,7 +108,7 @@ export default function Page() {
                     aspirations and commitments.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     The proposed sustainability ratings mechanism adds to the
                     existing regulations and embeds E&S considerations in the
                     project lifecycle. It outlines a ratings regulation
@@ -116,7 +116,7 @@ export default function Page() {
                     applicability, adoption of ratings and the ratings process.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     This research paper proposes S-I Rating, a sustainability
                     ratings mechanism for infrastructure projects based on
                     environmental and social Key Performance Indicators (KPIs)
@@ -129,7 +129,7 @@ export default function Page() {
                     Management, among others.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     These KPIs range from the basics related to compliance
                     (e.g., Environmental Management) to aspirational (e.g.,
                     carbon mitigation plans). The responses could range from
@@ -137,7 +137,7 @@ export default function Page() {
                     weightage, and based on the responses and the weightages, a
                     ratings score is generated.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     Such a mechanism will likely benefit all the stakeholders.
                     It will enable governments and project sponsors to make ‘go
                     no-go’ decision-making based on sustainability parameters,
@@ -149,7 +149,7 @@ export default function Page() {
                     experience.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     Implementation of the S-I Ratings mechanism needs a robust
                     institutional framework with clear roles and
                     responsibilities. TIF’s research paper recommends the
@@ -157,7 +157,7 @@ export default function Page() {
                     under the aegis of the National Bank for Financing
                     Infrastructure and Development
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     (NaBFID) to act as the owner and promoter for the
                     administration, developing the process and promotion of
                     adoption of such ratings. As the principal Infrastructure

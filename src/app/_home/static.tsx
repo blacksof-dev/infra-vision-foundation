@@ -38,7 +38,7 @@ import LawrenceCardoza from "@/../public/assets/home/team/LawrenceCardoza.jpg";
 import PriyankaBains from "@/../public/assets/home/team/PriyankaBains.jpg";
 import RumjhumChatterjee from "@/../public/assets/home/team/RumjhumChatterjee.jpg";
 // import Vinayak from "@/../public/assets/home/team/Vinayak.png";
-import VrindaSingh from "@/../public/assets/home/team/VrindaSingh.png";
+import VrindaSingh from "@/../public/assets/home/team/VrindaSingh.jpg";
 
 import { StaticImageData } from "next/image";
 

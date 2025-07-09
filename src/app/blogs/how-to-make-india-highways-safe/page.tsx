@@ -14,7 +14,7 @@ export default function Page() {
           <div>
             <div className="flex-col md:flex-row flex justify-between pt-3">
               <div>
-                <h6 className="text-base  text-lightgray max-w-xl">
+                <h6 className="text-sm sm:text-base  text-lightgray max-w-xl">
                   {" "}
                   Jagan Shah, CEO, The Infravision Foundation
                 </h6>
@@ -36,9 +36,9 @@ export default function Page() {
                 />
               </div>
               <div>
-                <h3 className="text-black font-medium my-4 md:my-7">Description</h3>
-                <div>
-                  <p className="text-darkgray">
+               
+                <div className="py-3">
+                  <p className="text-darkgray text-sm sm:text-base">
                     A fully empowered National Road Safety Authority, as
                     proposed in the 2014 Draft Road Transport and Safety Bill,
                     to maintain standards, conduct audits, ensure compliance,
@@ -61,7 +61,7 @@ export default function Page() {
                     symptomatic of a society lacking both “fear and respect for
                     the law.”
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     The Ministry of Road Transport and Highways (MoRTH) reports
                     that in 2022 alone, India witnessed 4,61,312 road accidents
                     that resulted in 1,68,491 deaths and 4.43,366 injuries — an
@@ -75,7 +75,7 @@ export default function Page() {
                     per cent to 5 per cent of national gross domestic product.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     The challenges of road safety are multifaceted, including
                     infrastructure deficiencies, driver behaviour and
                     enforcement challenges. Inadequate road design, poor
@@ -95,7 +95,7 @@ export default function Page() {
                     projects.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     While India’s road safety record continues to deteriorate,
                     other countries in the Indo-Pacific region, such as
                     Indonesia, Thailand and Sri Lanka, have successfully reduced
@@ -114,7 +114,7 @@ export default function Page() {
                     fails.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3  text-sm sm:text-base">
                     The Infravision Foundation-IIT Delhi study suggests that
                     India must align with global best practices to make its
                     highways safer. Road-owning and operating agencies,
@@ -129,7 +129,7 @@ export default function Page() {
                     contractors held professionally liable for compliance.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     A multifaceted approach is necessary, combining
                     institutional reforms, technological advancements, and
                     comprehensive policy measures. In the short term, MoRTH must
@@ -148,7 +148,7 @@ export default function Page() {
                     priority at every stage of highway development.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     Technological solutions play a crucial role in this
                     endeavour. MoRTH has initiated a programme for black spot
                     identification and rectification since 2015. The recent

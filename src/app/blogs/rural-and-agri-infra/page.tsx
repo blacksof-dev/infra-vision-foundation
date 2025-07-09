@@ -14,7 +14,7 @@ export default function Page() {
           <div>
             <div className="flex-col md:flex-row flex justify-between pt-3 ">
               <div>
-                 <h6 className="text-base  text-lightgray max-w-xl">
+                 <h6 className="text-sm sm:text-base  text-lightgray max-w-xl">
                 Nitin Zamre, Former COO, The Infravision Foundation, with
                 technical inputs from Gopal Naik, Professor, IIM-B, and Gopi
                 Shankar, Assistant Professor, Azim Premji University, Bangalore
@@ -36,9 +36,9 @@ export default function Page() {
                 />
               </div>
               <div>
-                <h3 className="text-black font-medium my-4 md:my-7">Description</h3>
-                <div>
-                  <p className="text-darkgray">
+           
+                <div className="py-3">
+                  <p className="text-darkgray text-sm sm:text-base">
                     Warehousing is a critical element of supply chain
                     management, enabling the storage of commodities and
                     smoothening of the supply-demand and price fluctuations. To
@@ -52,7 +52,7 @@ export default function Page() {
                     productivity, and quality services of warehouses, as well as
                     digitisation as key strategies.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     However, the warehousing ecosystem has failed to meet the
                     intended outcomes. The issuance of e-Negotiable Warehouse
                     Receipts (NWR) and warehouse-based sales of
@@ -68,7 +68,7 @@ export default function Page() {
                     improve them.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     The warehousing ecosystem faces two primary challenges. The
                     first is related to warehouse registration. Estimates show
                     that only 6.35% of the warehouses and 32.02% of the
@@ -81,7 +81,7 @@ export default function Page() {
                     is high even without registration.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     WDRA does not guarantee the security of quantity or quality
                     of stored commodities, even in registered warehouses. Since
                     warehousemen also do not assume custodianship of the goods
@@ -92,7 +92,7 @@ export default function Page() {
                     with no noticeable benefits.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     The second challenge relates to the poor regulatory capacity
                     of WDRA, which ultimately impacts the warehouse-based sales
                     and issuance of e-NWRs. WDRA aims to directly regulate about
@@ -101,7 +101,7 @@ export default function Page() {
                     warehouses with no clear knowledge of what it is regulating.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     Warehouse inspections is another, perhaps more critical
                     aspect. WDRA’s inspections focus primarily on compliance
                     with the specified registration requirements relating mostly
@@ -114,13 +114,13 @@ export default function Page() {
                     handling the warehouse business operations.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     These challenges must be overcome to give confidence to
                     lenders. The TIF and IIM-B research paper proposes a
                     multi-pronged approach to enhance e-NWR-based lending and
                     warehouse-based sales.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     It recommends mandatory WDRA registration for warehouses,
                     but delinks the requirement of a security deposit to bring
                     all warehouses on one platform. The research paper then
@@ -135,21 +135,21 @@ export default function Page() {
                     office amenities, and access to infrastructure for assaying
                     and testing.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     The paper further recommends the creation of a cadre of
                     ‘Chartered Warehouse Auditors’ to assess the quality of the
                     warehouses. They will bring in professional management to
                     enhance the credibility of the warehouses and improve
                     lenders’ confidence.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     A platform accessible through a portal/mobile app can make
                     available information like ratings, space availability,
                     location, and commodities stored for prospective users. The
                     platform should enable seamless registration and online
                     updating of transactions.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     Only good-quality warehouses with better ratings should be
                     allowed to issue e-NWRs. To incentivise upgradation and
                     better ratings, financial incentives may be offered to
@@ -166,7 +166,7 @@ export default function Page() {
                     research on dispute-causing issues (e.g., losses) and a
                     better dispute resolution mechanism must be established.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     WDRA must proactively create awareness about the
                     professional management of warehouses and their regulation.
                     The state governments must take responsibility for improving
@@ -176,12 +176,7 @@ export default function Page() {
                   </p>
 
                   <div className="my-7">
-                    <p className="text-black/80 font-medium">By Nitin Zamre, Former COO, The Infravision Foundation, with
-                technical inputs from Gopal Naik, Professor, IIM-B, and Gopi
-                Shankar, Assistant Professor, Azim Premji University, Bangalore </p>
-                    <p className="text-black/80 font-medium pt-3">
-                      [The author is COO of The Infravision Foundation]{" "}
-                    </p>
+                  
                     <div className="w-fit py-3 px-2 overflow-hidden">
                       <UnderlineWithHover
                         size="small"

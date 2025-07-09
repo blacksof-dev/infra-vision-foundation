@@ -301,7 +301,26 @@ The study identified Noida as having exceptional potential to become a model cit
       },
       {
         month: "July",
-        events: [],
+        events: [
+          {
+            date: "3",
+            dayTime: "Thursday",
+            meetingType: "External engagement",
+            desc: "Formal presentation of the Report on ‘Expanding Agricultural Exports of Arunachal Pradesh Through Infrastructure Development",
+            ctaText: "See details",
+            details: {
+              date: "July 3, 2025",
+              images: [ {
+               image: "/assets/outreach-and-engagements/eventImages/july3_2025.jpeg",
+               description:"",
+              }
+              ],
+              content: `
+              The Infravision Foundation’s CEO Jagan Shah and Advocacy Head Kaveree Bamzai presented their report to Union Minister, Development of North Eastern Region (DoNER) Shri Jyotiraditya M. Scindia, recommending strategies to augment agriculture through infrastructure development in Arunachal Pradesh.\n
+             This collaborative research with APEDA (Agricultural & Processed Food Products Export Development Authority) identified severe post-harvest losses due to cold chain gaps, lack of market linkages and certification Infrastructure.`,
+            },
+          },
+        ],
       },
       {
         month: "August",
@@ -1339,7 +1358,7 @@ The study identified Noida as having exceptional potential to become a model cit
               key={idx}
             >
               <h4 className="font-medium text-[#C82249] mb-3 text-lg inline-block">
-                {monthData.month},
+                {monthData.month}
               </h4>{" "}
               <h4 className="font-medium text-[#C82249] mb-3 text-lg inline-block">
                 {year} 

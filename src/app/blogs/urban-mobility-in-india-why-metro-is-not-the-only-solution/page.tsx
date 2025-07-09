@@ -11,15 +11,21 @@ export default function Page() {
             Urban Mobility in India – Why Metro is not the only solution!
           </h2>
           <div>
-            <div className="flex gap-4 py-2 ">
-              <h6 className="text-base  text-lightgray ">
+            <div className="flex-col md:flex-row flex justify-between pt-3">
+              <div>
+                  <h6 className="text-sm sm:text-base  text-lightgray max-w-xl">
                 Nitin Zamre, Former COO, The Infravision Foundation and inputs
                 provided by Prof Geetam Tiwari, TRIPP Chair Professor, IIT Delhi
               </h6>
-              <div className="border border-lightgray/30"></div>
-              <h6 className="text-base text-lightgray">August 26, 2023</h6>
+              </div>
+              <div>
+                 <h6 className="text-base text-lightgray md:border-l md:border-lightgray/30 md:ps-4 py-2">August 26, 2023</h6>
+              </div>
+            
+             
+             
             </div>
-            <div className=" lg:pt-8">
+            <div className=" py-4 md:py-8">
               <div className="w-full h-full ">
                 <Image
                   src={image2}
@@ -29,9 +35,9 @@ export default function Page() {
                 />
               </div>
               <div>
-                <h3 className="text-black font-medium my-7">Description</h3>
-                <div>
-                  <p className="text-darkgray">
+                
+                <div className="py-3">
+                  <p className="text-darkgray text-sm sm:text-base">
                     Globally, a variety of Public Transport (PT) systems have
                     been developed and used to meet urban travel demand. These
                     include high-capacity systems like metro, Light Rail Transit
@@ -40,7 +46,7 @@ export default function Page() {
                     (rickshaws, taxis, etc.). Some difficult terrains have
                     adopted ropeway transport.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     Urban India has been experiencing an upgrade of its PT
                     systems to meet the rapidly growing travel demand.{" "}
                     <span className="font-medium text-darkgray">
@@ -52,7 +58,7 @@ export default function Page() {
                     are either under construction or approved or proposed.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     <span className="font-medium text-darkgray">
                       However, these metro networks have not yet achieved the
                       expected benefits primarily because the ridership is much
@@ -75,19 +81,19 @@ export default function Page() {
                     </span>
                   </p>
 
-                  <p className="text-darkgray font-medium pt-3">
+                  <p className="text-darkgray font-medium pt-3 text-sm sm:text-base">
                     A research paper published by The Infravision Foundation in
                     collaboration with IIT Delhi presents a framework to
                     understand the suitability of various PT system options for
                     Indian cities.
                   </p>
 
-                  <p className="text-darkgray font-medium pt-3">
+                  <p className="text-darkgray font-medium pt-3 text-sm sm:text-base">
                     The suitability of various PT systems is dictated by what
                     urban planners call “differentiated travel demand”.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     Differentiated travel demand is characterised by the number
                     of trips per day, distance travelled per trip, ability to
                     spend, city population, and vehicle ownership. This demand
@@ -95,14 +101,14 @@ export default function Page() {
                     benefit for most citizens.
                   </p>
 
-                  <p className="text-darkgray font-medium pt-3">
+                  <p className="text-darkgray font-medium pt-3 text-sm sm:text-base">
                     Urban Indian trip length data shows that the majority
                     (30%–60%) of the urban trips are less than 5 km, and more
                     than 75% of the trips are less than 10 km, regardless of
                     population density and per capita income.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     Different PT systems are suitable for different travel
                     demands. While metro-like systems suit long-distance trips (
                     10 km), bus systems, Light Rail Transits (LRT), trams, and
@@ -112,7 +118,7 @@ export default function Page() {
                     less than 5 km for small cities and serve as a feeder for
                     larger systems like metro, LRT, or bus systems.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     Therefore, an integrated public transport system is
                     essential to meet the differentiated travel demand in
                     different city sizes.{" "}
@@ -122,7 +128,7 @@ export default function Page() {
                       strong policy and implementation framework.
                     </span>
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     For commuters, convenience and reliability dictate the
                     preference. PT systems have a fixed route and many commuters
                     need to make transfers in reaching their destination, which
@@ -130,7 +136,7 @@ export default function Page() {
                     commuter may spend significant time accessing and exiting
                     the PT system.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     In contrast, private vehicles (PVs) are under the control of
                     the user offering convenience, adaptability and flexibility
                     as a door-to-door unimodal service. Rising incomes and
@@ -140,15 +146,15 @@ export default function Page() {
                     system, therefore, must compete with the convenience and
                     comfort offered by personal vehicles.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     So how should the city managers and urban planners plan an
                     appropriate mobility infrastructure?
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     Responses to the following questions can guide them:
                   </p>
-                  <ul className="list-disc list-inside py-3 text-darkgray">
+                  <ul className="list-disc list-inside py-3 text-sm sm:text-base text-darkgray">
                     <li className="py-2">How to reduce dependence on PVs?</li>
                     <li className="py-2">
                       How to retain current PT users as incomes rise and PV
@@ -168,7 +174,7 @@ export default function Page() {
                     </li>
                   </ul>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     WDRA must proactively create awareness about the
                     professional management of warehouses and their regulation.
                     The state governments must take responsibility for improving
@@ -177,13 +183,13 @@ export default function Page() {
                     in warehousing.
                   </p>
 
-                  <p className="text-darkgray font-medium pt-3">
+                  <p className="text-darkgray font-medium pt-3 text-sm sm:text-base">
                     The key, therefore, lies in understanding the differentiated
                     travel demand, the complementarity of different PT systems
                     and providing an integrated solution at all levels — policy,
                     planning, design, and operations.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     For example, in megacities like Delhi with about 300 km of
                     operating metro, the existing bus system must be
                     strengthened. The operational integration of the bus system
@@ -196,7 +202,7 @@ export default function Page() {
                     vehicles are suitable for shorter trips in Patiala and the
                     last-mile connectivity to bus and metro systems in Delhi.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     Such a robust and scientific framework can help Indian
                     cities and their managers provide a comfortable and
                     accessible PT system and improve the “ease of living” for
@@ -214,6 +220,7 @@ export default function Page() {
                         target="_blank"
                         link="/assets/knowledeg/blogsPdf/urban.pdf"
                         borderColor="white"
+                         classes="text-[16px]"
                       />
                     </div>
                   </div>

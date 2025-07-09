@@ -35,10 +35,10 @@ import supratimSarkar from "@/../public/assets/home/fellows/supratimSarkar.jpg";
 import MutumChaobisana from "@/../public/assets/home/team/MutumChaobisana.png";
 import KavereeBamzai from "@/../public/assets/home/team/KavereeBamzai.png";
 import LawrenceCardoza from "@/../public/assets/home/team/LawrenceCardoza.png";
-import PriyankaBains from "@/../public/assets/home/team/PriyankaBains.png";
+import PriyankaBains from "@/../public/assets/home/team/PriyankaBains.jpg";
 import RumjhumChatterjee from "@/../public/assets/home/team/RumjhumChatterjee.jpg";
 // import Vinayak from "@/../public/assets/home/team/Vinayak.png";
-import VrindaSingh from "@/../public/assets/home/team/VrindaSingh.png";
+import VrindaSingh from "@/../public/assets/home/team/VrindaSingh.jpg";
 
 import { StaticImageData } from "next/image";
 

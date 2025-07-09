@@ -159,21 +159,7 @@ const EventsDetails = [
     btnTitle: "Read more",
     link: "/assets/pdf/Study-on-Implementation-of-Compensatory-Afforestation-in-India.pdf",
   },
-  // {
-  //   image: infraKathaEvent,
-  //   category: "Upcoming event",
-  //   title:
-  //     "InfraKatha #8 with Economist Montek Singh Ahluwalia, India Habitat Centre, New Delhi,7 PM onwards",
-  //   btnTitle: "Register now",
-  //   link: "https://www.youtube.com/watch?v=o6nb3IejARc&t=13s&ab_channel=TheInfravisionFoundation",
-  // },
-  // {
-  //   image: afforestation,
-  //   category: "Research paper",
-  //   title: "Study on Implementation of Compensatory Afforestation in India",
-  //   btnTitle: "Read more",
-  //   link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/03/Study-on-Implementation-of-Compensatory-Afforestation-in-India.pdf",
-  // },
+ 
   {
     image: infraKatha,
     category: "InfraKatha #8",
@@ -194,7 +180,7 @@ const EventsDetails = [
     category: "Blog",
     title: "Agri-Warehousing: A problem of capacity",
     btnTitle: "Read more",
-    link: "https://theinfravisionfoundation.org/2023/11/25/poor-regulatory-capacity-of-the-warehousing-and-development-regulatory-authority-impacts-warehouse-based-sales-of-agri-commodities-and-issue-of-e-negotiable-warehouse-receipts/",
+    link: "/blogs/rural-and-agri-infra",
   },
   {
     image: InfrapanditAward,

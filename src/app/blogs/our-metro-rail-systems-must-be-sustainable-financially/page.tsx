@@ -9,19 +9,25 @@ export default function Page() {
       <div className="max-w-5xl mx-auto pt-[27%] sm:pt-[20%] lg:pt-[10%] blade-bottom-padding-lg">
         <div className="px-4 ">
           <h2 className="font-poppins text-black font-medium">
-          Our Metro Rail Systems must be sustainable, financially
+            Our Metro Rail Systems must be sustainable, financially
           </h2>
           <div>
-            <div className="flex gap-4 py-2 ">
-              <h6 className="text-base  text-lightgray ">
-                {" "}
-               Nitin Zamre, Former COO, The Infravision Foundation and Dr Sandip Chakrabarti, Professor, IIM-A
+            <div className="flex-col md:flex-row flex justify-between pt-3 ">
+              <div>
+                <h6 className="text-sm sm:text-base  text-lightgray max-w-xl">
+                  {" "}
+                  Nitin Zamre, Former COO, The Infravision Foundation and Dr
+                  Sandip Chakrabarti, Professor, IIM-A
+                </h6>
+              </div>
 
-              </h6>
-              <div className="border border-lightgray/30"></div>
-              <h6 className="text-base text-lightgray">October 5, 2023</h6>
+              <div>
+                <h6 className="text-base text-lightgray md:border-l md:border-lightgray/30 md:ps-4 py-2">
+                  October 5, 2023
+                </h6>
+              </div>
             </div>
-            <div className=" lg:pt-8">
+            <div className=" py-4 md:py-8">
               <div className="w-full h-full ">
                 <Image
                   src={image1}
@@ -31,69 +37,158 @@ export default function Page() {
                 />
               </div>
               <div>
-                <h3 className="text-black font-medium my-7">Description</h3>
-                <div>
-                  <p className="text-darkgray">
-                    Metro rail’s potential to improve urban traffic congestion, air quality, mobility, accessibility, and the local economy is globally recognised. India’s metro network has also increased significantly, from 229 km across five cities in 2014 to 860 km across 20 cities in April 2023. In the 2014-2022 period, about INR 90,000 Crore have been released by the Government of India for these projects. While metro rail systems have raised the bar for public transport quality, they are expensive, and their financial performance and patronage are not impressive. Existing revenue streams of most systems, including the large and mature ones, are unable to meet total expenses. <span className="text-darkgray font-medium">The significant financial losses incurred by metro rail systems may soon start to outweigh the large environmental and social benefits they offer.</span>
+                
+                <div className="my-3">
+                  <p className="text-darkgray text-sm sm:text-base ">
+                    Metro rail’s potential to improve urban traffic congestion,
+                    air quality, mobility, accessibility, and the local economy
+                    is globally recognised. India’s metro network has also
+                    increased significantly, from 229 km across five cities in
+                    2014 to 860 km across 20 cities in April 2023. In the
+                    2014-2022 period, about INR 90,000 Crore have been released
+                    by the Government of India for these projects. While metro
+                    rail systems have raised the bar for public transport
+                    quality, they are expensive, and their financial performance
+                    and patronage are not impressive. Existing revenue streams
+                    of most systems, including the large and mature ones, are
+                    unable to meet total expenses.{" "}
+                    <span className="text-darkgray font-medium">
+                      The significant financial losses incurred by metro rail
+                      systems may soon start to outweigh the large environmental
+                      and social benefits they offer.
+                    </span>
                   </p>
-                  <p className="text-darkgray pt-3">
-                   A research paper by The Infravision Foundation (TIF) and IIM-Ahmedabad (IIM-A) recommends a comprehensive institutional and policy framework for ensuring financial sustainability that can guarantee continued political and social support and ensure that these systems can effectively deliver on their goals.
-                  </p>
-
-                  <p className="text-darkgray pt-3">
-                   While the selection of an appropriate transport system for a city is a separate problem (dealt with in TIF’s earlier research), ensuring satisfactory financial performance of the existing systems is essential. <span className="text-darkgray font-medium">The key is to regularly set appropriate fares, boost non-fare revenues, and promote ridership.</span> Non-fare revenue is the revenue generated by any means other than the cost of the travel ticket (e.g., parking charges, advertisements, and taxes).
-                  </p>
-                 
-                 
-
-                  <p className="text-darkgray pt-3">
-                  Indian metro rail systems suffer from a lack of periodic fare updates, leading to gradual erosion of the real value of fares, plummeting real revenues, increasing subsidy requirements, and sudden large fare increases after long gaps. Such increases cause significant customer dissatisfaction and ridership loss. <span className="text-darkgray font-medium">The research paper recommends the necessary policy and procedural changes, specifically highlighting the need for systematic/automatic formula-based fare changes and the establishment of an independent metro fare regulation standing committee.</span> India’s extensive experience in determining user charges for infrastructure assets can be leveraged.
-
-                  </p>
-
-                  <p className="text-darkgray pt-3">
-                   The central and state governments must also take on the responsibility of securing innovative, “justified” funding and/or revenue sources to supplement fare box and other operations-related non-fare revenues.  This will ensure financial sustainability and avoid the vicious cycles of loan repayment defaults and service deterioration.
-
-                  </p>
-
-                  <p className="text-darkgray pt-3">
-                   Justified sources include appropriating part of the resultant property value gain from investments, removing unjust subsidies on personal or carbon-intensive vehicles using pricing and taxes, and apportioning part of green funds for investments. Most of these sources should be local (i.e., where beneficiaries are concentrated), and new fees or taxes should aim at promoting equity by removing existing market inefficiencies (e.g., free parking). Such funding/revenue increases the government’s share of total funding support to metro rail to meet their financial responsibilities. If periodic fare reviews and revision processes are not established,  such support may continue to increase to keep the metro rail fares affordable and socially acceptable.
-
-                  </p>
-
-                  <p className="text-darkgray pt-3">
-                    <span className="text-darkgray font-medium">The research paper identifies effective, efficient, and equitable non-fare revenue sources that can be leveraged for funding and financing metro rail systems.</span> It provides three key guiding principles of such revenue – beneficiaries of positive spillovers of metro rail should pay, polluting urban transportation must pay for the damages caused, and urban public transit funds should, to the extent possible, be collected from where they are spent.
-
+                  <p className="text-darkgray pt-3 text-sm sm:text-base ">
+                    A research paper by The Infravision Foundation (TIF) and
+                    IIM-Ahmedabad (IIM-A) recommends a comprehensive
+                    institutional and policy framework for ensuring financial
+                    sustainability that can guarantee continued political and
+                    social support and ensure that these systems can effectively
+                    deliver on their goals.
                   </p>
 
-                  <p className="text-darkgray pt-3">Based on global experiences and best practices, the research paper presents three revenue-generation avenues:
-</p>
+                  <p className="text-darkgray pt-3 text-sm sm:text-base ">
+                    While the selection of an appropriate transport system for a
+                    city is a separate problem (dealt with in TIF’s earlier
+                    research), ensuring satisfactory financial performance of
+                    the existing systems is essential.{" "}
+                    <span className="text-darkgray font-medium">
+                      The key is to regularly set appropriate fares, boost
+                      non-fare revenues, and promote ridership.
+                    </span>{" "}
+                    Non-fare revenue is the revenue generated by any means other
+                    than the cost of the travel ticket (e.g., parking charges,
+                    advertisements, and taxes).
+                  </p>
 
-                  <ul className="list-disc list-inside py-3 text-darkgray">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
+                    Indian metro rail systems suffer from a lack of periodic
+                    fare updates, leading to gradual erosion of the real value
+                    of fares, plummeting real revenues, increasing subsidy
+                    requirements, and sudden large fare increases after long
+                    gaps. Such increases cause significant customer
+                    dissatisfaction and ridership loss.{" "}
+                    <span className="text-darkgray font-medium">
+                      The research paper recommends the necessary policy and
+                      procedural changes, specifically highlighting the need for
+                      systematic/automatic formula-based fare changes and the
+                      establishment of an independent metro fare regulation
+                      standing committee.
+                    </span>{" "}
+                    India’s extensive experience in determining user charges for
+                    infrastructure assets can be leveraged.
+                  </p>
+
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
+                    The central and state governments must also take on the
+                    responsibility of securing innovative, “justified” funding
+                    and/or revenue sources to supplement fare box and other
+                    operations-related non-fare revenues. This will ensure
+                    financial sustainability and avoid the vicious cycles of
+                    loan repayment defaults and service deterioration.
+                  </p>
+
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
+                    Justified sources include appropriating part of the
+                    resultant property value gain from investments, removing
+                    unjust subsidies on personal or carbon-intensive vehicles
+                    using pricing and taxes, and apportioning part of green
+                    funds for investments. Most of these sources should be local
+                    (i.e., where beneficiaries are concentrated), and new fees
+                    or taxes should aim at promoting equity by removing existing
+                    market inefficiencies (e.g., free parking). Such
+                    funding/revenue increases the government’s share of total
+                    funding support to metro rail to meet their financial
+                    responsibilities. If periodic fare reviews and revision
+                    processes are not established, such support may continue to
+                    increase to keep the metro rail fares affordable and
+                    socially acceptable.
+                  </p>
+
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
+                    <span className="text-darkgray font-medium">
+                      The research paper identifies effective, efficient, and
+                      equitable non-fare revenue sources that can be leveraged
+                      for funding and financing metro rail systems.
+                    </span>{" "}
+                    It provides three key guiding principles of such revenue –
+                    beneficiaries of positive spillovers of metro rail should
+                    pay, polluting urban transportation must pay for the damages
+                    caused, and urban public transit funds should, to the extent
+                    possible, be collected from where they are spent.
+                  </p>
+
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
+                    Based on global experiences and best practices, the research
+                    paper presents three revenue-generation avenues:
+                  </p>
+
+                  <ul className="list-disc list-inside py-3 text-sm sm:text-base text-darkgray">
                     <li className="py-2">
-                     Land Value Capture (LVC) mechanisms (e.g., air rights development).
-
+                      Land Value Capture (LVC) mechanisms (e.g., air rights
+                      development).
                     </li>
                     <li className="py-2">
-                      Taxes and fees on carbon-intensive transportation modes (e.g., congestion charging).
-
+                      Taxes and fees on carbon-intensive transportation modes
+                      (e.g., congestion charging).
                     </li>
-                    <li className="py-2" >
-                     Carbon and emission-related taxes (e.g., cap and trade), and other local taxes, fees and financing (e.g., vehicle registration surcharges).
-
+                    <li className="py-2">
+                      Carbon and emission-related taxes (e.g., cap and trade),
+                      and other local taxes, fees and financing (e.g., vehicle
+                      registration surcharges).
                     </li>
-                   
                   </ul>
 
-                  <p className="text-darkgray pt-3">
-                   In summary, there are 5 elements at the core of attempts to improve the financial health of Indian metro rail systems — activate innovative local revenue sources and remove subsidies on private vehicle ownership/usage, increase the financial powers and accountability of metro rail authorities, streamline/automate the fare review and revision processes, enhance private sector investment in metro rail, and ensure that public money is spent responsibly on metro rail projects.
-
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
+                    In summary, there are 5 elements at the core of attempts to
+                    improve the financial health of Indian metro rail systems —
+                    activate innovative local revenue sources and remove
+                    subsidies on private vehicle ownership/usage, increase the
+                    financial powers and accountability of metro rail
+                    authorities, streamline/automate the fare review and
+                    revision processes, enhance private sector investment in
+                    metro rail, and ensure that public money is spent
+                    responsibly on metro rail projects.
                   </p>
-                  <p className="text-darkgray pt-3">
-                   The principal change that is essential to bring in the above elements is the establishment of Unified Metropolitan Transport Authorities (UMTAs). While the idea of a UMTA is not new,<span className="text-darkgray font-medium"> the research paper proposes the UMTA 2.0 model, where the UMTA will serve as the planner, owner, builder, and operator of all transportation systems and networks within their urban/regional jurisdictions.</span> The study outlines UMTAs’ organisational structure, legal powers, functions and responsibilities, and accountability. It also proposes a dedicated Unified Metropolitan Transport Fund for multimodal transportation infrastructures in a city.
-
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
+                    The principal change that is essential to bring in the above
+                    elements is the establishment of Unified Metropolitan
+                    Transport Authorities (UMTAs). While the idea of a UMTA is
+                    not new,
+                    <span className="text-darkgray font-medium text-sm sm:text-base">
+                      {" "}
+                      the research paper proposes the UMTA 2.0 model, where the
+                      UMTA will serve as the planner, owner, builder, and
+                      operator of all transportation systems and networks within
+                      their urban/regional jurisdictions.
+                    </span>{" "}
+                    The study outlines UMTAs’ organisational structure, legal
+                    powers, functions and responsibilities, and accountability.
+                    It also proposes a dedicated Unified Metropolitan Transport
+                    Fund for multimodal transportation infrastructures in a
+                    city.
                   </p>
-                 
+
                   <div className="my-7">
                     {/* <p className="text-black/80 font-medium">
                       {" "}
@@ -113,6 +208,7 @@ export default function Page() {
                         target="_blank"
                         link="/assets/knowledeg/blogsPdf/metro.pdf"
                         borderColor="white"
+                        classes="text-[16px]"
                       />
                     </div>
                   </div>

@@ -24,7 +24,7 @@ const newsletters = [
     date: "May 2025",
     title:
       "The Infravision Foundation’s quadruple impact, Rumjhum Chatterjee at The Edge and more.",
-    link: "/assets/archive/newsletter/INFRAVISION-TALK-May-2025.pdf",
+    link: "/assets/pdf/newsletter1.pdf",
   },
   {
     id: 2,
@@ -34,7 +34,7 @@ const newsletters = [
     date: "April 2025",
     title:
       "From urban decarbonisation and Noida to CAIRA’s first-ever engagement in Arunachal Pradesh and beyond.",
-    link: "/assets/archive/newsletter/INFRAVISION-TALK-April-2025.pdf",
+    link: "/assets/pdf/newsletter2.pdf",
   },
   {
     id: 3,
@@ -43,17 +43,9 @@ const newsletters = [
 
     date: "March 2025",
     title: "New Report urges fast tracking of High-Speed Rail.",
-    link: "/assets/archive/newsletter/INFRAVISION-TALK-March-2025.pdf",
+    link: "/assets/pdf/newsletter3.pdf",
   },
-  // {
-  //   id: 2,
-  //   img: caira.src,
-  //   category: "Volume 18",
-  //   date: "November, 2024",
-  //   title:
-  //     "A power-packed month featuring CAIRA’s first roundtable on agri exports...",
-  //   link: "",
-  // },
+ 
 ];
 
 const news = [

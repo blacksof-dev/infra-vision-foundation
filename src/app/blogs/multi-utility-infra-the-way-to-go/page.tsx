@@ -12,16 +12,22 @@ export default function Page() {
             Multi-utility Infra, the way to go!
           </h2>
           <div>
-            <div className="flex gap-4 py-2 ">
-              <h6 className="text-base  text-lightgray ">
+            <div className="flex-col md:flex-row flex justify-between pt-3 ">
+              <div>
+                 <h6 className="text-sm sm:text-base  text-lightgray max-w-xl">
                 {" "}
                 Nitin Zamre, Former COO, The Infravision Foundation and Mukesh
                 Khandelwal, Founder, PSmith Advisors LLP
               </h6>
-              <div className="border border-lightgray/30"></div>
-              <h6 className="text-base text-lightgray">October 9, 2023</h6>
+              </div>
+              <div>
+                   <h6 className="text-base text-lightgray md:border-l md:border-lightgray/30 md:ps-4 py-2">October 9, 2023</h6>
+              </div>
+             
+              
+            
             </div>
-            <div className=" lg:pt-8">
+            <div className="py-4 md:py-8">
               <div className="w-full h-full ">
                 <Image
                   src={image1}
@@ -31,13 +37,13 @@ export default function Page() {
                 />
               </div>
               <div>
-                <h3 className="text-black font-medium my-7">Description</h3>
-                <div>
-                  <p className="text-darkgray">
+               
+                <div className="py-3">
+                  <p className="text-darkgray text-sm sm:text-base">
                     It not only drives resource efficiency but also improves the
                     economics of infrastructure projects.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     Back-of-the-envelope estimates suggest that capturing 25% of
                     Delhi’s intracity freight traffic, Delhi Metro could earn an
                     additional INR 750 cr p.a. and generate a margin of INR 270
@@ -47,7 +53,8 @@ export default function Page() {
                     infrastructure!
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray text-sm sm:text-base">
+                 
                     The infrastructure and construction sectors account for a
                     significant share of the world’s consumption of material
                     resources. One way to address our ever-increasing resource
@@ -67,7 +74,7 @@ export default function Page() {
                   </div> */}
                  
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     Resource extraction has already reached unsustainable levels
                     globally. The Global Resource Outlook 2019 of UNEP
                     highlights that the extraction of material resources from
@@ -77,7 +84,7 @@ export default function Page() {
                     non-metallic minerals).
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     Infrastructure and construction are particularly
                     resource-intensive. They account for nearly half the world’s
                     material resource footprint. It is estimated that $1 bn in
@@ -86,7 +93,7 @@ export default function Page() {
                     ~17,50,000 tonnes of gravel and crushed stone.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     With the estimated annual investments at about $ 3.9
                     trillion on global infrastructure and $ 5-6 trillion on
                     building construction through 2040, we are staring at the
@@ -95,7 +102,7 @@ export default function Page() {
                     annually. This is staggering at the least.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     This issue of resource efficiency has been acknowledged. The
                     current efforts focus on better maintenance,
                     demand-responsive planning, and the utilisation of recycled
@@ -103,7 +110,7 @@ export default function Page() {
                     towards resource-efficient infrastructure:
                   </p>
 
-                  <ul className="list-disc list-inside py-3 text-darkgray">
+                  <ul className="list-disc list-inside py-3 text-sm sm:text-base text-darkgray">
                     <li className="py-2">
                       Retrofitting and maintenance of existing infrastructure to
                       potentially reduce investments by up to 15%.
@@ -122,7 +129,7 @@ export default function Page() {
                     </li>
                   </ul>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     However, the ability of an asset to be multi-utility and
                     drive resource efficiency is overlooked. Most infrastructure
                     is currently designed for a single primary purpose. A
@@ -134,11 +141,11 @@ export default function Page() {
                     utility lines to support the distribution of water,
                     electricity, sewage, telephone, and data lines.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     We propose that current and future infrastructure be
                     developed as multi-utility. We define multi-utility when:
                   </p>
-                  <ul className="list-disc list-inside py-3 text-darkgray">
+                  <ul className="list-disc list-inside py-3 text-sm sm:text-base text-darkgray">
                     <li className="py-2">
                       The project assets are used for purposes beyond the
                       primary purpose (secondary purposes), with no or small
@@ -155,12 +162,12 @@ export default function Page() {
                       benefits.
                     </li>
                   </ul>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base ">
                     Designing infrastructure for multiple uses can thus deliver
                     several benefits — resource efficiency and sustainability,
                     improved economics, and additionalities.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     Let’s look at some examples of multi-utility infrastructure:
                   </p>
                   {/* <div className="py-3 ">
@@ -174,7 +181,7 @@ export default function Page() {
                   />
                   </div> */}
                  
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base" >
                     We applied this principle to the Delhi Metro to see the
                     impact. In 2023, Delhi has an estimated intra-city goods
                     movement at ~83,000 tonnes, utilising ~68,000 vehicles for
@@ -183,15 +190,15 @@ export default function Page() {
                     CNG-fueled, also add to global warming via higher emissions
                     of greenhouse gases.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     Delhi Metro is the country’s most extensive system, with 12
                     lines covering a total of 390 km track length and serving
                     286 passenger terminals across the National Capital Region.
                     The network served 2.52 million passenger rides daily in
                     FY-22. Traffic operations earned revenues of INR 1,976 cr
                     and incurred an operating loss of INR 1,251 cr.
-                  </p>
-                  <p className="text-darkgray pt-3">
+                  </p> 
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     As a multi-utility infrastructure, shifting the intracity
                     freight traffic to Delhi Metro’s network can enhance the
                     network’s revenues significantly and reduce losses while
@@ -204,7 +211,7 @@ export default function Page() {
                     stock. The benefits of such usage are huge, as indicated
                     above.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     Designing and operating multi-utility infrastructure not
                     only drives resource efficiency and sustainability but also
                     significantly improves the economics of infrastructure
@@ -231,6 +238,7 @@ export default function Page() {
                         target="_blank"
                         link="/assets/knowledeg/blogsPdf/multiInfra.pdf"
                         borderColor="white"
+                         classes="text-[16px]"
                       />
                     </div>
                   </div>

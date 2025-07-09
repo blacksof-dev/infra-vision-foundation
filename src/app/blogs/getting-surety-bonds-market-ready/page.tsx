@@ -13,7 +13,7 @@ export default function Page() {
           <div>
             <div className="flex-col md:flex-row flex justify-between pt-3">
               <div>
-                <h6 className="text-base  text-lightgray max-w-xl ">
+                <h6 className="text-sm sm:text-base  text-lightgray max-w-xl ">
                   Nitin Zamre, Former COO, The Infravision Foundation, with
                   technical inputs provided from Mr Supratim Sarkar and Prof
                   Manoj Mohan (SPJIMR)
@@ -32,14 +32,14 @@ export default function Page() {
                   quality={100}
                 />
               </div>
-              <div>
-                <h4 className="text-black font-medium my-4 md:my-7">Description</h4>
+              <div className="py-3">
+               
                 <div>
-                  <p className="text-darkgray font-medium">
+                  <p className="text-darkgray font-medium text-sm sm:text-base">
                     There is still some distance to go before Surety Bonds start
                     replacing Bank Guarantees.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     In Budget 2022, the Finance Minister made an announcement,
                     introducing Surety Bonds (SB) as an insurance product that
                     could potentially replace Bank Guarantees (BG) in India.
@@ -53,7 +53,7 @@ export default function Page() {
                     trillion National Infrastructure Pipeline (NIP).
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     What is a Surety Bond? It is a legally binding contract
                     entered into by the Principal (contractor), the Obligee
                     (e.g. NHAI), and the Surety (Insurer) that underwrites the
@@ -66,7 +66,7 @@ export default function Page() {
                     right to recover the claim from the Principal.
                   </p>
 
-                  <p className="text-darkgray  pt-3">
+                  <p className="text-darkgray  pt-3 text-sm sm:text-base">
                     BGs are needed throughout the project cycle — from bidding
                     till completion of the defect liability period. Providing a
                     BG is dependent on many things — Principal’s overall
@@ -79,7 +79,7 @@ export default function Page() {
                     growth. The most affected were the medium-sized contractors.
                   </p>
 
-                  <p className="text-darkgray  pt-3">
+                  <p className="text-darkgray  pt-3 text-sm sm:text-base">
                     India plans to spend ~INR 115 lakh crore on infrastructure
                     through NIP over the next five years. A recent Research
                     Paper published by The Infravision Foundation estimates that
@@ -89,7 +89,7 @@ export default function Page() {
                     alternate instrument like SB to fill in the gap.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     Globally, SBs are a $ 20 billion market, growing at about 6%
                     CAGR, dominated by North America and Europe with a 75%
                     share. They are extensively used to support infrastructure
@@ -99,30 +99,30 @@ export default function Page() {
                     commercial BGs.
                   </p>
 
-                  <p className="text-darkgray font-medium pt-3">
+                  <p className="text-darkgray font-medium pt-3 text-sm sm:text-base">
                     In India, SBs were introduced over a year ago but have not
                     taken off due to the severe challenges related to adoption
                     and scale-up, pricing, and recovery of claims.
                   </p>
 
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     The first challenge is a lack of awareness about the
                     product. While NHAI has shown willingness to accept SB, many
                     other agencies, including state governments, have not.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     The second challenge is a lack of data. An insurance product
                     needs Actuarial Pricing Models, using extensive historic
                     customer data. In the case of the SB market in India, the
                     insurance companies do not have enough data.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     Lastly, there are huge concerns about recovery in case of a
                     claim. Insurance companies are not part of the Insolvency &
                     Bankruptcy Code (IBC), and therefore may not get recourse to
                     the project assets on default.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     <span className="text-darkgray font-medium">
                       {" "}
                       Development of the SB market is extremely important as the
@@ -133,7 +133,7 @@ export default function Page() {
                     recommendations to effectively overcome SB’s challenges.
                   </p>
 
-                  <ul className="list-decimal list-inside py-3 text-darkgray">
+                  <ul className="list-decimal list-inside py-3 text-sm sm:text-base text-darkgray">
                     <li className="py-1">
                       <span className="text-darkgray font-medium">
                         Awareness Campaign:
@@ -197,13 +197,13 @@ export default function Page() {
                     </li>
                   </ul>
 
-                  <p className="text-darkgray  pt-3">
+                  <p className="text-darkgray  pt-3 text-sm sm:text-base">
                     Three things can be implemented immediately — create
                     awareness campaigns, introduce indemnity agreements in
                     standard SB, and permit insurance companies to rely on
                     external credit rating for pricing.
                   </p>
-                  <p className="text-darkgray pt-3">
+                  <p className="text-darkgray pt-3 text-sm sm:text-base">
                     The remaining action points will require a broader
                     engagement with multiple stakeholders. However, a roadmap
                     for implementing these should be drawn up to ensure the SB
