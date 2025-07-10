@@ -1,0 +1,6 @@
+# robots.txt for https://theinfravisionfoundation.org/
+
+User-agent: *
+Disallow:/admin
+
+Sitemap: https://theinfravisionfoundation.org/sitemap.xml

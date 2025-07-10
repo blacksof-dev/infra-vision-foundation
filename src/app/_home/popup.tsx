@@ -18,18 +18,19 @@ export default function Popup() {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsOpen(true);
-    }, 3000); // 2 second delay
+    }, 3000); 
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
     gsap.fromTo(
       popupRef.current,
-      { y: "-50%", opacity: 0 }, // Start position (above & hidden)
-      { y: "0%", opacity: 1, duration: 1, ease: "power2.out" } // End position
+      { y: "-50%", opacity: 0 }, 
+      { y: "0%", opacity: 1, duration: 1, ease: "power2.out" } 
     );
   }, [isOpen]);
   return (
@@ -39,11 +40,8 @@ export default function Popup() {
         <div className="w-screen h-screen flex justify-center items-center bg-gray-900/80  fixed z-[99999] p-4">
           <div
             ref={popupRef}
-            className="w-[800px] xl:w-[1000px]  sm:h-[400px]  xl:h-[470px] 2xl:h-[540px] relative flex flex-col-reverse sm:flex-row  bg-extraLightWheat"
-            style={{
-              backgroundImage:
-                "url(/assets/the-call-consultation/popup/bg.jpg)",
-            }}
+            className="w-[800px] xl:w-[1000px]  sm:h-[400px]  xl:h-[470px] 2xl:h-[540px] relative flex flex-col-reverse sm:flex-row"
+        
           >
             <button
                 onClick={() => setIsOpen(false)}

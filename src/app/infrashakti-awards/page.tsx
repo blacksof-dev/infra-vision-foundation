@@ -8,6 +8,7 @@ import Gallery from "./06_gallery";
 import GetInvolved from "./07_getInvolved";
 import Spotlight from "./03_spotlight";
 import PublicationTabs from "@/_components/molecules/tabs";
+import { Metadata } from "next";
 
 type TabId = "overview" | "spotlight" | "ceremony" | "luminaries" | "gallery";
 
@@ -18,6 +19,11 @@ const tabs: { id: TabId; label: string }[] = [
   { id: "luminaries", label: "The Luminaries" },
   { id: "gallery", label: "Gallery" },
 ];
+
+
+
+
+
 
 export default function InfraShakti() {
   const sectionRefs: Record<TabId, React.RefObject<HTMLDivElement | null>> = {

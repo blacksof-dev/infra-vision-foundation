@@ -16,7 +16,7 @@ export default function Page() {
               <div>
                 <h6 className="text-sm sm:text-base  text-lightgray max-w-xl">
                   {" "}
-                  Nitin Zamre, Former COO, The Infravision Foundation
+                  Author: Nitin Zamre, Former COO, The Infravision Foundation
                 </h6>
               </div>
               <div>

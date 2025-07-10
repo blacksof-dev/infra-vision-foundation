@@ -15,7 +15,7 @@ export default function Page() {
             <div className="flex-col md:flex-row flex justify-between pt-3 ">
               <div>
                  <h6 className="text-sm sm:text-base  text-lightgray max-w-xl">
-                Nitin Zamre, Former COO, The Infravision Foundation, with
+                Author: Nitin Zamre, Former COO, The Infravision Foundation, with
                 technical inputs from Gopal Naik, Professor, IIM-B, and Gopi
                 Shankar, Assistant Professor, Azim Premji University, Bangalore
               </h6>

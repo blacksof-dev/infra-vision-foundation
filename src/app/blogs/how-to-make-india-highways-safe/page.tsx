@@ -16,7 +16,7 @@ export default function Page() {
               <div>
                 <h6 className="text-sm sm:text-base  text-lightgray max-w-xl">
                   {" "}
-                  Jagan Shah, CEO, The Infravision Foundation
+                  Author: Jagan Shah, CEO, The Infravision Foundation
                 </h6>
               </div>
 

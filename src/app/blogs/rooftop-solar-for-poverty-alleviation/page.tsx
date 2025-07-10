@@ -16,7 +16,7 @@ export default function Page() {
               <div>
                 <h6 className="  text-lightgray max-w-xl text-sm sm:text-base">
                   {" "}
-                  Vinayak Chatterjee, Founder and Managing Trustee, The
+                  Author: Vinayak Chatterjee, Founder and Managing Trustee, The
                   Infravision Foundation, with technical inputs from Rasika
                   Athawale, Distinguished Fellow, The Infravision Foundation
                 </h6>

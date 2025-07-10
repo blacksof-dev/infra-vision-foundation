@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, { useRef } from 'react'
 import AboutUsBanner from './01_banner'
 import WhoWeAre from './02_who_we_are';
@@ -9,6 +9,9 @@ import './page.css'
 import Pulse from './05_pulse';
 import Pathway from './06_pathway';
 import Involved from './07_involved';
+
+
+
 
 
 type TabId = 'who_we_are' | 'infravisionaries' | 'vision_and_mission' | 'our_pulse' | 'project_pathway';
