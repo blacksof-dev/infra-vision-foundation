@@ -25,6 +25,15 @@ export type TabItem = {
 };
 
 const knowledge = [
+   {
+    id: 10,
+    img: img_12.src,
+    category: "Urban Planning",
+    date: " ",
+    title:"Relieving urban congestion and promoting tourism through ropeways",
+    subtitle: "",
+    link: "/assets/pdf/urbanCongestion.pdf",
+  },
   {
     id: 3,
     img: jagan.src,
@@ -36,15 +45,7 @@ const knowledge = [
     link: "https://www.youtube.com/watch?v=g5aA3Q3af1g&ab_channel=TheInfravisionFoundation",
     ctaText: "Watch now"
   },
-   {
-    id: 10,
-    img: img_12.src,
-    category: "Urban Planning",
-    date: " ",
-    title:"Relieving urban congestion and promoting tourism through ropeways",
-    subtitle: "",
-    link: "/assets/pdf/urbanCongestion.pdf",
-  },
+  
   // {
   //   id: 1,
   //   img: rail.src,

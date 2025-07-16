@@ -61,6 +61,16 @@ const INITIAL_VISIBLE_COUNT = 3;
 
 
 const allcards = [
+   {
+    id: 10,
+    img: img_12,
+    category: "Urban Planning",
+    title: "",
+    sectors: "Urban Planning",
+    date: " ",
+    description:"Relieving urban congestion and promoting tourism through ropeways",
+    link: "/assets/pdf/urbanCongestion.pdf",
+  },
   {
     id: 1,
     img: img_01,
@@ -153,16 +163,7 @@ const allcards = [
     description: "Ways to enhance warehouse-based sales and lending for agriculture commodities",
     link: "/assets/pdf/Warehousing-Whitepaper.pdf",
   },
-  {
-    id: 10,
-    img: img_12,
-    category: "Urban Planning",
-    title: "",
-    sectors: "Urban Planning",
-    date: " ",
-    description:"Relieving urban congestion and promoting tourism through ropeways",
-    link: "/assets/pdf/urbanCongestion.pdf",
-  },
+ 
   {
     id: 11,
     img: img_10,
