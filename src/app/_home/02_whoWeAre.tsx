@@ -6,7 +6,7 @@ import jagan from "@/../public/assets/home/whoWeAre/knowledge/jagan.png";
 import infraKatha from "@/../public/assets/infrakatha/banner/banner.jpg";
 import infraShakti from "@/../public/assets/home/whoWeAre/advocacy/infraPandit.png";
 import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infraPanditAward.png";
-
+import img_12 from "@/../public/assets/knowledeg/researchPapers/12.jpg";
 import { useState } from "react";
 import Card from "@/_components/molecules/cardTemplate";
 import { useHeader } from "@/context/useHeader";
@@ -36,15 +36,24 @@ const knowledge = [
     link: "https://www.youtube.com/watch?v=g5aA3Q3af1g&ab_channel=TheInfravisionFoundation",
     ctaText: "Watch now"
   },
-  {
-    id: 1,
-    img: rail.src,
-    category: "Research Paper",
-    date: "January, 2025",
-    title: "The case for developing high-speed rail corridors in India",
-    subtitle: "Dr. Ramakrishnan T.S",
-    link: "/assets/home/whoWeAre/knowledge/The-Case-For-Developing-High-Speed-Rail-Corridors-In-India.pdf",
+   {
+    id: 10,
+    img: img_12.src,
+    category: "Urban Planning",
+    date: " ",
+    title:"Relieving urban congestion and promoting tourism through ropeways",
+    subtitle: "",
+    link: "/assets/pdf/urbanCongestion.pdf",
   },
+  // {
+  //   id: 1,
+  //   img: rail.src,
+  //   category: "Research Paper",
+  //   date: "January, 2025",
+  //   title: "The case for developing high-speed rail corridors in India",
+  //   subtitle: "Dr. Ramakrishnan T.S",
+  //   link: "/assets/home/whoWeAre/knowledge/The-Case-For-Developing-High-Speed-Rail-Corridors-In-India.pdf",
+  // },
 
   {
     id: 2,
