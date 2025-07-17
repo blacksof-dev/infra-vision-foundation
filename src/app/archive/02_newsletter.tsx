@@ -62,7 +62,7 @@ const allcards = [
     date: "May 2025",
     description:
       "Making change happen",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2025/05/INFRAVISION-TALK-May-2025.pdf",
+    link: "/assets/pdf/letter1.pdf",
   },
    {
     id: 2,
@@ -73,7 +73,7 @@ const allcards = [
     date: "April 2025",
     description:
       "Decarbonising urban transport",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2025/04/INFRAVISION-TALK-April-2025.pdf",
+    link: "/assets/pdf/letter2.pdf",
   },
    {
     id: 3,
@@ -84,7 +84,7 @@ const allcards = [
     date: "March 2025",
     description:
       "Fast-tracking High-Speed Rail",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2025/04/INFRAVISION-TALK-March-2025.pdf",
+    link: "/assets/pdf/letter3.pdf",
   },
   {
     id: 4,
@@ -95,7 +95,7 @@ const allcards = [
     date: "February 2025",
     description:
       "CAIRA Roundtable on agri exports is a success",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2025/03/INFRAVISION-TALK-February-2025-Newsletter.pdf",
+    link: "/assets/pdf/letter4.pdf",
   },
   {
     id: 5,
@@ -106,7 +106,7 @@ const allcards = [
     date: "January 2025",
     description:
       "Workshop on Trees Outside Forests",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2025/01/INFRAVISION-TALK-January-2025.pdf",
+    link: "/assets/pdf/letter5.pdf",
   },
    {
     id: 6,
@@ -117,7 +117,7 @@ const allcards = [
     date: "December 2024",
     description:
       "Telling the story of India",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2025/01/INFRAVISION-TALK-December-2024.pdf",
+    link: "/assets/pdf/letter6.pdf",
   },
    {
     id: 7,
@@ -128,7 +128,7 @@ const allcards = [
     date: "November 2024",
     description:
       "CAIRA takes shape",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2024/11/INFRAVISION-TALK-November-2024.pdf",
+    link: "/assets/pdf/letter7.pdf",
   },
    {
     id: 8,
@@ -139,7 +139,7 @@ const allcards = [
     date: "October 2024",
     description:
       "The Infravision Fellowship",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2024/10/INFRAVISION-TALK-October-2024.pdf",
+    link: "/assets/pdf/letter8.pdf",
   },
    {
     id: 9,
@@ -150,7 +150,7 @@ const allcards = [
     date: "September 2024",
     description:
       "Understanding Land Value Capture in urban India",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2024/10/INFRAVISION-TALK-September-2024.pdf",
+    link: "/assets/pdf/letter9.pdf",
   },
     {
     id: 10,
@@ -161,7 +161,7 @@ const allcards = [
     date: "August 2024",
     description:
       "The need for high-speed rail corridors",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2024/08/INFRAVISION-TALK-August-2024.pdf",
+    link: "/assets/pdf/letter10.pdf",
   },
   {
     id: 11,
@@ -172,7 +172,7 @@ const allcards = [
     date: "July 2024",
     description:
       "Champions Lab takes off",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2024/08/INFRAVISION-TALK-July-2024.pdf",
+    link: "/assets/pdf/letter11.pdf",
   },
   {
     id: 12,
@@ -183,7 +183,7 @@ const allcards = [
     date: "June 2024",
     description:
       "The building blocks of mythology",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2024/06/June-2024.pdf",
+    link: "/assets/pdf/letter12.pdf",
   },
   {
     id: 13,
@@ -194,7 +194,7 @@ const allcards = [
     date: "May 2024",
     description:
       "Diving into the water bodies census",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2024/06/May-2024.pdf",
+    link: "/assets/pdf/letter13.pdf",
   },
   {
     id: 14,
@@ -205,7 +205,7 @@ const allcards = [
     date: "April 2024",
     description:
       "Sustainability Ratings is the buzz in Mumbai",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2024/06/11.-INFRAVISION-TALK-April-2024.pdf",
+    link: "/assets/pdf/letter14.pdf",
   },
   {
     id: 15,
@@ -216,7 +216,7 @@ const allcards = [
     date: "March 2024",
     description:
       "No grain drain",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2024/06/10.-INFRAVISION-TALK-March-2024.pdf",
+    link: "/assets/pdf/letter15.pdf",
   },
   {
     id: 16,
@@ -227,7 +227,7 @@ const allcards = [
     date: "February 2024",
     description:
       "Sooraj Se Rozgari gets PM nod",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2024/06/9.-INFRAVISION-TALK-February-2024.pdf",
+    link: "/assets/pdf/letter16.pdf",
   },
 
     {
@@ -239,7 +239,7 @@ const allcards = [
     date: "January 2024",
     description:
       "Taking Surety Bonds and Sustainability Ratings to industry audience in Bangalore",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2024/06/8.-INFRAVISION-TALK-January-2024.pdf",
+    link: "/assets/pdf/letter17.pdf",
   },
      {
     id: 18,
@@ -250,7 +250,7 @@ const allcards = [
     date: "December 2023",
     description:
       "Making commodities count for more",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2024/06/7.-INFRAVISION-TALK-December-2023.pdf",
+    link: "/assets/pdf/letter18.pdf",
   },
     {
     id: 19,
@@ -261,7 +261,7 @@ const allcards = [
     date: "November 2023",
     description:
       "Ideas aplenty at quarterly meeting",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2024/06/6.-INFRAVISION-TALK-November-2023.pdf",
+    link: "/assets/pdf/letter19.pdf",
   },
    {
     id: 20,
@@ -272,7 +272,7 @@ const allcards = [
     date: "October 2023",
     description:
       "Green signal for green ratings",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2024/09/5.-INFRAVISION-TALK-October-2023.pdf",
+    link: "/assets/pdf/letter20.pdf",
   },
    {
     id: 21,
@@ -283,7 +283,7 @@ const allcards = [
     date: "September 2023",
     description:
       "Smart city, smart PT",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2024/06/4.-INFRAVISION-TALK-September-2023.pdf",
+    link: "/assets/pdf/letter21.pdf",
   },
     {
     id: 22,
@@ -294,7 +294,7 @@ const allcards = [
     date: "August 2023",
     description:
       "The quarterly meeting",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2024/09/3.-INFRAVISION-TALK-August-2023.pdf",
+    link: "/assets/pdf/letter22.pdf",
   },
    {
     id: 23,
@@ -305,7 +305,7 @@ const allcards = [
     date: "July 2023",
     description:
       "City mobility",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2024/09/2.-INFRAVISION-TALK-July-2023.pdf",
+    link: "/assets/pdf/letter23.pdf",
   },
      {
     id: 24,
@@ -316,7 +316,7 @@ const allcards = [
     date: "June 2023",
     description:
       "Here comes the sun",
-    link: "https://explore.theinfravisionfoundation.org/wp-content/uploads/2024/09/1.-INFRAVISION-TALK-June-2023.pdf",
+    link: "/assets/pdf/letter24.pdf",
   },
 
 

@@ -63,7 +63,7 @@ const knowledge = [
     date: "September, 2023",
     title: "India needs sustainability ratings for infrastructure projects",
     subtitle: "",
-    link: "https://explore.theinfravisionfoundation.org/2023/09/25/india-needs-sustainability-ratings-for-infrastructure-projects/",
+    link: "/blogs/india-needs-sustainability-ratings-for-infrastructure-projects",
   },
 ];
 
