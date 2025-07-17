@@ -527,7 +527,7 @@ const allcards = [
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
-    date: "June 29, 2016",
+    date: "May 26, 2025",
     description: "Why India needs a National Plan for building new cities",
     link: "/assets/pdf/nationPlan.jpeg",
   },
