@@ -8,7 +8,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { advisory, CardData, fellow, team, trustee } from "./static";
+import { advisory, CardData, fellow, patrons, team, trustee } from "./static";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import PopupDescription from "../_home/popupDescription";
 import { MemberCard } from "@/_components/molecules/memberCard";
@@ -99,6 +99,9 @@ export default function Infravisionaries() {
       case "team":
         cardDetails = team;
         break;
+      case "patrons":
+        cardDetails = patrons;
+        break;
       default:
         cardDetails = [];
     }
@@ -178,6 +181,12 @@ export default function Infravisionaries() {
               <ButtonTab
                 label="Trustees"
                 value="trustee"
+                data={data}
+                setdata={setdata}
+              />
+              <ButtonTab
+                label="Founding Patrons"
+                value="patrons"
                 data={data}
                 setdata={setdata}
               />
@@ -288,6 +297,16 @@ export default function Infravisionaries() {
             popupData={popupData}
             showPopup={showPopup}
             onSelectTab={() => setdata("trustee")}
+          />
+          <MobileMembersSlider
+            title="Founding Patrons"
+            data={patrons}
+            navClass="patrons"
+            setShowPopup={setShowPopup}
+            setPopUpData={setPopUpData}
+            popupData={popupData}
+            showPopup={showPopup}
+            onSelectTab={() => setdata("patrons")}
           />
 
           <MobileMembersSlider

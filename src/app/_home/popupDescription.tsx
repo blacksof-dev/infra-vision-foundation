@@ -42,6 +42,7 @@ export default function PopupDescription({
               <div className="flex flex-col w-full lg:w-[60%]  pt-2 overflow-hidden lg:pr-10">
                 <h2 className=" font-semibold">{data.title}</h2>
                 <h6 className="text-pink font-medium sm:pt-1">{data.desig}</h6>
+                <h6 className="text-pink font-medium sm:pt-1">{data.subtitle}</h6>
                 {data?.popupdesc && (
                   <div className="overflow-y-auto h-full pr-2 mt-2 sm:mt-3">
                     {data.popupdesc.split('\n').map((paragraph, index) => (

@@ -511,6 +511,26 @@ const allcards = [
     description: "Rooftop solar for poverty alleviation",
     link: "/assets/pdf/movingGatiShakti.pdf",
   },
+  {
+    id:47,
+    img: "/assets/archive/newsAndMedia/urbanCity.jpg",
+    category: "News",
+    title: "Jagan Shah",
+    sectors: "",
+    date: "June 29, 2016",
+    description: "Achieving urban transformation",
+    link: "https://www.livemint.com/Specials/0wxSvak7tbTqqjYXjjD1LO/Achieving-urban-transformation.html",
+  },
+   {
+    id:48,
+    img: "/assets/archive/newsAndMedia/planning.jpeg",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "June 29, 2016",
+    description: "Why India needs a National Plan for building new cities",
+    link: "/assets/pdf/nationPlan.jpeg",
+  },
  
   
   
