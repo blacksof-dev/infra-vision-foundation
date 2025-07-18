@@ -191,7 +191,7 @@ export default function Infravisionaries() {
                 setdata={setdata}
               />
               <ButtonTab
-                label="Advisory Council"
+                label="Council of Advisors"
                 value="advisory"
                 data={data}
                 setdata={setdata}
@@ -310,7 +310,7 @@ export default function Infravisionaries() {
           />
 
           <MobileMembersSlider
-            title="Advisory Council"
+            title="Council of Advisors"
             data={advisory}
             navClass="advisory"
             setShowPopup={setShowPopup}
