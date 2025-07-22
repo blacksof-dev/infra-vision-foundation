@@ -43,6 +43,26 @@ const SECTORS: SectorType[] = [
 const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
+   {
+    id:50,
+    img: "/assets/archive/newsAndMedia/coal.jpg",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "July 18,2025",
+    description: "Coal, Clean, Air and  a Welcome Resolution",
+    link: "/assets/pdf/coalClean.pdf",
+  },
+  {
+    id:49,
+    img: "/assets/archive/newsAndMedia/ropeway.jpg",
+    category: "News",
+    title: "Kaveree Bamzai",
+    sectors: "",
+    date: "July 18,2025",
+    description: "Long haul:A national ropeway policy would aid urban mobility",
+    link: "/assets/archive/newsAndMedia/kaveeryMamRopways.jpeg",
+  },
 
    {
     id:48,
