@@ -54,6 +54,29 @@ const thridFilter = [
 ];
 const allcards = [
   {
+    id: 25,
+    img: "/assets/archive/newsletter/latest1.png",
+    category: "Volume 26",
+    title: " ",
+    sectors: "",
+    date: "July 2025",
+    description:
+      "Do you want to be an Infrapandit?",
+    link: "/assets/pdf/july.pdf",
+  },
+   {
+    id: 26,
+    img: "/assets/archive/newsletter/latest2.png",
+    category: "Volume 25",
+    title: " ",
+    sectors: "",
+    date: "June 2025",
+    description:
+      "Transforming Cities into Frontiers for Economic Growth ",
+    link: "/assets/pdf/june2025.pdf",
+  },
+
+  {
     id: 1,
     img: "/assets/archive/newsletter/newsletter1.png",
     category: "Volume 24",
