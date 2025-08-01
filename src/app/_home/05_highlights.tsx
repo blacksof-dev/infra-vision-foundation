@@ -16,65 +16,74 @@ import { useHeader } from "@/context/useHeader";
 import Link from "next/link"
 
 const newsletters = [
+   {
+    id: 25,
+    img: "/assets/archive/newsletter/latest1.png",
+    category: "Volume 26",
+    title: " ",
+    sectors: "",
+    date: "July 2025",
+    description:
+      "Do you want to be an Infrapandit?",
+    link: "/assets/pdf/july.pdf",
+  },
+   {
+    id: 26,
+    img: "/assets/archive/newsletter/latest2.png",
+    category: "Volume 25",
+    title: " ",
+    sectors: "",
+    date: "June 2025",
+    description:
+      "Transforming Cities into Frontiers for Economic Growth ",
+    link: "/assets/pdf/june2025.pdf",
+  },
+
   {
     id: 1,
-    img: newsletter_1.src,
+    img: "/assets/archive/newsletter/newsletter1.png",
     category: "Volume 24",
-
+    title: "",
+    sectors: "",
     date: "May 2025",
-    title:
-      "The Infravision Foundation’s quadruple impact, Rumjhum Chatterjee at The Edge and more.",
-    link: "/assets/pdf/newsletter1.pdf",
-  },
-  {
-    id: 2,
-    img: newsletter_2.src,
-    category: "Volume 23",
-
-    date: "April 2025",
-    title:
-      "From urban decarbonisation and Noida to CAIRA’s first-ever engagement in Arunachal Pradesh and beyond.",
-    link: "/assets/pdf/newsletter2.pdf",
-  },
-  {
-    id: 3,
-    img: newsletter_3.src,
-    category: "Volume 22",
-
-    date: "March 2025",
-    title: "New Report urges fast tracking of High-Speed Rail.",
-    link: "/assets/pdf/newsletter3.pdf",
+    description:
+      "Making change happen",
+    link: "/assets/pdf/letter1.pdf",
   },
  
 ];
 
 const news = [
   {
-    id: 1,
-    img: taxation.src,
+    id:50,
+    img: "/assets/archive/newsAndMedia/coal.jpg",
     category: "News",
-    date: "Aug 15, 2024",
-    title: "Group taxation regime for infrastructure",
-    subtitle: "Vinayak Chatterjee",
-    link: "https://www.business-standard.com/opinion/columns/group-taxation-regime-for-infrastructure-124081500813_1.html",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "July 18,2025",
+    description: "Coal, Clean, Air and  a Welcome Resolution",
+    link: "/assets/pdf/coalClean.pdf",
   },
   {
-    id: 2,
-    img: outlays.src,
+    id:49,
+    img: "/assets/archive/newsAndMedia/ropeway.jpg",
     category: "News",
-    date: "July 24, 2024",
-    title: "Infra outlays: A strategic downplay",
-    subtitle: "Vinayak Chatterjee",
-    link: "https://www.financialexpress.com/opinion/nbspinfra-outlays-a-strategic-downplay-the-budget-signals-a-move-out-of-the-era-of-large-infra-spends-pump-priming-the-economy/3563263/#:~:text=stressful%20Covid%20period.-,Across%20the%20last%20few%20years%2C%20India%20saw%20Union%20Budget%20infra,11%25%20to%20Rs%2011.1%20trillion.",
+    title: "Kaveree Bamzai",
+    sectors: "",
+    date: "July 18,2025",
+    description: "Long haul:A national ropeway policy would aid urban mobility",
+    link: "/assets/archive/newsAndMedia/kaveeryMamRopways.jpeg",
   },
-  {
-    id: 3,
-    img: budget.src,
-    date: "Jan 4, 2023",
+
+   {
+    id:48,
+    img: "/assets/archive/newsAndMedia/planning.jpeg",
     category: "News",
-    title: "Infra brushstrokes for the Budget",
-    subtitle: "Vinayak Chatterjee",
-    link: "/assets/pdf/InfraBrushstrokes-Business-Standard_04012023.pdf",
+    title: "Jagan Shah",
+    sectors: "",
+    date: "May 26, 2025",
+    description: "Why India needs a National Plan for building new cities",
+    link: "/assets/pdf/nationPlan.jpeg",
   },
 ];
 

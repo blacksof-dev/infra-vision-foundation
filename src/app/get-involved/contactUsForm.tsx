@@ -116,13 +116,10 @@ export default function ContactForm() {
       formData.append("message", data.message);
       formData.append("links", data.links);
 
-      // Append the file if it exists
-      // if (data.file.length > 0) {
-      //   formData.append("file", data.file[0]);
-      // }
+   
 
       console.log("Form submitted:", data);
-      // Email js Setup
+     
 
       if (!formRef.current) return;
 

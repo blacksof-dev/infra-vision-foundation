@@ -38,11 +38,12 @@ export default function Publications() {
               Please send requests, and any additional inquiries related to our
               publications, to{" "}
               <a
-                href="mailto:publications@theinfravisionfoundation.org"
+                href="mailto:info@theinfravisionfoundation.org"
                 className="text-pink font-medium underline"
               >
                 {" "}
-                publications@theinfravisionfoundation.org
+                
+                 info@theinfravisionfoundation.org
               </a>
               .
             </h5>

@@ -7,7 +7,7 @@ import { useState } from "react";
 const galleryImages = [
   {
     image: "assets/infraShakti/gallery/image1.png",
-    description: "Vinayak Chatterjee sharing his views in a panel discussion on 'Futureproofing Bharat with resilient infrastructure."
+    description: "Vinayak Chatterjee sharing his views in a panel discussion on 'Futureproofing Bharat with resilient infrastructure'."
   },
   {
     image: "assets/infraShakti/gallery/image6.png",

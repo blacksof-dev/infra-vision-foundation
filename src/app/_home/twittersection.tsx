@@ -13,7 +13,7 @@ export default function TwitterPost() {
         <div className="md:block hidden ">
           <Link
             className="flex items-center gap-3 py-3 lg:py-0 lg:justify-center lg:items-center text-pink hover:scale-[1.05] relative transition-all duration-300 ease-linear"
-            href="https://x.com/Infra_VinayakCh/status/1773515311419191457"
+            href="https://x.com/Infra_VinayakCh"
             target="_blank"
           >
 
