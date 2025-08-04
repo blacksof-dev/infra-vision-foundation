@@ -61,7 +61,7 @@ const allcards = [
     sectors: "",
     date: "August 2025",
     description:
-      "TIF Reaches Out to Stakeholders",
+      "TIF reaches out to stakeholders",
     link: "/assets/pdf/augustNewsletter.pdf",
   },
   {
