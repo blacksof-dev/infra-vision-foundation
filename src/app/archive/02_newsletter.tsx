@@ -54,6 +54,17 @@ const thridFilter = [
 ];
 const allcards = [
   {
+    id: 27,
+    img: "/assets/archive/newsletter/agustNewsletter.png",
+    category: "Volume 27",
+    title: "",
+    sectors: "",
+    date: "August 2025",
+    description:
+      "TIF Reaches Out to Stakeholders",
+    link: "/assets/pdf/augustNewsletter.pdf",
+  },
+  {
     id: 25,
     img: "/assets/archive/newsletter/latest1.png",
     category: "Volume 26",
