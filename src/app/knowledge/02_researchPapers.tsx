@@ -13,6 +13,7 @@ import img_09 from "@/../public/assets/knowledeg/researchPapers/09.jpg";
 import img_10 from "@/../public/assets/knowledeg/researchPapers/10.png";
 import img_11 from "@/../public/assets/knowledeg/researchPapers/11.jpg";
 import img_12 from "@/../public/assets/knowledeg/researchPapers/12.jpg";
+import img_13 from "@/../public/assets/knowledeg/researchPapers/13.png";
 
 
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
@@ -61,6 +62,16 @@ const INITIAL_VISIBLE_COUNT = 3;
 
 
 const allcards = [
+   {
+    id: 13,
+    img: img_13,
+    category: "Infrastructure",
+    title: "",
+    sectors: "Infrastructure",
+    date: " ",
+    description:"Removing Barriers to Faster Penetration of Trees Outside Forests Productsin Construction Sector",
+    link: "/assets/pdf/removing-barriers-to-faster-penetration-of-trees-final-report.pdf",
+  },
    {
     id: 10,
     img: img_12,
