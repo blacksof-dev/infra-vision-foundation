@@ -43,6 +43,16 @@ const SECTORS: SectorType[] = [
 const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
+    {
+    id:51,
+    img: "/assets/archive/newsAndMedia/urbanFund.jpeg",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "August 20, 2025",
+    description: "Shaping the Urban Challenge Fund",
+    link: "/assets/pdf/Shaping the Urban Challenge Fund (Business Standard 20.08.2025).pdf",
+  },
    {
     id:50,
     img: "/assets/archive/newsAndMedia/coal.jpg",

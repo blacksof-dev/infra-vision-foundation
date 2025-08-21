@@ -35,20 +35,7 @@ export default function Banner() {
                   through action research and advocacy.
                 </h5>
               </div>
-              {/* <Link
-                href="#who-we-are"
-                className="flex  gap-2 mt-4 lg:gap-4 items-center justify-center group  w-fit cursor-pointer"
-              >
-                <h5 className="font-medium">Know more</h5>
-                <button
-                  className={`rounded-sm p-1 cursor-pointer relative md:p-2 border-2 border-pink overflow-hidden   w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300  `}
-                >
-                  <span className="absolute w-4 h-4 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-transparent group-hover:bg-pink  z-[1] transition-all duration-500"></span>
-                  <GoArrowRight
-                    className={`   text-pink  group-hover:text-white text-2xl z-[2]`}
-                  />
-                </button>
-              </Link> */}
+            
             </div>
             <div className="absolute bottom-8 xl:bottom-8 w-screen p-1">
               <Updates />
