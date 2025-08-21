@@ -45,7 +45,7 @@ const INITIAL_VISIBLE_COUNT = 3;
 const allcards = [
     {
     id:51,
-    img: "/assets/archive/newsAndMedia/urbanFund.jpeg",
+    img: "/assets/archive/newsAndMedia/urbanFund.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
