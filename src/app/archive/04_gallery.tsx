@@ -109,6 +109,28 @@ const galleryImages = [
     event: "Infrashakti",
     description: "JCB CEO Deepak Shetty, The Infravision Foundation Founder and Managing Trustee Vinayak Chatterjee, IRDAI Chairman Debasish Panda, and Bajaj Allianz CEO Tapan Singhel at a roundtable on Surety Bonds organised by CII.",
   },
+
+    {
+    image: "assets/archive/gallery/image16.jpg",
+    year: '',
+    event: "",
+    description: "",
+  },
+
+
+    {
+    image: "assets/archive/gallery/image17.jpg",
+    year: '',
+    event: "",
+    description: "",
+  },
+  {
+    image: "assets/archive/gallery/image18.jpeg",
+    year: '',
+    event: "",
+    description: "",
+  },
+    
 ];
 
 // Types

@@ -4,12 +4,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { TabItem } from "./02_whoWeAre";
 
 
-import newsletter_1 from "@/../public/assets/home/newsletter/newsletter_1.png";
-import newsletter_2 from "@/../public/assets/home/newsletter/newsletter_2.png";
-import newsletter_3 from "@/../public/assets/home/newsletter/newsletter_3.png";
-import budget from "@/../public/assets/home/news/budget.png";
-import outlays from "@/../public/assets/home/news/outlays.png";
-import taxation from "@/../public/assets/home/news/taxation.png";
 
 import InfrapanditAward from "./infraPanditAward";
 import { useHeader } from "@/context/useHeader";
@@ -20,22 +14,16 @@ const newsletters = [
     id: 25,
     img: "/assets/archive/newsletter/latest1.png",
     category: "Volume 26",
-    title: " ",
-    sectors: "",
+    title: "Do you want to be an Infrapandit? ",
     date: "July 2025",
-    description:
-      "Do you want to be an Infrapandit?",
     link: "/assets/pdf/july.pdf",
   },
    {
     id: 26,
     img: "/assets/archive/newsletter/latest2.png",
     category: "Volume 25",
-    title: " ",
-    sectors: "",
+    title: "Transforming Cities into Frontiers for Economic Growth",
     date: "June 2025",
-    description:
-      "Transforming Cities into Frontiers for Economic Growth ",
     link: "/assets/pdf/june2025.pdf",
   },
 
@@ -43,11 +31,8 @@ const newsletters = [
     id: 1,
     img: "/assets/archive/newsletter/newsletter1.png",
     category: "Volume 24",
-    title: "",
-    sectors: "",
+    title: "Making change happen",
     date: "May 2025",
-    description:
-      "Making change happen",
     link: "/assets/pdf/letter1.pdf",
   },
  
@@ -58,20 +43,19 @@ const news = [
     id:50,
     img: "/assets/archive/newsAndMedia/coal.jpg",
     category: "News",
-    title: "Vinayak Chatterjee",
-    sectors: "",
+    title: "Coal, Clean, Air and  a Welcome Resolution",
     date: "July 18,2025",
-    description: "Coal, Clean, Air and  a Welcome Resolution",
+    subtitle: "Vinayak Chatterjee",
     link: "/assets/pdf/coalClean.pdf",
   },
-  {
+ {
     id:49,
     img: "/assets/archive/newsAndMedia/ropeway.jpg",
     category: "News",
-    title: "Kaveree Bamzai",
-    sectors: "",
-    date: "July 18,2025",
-    description: "Long haul:A national ropeway policy would aid urban mobility",
+    title: "Long haul:A national ropeway policy would aid urban mobility",
+    
+    date: "July 18, 2025",
+    subtitle: "Kaveree Bamzai",
     link: "/assets/archive/newsAndMedia/kaveeryMamRopways.jpeg",
   },
 
@@ -79,10 +63,9 @@ const news = [
     id:48,
     img: "/assets/archive/newsAndMedia/planning.jpeg",
     category: "News",
-    title: "Jagan Shah",
-    sectors: "",
+    title: "Why India needs a National Plan for building new cities",   
     date: "May 26, 2025",
-    description: "Why India needs a National Plan for building new cities",
+    subtitle: "Jagan Shah",
     link: "/assets/pdf/nationPlan.jpeg",
   },
 ];
@@ -230,3 +213,9 @@ export const TabContent = ({ data }: { data: TabItem[] }) => {
     </div>
   );
 };
+ 
+    
+  
+
+  
+    

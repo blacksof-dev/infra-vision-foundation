@@ -7,13 +7,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
-import taxation from "@/../public/assets/home/updates/afforestation.png";
-import InfrapanditAward from "@/../public/assets/home/infrapanditAward.webp";
-import infraKatha from "@/../public/assets/home/updates/infraKatha.png";
-import article from "@/../public/assets/home/updates/article.png";
-import agriWarehousing from "@/../public/assets/home/updates/agriWarehousing.png";
+import img_12 from "@/../public/assets/outreach-and-engagements/eventImages/august18_2025_Img4.jpeg"
+import img_13 from "@/../public/assets/knowledeg/researchPapers/13.png";
 import Link from "next/link";
-
+import img_14 from "@/../public/assets/knowledeg/researchPapers/14.png";
+import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg"
 export default function Updates() {
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [isLastSlide, setIsLastSlide] = useState(false);
@@ -153,40 +151,43 @@ export default function Updates() {
 
 const EventsDetails = [
   {
-    image: taxation,
-    category: "Research Report ",
-    title: "Analysing the effectiveness of compensatory afforestation in India",
+    image: img_14,
+    category: "Research Report",
+    title: "Impact of FSI Deregulation in Hyderabad",
     btnTitle: "Read more",
-    link: "/assets/pdf/Study-on-Implementation-of-Compensatory-Afforestation-in-India.pdf",
+    link: "/assets/pdf/report-fsi-deregulation-in-hyderabad.pdf",
   },
- 
-  {
-    image: infraKatha,
-    category: "InfraKatha #8",
-    title:
-      "Featuring Mr. Montek Singh Ahluwalia, Former Deputy Chairman, the Planning Commission",
-    btnTitle: "Watch now",
-    link: "https://www.youtube.com/watch?v=ukODX0llH7o&t=1139s",
-  },
-  {
-    image: article,
-    category: "Video",
-    title: "Why India needs a national plan for building new cities",
-    btnTitle: "Watch now",
-    link: "https://www.youtube.com/watch?v=g5aA3Q3af1g&ab_channel=TheInfravisionFoundation",
-  },
-  {
-    image: agriWarehousing,
+
+   {
+    image: img_15,
     category: "Blog",
-    title: "Agri-Warehousing: A problem of capacity",
+    title: "How to make India’s highways safe",
     btnTitle: "Read more",
-    link: "/blogs/rural-and-agri-infra",
+    link: "/blogs/how-to-make-india-highways-safe",
   },
+
   {
-    image: InfrapanditAward,
-    category: "InfraPandit Awards",
-    title: "Nurturing the Next Generation of Infra Talent and Ideas",
-    btnTitle: "See details",
-    link: "/infrapandit-awards",
+    image: img_13,
+    category: "Research Report",
+    title: "Removing Barriers to Faster Penetration of Trees Outside Forests Productsin Construction Sector",
+    btnTitle: "Read more",
+    link: "/assets/pdf/removing-barriers-to-faster-penetration-of-trees-final-report.pdf",
   },
+
+   {
+    image: img_12,
+    category: "Event",
+    title: "HSR will be the next growth multiplier",
+    btnTitle: "See details",
+    link: "/outreach-and-engagements",
+  },
+
+
+ 
+ 
+ 
 ];
+
+
+
+ 

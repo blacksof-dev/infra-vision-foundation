@@ -43,6 +43,16 @@ const SECTORS: SectorType[] = [
 const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
+   {
+    id:52,
+    img: "/assets/archive/newsAndMedia/womanEmpowerment.jpg",
+    category: "News",
+    title: "Rumjhum Chatterjee",
+    sectors: "",
+    date: "August 9, 2025",
+    description: "Empowering Women for Viksit Bharat 2047",
+    link: "/assets/pdf/empowering-women-for-viksit-bharat.pdf",
+  },
     {
     id:51,
     img: "/assets/archive/newsAndMedia/urbanFund.png",
@@ -51,7 +61,7 @@ const allcards = [
     sectors: "",
     date: "August 20, 2025",
     description: "Shaping the Urban Challenge Fund",
-    link: "/assets/pdf/Shaping the Urban Challenge Fund (Business Standard 20.08.2025).pdf",
+    link: "/assets/pdf/shaping-the-urban-challenge-fund.pdf",
   },
    {
     id:50,

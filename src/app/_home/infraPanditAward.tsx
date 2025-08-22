@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import montek from "@/../public/assets/globals/infrapanditAward.jpg";
+import montek from "@/../public/assets/home/infrapanditAward.webp";
 import { BorderGrayHeroBtn } from "@/_components/atoms/buttons";
 
 export default function InfrapanditAward({ ctaText = "See details", link = "/infrapandit-awards" }: { ctaText?: string, link?: string }) {

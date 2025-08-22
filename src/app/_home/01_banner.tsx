@@ -1,8 +1,7 @@
 import Image from "next/image";
 import BannerBg from "@/../public/assets/home/BannerBg.png";
 import Updates from "./updates";
-import { GoArrowRight } from "react-icons/go";
-import Link from "next/link";
+
 export default function Banner() {
   return (
     <>

@@ -14,7 +14,7 @@ import img_10 from "@/../public/assets/knowledeg/researchPapers/10.png";
 import img_11 from "@/../public/assets/knowledeg/researchPapers/11.jpg";
 import img_12 from "@/../public/assets/knowledeg/researchPapers/12.jpg";
 import img_13 from "@/../public/assets/knowledeg/researchPapers/13.png";
-
+import img_14 from "@/../public/assets/knowledeg/researchPapers/14.png";
 
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 
@@ -62,6 +62,16 @@ const INITIAL_VISIBLE_COUNT = 3;
 
 
 const allcards = [
+  {
+    id: 14,
+    img: img_14,
+    category: "Urban Planning",
+    title: "",
+    sectors: "Urban Planning",
+    date: " ",
+    description:"Impact of FSI Deregulation in Hyderabad",
+    link: "/assets/pdf/report-fsi-deregulation-in-hyderabad.pdf",
+  },
    {
     id: 13,
     img: img_13,

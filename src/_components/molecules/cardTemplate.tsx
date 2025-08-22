@@ -57,18 +57,7 @@ export default function Card({
             )}
           </div>
 
-          {/* <div className="pt-3  pb-6 xl:py-4 mt-auto d">
-            <BorderGrayHeroBtn
-              text={ctaText}
-              role="link"
-              borderColor="darkgray/40"
-              color="black"
-              bgColor="white"
-              size="base"
-              target="_blank"
-              link={link}
-            />
-          </div> */}
+         
         </div>
         <div className="pt-3  pb-6 xl:py-4 mt-auto ">
           <BorderGrayHeroBtn
