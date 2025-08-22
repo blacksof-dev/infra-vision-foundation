@@ -20,13 +20,13 @@ import img7 from "@/../public/assets/knowledeg/conversations/07.png";
 import img8 from "@/../public/assets/knowledeg/conversations/08.png";
 import img9 from "@/../public/assets/knowledeg/conversations/09.png";
 import img10 from "@/../public/assets/knowledeg/conversations/10.png";
-// import video1 from "@/../public/assets/knowledeg/conversations/video/video1.mp4"
+
 
 const people = [
 
   {
     image: img10.src,
-    videoLink:"/video/video1.mp4",
+    videoLink:"https://www.youtube.com/embed/ZGIjUOfs91U?si=-iX4ss69vegjRpoQ",
     name: "Tarun Sharma and Yutika Vora",
     title:
       "Co-founder at Nagrika ",
@@ -36,7 +36,7 @@ const people = [
     {
     image: img3.src,
     videoLink:
-      "https://www.youtube.com/watch?v=w6oJTRqeB4A&list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em&index=9&ab_channel=TheInfravisionFoundation",
+      "https://www.youtube.com/embed/crb5-c_wDYs?si=VsMrZLNj6BDHjaxp",
     name: "Prof. G Raghuram",
     title:
       "Member, Council of Advisors, TIF, and Former Director, IIM Bangalore",
