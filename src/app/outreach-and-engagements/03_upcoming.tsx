@@ -378,8 +378,7 @@ The study identified Noida as having exceptional potential to become a model cit
               date: "July 14, 2025",
               images: [
                 {
-                  image:
-                    "/assets/pdf/odisha.jpeg",
+                  image: "/assets/pdf/odisha.jpeg",
                   description:
                     "TIF CEO, Jagan Shah; Head of Advocacy Kaveree Bamzai; Smt. Anu Garg, IAS, DC‑cum‑ACS & Chairperson, CRUT; Smt. Usha Padhee, IAS, Principal Secretary, H&UD Department, Government of Odisha; Dr. N. Thirumala Naik, IAS, Managing Director, CRUT; Vice‑Chairman, BDA; and MD, BSCL",
                 },
@@ -393,67 +392,56 @@ The study identified Noida as having exceptional potential to become a model cit
       {
         month: "August",
         events: [
-           {
-            date: "18",
-
-            dayTime: "Monday",
-            meetingType: "External engagement",
-            desc: " HSR will be the next growth multiplier",
-            ctaText: "See details",
-            details: {
-              date: "August 18, 2025",
-              images: [
-                {
-                  image:
-                    "/assets/outreach-and-engagements/eventImages/august18_2025_Img1.JPG",
-                  description: "",
-                },
-                 {
-                  image:
-                    "/assets/outreach-and-engagements/eventImages/august18_2025_Img2.JPG",
-                  description: "",
-                },
-                 {
-                  image:
-                    "/assets/outreach-and-engagements/eventImages/august18_2025_Img3.JPG",
-                  description: "",
-                },
-                 {
-                  image:
-                    "/assets/outreach-and-engagements/eventImages/august18_2025_Img4.jpeg",
-                  description: "",
-                },
-              ],
-              content: `
-             New report presented at High-Level Roundtable on Promoting High-Speed Rail in India \n
-             Organised by The Infravision Foundation and CII’s Rail Transportation and Equipment Division, August 18, 2025\n
-             Every kilometre of High-Speed Rail (HSR) provides nearly five times the capacity of conventional rail when utilisation exceeds 90%, while also cutting dependence on fossil fuels and significantly reducing travel time. HSR allows access to travel for intermediate towns not served by air travel, eases congestion, enables indigenisation, boosts economic competitiveness, and ensures sustainable mobility in a rapidly urbanised country. With India aiming to become a developed economy by 2047, HSR is no longer a luxury but a necessity.\n
-             Making HSR the locomotive of a new era of development in the country was the big idea at a high-level roundtable hosted by The Infravision Foundation (TIF), in collaboration with the Confederation of Indian Industries’ Rail Transportation and Equipment Division (CII-RTED). A potential investment of ₹12 lakh crore will act as a multi-year economic stimulus, creating substantial secondary and tertiary benefits as demand materialises and spending is phased across several years.\n
-             The event marked the release and discussion of TIF’s new research paper, “The Case for Developing High-Speed Rail Corridors in India” authored by Dr. Ramakrishnan T. S., which presents a compelling case for advancing HSR as a transformative mode of intercity transport in India and connecting it to the unified multi-model urban transport system. The study recommends prioritising four key HSR corridors between 2025 and 2035 \n
-              Delhi-Sonipat-Panipat-Karnal-Ambala-Chandigarh-Ludhiana-Jalandhar (566 km)\n
-              Delhi-Rewari-Jaipur-Ajmer-Jodhpur-Pali/Beenja-Palanpur-Mehsana-GandhiNagar-Ahmedabad (876 km)\n
-              Delhi-Agra-Lucknow-Ayodhya-Varanasi-Patna-Kolkata (1670 km)\n
-              Mumbai-Navi Mumbai-Pune-Satara-Kolhapur-Belagavi-Dharwad-Davengere-Tumkuru-Bengaluru-Tirupati-Chennai(1,366 km)
-— alongside developing indigenous technology to reduce dependence on imports, generate employment, and promote Atmanirbhar Bharat.\n
-The roundtable opened with a context-setting session, which underscored the need to “demystify” HSR and move beyond perceptions of elitism. Participants noted that much like the Rajdhani Express when it was first introduced in 1969, HSR may initially appear exclusive, but in time will prove to be indispensable for modern, urbanising India, especially with countries such as Japan already advancing towards 500 kmph trains.\n
-A strong consensus emerged that state governments must be brought in from the very beginning as co-owners and financiers of corridors and stations rather than leaving HSR solely to the Union government. International and domestic comparisons were used in the discussion where urban metro systems often cost more per km than HSR in some contexts, arguing that state co-investment and municipal participation (through station-area development and land-value capture) should be the norm for HSR, just as in metros. This, it was noted, can de-risk projects, align incentives locally, and strengthen long-term revenue streams.\n
-The discussion also emphasised the importance of indigenisation. India’s success in building metro and RRTS systems was cited as a precedent for creating a domestic HSR ecosystem, reducing reliance on imports, and making projects more affordable. Participants called for phased demonstration projects at 250 kmph on shorter corridors to build confidence and prove end-to-end domestic capability before scaling further.\n
-In the closing session, the focus shifted to integration and long-term planning. HSR was framed as part of a broader “system of systems,” where high-speed corridors must be seamlessly connected with regional rail, metro, and last-mile networks to fully unlock their value. This approach, combined with land-use planning and urban development strategies, can ensure HSR drives both mobility transformation and economic growth.\n
-The event reinforced that HSR is not just about speed but about reimagining India’s mobility and economic geography for Viksit Bharat 2047. As TIF Founder and Managing Trustee Vinayak Chatterjee said, a country aspiring to be the third largest economy in the world must learn to travel in speed and comfort. Developing HSR should be a national priority, added Jagan Shah, CEO, TIF.\n
-The audience was left with the exciting possibility that in the neara future, HSR could take Indians from Mumbai to Delhi in five and a half hours, the equivalent of Beijing to Shanghai, as articulated by Prof G Raghuram, Advisor, TIF and former director, IIM Bangalore.
-
-
-
-
-
-
-
-
-
-`
-             
-            },
-          },
+          //            {
+          //             date: "18",
+          //             dayTime: "Monday",
+          //             meetingType: "External engagement",
+          //             desc: " HSR will be the next growth multiplier",
+          //             ctaText: "See details",
+          //             details: {
+          //               date: "August 18, 2025",
+          //               images: [
+          //                 {
+          //                   image:
+          //                     "/assets/outreach-and-engagements/eventImages/august18_2025_Img1.JPG",
+          //                   description: "",
+          //                 },
+          //                  {
+          //                   image:
+          //                     "/assets/outreach-and-engagements/eventImages/august18_2025_Img2.JPG",
+          //                   description: "",
+          //                 },
+          //                  {
+          //                   image:
+          //                     "/assets/outreach-and-engagements/eventImages/august18_2025_Img3.JPG",
+          //                   description: "",
+          //                 },
+          //                  {
+          //                   image:
+          //                     "/assets/outreach-and-engagements/eventImages/august18_2025_Img4.jpeg",
+          //                   description: "",
+          //                 },
+          //               ],
+          //               content: `
+          //              New report presented at High-Level Roundtable on Promoting High-Speed Rail in India \n
+          //              Organised by The Infravision Foundation and CII’s Rail Transportation and Equipment Division, August 18, 2025\n
+          //              Every kilometre of High-Speed Rail (HSR) provides nearly five times the capacity of conventional rail when utilisation exceeds 90%, while also cutting dependence on fossil fuels and significantly reducing travel time. HSR allows access to travel for intermediate towns not served by air travel, eases congestion, enables indigenisation, boosts economic competitiveness, and ensures sustainable mobility in a rapidly urbanised country. With India aiming to become a developed economy by 2047, HSR is no longer a luxury but a necessity.\n
+          //              Making HSR the locomotive of a new era of development in the country was the big idea at a high-level roundtable hosted by The Infravision Foundation (TIF), in collaboration with the Confederation of Indian Industries’ Rail Transportation and Equipment Division (CII-RTED). A potential investment of ₹12 lakh crore will act as a multi-year economic stimulus, creating substantial secondary and tertiary benefits as demand materialises and spending is phased across several years.\n
+          //              The event marked the release and discussion of TIF’s new research paper, “The Case for Developing High-Speed Rail Corridors in India” authored by Dr. Ramakrishnan T. S., which presents a compelling case for advancing HSR as a transformative mode of intercity transport in India and connecting it to the unified multi-model urban transport system. The study recommends prioritising four key HSR corridors between 2025 and 2035 \n
+          //               Delhi-Sonipat-Panipat-Karnal-Ambala-Chandigarh-Ludhiana-Jalandhar (566 km)\n
+          //               Delhi-Rewari-Jaipur-Ajmer-Jodhpur-Pali/Beenja-Palanpur-Mehsana-GandhiNagar-Ahmedabad (876 km)\n
+          //               Delhi-Agra-Lucknow-Ayodhya-Varanasi-Patna-Kolkata (1670 km)\n
+          //               Mumbai-Navi Mumbai-Pune-Satara-Kolhapur-Belagavi-Dharwad-Davengere-Tumkuru-Bengaluru-Tirupati-Chennai(1,366 km)
+          // — alongside developing indigenous technology to reduce dependence on imports, generate employment, and promote Atmanirbhar Bharat.\n
+          // The roundtable opened with a context-setting session, which underscored the need to “demystify” HSR and move beyond perceptions of elitism. Participants noted that much like the Rajdhani Express when it was first introduced in 1969, HSR may initially appear exclusive, but in time will prove to be indispensable for modern, urbanising India, especially with countries such as Japan already advancing towards 500 kmph trains.\n
+          // A strong consensus emerged that state governments must be brought in from the very beginning as co-owners and financiers of corridors and stations rather than leaving HSR solely to the Union government. International and domestic comparisons were used in the discussion where urban metro systems often cost more per km than HSR in some contexts, arguing that state co-investment and municipal participation (through station-area development and land-value capture) should be the norm for HSR, just as in metros. This, it was noted, can de-risk projects, align incentives locally, and strengthen long-term revenue streams.\n
+          // The discussion also emphasised the importance of indigenisation. India’s success in building metro and RRTS systems was cited as a precedent for creating a domestic HSR ecosystem, reducing reliance on imports, and making projects more affordable. Participants called for phased demonstration projects at 250 kmph on shorter corridors to build confidence and prove end-to-end domestic capability before scaling further.\n
+          // In the closing session, the focus shifted to integration and long-term planning. HSR was framed as part of a broader “system of systems,” where high-speed corridors must be seamlessly connected with regional rail, metro, and last-mile networks to fully unlock their value. This approach, combined with land-use planning and urban development strategies, can ensure HSR drives both mobility transformation and economic growth.\n
+          // The event reinforced that HSR is not just about speed but about reimagining India’s mobility and economic geography for Viksit Bharat 2047. As TIF Founder and Managing Trustee Vinayak Chatterjee said, a country aspiring to be the third largest economy in the world must learn to travel in speed and comfort. Developing HSR should be a national priority, added Jagan Shah, CEO, TIF.\n
+          // The audience was left with the exciting possibility that in the neara future, HSR could take Indians from Mumbai to Delhi in five and a half hours, the equivalent of Beijing to Shanghai, as articulated by Prof G Raghuram, Advisor, TIF and former director, IIM Bangalore.
+          // `
+          //             },
+          //           },
         ],
       },
       {
