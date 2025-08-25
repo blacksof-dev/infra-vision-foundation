@@ -12,7 +12,7 @@ export default function PopupDescription({
   onclose: () => void;
   data: CardData;
 }) {
-  const [showlineclamp, setlineclamp] = useState(false);
+ 
   useEffect(() => {
     console.log(data);
   }, []);

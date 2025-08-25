@@ -65,7 +65,7 @@ const AboutInfraPandit = () => {
             </div>
             <div className="pt-6 flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-8 sm:items-center">
               <BorderGrayHeroBtn
-                text="Apply now"
+                text="Applications closed"
                 role="link"
                 borderColor="pink"
                 color="black"

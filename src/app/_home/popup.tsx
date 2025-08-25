@@ -68,7 +68,6 @@ export default function Popup() {
                   </h2>
 
                   <div className=" mt-2 sm:mt-4">
-                    <h4 className=" text-pink">Mumbai, June 20, 2025</h4>
                     <div className="cursor-pointer mt-6">
                       <BorderGrayHeroBtn
                         text="See details"
