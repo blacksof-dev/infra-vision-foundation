@@ -404,22 +404,22 @@ The study identified Noida as having exceptional potential to become a model cit
                           {
                             image:
                               "/assets/outreach-and-engagements/eventImages/august18_2025_Img1.JPG",
-                            description: "",
+                            description: "Founder and Managing Trustee of The Infravision Foundation, Mr Vinayak Chatterjee, in conversation with Council of Advisors member Prof G. Raghuram and Prof Sandip Chakrabarti of IIM-A.",
                           },
                            {
                             image:
                               "/assets/outreach-and-engagements/eventImages/august18_2025_Img2.JPG",
-                            description: "",
+                            description: "Ms Soma Banerjee, Executive Director, CII, along with Mr Vinayak Chatterjee, Prof G. Raghuram and Prof Sandip Chakrabarti.",
                           },
                            {
                             image:
                               "/assets/outreach-and-engagements/eventImages/august18_2025_Img3.JPG",
-                            description: "",
+                            description: "Ms Soma Banerjee, Mr Vinayak Chatterjee, Prof G Raghuram, and The Infravision Foundation CEO, Mr Jagan Shah, amid a panel discussion.",
                           },
                            {
                             image:
                               "/assets/outreach-and-engagements/eventImages/august18_2025_Img4.jpeg",
-                            description: "",
+                            description: "Prof G. Raghuram in conversation with the media on the sidelines of the roundtable.",
                           },
                         ],
                         content: `

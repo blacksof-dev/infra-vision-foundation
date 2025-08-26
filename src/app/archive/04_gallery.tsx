@@ -112,23 +112,23 @@ const galleryImages = [
 
     {
     image: "assets/archive/gallery/image16.jpg",
-    year: '',
-    event: "",
-    description: "",
+    year: 2025,
+    event: "TIF Meetings",
+    description: "Founder and Managing Trustee of The Infravision Foundation, Mr Vinayak Chatterjee, in conversation with Council of Advisors member Prof G. Raghuram and Prof Sandip Chakrabarti of IIM-A.",
   },
 
 
     {
     image: "assets/archive/gallery/image17.jpg",
-    year: '',
-    event: "",
-    description: "",
+    year: 2025,
+    event: "TIF Meetings",
+    description: "Ms Soma Banerjee, Executive Director, CII, along with Mr Vinayak Chatterjee, Prof G. Raghuram and Prof Sandip Chakrabarti.",
   },
   {
     image: "assets/archive/gallery/image18.jpeg",
-    year: '',
-    event: "",
-    description: "",
+    year: 2025  ,
+    event: "TIF Meetings",
+    description: "Prof G. Raghuram in conversation with the media on the sidelines of the roundtable.",
   },
     
 ];
