@@ -1,18 +1,25 @@
-import infravisionfoundationBg from "@/../public/assets/home/infravisionfoundationBg.png";
-import infravisionTalkMobile from "@/../public/assets/home/infravisionTalkMobile.jpg";
+"use client";
 import Newsletter from "@/_components/molecules/newsletter";
+import { useApiHook } from "@/lib/useApi";
+import { ApiResponse } from "../_home/07_infravision_talks";
 
-export default function InfravisionTalks() {
+export default function GetInvolved() {
+  const { data } = useApiHook<ApiResponse>({
+    url: "/content/home/getInvolved",
+    cacheKey: "getInvolved",
+  });
+
+  if (!data) return null;
   return (
     <>
       <Newsletter
-        bgImage={infravisionfoundationBg}
-        mobilebg={infravisionTalkMobile}
-        tag="Get Involved"
-        title="Engage and contribute to change with  <span class='font-medium text-white'> The Infravision Foundation</span>"
-        desc="Join our family, ask questions, suggest solutions, and participate in building a resilient India."
-        ctatext="Connect with us"
-        ctaLink="/get-involved"
+        bgImage={`/assets/home/${data.desktopImg}`}
+        mobilebg={`/assets/home/${data.mobileImg}`}
+        tag={data.tagName}
+        title={data.title}
+        desc={data.description}
+        ctatext={data.cta.text}
+        ctaLink={data.cta.target}
       />
     </>
   );

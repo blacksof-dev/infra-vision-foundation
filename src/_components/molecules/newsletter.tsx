@@ -1,6 +1,6 @@
 import { HeroBtn, UnderlineCta } from "@/_components/atoms/buttons";
 import Image, { StaticImageData } from "next/image";
-import Link from "next/link";
+
 
 type Newsletter = {
   tag?: string;
@@ -8,8 +8,8 @@ type Newsletter = {
   desc: string;
   ctatext: string;
   ctaLink?: string;
-  bgImage?: StaticImageData;
-  mobilebg?: StaticImageData;
+  bgImage?: string;
+  mobilebg?: string;
   image?: StaticImageData;
   bgColor?: string;
   id?:string;
@@ -23,7 +23,6 @@ export default function Newsletter({
   mobilebg,
   image,
   ctatext,
-  ctaLink = "#",
   bgColor,
   id,
 }: Newsletter) {
@@ -34,12 +33,12 @@ export default function Newsletter({
           {bgImage && mobilebg && (
             <>
               <div
-                style={{ backgroundImage: `url(${bgImage.src})` }}
+                style={{ backgroundImage: `url(${bgImage})` }}
                 className="bg-cover  object-right-bottom  absolute inset-0 hidden sm:block"
               ></div>
 
               <div
-                style={{ backgroundImage: `url(${mobilebg.src})` }}
+                style={{ backgroundImage: `url(${mobilebg})` }}
                 className="bg-cover bg-center d absolute inset-0 sm:hidden block"
               ></div>
             </>

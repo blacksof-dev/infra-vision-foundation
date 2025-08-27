@@ -11,6 +11,7 @@ export async function getFetch<T>(
       },
       ...options,
     });
+    
     return response.data;
   } catch (error: any) {
     throw new Error(error.message);

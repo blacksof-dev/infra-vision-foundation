@@ -1,7 +1,13 @@
 import Link from "next/link";
 import Script from "next/script";
 
-export default function TwitterPost() {
+type ctaDetails = {
+  ctaName:string;
+  ctaLink:string;
+
+}
+
+export default function TwitterPost({ctaName,ctaLink}:ctaDetails) {
   return (
     <section>
       <div className="flex flex-col lg:flex-row justify-between  pb-3 md:pb-4">
@@ -13,11 +19,11 @@ export default function TwitterPost() {
         <div className="md:block hidden ">
           <Link
             className="flex items-center gap-3 py-3 lg:py-0 lg:justify-center lg:items-center text-pink hover:scale-[1.05] relative transition-all duration-300 ease-linear"
-            href="https://x.com/Infra_VinayakCh"
+            href={ctaLink}
             target="_blank"
           >
 
-            <h5 className="">View more on</h5>
+            <h5 className="">{ctaName}</h5>
             <div>
               <svg
                 className="w-7 h-7 lg:w-10 lg:h-10"

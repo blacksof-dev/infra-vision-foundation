@@ -1,40 +1,38 @@
 import Image from "next/image";
 import BannerBg from "@/../public/assets/home/BannerBg.png";
 import Updates from "./updates";
+import { getData } from "@/lib/getServerData";
 
-export default function Banner() {
+interface ApiResponse {
+  title: string;
+  description: string;
+  image: string;
+}
+export default async function Banner() {
+  const data = await getData<ApiResponse>("/content/home/bannerContent");
+ 
   return (
     <>
       <section id="homepage-section-01">
         <div className="relative overflow-hidden">
-          <div className=" w-full h-[40rem]  lg:h-auto xl:h-full">
+          <div className="relative  w-full h-[40rem] xl:h-[47rem] 2xl:h-screen">
             <Image
-              src={BannerBg}
+              src={`/assets/home/${data.image}`}
+              fill
               alt="InfraVision Foundation"
-              className="h-full  w-full object-cover"
-            ></Image>
+              className="h-full w-full object-cover"
+            />
           </div>
           <div className="w-container">
             <div className="  absolute top-[24%]  md:top-[30%] xl:top-[25%]">
-              <div data-aos="fade-up" className="w-full   ">
-                <h1 className="tracking-[-4%] font-light txt-black/90 ">
-                  {" "}
-                  An{" "}
-                  <span className="tracking-[-4%] font-medium text-pink">
-                    independent think tank
-                  </span>
-                  <br className="" /> seeking to impact India’s{" "}
-                  <br className="xl:block hidden" />
-                  infrastructure landscape{" "}
-                </h1>
+              <div data-aos="fade-up" className="sm:w-[70%] md:w-[50%] lg:w-[50%]">
+                  <h1 className="tracking-[-4%] font-light txt-black/90 "   dangerouslySetInnerHTML={{__html:data.title}} />
+                   
+    
               </div>
-              <div className="w-[90%] md:w-[60%] py-4">
-                <h5 className="text-black ">
-                  Helping shape public discourse and policy interventions
-                  through action research and advocacy.
-                </h5>
+              <div className="w-[90%] sm:w-[70%] md:w-[60%] lg:w-[40%]   py-4">
+                <h5 className="text-black ">{data.description}</h5>
               </div>
-            
             </div>
             <div className="absolute bottom-8 xl:bottom-8 w-screen p-1">
               <Updates />
