@@ -1,127 +1,71 @@
-import { FaYoutube } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaInstagram } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
-import Link from "next/link";
+"use client"
 import TwitterPost from "./twittersection";
-import { getData } from "@/lib/getServerData";
+import SocialMedia from "@/_components/atoms/socialMedia";
+import { useApiHook } from "@/lib/useApi";
+import Loading from "../loading";
+import { ApiResponse } from "./01_banner";
 
-interface ApiResponse {
-  sectionKey: string;
-  tagName: string;
-  title: string;
-  description: string;
-  cta: {
-    text: string;
-    target: string;
-  };
-}
+export default  function StayConnected() {
 
-interface SocialMediaApiResponse {
-  id: string;
-  slug: string;
-  value: string;
-  active: boolean;
-}
+  const { data, isLoading, error } = useApiHook<ApiResponse[]>({
+     url: "/content/home",
+     cacheKey: "homeContent",
+   });
 
-export default async function StayConnected() {
-  const data = await getData<ApiResponse>("/content/home/socialMedia");
-  const socialMedia = await getData<SocialMediaApiResponse[]>("/social-profiles");
-  
+   if (isLoading) {
+       return (
+         <section className="w-full h-[40rem] flex items-center justify-center">
+           <Loading />
+         </section>
+       );
+     }
 
+       if (error || !data) {
+      return (
+        <section className="w-full h-[40rem] flex items-center justify-center">
+          <p>Something went wrong</p>
+        </section>
+      );
+    }
+   
+     if (!data) return null;
+   
+     const socialMedia = data.find(
+       (section) => section.sectionKey === "socialMedia"
+     );
+   
+     if (!socialMedia) return null;
+   
+     const response = socialMedia.data;
   return (
+  
     <section id="homepage-section-6">
       <div className="blade-top-padding-lg blade-bottom-padding-lg">
         <div className="w-container flex flex-col lg:flex-row gap-7 sm:gap-6 lg:gap-20">
           <div className="w-full lg:w-[50%] xl:w-[40%] ">
             <div className="flex  flex-row  items-center gap-2 md:gap-3">
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-              <h5 className="font-medium text-black">{data.tagName}</h5>
+              <h5 className="font-medium text-black">{response.tagName}</h5>
             </div>
             <div className=" pt-4 pb-2 sm:py-4">
               <h1
                 className="font-light text-black"
-                dangerouslySetInnerHTML={{ __html: data.title }}
+                dangerouslySetInnerHTML={{ __html: response.title }}
               />
             </div>
 
-            <h6 className="text-black ">{data.description}</h6>
+            <h6 className="text-black ">{response.description}</h6>
             <div className=" py-2 sm:py-4 hidden lg:block ">
               <h6 className="text-pink font-medium py-2">Follow us on</h6>
-              <div className="flex flex-row gap-5 py-2 ">
-                <Link
-                  href="https://www.youtube.com/@theinfravisionfoundation"
-                  target="_blank"
-                  className="group"
-                >
-                  <FaYoutube className="text-4xl border-1  group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
-                </Link>
-                <Link
-                  href="https://www.linkedin.com/company/the-infravision-foundation/?originalSubdomain=in"
-                  target="_blank"
-                  className="group"
-                >
-                  <FaLinkedin className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
-                </Link>
-                <Link
-                  href="https://x.com/TheInfravision?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
-                  target="_blank"
-                  className="group"
-                >
-                  <FaXTwitter className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
-                </Link>
-                <Link
-                  href="https://www.instagram.com/theinfravisionfoundation/"
-                  target="_blank"
-                  className="group"
-                >
-                  <FaInstagram className="text-4xl border-1 group-hover:bg-pink rounded-sm border-darkgray p-1 text-darkgray group-hover:text-white group-hover:border-pink" />
-                </Link>
-              </div>
+                <SocialMedia/>
             </div>
           </div>
           <div className="w-full lg:w-[50%] xl:w-[60%]  ">
-            <TwitterPost ctaName={data.cta.text} ctaLink={data.cta.target} />
+            <TwitterPost ctaName={response.cta?.text??""} ctaLink={response.cta?.target??""} />
           </div>
           <div className=" py-2 sm:py-4 block lg:hidden">
             <h6 className="text-pink font-medium">Follow us on</h6>
-            <div className="flex flex-row gap-5 py-2">
-              {socialMedia.filter((item) => item.active && item.value)
-                .map((item) => {
-                  let Icon;
-                  switch (item.slug) {
-                    case "youtube":
-                      Icon = FaYoutube;
-                      break;
-                    case "linkedin":
-                      Icon = FaLinkedin;
-                      break;
-                    case "twitter":
-                      Icon = FaXTwitter;
-                      break;
-                    case "instagram":
-                      Icon = FaInstagram;
-                      break;
-                    case "facebook":
-                      Icon = FaFacebook;
-                      break;
-                    default:
-                      return null;
-                  }
-
-                  return (
-                    <Link
-                      key={item.id}
-                      href={item.value}
-                      target="_blank"
-                      className="group"
-                    >
-                      <Icon className="text-4xl border border-darkgray p-1 rounded-sm text-darkgray group-hover:bg-pink group-hover:text-white group-hover:border-pink" />
-                    </Link>
-                  );
-                })}
-            </div>
+              <SocialMedia/>
           </div>
         </div>
       </div>

@@ -118,7 +118,7 @@ export default function ContactForm() {
 
    
 
-      console.log("Form submitted:", data);
+      // console.log("Form submitted:", data);
      
 
       if (!formRef.current) return;
@@ -132,7 +132,7 @@ export default function ContactForm() {
         }
       );
 
-      console.log("SUCCESS!");
+      // console.log("SUCCESS!");
 
       setIsSuccess(true);
       setIsopen(true);

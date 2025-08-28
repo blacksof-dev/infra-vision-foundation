@@ -23,15 +23,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={` antialiased `}>
-
-        <HeaderProvider>
-          <Header />
-          <Provider>
-           {children}
-          </Provider>
-         
-          <Footer />
-        </HeaderProvider>
+        <Provider>
+          <HeaderProvider>
+            <Header />
+            {children}
+            <Footer />
+          </HeaderProvider>
+        </Provider>
       </body>
     </html>
   );

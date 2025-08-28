@@ -1,4 +1,4 @@
-import Highlights from "./05_highlights"
+import Highlights from "./05_highlights";
 import Banner from "./01_banner";
 import WhoWeAre from "./02_whoWeAre";
 import Infravisionaries from "./03_infravisionaries";
@@ -6,18 +6,24 @@ import Association from "./04_association";
 import StayConnected from "./06_connected";
 import InfravisionTalks from "./07_infravision_talks";
 import Popup from "./popup";
+import { Suspense } from "react";
+
+import { Loader } from "lucide-react";
+import SocialMedia from "@/_components/atoms/socialMedia";
 
 export default function Home() {
   return (
     <>
-    {/* <Popup/> */}
+      {/* <Popup/> */}
       <Banner />
-      {/* <WhoWeAre />
-      <Infravisionaries /> */}
-       <Association />
+      {/* <WhoWeAre /> */}
+      <Infravisionaries />
+      <Association />
       {/* <Highlights/> */}
       <StayConnected />
       <InfravisionTalks /> 
+     
+    
     </>
   );
 }

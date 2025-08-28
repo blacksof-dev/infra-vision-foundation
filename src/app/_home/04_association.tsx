@@ -6,11 +6,7 @@ import "swiper/css";
 import "@/_components/molecules/infiniteCarousel.css";
 import { useApiHook } from "@/lib/useApi";
 import Loading from "../loading";
-
-interface ContentApiResponse {
-  tagName: string;
-  title: string;
-}
+import { ApiResponse } from "./01_banner";
 
 interface ImageApiResponse {
   associations: {
@@ -21,14 +17,9 @@ interface ImageApiResponse {
 }
 
 export default function Association() {
-
-  const {
-    data: contentData,
-    isLoading,
-    error,
-  } = useApiHook<ContentApiResponse>({
-    url: "/content/home/associationContent",
-    cacheKey: "associationContent",
+  const { data, isLoading, error } = useApiHook<ApiResponse[]>({
+    url: "/content/home",
+    cacheKey: "homeContent",
   });
 
   const { data: imageData } = useApiHook<ImageApiResponse>({
@@ -44,6 +35,15 @@ export default function Association() {
     );
   }
 
+  if (!data) return null;
+
+  const contentData = data.find(
+    (section) => section.sectionKey === "associationContent"
+  );
+
+  if (!contentData) return null;
+
+  const response = contentData.data;
 
   if (error || !contentData || !imageData) {
     return (
@@ -61,11 +61,11 @@ export default function Association() {
       <div className="w-container">
         <div className="flex flex-row items-center gap-2 md:gap-3">
           <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
-          <h5 className="font-medium text-pink">{contentData.tagName}</h5>
+          <h5 className="font-medium text-pink">{response.tagName}</h5>
         </div>
         <div>
           <h1 className="text-black pt-2">
-            <span className="font-medium text-black">{contentData.title}</span>
+            <span className="font-medium text-black">{response.title}</span>
           </h1>
         </div>
       </div>
@@ -95,7 +95,7 @@ export default function Association() {
         >
           {imageData.associations.map((obj) => (
             <SwiperSlide key={obj.id} className="!w-auto">
-              <div  className="flex items-center w-[10rem] h-[4rem] md:w-[8rem] md:h-[3rem] xl:w-[15rem] xl:h-[6rem]">
+              <div className="flex items-center w-[10rem] h-[4rem] md:w-[8rem] md:h-[3rem] xl:w-[15rem] xl:h-[6rem]">
                 <Image
                   src={`assets/home/association/${obj.logoUrl}`}
                   alt={obj.name}
@@ -111,4 +111,3 @@ export default function Association() {
     </div>
   );
 }
-

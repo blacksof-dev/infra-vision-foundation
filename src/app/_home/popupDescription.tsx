@@ -13,9 +13,7 @@ export default function PopupDescription({
   data: CardData;
 }) {
  
-  useEffect(() => {
-    console.log(data);
-  }, []);
+
   return (
     <>
       <Portal>

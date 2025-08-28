@@ -1,57 +1,48 @@
-// import infravisionfoundationBg from "@/../public/assets/home/infravisionfoundationBg.png";
-// import infravisionTalkMobile from "@/../public/assets/home/infravisionTalkMobile.jpg";
 "use client";
 import Newsletter from "@/_components/molecules/newsletter";
 import Loading from "../loading";
 import { useApiHook } from "@/lib/useApi";
+import { ApiResponse } from "./01_banner";
 
-export interface ApiResponse {
-  sectionKey: string;
-  tagName: string;
-  title: string;
-  description: string;
-  desktopImg: string;
-  mobileImg: string;
-  cta: {
-    text: string;
-    target: string;
-  };
-}
-
-export default async function InfravisionTalks() {
-  const { data, isLoading, error } = useApiHook<ApiResponse>({
-    url: "/content/home/getInvolved",
-    cacheKey: "getInvovled",
+export default function InfravisionTalks() {
+  const { data, isLoading, error } = useApiHook<ApiResponse[]>({
+    url: "/content/home",
+    cacheKey: "homeContent",
   });
 
-  if (isLoading) {
-    return (
-      <section className="w-full h-[40rem] flex items-center justify-center">
-        <Loading />
-      </section>
-    );
-  }
+ if (isLoading) {
+      return (
+        <section className="w-full h-[40rem] flex items-center justify-center">
+          <Loading />
+        </section>
+      );
+    }
+  
+    if (error || !data) {
+      return (
+        <section className="w-full h-[40rem] flex items-center justify-center">
+          <p>Something went wrong</p>
+        </section>
+      );
+    }
+ 
 
-  if (error || !data) {
-    return (
-      <section className="w-full h-[40rem] flex items-center justify-center">
-        <p>Something went wrong</p>
-      </section>
-    );
-  }
+  const talk = data.find((section) => section.sectionKey === "getInvolved");
+  const response = talk?.data;
+
+  if (!response) return null;
+
 
   return (
-    <>
-      <Newsletter
-        id="homepage-section-7"
-        bgImage={`/assets/home/${data.desktopImg}`}
-        mobilebg={`/assets/home/${data.mobileImg}`}
-        tag={`${data.tagName}`}
-        title={`${data.title}`}
-        desc={`${data.description}`}
-        ctatext={`${data.cta.text}`}
-        ctaLink={`${data.cta.target}`}
-      />
-    </>
+    <Newsletter
+      id="homepage-section-7"
+      bgImage={`/assets/home/${response.desktopImg }`}
+      mobilebg={`/assets/home/${response.mobileImg }`}
+      tag={response.tagName}
+      title={response.title}
+      desc={response.description}
+      ctatext={response.cta?.text??""}
+      ctaLink={response.cta?.target}
+    />
   );
 }

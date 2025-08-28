@@ -2,7 +2,7 @@
 import rail from "@/../public/assets/home/whoWeAre/knowledge/rail.png";
 import highway from "@/../public/assets/home/whoWeAre/knowledge/highway.png";
 import jagan from "@/../public/assets/home/whoWeAre/knowledge/jagan.png";
-// import infraKatha from "@/../public/assets/home/whoWeAre/advocacy/infraKatha.png";
+
 import infraKatha from "@/../public/assets/infrakatha/banner/banner.jpg";
 import infraShakti from "@/../public/assets/home/whoWeAre/advocacy/infraPandit.png";
 import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infraPanditAward.png";
@@ -45,16 +45,6 @@ const knowledge = [
     link: "https://www.youtube.com/watch?v=g5aA3Q3af1g&ab_channel=TheInfravisionFoundation",
     ctaText: "Watch now"
   },
-  
-  // {
-  //   id: 1,
-  //   img: rail.src,
-  //   category: "Research Paper",
-  //   date: "January, 2025",
-  //   title: "The case for developing high-speed rail corridors in India",
-  //   subtitle: "Dr. Ramakrishnan T.S",
-  //   link: "/assets/home/whoWeAre/knowledge/The-Case-For-Developing-High-Speed-Rail-Corridors-In-India.pdf",
-  // },
 
   {
     id: 2,

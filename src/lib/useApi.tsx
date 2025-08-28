@@ -17,7 +17,9 @@ export function useApiHook<T>({
     queryFn: () => getFetch<T>(url),
     staleTime: 1000 * 60 * 60 * 24, 
      gcTime: 1000 * 60 * 60 * 24,
-       refetchOnMount: false,
+      refetchOnMount: false,        
+    refetchOnWindowFocus: false,  
+    refetchOnReconnect: false,
     
   });
 }
