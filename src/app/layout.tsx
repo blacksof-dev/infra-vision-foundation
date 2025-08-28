@@ -1,8 +1,10 @@
+
 import "./globals.css";
 import type { Metadata } from "next";
 import Footer from "@/_components/organism/footer";
 import Header from "@/_components/organism/header";
 import { HeaderProvider } from "@/context/useHeader";
+import Provider from "./queryProvider";
 
 
 export const metadata: Metadata = {
@@ -24,7 +26,10 @@ export default function RootLayout({
 
         <HeaderProvider>
           <Header />
-          {children}
+          <Provider>
+           {children}
+          </Provider>
+         
           <Footer />
         </HeaderProvider>
       </body>
