@@ -3,7 +3,7 @@ import Portal from "@/_components/atoms/popupPortal";
 import { RxCross2 } from "react-icons/rx";
 import { CardData } from "./static";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+
 
 export default function PopupDescription({
   onclose,
@@ -29,7 +29,7 @@ export default function PopupDescription({
               {/* IMAGE SECTION */}
               <div className="relative w-full  min-h-[19rem] sm:min-h-[21rem]   md:h-[25rem] lg:w-[40%] lg:h-full ">
                 <Image
-                  src={data.image.src}
+                  src={data.image}
                   alt={data.title}
                   fill
                   className="object-cover object-top rounded-md w-full "

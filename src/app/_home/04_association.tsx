@@ -45,13 +45,9 @@ export default function Association() {
 
   const response = contentData.data;
 
-  if (error || !contentData || !imageData) {
-    return (
-      <section className="w-full h-[40rem] flex items-center justify-center">
-        <p>Something went wrong</p>
-      </section>
-    );
-  }
+ if(!imageData){
+  return null;
+ }
 
   return (
     <div
@@ -97,11 +93,13 @@ export default function Association() {
             <SwiperSlide key={obj.id} className="!w-auto">
               <div className="flex items-center w-[10rem] h-[4rem] md:w-[8rem] md:h-[3rem] xl:w-[15rem] xl:h-[6rem]">
                 <Image
-                  src={`assets/home/association/${obj.logoUrl}`}
+                  src={`/assets/home/association/${obj.logoUrl}`}
                   alt={obj.name}
                   fill
+                  loading="lazy"
                   className="object-contain"
-                  unoptimized={true}
+                  unoptimized={false}
+                  quality={100}
                 />
               </div>
             </SwiperSlide>

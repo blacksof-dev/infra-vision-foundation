@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
-import Updates from "./updates";
 import { useApiHook } from "@/lib/useApi";
-import Loading from "../loading";
+import dynamic from "next/dynamic";
+const Updates = dynamic(() => import("./updates"), { ssr: false });
 
 export interface ApiResponse {
   id: string;
@@ -21,26 +21,13 @@ export interface ApiResponse {
   };
 }
 export default function Banner() {
-  const { data, isLoading, error } = useApiHook<ApiResponse[]>({
+  
+  const { data} = useApiHook<ApiResponse[]>({
     url: "/content/home",
     cacheKey: "homeContent",
   });
 
-    if (isLoading) {
-      return (
-        <section className="w-full h-[40rem] flex items-center justify-center">
-          <Loading />
-        </section>
-      );
-    }
-  
-    if (error || !data) {
-      return (
-        <section className="w-full h-[40rem] flex items-center justify-center">
-          <p>Something went wrong</p>
-        </section>
-      );
-    }
+
   if (!data) return null;
 
   const banner = data.find((section) => section.sectionKey === "bannerContent");
@@ -52,12 +39,16 @@ export default function Banner() {
     <>
       <section id="homepage-section-01">
         <div className="relative overflow-hidden">
-          <div className="relative  w-full h-[40rem] xl:h-[47rem] 2xl:h-screen">
+          <div className="relative  w-full h-[40rem] xl:h-[47rem] 2xl:h-[55rem] 3xl:h-screen">
             <Image
-              src={`/assets/home/${response.image}`}
+              src={`${response.image}`}
               fill
               alt="InfraVision Foundation"
               className="h-full w-full object-cover"
+              quality={100}
+              unoptimized={false}
+              priority
+              
             />
           </div>
           <div className="w-container">

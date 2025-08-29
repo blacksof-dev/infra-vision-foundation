@@ -5,10 +5,12 @@ type CardProps = {
   link: string;
   category: string;
   classes?: string;
-  subtitle?: string; ctaText: string;
+  subtitle?: string;
+  ctaText: string;
 };
-import Image from "next/image";
+
 import { BorderGrayHeroBtn } from "../atoms/buttons";
+import Image from "next/image";
 
 export default function Card({
   date,
@@ -18,19 +20,16 @@ export default function Card({
   category,
   classes,
   subtitle,
-  ctaText = "Read more"
+  ctaText = "Read more",
 }: CardProps) {
   return (
     <>
-      <div data-aos="fade-up" className="xl:max-w-[29rem] flex flex-col  relative ">
-        <div className="w-full h-[16rem] ">
-          <Image
-            src={image}
-            width={1000}
-            height={1000}
-            alt="Image"
-            className="w-full h-full object-cover rounded"
-          />
+      <div
+        data-aos="fade-up"
+        className="xl:max-w-[29rem] flex flex-col  relative "
+      >
+        <div className="relative w-full md:w-[28rem] xl:w-[23rem] 2xl:w-[28rem] h-[15rem]">
+          <Image src={image} alt={title} unoptimized={false} className="object-cover" fill quality={100} />
         </div>
 
         <div className="  flex justify-between flex-col ">
@@ -56,8 +55,6 @@ export default function Card({
               </div>
             )}
           </div>
-
-         
         </div>
         <div className="pt-3  pb-6 xl:py-4 mt-auto ">
           <BorderGrayHeroBtn

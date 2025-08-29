@@ -7,23 +7,28 @@ import StayConnected from "./06_connected";
 import InfravisionTalks from "./07_infravision_talks";
 import Popup from "./popup";
 import { Suspense } from "react";
+import Loading from "../loading";
 
-import { Loader } from "lucide-react";
-import SocialMedia from "@/_components/atoms/socialMedia";
+
+
+
 
 export default function Home() {
   return (
     <>
       {/* <Popup/> */}
-      <Banner />
-      {/* <WhoWeAre /> */}
+      <Suspense fallback={ 
+        <section className="w-full h-[40rem] flex items-center justify-center">
+          <Loading />
+        </section>}>
+        <Banner />
+      </Suspense>
+      <WhoWeAre />
       <Infravisionaries />
       <Association />
-      {/* <Highlights/> */}
+      <Highlights />
       <StayConnected />
-      <InfravisionTalks /> 
-     
-    
+      <InfravisionTalks />
     </>
   );
 }

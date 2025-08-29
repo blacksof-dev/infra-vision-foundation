@@ -1,25 +1,23 @@
 "use client";
-import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-
+import Image from 'next/image'
 interface MemberCardProps {
-  image: StaticImageData;
+  image: string;
   title: string;
   desig: string;
   link?: string;
   socialMedia?: string;
 }
 
-export const MemberCard = ({ image, title, desig, link, socialMedia }: MemberCardProps) => {
+export default function MemberCard ({ image, title, desig, link, socialMedia }: MemberCardProps) {
 
   return (
     <div className="flex relative flex-col w-[19rem] h-[19rem] group-first">
       <Image
+        fill
         src={image}
         alt={title}
         className="w-full h-full object-cover rounded"
-     
-        quality={90}
       />
       <div className="absolute bottom-0 left-0 w-[17rem]">
         {(link && socialMedia) && (

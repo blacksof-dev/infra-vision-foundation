@@ -403,7 +403,7 @@ The study identified Noida as having exceptional potential to become a model cit
                         images: [
                           {
                             image:
-                              "/assets/outreach-and-engagements/eventImages/august18_2025_Img1.JPG",
+                              "/assets/outreach-and-engagements/eventImages/august18_2025_Img1.webp",
                             description: "Founder and Managing Trustee of The Infravision Foundation, Mr Vinayak Chatterjee, in conversation with Council of Advisors member Prof G. Raghuram and Prof Sandip Chakrabarti of IIM-A.",
                           },
                            {
@@ -1446,7 +1446,7 @@ The study identified Noida as having exceptional potential to become a model cit
     }
   }, [isOpen]);
   return (
-    <section className="blade-top-padding blade-bottom-padding-lg relative">
+    <section className="blade-top-padding blade-bottom-padding-lg relative" >
       <img
         className="absolute opacity-60 z-0 top-0 right-0 hidden lg:block"
         src="/assets/outreach-and-engagements/highlight/circle.png"

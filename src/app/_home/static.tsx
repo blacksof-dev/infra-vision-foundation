@@ -1,3 +1,4 @@
+
 import Kiran from "@/../public/assets/home/trustees/Kiran.jpg";
 import Rumjhum from "@/../public/assets/home/trustees/Rumjhum.jpg";
 import kiranImg from "@/../public/assets/home/trustees/kiranImg.png";
@@ -41,17 +42,12 @@ import RumjhumChatterjee from "@/../public/assets/home/team/RumjhumChatterjee.jp
 import VrindaSingh from "@/../public/assets/home/team/VrindaSingh.jpg";
 
 import { StaticImageData } from "next/image";
+import { useApiHook } from "@/lib/useApi";
 
-export type CardData = {
-  image: StaticImageData;
-  title: string;
-  desig: string;
-  link?: string;
-  subtitle?:string;
-  socialMedia?: string;
-  popupImg: string;
-  popupdesc: string;
-};
+
+
+
+
 
 export const trustee = [
   {
@@ -108,6 +104,8 @@ Mr Karnik has served as President of the India Habitat Centre and Chairman of II
 
       `,
   },
+
+
 ];
 
 export const advisory = [
