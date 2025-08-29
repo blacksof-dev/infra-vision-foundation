@@ -17,13 +17,11 @@ export default function Home() {
       {/* <Popup/> */}
       <Banner />
       {/* <WhoWeAre /> */}
-      <Infravisionaries />
+      {/* <Infravisionaries /> */}
       <Association />
       {/* <Highlights/> */}
       <StayConnected />
-      <InfravisionTalks /> 
-     
-    
+      <InfravisionTalks />
     </>
   );
 }

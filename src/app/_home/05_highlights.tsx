@@ -3,14 +3,12 @@ import Card from "@/_components/molecules/cardTemplate";
 import React, { useEffect, useRef, useState } from "react";
 import { TabItem } from "./02_whoWeAre";
 
-
-
 import InfrapanditAward from "./infraPanditAward";
 import { useHeader } from "@/context/useHeader";
-import Link from "next/link"
+import Link from "next/link";
 
 const newsletters = [
-   {
+  {
     id: 25,
     img: "/assets/archive/newsletter/latest1.png",
     category: "Volume 26",
@@ -18,7 +16,7 @@ const newsletters = [
     date: "July 2025",
     link: "/assets/pdf/july.pdf",
   },
-   {
+  {
     id: 26,
     img: "/assets/archive/newsletter/latest2.png",
     category: "Volume 25",
@@ -35,12 +33,11 @@ const newsletters = [
     date: "May 2025",
     link: "/assets/pdf/letter1.pdf",
   },
- 
 ];
 
 const news = [
   {
-    id:50,
+    id: 50,
     img: "/assets/archive/newsAndMedia/coal.jpg",
     category: "News",
     title: "Coal, Clean, Air and  a Welcome Resolution",
@@ -48,22 +45,22 @@ const news = [
     subtitle: "Vinayak Chatterjee",
     link: "/assets/pdf/coalClean.pdf",
   },
- {
-    id:49,
+  {
+    id: 49,
     img: "/assets/archive/newsAndMedia/ropeway.jpg",
     category: "News",
     title: "Long haul:A national ropeway policy would aid urban mobility",
-    
+
     date: "July 18, 2025",
     subtitle: "Kaveree Bamzai",
     link: "/assets/archive/newsAndMedia/kaveeryMamRopways.jpeg",
   },
 
-   {
-    id:48,
+  {
+    id: 48,
     img: "/assets/archive/newsAndMedia/planning.jpeg",
     category: "News",
-    title: "Why India needs a National Plan for building new cities",   
+    title: "Why India needs a National Plan for building new cities",
     date: "May 26, 2025",
     subtitle: "Jagan Shah",
     link: "/assets/pdf/nationPlan.jpeg",
@@ -111,7 +108,7 @@ export const TabSwitch = ({
   setActiveTab: (value: string) => void;
   activeTab: string;
 }) => {
-  const { isHeaderVisible } = useHeader()
+  const { isHeaderVisible } = useHeader();
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollToCenter = (index: number) => {
@@ -119,11 +116,9 @@ export const TabSwitch = ({
     const container = containerRef.current;
 
     if (tab && container) {
-      // const containerRect = container.getBoundingClientRect();
-      // const tabRect = tab.getBoundingClientRect();
       const offset =
         tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
-      container.scrollTo({ left: offset, behavior: 'smooth' });
+      container.scrollTo({ left: offset, behavior: "smooth" });
     }
   };
 
@@ -134,37 +129,50 @@ export const TabSwitch = ({
 
   return (
     <div>
-      <div ref={containerRef} className={`blade-top-padding-sm overflow-x-scroll bg-whitesmoke no-scrollbar transition-all duration-300 ease-linear z-[999] sticky ${isHeaderVisible ? "top-20   lg:top-24" : "top-0"} `}>
+      <div
+        ref={containerRef}
+        className={`blade-top-padding-sm overflow-x-scroll bg-whitesmoke no-scrollbar transition-all duration-300 ease-linear z-[999] sticky ${
+          isHeaderVisible ? "top-20   lg:top-24" : "top-0"
+        } `}
+      >
         <div className="flex flex-row gap-6 sm:gap-12  lg:gap-12 md:gap-18 border-b   border-darkgray/16 w-fit ">
           <button
-            ref={(el: HTMLButtonElement | null) => { tabRefs.current[0] = el }}
+            ref={(el: HTMLButtonElement | null) => {
+              tabRefs.current[0] = el;
+            }}
             onClick={() => handleFilterClick("Outreach and Engagements", 0)}
-            className={` cursor-pointer text-sm sm:text-xl text-nowrap  ${activeTab === "Outreach and Engagements"
-              ? "font-medium  border-b-2 border-pink pb-3 text-pink"
-              : "text-darkgray  pb-3"
-              }`}
+            className={` cursor-pointer text-sm sm:text-xl text-nowrap  ${
+              activeTab === "Outreach and Engagements"
+                ? "font-medium  border-b-2 border-pink pb-3 text-pink"
+                : "text-darkgray  pb-3"
+            }`}
           >
             Outreach and Engagements
           </button>
 
           <button
-            ref={(el: HTMLButtonElement | null) => { tabRefs.current[1] = el }}
-
+            ref={(el: HTMLButtonElement | null) => {
+              tabRefs.current[1] = el;
+            }}
             onClick={() => handleFilterClick("Newsletters", 1)}
-            className={` text-sm cursor-pointer  sm:text-xl text-nowrap ${activeTab === "Newsletters"
-              ? "font-medium  border-b-2 pb-3 border-pink text-pink"
-              : "text-darkgray  pb-3"
-              }`}
+            className={` text-sm cursor-pointer  sm:text-xl text-nowrap ${
+              activeTab === "Newsletters"
+                ? "font-medium  border-b-2 pb-3 border-pink text-pink"
+                : "text-darkgray  pb-3"
+            }`}
           >
             Newsletters
           </button>
           <button
-            ref={(el: HTMLButtonElement | null) => { tabRefs.current[2] = el }}
+            ref={(el: HTMLButtonElement | null) => {
+              tabRefs.current[2] = el;
+            }}
             onClick={() => handleFilterClick("In the News", 2)}
-            className={` text-sm cursor-pointer  sm:text-xl text-nowrap ${activeTab === "In the News"
-              ? "font-medium  border-b-2 pb-3 border-pink text-pink"
-              : "text-darkgray  pb-3"
-              }`}
+            className={` text-sm cursor-pointer  sm:text-xl text-nowrap ${
+              activeTab === "In the News"
+                ? "font-medium  border-b-2 pb-3 border-pink text-pink"
+                : "text-darkgray  pb-3"
+            }`}
           >
             In the News
           </button>
@@ -178,16 +186,33 @@ export const TabSwitch = ({
       </div>
       <div className="mt-4 md:mt-8">
         <div className="flex  justify-center">
-          <Link className={`group  text-xl lg:text-2xl text-pink hover:text-white cursor-pointer  text-nowrap px-2  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
-            href={activeTab === "Outreach and Engagements" ? "/outreach-and-engagements" : activeTab === "Newsletters" ? "/archive#newsletters" : activeTab === "In the News" ? "/archive#news-and-media" : ""}>
-            <span className="z-50 relative">{`${activeTab === "Outreach and Engagements" ? "View all events" : activeTab === "Newsletters" ? "Browse newsletters" : activeTab === "In the News" ? "Browse news" : "Read more"}`}</span>
+          <Link
+            className={`group  text-xl lg:text-2xl text-pink hover:text-white cursor-pointer  text-nowrap px-2  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
+            href={
+              activeTab === "Outreach and Engagements"
+                ? "/outreach-and-engagements"
+                : activeTab === "Newsletters"
+                ? "/archive#newsletters"
+                : activeTab === "In the News"
+                ? "/archive#news-and-media"
+                : ""
+            }
+          >
+            <span className="z-50 relative">{`${
+              activeTab === "Outreach and Engagements"
+                ? "View all events"
+                : activeTab === "Newsletters"
+                ? "Browse newsletters"
+                : activeTab === "In the News"
+                ? "Browse news"
+                : "Read more"
+            }`}</span>
             <span
               className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
             ></span>
             <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[6.5] transition-all duration-700 ease-in-out z-0"></span>
           </Link>
         </div>
-
       </div>
     </div>
   );
@@ -205,7 +230,6 @@ export const TabContent = ({ data }: { data: TabItem[] }) => {
           link={item.link}
           category={item.category}
           subtitle={item.subtitle}
-
           ctaText="Read more"
           classes="line-clamp-2 xl:line-clamp-3 text-lg md:text-xl text-black"
         />
@@ -213,9 +237,3 @@ export const TabContent = ({ data }: { data: TabItem[] }) => {
     </div>
   );
 };
- 
-    
-  
-
-  
-    

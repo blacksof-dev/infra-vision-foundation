@@ -7,11 +7,22 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
-import img_12 from "@/../public/assets/outreach-and-engagements/eventImages/august18_2025_Img4.jpeg"
+import img_12 from "@/../public/assets/outreach-and-engagements/eventImages/august18_2025_Img4.jpeg";
 import img_13 from "@/../public/assets/knowledeg/researchPapers/13.png";
 import Link from "next/link";
 import img_14 from "@/../public/assets/knowledeg/researchPapers/14.png";
-import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg"
+import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg";
+import { useApiHook } from "@/lib/useApi";
+import Loading from "../loading";
+
+interface UpdateApiResponse {
+  image: string;
+  category: string;
+  title: string;
+  btnTitle: string;
+  link: string;
+}
+
 export default function Updates() {
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [isLastSlide, setIsLastSlide] = useState(false);
@@ -20,6 +31,32 @@ export default function Updates() {
     setIsLastSlide(swiper.isEnd);
     setIsFirstSlide(swiper.isBeginning);
   };
+
+  const { data, isLoading, error } = useApiHook<UpdateApiResponse
+  
+  
+  >({
+    url: "/content/home",
+    cacheKey: "homeContent",
+  });
+
+  if (isLoading) {
+    return (
+      <section className="w-full h-[40rem] flex items-center justify-center">
+        <Loading />
+      </section>
+    );
+  }
+
+  if (error || !data) {
+    return (
+      <section className="w-full h-[40rem] flex items-center justify-center">
+        <p>Something went wrong</p>
+      </section>
+    );
+  }
+
+  const response = banner.data;
 
   return (
     <section>
@@ -60,10 +97,10 @@ export default function Updates() {
               el: ".custom-pagination-bullets-banner",
               // type: "fraction",
             }}
-             loop
+            loop
             autoplay={{
               delay: 3000,
-              disableOnInteraction: false, 
+              disableOnInteraction: false,
             }}
             grabCursor={true}
             speed={500}
@@ -158,7 +195,7 @@ const EventsDetails = [
     link: "/assets/pdf/report-fsi-deregulation-in-hyderabad.pdf",
   },
 
-   {
+  {
     image: img_15,
     category: "Blog",
     title: "How to make India’s highways safe",
@@ -169,25 +206,17 @@ const EventsDetails = [
   {
     image: img_13,
     category: "Research Report",
-    title: "Removing Barriers to Faster Penetration of Trees Outside Forests Productsin Construction Sector",
+    title:
+      "Removing Barriers to Faster Penetration of Trees Outside Forests Productsin Construction Sector",
     btnTitle: "Read more",
     link: "/assets/pdf/removing-barriers-to-faster-penetration-of-trees-final-report.pdf",
   },
 
-   {
+  {
     image: img_12,
     category: "Event",
     title: "HSR will be the next growth multiplier",
     btnTitle: "See details",
     link: "/outreach-and-engagements",
   },
-
-
- 
- 
- 
 ];
-
-
-
- 
