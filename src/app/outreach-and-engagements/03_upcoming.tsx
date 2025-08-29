@@ -392,37 +392,41 @@ The study identified Noida as having exceptional potential to become a model cit
       {
         month: "August",
         events: [
-                     {
-                      date: "18",
-                      dayTime: "Monday",
-                      meetingType: "External engagement",
-                      desc: " HSR will be the next growth multiplier",
-                      ctaText: "See details",
-                      details: {
-                        date: "August 18, 2025",
-                        images: [
-                          {
-                            image:
-                              "/assets/outreach-and-engagements/eventImages/august18_2025_Img1.JPG",
-                            description: "Founder and Managing Trustee of The Infravision Foundation, Mr Vinayak Chatterjee, in conversation with Council of Advisors member Prof G. Raghuram and Prof Sandip Chakrabarti of IIM-A.",
-                          },
-                           {
-                            image:
-                              "/assets/outreach-and-engagements/eventImages/august18_2025_Img2.JPG",
-                            description: "Ms Soma Banerjee, Executive Director, CII, along with Mr Vinayak Chatterjee, Prof G. Raghuram and Prof Sandip Chakrabarti.",
-                          },
-                           {
-                            image:
-                              "/assets/outreach-and-engagements/eventImages/august18_2025_Img3.JPG",
-                            description: "Ms Soma Banerjee, Mr Vinayak Chatterjee, Prof G Raghuram, and The Infravision Foundation CEO, Mr Jagan Shah, amid a panel discussion.",
-                          },
-                           {
-                            image:
-                              "/assets/outreach-and-engagements/eventImages/august18_2025_Img4.jpeg",
-                            description: "Prof G. Raghuram in conversation with the media on the sidelines of the roundtable.",
-                          },
-                        ],
-                        content: `
+          {
+            date: "18",
+            dayTime: "Monday",
+            meetingType: "External engagement",
+            desc: " HSR will be the next growth multiplier",
+            ctaText: "See details",
+            details: {
+              date: "August 18, 2025",
+              images: [
+                {
+                  image:
+                    "/assets/outreach-and-engagements/eventImages/august18_2025_Img1.JPG",
+                  description:
+                    "Founder and Managing Trustee of The Infravision Foundation, Mr Vinayak Chatterjee, in conversation with Council of Advisors member Prof G. Raghuram and Prof Sandip Chakrabarti of IIM-A.",
+                },
+                {
+                  image:
+                    "/assets/outreach-and-engagements/eventImages/august18_2025_Img2.JPG",
+                  description:
+                    "Ms Soma Banerjee, Executive Director, CII, along with Mr Vinayak Chatterjee, Prof G. Raghuram and Prof Sandip Chakrabarti.",
+                },
+                {
+                  image:
+                    "/assets/outreach-and-engagements/eventImages/august18_2025_Img3.JPG",
+                  description:
+                    "Ms Soma Banerjee, Mr Vinayak Chatterjee, Prof G Raghuram, and The Infravision Foundation CEO, Mr Jagan Shah, amid a panel discussion.",
+                },
+                {
+                  image:
+                    "/assets/outreach-and-engagements/eventImages/august18_2025_Img4.jpeg",
+                  description:
+                    "Prof G. Raghuram in conversation with the media on the sidelines of the roundtable.",
+                },
+              ],
+              content: `
                        New report presented at High-Level Roundtable on Promoting High-Speed Rail in India \n
                        Organised by The Infravision Foundation and CII’s Rail Transportation and Equipment Division, August 18, 2025\n
                        Every kilometre of High-Speed Rail (HSR) provides nearly five times the capacity of conventional rail when utilisation exceeds 90%, while also cutting dependence on fossil fuels and significantly reducing travel time. HSR allows access to travel for intermediate towns not served by air travel, eases congestion, enables indigenisation, boosts economic competitiveness, and ensures sustainable mobility in a rapidly urbanised country. With India aiming to become a developed economy by 2047, HSR is no longer a luxury but a necessity.\n
@@ -439,9 +443,9 @@ The study identified Noida as having exceptional potential to become a model cit
           In the closing session, the focus shifted to integration and long-term planning. HSR was framed as part of a broader “system of systems,” where high-speed corridors must be seamlessly connected with regional rail, metro, and last-mile networks to fully unlock their value. This approach, combined with land-use planning and urban development strategies, can ensure HSR drives both mobility transformation and economic growth.\n
           The event reinforced that HSR is not just about speed but about reimagining India’s mobility and economic geography for Viksit Bharat 2047. As TIF Founder and Managing Trustee Vinayak Chatterjee said, a country aspiring to be the third largest economy in the world must learn to travel in speed and comfort. Developing HSR should be a national priority, added Jagan Shah, CEO, TIF.\n
           The audience was left with the exciting possibility that in the neara future, HSR could take Indians from Mumbai to Delhi in five and a half hours, the equivalent of Beijing to Shanghai, as articulated by Prof G Raghuram, Advisor, TIF and former director, IIM Bangalore.
-          `
-                      },
-                    },
+          `,
+            },
+          },
         ],
       },
       {
