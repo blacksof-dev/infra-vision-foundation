@@ -1,19 +1,23 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, Suspense } from "react";
 import type { Swiper as SwiperClass } from "swiper/types";
 import type { Swiper as SwiperType } from "swiper/types";
-import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { advisory, CardData, fellow, patrons, team, trustee } from "./static";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
-import Link from "next/link";
-import { StaticImageData } from "next/image";
-import PopupDescription from "./popupDescription";
-import { MemberCard } from "@/_components/molecules/memberCard";
+import dynamic from "next/dynamic";
+const PopupDescription = dynamic(() => import("./popupDescription"), {
+  ssr: false,
+});
+const MemberCard = dynamic(() => import("@/_components/molecules/memberCard"), {
+  ssr: false,
+});
+import { useApiHook } from "@/lib/useApi";
+import React from "react";
+import Loading from "../loading";
 
 type ButtonTabProps = {
   label: string;
@@ -21,6 +25,27 @@ type ButtonTabProps = {
   data: string;
   setdata: (val: string) => void;
 };
+
+export type CardData = {
+  image: string;
+  title: string;
+  desig: string;
+  link?: string;
+  subtitle?: string;
+  socialMedia?: string;
+  popupImg: string;
+  popupdesc: string;
+};
+
+interface TrusteesApiResponse {
+  trustees: CardData[];
+  advisors: CardData[];
+  fellow: CardData[];
+  patrons: CardData[];
+  team: CardData[];
+  totalCount: number;
+  lastUpdated: string;
+}
 
 interface MobileMembersSliderProps {
   title: string;
@@ -34,25 +59,29 @@ interface MobileMembersSliderProps {
   showPopup: boolean;
 }
 
-const ButtonTab = ({ label, value, data, setdata }: ButtonTabProps) => {
-  return (
-    <div className="py-4 group">
-      <button
-        className={`text-white cursor-pointer text-md text-nowrap lg:text-xl relative ${data === value ? "font-medium opacity-100" : "opacity-70"
+const ButtonTab = React.memo(
+  ({ label, value, data, setdata }: ButtonTabProps) => {
+    return (
+      <div className="py-4 group">
+        <button
+          className={`text-white cursor-pointer text-md text-nowrap lg:text-xl relative ${
+            data === value ? "font-medium opacity-100" : "opacity-70"
           }`}
-        onClick={() => setdata(value)}
-      >
-        {label}
-        <span
-          className={`h-[1px] ${data === value
-            ? "w-full transition-all duration-1000"
-            : "w-10 sm:w-5"
+          onClick={() => setdata(value)}
+        >
+          {label}
+          <span
+            className={`h-[1px] ${
+              data === value
+                ? "w-full transition-all duration-1000"
+                : "w-10 sm:w-5"
             } sm:h-[2px] bg-white absolute bottom-0 left-0 top-7`}
-        ></span>
-      </button>
-    </div>
-  );
-};
+          ></span>
+        </button>
+      </div>
+    );
+  }
+);
 
 export default function Infravisionaries() {
   const swiperRef = useRef<SwiperType | null>(null);
@@ -62,6 +91,7 @@ export default function Infravisionaries() {
   const [carddata, setcarddata] = useState<CardData[]>([]);
   const [showPopup, setShowPopup] = useState<boolean>(false);
   const [popupData, setPopUpData] = useState<CardData | undefined>();
+  const [isMobile, setMobile] = useState<boolean>(false);
 
   const handleSlideChange = (swiper: SwiperClass) => {
     setIsLastSlide(swiper.isEnd);
@@ -83,31 +113,70 @@ export default function Infravisionaries() {
     }
   }, [showPopup]);
 
+  const { data: trusteesData } = useApiHook<TrusteesApiResponse>({
+    url: "/teams/trustees",
+    cacheKey: "trustee",
+  });
+
+  const { data: patronData } = useApiHook<TrusteesApiResponse>({
+    url: "/teams/patrons",
+    cacheKey: "patron",
+  });
+
+  const { data: advisorsData } = useApiHook<TrusteesApiResponse>({
+    url: "/teams/advisors",
+    cacheKey: "advisors",
+  });
+
+  const { data: fellowData } = useApiHook<TrusteesApiResponse>({
+    url: "/teams/fellow",
+    cacheKey: "fellows",
+  });
+
+  const { data: teamData } = useApiHook<TrusteesApiResponse>({
+    url: "/teams/team",
+    cacheKey: "teams",
+  });
+
   useEffect(() => {
     let cardDetails: CardData[] = [];
 
     switch (data) {
       case "trustee":
-        cardDetails = trustee;
+        cardDetails = trusteesData?.trustees ?? [];
         break;
       case "advisory":
-        cardDetails = advisory;
+        cardDetails = advisorsData?.advisors ?? [];
         break;
       case "fellow":
-        cardDetails = fellow;
+        cardDetails = fellowData?.fellow ?? [];
         break;
-       case "team":
-        cardDetails = team;
+      case "team":
+        cardDetails = teamData?.team ?? [];
         break;
       case "patrons":
-        cardDetails = patrons;
+        cardDetails = patronData?.patrons ?? [];
         break;
       default:
         cardDetails = [];
     }
 
     setcarddata(cardDetails);
-  }, [data]);
+  }, [data,trusteesData]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const handleResize = () => {
+      if (window.innerWidth <= 786) {
+        setMobile(true);
+      } else {
+        setMobile(false);
+      }
+    };
+
+    handleResize();
+  }, []);
 
   return (
     <>
@@ -170,7 +239,7 @@ export default function Infravisionaries() {
                 data={data}
                 setdata={setdata}
               />
-               <ButtonTab
+              <ButtonTab
                 label="Founding Patrons"
                 value="patrons"
                 data={data}
@@ -189,14 +258,12 @@ export default function Infravisionaries() {
                 setdata={setdata}
               />
 
-               <ButtonTab
+              <ButtonTab
                 label="Team"
                 value="team"
                 data={data}
                 setdata={setdata}
               />
-             
-               
             </div>
 
             <div className="w-full overflow-x-hidden  ml-[4%]">
@@ -239,18 +306,25 @@ export default function Infravisionaries() {
                           }}
                           className="h-fit w-fit hover:cursor-pointer"
                         >
-                          <MemberCard
-                            image={ele.image}
-                            title={ele.title}
-                            desig={ele.desig}
-                            link={ele.link}
-                            socialMedia={ele.socialMedia}
-                          />
+                          <Suspense
+                            fallback={
+                              <section className="w-full h-[40rem] flex items-center justify-center">
+                                <Loading />
+                              </section>
+                            }
+                          >
+                            <MemberCard
+                              image={ele.image}
+                              title={ele.title}
+                              desig={ele.desig}
+                              link={ele.link}
+                              socialMedia={ele.socialMedia}
+                            />
+                          </Suspense>
                         </div>
                       </SwiperSlide>
                     );
                   })}
-
                 </Swiper>
               </div>
               <div className="flex pt-3 pr-1 h-[80px] flex-wrap gap-5 mt-4 justify-end md:gap-4 2xl:mt-1">
@@ -277,61 +351,63 @@ export default function Infravisionaries() {
               />
             )}
           </div>
+          {isMobile && (
+            <div>
+              <MobileMembersSlider
+                title="Trustees"
+                data={trusteesData?.trustees ?? []}
+                navClass="trustee"
+                setShowPopup={setShowPopup}
+                setPopUpData={setPopUpData}
+                popupData={popupData}
+                showPopup={showPopup}
+                onSelectTab={() => setdata("trustee")}
+              />
+              <MobileMembersSlider
+                title="Founding Patrons"
+                data={patronData?.patrons ?? []}
+                navClass="patrons"
+                setShowPopup={setShowPopup}
+                setPopUpData={setPopUpData}
+                popupData={popupData}
+                showPopup={showPopup}
+                onSelectTab={() => setdata("patrons")}
+              />
 
-          <MobileMembersSlider
-            title="Trustees"
-            data={trustee}
-            navClass="trustee"
-            setShowPopup={setShowPopup}
-            setPopUpData={setPopUpData}
-            popupData={popupData}
-            showPopup={showPopup}
-            onSelectTab={() => setdata("trustee")}
-          />
-           <MobileMembersSlider
-            title="Founding Patrons"
-            data={patrons}
-            navClass="patrons"
-            setShowPopup={setShowPopup}
-            setPopUpData={setPopUpData}
-            popupData={popupData}
-            showPopup={showPopup}
-            onSelectTab={() => setdata("patrons")}
-          />
+              <MobileMembersSlider
+                title="Council of Advisors"
+                data={advisorsData?.advisors ?? []}
+                navClass="advisory"
+                setShowPopup={setShowPopup}
+                setPopUpData={setPopUpData}
+                popupData={popupData}
+                showPopup={showPopup}
+                onSelectTab={() => setdata("advisory")}
+              />
 
-          <MobileMembersSlider
-            title="Council of Advisors"
-            data={advisory}
-            navClass="advisory"
-            setShowPopup={setShowPopup}
-            setPopUpData={setPopUpData}
-            popupData={popupData}
-            showPopup={showPopup}
-            onSelectTab={() => setdata("advisory")}
-          />
+              <MobileMembersSlider
+                title="Distinguished Fellows"
+                data={fellowData?.fellow ?? []}
+                navClass="fellow"
+                setShowPopup={setShowPopup}
+                setPopUpData={setPopUpData}
+                popupData={popupData}
+                showPopup={showPopup}
+                onSelectTab={() => setdata("fellow")}
+              />
 
-          <MobileMembersSlider
-            title="Distinguished Fellows"
-            data={fellow}
-            navClass="fellow"
-            setShowPopup={setShowPopup}
-            setPopUpData={setPopUpData}
-            popupData={popupData}
-            showPopup={showPopup}
-            onSelectTab={() => setdata("fellow")}
-          />
-
-          <MobileMembersSlider
-            title="Team"
-            data={team}
-            navClass="team"
-            setShowPopup={setShowPopup}
-            setPopUpData={setPopUpData}
-            popupData={popupData}
-            showPopup={showPopup}
-            onSelectTab={() => setdata("team")}
-          />
-          
+              <MobileMembersSlider
+                title="Team"
+                data={teamData?.team ?? []}
+                navClass="team"
+                setShowPopup={setShowPopup}
+                setPopUpData={setPopUpData}
+                popupData={popupData}
+                showPopup={showPopup}
+                onSelectTab={() => setdata("team")}
+              />
+            </div>
+          )}
         </div>
       </section>
     </>

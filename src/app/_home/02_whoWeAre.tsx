@@ -1,19 +1,20 @@
 "use client";
-import rail from "@/../public/assets/home/whoWeAre/knowledge/rail.png";
+
 import highway from "@/../public/assets/home/whoWeAre/knowledge/highway.png";
 import jagan from "@/../public/assets/home/whoWeAre/knowledge/jagan.png";
-
-import infraKatha from "@/../public/assets/infrakatha/banner/banner.jpg";
-import infraShakti from "@/../public/assets/home/whoWeAre/advocacy/infraPandit.png";
-import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infraPanditAward.png";
 import img_12 from "@/../public/assets/knowledeg/researchPapers/12.jpg";
-import { useState } from "react";
-import Card from "@/_components/molecules/cardTemplate";
+import { Suspense, useState } from "react";
+import dynamic from "next/dynamic";
+const Card = dynamic(() => import("@/_components/molecules/cardTemplate"), {
+  ssr: false,
+});
 import { useHeader } from "@/context/useHeader";
-import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import Link from "next/link";
+import { useApiHook } from "@/lib/useApi";
+import { ApiResponse } from "./01_banner";
+import Loading from "../loading";
 
-export type TabItem = {
+export type TabApiResponse = {
   id: number;
   img: string;
   category: string;
@@ -21,16 +22,16 @@ export type TabItem = {
   link: string;
   date?: string;
   subtitle?: string;
-  ctaText?: string
+  ctaText?: string;
 };
 
 const knowledge = [
-   {
+  {
     id: 10,
     img: img_12.src,
     category: "Urban Planning",
     date: " ",
-    title:"Relieving urban congestion and promoting tourism through ropeways",
+    title: "Relieving urban congestion and promoting tourism through ropeways",
     subtitle: "",
     link: "/assets/pdf/urbanCongestion.pdf",
   },
@@ -39,11 +40,10 @@ const knowledge = [
     img: jagan.src,
     category: "The Infravision Conversation",
     date: "June, 2025",
-    title:
-      "Why India needs a national plan to build new cities",
+    title: "Why India needs a national plan to build new cities",
     subtitle: "Jagan Shah",
     link: "https://www.youtube.com/watch?v=g5aA3Q3af1g&ab_channel=TheInfravisionFoundation",
-    ctaText: "Watch now"
+    ctaText: "Watch now",
   },
 
   {
@@ -57,38 +57,29 @@ const knowledge = [
   },
 ];
 
-const advocacy = [
-  {
-    id: 1,
-    img: infraKatha.src,
-    category: "Infrakatha",
-    title:
-      "A forum of conversations with cross-sectoral experts aimed at mainstreaming the discourse around infrastructure.",
-    link: "/infrakatha",
-    ctaText: "Know more"
-  },
-  {
-    id: 2,
-    img: infraShakti.src,
-    category: "InfraShakti Awards",
-    title:
-      "A flagship initiative in association with NDTV, celebrating changemakers unlocking impact at scale through innovative projects.",
-    link: "/infrashakti-awards",
-    ctaText: "Know more"
-  },
-  {
-    id: 3,
-    img: infraPandit.src,
-    category: "InfraPandit Awards",
-    title:
-      "A national effort at recognising outstanding doctoral research on infrastructure, fostering youth participation in India's infra evolution.",
-    link: "/infrapandit-awards",
-    ctaText: "Know more"
-  },
-];
-
 export default function WhoWeAre() {
   const [activeTab, setActiveTab] = useState("Knowledge");
+
+  const { data, isLoading } = useApiHook<ApiResponse[]>({
+    url: "/content/home",
+    cacheKey: "homeContent",
+  });
+
+  if (isLoading) {
+    return (
+      <section className="w-full h-[40rem] flex items-center justify-center">
+        <Loading />
+      </section>
+    );
+  }
+
+  if (!data) return null;
+
+  const whoWeAre = data.find((section) => section.sectionKey === "whoWeAre");
+
+  if (!whoWeAre) return null;
+
+  const response = whoWeAre.data;
 
   return (
     <>
@@ -98,34 +89,20 @@ export default function WhoWeAre() {
             <div>
               <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
                 <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-                <h5 className="font-medium text-pink">Who We Are</h5>
+                <h5 className="font-medium text-pink">{response.tagName}</h5>
               </div>
-              <div className="py-2 ">
-                <h1 className="text-black  font-light">
-                  A{" "}
-                  <span className="text-black font-medium ">
-                    think-and-do tank
-                  </span>
-                  <br /> powering change in India’s infrastructure
-                </h1>
+              <div className="py-2 w-full sm:w-[50%] lg:w-[70%]">
+                <h1
+                  className="text-black  font-light"
+                  dangerouslySetInnerHTML={{ __html: response.title }}
+                />
               </div>
             </div>
-            <div className="w-full md:w-1/2 lg:md:w-[46%] pt-2">
-              <h6 className="text-black font-light">
-                Established in 2022 by Vinayak Chatterjee and Rumjhum
-                Chatterjee,{" "}
-                <span className="font-semibold">
-                  The Infravision Foundation
-                </span>{" "}
-                is a non-partisan, not-for-profit think tank driving{" "}
-                <span className="font-semibold">
-                  {" "}
-                  infrastructure-led economic development.
-                </span>
-              </h6>
-              <h6 className="text-black font-light py-2 md:py-3">
-                Founded by professionals and embellished with an ecosystem of thought leaders and experts from academia, civil services, and business,  <span className="font-semibold">The Infravision Foundation</span> is a hub for the exchange of knowledge and policy options. It stands for upholding the impartial, enlightened, and respected voice of reason. The Foundation addresses deeply rooted challenges to enable steadfast infrastructure policy-making through rigorous  <span className="font-semibold"> knowledge sharing and advocacy.</span>
-              </h6>
+            <div className="w-full md:w-1/2 lg:md:w-[70%] pt-2">
+              <h6
+                className="text-black font-light"
+                dangerouslySetInnerHTML={{ __html: response.description }}
+              />
             </div>
           </div>
           <div className=" relative">
@@ -144,78 +121,119 @@ export const TabSwitch = ({
   setActiveTab: (value: string) => void;
   activeTab: string;
 }) => {
-  const { isHeaderVisible } = useHeader()
+  const { isHeaderVisible } = useHeader();
+
+  const { data } = useApiHook<{ data: TabApiResponse[] }>({
+    url: "/homepage/advocacy",
+    cacheKey: "advocacy",
+  });
+
+  if (!data) {
+    return null;
+  }
+
+  const advocacyData = data?.data ?? [];
+
   return (
     <div>
-      <div className={`${isHeaderVisible ? "top-20 xl:top-24" : "top-0"} sticky bg-whitesmoke py-6 xl:py-8 z-[99] transition-all duration-200 ease-linear`}>
-
+      <div
+        className={`${
+          isHeaderVisible ? "top-20 xl:top-24" : "top-0"
+        } sticky bg-whitesmoke py-6 xl:py-8 z-[99] transition-all duration-200 ease-linear`}
+      >
         <div className=" flex flex-row sm:justify-center  items-center gap-12 md:gap-18 border-b sm:mx-auto  border-darkgray/16 w-fit">
           <button
             onClick={() => setActiveTab("Knowledge")}
-            className={`text-base cursor-pointer  md:text-xl   ${activeTab === "Knowledge"
-              ? "font-medium  border-b-2 border-pink pb-3 text-pink"
-              : "text-darkgray  pb-3"
-              }`}
+            className={`text-base cursor-pointer  md:text-xl   ${
+              activeTab === "Knowledge"
+                ? "font-medium  border-b-2 border-pink pb-3 text-pink"
+                : "text-darkgray  pb-3"
+            }`}
           >
             Knowledge
           </button>
-          <button
-            onClick={() => setActiveTab("Advocacy")}
-            className={` text-base cursor-pointer  md:text-xl ${activeTab === "Advocacy"
-              ? "font-medium  border-b-2 pb-3 border-pink text-pink"
-              : "text-darkgray  pb-3"
+          
+            <button
+              onClick={() => setActiveTab("Advocacy")}
+              className={` text-base cursor-pointer  md:text-xl ${
+                activeTab === "Advocacy"
+                  ? "font-medium  border-b-2 pb-3 border-pink text-pink"
+                  : "text-darkgray  pb-3"
               }`}
-          >
-            Advocacy
-          </button>
+            >
+              Advocacy
+            </button>
+     
         </div>
       </div>
 
       <div className="">
         {activeTab === "Knowledge" ? (
-          <TabContent data={knowledge} link="/knowledge" />
+          <Suspense
+            fallback={
+              <section className="w-full h-[40rem] flex items-center justify-center">
+                <Loading />
+              </section>
+            }
+          >
+            <TabContent data={knowledge} link="/knowledge" />
+          </Suspense>
         ) : (
-          <TabContent data={advocacy} />
+          <Suspense
+            fallback={
+              <section className="w-full h-[40rem] flex items-center justify-center">
+                <Loading />
+              </section>
+            }
+          >
+            <TabContent data={advocacyData} />
+          </Suspense>
         )}
       </div>
-
     </div>
   );
 };
 
-export const TabContent = ({ data, link }: { data: TabItem[], link?: string }) => {
-  return (<>
-    <div className="grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-2 sm:gap-8 lg:gap-12  md:blade-top-padding-sm">
-      {data.map((item) => (
-        <Card
-          key={item.id}
-          date={item.date}
-          title={item.title}
-          image={item.img}
-          link={item.link}
-          category={item.category}
-          subtitle={item.subtitle}
-          ctaText={item.ctaText ? item.ctaText : "Read more"}
-          classes=" text-lg md:text-xl text-black"
-        />
-      ))}
-    </div> {
-      link &&
-
-      <div className="flex justify-center xl:mt-6">
-        <div className="">
-          <Link className={`group  text-xl lg:text-2xl   text-pink hover:text-white cursor-pointer  text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
-            href={link}>
-            <span className="z-50 relative">Explore</span>
-            <span
-              className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
-            ></span>
-            <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5] transition-all duration-700 ease-in-out z-0"></span>
-
-          </Link>
+export const TabContent = ({
+  data,
+  link,
+}: {
+  data: TabApiResponse[];
+  link?: string;
+}) => {
+  return (
+    <>
+      <div className="grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-2 sm:gap-8 lg:gap-12  md:blade-top-padding-sm">
+        {data.map((item) => (
+          <Card
+            key={item.id}
+            date={item.date}
+            title={item.title}
+            image={item.img}
+            link={item.link}
+            category={item.category}
+            subtitle={item.subtitle}
+            ctaText={item.ctaText ? item.ctaText : "Read more"}
+            classes=" text-lg md:text-xl text-black"
+          />
+        ))}
+      </div>{" "}
+      {link && (
+        <div className="flex justify-center xl:mt-6">
+          <div className="">
+            <Link
+              className={`group  text-xl lg:text-2xl   text-pink hover:text-white cursor-pointer  text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
+              href={link}
+            >
+              <span className="z-50 relative">Explore</span>
+              <span
+                className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
+              ></span>
+              <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5] transition-all duration-700 ease-in-out z-0"></span>
+            </Link>
+          </div>
         </div>
-      </div>
-    }
-  </>
+      )}
+    </>
   );
 };

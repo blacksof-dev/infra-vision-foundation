@@ -1,96 +1,85 @@
 "use client";
-import Card from "@/_components/molecules/cardTemplate";
-import React, { useEffect, useRef, useState } from "react";
-import { TabItem } from "./02_whoWeAre";
+
+const Card = dynamic(() => import("@/_components/molecules/cardTemplate"), {
+  ssr: false,
+});
+import React, { Suspense, useRef, useState } from "react";
 
 import InfrapanditAward from "./infraPanditAward";
 import { useHeader } from "@/context/useHeader";
 import Link from "next/link";
+import { useApiHook } from "@/lib/useApi";
+import { ApiResponse } from "./01_banner";
+import Loading from "../loading";
+import dynamic from "next/dynamic";
 
-const newsletters = [
-  {
-    id: 25,
-    img: "/assets/archive/newsletter/latest1.png",
-    category: "Volume 26",
-    title: "Do you want to be an Infrapandit? ",
-    date: "July 2025",
-    link: "/assets/pdf/july.pdf",
-  },
-  {
-    id: 26,
-    img: "/assets/archive/newsletter/latest2.png",
-    category: "Volume 25",
-    title: "Transforming Cities into Frontiers for Economic Growth",
-    date: "June 2025",
-    link: "/assets/pdf/june2025.pdf",
-  },
+interface NewsLetterAndNews {
+  id: number;
+  img: string;
+  category: string;
+  title: string;
+  sector: string;
+  date: string;
+  description: string;
+  link: string;
+}
 
-  {
-    id: 1,
-    img: "/assets/archive/newsletter/newsletter1.png",
-    category: "Volume 24",
-    title: "Making change happen",
-    date: "May 2025",
-    link: "/assets/pdf/letter1.pdf",
-  },
-];
-
-const news = [
-  {
-    id: 50,
-    img: "/assets/archive/newsAndMedia/coal.jpg",
-    category: "News",
-    title: "Coal, Clean, Air and  a Welcome Resolution",
-    date: "July 18,2025",
-    subtitle: "Vinayak Chatterjee",
-    link: "/assets/pdf/coalClean.pdf",
-  },
-  {
-    id: 49,
-    img: "/assets/archive/newsAndMedia/ropeway.jpg",
-    category: "News",
-    title: "Long haul:A national ropeway policy would aid urban mobility",
-
-    date: "July 18, 2025",
-    subtitle: "Kaveree Bamzai",
-    link: "/assets/archive/newsAndMedia/kaveeryMamRopways.jpeg",
-  },
-
-  {
-    id: 48,
-    img: "/assets/archive/newsAndMedia/planning.jpeg",
-    category: "News",
-    title: "Why India needs a National Plan for building new cities",
-    date: "May 26, 2025",
-    subtitle: "Jagan Shah",
-    link: "/assets/pdf/nationPlan.jpeg",
-  },
-];
+interface PaginatedResponse<T> {
+  data: T[];
+  meta: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
+}
 
 export default function Highlights() {
   const [activeTab, setActiveTab] = useState("Outreach and Engagements");
-  const mobileview = 3;
-  const [visiblecountmobile, setvisiblecountmobile] = useState(mobileview);
 
-  const handleSeeMoreCta = () => {
-    setvisiblecountmobile((prev) => prev + 3);
-  };
+  const { data, isLoading, error } = useApiHook<ApiResponse[]>({
+    url: "/content/home",
+    cacheKey: "homeContent",
+  });
 
-  useEffect(() => {
-    setvisiblecountmobile(mobileview);
-  }, [activeTab]);
+  if (isLoading) {
+    return (
+      <section className="w-full h-[40rem] flex items-center justify-center">
+        <Loading />
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="w-full h-[40rem] flex items-center justify-center">
+        <p>Something went wrong</p>
+      </section>
+    );
+  }
+
+  if (!data) return null;
+
+  const highlightContent = data.find(
+    (section) => section.sectionKey === "highlight"
+  );
+  if (!highlightContent) return null;
+
+  const response = highlightContent.data;
+
   return (
     <>
       <div id="homepage-section-5" className="bg-whitesmoke">
         <div className="w-container blade-top-padding-lg blade-bottom-padding-lg">
           <div className="flex  flex-row  items-center gap-2 md:gap-3">
             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-            <h5 className="font-medium text-pink">Highlights</h5>
+            <h5 className="font-medium text-pink">{response.tagName}</h5>
           </div>
           <div>
-            <h1 className="text-black font-light pt-2">
-              A quick look at <span className="font-medium">what we do</span>
-            </h1>
+            <h1
+              className="text-black font-light pt-2"
+              dangerouslySetInnerHTML={{ __html: response.title }}
+            />
           </div>
           <div className="">
             <TabSwitch setActiveTab={setActiveTab} activeTab={activeTab} />
@@ -126,6 +115,28 @@ export const TabSwitch = ({
     setActiveTab(tabname);
     scrollToCenter(index);
   };
+
+  const { data: newsletters } = useApiHook<
+    PaginatedResponse<NewsLetterAndNews>
+  >({
+    url: "/archives/newsletter?page=1&limit=3",
+    cacheKey: "newsletter",
+  });
+
+  const { data: news, isLoading } = useApiHook<
+    PaginatedResponse<NewsLetterAndNews>
+  >({
+    url: "/archives/media-coverage?page=1&limit=3&search=infrastructure&category=News",
+    cacheKey: "news",
+  });
+
+  if (isLoading) {
+    return (
+      <section className="w-full h-[40rem] flex items-center justify-center">
+        <Loading />
+      </section>
+    );
+  }
 
   return (
     <div>
@@ -181,8 +192,28 @@ export const TabSwitch = ({
       <div className="pt-6 xl:pt-14">
         {activeTab === "Outreach and Engagements" && <InfrapanditAward />}
 
-        {activeTab === "Newsletters" && <TabContent data={newsletters} />}
-        {activeTab === "In the News" && <TabContent data={news} />}
+        {activeTab === "Newsletters" && newsletters && (
+          <Suspense
+            fallback={
+              <section className="w-full h-[40rem] flex items-center justify-center">
+                <Loading />
+              </section>
+            }
+          >
+            <TabContent data={newsletters.data} />
+          </Suspense>
+        )}
+        {activeTab === "In the News" && news && (
+          <Suspense
+            fallback={
+              <section className="w-full h-[40rem] flex items-center justify-center">
+                <Loading />
+              </section>
+            }
+          >
+            <TabContent data={news.data} />
+          </Suspense>
+        )}
       </div>
       <div className="mt-4 md:mt-8">
         <div className="flex  justify-center">
@@ -218,18 +249,17 @@ export const TabSwitch = ({
   );
 };
 
-export const TabContent = ({ data }: { data: TabItem[] }) => {
+export const TabContent = ({ data }: { data: NewsLetterAndNews[] }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-2 sm:gap-8 lg:gap-12  md:blade-top-padding-sm">
       {data.map((item) => (
         <Card
-          key={item.id}
           date={item.date}
           title={item.title}
           image={item.img}
           link={item.link}
           category={item.category}
-          subtitle={item.subtitle}
+          subtitle={item.description}
           ctaText="Read more"
           classes="line-clamp-2 xl:line-clamp-3 text-lg md:text-xl text-black"
         />
