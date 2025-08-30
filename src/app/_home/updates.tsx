@@ -7,22 +7,16 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
-import img_12 from "@/../public/assets/outreach-and-engagements/eventImages/august18_2025_Img4.jpeg";
-import img_13 from "@/../public/assets/knowledeg/researchPapers/13.png";
 import Link from "next/link";
-import img_14 from "@/../public/assets/knowledeg/researchPapers/14.png";
-import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg";
 import { useApiHook } from "@/lib/useApi";
-import Loading from "../loading";
 
-interface UpdateApiResponse {
+interface updateApiResponse {
   image: string;
   category: string;
   title: string;
   btnTitle: string;
   link: string;
 }
-
 export default function Updates() {
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [isLastSlide, setIsLastSlide] = useState(false);
@@ -32,31 +26,14 @@ export default function Updates() {
     setIsFirstSlide(swiper.isBeginning);
   };
 
-  const { data, isLoading, error } = useApiHook<UpdateApiResponse
-  
-  
-  >({
-    url: "/content/home",
-    cacheKey: "homeContent",
+  const { data } = useApiHook<updateApiResponse[]>({
+    url: "/homepage/latest-updates",
+    cacheKey: "latestUpdate",
   });
 
-  if (isLoading) {
-    return (
-      <section className="w-full h-[40rem] flex items-center justify-center">
-        <Loading />
-      </section>
-    );
+  if (!data) {
+    return null;
   }
-
-  if (error || !data) {
-    return (
-      <section className="w-full h-[40rem] flex items-center justify-center">
-        <p>Something went wrong</p>
-      </section>
-    );
-  }
-
-  const response = banner.data;
 
   return (
     <section>
@@ -95,7 +72,6 @@ export default function Updates() {
             }}
             pagination={{
               el: ".custom-pagination-bullets-banner",
-              // type: "fraction",
             }}
             loop
             autoplay={{
@@ -133,7 +109,7 @@ export default function Updates() {
             }}
             onSlideChange={handleSlideChange}
           >
-            {EventsDetails.map((ele, index) => (
+            {data.map((ele, index) => (
               <SwiperSlide key={index} className="  group ">
                 <Link href={ele.link} target="_blank">
                   <div className="flex flex-row gap-4 bg-[#0000005e] backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4  h-[8rem] sm:h-[9rem]  lg:h-[10rem] xl:h-[13rem] xlg:h-[16rem] 2xl:h-[18rem] group-hover:bg-white transition-all duration-500 ease-linear">
@@ -142,6 +118,8 @@ export default function Updates() {
                         src={ele.image}
                         alt={ele.title}
                         fill
+                        quality={100}
+                        unoptimized={false}
                         className="object-cover object-left rounded"
                       />
                     </div>
@@ -165,6 +143,7 @@ export default function Updates() {
                           </h5>
 
                           <button
+                            aria-label="latest card redirection"
                             className={`rounded-sm p-1 cursor-pointer   relative overflow-hidden md:p-2 border-2 bg-white border-white group-hover:border-transparent   w-7 h-7 md:w-10 md:h-10 flex items-center justify-center transition-all duration-300 group-hover:bg-pink `}
                           >
                             <span className="absolute w-0 h-0 group-hover:w-full group-hover:scale-[1.5] group-hover:h-full rounded-full bg-pink  z-[1] transition-all duration-500"></span>
@@ -185,38 +164,3 @@ export default function Updates() {
     </section>
   );
 }
-
-const EventsDetails = [
-  {
-    image: img_14,
-    category: "Research Report",
-    title: "Impact of FSI Deregulation in Hyderabad",
-    btnTitle: "Read more",
-    link: "/assets/pdf/report-fsi-deregulation-in-hyderabad.pdf",
-  },
-
-  {
-    image: img_15,
-    category: "Blog",
-    title: "How to make India’s highways safe",
-    btnTitle: "Read more",
-    link: "/blogs/how-to-make-india-highways-safe",
-  },
-
-  {
-    image: img_13,
-    category: "Research Report",
-    title:
-      "Removing Barriers to Faster Penetration of Trees Outside Forests Productsin Construction Sector",
-    btnTitle: "Read more",
-    link: "/assets/pdf/removing-barriers-to-faster-penetration-of-trees-final-report.pdf",
-  },
-
-  {
-    image: img_12,
-    category: "Event",
-    title: "HSR will be the next growth multiplier",
-    btnTitle: "See details",
-    link: "/outreach-and-engagements",
-  },
-];
