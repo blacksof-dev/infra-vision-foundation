@@ -54,6 +54,16 @@ const thridFilter = [
 ];
 const allcards = [
   {
+      id: 28,
+    img: "/assets/archive/newsletter/crunching.png",
+    category: "Volume 28",
+    title: "",
+    sectors: "",
+     date: "September 2025",
+    description:"Crunching Data,Analysing Information",
+    link: "/assets/pdf/crunchingData.pdf",
+  },
+  {
     id: 27,
     img: "/assets/archive/newsletter/agustNewsletter.png",
     category: "Volume 27",
