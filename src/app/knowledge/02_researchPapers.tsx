@@ -46,7 +46,7 @@ interface NewsletterCard {
 
 // Constants
 const FILTER_TYPES: FilterType[] = ["All", "Sectors"];
-// const YEARS = ["2025", "2024"] as const;
+
 const SECTORS: SectorType[] = [
   "All",
   "Transportation",
@@ -62,6 +62,8 @@ const INITIAL_VISIBLE_COUNT = 3;
 
 
 const allcards = [
+
+ 
   {
     id: 14,
     img: img_14,

@@ -2,10 +2,9 @@
 import { useRef } from "react";
 import BannerSection from "./01_banner";
 import About from "./02_about";
-import UpcomingSession from "./03_upcomingSession";
 import PastEvents from "./04_past";
-import GetInvolvedSection from "./05_getInvolved";
 import PublicationTabs from "@/_components/molecules/tabs";
+import InfravisionTalks from "../_home/07_infravision_talks";
 
 type TabId = "about" | "upcoming" | "past";
 
@@ -36,7 +35,7 @@ export default function Page() {
             <div ref={sectionRefs.past}>
                 <PastEvents />
             </div>
-            <GetInvolvedSection />
+            <InfravisionTalks />
         </>
     )
 }

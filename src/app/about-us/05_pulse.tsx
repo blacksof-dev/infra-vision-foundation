@@ -12,7 +12,7 @@ import img4 from "@/../public/assets/about-us/pulse/sectors/image-4.png";
 import img5 from "@/../public/assets/about-us/pulse/sectors/image-5.png";
 import img6 from "@/../public/assets/about-us/pulse/sectors/image-6.png";
 import img7 from "@/../public/assets/about-us/pulse/sectors/image-7.png";
-import Link from "next/link";
+
 
 const Pulse = () => {
 

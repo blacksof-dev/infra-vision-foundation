@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 interface MemberCardProps {
-  image: string;
+  image: string|StaticImageData;
   title: string;
   desig: string;
   link?: string;

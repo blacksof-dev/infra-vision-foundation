@@ -8,7 +8,8 @@ import PublicationTabs from "@/_components/molecules/tabs";
 import Goal from './04_goal';
 
 import Gallery from './05_gallery';
-import Involved from './06_involved';
+import InfravisionTalks from '../_home/07_infravision_talks';
+
 
 type TabId = 'about' |'jury'| 'goal'|'gallery';
 
@@ -45,7 +46,7 @@ const InfraPandit = () => {
       <div id='gallery' ref={sectionRefs.gallery}>
         <Gallery />
       </div>
-      <Involved />
+       <InfravisionTalks />
     </>
   )
 }

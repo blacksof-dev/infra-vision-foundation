@@ -8,7 +8,8 @@ import VisionMission from './04_vision_mission';
 import './page.css'
 import Pulse from './05_pulse';
 import Pathway from './06_pathway';
-import Involved from './07_involved';
+import InfravisionTalks from '../_home/07_infravision_talks';
+
 
 
 
@@ -54,7 +55,7 @@ const AboutUs = () => {
         <div id='project-pathway' ref={sectionRefs.project_pathway}>
             <Pathway />
         </div>
-        <Involved />
+      <InfravisionTalks />
     </>
   )
 }
