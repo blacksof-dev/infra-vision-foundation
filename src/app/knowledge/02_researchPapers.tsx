@@ -62,6 +62,7 @@ const INITIAL_VISIBLE_COUNT = 3;
 
 
 const allcards = [
+   
   {
     id: 14,
     img: img_14,

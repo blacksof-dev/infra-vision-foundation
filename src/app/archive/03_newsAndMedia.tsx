@@ -43,6 +43,26 @@ const SECTORS: SectorType[] = [
 const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
+  {
+    id:54,
+    img: "/assets/archive/newsAndMedia/vrinda.png",
+    category: "News",
+    title: "Vrinda Singh and Priyanka Bains, Research Associates, The Infravision Foundation",
+    sectors: "",
+    date: "August 9, 2025",
+    description: "Cold Rooms in Local Markets: Securing Farmers, Delivering Nutrition",
+    link: "/assets/pdf/vrinda-singh-priyanka-bains.pdf",
+  },
+  {
+    id:53,
+    img: "/assets/archive/newsAndMedia/hyderbad.webp",
+    category: "News",
+    title: "Dr. Mutum Chaobisana",
+    sectors: "",
+    date: "August 9, 2025",
+    description: "Hyderabad's FSI deregulation:  A missed opportunity",
+    link: "/assets/pdf/hyderabad-fSI-deregulation.pdf",
+  },
    {
     id:52,
     img: "/assets/archive/newsAndMedia/womanEmpowerment.jpg",
