@@ -23,7 +23,17 @@ import img10 from "@/../public/assets/knowledeg/conversations/10.png";
 
 
 const people = [
-
+ {
+    image:img2.src,
+    videoLink: "https://www.youtube.com/embed/NJ0V0G7eZwE?si=Mp_0ul6iDz5QtJN4",
+    name: "Jagan Shah",
+     title:
+      "The Infravision Foundation CEO and senior expert in urban development policy",
+     desc:"Can the Urban Challenge Fund be a gamechanger for India’s urban future?",
+     
+    
+    date: "June 10, 2025"
+  },
   {
     image: img10.src,
     videoLink:"https://www.youtube.com/embed/ZGIjUOfs91U?si=-iX4ss69vegjRpoQ",
@@ -237,7 +247,7 @@ export default function Conversations() {
                   <div className="relative w-full h-[20rem] sm:h-[24rem] rounded-xl overflow-hidden">
                     <Image
                       src={person.image}
-                      alt={person.name}
+                       alt={person.name}
                       fill
                       className="object-cover"
                       style={{ zIndex: 1 }}

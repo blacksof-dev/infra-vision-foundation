@@ -39,12 +39,12 @@ import img_36 from "@/../public/assets/archive/video/36.jpg";
 import img_37 from "@/../public/assets/archive/video/37.jpg";
 import img_38 from "@/../public/assets/archive/video/38.jpg";
 import renewable from "@/../public/assets/archive/video/renewable.jpg";
-import jagan from "@/../public/assets/archive/video/jagan.jpg";
+import urban from "@/../public/assets/archive/video/urban.jpg";
 
 
 export const allCards = [
     {
-    image: jagan,
+    image:urban,
     subtitle: "The Infravision Conversation",
     subdesc:
       "Can the Urban Challenge Fund be a gamechanger for India’s urban future?",

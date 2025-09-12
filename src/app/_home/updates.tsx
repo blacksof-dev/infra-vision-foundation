@@ -12,6 +12,10 @@ import img_13 from "@/../public/assets/knowledeg/researchPapers/13.png";
 import Link from "next/link";
 import img_14 from "@/../public/assets/knowledeg/researchPapers/14.png";
 import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg"
+import img_16 from "@/../public/assets/archive/newsAndMedia/hyderbad.webp"
+import img_17 from "@/../public/assets/archive/newsAndMedia/vrinda.png"
+
+
 export default function Updates() {
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [isLastSlide, setIsLastSlide] = useState(false);
@@ -151,13 +155,28 @@ export default function Updates() {
 
 const EventsDetails = [
   {
+   
+    image: img_16,
+    category: "News",
+    title: "Dr. Mutum Chaobisana",
+    description: "Hyderabad's FSI deregulation:  A missed opportunity",
+    link: "/assets/pdf/hyderabad-fSI-deregulation.pdf",
+  },
+  {
     image: img_14,
     category: "Research Report",
     title: "Impact of FSI Deregulation in Hyderabad",
     btnTitle: "Read more",
     link: "/assets/pdf/report-fsi-deregulation-in-hyderabad.pdf",
   },
-
+ {
+  
+    image: img_16,
+    category: "News",
+    title: "Vrinda Singh and Priyanka Bains, Research Associates, The Infravision Foundation",
+    description: "Cold Rooms in Local Markets: Securing Farmers, Delivering Nutrition",
+    link: "/assets/pdf/vrinda-singh-priyanka-bains.pdf",
+  },
    {
     image: img_15,
     category: "Blog",
