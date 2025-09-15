@@ -195,7 +195,7 @@ const EventsDetails = [
   {
     image: img2,
     category: "Video",
-    title: "The Infravision Foundation CEO and senior expert in urban development policy",
+    title: "Can the Urban Challenge Fund be a gamechanger for India’s urban future?",
     btnTitle: "Watch video",
     link: "https://www.youtube.com/embed/NJ0V0G7eZwE?si=Mp_0ul6iDz5QtJN4",
 
@@ -203,7 +203,7 @@ const EventsDetails = [
   {
     image: img10,
     category: "Video",
-    title: "Co-founder at Nagrika ",
+    title: "Why Smaller Cities can become Growth Hubs",
     btnTitle: "Watch video",
     link: "https://www.youtube.com/embed/ZGIjUOfs91U?si=-iX4ss69vegjRpoQ",
 
