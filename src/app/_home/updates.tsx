@@ -8,12 +8,9 @@ import "swiper/css/navigation";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import img_12 from "@/../public/assets/outreach-and-engagements/eventImages/august18_2025_Img4.jpeg"
-import img_13 from "@/../public/assets/knowledeg/researchPapers/13.png";
 import Link from "next/link";
-import img_14 from "@/../public/assets/knowledeg/researchPapers/14.png";
 import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg"
 import img_16 from "@/../public/assets/archive/newsAndMedia/hyderbad.webp"
-
 import img2 from "@/../public/assets/knowledeg/conversations/02.png";
 import img10 from "@/../public/assets/knowledeg/conversations/10.png";
 import img_17 from "@/../public/assets/knowledeg/researchPapers/14.png";
@@ -169,7 +166,7 @@ const EventsDetails = [
     category: "Research Report",
     title: "Impact of FSI Deregulation in Hyderabad",
     btnTitle: "Read more",
-     link: "/assets/pdf/report-fsi-deregulation-in-hyderabad.pdf",
+    link: "/assets/pdf/report-fsi-deregulation-in-hyderabad.pdf",
   },
   {
 
@@ -185,14 +182,6 @@ const EventsDetails = [
     title: "How to make India’s highways safe",
     btnTitle: "Read more",
     link: "/blogs/how-to-make-india-highways-safe",
-  },
-
-  {
-    image: img_13,
-    category: "Research Report",
-    title: "Impact of FSI Deregulation in Hyderabad",
-    btnTitle: "Read more",
-    link: "/assets/pdf/removing-barriers-to-faster-penetration-of-trees-final-report.pdf",
   },
 
   {
@@ -214,7 +203,7 @@ const EventsDetails = [
   {
     image: img10,
     category: "Video",
-    title:"Co-founder at Nagrika ",
+    title: "Co-founder at Nagrika ",
     btnTitle: "Watch video",
     link: "https://www.youtube.com/embed/ZGIjUOfs91U?si=-iX4ss69vegjRpoQ",
 
