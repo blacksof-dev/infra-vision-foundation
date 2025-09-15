@@ -3,6 +3,7 @@
 const Card = dynamic(() => import("@/_components/molecules/cardTemplate"), {
   ssr: false,
 });
+
 import React, { Suspense, useRef, useState } from "react";
 
 import InfrapanditAward from "./infraPanditAward";
@@ -14,25 +15,16 @@ import Loading from "../loading";
 import dynamic from "next/dynamic";
 
 interface NewsLetterAndNews {
-  id: number;
-  img: string;
-  category: string;
-  title: string;
-  sector: string;
-  date: string;
-  description: string;
-  link: string;
+   id:string;
+   title:string;
+   subtitle?:string;
+   category:string;
+   date:string;
+   image:string;
+   link:string;
 }
 
-interface PaginatedResponse<T> {
-  data: T[];
-  meta: {
-    total: number;
-    page: number;
-    limit: number;
-    totalPages: number;
-  };
-}
+
 
 export default function Highlights() {
   const [activeTab, setActiveTab] = useState("Outreach and Engagements");
@@ -116,19 +108,19 @@ export const TabSwitch = ({
     scrollToCenter(index);
   };
 
-  const { data: newsletters } = useApiHook<
-    PaginatedResponse<NewsLetterAndNews>
-  >({
-    url: "/archives/newsletter?page=1&limit=3",
+  const { data: newsletters } = useApiHook<NewsLetterAndNews[]>({
+    url: "/archives/newsletter/recent",
     cacheKey: "newsletter",
   });
 
   const { data: news, isLoading } = useApiHook<
-    PaginatedResponse<NewsLetterAndNews>
+   NewsLetterAndNews[]
   >({
-    url: "/archives/media-coverage?page=1&limit=3&search=infrastructure&category=News",
+    url: "archives/media-coverage/recent",
     cacheKey: "news",
   });
+
+  
 
   if (isLoading) {
     return (
@@ -200,7 +192,7 @@ export const TabSwitch = ({
               </section>
             }
           >
-            <TabContent data={newsletters.data} />
+            <TabContent data={newsletters} />
           </Suspense>
         )}
         {activeTab === "In the News" && news && (
@@ -211,7 +203,7 @@ export const TabSwitch = ({
               </section>
             }
           >
-            <TabContent data={news.data} />
+            <TabContent data={news} />
           </Suspense>
         )}
       </div>
@@ -256,10 +248,10 @@ export const TabContent = ({ data }: { data: NewsLetterAndNews[] }) => {
         <Card
           date={item.date}
           title={item.title}
-          image={item.img}
+          image={item.image}
           link={item.link}
           category={item.category}
-          subtitle={item.description}
+          subtitle={item.subtitle}
           ctaText="Read more"
           classes="line-clamp-2 xl:line-clamp-3 text-lg md:text-xl text-black"
         />

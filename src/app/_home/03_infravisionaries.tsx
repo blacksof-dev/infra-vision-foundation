@@ -1,11 +1,34 @@
+"use client"
 import React from "react";
 import InfravisionariesGlobal from "@/_components/molecules/infravisionariesGlobal";
+import { useApiHook } from "@/lib/useApi";
+import { ApiResponse } from "./01_banner";
+import Loading from "../loading";
 
 
 
 
 export default function Infravisionaries() {
+  const { data, isLoading } = useApiHook<ApiResponse[]>({
+    url: "/content/home",
+    cacheKey: "homeContent",
+  });
 
+  if (isLoading) {
+    return (
+      <section className="w-full h-[40rem] flex items-center justify-center">
+        <Loading />
+      </section>
+    );
+  }
+
+  if (!data) return null;
+
+  const infravisionaries = data.find((section) => section.sectionKey === "infravisionaries");
+
+  if (!infravisionaries) return null;
+
+  const response = infravisionaries.data;
   return (
     <>
       <section id="homepage-section-03" className="bg-pink relative">
@@ -41,24 +64,18 @@ export default function Infravisionaries() {
           <div className="w-container">
             <div className="flex  flex-row  items-center gap-2 md:gap-3">
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-white "></span>
-              <h5 className="font-medium text-white">Our Core</h5>
+              <h5 className="font-medium text-white">{response.tagName}</h5>
             </div>
             <div className="pt-4 md:pt-5 ">
-              <h1 className="text-white font-medium">The Infravisionaries</h1>
+              <h1 className="text-white font-medium">{response.title}</h1>
               <div className="w-full sm:w-[85%] xl:w-[45%]">
                 <h6 className="text-white  tracking-[1%] py-4">
-                  <span className="font-semibold">
-                    {" "}
-                    The Infravision Foundation{" "}
-                  </span>{" "}
-                  is a confluence of seasoned professionals with the aim of
-                  contributing thought leadership to help shape and evaluate
-                  infrastructure-related public policies and programmes.
+                  {response.description}
                 </h6>
               </div>
             </div>
           </div>
-          <InfravisionariesGlobal role="home"/>
+          <InfravisionariesGlobal role="home" />
         </div>
       </section>
     </>

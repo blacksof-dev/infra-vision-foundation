@@ -24,7 +24,7 @@ type ButtonTabProps = {
   value: string;
   data: string;
   setdata: (val: string) => void;
-  role?:string;
+  role?: string;
 };
 
 export type CardData = {
@@ -58,14 +58,14 @@ interface MobileMembersSliderProps {
   popupData?: CardData;
   setPopUpData: (data: CardData) => void;
   showPopup: boolean;
-  role?:string;
+  role?: string;
 }
 
-const ButtonTab = ({ label, value, data,role, setdata }: ButtonTabProps) => {
+const ButtonTab = ({ label, value, data, role, setdata }: ButtonTabProps) => {
   return (
     <div className="py-4 group">
       <button
-        className={` ${role==="home"?"text-white":"text-darkgray"}  cursor-pointer text-md text-nowrap lg:text-xl relative ${data === value ? "font-medium opacity-100" : "opacity-70"
+        className={` ${role === "home" ? "text-white" : "text-darkgray"}  cursor-pointer text-md text-nowrap lg:text-xl relative ${data === value ? "font-medium opacity-100" : "opacity-70"
           }`}
         onClick={() => setdata(value)}
       >
@@ -74,14 +74,14 @@ const ButtonTab = ({ label, value, data,role, setdata }: ButtonTabProps) => {
           className={`h-[1px] ${data === value
             ? "w-full transition-all duration-1000"
             : "w-10 sm:w-5"
-            } sm:h-[2px] ${role==="home"?"bg-white":"bg-darkgray"}  absolute bottom-0 left-0 top-7`}
+            } sm:h-[2px] ${role === "home" ? "bg-white" : "bg-darkgray"}  absolute bottom-0 left-0 top-7`}
         ></span>
       </button>
     </div>
   );
 };
 
-export default function InfravisionariesGlobal({role}:{role:string}) {
+export default function InfravisionariesGlobal({ role }: { role: string }) {
   const swiperRef = useRef<SwiperType | null>(null);
   const [data, setdata] = useState("trustee");
   const [isLastSlide, setIsLastSlide] = useState(false);
@@ -136,6 +136,8 @@ export default function InfravisionariesGlobal({role}:{role:string}) {
     cacheKey: "teams",
   });
 
+  
+
   useEffect(() => {
     let cardDetails: CardData[] = [];
 
@@ -162,6 +164,7 @@ export default function InfravisionariesGlobal({role}:{role:string}) {
     setcarddata(cardDetails);
   }, [data, trusteesData]);
 
+
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -182,47 +185,61 @@ export default function InfravisionariesGlobal({role}:{role:string}) {
         <div className=" blade-top-padding-lg blade-bottom-padding-lg">
           <div className="md:flex flex-row  w-container hidden blade-top-margin-sm ">
             <div className=" border-r-1 pe-20 border-white/40">
-              <ButtonTab
-                label="Trustees"
-                value="trustee"
-                data={data}
-                setdata={setdata}
-                role={role}
-                
-              />
-              <ButtonTab
-                label="Founding Patrons"
-                value="patrons"
-                data={data}
-                setdata={setdata}
-                role={role}
-               
-              />
-              <ButtonTab
-                label="Council of Advisors"
-                value="advisory"
-                data={data}
-                setdata={setdata}
-                role={role}
-               
-              />
-              <ButtonTab
-                label="Distinguished Fellows"
-                value="fellow"
-                data={data}
-                setdata={setdata}
-                role={role}
-              
-              />
+              {trusteesData?.trustees && trusteesData.trustees.length > 0 && (
+                <ButtonTab
+                  label="Trustees"
+                  value="trustee"
+                  data={data}
+                  setdata={setdata}
+                  role={role}
 
-              <ButtonTab
-                label="Team"
-                value="team"
-                data={data}
-                setdata={setdata}
-               role={role}
-               
-              />
+                />
+              )}
+
+              {patronData?.patrons && patronData.patrons.length > 0 && (
+                <ButtonTab
+                  label="Founding Patrons"
+                  value="patrons"
+                  data={data}
+                  setdata={setdata}
+                  role={role}
+
+                />
+              )}
+
+              {advisorsData?.advisors && advisorsData.advisors.length > 0 && (
+                <ButtonTab
+                  label="Council of Advisors"
+                  value="advisory"
+                  data={data}
+                  setdata={setdata}
+                  role={role}
+
+                />
+              )}
+
+              {fellowData?.fellow && fellowData.fellow.length > 0 && (
+                <ButtonTab
+                  label="Distinguished Fellows"
+                  value="fellow"
+                  data={data}
+                  setdata={setdata}
+                  role={role}
+
+                />
+              )}
+
+
+              {teamData?.team && teamData.team.length > 0 && (
+                <ButtonTab
+                  label="Team"
+                  value="team"
+                  data={data}
+                  setdata={setdata}
+                  role={role}
+
+                />
+              )}
             </div>
 
             <div className="w-full overflow-x-hidden  ml-[4%]">
@@ -289,14 +306,14 @@ export default function InfravisionariesGlobal({role}:{role:string}) {
               <div className="flex pt-3 pr-1 h-[80px] flex-wrap gap-5 mt-4 justify-end md:gap-4 2xl:mt-1">
                 <button
                   disabled={isFirstSlide}
-                  className={`swiper-prev-btn-members disabled:opacity-50 cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full ${role==="home"?"bg-white  text-pink hover:ring-white":"bg-pink text-white "}  text-xl hover:ring-1  transition-all duration-300 ease-linear`}
+                  className={`swiper-prev-btn-members disabled:opacity-50 cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full ${role === "home" ? "bg-white  text-pink hover:ring-white" : "bg-pink text-white "}  text-xl hover:ring-1  transition-all duration-300 ease-linear`}
                   aria-label="Previous slide"
                 >
                   <GoArrowLeft />
                 </button>
                 <button
                   disabled={isLastSlide}
-                  className={`swiper-next-btn-members disabled:opacity-50  cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full ${role==="home"?"bg-white  text-pink hover:ring-white":"bg-pink text-white"}  text-xl  hover:ring-1  transition-all duration-300 ease-linear`}
+                  className={`swiper-next-btn-members disabled:opacity-50  cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full ${role === "home" ? "bg-white  text-pink hover:ring-white" : "bg-pink text-white"}  text-xl  hover:ring-1  transition-all duration-300 ease-linear`}
                   aria-label="Next slide"
                 >
                   <GoArrowRight />
@@ -312,64 +329,73 @@ export default function InfravisionariesGlobal({role}:{role:string}) {
           </div>
           {isMobile && (
             <div>
-              <MobileMembersSlider
-                title="Trustees"
-                data={trusteesData?.trustees ?? []}
-                navClass="trustee"
-                setShowPopup={setShowPopup}
-                setPopUpData={setPopUpData}
-                popupData={popupData}
-                showPopup={showPopup}
+              {trusteesData?.trustees && trusteesData.trustees.length > 0 && (
+                <MobileMembersSlider
+                  title="Trustees"
+                  data={trusteesData?.trustees ?? []}
+                  navClass="trustee"
+                  setShowPopup={setShowPopup}
+                  setPopUpData={setPopUpData}
+                  popupData={popupData}
+                  showPopup={showPopup}
                   role={role}
-                onSelectTab={() => setdata("trustee")}
-              />
-              <MobileMembersSlider
-                title="Founding Patrons"
-                data={patronData?.patrons ?? []}
-                navClass="patrons"
-                setShowPopup={setShowPopup}
-                setPopUpData={setPopUpData}
-                popupData={popupData}
-                showPopup={showPopup}
+                  onSelectTab={() => setdata("trustee")}
+                />
+              )}
+              {patronData?.patrons && patronData.patrons.length > 0 && (
+                <MobileMembersSlider
+                  title="Founding Patrons"
+                  data={patronData?.patrons ?? []}
+                  navClass="patrons"
+                  setShowPopup={setShowPopup}
+                  setPopUpData={setPopUpData}
+                  popupData={popupData}
+                  showPopup={showPopup}
                   role={role}
-                onSelectTab={() => setdata("patrons")}
-              />
+                  onSelectTab={() => setdata("patrons")}
+                />
+              )}
 
-              <MobileMembersSlider
-                title="Council of Advisors"
-                data={advisorsData?.advisors ?? []}
-                navClass="advisory"
-                setShowPopup={setShowPopup}
-                setPopUpData={setPopUpData}
-                popupData={popupData}
-                showPopup={showPopup}
+              {advisorsData?.advisors && advisorsData.advisors.length > 0 && (
+                <MobileMembersSlider
+                  title="Council of Advisors"
+                  data={advisorsData?.advisors ?? []}
+                  navClass="advisory"
+                  setShowPopup={setShowPopup}
+                  setPopUpData={setPopUpData}
+                  popupData={popupData}
+                  showPopup={showPopup}
                   role={role}
-                onSelectTab={() => setdata("advisory")}
-              />
+                  onSelectTab={() => setdata("advisory")}
+                />
+              )}
+              {fellowData?.fellow && fellowData.fellow.length > 0 && (
+                <MobileMembersSlider
+                  title="Distinguished Fellows"
+                  data={fellowData?.fellow ?? []}
+                  navClass="fellow"
+                  setShowPopup={setShowPopup}
+                  setPopUpData={setPopUpData}
+                  popupData={popupData}
+                  showPopup={showPopup}
+                  role={role}
+                  onSelectTab={() => setdata("fellow")}
+                />
+              )}
 
-              <MobileMembersSlider
-                title="Distinguished Fellows"
-                data={fellowData?.fellow ?? []}
-                navClass="fellow"
-                setShowPopup={setShowPopup}
-                setPopUpData={setPopUpData}
-                popupData={popupData}
-                showPopup={showPopup}
+              {teamData?.team && teamData.team.length > 0 && (
+                <MobileMembersSlider
+                  title="Team"
+                  data={teamData?.team ?? []}
+                  navClass="team"
+                  setShowPopup={setShowPopup}
+                  setPopUpData={setPopUpData}
+                  popupData={popupData}
+                  showPopup={showPopup}
                   role={role}
-                onSelectTab={() => setdata("fellow")}
-              />
-
-              <MobileMembersSlider
-                title="Team"
-                data={teamData?.team ?? []}
-                navClass="team"
-                setShowPopup={setShowPopup}
-                setPopUpData={setPopUpData}
-                popupData={popupData}
-                showPopup={showPopup}
-                  role={role}
-                onSelectTab={() => setdata("team")}
-              />
+                  onSelectTab={() => setdata("team")}
+                />
+              )}
             </div>
           )}
         </div>
@@ -469,14 +495,14 @@ export const MobileMembersSlider = ({
         <div className="flex w-fit gap-3">
           <button
             disabled={isFirstSlide}
-            className={`prevbtn${navClass} disabled:opacity-50 cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full ${role==="home"?"bg-white  text-pink hover:ring-white":"bg-pink text-white "}  text-xl `}
+            className={`prevbtn${navClass} disabled:opacity-50 cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full ${role === "home" ? "bg-white  text-pink hover:ring-white" : "bg-pink text-white "}  text-xl `}
             aria-label="Previous slide"
           >
             <GoArrowLeft />
           </button>
           <button
             disabled={isLastSlide}
-            className={`nextbtn${navClass} disabled:opacity-50 cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full ${role==="home"?"bg-white  text-pink hover:ring-white":"bg-pink text-white "}  text-xl `}
+            className={`nextbtn${navClass} disabled:opacity-50 cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full ${role === "home" ? "bg-white  text-pink hover:ring-white" : "bg-pink text-white "}  text-xl `}
             aria-label="Next slide"
           >
             <GoArrowRight />
