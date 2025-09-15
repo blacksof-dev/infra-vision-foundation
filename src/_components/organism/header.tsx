@@ -14,6 +14,7 @@ import { GoArrowRight } from "react-icons/go";
 
 import gsap from "gsap";
 import SearchContent from "@/app/search/searchContent";
+import path from "path";
 
 interface NavItem {
   label: string;
@@ -99,12 +100,6 @@ function Header() {
       window.removeEventListener("resize", handleResize);
     };
   }, [lastScrollY, isMobile, mounted, setShowNavbar]);
-
-
-
-
-
-
 
   // Handle body scroll lock for mobile menu
   useEffect(() => {
