@@ -13,8 +13,10 @@ import Link from "next/link";
 import img_14 from "@/../public/assets/knowledeg/researchPapers/14.png";
 import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg"
 import img_16 from "@/../public/assets/archive/newsAndMedia/hyderbad.webp"
-import img_17 from "@/../public/assets/archive/newsAndMedia/vrinda.png"
 
+import img2 from "@/../public/assets/knowledeg/conversations/02.png";
+import img10 from "@/../public/assets/knowledeg/conversations/10.png";
+import img_17 from "@/../public/assets/knowledeg/researchPapers/14.png";
 
 export default function Updates() {
   const [isFirstSlide, setIsFirstSlide] = useState(true);
@@ -64,10 +66,10 @@ export default function Updates() {
               el: ".custom-pagination-bullets-banner",
               // type: "fraction",
             }}
-             loop
+            loop
             autoplay={{
               delay: 3000,
-              disableOnInteraction: false, 
+              disableOnInteraction: false,
             }}
             grabCursor={true}
             speed={500}
@@ -155,29 +157,29 @@ export default function Updates() {
 
 const EventsDetails = [
   {
-   
+
     image: img_16,
     category: "News",
-    title: "Dr. Mutum Chaobisana",
-    description: "Hyderabad's FSI deregulation:  A missed opportunity",
+    title: "Hyderabad's FSI deregulation:  A missed opportunity",
+    btnTitle: "Read more",
     link: "/assets/pdf/hyderabad-fSI-deregulation.pdf",
   },
   {
-    image: img_14,
+    image: img_17,
     category: "Research Report",
     title: "Impact of FSI Deregulation in Hyderabad",
     btnTitle: "Read more",
-    link: "/assets/pdf/report-fsi-deregulation-in-hyderabad.pdf",
+     link: "/assets/pdf/report-fsi-deregulation-in-hyderabad.pdf",
   },
- {
-  
+  {
+
     image: img_16,
     category: "News",
-    title: "Vrinda Singh and Priyanka Bains, Research Associates, The Infravision Foundation",
-    description: "Cold Rooms in Local Markets: Securing Farmers, Delivering Nutrition",
+    title: "Cold Rooms in Local Markets: Securing Farmers, Delivering Nutrition",
+    btnTitle: "Read more",
     link: "/assets/pdf/vrinda-singh-priyanka-bains.pdf",
   },
-   {
+  {
     image: img_15,
     category: "Blog",
     title: "How to make India’s highways safe",
@@ -188,12 +190,12 @@ const EventsDetails = [
   {
     image: img_13,
     category: "Research Report",
-    title: "Removing Barriers to Faster Penetration of Trees Outside Forests Productsin Construction Sector",
+    title: "Impact of FSI Deregulation in Hyderabad",
     btnTitle: "Read more",
     link: "/assets/pdf/removing-barriers-to-faster-penetration-of-trees-final-report.pdf",
   },
 
-   {
+  {
     image: img_12,
     category: "Event",
     title: "HSR will be the next growth multiplier",
@@ -201,12 +203,26 @@ const EventsDetails = [
     link: "/outreach-and-engagements",
   },
 
+  {
+    image: img2,
+    category: "Video",
+    title: "The Infravision Foundation CEO and senior expert in urban development policy",
+    btnTitle: "Watch video",
+    link: "https://www.youtube.com/embed/NJ0V0G7eZwE?si=Mp_0ul6iDz5QtJN4",
 
- 
- 
- 
+  },
+  {
+    image: img10,
+    category: "Video",
+    title:"Co-founder at Nagrika ",
+    btnTitle: "Watch video",
+    link: "https://www.youtube.com/embed/ZGIjUOfs91U?si=-iX4ss69vegjRpoQ",
+
+  },
+
+
+
 ];
 
 
 
- 
