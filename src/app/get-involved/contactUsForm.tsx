@@ -4,7 +4,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Textarea } from "@/_components/ui/textarea";
-import { type ReactNode, useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import { HiOutlineLink } from "react-icons/hi";
 import { TbUpload } from "react-icons/tb";
 import emailjs from "@emailjs/browser";
@@ -18,8 +18,9 @@ import {
 } from "@/_components/ui/select";
 import Portal from "@/_components/atoms/popupPortal";
 import { Loader, X } from "lucide-react";
-import MapComponent from "./mapSection";
+
 import axios from "axios";
+import { MapComponent } from "./mapSection";
 
 const dropdownOptions = [
   "Institutional collaboration",

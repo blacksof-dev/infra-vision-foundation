@@ -29,41 +29,41 @@ interface NewsLetterAndNews {
 export default function Highlights() {
   const [activeTab, setActiveTab] = useState("Outreach and Engagements");
 
-  const { data, isLoading, error } = useApiHook<ApiResponse[]>({
-    url: "/content/home",
-    cacheKey: "homeContent",
-  });
+  // const { data, isLoading, error } = useApiHook<ApiResponse[]>({
+  //   url: "/content/home",
+  //   cacheKey: "homeContent",
+  // });
 
-  if (isLoading) {
-    return (
-      <section className="w-full h-[40rem] flex items-center justify-center">
-        <Loading />
-      </section>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <section className="w-full h-[40rem] flex items-center justify-center">
+  //       <Loading />
+  //     </section>
+  //   );
+  // }
 
-  if (error) {
-    return (
-      <section className="w-full h-[40rem] flex items-center justify-center">
-        <p>Something went wrong</p>
-      </section>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <section className="w-full h-[40rem] flex items-center justify-center">
+  //       <p>Something went wrong</p>
+  //     </section>
+  //   );
+  // }
 
-  if (!data) return null;
+  // if (!data) return null;
 
-  const highlightContent = data.find(
-    (section) => section.sectionKey === "highlight"
-  );
-  if (!highlightContent) return null;
+  // const highlightContent = data.find(
+  //   (section) => section.sectionKey === "highlight"
+  // );
+  // if (!highlightContent) return null;
 
-  const response = highlightContent.data;
+  // const response = highlightContent.data;
 
   return (
     <>
       <div id="homepage-section-5" className="bg-whitesmoke">
         <div className="w-container blade-top-padding-lg blade-bottom-padding-lg">
-          <div className="flex  flex-row  items-center gap-2 md:gap-3">
+          {/* <div className="flex  flex-row  items-center gap-2 md:gap-3">
             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
             <h5 className="font-medium text-pink">{response.tagName}</h5>
           </div>
@@ -72,7 +72,7 @@ export default function Highlights() {
               className="text-black font-light pt-2"
               dangerouslySetInnerHTML={{ __html: response.title }}
             />
-          </div>
+          </div> */}
           <div className="">
             <TabSwitch setActiveTab={setActiveTab} activeTab={activeTab} />
           </div>

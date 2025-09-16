@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { useApiHook } from "@/lib/useApi";
 import dynamic from "next/dynamic";
-import { CloudCog } from "lucide-react";
 const Updates = dynamic(() => import("./updates"), { ssr: false });
 
 export interface ApiResponse {
@@ -33,8 +32,6 @@ export default function Banner() {
   if (!banner) return null;
 
   const response = banner.data;
-
-
 
   return (
     <>

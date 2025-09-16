@@ -17,33 +17,33 @@ interface ImageApiResponse {
 }
 
 export default function Association() {
-  const { data, isLoading, error } = useApiHook<ApiResponse[]>({
-    url: "/content/home",
-    cacheKey: "homeContent",
-  });
+  // const { data, isLoading, error } = useApiHook<ApiResponse[]>({
+  //   url: "/content/home",
+  //   cacheKey: "homeContent",
+  // });
 
   const { data: imageData } = useApiHook<ImageApiResponse>({
     url: "/associations",
     cacheKey: "associationImages",
   });
 
-  if (isLoading) {
-    return (
-      <section className="w-full h-[40rem] flex items-center justify-center">
-        <Loading />
-      </section>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <section className="w-full h-[40rem] flex items-center justify-center">
+  //       <Loading />
+  //     </section>
+  //   );
+  // }
 
-  if (!data) return null;
+  // if (!data) return null;
 
-  const contentData = data.find(
-    (section) => section.sectionKey === "associationContent"
-  );
+  // const contentData = data.find(
+  //   (section) => section.sectionKey === "associationContent"
+  // );
 
-  if (!contentData) return null;
+  // if (!contentData) return null;
 
-  const response = contentData.data;
+  // const response = contentData.data;
 
  if(!imageData){
   return null;
@@ -54,7 +54,7 @@ export default function Association() {
       id="homepage-section-4"
       className="blade-bottom-padding-lg blade-top-padding-lg"
     >
-      <div className="w-container">
+      {/* <div className="w-container">
         <div className="flex flex-row items-center gap-2 md:gap-3">
           <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
           <h5 className="font-medium text-pink">{response.tagName}</h5>
@@ -64,7 +64,7 @@ export default function Association() {
             <span className="font-medium text-black">{response.title}</span>
           </h1>
         </div>
-      </div>
+      </div> */}
 
       <div className="blade-top-padding-sm">
         <Swiper

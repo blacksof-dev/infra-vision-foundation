@@ -9,26 +9,26 @@ import Loading from "../loading";
 
 
 export default function Infravisionaries() {
-  const { data, isLoading } = useApiHook<ApiResponse[]>({
-    url: "/content/home",
-    cacheKey: "homeContent",
-  });
+  // const { data, isLoading } = useApiHook<ApiResponse[]>({
+  //   url: "/content/home",
+  //   cacheKey: "homeContent",
+  // });
 
-  if (isLoading) {
-    return (
-      <section className="w-full h-[40rem] flex items-center justify-center">
-        <Loading />
-      </section>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <section className="w-full h-[40rem] flex items-center justify-center">
+  //       <Loading />
+  //     </section>
+  //   );
+  // }
 
-  if (!data) return null;
+  // if (!data) return null;
 
-  const infravisionaries = data.find((section) => section.sectionKey === "infravisionaries");
+  // const infravisionaries = data.find((section) => section.sectionKey === "infravisionaries");
 
-  if (!infravisionaries) return null;
+  // if (!infravisionaries) return null;
 
-  const response = infravisionaries.data;
+  // const response = infravisionaries.data;
   return (
     <>
       <section id="homepage-section-03" className="bg-pink relative">
@@ -61,7 +61,7 @@ export default function Infravisionaries() {
           </svg>
         </div>
         <div className=" blade-top-padding-lg blade-bottom-padding-lg">
-          <div className="w-container">
+          {/* <div className="w-container">
             <div className="flex  flex-row  items-center gap-2 md:gap-3">
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-white "></span>
               <h5 className="font-medium text-white">{response.tagName}</h5>
@@ -74,7 +74,7 @@ export default function Infravisionaries() {
                 </h6>
               </div>
             </div>
-          </div>
+          </div> */}
           <InfravisionariesGlobal role="home" />
         </div>
       </section>

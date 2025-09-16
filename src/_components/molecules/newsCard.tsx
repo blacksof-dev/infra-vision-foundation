@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FaYoutube } from "react-icons/fa";
 import Image from "next/image";
 import { BorderGrayHeroBtn } from "../atoms/buttons";
+
 type CardProps = {
     date: string;
     title: string;
@@ -17,17 +18,23 @@ type CardProps = {
 
 
 export function NewsCard({ date, title, image, link, category, description, ctaType = 'yt', classes }: CardProps) {
+
     return (
 
         <div className="flex flex-col  h-full">
             <div className="xl:max-w-[29rem] h-[16rem] ">
                 <Image
-                    src={image}
+                    src={
+                        image
+                            ? `${process.env.NEXT_PUBLIC_API_URL}${image}`
+                            : "/assets/globals/fallback.jpg"
+                    }
                     width={1000}
                     height={1000}
                     alt="Image"
                     className="w-full h-full object-cover rounded"
                 />
+
             </div>
             <div className="flex flex-col justify-between">
                 <div>
@@ -40,11 +47,11 @@ export function NewsCard({ date, title, image, link, category, description, ctaT
                             <h6 className="text-xs md:text-base text-darkgray ">{date}</h6>
                         </div>
                     </div>
-                  
+
                     <div className="pt-1">
                         <p className={`text-black font-medium text-base md:text-lg line-clamp-2`}>{description}</p>
                     </div>
-                      <div className="pt-1 ">
+                    <div className="pt-1 ">
                         <h6 className={`text-darkgray font-medium ${classes}`}>{title}</h6>
                     </div>
                 </div>

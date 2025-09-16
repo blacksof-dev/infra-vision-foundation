@@ -57,32 +57,32 @@ type KnowledgeApiResponse = {
 export default function WhoWeAre() {
   const [activeTab, setActiveTab] = useState("Knowledge");
 
-  const { data, isLoading } = useApiHook<ApiResponse[]>({
-    url: "/content/home",
-    cacheKey: "homeContent",
-  });
+  // const { data, isLoading } = useApiHook<ApiResponse[]>({
+  //   url: "/content/home",
+  //   cacheKey: "homeContent",
+  // });
 
-  if (isLoading) {
-    return (
-      <section className="w-full h-[40rem] flex items-center justify-center">
-        <Loading />
-      </section>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <section className="w-full h-[40rem] flex items-center justify-center">
+  //       <Loading />
+  //     </section>
+  //   );
+  // }
 
-  if (!data) return null;
+  // if (!data) return null;
 
-  const whoWeAre = data.find((section) => section.sectionKey === "whoWeAre");
+  // const whoWeAre = data.find((section) => section.sectionKey === "whoWeAre");
 
-  if (!whoWeAre) return null;
+  // if (!whoWeAre) return null;
 
-  const response = whoWeAre.data;
+  // const response = whoWeAre.data;
 
   return (
     <>
       <section id="homepage-section-2" className="bg-whitesmoke">
         <main className="blade-top-padding-lg blade-bottom-padding-lg w-container">
-          <div className="flex md:flex-row flex-col justify-between">
+          {/* <div className="flex md:flex-row flex-col justify-between">
             <div>
               <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
                 <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
@@ -101,7 +101,7 @@ export default function WhoWeAre() {
                 dangerouslySetInnerHTML={{ __html: response.description }}
               />
             </div>
-          </div>
+          </div> */}
           <div className=" relative">
             <TabSwitch setActiveTab={setActiveTab} activeTab={activeTab} />
           </div>

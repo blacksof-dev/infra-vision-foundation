@@ -1,10 +1,34 @@
+"use client"
 import { MdOutlineEmail } from "react-icons/md";
 import { MdOutlinePhone } from "react-icons/md";
 import { MdOutlineLocationOn } from "react-icons/md";
 import SocialMedia from "@/_components/atoms/socialMedia";
 import { ReactNode } from "react";
+import { getData } from "@/lib/getServerData";
+import { useApiHook } from "@/lib/useApi";
 
-export default function MapComponent() {
+interface organisationApiResponse{
+  id:string;
+  address:string;
+  email:string[];
+  phones:string[];
+  locationMapUrl:string;
+
+}
+
+export const MapComponent=async()=> {
+
+ const { data } = useApiHook<organisationApiResponse>({
+    url: "/organisation/details",
+    cacheKey: "organisation",
+  });
+
+  if (!data) return null;
+
+
+
+
+  
   return (
     <>
       <div>
@@ -12,25 +36,25 @@ export default function MapComponent() {
           <MapAndAddress
             icon={<MdOutlineEmail className="text-2xl text-pink my-auto" />}
             title="Email"
-            desc="info@theinfravisionfoundation.org"
+            desc={data.email}
           />
           <MapAndAddress
             icon={<MdOutlinePhone className="text-2xl text-pink my-auto" />}
             title="Phone"
-            desc="+91 98107 50745"
+            desc={data.phones}
           />
           <MapAndAddress
             icon={
               <MdOutlineLocationOn className="text-2xl text-pink my-auto" />
             }
             title="Address"
-            desc="E 2261, Palam Vihar, Gurugram - 122017, Haryana, Delhi NCR, India."
+            desc={data.address}
           />
         </div>
 
         <div className="w-full border-2 border-lightgray/40 rounded-md ">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d448765.28875112947!2d77.034613!3d28.510285!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1a2072c947d1%3A0x61b745b0b0b8d323!2sINFRAVISION%20FOUNDATION!5e0!3m2!1sen!2sin!4v1746767518625!5m2!1sen!2sin"
+            src={data.locationMapUrl}
             width="100%"
             height="320"
             style={{ border: 0 }}

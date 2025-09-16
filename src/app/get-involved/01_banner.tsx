@@ -1,5 +1,4 @@
-import banner from "@/../public/assets/contact/banner.png";
-import bannerMob from "@/../public/assets/contact/bannerMobile.png";
+
 import { HeroBtnPink } from "@/_components/atoms/buttons";
 import { getData } from "@/lib/getServerData";
 import Image from "next/image";
