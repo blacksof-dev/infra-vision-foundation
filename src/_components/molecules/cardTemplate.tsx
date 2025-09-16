@@ -29,7 +29,14 @@ export default function Card({
         className="xl:max-w-[29rem] flex flex-col  relative "
       >
         <div className="relative w-full md:w-[28rem] xl:w-[23rem] 2xl:w-[28rem] h-[15rem]">
-          <Image src={image} alt={title} unoptimized={false} className="object-cover" fill quality={100} />
+          <Image
+            src={image}
+            alt={title}
+            unoptimized={false}
+            className="object-cover"
+            fill
+            quality={100}
+          />
         </div>
 
         <div className="  flex justify-between flex-col ">

@@ -8,10 +8,13 @@ type UseApiHookProps = {
   cacheKey: string;
 };
 
-export function useApiHook<T>({ url, cacheKey }: UseApiHookProps): UseQueryResult<T> {
+export function useApiHook<T>({
+  url,
+  cacheKey,
+}: UseApiHookProps): UseQueryResult<T> {
   return useQuery<T>({
     queryKey: [cacheKey],
-    queryFn: () => getFetch<T>(url!),  
+    queryFn: () => getFetch<T>(url!),
     staleTime: 1000 * 60 * 60 * 24,
     gcTime: 1000 * 60 * 60 * 24,
     refetchOnMount: false,
@@ -19,5 +22,3 @@ export function useApiHook<T>({ url, cacheKey }: UseApiHookProps): UseQueryResul
     refetchOnReconnect: false,
   });
 }
-
-
