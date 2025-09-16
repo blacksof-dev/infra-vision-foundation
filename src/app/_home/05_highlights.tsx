@@ -15,67 +15,42 @@ import Loading from "../loading";
 import dynamic from "next/dynamic";
 
 interface NewsLetterAndNews {
-   id:string;
-   title:string;
-   subtitle?:string;
-   category:string;
-   date:string;
-   image:string;
-   link:string;
+  id: string;
+  title: string;
+  subtitle?: string;
+  category: string;
+  date: string;
+  image: string;
+  link: string;
 }
-
-
 
 export default function Highlights() {
   const [activeTab, setActiveTab] = useState("Outreach and Engagements");
 
-  // const { data, isLoading, error } = useApiHook<ApiResponse[]>({
-  //   url: "/content/home",
-  //   cacheKey: "homeContent",
-  // });
+  const { data } = useApiHook<ApiResponse[]>({
+    url: "/content/home-highlight-content",
+    cacheKey: "homeContent-highlight",
+  });
 
-  // if (isLoading) {
-  //   return (
-  //     <section className="w-full h-[40rem] flex items-center justify-center">
-  //       <Loading />
-  //     </section>
-  //   );
-  // }
-
-  // if (error) {
-  //   return (
-  //     <section className="w-full h-[40rem] flex items-center justify-center">
-  //       <p>Something went wrong</p>
-  //     </section>
-  //   );
-  // }
-
-  // if (!data) return null;
-
-  // const highlightContent = data.find(
-  //   (section) => section.sectionKey === "highlight"
-  // );
-  // if (!highlightContent) return null;
-
-  // const response = highlightContent.data;
+  if (!data) return null;
 
   return (
     <>
       <div id="homepage-section-5" className="bg-whitesmoke">
         <div className="w-container blade-top-padding-lg blade-bottom-padding-lg">
-          {/* <div className="flex  flex-row  items-center gap-2 md:gap-3">
+          <div className="flex  flex-row  items-center gap-2 md:gap-3">
             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-            <h5 className="font-medium text-pink">{response.tagName}</h5>
+            <h5 className="font-medium text-pink">{data.tagName}</h5>
           </div>
           <div>
             <h1
               className="text-black font-light pt-2"
-              dangerouslySetInnerHTML={{ __html: response.title }}
+              dangerouslySetInnerHTML={{ __html: data.title }}
             />
-          </div> */}
-          <div className="">
-            <TabSwitch setActiveTab={setActiveTab} activeTab={activeTab} />
           </div>
+          {/* <div className="">
+            <TabSwitch setActiveTab={setActiveTab} activeTab={activeTab} />
+          </div> */}
         </div>
       </div>
     </>
@@ -113,14 +88,10 @@ export const TabSwitch = ({
     cacheKey: "newsletter",
   });
 
-  const { data: news, isLoading } = useApiHook<
-   NewsLetterAndNews[]
-  >({
+  const { data: news, isLoading } = useApiHook<NewsLetterAndNews[]>({
     url: "archives/media-coverage/recent",
     cacheKey: "news",
   });
-
-  
 
   if (isLoading) {
     return (

@@ -10,38 +10,38 @@ export default function InfravisionTalks() {
     cacheKey: "homeContent",
   });
 
- if (isLoading) {
-      return (
-        <section className="w-full h-[40rem] flex items-center justify-center">
-          <Loading />
-        </section>
-      );
-    }
-  
-    if (error || !data) {
-      return (
-        <section className="w-full h-[40rem] flex items-center justify-center">
-          <p>Something went wrong</p>
-        </section>
-      );
-    }
- 
+  if (isLoading) {
+    return (
+      <section className="w-full h-[40rem] flex items-center justify-center">
+        <Loading />
+      </section>
+    );
+  }
 
-  const talk = data.find((section) => section.sectionKey === "getInvolved");
+  if (error || !data) {
+    return (
+      <section className="w-full h-[40rem] flex items-center justify-center">
+        <p>Something went wrong</p>
+      </section>
+    );
+  }
+
+  const talk = data.find(
+    (section) => section.sectionKey === "home-getInvolved-content"
+  );
   const response = talk?.data;
 
   if (!response) return null;
 
-
   return (
     <Newsletter
       id="homepage-section-7"
-      bgImage={`/assets/home/${response.desktopImg }`}
-      mobilebg={`/assets/home/${response.mobileImg }`}
+      bgImage={`/assets/home/${response.desktopImg}`}
+      mobilebg={`/assets/home/${response.mobileImg}`}
       tag={response.tagName}
       title={response.title}
       desc={response.description}
-      ctatext={response.cta?.text??""}
+      ctatext={response.cta?.text ?? ""}
       ctaLink={response.cta?.target}
     />
   );

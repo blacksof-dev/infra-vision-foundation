@@ -1,34 +1,26 @@
-"use client"
+"use client";
 import React from "react";
 import InfravisionariesGlobal from "@/_components/molecules/infravisionariesGlobal";
 import { useApiHook } from "@/lib/useApi";
 import { ApiResponse } from "./01_banner";
 import Loading from "../loading";
 
-
-
-
 export default function Infravisionaries() {
-  // const { data, isLoading } = useApiHook<ApiResponse[]>({
-  //   url: "/content/home",
-  //   cacheKey: "homeContent",
-  // });
+  const { data, isLoading } = useApiHook<ApiResponse[]>({
+    url: "/content/home-infravisionaries-content",
+    cacheKey: "homeContent-infravisionaries",
+  });
 
-  // if (isLoading) {
-  //   return (
-  //     <section className="w-full h-[40rem] flex items-center justify-center">
-  //       <Loading />
-  //     </section>
-  //   );
-  // }
+  if (isLoading) {
+    return (
+      <section className="w-full h-[40rem] flex items-center justify-center">
+        <Loading />
+      </section>
+    );
+  }
 
-  // if (!data) return null;
+  if (!data) return null;
 
-  // const infravisionaries = data.find((section) => section.sectionKey === "infravisionaries");
-
-  // if (!infravisionaries) return null;
-
-  // const response = infravisionaries.data;
   return (
     <>
       <section id="homepage-section-03" className="bg-pink relative">
@@ -61,24 +53,23 @@ export default function Infravisionaries() {
           </svg>
         </div>
         <div className=" blade-top-padding-lg blade-bottom-padding-lg">
-          {/* <div className="w-container">
+          <div className="w-container">
             <div className="flex  flex-row  items-center gap-2 md:gap-3">
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-white "></span>
-              <h5 className="font-medium text-white">{response.tagName}</h5>
+              <h5 className="font-medium text-white">{data.tagName}</h5>
             </div>
             <div className="pt-4 md:pt-5 ">
-              <h1 className="text-white font-medium">{response.title}</h1>
+              <h1 className="text-white font-medium">{data.title}</h1>
               <div className="w-full sm:w-[85%] xl:w-[45%]">
                 <h6 className="text-white  tracking-[1%] py-4">
-                  {response.description}
+                  {data.description}
                 </h6>
               </div>
             </div>
-          </div> */}
+          </div>
           <InfravisionariesGlobal role="home" />
         </div>
       </section>
     </>
   );
 }
-

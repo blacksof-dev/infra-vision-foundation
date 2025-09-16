@@ -53,55 +53,42 @@ type KnowledgeApiResponse = {
   lastUpdated: string;
 };
 
-
 export default function WhoWeAre() {
   const [activeTab, setActiveTab] = useState("Knowledge");
 
-  // const { data, isLoading } = useApiHook<ApiResponse[]>({
-  //   url: "/content/home",
-  //   cacheKey: "homeContent",
-  // });
+  const { data } = useApiHook<ApiResponse[]>({
+    url: "/content/home-whoWeAre-content",
+    cacheKey: "homeContent-whoWeAre",
+  });
 
-  // if (isLoading) {
-  //   return (
-  //     <section className="w-full h-[40rem] flex items-center justify-center">
-  //       <Loading />
-  //     </section>
-  //   );
-  // }
-
-  // if (!data) return null;
-
-  // const whoWeAre = data.find((section) => section.sectionKey === "whoWeAre");
-
-  // if (!whoWeAre) return null;
-
-  // const response = whoWeAre.data;
+  if (!data) {
+    return null;
+  }
 
   return (
     <>
       <section id="homepage-section-2" className="bg-whitesmoke">
         <main className="blade-top-padding-lg blade-bottom-padding-lg w-container">
-          {/* <div className="flex md:flex-row flex-col justify-between">
+          <div className="flex md:flex-row flex-col justify-between">
             <div>
               <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
                 <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-                <h5 className="font-medium text-pink">{response.tagName}</h5>
+                <h5 className="font-medium text-pink">{data.tagName}</h5>
               </div>
               <div className="py-2 w-full sm:w-[50%] lg:w-[70%]">
                 <h1
                   className="text-black  font-light"
-                  dangerouslySetInnerHTML={{ __html: response.title }}
+                  dangerouslySetInnerHTML={{ __html: data.title }}
                 />
               </div>
             </div>
             <div className="w-full md:w-1/2 lg:md:w-[70%] pt-2">
               <h6
                 className="text-black font-light"
-                dangerouslySetInnerHTML={{ __html: response.description }}
+                dangerouslySetInnerHTML={{ __html: data.description }}
               />
             </div>
-          </div> */}
+          </div>
           <div className=" relative">
             <TabSwitch setActiveTab={setActiveTab} activeTab={activeTab} />
           </div>
@@ -179,37 +166,37 @@ export const TabSwitch = ({
     return null;
   }
 
-
-
   const advocacyData = data?.data ?? [];
 
   return (
     <div>
       <div
-        className={`${isHeaderVisible ? "top-20 xl:top-24" : "top-0"
-          } sticky bg-whitesmoke py-6 xl:py-8 z-[99] transition-all duration-200 ease-linear`}
+        className={`${
+          isHeaderVisible ? "top-20 xl:top-24" : "top-0"
+        } sticky bg-whitesmoke py-6 xl:py-8 z-[99] transition-all duration-200 ease-linear`}
       >
         <div className=" flex flex-row sm:justify-center  items-center gap-12 md:gap-18 border-b sm:mx-auto  border-darkgray/16 w-fit">
           <button
             onClick={() => setActiveTab("Knowledge")}
-            className={`text-base cursor-pointer  md:text-xl   ${activeTab === "Knowledge"
-              ? "font-medium  border-b-2 border-pink pb-3 text-pink"
-              : "text-darkgray  pb-3"
-              }`}
+            className={`text-base cursor-pointer  md:text-xl   ${
+              activeTab === "Knowledge"
+                ? "font-medium  border-b-2 border-pink pb-3 text-pink"
+                : "text-darkgray  pb-3"
+            }`}
           >
             Knowledge
           </button>
 
           <button
             onClick={() => setActiveTab("Advocacy")}
-            className={` text-base cursor-pointer  md:text-xl ${activeTab === "Advocacy"
-              ? "font-medium  border-b-2 pb-3 border-pink text-pink"
-              : "text-darkgray  pb-3"
-              }`}
+            className={` text-base cursor-pointer  md:text-xl ${
+              activeTab === "Advocacy"
+                ? "font-medium  border-b-2 pb-3 border-pink text-pink"
+                : "text-darkgray  pb-3"
+            }`}
           >
             Advocacy
           </button>
-
         </div>
       </div>
 
