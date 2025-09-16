@@ -4,17 +4,19 @@ import image_01 from "@/../public/assets/infrakatha/about/dilip-cherian.jpg";
 import image_02 from "@/../public/assets/infrakatha/about/vinayak-chatterjee.jpg";
 import image_03 from "@/../public/assets/infrakatha/about/jagan-shah.jpg";
 import image_04 from "@/../public/assets/infrakatha/about/bonny-mukerjea.jpg";
-import { MemberCard } from "@/_components/molecules/memberCard";
+const MemberCard = dynamic(() => import("@/_components/molecules/memberCard"), {
+  ssr: false,
+});
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { BorderGrayHeroBtn } from "@/_components/atoms/buttons";
-import Link from "next/link";
+
+import dynamic from "next/dynamic";
 
 export default function About() {
   const members = [

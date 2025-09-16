@@ -4,7 +4,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Textarea } from "@/_components/ui/textarea";
-import { type ReactNode, useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import { HiOutlineLink } from "react-icons/hi";
 import { TbUpload } from "react-icons/tb";
 import emailjs from "@emailjs/browser";
@@ -18,7 +18,9 @@ import {
 } from "@/_components/ui/select";
 import Portal from "@/_components/atoms/popupPortal";
 import { Loader, X } from "lucide-react";
-import MapComponent from "./mapSection";
+
+import axios from "axios";
+import { MapComponent } from "./mapSection";
 
 const dropdownOptions = [
   "Institutional collaboration",
@@ -26,7 +28,6 @@ const dropdownOptions = [
   "Participation in events",
   "Media inquiry",
   "Intellectual contribution",
-  // FIXME: Permission to use our intellectual property, remove "our" because of overflow on mobile
   "Permission to use intellectual property",
   "Others",
 ];
@@ -58,12 +59,12 @@ const formSchema = z.object({
 
   message: z.string(),
 
-  interest: z.string().min(2, { message: "Select any option" }),
-  designation: z.string().min(2, { message: "Select any option" }),
+  interestedIn: z.string().min(2, { message: "Select any option" }),
+  personType: z.string().min(2, { message: "Select any option" }),
 
   links: z.string(),
 
-  file: z.any(),
+  fileUrl: z.any(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -72,7 +73,7 @@ export default function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const [filename, setfilename] = useState("Select a file to upload ");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [setsuccess, setIsSuccess] = useState<boolean>(false);
+  const [success, setIsSuccess] = useState<boolean>(false);
   const [Isopen, setIsopen] = useState<boolean>(false);
   const [interest, setInterest] = useState("");
   const [designation, setDesignation] = useState("");
@@ -83,11 +84,10 @@ export default function ContactForm() {
       firstName: "",
       lastName: "",
       email: "",
-      interest: "",
-      designation: "",
+      interestedIn: "",
+      personType: "",
       contactNumber: "",
       links: "",
-      // file: "",
       message: "",
     },
   });
@@ -100,26 +100,37 @@ export default function ContactForm() {
     setValue,
   } = form;
 
-  // Handle form submission
+
   async function onSubmit(data: any) {
     setIsSubmitting(true);
 
     try {
-      // Create a FormData object if you need to send files
-      const formData = new FormData();
-      formData.append("firstName", data.firstName);
-      formData.append("lastName", data.lastName);
-      formData.append("email", data.email);
-      formData.append("contactNumber", data.contactNumber);
-      formData.append("interest", data.interest);
-      formData.append("designation", data.designation);
-      formData.append("message", data.message);
-      formData.append("links", data.links);
 
-   
+      const payload = {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        contactNumber: data.contactNumber,
+        personType: data.personType,
+        interestedIn: data.interestedIn,
+        message: data.message,
+        links: data.links,
+      };
 
-      // console.log("Form submitted:", data);
-     
+      if (data.fileUrl?.[0]) {
+        data.fileUrl = data.fileUrl[0]
+      }
+
+
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/contact/leads`,
+        payload,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      console.log("Backend response:", response.data);
 
       if (!formRef.current) return;
 
@@ -131,16 +142,15 @@ export default function ContactForm() {
           publicKey: "svBJIois6z0vhJqFf",
         }
       );
-
-      // console.log("SUCCESS!");
-
       setIsSuccess(true);
       setIsopen(true);
       setInterest("");
       setDesignation("");
       setfilename("Select a file to upload  *");
       reset();
-    } catch (error) {
+    }
+
+    catch (error) {
       console.error("Error submitting form:", error);
     } finally {
       setIsSubmitting(false);
@@ -237,7 +247,7 @@ export default function ContactForm() {
                       value={designation}
                       onValueChange={(value) => {
                         setDesignation(value);
-                        setValue("designation", value);
+                        setValue("personType", value);
                       }}
                     >
                       <SelectTrigger id="designation">
@@ -255,10 +265,10 @@ export default function ContactForm() {
                         ))}
                       </SelectContent>
                     </Select>
-                    <input type="hidden" name="designation" value={designation} />
-                    {errors.designation && (
+                    <input type="hidden" name="personType" value={designation} />
+                    {errors.personType && (
                       <p className="text-red-500 text-sm mt-1">
-                        {errors.designation.message}
+                        {errors.personType.message}
                       </p>
                     )}
                   </div>
@@ -267,7 +277,7 @@ export default function ContactForm() {
                       value={interest}
                       onValueChange={(value) => {
                         setInterest(value);
-                        setValue("interest", value);
+                        setValue("interestedIn", value);
                       }}
                     >
                       <SelectTrigger id="interest">
@@ -285,10 +295,10 @@ export default function ContactForm() {
                         ))}
                       </SelectContent>
                     </Select>
- <input type="hidden" name="interest" value={interest} />
-                    {errors.interest && (
+                    <input type="hidden" name="interest" value={interest} />
+                    {errors.interestedIn && (
                       <p className="text-red-500 text-sm mt-1">
-                        {errors.interest.message}
+                        {errors.interestedIn.message}
                       </p>
                     )}
                   </div>
@@ -326,14 +336,14 @@ export default function ContactForm() {
                           const files = e.target.files;
                           if (files && files.length > 0) {
                             setfilename(files[0].name);
-                            setValue("file", files);
+                            setValue("fileUrl", files);
                           }
                         }}
                       />
                     </label>
-                    {errors.file && (
+                    {errors.fileUrl && (
                       <p className="text-red-500 text-sm mt-1">
-                        {errors.file.message as string}
+                        {errors.fileUrl.message as string}
                       </p>
                     )}
                   </div>
@@ -373,38 +383,43 @@ export default function ContactForm() {
       </div>
 
       {/* PopUp Code */}
-      {setsuccess && Isopen && (
+      {Isopen && (
         <Portal>
-          <div className="fixed inset-0 flex justify-center items-center w-screen h-screen overflow-y-scroll bg-lightgray/40 p-2 md:p-4  z-[9999]">
-            <div className="bg-white relative h-[20rem] w-full max-w-[30rem] rounded-xl flex flex-col items-center justify-center text-center p-6 ">
-              <div className="absolute top-3 right-3 z-[10] ">
+          <div className="fixed inset-0 flex justify-center items-center w-screen h-screen overflow-y-scroll bg-lightgray/40 p-2 md:p-4 z-[9999]">
+            <div className="bg-white relative h-[20rem] w-full max-w-[30rem] rounded-xl flex flex-col items-center justify-center text-center p-6">
+              <div className="absolute top-3 right-3 z-[10]">
                 <button
                   onClick={() => setIsopen(false)}
-                  className="rounded-full  w-8 h-8 ring-1 cursor-poniter hover:ring-white hover:bg-pink hover:text-white text-pink flex justify-center items-center bg-darkPurple  hover:bg-lightPurple transition-all duration-300 ease-linear "
+                  className="rounded-full w-8 h-8 ring-1 cursor-pointer hover:ring-white hover:bg-pink hover:text-white text-pink flex justify-center items-center bg-darkPurple hover:bg-lightPurple transition-all duration-300 ease-linear"
                 >
-                  <X className="" />
+                  <X />
                 </button>
               </div>
 
-              <h3 className="text-xl font-bold text-darkGray mb-2">
-                Message Sent!
-              </h3>
-              <p className="text-gray-600 text-base sm:text-lg pt-2">
-                Thank you for contacting us. We receive a high volume of
-                inquiries. Rest assured, our team is committed to responding to
-                each one. Please allow up to 3 business days to respond.
-              </p>
-
-              {/* <button
-                onClick={() => setIsopen(false)}
-                className="bg-pink text-white cursor-pointer font-poppins mx-auto md:mx-0 px-14 font-medium text-xl py-4 rounded-md"
-              >
-                Okay
-              </button> */}
+              {success ? (
+                <>
+                  <h3 className="text-xl font-bold text-darkGray mb-2">
+                    Message Sent!
+                  </h3>
+                  <p className="text-gray-600 text-base sm:text-lg pt-2">
+                    Thank you for contacting us. We receive a high volume of
+                    inquiries. Rest assured, our team is committed to responding to
+                    each one. Please allow up to 3 business days to respond.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <h3 className="text-xl font-bold text-red-600 mb-2">
+                    Submission Failed try later
+                  </h3>
+                 
+                </>
+              )}
             </div>
           </div>
         </Portal>
       )}
+
     </>
   );
 }

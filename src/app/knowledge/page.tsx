@@ -1,11 +1,12 @@
 "use client"
 import React, { useRef } from 'react'
-import BannerSection from './01_banner'
+
 import ResearchPapers from './02_researchPapers'
 import Blogs from './04_blogs'
 import Publications from './05_publications'
 import Conversations from './03_conversations'
 import PublicationTabs from "@/_components/molecules/tabs";
+import  BannerSection  from './01_banner'
 type TabId = "researchPapers" | "infravisionConversations" | "blogs";
 
 const tabs: { id: TabId; label: string }[] = [

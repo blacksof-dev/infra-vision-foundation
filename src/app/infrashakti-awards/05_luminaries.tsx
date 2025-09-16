@@ -8,8 +8,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
-import { MemberCard } from "@/_components/molecules/memberCard";
+const MemberCard = dynamic(() => import("@/_components/molecules/memberCard"), {
+  ssr: false,
+});
 import { CardData, Guests, Preeminent, jury } from "./static";
+import dynamic from "next/dynamic";
 
 type ButtonTabProps = {
   label: string;

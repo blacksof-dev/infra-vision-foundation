@@ -1,49 +1,36 @@
-import Image, { StaticImageData } from "next/image";
-import Balancer from "react-wrap-balancer";
 
-interface bannerProps {
-  id?:string;
-  image: StaticImageData;
-  heading: string;
-  title: string;
-  subdesc: string;
-  mobileimage?: StaticImageData;
-  classes?: string;
-  buttonText?: string;
-  link?: string
-}
-
+import Image from "next/image";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { HeroBtnPink } from "../atoms/buttons";
 import Link from "next/link";
+import { bannerApiResponse } from "@/app/knowledge/01_banner";
 export default function Banner({
-  image,
-  heading,
-  title,
-  subdesc,
-  mobileimage,
-  classes,
-  buttonText,
-  link,
   id,
-}: bannerProps) {
+ tagName,
+ title,
+ desktopImg,
+ mobileImg,
+ description
+
+}: bannerApiResponse) {
   return (
     <>
       <div id={id} className="pt-[5rem] sm:pt-[6rem]">
         <div className="relative ">
-          {/* <div className={`w-full h-[40rem] md:h-[36rem] xl:h-[40rem] bg-black ${mobileimage ? "md:block hidden" : ""}`}> */}
-          <div className={`w-full h-[25rem] md:h-[36rem] xl:h-[40rem] bg-black ${mobileimage ? "md:block hidden" : ""}`}>
+          <div className={`w-full relative h-[25rem] md:h-[36rem]  xl:h-[40rem] bg-black ${mobileImg ? "md:block hidden" : ""}`}>
             <Image
-              src={image}
+              fill
+              src={desktopImg}
               alt="Publication Banner"
               className="w-full h-full object-cover   2xl:object-bottom"
               unoptimized={true}
             ></Image>
           </div>
-          {mobileimage && (
-            <div className="md:hidden block h-[30rem]">
+          { mobileImg && (
+            <div className="md:hidden block h-[30rem] relative w-full">
               <Image
-                src={mobileimage}
+                src={mobileImg}
+                fill
                 alt="Publication Banner"
                 className="w-full h-full object-cover object-right"
                 unoptimized={true}
@@ -72,17 +59,17 @@ export default function Banner({
                 </Link>
                 <h5 className="text-white font-light flex flex-row">
                   <RiArrowRightSLine className="text-[24px]" />
-                  {heading}
+                  {tagName}
                 </h5>
               </div>
               <div className="  w-full ">
                 <h1 className="text-white font-medium ">{title}</h1>
                 <div className={` py-2 sm:py-4 w-full  max-w-lg`}>
-                  <h5 className="text-white font-light " dangerouslySetInnerHTML={{ __html: subdesc }} />
+                  <h5 className="text-white font-light " dangerouslySetInnerHTML={{ __html: description }} />
 
 
                 </div>
-                {buttonText && (
+                {/* {buttonText && (
                   <HeroBtnPink
                     text={buttonText}
                     role="link"
@@ -95,7 +82,7 @@ export default function Banner({
                     link={link}
                     target={"_blank"}
                   />
-                )}
+                )} */}
 
               </div>
             </div>

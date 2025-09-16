@@ -6,29 +6,36 @@ import { useApiHook } from "@/lib/useApi";
 import Loading from "../loading";
 
 
-interface outReachApiResponse{
-  meetingType:string;
-  desc:string;
-  ctaText:string;
-  details:{
-    date:string;
-    images:{
-      image:string;
+
+interface outReachApiResponse {
+  event: {
+    title: string;
+    description: string;
+    date: string;
+    location: string;
+    tag: string;
+    subtitle: string;
+    reportUrl: string;
+    covers: {
+      url: string;
+      desc: string;
     }[]
-   
+    active: string;
   }
 }
 
 export default function InfrapanditAward() {
 
 
-  const { data, isLoading} = useApiHook<outReachApiResponse>({
+  const { data, isLoading } = useApiHook<outReachApiResponse>({
     url: "/outreach-and-engagements/primary",
     cacheKey: "outreachPrimary",
   });
 
+  console.log(data);
 
-if (!data) return null;
+
+  if (!data) return null;
 
   if (isLoading) {
     return (
@@ -38,35 +45,42 @@ if (!data) return null;
     );
   }
 
+  const primaryEvent = data.event;
+
 
   return (
     <>
       <div className="relative  bg-white  rounded-lg   flex flex-col sm:flex-row items-cente sm:gap-4 md:gap-7 xl:gap-10 min-h-[22rem] lg:min-h-[25rem] overflow-hidden">
         <div className="w-full h-[15rem] sm:h-[20rem] lg:h-[22rem] sm:w-[45%] lg:w-[38%]  sm:p-5 relative">
           <Image
-            src={data.details.images[0].image}
-            alt={data.desc}
+            src={
+              primaryEvent.covers?.[0]?.url &&
+                (primaryEvent.covers[0].url.startsWith("http"))
+                ? primaryEvent.covers[0].url
+                : "/assets/home/infrapanditAward.webp" 
+            }
+            alt={primaryEvent.tag || "Event image"}
             fill
             quality={100}
-            unoptimized={false}
             className="rounded-lg w-full h-full object-cover m-3"
           />
+
         </div>
         <div className=" px-3 py-6 xl:py-0 w-full sm:w-1/2 flex flex-col justify-center ">
           <h2 className="text-pink font-semibold lg:text-[42px]">
-           {data.meetingType}
+            {primaryEvent.tag}
           </h2>
 
           <div className="max-w-sm sm:pt-2 xlg:pt-6">
             <h2 className="font-medium pt-2 lg:pt-4 xl:pt-6">
-              {data.desc}
+              {primaryEvent.description}
             </h2>
 
             <div className=" mt-2 sm:mt-4">
-              <h4 className=" text-pink">{data.details.date}</h4>
+              <h4 className=" text-pink">{primaryEvent.date}</h4>
               <div className="cursor-pointer mt-6">
                 <BorderGrayHeroBtn
-                  text={data.ctaText}
+                  text={"See details"}
                   role="link"
                   link="/outreach-and-engagements"
                   borderColor="pink"
@@ -79,7 +93,7 @@ if (!data) return null;
             </div>
           </div>
         </div>
-       <img
+        <img
           className="absolute opacity-60 top-0 right-0 hidden lg:block"
           src="/assets/outreach-and-engagements/highlight/circle.png"
           alt="Decorative Circle"

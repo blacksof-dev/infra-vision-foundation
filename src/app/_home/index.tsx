@@ -20,14 +20,14 @@ export default function Home() {
           </section>
         }
       >
-        <Banner />
+        {/* <Banner /> */}
       </Suspense>
-      <WhoWeAre />
+     <WhoWeAre />
       <Infravisionaries />
       <Association />
       <Highlights />
       <StayConnected />
-      <InfravisionTalks />
+      {/* <InfravisionTalks /> */}
     </>
   );
 }

@@ -1,245 +1,114 @@
 "use client";
-import { useEffect, useState, useMemo, useRef } from "react";
-
-import img_01 from "@/../public/assets/knowledeg/researchPapers/01.jpg";
-import img_02 from "@/../public/assets/knowledeg/researchPapers/02.jpg";
-import img_03 from "@/../public/assets/knowledeg/researchPapers/03.jpg";
-import img_04 from "@/../public/assets/knowledeg/researchPapers/04.jpg";
-import img_05 from "@/../public/assets/knowledeg/researchPapers/05.jpg";
-import img_06 from "@/../public/assets/knowledeg/researchPapers/06.jpg";
-import img_07 from "@/../public/assets/knowledeg/researchPapers/07.jpg";
-import img_08 from "@/../public/assets/knowledeg/researchPapers/08.jpg";
-import img_09 from "@/../public/assets/knowledeg/researchPapers/09.jpg";
-import img_10 from "@/../public/assets/knowledeg/researchPapers/10.png";
-import img_11 from "@/../public/assets/knowledeg/researchPapers/11.jpg";
-import img_12 from "@/../public/assets/knowledeg/researchPapers/12.jpg";
-import img_13 from "@/../public/assets/knowledeg/researchPapers/13.png";
-import img_14 from "@/../public/assets/knowledeg/researchPapers/14.png";
+import { useState, useMemo, useRef, useEffect } from "react";
 
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
-
 import { NewsCard } from "@/_components/molecules/newsCard";
+import { useApiHook } from "@/lib/useApi";
 
 // Types
 type FilterType = "All" | "Sectors";
-type SectorType =
-  | "All"
-  | "Transportation"
-  | "Water and Sanitation"
-  | "Energy"
-  | "Urban Planning"
-  | "Rural and Agri Infra"
-  | "Education"
-  | "Infrastructure"
-  | "Health Infra";
 
-interface NewsletterCard {
-  id: number;
-  img: any; // Consider using a more specific type for images
-  category: string;
-  title: string;
-  sectors: SectorType;
-  date: string;
-  description: string;
-  link: string;
+interface TabApiRaw {
+  id: string;
+  name: string;
+  slug: string;
+  description: string | null;
+  active: boolean;
+  createdAt: string;
+  updatedAt: string;
+  paperIds: string[];
+  blogIds: string[];
+  papers: any[];
 }
 
-// Constants
+interface TabApiResponse {
+  name: string;
+  active: boolean;
+}
+
+interface contentApiResponse {
+  tagName: string;
+  title: string;
+}
+
+export interface ResearchPaper {
+  id: string;
+  image: string;
+  title: string;
+  description: string;
+  link: string;
+  date: string;
+  active: string;
+  sectors: {
+    name: string;
+    slug: string;
+    active: boolean;
+  }[];
+}
+
 const FILTER_TYPES: FilterType[] = ["All", "Sectors"];
-// const YEARS = ["2025", "2024"] as const;
-const SECTORS: SectorType[] = [
-  "All",
-  "Transportation",
-  "Water and Sanitation",
-  "Energy",
-  "Urban Planning",
-  "Rural and Agri Infra",
-  "Education",
-  "Health Infra",
-  "Infrastructure"
-];
-const INITIAL_VISIBLE_COUNT = 3;
-
-
-const allcards = [
-  {
-    id: 14,
-    img: img_14,
-    category: "Urban Planning",
-    title: "",
-    sectors: "Urban Planning",
-    date: " ",
-    description:"Impact of FSI Deregulation in Hyderabad",
-    link: "/assets/pdf/report-fsi-deregulation-in-hyderabad.pdf",
-  },
-   {
-    id: 13,
-    img: img_13,
-    category: "Infrastructure",
-    title: "",
-    sectors: "Infrastructure",
-    date: " ",
-    description:"Removing Barriers to Faster Penetration of Trees Outside Forests Productsin Construction Sector",
-    link: "/assets/pdf/removing-barriers-to-faster-penetration-of-trees-final-report.pdf",
-  },
-   {
-    id: 10,
-    img: img_12,
-    category: "Urban Planning",
-    title: "",
-    sectors: "Urban Planning",
-    date: " ",
-    description:"Relieving urban congestion and promoting tourism through ropeways",
-    link: "/assets/pdf/urbanCongestion.pdf",
-  },
-  {
-    id: 1,
-    img: img_01,
-    category: "Rural and Agri Infra",
-    title: "",
-    sectors: "Rural and Agri Infra",
-    date: "",
-    description:
-      "Study on the implementation of compensatory afforestation in India",
-    link: "/assets/pdf/Study-on-Implementation-of-Compensatory-Afforestation-in-India.pdf",
-  },
-  {
-    id: 2,
-    img: img_02,
-    category: "Transportation",
-    title: "",
-    sectors: "Transportation",
-    date: " ",
-    description: "The case for developing high-speed rail corridors in India",
-    link: "/assets/pdf/The-Case-For-Developing-High-Speed-Rail-Corridors-In-India.pdf",
-  },
-  {
-    id: 3,
-    img: img_03,
-    category: "Transportation",
-    title: "",
-    sectors: "Transportation",
-    date: " ",
-    description: "Safe highways in India: Challenges and solutions",
-    link: "/assets/pdf/Safe-Highways-in-India-Challenges-and-Solutions_August-2024.pdf",
-  },
-  {
-    id: 4,
-    img: img_04,
-    category: "Transportation",
-    title: "",
-    sectors: "Transportation",
-    date: " ",
-    description:
-      "Strategies to improve the financial performance of the metro rail system",
-    link: "/assets/pdf/Metro-Rail-Systems-Whitepaper.pdf",
-  },
-  {
-    id: 5,
-    img: img_05,
-    category: "Urban Planning",
-    title: "",
-    sectors: "Urban Planning",
-    date: " ",
-    description: "Sustainability ratings for Infrastructure projects in India",
-    link: "/assets/pdf/Sustainability-Rating-Infra-Whitepaper-2.pdf",
-  },
-  {
-    id: 6,
-    img: img_06,
-    category: "Energy",
-    title: "",
-    sectors: "Energy",
-    date: " ",
-    description: "Mass scale rooftop solar programme for poverty alleviation",
-    link: "/assets/pdf/solar.pdf",
-  },
-  {
-    id: 7,
-    img: img_07,
-    category: "Transportation",
-    title: "",
-    sectors: "Transportation",
-    date: " ",
-    description: "A framework for selecting an appropriate urban transport system",
-    link: "/assets/pdf/Urban-Transport-Project-White-Paper.pdf",
-  },
-  {
-    id: 8,
-    img: img_08,
-    category: "Infrastructure",
-    title: "",
-    sectors: "Infrastructure",
-    date: " ",
-    description: "Surety bonds: Evaluation for diversifying risk in infrastructure financing",
-    link: "/assets/pdf/Surety-Bond-White-Paper.pdf",
-  },
-  {
-    id: 9,
-    img: img_09,
-    category: "Rural and Agri Infra",
-    title: "",
-    sectors: "Rural and Agri Infra",
-    date: " ",
-    description: "Ways to enhance warehouse-based sales and lending for agriculture commodities",
-    link: "/assets/pdf/Warehousing-Whitepaper.pdf",
-  },
- 
-  {
-    id: 11,
-    img: img_10,
-    category: "Urban Planning",
-    title: "",
-    sectors: "Urban Planning",
-    date: " ",
-    description: "Decarbonizing urban transport using traffic and transport data from ICCC: A Pilot Study in NOIDA",
-    link: "/assets/pdf/decarbonizing.pdf",
-  },
-  {
-    id: 12,
-    img: img_11,
-    category: "Rural and Agri Infra",
-    title: "",
-    sectors: "Rural and Agri Infra",
-    date: " ",
-    description: "Expanding agricultural exports of Arunachal Pradesh through infrastructure development",
-    link: "/assets/pdf/expanding.pdf",
-  },
-];
 
 export default function ResearchPapers() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
+
   const [selectedTab, setSelectedTab] = useState<FilterType>("All");
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
-  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
+  const [page, setPage] = useState(1);
+  const [cards, setCards] = useState<ResearchPaper[]>([]);
 
+  const { data: content } = useApiHook<contentApiResponse>({
+    url: "/content/knowledge-reserach-content",
+    cacheKey: "knowledgeContentTab",
+  });
+
+
+
+  // Tabs API
+  const { data: tabsData } = useApiHook<TabApiRaw[]>({
+    url: "/knowledge/sectors?activeOnly=true",
+    cacheKey: "knowledgeSectorTab",
+  });
+
+  // Cards API
+  const { data: cardData } = useApiHook<{ researchPapers: ResearchPaper[] }>({
+    url: `/knowledge/research-papers?page=${page}&limit=3`,
+    cacheKey: `knowledgeCardData-page-${page}`,
+  });
+
+  // Map active tabs
+  const activeTabs = useMemo(
+    () => tabsData?.filter(tab => tab.active).map(tab => tab.name) ?? [],
+    [tabsData]
+  );
+
+  console.log(content)
+  // Append newly fetched cards
+  useEffect(() => {
+    if (cardData?.researchPapers) {
+      setCards(prev => [...prev, ...cardData.researchPapers]);
+    }
+  }, [cardData]);
+
+  // Filter cards by tab/filter
+  const filteredCards = useMemo(() => {
+    if (selectedTab === "Sectors" && selectedFilter !== "All") {
+      return cards.filter(card =>
+        card.sectors.some(sector => sector.name === selectedFilter)
+      );
+    }
+    return cards;
+  }, [cards, selectedTab, selectedFilter]);
+
+  // Scroll filter button to center
   const scrollToCenter = (index: number) => {
     const tab = tabRefs.current[index];
     const container = containerRef.current;
-
     if (tab && container) {
-      // const containerRect = container.getBoundingClientRect();
-      // const tabRect = tab.getBoundingClientRect();
       const offset =
         tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
-      container.scrollTo({ left: offset, behavior: 'smooth' });
+      container.scrollTo({ left: offset, behavior: "smooth" });
     }
-  };
-
-  const handleTabClick = (tab: FilterType) => {
-    setSelectedTab(tab);
-    setSelectedFilter(
-      tab === "Sectors"
-        ? SECTORS[0]
-        : "All"
-      // tab === "Publication Year"
-      //   ? YEARS[0]
-      //   : tab === "sectors"
-      //     ? SECTORS[0]
-      //     : "All"
-    );
-    setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
 
   const handleFilterClick = (filterName: string, index: number) => {
@@ -247,34 +116,33 @@ export default function ResearchPapers() {
     scrollToCenter(index);
   };
 
-  const filteredCards = useMemo(() => {
-    // if (selectedTab === "Publication Year") {
-    //   return allcards.filter(
-    //     (card) => card.date.split(" ").pop() === selectedFilter
-    //   );
-    // }
-    if (selectedTab === "Sectors" && selectedFilter !== "All") {
-      return allcards.filter((card) => card.sectors === selectedFilter);
+  const handleTabClick = (tab: FilterType) => {
+    setSelectedTab(tab);
+    if (tab === "Sectors" && activeTabs.length > 0) {
+      setSelectedFilter(activeTabs[0]);
+    } else {
+      setSelectedFilter("All");
     }
-    return allcards;
-  }, [selectedTab, selectedFilter]);
-
-  const handleSeeMore = () => {
-    setVisibleCount((prev) => prev + INITIAL_VISIBLE_COUNT);
   };
 
-  const renderFilterButtons = (filters: readonly string[]) => (
-    <div ref={containerRef} className="pt-5 overflow-scroll no-scrollbar">
-      <div className="flex  gap-3 ">
+  const handleSeeMore = () => {
+    setPage(prev => prev + 1);
+  };
 
+  if (!tabsData) return null;
+
+  const renderFilterButtons = (filters: string[]) => (
+    <div ref={containerRef} className="pt-5 overflow-scroll no-scrollbar">
+      <div className="flex gap-3">
         {filters.map((filter, index) => (
           <button
             key={filter}
-            ref={(el: HTMLButtonElement | null) => {
+            ref={(el: HTMLButtonElement | null): void => {
               tabRefs.current[index] = el;
             }}
+
             className={`text-base text-nowrap cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
-                            ${selectedFilter === filter
+              ${selectedFilter === filter
                 ? "border border-pink text-white bg-pink font-medium"
                 : "border border-lightgray/30"
               }`}
@@ -287,24 +155,21 @@ export default function ResearchPapers() {
     </div>
   );
 
+
+
   return (
     <section id="research-papers">
       <div className="w-container blade-top-padding-sm blade-bottom-padding">
-        {/* Header Section */}
         <div className="flex flex-row items-center gap-2 md:gap-3">
           <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
-          <h5 className="font-medium text-pink">Research Papers</h5>
+          <h5 className="font-medium text-pink">{content?.tagName ?? ""}</h5>
         </div>
 
         <div className="py-3 max-w-4xl">
-          <h1 className="text-black font-light">
-            Data-powered studies from the ground,
-            <span className="text-black font-medium">
-              {" "}
-              fuelled by expert insight
-            </span>
-          </h1>
+          <h1 className="text-black font-light" dangerouslySetInnerHTML={{ __html: content?.title ?? "" }} />
         </div>
+
+
 
         {/* Filter Section */}
         <div className="pt-5">
@@ -316,11 +181,11 @@ export default function ResearchPapers() {
             </div>
 
             <div className="flex flex-row gap-5">
-              {FILTER_TYPES.map((tab) => (
+              {FILTER_TYPES.map(tab => (
                 <button
                   key={tab}
                   className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4
-                                        ${selectedTab === tab
+                    ${selectedTab === tab
                       ? "border border-pink text-pink font-medium"
                       : "border border-lightgray/30"
                     }`}
@@ -332,27 +197,22 @@ export default function ResearchPapers() {
             </div>
           </div>
 
-          {/* Filter Buttons */}
-          {/* {selectedTab === "Publication Year" && renderFilterButtons(YEARS)} */}
-          {selectedTab === "Sectors" && renderFilterButtons(SECTORS)}
+          {selectedTab === "Sectors" && renderFilterButtons(activeTabs)}
 
-          {/* Newsletter Cards */}
-          <div
-            className={`pt-8`}
-          >
-            {
-              filteredCards.length === 0 && <div className="flex justify-center"> No results </div>
-            }
+          {/* Research Paper Cards */}
+          <div className="pt-8">
+            {filteredCards.length === 0 && (
+              <div className="flex justify-center">No results</div>
+            )}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 xlg:gap-24">
-
-              {filteredCards.slice(0, visibleCount).map((card) => (
+              {filteredCards.map(card => (
                 <div key={card.id}>
                   <NewsCard
                     date={card.date}
                     title={card.title}
-                    image={card.img.src}
+                    image={card.image}
                     link={card.link}
-                    category={card.category}
+                    category={card.sectors[0]?.name ?? ""}
                     description={card.description}
                     classes="line-clamp-3"
                     ctaType="read more"
@@ -360,7 +220,8 @@ export default function ResearchPapers() {
                 </div>
               ))}
             </div>
-            {visibleCount < filteredCards.length && (
+
+            {(cardData?.researchPapers?.length ?? 3) >= 3 && (
               <div className="flex justify-center mb-4 sm:mt-4">
                 <UnderlineWithHover
                   size="xxlsize"
@@ -373,6 +234,7 @@ export default function ResearchPapers() {
                 />
               </div>
             )}
+
           </div>
         </div>
       </div>

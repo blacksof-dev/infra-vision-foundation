@@ -3,7 +3,7 @@
 import highway from "@/../public/assets/home/whoWeAre/knowledge/highway.png";
 import jagan from "@/../public/assets/home/whoWeAre/knowledge/jagan.png";
 import img_12 from "@/../public/assets/knowledeg/researchPapers/12.jpg";
-import { Suspense, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 const Card = dynamic(() => import("@/_components/molecules/cardTemplate"), {
   ssr: false,
@@ -25,67 +25,64 @@ export type TabApiResponse = {
   ctaText?: string;
 };
 
-const knowledge = [
-  {
-    id: 10,
-    img: img_12.src,
-    category: "Urban Planning",
-    date: " ",
-    title: "Relieving urban congestion and promoting tourism through ropeways",
-    subtitle: "",
-    link: "/assets/pdf/urbanCongestion.pdf",
-  },
-  {
-    id: 3,
-    img: jagan.src,
-    category: "The Infravision Conversation",
-    date: "June, 2025",
-    title: "Why India needs a national plan to build new cities",
-    subtitle: "Jagan Shah",
-    link: "https://www.youtube.com/watch?v=g5aA3Q3af1g&ab_channel=TheInfravisionFoundation",
-    ctaText: "Watch now",
-  },
+type KnowledgeApiResponse = {
+  researchPaper?: {
+    id: string;
+    image: string;
+    title: string;
+    description?: string;
+    link: string;
+    date: string;
+  };
+  conversation?: {
+    id: string;
+    image: string;
+    title: string;
+    desc?: string;
+    date?: string;
+    videoLink?: string;
+  };
+  blog?: {
+    id: string;
+    title: string;
+    subtitle?: string;
+    coverImage: string;
+    docFile: string;
+    publishedDate: string;
+  };
+  lastUpdated: string;
+};
 
-  {
-    id: 2,
-    img: highway.src,
-    category: "Blog",
-    date: "September, 2023",
-    title: "India needs sustainability ratings for infrastructure projects",
-    subtitle: "",
-    link: "/blogs/india-needs-sustainability-ratings-for-infrastructure-projects",
-  },
-];
 
 export default function WhoWeAre() {
   const [activeTab, setActiveTab] = useState("Knowledge");
 
-  const { data, isLoading } = useApiHook<ApiResponse[]>({
-    url: "/content/home",
-    cacheKey: "homeContent",
-  });
+  // const { data, isLoading } = useApiHook<ApiResponse[]>({
+  //   url: "/content/home",
+  //   cacheKey: "homeContent",
+  // });
 
-  if (isLoading) {
-    return (
-      <section className="w-full h-[40rem] flex items-center justify-center">
-        <Loading />
-      </section>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <section className="w-full h-[40rem] flex items-center justify-center">
+  //       <Loading />
+  //     </section>
+  //   );
+  // }
 
-  if (!data) return null;
+  // if (!data) return null;
 
-  const whoWeAre = data.find((section) => section.sectionKey === "whoWeAre");
+  // const whoWeAre = data.find((section) => section.sectionKey === "whoWeAre");
 
-  if (!whoWeAre) return null;
+  // if (!whoWeAre) return null;
 
-  const response = whoWeAre.data;
+  // const response = whoWeAre.data;
 
   return (
     <>
       <section id="homepage-section-2" className="bg-whitesmoke">
         <main className="blade-top-padding-lg blade-bottom-padding-lg w-container">
-          <div className="flex md:flex-row flex-col justify-between">
+          {/* <div className="flex md:flex-row flex-col justify-between">
             <div>
               <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
                 <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
@@ -104,7 +101,7 @@ export default function WhoWeAre() {
                 dangerouslySetInnerHTML={{ __html: response.description }}
               />
             </div>
-          </div>
+          </div> */}
           <div className=" relative">
             <TabSwitch setActiveTab={setActiveTab} activeTab={activeTab} />
           </div>
@@ -123,47 +120,96 @@ export const TabSwitch = ({
 }) => {
   const { isHeaderVisible } = useHeader();
 
+  const { data: knowledgeInfo } = useApiHook<KnowledgeApiResponse>({
+    url: "/knowledge/recent",
+    cacheKey: "knowledge",
+  });
+
+  const knowledgeApiData: TabApiResponse[] = useMemo(() => {
+    if (!knowledgeInfo) return [];
+
+    const arr: TabApiResponse[] = [];
+
+    if (knowledgeInfo.researchPaper) {
+      arr.push({
+        id: knowledgeInfo.researchPaper.id as any,
+        img: knowledgeInfo.researchPaper.image || "",
+        category: "Research Paper",
+        title: knowledgeInfo.researchPaper.title,
+        link: knowledgeInfo.researchPaper.link,
+        date: knowledgeInfo.researchPaper.date,
+        subtitle: knowledgeInfo.researchPaper.description,
+      });
+    }
+
+    if (knowledgeInfo.conversation) {
+      arr.push({
+        id: knowledgeInfo.conversation.id as any,
+        img: knowledgeInfo.conversation.image || "",
+        category: "The Infravision Conversation",
+        title: knowledgeInfo.conversation.title,
+        link: knowledgeInfo.conversation.videoLink || "#",
+        date: knowledgeInfo.conversation.date,
+        subtitle: knowledgeInfo.conversation.desc,
+        ctaText: "Watch now",
+      });
+    }
+
+    if (knowledgeInfo.blog) {
+      arr.push({
+        id: knowledgeInfo.blog.id as any,
+        img: knowledgeInfo.blog.coverImage || "",
+        category: "Blog",
+        title: knowledgeInfo.blog.title,
+        link: knowledgeInfo.blog.docFile,
+        date: knowledgeInfo.blog.publishedDate,
+        subtitle: knowledgeInfo.blog.subtitle,
+      });
+    }
+
+    return arr;
+  }, [knowledgeInfo]);
+
   const { data } = useApiHook<{ data: TabApiResponse[] }>({
     url: "/homepage/advocacy",
     cacheKey: "advocacy",
   });
 
-  if (!data) {
+  if (!data || !knowledgeInfo) {
     return null;
   }
+
+
 
   const advocacyData = data?.data ?? [];
 
   return (
     <div>
       <div
-        className={`${
-          isHeaderVisible ? "top-20 xl:top-24" : "top-0"
-        } sticky bg-whitesmoke py-6 xl:py-8 z-[99] transition-all duration-200 ease-linear`}
+        className={`${isHeaderVisible ? "top-20 xl:top-24" : "top-0"
+          } sticky bg-whitesmoke py-6 xl:py-8 z-[99] transition-all duration-200 ease-linear`}
       >
         <div className=" flex flex-row sm:justify-center  items-center gap-12 md:gap-18 border-b sm:mx-auto  border-darkgray/16 w-fit">
           <button
             onClick={() => setActiveTab("Knowledge")}
-            className={`text-base cursor-pointer  md:text-xl   ${
-              activeTab === "Knowledge"
-                ? "font-medium  border-b-2 border-pink pb-3 text-pink"
-                : "text-darkgray  pb-3"
-            }`}
+            className={`text-base cursor-pointer  md:text-xl   ${activeTab === "Knowledge"
+              ? "font-medium  border-b-2 border-pink pb-3 text-pink"
+              : "text-darkgray  pb-3"
+              }`}
           >
             Knowledge
           </button>
-          
-            <button
-              onClick={() => setActiveTab("Advocacy")}
-              className={` text-base cursor-pointer  md:text-xl ${
-                activeTab === "Advocacy"
-                  ? "font-medium  border-b-2 pb-3 border-pink text-pink"
-                  : "text-darkgray  pb-3"
+
+          <button
+            onClick={() => setActiveTab("Advocacy")}
+            className={` text-base cursor-pointer  md:text-xl ${activeTab === "Advocacy"
+              ? "font-medium  border-b-2 pb-3 border-pink text-pink"
+              : "text-darkgray  pb-3"
               }`}
-            >
-              Advocacy
-            </button>
-     
+          >
+            Advocacy
+          </button>
+
         </div>
       </div>
 
@@ -176,7 +222,7 @@ export const TabSwitch = ({
               </section>
             }
           >
-            <TabContent data={knowledge} link="/knowledge" />
+            <TabContent data={knowledgeApiData} link="/knowledge" />
           </Suspense>
         ) : (
           <Suspense

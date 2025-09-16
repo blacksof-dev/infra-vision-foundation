@@ -5,10 +5,11 @@ import Overview from "./02_overview";
 import Ceremony from "./04_ceremony";
 import Luminaries from "./05_luminaries";
 import Gallery from "./06_gallery";
-import GetInvolved from "./07_getInvolved";
+
 import Spotlight from "./03_spotlight";
 import PublicationTabs from "@/_components/molecules/tabs";
-import { Metadata } from "next";
+import InfravisionTalks from "../_home/07_infravision_talks";
+
 
 type TabId = "overview" | "spotlight" | "ceremony" | "luminaries" | "gallery";
 
@@ -57,7 +58,7 @@ export default function InfraShakti() {
       <div id="gallery" ref={sectionRefs.gallery}>
         <Gallery />
       </div>
-      <GetInvolved />
+     <InfravisionTalks />
     </>
   );
 }

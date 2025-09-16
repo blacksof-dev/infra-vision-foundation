@@ -17,7 +17,7 @@ type SectorType =
 
 interface NewsletterCard {
   id: number;
-  img: any; // Consider using a more specific type for images
+  img: any; 
   category: string;
   title: string;
   sectors: SectorType;
@@ -53,6 +53,17 @@ const thridFilter = [
   "Health Infra",
 ];
 const allcards = [
+     {
+      id: 28,
+    img: "/assets/archive/newsletter/crunching.png",
+    category: "Volume 28",
+    title: "",
+    sectors: "",
+     date: "September 2025",
+    description:"Crunching Data,Analysing Information",
+    link: "/assets/pdf/crunchingData.pdf",
+ 
+  },
   {
     id: 27,
     img: "/assets/archive/newsletter/agustNewsletter.png",
@@ -352,18 +363,6 @@ const allcards = [
       "Here comes the sun",
     link: "/assets/pdf/letter24.pdf",
   },
-
-
-
-
-
-
-
-  // Dummy newsletter 
-
-
-
-
  
 
 ];
@@ -393,8 +392,6 @@ export default function Newsletters() {
     setSelectedFilter(
       tab === "Publication year"
         ? YEARS[0]
-        : tab === "sectors"
-          ? SECTORS[0]
           : "All"
     );
     setVisibleCount(INITIAL_VISIBLE_COUNT);
@@ -490,7 +487,7 @@ export default function Newsletters() {
 
           {/* Filter Buttons */}
           {selectedTab === "Publication year" && renderFilterButtons(YEARS)}
-          {selectedTab === "sectors" && renderFilterButtons(SECTORS)}
+       
 
           {/* Newsletter Cards */}
           <div
@@ -516,6 +513,7 @@ export default function Newsletters() {
                 </div>
               ))}
             </div>
+
             {visibleCount < filteredCards.length && (
               <div className="flex justify-center mb-4  blade-top-padding-sm">
                 <UnderlineWithHover

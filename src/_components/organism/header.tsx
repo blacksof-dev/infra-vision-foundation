@@ -119,7 +119,7 @@ function Header() {
 
   useEffect(() => {
     setOpenDropdown(null);
-  }, [window.scrollY]);
+  }, []);
 
   //Navbar color change for specific routes
   useEffect(() => {

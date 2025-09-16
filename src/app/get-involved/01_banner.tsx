@@ -1,32 +1,51 @@
-import banner from "@/../public/assets/contact/banner.png";
-import bannerMob from "@/../public/assets/contact/bannerMobile.png";
+
 import { HeroBtnPink } from "@/_components/atoms/buttons";
+import { getData } from "@/lib/getServerData";
 import Image from "next/image";
 import Link from "next/link";
 import { RiArrowRightSLine } from "react-icons/ri";
 
-export default function GetInvolvedBanner() {
+
+type contactApiResponse = {
+  tagName: string;
+  title: string;
+  description: string;
+  desktopImg: string;
+  mobileImg: string;
+  cta: {
+    text: string;
+    target: string;
+  }[]
+}
+
+export const GetInvolvedBanner = async () => {
+  const response = await getData<contactApiResponse>("/content/home/contactUsBanner");
+  console.log(response);
+
   return (
     <>
       <div id="getInvolvedBanner" className="pt-[5rem] sm:pt-[6rem]">
         <div className="relative ">
           <div
-            className={`sm:block  hidden w-full h-auto max-h-[45rem] overflow-hidden bg-black `}
+            className={`sm:block  hidden w-full h-auto max-h-[45rem]  overflow-hidden bg-black `}
           >
             <Image
-            // style={{objectPosition:"left 20%"}}
-              src={banner}
+              src={response?.desktopImg}
+              width={1000}
+              height={1000}
               alt="Publication Banner"
               className="w-full h-full object-cover "
               unoptimized={true}
               quality={100}
             ></Image>
           </div>
-          
 
-          <div className="sm:hidden block h-auto">
+
+          <div className="sm:hidden  w-full block h-auto">
             <Image
-              src={bannerMob}
+              width={500}
+              height={500}
+              src={response?.mobileImg}
               alt="Publication Banner"
               className="w-full h-full object-cover object-right"
               unoptimized={true}
@@ -54,20 +73,19 @@ export default function GetInvolvedBanner() {
                 </Link>
                 <h5 className="text-white font-light flex flex-row">
                   <RiArrowRightSLine className="text-[24px]" />
-                  Get Involved
+                  {response?.tagName}
                 </h5>
               </div>
               <div className="  w-full ">
-                <h1 className="text-white font-medium ">Get Involved</h1>
+                <h1 className="text-white font-medium ">{response.title}</h1>
                 <div className={` py-2 sm:py-4 w-full  max-w-lg`}>
                   <h5 className="text-white font-light ">
-                    Join our community, ask questions, or participate in
-                    building a resilient India.
+                    {response?.description ?? ""}
                   </h5>
                 </div>
 
                 <HeroBtnPink
-                  text="Apply now"
+                  text={response.cta[0].text}
                   role="link"
                   borderColor="pink"
                   color="white"
@@ -75,7 +93,7 @@ export default function GetInvolvedBanner() {
                   size="large"
                   aarowColor="white"
                   classes="font-medium"
-                  link="https://docs.google.com/forms/d/e/1FAIpQLSdjpffzJCT6qmQXNUmoUau7giN4qVTsm5j3ysGZ0r8QxiG05g/viewform?usp=sharing&ouid=118204303619309850521"
+                  link={response.cta[0].target}
                   target={"_blank"}
                 />
               </div>
@@ -86,3 +104,4 @@ export default function GetInvolvedBanner() {
     </>
   );
 }
+

@@ -23,19 +23,10 @@ type SectorType =
   | "Urban Planning"
   | "Rural and Agri Infra";
 
-interface NewsletterCard {
-  id: number;
-  img: any; // Consider using a more specific type for images
-  category: string;
-  title: string;
-  sectors: SectorType;
-  date: string;
-  description: string;
-  link: string;
-}
 
 // Constants
 const FILTER_TYPES: FilterType[] = ["All", "Publication year", "Sectors"];
+
 const YEARS = ["2024", "2023"] as const;
 const SECTORS: SectorType[] = [
   "All",

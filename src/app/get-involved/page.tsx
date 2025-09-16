@@ -1,10 +1,11 @@
-import ContactBanner from "./01_banner";
+
 import ContactForm from "./contactUsForm";
+import { GetInvolvedBanner } from "./01_banner";
 
 export default function ContactUs() {
   return (
     <>
-      <ContactBanner />
+      <GetInvolvedBanner />
       <ContactForm/>
     </>
   );
