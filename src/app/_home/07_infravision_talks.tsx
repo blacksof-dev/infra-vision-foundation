@@ -5,9 +5,9 @@ import { useApiHook } from "@/lib/useApi";
 import { ApiResponse } from "./01_banner";
 
 export default function InfravisionTalks() {
-  const { data, isLoading, error } = useApiHook<ApiResponse[]>({
-    url: "/content/home",
-    cacheKey: "homeContent",
+  const { data, isLoading, error } = useApiHook<ApiResponse>({
+    url: "/content/home-getInvolved-content",
+    cacheKey: "homeContent-getInvolved",
   });
 
   if (isLoading) {
@@ -26,23 +26,20 @@ export default function InfravisionTalks() {
     );
   }
 
-  const talk = data.find(
-    (section) => section.sectionKey === "home-getInvolved-content"
-  );
-  const response = talk?.data;
+  console.log(data)
 
-  if (!response) return null;
+
 
   return (
     <Newsletter
       id="homepage-section-7"
-      bgImage={`/assets/home/${response.desktopImg}`}
-      mobilebg={`/assets/home/${response.mobileImg}`}
-      tag={response.tagName}
-      title={response.title}
-      desc={response.description}
-      ctatext={response.cta?.text ?? ""}
-      ctaLink={response.cta?.target}
+      bgImage={data.desktopImg}
+      mobilebg={data.mobileImg}
+      tag={data.tagName}
+      title={data.title}
+      desc={data.description}
+      ctatext={data.cta?.text??""}
+      ctaLink={data.cta?.target?? ""}
     />
   );
 }

@@ -27,26 +27,36 @@ interface conversationApiResponse{
 }[]
 }
 
+interface contentApiResponse{
+  tagName:string;
+  title:string;
+  description:string;
+  cta:{
+    text:string;
+    target:string;
+  }
+}
+
 
 export default function Conversations() {
-  const [swiper, setSwiper] = React.useState<SwiperClass | null>(null);
+  
   const [isBeginning, setIsBeginning] = React.useState(true);
   const [isEnd, setIsEnd] = React.useState(false);
 
-   const { data: content } = useApiHook<conversationApiResponse>({
+   const { data: cardData } = useApiHook<conversationApiResponse>({
       url: "/knowledge/conversation",
       cacheKey: "knowledgeConversation",
     });
 
-    if(!content){return null}
+    const { data: content } = useApiHook<contentApiResponse>({
+      url: "/content/knowledge-conversation-content",
+      cacheKey: "knowledgeContent",
+    });
 
-    console.log(content)
+    if(!cardData || !content){return null}
 
-  const handleSwiperInit = (swiper: SwiperClass) => {
-    setSwiper(swiper);
-    setIsBeginning(swiper.isBeginning);
-    setIsEnd(swiper.isEnd);
-  };
+    
+
 
   const handleSlideChange = (swiper: SwiperClass) => {
     setIsBeginning(swiper.isBeginning);
@@ -65,42 +75,27 @@ export default function Conversations() {
             <div className="flex flex-row items-center gap-2 md:gap-3">
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
               <h5 className="font-medium text-pink">
-               The Infravision Conversation
+             {content.tagName}
               </h5>
             </div>
             <div className="py-3 max-w-4xl">
-              <h1 className="text-black font-light">
-                Decoding infrastructure, <br />
-                <span className="text-black font-medium">
-                  {" "}
-                  one topic at a time
-                </span>
-              </h1>
+              <h1 className="text-black font-light"  dangerouslySetInnerHTML={{__html: content.title}} />
+              
+           
             </div>
           </div>
           <div className="max-w-xl xlg:max-w-2xl">
             <h6 className="font-light">
-              Watch our Head of Advocacy, Kaveree Bamzai, zoom into key topics
-              influencing{" "}
-              <span className="font-medium">
-                {" "}
-                India's infrastructural evolution with senior experts{" "}
-              </span>{" "}
-              from various disciplines. From{" "}
-              <span className="font-medium">
-                {" "}
-                health to transport, from rural planning to warehousing,
-              </span>{" "}
-              it's a knowledge hub for all things infrastructure.
+              {content.description}
             </h6>
             <div className="group flex mt-4">
               <Link
-                href="https://www.youtube.com/playlist?list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em"
+                href={content.cta.target}
                 target="_blank"
               >
                 <button className="text-black text-base lg:text-xl  justify-center items-center cursor-pointer relative font-medium flex flex-row gap-2">
                   <FaYoutube className="text-[#C82249] text-3xl" />
-                  View full playlist
+                 {content.cta.text}
                   <div className="w-10 sm:w-20 h-[1px] sm:h-[2px] group-hover:w-full absolute bottom-0 left-0 top-9 bg-pink transition-all duration-1000"></div>
                 </button>
               </Link>
@@ -130,7 +125,7 @@ export default function Conversations() {
               1366: { slidesPerView: 2.6 },
             }}
           >
-            {content.data.map((person, idx) => (
+            {cardData.data.map((person, idx) => (
               <SwiperSlide key={idx}>
                 <div className="    overflow-hidden flex flex-col h-full">
                   <div className="relative w-full h-[20rem] sm:h-[24rem] rounded-xl overflow-hidden">

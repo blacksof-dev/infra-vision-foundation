@@ -5,7 +5,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 
-import Loading from "@/app/loading";
+
 import { useApiHook } from "@/lib/useApi";
 
 const iconMap: Record<string, React.ElementType> = {
@@ -24,18 +24,12 @@ interface SocialMedia {
 }
 
 export default function SocialMedia() {
-  const { data, isLoading, error } = useApiHook<SocialMedia[]>({
+  const { data,  error } = useApiHook<SocialMedia[]>({
     url: "/social-profiles",
     cacheKey: "socialMedia",
   });
 
-  if (isLoading) {
-    return (
-      <section className="w-full h-[40rem] flex items-center justify-center">
-        <Loading />
-      </section>
-    );
-  }
+
 
   if (error || !data) {
     return (

@@ -4,21 +4,21 @@ import { MdOutlinePhone } from "react-icons/md";
 import { MdOutlineLocationOn } from "react-icons/md";
 import SocialMedia from "@/_components/atoms/socialMedia";
 import { ReactNode } from "react";
-import { getData } from "@/lib/getServerData";
+
 import { useApiHook } from "@/lib/useApi";
 
-interface organisationApiResponse{
-  id:string;
-  address:string;
-  email:string[];
-  phones:string[];
-  locationMapUrl:string;
+interface organisationApiResponse {
+  id: string;
+  address: string;
+  emails: string[];
+  phones: string[];
+  locationMapUrl: string;
 
 }
 
-export const MapComponent=async()=> {
+export default function MapComponent() {
 
- const { data } = useApiHook<organisationApiResponse>({
+  const { data } = useApiHook<organisationApiResponse>({
     url: "/organisation/details",
     cacheKey: "organisation",
   });
@@ -28,7 +28,7 @@ export const MapComponent=async()=> {
 
 
 
-  
+
   return (
     <>
       <div>
@@ -36,12 +36,12 @@ export const MapComponent=async()=> {
           <MapAndAddress
             icon={<MdOutlineEmail className="text-2xl text-pink my-auto" />}
             title="Email"
-            desc={data.email}
+            desc={data.emails[0]}
           />
           <MapAndAddress
             icon={<MdOutlinePhone className="text-2xl text-pink my-auto" />}
             title="Phone"
-            desc={data.phones}
+            desc={data.phones[0]}
           />
           <MapAndAddress
             icon={

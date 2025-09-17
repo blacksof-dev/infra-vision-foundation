@@ -71,6 +71,7 @@ export default function Updates() {
   return arr;
 }, [data]);
 
+console.log(updates)
 
   if (!updates.length) return null;
 

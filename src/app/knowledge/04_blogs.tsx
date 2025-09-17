@@ -13,8 +13,18 @@ import img_08 from "@/../public/assets/knowledeg/blogs/08.jpg";
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 
 import { NewsCard } from "@/_components/molecules/newsCard";
+import { useApiHook } from "@/lib/useApi";
+import { ApiResponse } from "../_home/01_banner";
 
 // Types
+
+
+
+
+
+
+
+
 type FilterType = "All" | "Publication year" | "Sectors";
 type SectorType =
   | "All"
@@ -97,7 +107,7 @@ const allcards = [
   {
     id: 6,
     img: img_06,
-    slug:"urban-mobility-in-india-why-metro-is-not-the-only-solution",
+    slug: "urban-mobility-in-india-why-metro-is-not-the-only-solution",
     category: "Transportation",
     title: "",
     sectors: "Transportation",
@@ -107,11 +117,11 @@ const allcards = [
     link: "/blogs/urban-mobility-in-india-why-metro-is-not-the-only-solution",
   },
   {
-     id: 7,
-     img: img_07,
-     slug:"getting-surety-bonds-market-ready",
-     category: "Infrastructure",
-     title: "",
+    id: 7,
+    img: img_07,
+    slug: "getting-surety-bonds-market-ready",
+    category: "Infrastructure",
+    title: "",
     sectors: "Infrastructure",
     date: "May 18, 2023",
     description: "Getting Surety Bonds Market Ready",
@@ -119,15 +129,15 @@ const allcards = [
   },
   {
     id: 8,
-     img: img_08,
-     slug:"rooftop-solar-for-poverty-alleviation",
-     category: "Energy",
-     title: "",
+    img: img_08,
+    slug: "rooftop-solar-for-poverty-alleviation",
+    category: "Energy",
+    title: "",
     sectors: "Energy",
     date: "March 2, 2023",
-     description: "Rooftop Solar for Poverty Alleviation",
-     link: "/blogs/rooftop-solar-for-poverty-alleviation",
-   },
+    description: "Rooftop Solar for Poverty Alleviation",
+    link: "/blogs/rooftop-solar-for-poverty-alleviation",
+  },
 ];
 
 export default function Blogs() {
@@ -137,13 +147,25 @@ export default function Blogs() {
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
 
+
+  //Content API Call
+  const { data: content } = useApiHook<ApiResponse>({
+      url: "/content/knowledge-blogs-content",
+      cacheKey: "knowledge-blogs-content",
+  });
+
+
+  // Year tab API Call
+
+
+
+
+
   const scrollToCenter = (index: number) => {
     const tab = tabRefs.current[index];
     const container = containerRef.current;
 
     if (tab && container) {
-      // const containerRect = container.getBoundingClientRect();
-      // const tabRect = tab.getBoundingClientRect();
       const offset =
         tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
       container.scrollTo({ left: offset, behavior: "smooth" });
@@ -156,8 +178,8 @@ export default function Blogs() {
       tab === "Publication year"
         ? YEARS[0]
         : tab === "Sectors"
-        ? SECTORS[0]
-        : "All"
+          ? SECTORS[0]
+          : "All"
     );
     setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
@@ -193,11 +215,10 @@ export default function Blogs() {
               tabRefs.current[index] = el;
             }}
             className={`text-base text-nowrap cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
-                            ${
-                              selectedFilter === filter
-                                ? "border border-pink text-white bg-pink font-medium"
-                                : "border border-lightgray/30"
-                            }`}
+                            ${selectedFilter === filter
+                ? "border border-pink text-white bg-pink font-medium"
+                : "border border-lightgray/30"
+              }`}
             onClick={() => handleFilterClick(filter, index)}
           >
             {filter}
@@ -207,24 +228,21 @@ export default function Blogs() {
     </div>
   );
 
+  if(!content){return null;}
+
   return (
     <section id="blogs">
       <div className="w-container blade-top-padding-sm blade-bottom-padding-lg">
         {/* Header Section */}
         <div className="flex flex-row items-center gap-2 md:gap-3">
           <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
-          <h5 className="font-medium text-pink">Blogs</h5>
+          <h5 className="font-medium text-pink">{content.tagName}</h5>
         </div>
 
         <div className="py-3 max-w-4xl">
-          <h1 className="text-black font-light">
-            Championing infrastructure issues
-            <br />
-            <span className="text-black font-medium">
-              {" "}
-              and recommending solutions
-            </span>
-          </h1>
+          <h1 className="text-black font-light" dangerouslySetInnerHTML={{__html: content.title}} />
+          
+         
         </div>
 
         {/* Filter Section */}
@@ -241,11 +259,10 @@ export default function Blogs() {
                 <button
                   key={tab}
                   className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4
-                                        ${
-                                          selectedTab === tab
-                                            ? "border border-pink text-pink font-medium"
-                                            : "border border-lightgray/30"
-                                        }`}
+                                        ${selectedTab === tab
+                      ? "border border-pink text-pink font-medium"
+                      : "border border-lightgray/30"
+                    }`}
                   onClick={() => handleTabClick(tab)}
                 >
                   {tab}
@@ -260,9 +277,8 @@ export default function Blogs() {
 
           {/* Newsletter Cards */}
           <div
-            className={`${
-              selectedTab === "Publication year" ? "pt-8" : "pt-8"
-            }`}
+            className={`${selectedTab === "Publication year" ? "pt-8" : "pt-8"
+              }`}
           >
             {filteredCards.length === 0 && (
               <div className="flex justify-center"> No results </div>

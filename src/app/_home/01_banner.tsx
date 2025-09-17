@@ -6,14 +6,12 @@ const Updates = dynamic(() => import("./updates"), { ssr: false });
 
 export interface ApiResponse {
   id: string;
-  sectionKey: string;
-
   tagName: string;
   title: string;
-  description: string;
-  image: string;
-  desktopImg: string;
-  mobileImg: string;
+  description?: string;
+  image?: string;
+  desktopImg?: string;
+  mobileImg?: string;
   cta?: {
     text: string;
     target: string;
@@ -29,7 +27,7 @@ export default function Banner() {
 
   const response = data;
 
-  const imageSrc = response.desktopImg || "/assets/home/BannerBg.webp";
+
 
   return (
     <>
@@ -37,7 +35,7 @@ export default function Banner() {
         <div className="relative overflow-hidden">
           <div className="relative w-full h-[40rem] xl:h-[47rem] 2xl:h-[55rem] 3xl:h-screen">
             <Image
-              src={imageSrc}
+              src={data.desktopImg??""}
               fill
               alt="InfraVision Foundation"
               className="h-full w-full object-cover"
@@ -61,9 +59,14 @@ export default function Banner() {
                 <h5 className="text-black">{response.description}</h5>
               </div>
             </div>
+
           </div>
+          {/* <div className="absolute bottom-8 xl:bottom-8 w-screen p-1">
+            <Updates />
+          </div> */}
         </div>
       </section>
+
     </>
   );
 }

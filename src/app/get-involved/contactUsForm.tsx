@@ -20,7 +20,7 @@ import Portal from "@/_components/atoms/popupPortal";
 import { Loader, X } from "lucide-react";
 
 import axios from "axios";
-import { MapComponent } from "./mapSection";
+import  MapComponent  from "./mapSection";
 
 const dropdownOptions = [
   "Institutional collaboration",

@@ -6,7 +6,7 @@ import { ApiResponse } from "./01_banner";
 import Loading from "../loading";
 
 export default function Infravisionaries() {
-  const { data, isLoading } = useApiHook<ApiResponse[]>({
+  const { data, isLoading } = useApiHook<ApiResponse>({
     url: "/content/home-infravisionaries-content",
     cacheKey: "homeContent-infravisionaries",
   });

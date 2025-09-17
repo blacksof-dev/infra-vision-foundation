@@ -1,8 +1,5 @@
 "use client";
 
-import highway from "@/../public/assets/home/whoWeAre/knowledge/highway.png";
-import jagan from "@/../public/assets/home/whoWeAre/knowledge/jagan.png";
-import img_12 from "@/../public/assets/knowledeg/researchPapers/12.jpg";
 import { Suspense, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 const Card = dynamic(() => import("@/_components/molecules/cardTemplate"), {
@@ -26,7 +23,7 @@ export type TabApiResponse = {
 };
 
 type KnowledgeApiResponse = {
-  researchPaper?: {
+  researchPaper: {
     id: string;
     image: string;
     title: string;
@@ -34,7 +31,7 @@ type KnowledgeApiResponse = {
     link: string;
     date: string;
   };
-  conversation?: {
+  conversation: {
     id: string;
     image: string;
     title: string;
@@ -42,7 +39,7 @@ type KnowledgeApiResponse = {
     date?: string;
     videoLink?: string;
   };
-  blog?: {
+  blog: {
     id: string;
     title: string;
     subtitle?: string;
@@ -56,7 +53,7 @@ type KnowledgeApiResponse = {
 export default function WhoWeAre() {
   const [activeTab, setActiveTab] = useState("Knowledge");
 
-  const { data } = useApiHook<ApiResponse[]>({
+  const { data } = useApiHook<ApiResponse>({
     url: "/content/home-whoWeAre-content",
     cacheKey: "homeContent-whoWeAre",
   });
@@ -85,7 +82,7 @@ export default function WhoWeAre() {
             <div className="w-full md:w-1/2 lg:md:w-[70%] pt-2">
               <h6
                 className="text-black font-light"
-                dangerouslySetInnerHTML={{ __html: data.description }}
+                dangerouslySetInnerHTML={{ __html: data.description ??""}}
               />
             </div>
           </div>

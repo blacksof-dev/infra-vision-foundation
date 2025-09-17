@@ -8,27 +8,17 @@ import { useApiHook } from "@/lib/useApi";
 // Types
 type FilterType = "All" | "Sectors";
 
-interface TabApiRaw {
+export interface TabApiRaw {
   id: string;
   name: string;
   slug: string;
   description: string | null;
   active: boolean;
-  createdAt: string;
-  updatedAt: string;
-  paperIds: string[];
-  blogIds: string[];
-  papers: any[];
-}
-
-interface TabApiResponse {
-  name: string;
-  active: boolean;
 }
 
 interface contentApiResponse {
   tagName: string;
-  title: string;
+  description: string;
 }
 
 export interface ResearchPaper {
@@ -47,14 +37,14 @@ export interface ResearchPaper {
 }
 
 const FILTER_TYPES: FilterType[] = ["All", "Sectors"];
-
+let initialValue = 1;
 export default function ResearchPapers() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [selectedTab, setSelectedTab] = useState<FilterType>("All");
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(initialValue);
   const [cards, setCards] = useState<ResearchPaper[]>([]);
 
   const { data: content } = useApiHook<contentApiResponse>({
@@ -123,6 +113,7 @@ export default function ResearchPapers() {
     } else {
       setSelectedFilter("All");
     }
+    setPage(initialValue)
   };
 
   const handleSeeMore = () => {
@@ -166,7 +157,7 @@ export default function ResearchPapers() {
         </div>
 
         <div className="py-3 max-w-4xl">
-          <h1 className="text-black font-light" dangerouslySetInnerHTML={{ __html: content?.title ?? "" }} />
+          <h1 className="text-black font-light" dangerouslySetInnerHTML={{ __html: content?.description??"" }} />
         </div>
 
 

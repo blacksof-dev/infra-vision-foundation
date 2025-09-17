@@ -10,7 +10,7 @@ type Newsletter = {
   ctaLink?: string;
   bgImage?: string;
   mobilebg?: string;
-  image?: StaticImageData;
+  image?: string;
   bgColor?: string;
   id?:string;
 };

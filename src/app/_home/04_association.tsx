@@ -17,7 +17,7 @@ interface ImageApiResponse {
 }
 
 export default function Association() {
-  const { data, isLoading, error } = useApiHook<ApiResponse[]>({
+  const { data, isLoading, error } = useApiHook<ApiResponse>({
     url: "/content/home-association-content",
     cacheKey: "homeContent-association",
   });

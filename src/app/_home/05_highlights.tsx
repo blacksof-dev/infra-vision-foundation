@@ -27,7 +27,7 @@ interface NewsLetterAndNews {
 export default function Highlights() {
   const [activeTab, setActiveTab] = useState("Outreach and Engagements");
 
-  const { data } = useApiHook<ApiResponse[]>({
+  const { data } = useApiHook<ApiResponse>({
     url: "/content/home-highlight-content",
     cacheKey: "homeContent-highlight",
   });
@@ -48,9 +48,9 @@ export default function Highlights() {
               dangerouslySetInnerHTML={{ __html: data.title }}
             />
           </div>
-          {/* <div className="">
+          <div className="">
             <TabSwitch setActiveTab={setActiveTab} activeTab={activeTab} />
-          </div> */}
+          </div>
         </div>
       </div>
     </>

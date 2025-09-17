@@ -15,12 +15,12 @@ type contactApiResponse = {
   cta: {
     text: string;
     target: string;
-  }[]
+  }
 }
 
 export const GetInvolvedBanner = async () => {
-  const response = await getData<contactApiResponse>("/content/home/contactUsBanner");
-  console.log(response);
+  const response = await getData<contactApiResponse>("/content/contact-banner");
+
 
   return (
     <>
@@ -85,7 +85,7 @@ export const GetInvolvedBanner = async () => {
                 </div>
 
                 <HeroBtnPink
-                  text={response.cta[0].text}
+                  text={response.cta?.text??""}
                   role="link"
                   borderColor="pink"
                   color="white"
@@ -93,7 +93,7 @@ export const GetInvolvedBanner = async () => {
                   size="large"
                   aarowColor="white"
                   classes="font-medium"
-                  link={response.cta[0].target}
+                  link={response.cta?.target??""}
                   target={"_blank"}
                 />
               </div>

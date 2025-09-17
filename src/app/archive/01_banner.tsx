@@ -1,14 +1,27 @@
+"use client"
 import React from "react";
 import Banner from "@/_components/molecules/banner";
-import image from "@/../public/assets/archive/banner/banner.jpg";
+import { useApiHook } from "@/lib/useApi";
+import { ApiResponse } from "../_home/01_banner";
+
 export default function BannerSection() {
+   const { data } = useApiHook<ApiResponse>({
+      url: "/content/archive-banner-content",
+      cacheKey: "archiveBanner",
+    }); 
+    
+    if (!data) {
+      return null;
+    }
+
+
   return (
     <Banner
       id="archiveBanner"
-      image={image}
-      heading="Archives"
-      title="Archives"
-      subdesc="Knowledge resources shaping India's <br/> infrastructure growth story."
+      desktopImg={data.desktopImg}
+      tagName={data.tagName}
+      title={data.title}
+      description={data.description}
     />
   );
 }
