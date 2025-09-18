@@ -12,7 +12,6 @@ export interface TabApiRaw {
   id: string;
   name: string;
   slug: string;
-  description: string | null;
   active: boolean;
 }
 
@@ -37,14 +36,16 @@ export interface ResearchPaper {
 }
 
 const FILTER_TYPES: FilterType[] = ["All", "Sectors"];
-let initialValue = 1;
+
+let initialLimit = 3;
+
 export default function ResearchPapers() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [selectedTab, setSelectedTab] = useState<FilterType>("All");
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
-  const [page, setPage] = useState(initialValue);
+  const [limit, setLimit] = useState(initialLimit);
   const [cards, setCards] = useState<ResearchPaper[]>([]);
 
   const { data: content } = useApiHook<contentApiResponse>({
@@ -52,43 +53,44 @@ export default function ResearchPapers() {
     cacheKey: "knowledgeContentTab",
   });
 
-
-
   // Tabs API
   const { data: tabsData } = useApiHook<TabApiRaw[]>({
-    url: "/knowledge/sectors?activeOnly=true",
+    url: "/knowledge/sectors",
     cacheKey: "knowledgeSectorTab",
   });
 
   // Cards API
-  const { data: cardData } = useApiHook<{ researchPapers: ResearchPaper[] }>({
-    url: `/knowledge/research-papers?page=${page}&limit=3`,
-    cacheKey: `knowledgeCardData-page-${page}`,
+  const { data: cardData } = useApiHook<{ researchPapers: ResearchPaper[]; totalCount: number; }>({
+    url: `/knowledge/research-papers?page=1&limit=${limit}`,
+    cacheKey: `knowledgeCardData-page-1-limit-${limit}`,
   });
 
   // Map active tabs
   const activeTabs = useMemo(
-    () => tabsData?.filter(tab => tab.active).map(tab => tab.name) ?? [],
+    () => tabsData?.map(tab => tab.name) ?? [],
     [tabsData]
   );
 
-  console.log(content)
+
+
+
   // Append newly fetched cards
   useEffect(() => {
     if (cardData?.researchPapers) {
-      setCards(prev => [...prev, ...cardData.researchPapers]);
+      setCards(cardData.researchPapers);
     }
   }, [cardData]);
 
   // Filter cards by tab/filter
   const filteredCards = useMemo(() => {
+    let result = cards;
     if (selectedTab === "Sectors" && selectedFilter !== "All") {
-      return cards.filter(card =>
+      result = cards.filter(card =>
         card.sectors.some(sector => sector.name === selectedFilter)
       );
     }
-    return cards;
-  }, [cards, selectedTab, selectedFilter]);
+    return result.slice(0, limit);
+  }, [cards, selectedTab, selectedFilter, limit]);
 
   // Scroll filter button to center
   const scrollToCenter = (index: number) => {
@@ -104,6 +106,7 @@ export default function ResearchPapers() {
   const handleFilterClick = (filterName: string, index: number) => {
     setSelectedFilter(filterName);
     scrollToCenter(index);
+
   };
 
   const handleTabClick = (tab: FilterType) => {
@@ -113,11 +116,11 @@ export default function ResearchPapers() {
     } else {
       setSelectedFilter("All");
     }
-    setPage(initialValue)
+    setLimit(initialLimit)
   };
 
   const handleSeeMore = () => {
-    setPage(prev => prev + 1);
+    setLimit(prev => prev + 3);
   };
 
   if (!tabsData) return null;
@@ -132,7 +135,7 @@ export default function ResearchPapers() {
               tabRefs.current[index] = el;
             }}
 
-            className={`text-base text-nowrap cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
+            className={`text-base text-nowrap  cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
               ${selectedFilter === filter
                 ? "border border-pink text-white bg-pink font-medium"
                 : "border border-lightgray/30"
@@ -157,7 +160,7 @@ export default function ResearchPapers() {
         </div>
 
         <div className="py-3 max-w-4xl">
-          <h1 className="text-black font-light" dangerouslySetInnerHTML={{ __html: content?.description??"" }} />
+          <h1 className="text-black font-light" dangerouslySetInnerHTML={{ __html: content?.description ?? "" }} />
         </div>
 
 
@@ -196,7 +199,7 @@ export default function ResearchPapers() {
               <div className="flex justify-center">No results</div>
             )}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 xlg:gap-24">
-              {filteredCards.map(card => (
+              {filteredCards.slice(0, limit).map(card => (
                 <div key={card.id}>
                   <NewsCard
                     date={card.date}
@@ -212,7 +215,7 @@ export default function ResearchPapers() {
               ))}
             </div>
 
-            {(cardData?.researchPapers?.length ?? 3) >= 3 && (
+            {(cardData?.researchPapers?.length ?? 0) === limit && (
               <div className="flex justify-center mb-4 sm:mt-4">
                 <UnderlineWithHover
                   size="xxlsize"

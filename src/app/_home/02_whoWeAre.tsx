@@ -12,7 +12,7 @@ import { ApiResponse } from "./01_banner";
 import Loading from "../loading";
 
 export type TabApiResponse = {
-  id: number;
+  id: string;
   img: string;
   category: string;
   title: string;
@@ -110,6 +110,7 @@ export const TabSwitch = ({
   });
 
   const knowledgeApiData: TabApiResponse[] = useMemo(() => {
+    
     if (!knowledgeInfo) return [];
 
     const arr: TabApiResponse[] = [];

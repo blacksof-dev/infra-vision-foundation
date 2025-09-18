@@ -36,7 +36,7 @@ export default function Page() {
             <div ref={sectionRefs.blogs}>
                 <Blogs />
             </div>
-            <Publications />
+            {/* <Publications /> */}
         </main>
     )
 }

@@ -111,11 +111,8 @@ function TabsSection({ tab, setTab, }: { tab: string; setTab: (tabname: string) 
 }
 
 function CardSection({ tab }: { tab: string }) {
-
   const [videoLink, setVideoLink] = useState("");
   const [popupOpen, setPopupOpen] = useState(false);
-
-
 
   const { data: cardDetails } = useApiHook<videoCardApiResponse>({
     url: "/archives/videos",
@@ -129,16 +126,12 @@ function CardSection({ tab }: { tab: string }) {
     setPopupOpen(true);
   };
 
-
-
   const filteredCards = useMemo(() => {
     if (tab === "All") return response;
     return response.filter(card =>
       card.categories.some((cat) => cat.name === tab)
     );
   }, [response, tab]);
-
-
 
   return (
     <>

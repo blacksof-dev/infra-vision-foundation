@@ -3,21 +3,14 @@ import React from "react";
 import InfravisionariesGlobal from "@/_components/molecules/infravisionariesGlobal";
 import { useApiHook } from "@/lib/useApi";
 import { ApiResponse } from "./01_banner";
-import Loading from "../loading";
+
 
 export default function Infravisionaries() {
-  const { data, isLoading } = useApiHook<ApiResponse>({
+  const { data } = useApiHook<ApiResponse>({
     url: "/content/home-infravisionaries-content",
     cacheKey: "homeContent-infravisionaries",
   });
 
-  if (isLoading) {
-    return (
-      <section className="w-full h-[40rem] flex items-center justify-center">
-        <Loading />
-      </section>
-    );
-  }
 
   if (!data) return null;
 
@@ -59,11 +52,11 @@ export default function Infravisionaries() {
               <h5 className="font-medium text-white">{data.tagName}</h5>
             </div>
             <div className="pt-4 md:pt-5 ">
-              <h1 className="text-white font-medium">{data.title}</h1>
+              <h1 className="text-white font-medium" dangerouslySetInnerHTML={{__html:data.title}} />
               <div className="w-full sm:w-[85%] xl:w-[45%]">
-                <h6 className="text-white  tracking-[1%] py-4">
-                  {data.description}
-                </h6>
+                <h6 className="text-white  tracking-[1%] py-4"  dangerouslySetInnerHTML={{__html:data.description??""}}/>
+                  
+              
               </div>
             </div>
           </div>

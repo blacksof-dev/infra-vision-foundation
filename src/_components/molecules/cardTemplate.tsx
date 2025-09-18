@@ -1,4 +1,5 @@
 type CardProps = {
+
   date?: string;
   title: string;
   image: string;
@@ -13,6 +14,7 @@ import { BorderGrayHeroBtn } from "../atoms/buttons";
 import Image from "next/image";
 
 export default function Card({
+  
   date,
   title,
   image,
@@ -25,12 +27,13 @@ export default function Card({
   return (
     <>
       <div
+       
         data-aos="fade-up"
         className="xl:max-w-[29rem] flex flex-col  relative "
       >
         <div className="relative w-full md:w-[28rem] xl:w-[23rem] 2xl:w-[28rem] h-[15rem]">
           <Image
-            src={image}
+            src={image ?? "/assets/globals/fallback.jpg"}
             alt={title}
             unoptimized={false}
             className="object-cover"

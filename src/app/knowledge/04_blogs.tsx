@@ -1,164 +1,96 @@
 "use client";
 import { useEffect, useState, useMemo, useRef } from "react";
 
-import img_01 from "@/../public/assets/knowledeg/blogs/01.jpg";
-import img_02 from "@/../public/assets/knowledeg/blogs/02.jpg";
-import img_03 from "@/../public/assets/knowledeg/blogs/03.jpg";
-import img_04 from "@/../public/assets/knowledeg/blogs/04.png";
-import img_05 from "@/../public/assets/knowledeg/blogs/05.jpg";
-import img_06 from "@/../public/assets/knowledeg/blogs/06.jpg";
-import img_07 from "@/../public/assets/knowledeg/blogs/07.jpg";
-import img_08 from "@/../public/assets/knowledeg/blogs/08.jpg";
-
-import { UnderlineWithHover } from "@/_components/atoms/buttons";
-
-import { NewsCard } from "@/_components/molecules/newsCard";
 import { useApiHook } from "@/lib/useApi";
 import { ApiResponse } from "../_home/01_banner";
+import { yearApiResponse } from "../archive/02_newsletter";
+import { TabApiRaw } from "./02_researchPapers";
+import { UnderlineWithHover } from "@/_components/atoms/buttons";
+import { NewsCard } from "@/_components/molecules/newsCard";
 
 // Types
 
-
-
-
-
-
-
-
 type FilterType = "All" | "Publication year" | "Sectors";
-type SectorType =
-  | "All"
-  | "Transportation"
-  | "Energy"
-  | "Urban Planning"
-  | "Rural and Agri Infra";
 
-
-// Constants
 const FILTER_TYPES: FilterType[] = ["All", "Publication year", "Sectors"];
-
-const YEARS = ["2024", "2023"] as const;
-const SECTORS: SectorType[] = [
-  "All",
-  "Transportation",
-  "Energy",
-  "Urban Planning",
-  "Rural and Agri Infra",
-];
 const INITIAL_VISIBLE_COUNT = 3;
 
-const allcards = [
-  {
-    id: 1,
-    img: img_01,
-    slug: "how-to-make-india-highways-safe",
-    category: "Transportation",
-    title: "",
-    sectors: "Transportation",
-    date: "October 16, 2024",
-    description: "How to make India’s highways safe",
-    link: "/blogs/how-to-make-india-highways-safe",
-  },
-  {
-    id: 2,
-    img: img_02,
-    slug: "rural-and-agri-infra",
-    category: "Rural and Agri Infra",
-    title: "",
-    sectors: "Rural and Agri Infra",
-    date: "November 25, 2023",
-    description: "Agri-warehousing: A problem of capacity",
-    link: "/blogs/rural-and-agri-infra",
-  },
-  {
-    id: 3,
-    img: img_03,
-    slug: "multi-utility-infra-the-way-to-go",
-    category: "Transportation",
-    title: "",
-    sectors: "Transportation",
-    date: "October 9, 2023",
-    description: "Multi-utility Infra, the way to go!",
-    link: "/blogs/multi-utility-infra-the-way-to-go",
-  },
-  {
-    id: 4,
-    img: img_04,
-    slug: "our-metro-rail-systems-must-be-sustainable-financially",
-    category: "Transportation",
-    title: "",
-    sectors: "Transportation",
-    date: "October 5, 2023",
-    description: "Our metro rail systems must be sustainable, financially",
-    link: "/blogs/our-metro-rail-systems-must-be-sustainable-financially",
-  },
-  {
-    id: 5,
-    img: img_05,
-    slug: "india-needs-sustainability-ratings-for-infrastructure-projects",
-    category: "Urban Planning",
-    title: "",
-    sectors: "Urban Planning",
-    date: "September 25, 2023",
-    description:
-      "India needs sustainability ratings for Infrastructure projects",
-    link: "/blogs/india-needs-sustainability-ratings-for-infrastructure-projects",
-  },
-  {
-    id: 6,
-    img: img_06,
-    slug: "urban-mobility-in-india-why-metro-is-not-the-only-solution",
-    category: "Transportation",
-    title: "",
-    sectors: "Transportation",
-    date: "August 26, 2023",
-    description:
-      "Urban mobility in India – Why metro is not the only solution!",
-    link: "/blogs/urban-mobility-in-india-why-metro-is-not-the-only-solution",
-  },
-  {
-    id: 7,
-    img: img_07,
-    slug: "getting-surety-bonds-market-ready",
-    category: "Infrastructure",
-    title: "",
-    sectors: "Infrastructure",
-    date: "May 18, 2023",
-    description: "Getting Surety Bonds Market Ready",
-    link: "/blogs/getting-surety-bonds-market-ready",
-  },
-  {
-    id: 8,
-    img: img_08,
-    slug: "rooftop-solar-for-poverty-alleviation",
-    category: "Energy",
-    title: "",
-    sectors: "Energy",
-    date: "March 2, 2023",
-    description: "Rooftop Solar for Poverty Alleviation",
-    link: "/blogs/rooftop-solar-for-poverty-alleviation",
-  },
-];
+
+
+interface Sector {
+  id: string;
+  name: string;
+  slug: string;
+  active: boolean;
+}
+
+interface BlogsApiResponse {
+  id: string;
+  coverImage: string;
+  docFile: string;
+  title: string;
+  authorName: string;
+  authorDesignation: string;
+  publishedDate: string;
+  content: string;
+  active: boolean;
+  createdAt: string;
+  updatedAt: string;
+  sectorIds: string[];
+  sectors: Sector[];
+}
+
+interface CardApiResponse {
+  blogs: BlogsApiResponse[];
+}
+
+let initialLimit = 3;
 
 export default function Blogs() {
+
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectedTab, setSelectedTab] = useState<FilterType>("All");
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
-  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
 
+  const [limit, setLimit] = useState(initialLimit);
 
   //Content API Call
   const { data: content } = useApiHook<ApiResponse>({
-      url: "/content/knowledge-blogs-content",
-      cacheKey: "knowledge-blogs-content",
+    url: "/content/knowledge-blogs-content",
+    cacheKey: "knowledge-blogs-content",
   });
 
 
   // Year tab API Call
+  const { data: yearTab } = useApiHook<yearApiResponse>({
+    url: "/knowledge/blogs/years?activeOnly=true",
+    cacheKey: "knowledge-blogs-year",
+  });
+
+  //Sector tab API Call
+
+  const { data: sectorTab } = useApiHook<TabApiRaw[]>({
+    url: "/knowledge/sectors?activeOnly=true",
+    cacheKey: "knowledge-blogs-sectors",
+  });
+
+
+  //Cards data Api Call
+  const { data: cardData } = useApiHook<CardApiResponse>({
+    url: `/knowledge/blogs?page=1&limit=${limit}`,
+    cacheKey: "knowledge-blogs-cardData",
+  });
+
+
+  const response = cardData?.blogs ?? []
 
 
 
+  const activeTabs = useMemo(
+    () => sectorTab?.map(tab => tab.name) ?? [],
+    [sectorTab]
+  );
 
 
   const scrollToCenter = (index: number) => {
@@ -173,15 +105,19 @@ export default function Blogs() {
   };
 
   const handleTabClick = (tab: FilterType) => {
+
     setSelectedTab(tab);
-    setSelectedFilter(
-      tab === "Publication year"
-        ? YEARS[0]
-        : tab === "Sectors"
-          ? SECTORS[0]
-          : "All"
-    );
-    setVisibleCount(INITIAL_VISIBLE_COUNT);
+
+    if (tab === "Publication year" && yearTab?.length) {
+      setSelectedFilter(yearTab[0])
+    }
+    else if (tab === "Sectors" && sectorTab?.length) {
+      setSelectedFilter(activeTabs[0])
+    }
+    else {
+      setSelectedFilter("All")
+    }
+    setLimit(initialLimit);
   };
 
   const handleFilterClick = (filterName: string, index: number) => {
@@ -189,23 +125,33 @@ export default function Blogs() {
     scrollToCenter(index);
   };
 
+
+
+
   const filteredCards = useMemo(() => {
-    if (selectedTab === "Publication year") {
-      return allcards.filter(
-        (card) => card.date.split(" ").pop() === selectedFilter
+    if (selectedTab === "Publication year" && selectedFilter !== "All") {
+      return response.filter(
+        (card) =>
+          new Date(card.publishedDate).getFullYear() === Number(selectedFilter)
       );
     }
+
     if (selectedTab === "Sectors" && selectedFilter !== "All") {
-      return allcards.filter((card) => card.sectors === selectedFilter);
+      return response.filter((card) =>
+        card.sectors.some((sector) => sector.name === selectedFilter)
+      );
     }
-    return allcards;
-  }, [selectedTab, selectedFilter]);
+
+    return response.slice(0, limit);;
+  }, [selectedTab, selectedFilter, response]);
+
+
 
   const handleSeeMore = () => {
-    setVisibleCount((prev) => prev + INITIAL_VISIBLE_COUNT);
+    setLimit((prev) => prev + initialLimit);
   };
 
-  const renderFilterButtons = (filters: readonly string[]) => (
+  const renderFilterButtons = (filters: string[]) => (
     <div ref={containerRef} className="pt-5 overflow-scroll no-scrollbar">
       <div className="flex   gap-3">
         {filters.map((filter, index) => (
@@ -228,7 +174,7 @@ export default function Blogs() {
     </div>
   );
 
-  if(!content){return null;}
+  if (!content || !yearTab || !sectorTab || !cardData) { return null; }
 
   return (
     <section id="blogs">
@@ -240,9 +186,7 @@ export default function Blogs() {
         </div>
 
         <div className="py-3 max-w-4xl">
-          <h1 className="text-black font-light" dangerouslySetInnerHTML={{__html: content.title}} />
-          
-         
+          <h1 className="text-black font-light" dangerouslySetInnerHTML={{ __html: content.title }} />
         </div>
 
         {/* Filter Section */}
@@ -272,8 +216,8 @@ export default function Blogs() {
           </div>
 
           {/* Filter Buttons */}
-          {selectedTab === "Publication year" && renderFilterButtons(YEARS)}
-          {selectedTab === "Sectors" && renderFilterButtons(SECTORS)}
+          {selectedTab === "Publication year" && renderFilterButtons(yearTab)}
+          {selectedTab === "Sectors" && renderFilterButtons(activeTabs)}
 
           {/* Newsletter Cards */}
           <div
@@ -283,23 +227,25 @@ export default function Blogs() {
             {filteredCards.length === 0 && (
               <div className="flex justify-center"> No results </div>
             )}
+
+
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 xlg:gap-24">
-              {filteredCards.slice(0, visibleCount).map((card) => (
+              {filteredCards.slice(0, initialLimit).map((card) => (
                 <div key={card.id}>
                   <NewsCard
-                    date={card.date}
+                    date={card.publishedDate}
                     title={card.title}
-                    image={card.img.src}
-                    link={card.link}
-                    category={card.category}
-                    description={card.description}
+                    image={card.coverImage}
+                    link={card.docFile}
+                    category={card.sectors[0]?.name ?? ""}
+                    description={card.content}
                     classes="line-clamp-3"
                     ctaType="read more"
                   />
                 </div>
               ))}
             </div>
-            {visibleCount < filteredCards.length && (
+            {initialLimit < filteredCards.length && (
               <div className="flex justify-center sm:mt-4 mb-4">
                 <UnderlineWithHover
                   size="xxlsize"

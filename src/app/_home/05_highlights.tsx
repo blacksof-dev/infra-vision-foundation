@@ -5,23 +5,27 @@ const Card = dynamic(() => import("@/_components/molecules/cardTemplate"), {
 });
 
 import React, { Suspense, useRef, useState } from "react";
-
 import InfrapanditAward from "./infraPanditAward";
 import { useHeader } from "@/context/useHeader";
 import Link from "next/link";
 import { useApiHook } from "@/lib/useApi";
 import { ApiResponse } from "./01_banner";
-import Loading from "../loading";
+
 import dynamic from "next/dynamic";
+import Loading from "../loading";
 
 interface NewsLetterAndNews {
-  id: string;
-  title: string;
-  subtitle?: string;
-  category: string;
-  date: string;
-  image: string;
-  link: string;
+    id: string;
+    title: string;
+    subtitle?: string;
+    category: string;
+    date: string;
+    image: string;
+    link: string;
+}
+
+interface cardApiResponse {
+  data: NewsLetterAndNews[];
 }
 
 export default function Highlights() {
@@ -88,26 +92,21 @@ export const TabSwitch = ({
     cacheKey: "newsletter",
   });
 
-  const { data: news, isLoading } = useApiHook<NewsLetterAndNews[]>({
-    url: "archives/media-coverage/recent",
+  const { data: news } = useApiHook<cardApiResponse>({
+    url: "/archives/media-coverage/recent",
     cacheKey: "news",
   });
 
-  if (isLoading) {
-    return (
-      <section className="w-full h-[40rem] flex items-center justify-center">
-        <Loading />
-      </section>
-    );
-  }
+  if (!news || !newsletters) { return null }
 
+   const responseNews = news?.data ?? [];
+ 
   return (
     <div>
       <div
         ref={containerRef}
-        className={`blade-top-padding-sm overflow-x-scroll bg-whitesmoke no-scrollbar transition-all duration-300 ease-linear z-[999] sticky ${
-          isHeaderVisible ? "top-20   lg:top-24" : "top-0"
-        } `}
+        className={`blade-top-padding-sm overflow-x-scroll bg-whitesmoke no-scrollbar transition-all duration-300 ease-linear z-[999] sticky ${isHeaderVisible ? "top-20   lg:top-24" : "top-0"
+          } `}
       >
         <div className="flex flex-row gap-6 sm:gap-12  lg:gap-12 md:gap-18 border-b   border-darkgray/16 w-fit ">
           <button
@@ -115,11 +114,10 @@ export const TabSwitch = ({
               tabRefs.current[0] = el;
             }}
             onClick={() => handleFilterClick("Outreach and Engagements", 0)}
-            className={` cursor-pointer text-sm sm:text-xl text-nowrap  ${
-              activeTab === "Outreach and Engagements"
+            className={` cursor-pointer text-sm sm:text-xl text-nowrap  ${activeTab === "Outreach and Engagements"
                 ? "font-medium  border-b-2 border-pink pb-3 text-pink"
                 : "text-darkgray  pb-3"
-            }`}
+              }`}
           >
             Outreach and Engagements
           </button>
@@ -129,11 +127,10 @@ export const TabSwitch = ({
               tabRefs.current[1] = el;
             }}
             onClick={() => handleFilterClick("Newsletters", 1)}
-            className={` text-sm cursor-pointer  sm:text-xl text-nowrap ${
-              activeTab === "Newsletters"
+            className={` text-sm cursor-pointer  sm:text-xl text-nowrap ${activeTab === "Newsletters"
                 ? "font-medium  border-b-2 pb-3 border-pink text-pink"
                 : "text-darkgray  pb-3"
-            }`}
+              }`}
           >
             Newsletters
           </button>
@@ -142,11 +139,10 @@ export const TabSwitch = ({
               tabRefs.current[2] = el;
             }}
             onClick={() => handleFilterClick("In the News", 2)}
-            className={` text-sm cursor-pointer  sm:text-xl text-nowrap ${
-              activeTab === "In the News"
+            className={` text-sm cursor-pointer  sm:text-xl text-nowrap ${activeTab === "In the News"
                 ? "font-medium  border-b-2 pb-3 border-pink text-pink"
                 : "text-darkgray  pb-3"
-            }`}
+              }`}
           >
             In the News
           </button>
@@ -174,7 +170,7 @@ export const TabSwitch = ({
               </section>
             }
           >
-            <TabContent data={news} />
+            <TabContent data={responseNews} />
           </Suspense>
         )}
       </div>
@@ -186,21 +182,20 @@ export const TabSwitch = ({
               activeTab === "Outreach and Engagements"
                 ? "/outreach-and-engagements"
                 : activeTab === "Newsletters"
-                ? "/archive#newsletters"
-                : activeTab === "In the News"
-                ? "/archive#news-and-media"
-                : ""
+                  ? "/archive#newsletters"
+                  : activeTab === "In the News"
+                    ? "/archive#news-and-media"
+                    : ""
             }
           >
-            <span className="z-50 relative">{`${
-              activeTab === "Outreach and Engagements"
+            <span className="z-50 relative">{`${activeTab === "Outreach and Engagements"
                 ? "View all events"
                 : activeTab === "Newsletters"
-                ? "Browse newsletters"
-                : activeTab === "In the News"
-                ? "Browse news"
-                : "Read more"
-            }`}</span>
+                  ? "Browse newsletters"
+                  : activeTab === "In the News"
+                    ? "Browse news"
+                    : "Read more"
+              }`}</span>
             <span
               className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
             ></span>
@@ -217,6 +212,7 @@ export const TabContent = ({ data }: { data: NewsLetterAndNews[] }) => {
     <div className="grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-2 sm:gap-8 lg:gap-12  md:blade-top-padding-sm">
       {data.map((item) => (
         <Card
+          key={item.id}
           date={item.date}
           title={item.title}
           image={item.image}

@@ -1,5 +1,4 @@
-"use client";
-import { useState, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperClass } from "swiper/types";
 import Image from "next/image";
@@ -21,63 +20,73 @@ interface updateApiResponse {
 export default function Updates() {
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [isLastSlide, setIsLastSlide] = useState(false);
+  const [updates, setUpdates] = useState<updateApiResponse[]>([]); 
 
   const handleSlideChange = (swiper: SwiperClass) => {
     setIsLastSlide(swiper.isEnd);
     setIsFirstSlide(swiper.isBeginning);
   };
 
-  const { data } = useApiHook<any>({
+  const { data,  } = useApiHook<any>({
     url: "/homepage/latest-updates?activeOnly=true",
     cacheKey: "latestUpdate",
   });
 
+  useEffect(() => {
 
-  const updates: updateApiResponse[] = useMemo(() => {
-  if (!data) return [];
+    if (data) {
+      const arr: updateApiResponse[] = [];
 
-  const arr: updateApiResponse[] = [];
+      if (data.blog) {
+        arr.push({
+          image: data.blog.coverImage,
+          category: data.blog.sectors?.[0]?.name ?? "Blog",
+          title: data.blog.title,
+          btnTitle: "Read Blog",
+          link: data.blog.docFile || "#",
+        });
+      }
 
-  if (data.blog) {
-    arr.push({
-      image: data.blog.coverImage,
-      category: data.blog.sectors?.[0]?.name ?? "Blog",
-      title: data.blog.title,
-      btnTitle: "Read Blog",
-      link: data.blog.docFile || "#",
-    });
-  }
+      if (data.researchPaper) {
+        arr.push({
+          image: data.researchPaper.image,
+          category: "Research Paper",
+          title: data.researchPaper.title,
+          btnTitle: "Read Paper",
+          link: data.researchPaper.link,
+        });
+      }
 
-  if (data.researchPaper) {
-    arr.push({
-      image: data.researchPaper.image,
-      category: "Research Paper",
-      title: data.researchPaper.title,
-      btnTitle: "Read Paper",
-      link: data.researchPaper.link,
-    });
-  }
+      if (data.video) {
+        arr.push({
+          image: data.video.image,
+          category: data.video.categories?.[0]?.name ?? "Video",
+          title: data.video.title,
+          btnTitle: "Watch Video",
+          link: data.video.link,
+        });
+      }
 
-  if (data.video) {
-    arr.push({
-      image: data.video.image,
-      category: data.video.categories?.[0]?.name ?? "Video",
-      title: data.video.title,
-      btnTitle: "Watch Video",
-      link: data.video.link,
-    });
-  }
+      if (data.newsletter) {
+        arr.push({
+          image: data.newsletter.coverImage,
+          category: data.newsletter.version,
+          title: data.newsletter.title,
+          btnTitle: "Watch Video",
+          link: data.newsletter.fileUrl,
+        });
+      }
 
-  return arr;
-}, [data]);
+      setUpdates(arr); 
+    }
+  }, [data]); 
 
-console.log(updates)
-
+ 
   if (!updates.length) return null;
 
   return (
     <section>
-      <div className="xl:flex flex-row gap-8 ">
+      <div className="xl:flex flex-row gap-8">
         {/* Left Column */}
         <div className="border-r border-white/50 xl:block hidden">
           <div>
@@ -123,13 +132,13 @@ console.log(updates)
             {updates.map((ele, index) => (
               <SwiperSlide key={index} className="group">
                 <Link href={ele.link} target="_blank">
-                  <div className="flex flex-row gap-4 bg-[#0000005e] backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4 h-[8rem] sm:h-[9rem] lg:h-[10rem] xl:h-[13rem] xlg:h-[16rem] 2xl:h-[18rem] group-hover:bg-white transition-all duration-500 ease-linear">
-                    <div className="w-[6rem] h-full md:w-[14rem] lg:w-[13rem] xl:w-[20rem] xlg:w-[30rem] relative">
+                  <div className="flex flex-row gap-4 bg-[#0000005e] backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4 h-[7rem] sm:h-[9rem] lg:h-[10rem] xl:h-[13rem] xlg:h-[16rem] 2xl:h-[18rem] group-hover:bg-white transition-all duration-500 ease-linear">
+                    <div className="w-[5rem] h-full md:w-[14rem] lg:w-[13rem] xl:w-[20rem] xlg:w-[30rem] relative">
                       <Image
                         src={ele.image}
                         alt={ele.title}
                         fill
-                        className="object-cover object-left rounded"
+                        className="object-cover object-center md:object-left rounded aspect-auto"
                       />
                     </div>
                     <div className="my-auto w-[60%] flex flex-col h-full">

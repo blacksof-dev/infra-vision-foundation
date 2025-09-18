@@ -22,10 +22,11 @@ export default function Banner({
           <div className={`w-full relative h-[25rem] md:h-[36rem]  xl:h-[40rem] bg-black ${mobileImg ? "md:block hidden" : ""}`}>
             <Image
               fill
-              src={desktopImg??""}
+              src={desktopImg??"/assets/globals/fallback.jpg"}
               alt="Publication Banner"
               className="w-full h-full object-cover   2xl:object-bottom"
-              unoptimized={true}
+              unoptimized={false}
+              priority
             ></Image>
           </div>
           { mobileImg && (
@@ -35,7 +36,7 @@ export default function Banner({
                 fill
                 alt="Publication Banner"
                 className="w-full h-full object-cover object-right"
-                unoptimized={true}
+                unoptimized={false}
                 quality={100}
               ></Image>
             </div>

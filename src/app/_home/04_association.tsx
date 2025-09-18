@@ -5,7 +5,6 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "@/_components/molecules/infiniteCarousel.css";
 import { useApiHook } from "@/lib/useApi";
-import Loading from "../loading";
 import { ApiResponse } from "./01_banner";
 
 interface ImageApiResponse {
@@ -17,7 +16,7 @@ interface ImageApiResponse {
 }
 
 export default function Association() {
-  const { data, isLoading, error } = useApiHook<ApiResponse>({
+  const { data,isError } = useApiHook<ApiResponse>({
     url: "/content/home-association-content",
     cacheKey: "homeContent-association",
   });
@@ -27,19 +26,11 @@ export default function Association() {
     cacheKey: "associationImages",
   });
 
-  if (isLoading) {
-    return (
-      <section className="w-full h-[40rem] flex items-center justify-center">
-        <Loading />
-      </section>
-    );
-  }
+ 
 
-  if (!data) return null;
+  if (!data||!imageData) return null;
 
-  if (!imageData) {
-    return null;
-  }
+ 
 
   return (
     <div
@@ -83,7 +74,7 @@ export default function Association() {
         >
           {imageData.associations.map((obj) => (
             <SwiperSlide key={obj.id} className="!w-auto">
-              <div className="flex items-center w-[10rem] h-[4rem] md:w-[8rem] md:h-[3rem] xl:w-[15rem] xl:h-[6rem]">
+              <div className="flex items-center w-[10rem] h-[4rem] md:w-[8rem] md:h-[3rem] xl:w-[15rem] xl:h-[6rem] relative">
                 <Image
                   src={`/assets/home/association/${obj.logoUrl}`}
                   alt={obj.name}

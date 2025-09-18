@@ -2,7 +2,8 @@
 import Image from "next/image";
 import { useApiHook } from "@/lib/useApi";
 import dynamic from "next/dynamic";
-const Updates = dynamic(() => import("./updates"), { ssr: false });
+import Updates from "./updates";
+
 
 export interface ApiResponse {
   id: string;
@@ -27,20 +28,17 @@ export default function Banner() {
 
   const response = data;
 
-
-
   return (
     <>
       <section id="homepage-section-01">
         <div className="relative overflow-hidden">
           <div className="relative w-full h-[40rem] xl:h-[47rem] 2xl:h-[55rem] 3xl:h-screen">
             <Image
-              src={data.desktopImg??""}
+              src={data.desktopImg ?? ""}
               fill
               alt="InfraVision Foundation"
               className="h-full w-full object-cover"
               quality={100}
-              unoptimized={false}
               priority
             />
           </div>
@@ -59,11 +57,12 @@ export default function Banner() {
                 <h5 className="text-black">{response.description}</h5>
               </div>
             </div>
+            <div className="absolute bottom-8 xl:bottom-8 w-screen p-1">
+              <Updates />
+            </div>
 
           </div>
-          {/* <div className="absolute bottom-8 xl:bottom-8 w-screen p-1">
-            <Updates />
-          </div> */}
+
         </div>
       </section>
 

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { BorderGrayHeroBtn } from "@/_components/atoms/buttons";
 import { useApiHook } from "@/lib/useApi";
-import Loading from "../loading";
+
 
 
 
@@ -27,23 +27,13 @@ interface outReachApiResponse {
 export default function InfrapanditAward() {
 
 
-  const { data, isLoading } = useApiHook<outReachApiResponse>({
+  const { data } = useApiHook<outReachApiResponse>({
     url: "/outreach-and-engagements/primary",
     cacheKey: "outreachPrimary",
   });
 
-  console.log(data);
-
-
   if (!data) return null;
 
-  if (isLoading) {
-    return (
-      <section className="w-full h-[40rem] flex items-center justify-center">
-        <Loading />
-      </section>
-    );
-  }
 
   const primaryEvent = data.event;
 
@@ -53,12 +43,7 @@ export default function InfrapanditAward() {
       <div className="relative  bg-white  rounded-lg   flex flex-col sm:flex-row items-cente sm:gap-4 md:gap-7 xl:gap-10 min-h-[22rem] lg:min-h-[25rem] overflow-hidden">
         <div className="w-full h-[15rem] sm:h-[20rem] lg:h-[22rem] sm:w-[45%] lg:w-[38%]  sm:p-5 relative">
           <Image
-            src={
-              primaryEvent.covers?.[0]?.url &&
-                (primaryEvent.covers[0].url.startsWith("http"))
-                ? primaryEvent.covers[0].url
-                : "/assets/home/infrapanditAward.webp" 
-            }
+            src={primaryEvent.covers[0].url??"/assets/globals/fallback.jpg"}
             alt={primaryEvent.tag || "Event image"}
             fill
             quality={100}

@@ -2,36 +2,17 @@
 import TwitterPost from "./twittersection";
 import SocialMedia from "@/_components/atoms/socialMedia";
 import { useApiHook } from "@/lib/useApi";
-import Loading from "../loading";
+
 import { ApiResponse } from "./01_banner";
 
 export default function StayConnected() {
-  const { data, isLoading, error } = useApiHook<ApiResponse>({
+  const { data } = useApiHook<ApiResponse>({
     url: "/content/home-social-content",
     cacheKey: "homeContent-social",
   });
 
-  if (isLoading) {
-    return (
-      <section className="w-full h-[40rem] flex items-center justify-center">
-        <Loading />
-      </section>
-    );
-  }
-
-  if (error || !data) {
-    return (
-      <section className="w-full h-[40rem] flex items-center justify-center">
-        <p>Something went wrong</p>
-      </section>
-    );
-  }
-  
   if (!data) return null;
 
-
-
-  
   return (
     <section id="homepage-section-6">
       <div className="blade-top-padding-lg blade-bottom-padding-lg">

@@ -85,9 +85,9 @@ export default function Conversations() {
             </div>
           </div>
           <div className="max-w-xl xlg:max-w-2xl">
-            <h6 className="font-light">
-              {content.description}
-            </h6>
+            <h6 className="font-light" dangerouslySetInnerHTML={{__html:content.description}} />
+          
+          
             <div className="group flex mt-4">
               <Link
                 href={content.cta.target}

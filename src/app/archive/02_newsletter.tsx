@@ -7,6 +7,7 @@ import { ApiResponse } from "../_home/01_banner";
 
 // Types
 type FilterType = "All" | "Publication year" | "sectors";
+
 export type yearApiResponse = string[];
 
 interface cardApiResponse {
@@ -26,10 +27,6 @@ interface cardApiResponse {
 
 // Main Tab 
 const FILTER_TYPES: FilterType[] = ["All", "Publication year"];
-
-
-
-
 
 
 
@@ -58,6 +55,9 @@ export default function Newsletters() {
     url: "/archives/newsletter?page=1&limit=10",
     cacheKey: "archive-cards",
   });
+
+
+  console.log(cards)
 
   const response = cards?.data ?? [];
  
@@ -93,7 +93,7 @@ export default function Newsletters() {
     if (selectedTab === "Publication year") {
       return response.filter(
         (card) =>
-          new Date(card.publishedDate).getFullYear().toString() === selectedFilter
+           new Date(card.publishedDate).getFullYear() === Number(selectedFilter)
       );
     }
     return response;
@@ -186,7 +186,7 @@ export default function Newsletters() {
                   <NewsCard
                     date={card.publishedDate}
                     title={card.title}
-                    image={card.coverImage}
+                    image="/assets/archive/newsletter/latest1.png"
                     link={card.fileUrl}
                     category={card.version}
                     description={card.subtitle}

@@ -5,7 +5,7 @@ import Image, { StaticImageData } from "next/image";
 type Newsletter = {
   tag?: string;
   title: string;
-  desc: string;
+  desc?: string;
   ctatext: string;
   ctaLink?: string;
   bgImage?: string;
