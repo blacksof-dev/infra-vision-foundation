@@ -4,7 +4,7 @@ import Image from "next/image";
 import montek from "@/../public/assets/outreach-and-engagements/eventImages/august18_2025_Img4.jpeg"
 import { BorderGrayHeroBtn } from "@/_components/atoms/buttons";
 
-export default function InfrapanditAward({ ctaText = "See details", link = "/infrapandit-awards" }: { ctaText?: string, link?: string }) {
+export default function InfrapanditAward({ ctaText = "See details", link = "/outreach-and-engagements" }: { ctaText?: string, link?: string }) {
   return (
     <>
       <div className="relative  bg-white  rounded-lg   flex flex-col sm:flex-row items-cente sm:gap-4 md:gap-7 xl:gap-10 min-h-[22rem] lg:min-h-[25rem] overflow-hidden">
