@@ -24,11 +24,7 @@ export function NewsCard({ date, title, image, link, category, description, ctaT
         <div className="flex flex-col  h-full">
             <div className="xl:max-w-[29rem] h-[16rem] ">
                 <Image
-                    src={
-                        image
-                            ? `${process.env.NEXT_PUBLIC_API_URL}${image}`
-                            : "/assets/globals/fallback.jpg"
-                    }
+                    src={image}
                     width={1000}
                     height={1000}
                     alt="Image"

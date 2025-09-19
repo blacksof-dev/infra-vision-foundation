@@ -52,12 +52,12 @@ export default function Newsletters() {
 
   //Cards API Call
   const { data: cards } = useApiHook<cardApiResponse>({
-    url: "/archives/newsletter?page=1&limit=10",
-    cacheKey: "archive-cards",
+    url: "/archives/newsletter?page=1&limit=3",
+    cacheKey: "archive-newsletter-cards",
   });
 
 
-  console.log(cards)
+
 
   const response = cards?.data ?? [];
  
@@ -125,7 +125,7 @@ export default function Newsletters() {
   );
 
 
-  if (!content || !year) { return null }
+  if (!content || !year || !cards) { return null }
 
   return (
     <section id="newsletters">
@@ -186,7 +186,7 @@ export default function Newsletters() {
                   <NewsCard
                     date={card.publishedDate}
                     title={card.title}
-                    image="/assets/archive/newsletter/latest1.png"
+                    image={card.coverImage}
                     link={card.fileUrl}
                     category={card.version}
                     description={card.subtitle}

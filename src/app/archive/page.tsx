@@ -37,7 +37,7 @@ export default function Archive() {
         <Video />
       </div>
       <div id="gallery" ref={sectionRefs.gallery}>
-        {/* <Gallery /> */}
+        <Gallery />
       </div>
     </>
   );

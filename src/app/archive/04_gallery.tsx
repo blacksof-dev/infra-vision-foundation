@@ -1,13 +1,15 @@
 "use client";
-import { useEffect, useState, useMemo, useRef } from "react";
-
+import { useState, useMemo, useRef } from "react";
 import Image from "next/image";
-import { NewsCard } from "@/_components/molecules/newsCard";
 import { Portal } from "@radix-ui/react-select";
 import { MoveLeft, MoveRight, X } from "lucide-react";
-import { BlobOptions } from "buffer";
+import { useApiHook } from "@/lib/useApi";
+import { ApiResponse } from "../_home/01_banner";
 
-// Gallery image data with random year and event type
+
+
+
+
 const galleryImages = [
   {
     image: "assets/archive/gallery/image1.png",
@@ -20,7 +22,7 @@ const galleryImages = [
     image: "assets/archive/gallery/image6.png",
     year: 2025,
     event: "Annual Get-together 2025",
-    description:"The Infravision Foundation CEO Jagan Shah, delivering the welcome address.",
+    description: "The Infravision Foundation CEO Jagan Shah, delivering the welcome address.",
   },
   {
     image: "assets/archive/gallery/image11.png",
@@ -33,13 +35,13 @@ const galleryImages = [
     image: "assets/archive/gallery/image2.png",
     year: 2024,
     event: "Infrashakti Awards",
-    description:" Hon'ble Union Minister Mr Nitin Gadkari presenting the Transport Trailblazer Award to Mr Giridhar Rajagopalan, Deputy Managing Director at AFCONS Infrastructure Limited.",
+    description: " Hon'ble Union Minister Mr Nitin Gadkari presenting the Transport Trailblazer Award to Mr Giridhar Rajagopalan, Deputy Managing Director at AFCONS Infrastructure Limited.",
   },
   {
     image: "assets/archive/gallery/image7.png",
     year: 2025,
     event: "Annual Get-together 2025",
-    description:"The Infravision community at the Foundation’s annual get-together.",
+    description: "The Infravision community at the Foundation’s annual get-together.",
   },
   {
     image: "assets/archive/gallery/new1.png",
@@ -59,7 +61,7 @@ const galleryImages = [
     image: "assets/archive/gallery/image8.png",
     year: 2025,
     event: "Annual Get-together 2025",
-    description:"The Infravision community at the Foundation’s annual get-together.",
+    description: "The Infravision community at the Foundation’s annual get-together.",
   },
 
   {
@@ -110,7 +112,7 @@ const galleryImages = [
     description: "JCB CEO Deepak Shetty, The Infravision Foundation Founder and Managing Trustee Vinayak Chatterjee, IRDAI Chairman Debasish Panda, and Bajaj Allianz CEO Tapan Singhel at a roundtable on Surety Bonds organised by CII.",
   },
 
-    {
+  {
     image: "assets/archive/gallery/image16.jpg",
     year: 2025,
     event: "TIF Meetings",
@@ -118,7 +120,7 @@ const galleryImages = [
   },
 
 
-    {
+  {
     image: "assets/archive/gallery/image17.jpg",
     year: 2025,
     event: "TIF Meetings",
@@ -126,15 +128,17 @@ const galleryImages = [
   },
   {
     image: "assets/archive/gallery/image18.jpeg",
-    year: 2025  ,
+    year: 2025,
     event: "TIF Meetings",
     description: "Prof G. Raghuram in conversation with the media on the sidelines of the roundtable.",
   },
-    
+
 ];
 
-// Types
+
+
 type FilterType = "All" | "Year" | "Event";
+
 type EventType =
   | "All"
   | "Infrashakti Awards"
@@ -142,52 +146,50 @@ type EventType =
   | "Annual Get-together 2025"
   | "TIF Meetings";
 
-interface NewsletterCard {
-  id: number;
-  img: any; // Consider using a more specific type for images
-  category: string;
-  title: string;
-  event: EventType;
-  date: string;
-  description: string;
-  link: string;
-}
+
 
 // Constants
 const FILTER_TYPES: FilterType[] = ["All", "Year", "Event"];
-const YEARS = [2023, 2024, 2025 ] as const;
+
+const YEARS = [2023, 2024, 2025] as const;
+
 const SECTORS: EventType[] = [
   "All",
- "Infrashakti Awards",
+  "Infrashakti Awards",
   "Infrapandit Awards",
   "Annual Get-together 2025",
   "TIF Meetings",
 ];
-// const INITIAL_VISIBLE_COUNT = 19;
+
 
 export default function Gallery() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectedTab, setSelectedTab] = useState<FilterType>("All");
-  // Default filter: if Year tab, default to 2025, else All
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
-  // const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+//Content API Call
+  const { data: content } = useApiHook<ApiResponse>({
+    url: "/content/archive-gallery-content",
+    cacheKey: "archive-gallery-content",
+  });
+
+
   const scrollToCenter = (index: number) => {
     const tab = tabRefs.current[index];
     const container = containerRef.current;
 
     if (tab && container) {
-      // const containerRect = container.getBoundingClientRect();
-      // const tabRect = tab.getBoundingClientRect();
+
       const offset =
         tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
       container.scrollTo({ left: offset, behavior: "smooth" });
     }
   };
 
-  // Filtering logic
+
   const filteredImages = useMemo(() => {
     if (selectedTab === "Year" && selectedFilter !== "All") {
       return galleryImages.filter(
@@ -200,7 +202,8 @@ export default function Gallery() {
     return galleryImages;
   }, [selectedTab, selectedFilter]);
 
-  // Tab click handler
+
+
   const handleTabClick = (tab: FilterType) => {
     setSelectedTab(tab);
     if (tab === "Year") {
@@ -208,13 +211,13 @@ export default function Gallery() {
     } else {
       setSelectedFilter("All");
     }
-    // setVisibleCount(INITIAL_VISIBLE_COUNT);
+
   };
 
-  // Filter button click handler
+
   const handleFilterClick = (filter: string, index: number) => {
     setSelectedFilter(filter);
-    // setVisibleCount(INITIAL_VISIBLE_COUNT);
+
     scrollToCenter(index);
   };
 
@@ -223,7 +226,7 @@ export default function Gallery() {
     setIsOpen(true);
   };
 
-  // Render filter buttons for Year or Event
+
   const renderFilterButtons = (filters: readonly string[]) => (
     <div ref={containerRef} className="pt-5 overflow-scroll no-scrollbar">
       <div className="flex  gap-3">
@@ -233,11 +236,10 @@ export default function Gallery() {
             ref={(el: HTMLButtonElement | null) => {
               tabRefs.current[index] = el;
             }}
-            className={`text-base cursor-pointer text-nowrap rounded-[50px] px-3 py-1 sm:px-6 sm:py-3 ${
-              selectedFilter === filter.toString()
+            className={`text-base cursor-pointer text-nowrap rounded-[50px] px-3 py-1 sm:px-6 sm:py-3 ${selectedFilter === filter.toString()
                 ? "border border-pink text-white bg-pink font-medium"
                 : "border border-lightgray/30"
-            }`}
+              }`}
             onClick={() => handleFilterClick(filter.toString(), index)}
           >
             {filter}
@@ -247,25 +249,24 @@ export default function Gallery() {
     </div>
   );
 
+
+   if(!content){return null}
+
   return (
     <section id="gallery" className="bg-whitesmoke">
       <div className="w-container blade-top-padding-sm blade-bottom-padding-sm">
-        {/* Header Section */}
+
+
         <div className="flex flex-row items-center gap-2 md:gap-3">
           <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
-          <h5 className="font-medium text-pink">Gallery</h5>
+          <h5 className="font-medium text-pink">{content.tagName}</h5>
         </div>
 
         <div className="py-3 mb-4">
-          <h1 className="text-black font-light">
-          
-            <span className="text-black font-medium">
-           Images of {' '}
-            </span>
-             impact
-          </h1>
+          <h1 className="text-black font-light" dangerouslySetInnerHTML={{__html:content.title}}/>
         </div>
-        {/* Filter Bar */}
+
+
         <div className="flex flex-col sm:flex-row gap-6 border-b border-darkgray/20">
           <div className="sm:border-r sm:border-darkgray/20">
             <h5 className="text-darkgray/80 sm:py-5 pr-5 text-nowrap">
@@ -276,11 +277,10 @@ export default function Gallery() {
             {FILTER_TYPES.map((tab) => (
               <button
                 key={tab}
-                className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4 ${
-                  selectedTab === tab
+                className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4 ${selectedTab === tab
                     ? "border border-pink text-pink font-medium"
                     : "border border-lightgray/30"
-                }`}
+                  }`}
                 onClick={() => handleTabClick(tab)}
               >
                 {tab}
@@ -288,10 +288,17 @@ export default function Gallery() {
             ))}
           </div>
         </div>
-        {/* Conditional filter buttons for Year or Event */}
+
+
+
+
         {selectedTab === "Year" && renderFilterButtons(YEARS.map(String))}
         {selectedTab === "Event" && renderFilterButtons(SECTORS)}
-        {/* Gallery Grid */}
+
+
+
+
+
         <div className="pt-8">
           {filteredImages.length === 0 && (
             <div className="flex justify-center"> No results </div>
@@ -358,6 +365,7 @@ export default function Gallery() {
             </Portal>
           )}
         </div>
+
       </div>
     </section>
   );

@@ -50,11 +50,11 @@ export default function NewsAndMedia() {
   //Cards API Call
   const { data: cards } = useApiHook<CardApiResponse>({
     url: "/archives/media-coverage?page=1&limit=3",
-    cacheKey: "archive-cards",
+    cacheKey: "archive-newsMedia-cards",
   });
 
 
-  const response = cards?.data ?? [];
+ const response = cards?.data ?? [];
 
 
 
@@ -69,7 +69,7 @@ export default function NewsAndMedia() {
     }
   };
 
-
+ 
 
   const handleTabClick = (tab: FilterType) => {
     setSelectedTab(tab);
@@ -86,14 +86,14 @@ export default function NewsAndMedia() {
   };
 
   const filteredCards = useMemo(() => {
-    if (selectedTab === "Publication year") {
+    if (selectedTab === "Publication year" && selectedFilter!="All") {
       return response.filter(
         (card: any) =>
-          new Date(card.publishedDate).getFullYear().toString() === selectedFilter
+          new Date(card.date).getFullYear() === Number(selectedFilter)
       );
     }
-    return response;
-  }, [selectedTab, selectedFilter]);
+     return response.slice(0, 3);
+  }, [selectedTab, selectedFilter,response]);
 
 
 
@@ -172,19 +172,19 @@ export default function NewsAndMedia() {
             className={`${selectedTab === "Publication year" ? "pt-8" : "pt-8"
               }`}
           >
-            {filteredCards.length === 0 && (
+         {filteredCards.length === 0 && (
               <div className="flex justify-center"> No results </div>
-            )}
+            )} 
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 xlg:gap-24">
-              {filteredCards.slice(0,).map((card: any) => (
+             {filteredCards.slice(0,).map((card: any) => (
                 <div key={card.id}>
                   <NewsCard
                     date={card.date}
                     title={card.title}
-                    image={card.img}
+                    image={card.coverImage}
                     link={card.link}
-                    category={card.category}
-                    description={card.description}
+                    category={card.subtitle}
+                    description={card.authoreName}
                     classes="line-clamp-3"
                     ctaType="read more"
                   />
