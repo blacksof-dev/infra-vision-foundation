@@ -22,11 +22,12 @@ export default function Banner({
           <div className={`w-full relative h-[25rem] md:h-[36rem]  xl:h-[40rem] bg-black ${mobileImg ? "md:block hidden" : ""}`}>
             <Image
               fill
-              src={desktopImg??"/assets/globals/fallback.jpg"}
+              src={desktopImg ?? "/assets/globals/fallback.jpg"}
               alt="Publication Banner"
               className="w-full h-full object-cover   2xl:object-bottom"
               unoptimized={false}
               priority
+              sizes="100vw"
             ></Image>
           </div>
           { mobileImg && (

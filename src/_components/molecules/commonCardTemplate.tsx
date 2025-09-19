@@ -64,7 +64,7 @@ export default function LinkedinCard() {
                     className="relative  lg:block hidden cursor-pointer"
                   >
                     <Image
-                      src={ele.image}
+                      src={ele.image ?? "/assets/globals/fallback.jpg"}
                       alt={ele.title}
                       className="w-full h-full"
                     />
@@ -73,7 +73,7 @@ export default function LinkedinCard() {
 
                 <div   onClick={() => handleVideoClick(ele.link)}  className="lg:hidden block cursor-pointer">
                   <Image
-                    src={ele.mobileImg}
+                    src={ele.mobileImg ?? "/assets/globals/fallback.jpg"}
                     alt={ele.title}
                     className="w-full h-full"
                   />

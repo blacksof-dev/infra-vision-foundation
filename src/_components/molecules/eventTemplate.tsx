@@ -27,7 +27,7 @@ export default function EventTemplate() {
       <div className="relative  bg-white  rounded-lg  mt-8  flex flex-col sm:flex-row items-cente sm:gap-4 md:gap-7 xl:gap-10 min-h-[22rem] lg:min-h-[25rem] overflow-hidden">
         <div className="w-full h-auto sm:w-[40%] lg:w-[38%]  sm:p-5 ">
           <Image
-            src={montek}
+            src={montek ?? "/assets/globals/fallback.jpg"}
             alt="Mr Montek Singh Ahluwalia"
             className="rounded-lg w-full h-full object-cover"
           />

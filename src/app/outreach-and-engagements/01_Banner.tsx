@@ -1,18 +1,28 @@
-import bannerBg from "@/../public/assets/outreach-and-engagements/bannerBg.png";
-import mobileBanner from "@/../public/assets/outreach-and-engagements/mobileBanner.png";
+"use client";
 import Banner from "@/_components/molecules/banner";
+import { useApiHook } from "@/lib/useApi";
+import { ApiResponse } from "../_home/01_banner";
 
 export default function OutreachBanner() {
+    const { data } = useApiHook<ApiResponse>({
+      url: "/content/outReach-engagement-banner-content",
+      cacheKey: "outReach-engagement-banner-content",
+    });
+  
+    if (!data) return null;
+  
+    const response = data;
+
+ 
   return (
     <>
       <Banner
         id="outreactAndEngagement"
-        image={bannerBg}
-        mobileimage={mobileBanner}
-        // buttonText="Get notified"
-        heading="Outreach and Engagements"
-        title="Outreach and Engagements"
-        subdesc="Join the infrastructure discourse, champion ideas, and refine insights into India's transforming economy."
+         desktopImg={response.desktopImg}
+        mobileImg={response.mobileImg}
+        tagName={response. tagName}
+        title={response.title}
+        description={response.description}
       />
     </>
   )

@@ -15,7 +15,7 @@ export default function MemberCard ({ image, title, desig, link, socialMedia }: 
     <div className="flex relative flex-col w-[19rem] h-[19rem] group-first">
       <Image
         fill
-        src={image}
+        src={image ?? "/assets/globals/fallback.jpg"}
         alt={title}
         className="w-full h-full object-cover rounded"
       />
