@@ -183,7 +183,7 @@ export default function Blogs() {
       );
     }
     if (selectedTab === "Sectors" && selectedFilter !== "All") {
-      return allcards.filter((card) => card.sectors === selectedFilter);
+      return allcards.filter((card) => card.category === selectedFilter);
     }
     return allcards;
   }, [selectedTab, selectedFilter]);
