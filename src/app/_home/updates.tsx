@@ -10,7 +10,7 @@ import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import img_12 from "@/../public/assets/outreach-and-engagements/eventImages/august18_2025_Img4.jpeg"
 import Link from "next/link";
 import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg"
-import img_16 from "@/../public/assets/archive/newsAndMedia/hyderbad.webp"
+import img_16 from "@/../public/assets/knowledeg/researchPapers/02.jpg"
 import img2 from "@/../public/assets/knowledeg/conversations/02.png";
 import img10 from "@/../public/assets/knowledeg/conversations/10.png";
 import img_17 from "@/../public/assets/knowledeg/researchPapers/14.png";
@@ -153,28 +153,14 @@ export default function Updates() {
 }
 
 const EventsDetails = [
+
   {
 
     image: img_16,
     category: "News",
-    title: "Hyderabad's FSI deregulation:  A missed opportunity",
+    title: "Next game changer: High-speed rail",
     btnTitle: "Read more",
-    link: "/assets/pdf/hyderabad-fSI-deregulation.pdf",
-  },
-  {
-    image: img_17,
-    category: "Research Report",
-    title: "Impact of FSI Deregulation in Hyderabad",
-    btnTitle: "Read more",
-    link: "/assets/pdf/report-fsi-deregulation-in-hyderabad.pdf",
-  },
-  {
-
-    image: img_16,
-    category: "News",
-    title: "Cold Rooms in Local Markets: Securing Farmers, Delivering Nutrition",
-    btnTitle: "Read more",
-    link: "/assets/pdf/vrinda-singh-priyanka-bains.pdf",
+    link: "/assets/pdf/speedRail.jpg",
   },
   {
     image: img_15,
@@ -184,13 +170,24 @@ const EventsDetails = [
     link: "/blogs/how-to-make-india-highways-safe",
   },
 
-  {
-    image: img_12,
-    category: "Event",
-    title: "HSR will be the next growth multiplier",
-    btnTitle: "See details",
-    link: "/outreach-and-engagements",
+    {
+      
+    image: img10,
+    category: "Video",
+    title: "Why Smaller Cities can become Growth Hubs",
+    btnTitle: "Watch video",
+    link: "https://www.youtube.com/embed/ZGIjUOfs91U?si=-iX4ss69vegjRpoQ",
+
   },
+  {
+    image: img_17,
+    category: "Research Report",
+    title: "Impact of FSI Deregulation in Hyderabad",
+    btnTitle: "Read more",
+    link: "/assets/pdf/report-fsi-deregulation-in-hyderabad.pdf",
+  },
+ 
+
 
   {
     image: img2,
@@ -200,16 +197,8 @@ const EventsDetails = [
     link: "https://www.youtube.com/embed/NJ0V0G7eZwE?si=Mp_0ul6iDz5QtJN4",
 
   },
-  {
-    image: img10,
-    category: "Video",
-    title: "Why Smaller Cities can become Growth Hubs",
-    btnTitle: "Watch video",
-    link: "https://www.youtube.com/embed/ZGIjUOfs91U?si=-iX4ss69vegjRpoQ",
 
-  },
-
-
+  
 
 ];
 

@@ -10,64 +10,67 @@ import { useHeader } from "@/context/useHeader";
 import Link from "next/link"
 
 const newsletters = [
-   {
+    {
+      id: 28,
+    img: "/assets/archive/newsletter/crunching.png",
+    category: "Volume 28",
+    title: "Crunching Data,Analysing Information",
+    sectors: "",
+     date: "September 2025",
+    link: "/assets/pdf/crunchingData.pdf",
+  },
+  {
+    id: 27,
+    img: "/assets/archive/newsletter/agustNewsletter.png",
+    category: "Volume 27",
+    title: "TIF reaches out to stakeholders",
+    sectors: "",
+    date: "August 2025",
+    link: "/assets/pdf/augustNewsletter.pdf",
+  },
+  {
     id: 25,
     img: "/assets/archive/newsletter/latest1.png",
     category: "Volume 26",
-    title: "Do you want to be an Infrapandit? ",
+    title: "Do you want to be an Infrapandit?",
+    sectors: "",
     date: "July 2025",
+
     link: "/assets/pdf/july.pdf",
   },
-   {
-    id: 26,
-    img: "/assets/archive/newsletter/latest2.png",
-    category: "Volume 25",
-    title: "Transforming Cities into Frontiers for Economic Growth",
-    date: "June 2025",
-    link: "/assets/pdf/june2025.pdf",
-  },
-
-  {
-    id: 1,
-    img: "/assets/archive/newsletter/newsletter1.png",
-    category: "Volume 24",
-    title: "Making change happen",
-    date: "May 2025",
-    link: "/assets/pdf/letter1.pdf",
-  },
- 
+  
 ];
 
 const news = [
+    {
+    id:55,
+    img: "/assets/knowledeg/researchPapers/02.jpg",
+    category: "News",
+    title: "Next game changer: High-speed rail",
+    date: "Sepetember 19, 2025",
+    subtitle: "Next game changer: High-speed rail",
+    link: "/assets/pdf/speedRail.jpg",
+  },
   {
-    id:50,
-    img: "/assets/archive/newsAndMedia/coal.jpg",
+    id:54,
+    img: "/assets/archive/newsAndMedia/vrinda.png",
     category: "News",
-    title: "Coal, Clean, Air and  a Welcome Resolution",
-    date: "July 18,2025",
-    subtitle: "Vinayak Chatterjee",
-    link: "/assets/pdf/coalClean.pdf",
+    title: "Cold Rooms in Local Markets: Securing Farmers, Delivering Nutrition",
+    date: "August 9, 2025",
+    subtitle: "Vrinda Singh and Priyanka Bains",
+    link: "/assets/pdf/vrinda-singh-priyanka-bains.pdf",
   },
- {
-    id:49,
-    img: "/assets/archive/newsAndMedia/ropeway.jpg",
+  {
+    id:53,
+    img: "/assets/archive/newsAndMedia/hyderbad.webp",
     category: "News",
-    title: "Long haul:A national ropeway policy would aid urban mobility",
-    
-    date: "July 18, 2025",
-    subtitle: "Kaveree Bamzai",
-    link: "/assets/archive/newsAndMedia/kaveeryMamRopways.jpeg",
-  },
+    title: "Hyderabad's FSI deregulation:  A missed opportunity",
+    date: "August 9, 2025",
+    subtitle: "Dr. Mutum Chaobisana",
+    link: "/assets/pdf/hyderabad-fSI-deregulation.pdf",
+  }
+  
 
-   {
-    id:48,
-    img: "/assets/archive/newsAndMedia/planning.jpeg",
-    category: "News",
-    title: "Why India needs a National Plan for building new cities",   
-    date: "May 26, 2025",
-    subtitle: "Jagan Shah",
-    link: "/assets/pdf/nationPlan.jpeg",
-  },
 ];
 
 export default function Highlights() {

@@ -44,10 +44,20 @@ const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
   {
+    id:55,
+    img: "/assets/knowledeg/researchPapers/02.jpg",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "Sepetember 19, 2025",
+    description: "Next game changer: High-speed rail",
+    link: "/assets/pdf/speedRail.jpg",
+  },
+  {
     id:54,
     img: "/assets/archive/newsAndMedia/vrinda.png",
     category: "News",
-    title: "Vrinda Singh and Priyanka Bains, Research Associates, The Infravision Foundation",
+    title: "Vrinda Singh and Priyanka Bains",
     sectors: "",
     date: "August 9, 2025",
     description: "Cold Rooms in Local Markets: Securing Farmers, Delivering Nutrition",

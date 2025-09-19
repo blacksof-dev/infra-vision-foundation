@@ -1,14 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import montek from "@/../public/assets/home/infrapanditAward.webp";
+import montek from "@/../public/assets/outreach-and-engagements/eventImages/august18_2025_Img4.jpeg"
 import { BorderGrayHeroBtn } from "@/_components/atoms/buttons";
 
 export default function InfrapanditAward({ ctaText = "See details", link = "/infrapandit-awards" }: { ctaText?: string, link?: string }) {
   return (
     <>
       <div className="relative  bg-white  rounded-lg   flex flex-col sm:flex-row items-cente sm:gap-4 md:gap-7 xl:gap-10 min-h-[22rem] lg:min-h-[25rem] overflow-hidden">
-        <div className="w-full h-auto sm:w-[45%] lg:w-[38%]  sm:p-5 ">
+        <div className="w-full h-[12rem] md:h-[25rem] sm:w-[45%] lg:w-[38%]  sm:p-5 ">
           <Image
             src={montek}
             alt="Mr Montek Singh Ahluwalia"
@@ -17,16 +17,16 @@ export default function InfrapanditAward({ ctaText = "See details", link = "/inf
         </div>
         <div className=" px-3 py-6 xl:py-0 w-full sm:w-1/2 flex flex-col justify-center ">
           <h2 className="text-pink font-semibold lg:text-[42px]">
-            InfraPandit Awards
+           External engagement
           </h2>
 
           <div className="max-w-sm sm:pt-2 xlg:pt-6">
             <h2 className="font-medium pt-2 lg:pt-4 xl:pt-6">
-              Nurturing the Next Generation of Infra Talent and Ideas
+             HSR will be the next growth multiplier
             </h2>
 
             <div className=" mt-2 sm:mt-4">
-              <h4 className=" text-pink">Mumbai, June 20, 2025</h4>
+              <h4 className=" text-pink">August 18, 2025</h4>
               <div className="cursor-pointer mt-6">
                 <BorderGrayHeroBtn
                   text={ctaText}
