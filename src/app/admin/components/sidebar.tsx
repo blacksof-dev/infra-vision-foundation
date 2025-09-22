@@ -15,7 +15,6 @@ interface NavItemType {
 const navItems: NavItemType[] = [
   { label: "Home", href: "/admin/home" },
   // { label: "Infrakatha", href: "/admin/infrakatha" },
-  { label: "Get Involved", href: "/admin/get-involved" },
   { label: "Knowledge", href: "/admin/knowledge" },
   { label: "Archive", href: "/admin/archive" },
   // { label: "Infrapandit Awards", href: "/admin/infrapandit-awards" },
@@ -25,6 +24,7 @@ const navItems: NavItemType[] = [
     href: "/admin/outreach-and-engagements",
   },
   // { label: "Infrashakti Awards", href: "/admin/infrashakti-awards" },
+  { label: "Get Involved", href: "/admin/get-involved" },
   { label: "Newsletters", href: "/admin/newsletter" },
 ];
 

@@ -12,9 +12,9 @@ import { X } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { getData, updateContent, uploadImage } from "../../lib/utils";
 import { toast } from "react-toastify";
+import Link from "next/link";
 
 interface GetInvolvedDefaultValueType {
-  label: string;
   heading: string;
   description: string;
   ctaText: string;
@@ -28,37 +28,40 @@ interface FormStateType {
   intialValue: GetInvolvedDefaultValueType;
 }
 
-export default function GetInvolved() {
+export default function GetInvolvedBanner() {
   const { data: session } = useSession();
   const [formState, setFormState] = useState<FormStateType>({
     isFormOpen: false,
     intialValue: {
-      label: "",
-      heading: "",
-      description: "",
-      ctaText: "",
-      ctaLink: "",
+      heading: "Get Involved",
+      description:
+        "Join our community, ask questions, or participate in building a resilient India.",
+      ctaText: "Apply now",
+      ctaLink: "https://www.example.com",
       backgroundImageDesktop: "",
       backgroundImageMobile: "",
     },
   });
 
+  async function fetch() {
+    const data = await getData(
+      "/content/get-involved-banner-section",
+      session
+    );
+    setFormState((val) => {
+      return { ...val, intialValue: data };
+    });
+    console.log(data);
+  }
   useEffect(() => {
-    async function fetch() {
-      const data = await getData("/content/get-involved", session);
-      setFormState((val) => {
-        return { ...val, intialValue: data };
-      });
-      console.log(data);
-    }
     fetch();
   }, []);
+
   return (
-    <section className="blade-top-margin">
+    <>
       <div>
         <SectionHeading
-          heading="Section - 05 (Get Involved)"
-          //   description="Banner"
+          heading="Section - 01 (Banner)"
           ctaText="Update"
           cta={true}
           handleClick={() =>
@@ -74,6 +77,7 @@ export default function GetInvolved() {
       {formState.isFormOpen && (
         <GetInvolvedForm
           initalData={formState.intialValue}
+          fetchData={fetch}
           onClose={() =>
             setFormState((val) => {
               return { ...val, isFormOpen: false };
@@ -81,12 +85,11 @@ export default function GetInvolved() {
           }
         />
       )}
-    </section>
+    </>
   );
 }
 
 const getInvolvedSchema = z.object({
-  label: generalSchema("Label is required"),
   heading: generalSchema("Heading is required"),
   description: generalSchema("Description is required"),
   ctaText: generalSchema("CTA text is required"),
@@ -95,23 +98,15 @@ const getInvolvedSchema = z.object({
   backgroundImageMobile: fileSchema,
 });
 
-const getInvolvedDefaultValue = {
-  label: "",
-  heading: "",
-  description: "",
-  ctaText: "",
-  ctaLink: "",
-  backgroundImageDesktop: "",
-  backgroundImageMobile: "",
-};
-
 type GetInvolvedFormValues = z.infer<typeof getInvolvedSchema>;
 
 function GetInvolvedForm({
   initalData,
+  fetchData,
   onClose,
 }: {
   initalData: GetInvolvedDefaultValueType;
+  fetchData: () => void;
   onClose: () => void;
 }) {
   const { data: session } = useSession();
@@ -132,7 +127,7 @@ function GetInvolvedForm({
     try {
       setIsLoading(true);
 
-      // Determine Desktop Image URL: reuse existing string or upload new file
+      // Handle Desktop Image
       let desktopImageUrl: string | null = null;
       const desktopValue = data.backgroundImageDesktop as unknown;
       if (typeof desktopValue === "string" && desktopValue.trim().length > 0) {
@@ -159,7 +154,7 @@ function GetInvolvedForm({
         return;
       }
 
-      // Determine Mobile Image URL: reuse existing string or upload new file
+      // Handle Mobile Image
       let mobileImageUrl: string | null = null;
       const mobileValue = data.backgroundImageMobile as unknown;
       if (typeof mobileValue === "string" && mobileValue.trim().length > 0) {
@@ -186,18 +181,23 @@ function GetInvolvedForm({
         return;
       }
 
-      // Now update content with the correct image URLs
-      const result = await updateContent("/content/get-involved", session, {
-        label: data.label,
-        heading: data.heading,
-        description: data.description,
-        ctaText: data.ctaText,
-        ctaLink: data.ctaLink,
-        backgroundImageDesktop: desktopImageUrl as string,
-        backgroundImageMobile: mobileImageUrl as string,
-      });
+      // Update content
+      const result = await updateContent(
+        "/content/get-involved-banner-section",
+        session,
+        {
+          heading: data.heading,
+          description: data.description,
+          ctaText: data.ctaText,
+          ctaLink: data.ctaLink,
+          backgroundImageDesktop: desktopImageUrl as string,
+          backgroundImageMobile: mobileImageUrl as string,
+        }
+      );
 
-      if (result.success) {
+      if (result.success) { 
+        onClose();
+        fetchData();
         toast.success("Content updated successfully");
       } else {
         toast.error(result.errorMessage);
@@ -209,11 +209,12 @@ function GetInvolvedForm({
       setIsLoading(false);
     }
   };
+
   return (
     <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center ">
-      <div className="w-[27rem] relative  blade-top-padding-s bg-white   rounded-md shadow-2xl h-auto max-h-[80vh] overflow-auto overflow-x-hidden">
+      <div className="w-[27rem] relative bg-white rounded-md shadow-2xl h-auto max-h-[80vh] overflow-auto overflow-x-hidden">
         <form className="h-full" onSubmit={handleSubmit(submitHandler)}>
-          <div className="  flex justify-end sticky top-2 px-1 z-[999]   ">
+          <div className="flex justify-end sticky top-2 px-1 z-[999]">
             <button
               type="button"
               aria-label="close modal"
@@ -225,14 +226,6 @@ function GetInvolvedForm({
           </div>
           <div className="flex flex-col gap-y-8 h-full p-8 pt-1">
             <div className="flex flex-col gap-y-4">
-              <TextInput
-                label="Label"
-                errors={errors.label}
-                placeholder="Enter label"
-                register={register}
-                registerer="label"
-                tooltip="Label is required"
-              />
               <TextInput
                 label="Heading"
                 errors={errors.heading}
@@ -247,7 +240,7 @@ function GetInvolvedForm({
                 placeholder="Enter description"
                 register={register}
                 registerer="description"
-                tooltip="description is required"
+                tooltip="Description is required"
               />
               <TextInput
                 label="CTA Text"
@@ -274,7 +267,6 @@ function GetInvolvedForm({
                 accept=".svg, .png, .jpg, .jpeg, .webp"
                 tooltip="Extensions: .png/.jpg/.jpeg/.webp <br/> Image size - 1920x1130"
               />
-
               <ImagePicker
                 label="Background Image (Mobile)"
                 errors={errors.backgroundImageMobile}
@@ -282,10 +274,10 @@ function GetInvolvedForm({
                 registerer="backgroundImageMobile"
                 watcher={watch("backgroundImageMobile")}
                 accept=".svg, .png, .jpg, .jpeg, .webp"
-                tooltip="Extensions: /.png/.jpg/.jpeg/.webp <br/> Image size - 390x690"
+                tooltip="Extensions: .png/.jpg/.jpeg/.webp <br/> Image size - 390x690"
               />
             </div>
-            <div className="mt-auto ">
+            <div className="mt-auto">
               <Button
                 type="submit"
                 theme="pink"
@@ -307,21 +299,19 @@ function GetInvolvedCard({ data }: { data: GetInvolvedDefaultValueType }) {
   const {
     backgroundImageDesktop,
     backgroundImageMobile,
-    label,
     heading,
     description,
     ctaText,
     ctaLink,
   } = data;
+
   return (
     <article className="h-full border border-gray p-4 rounded-md mt-6 w-fit">
       <div className="flex gap-10">
-        <div className="rounded-md overflow-hidden relative  w-lg  border border-gray/20">
+        <div className="rounded-md overflow-hidden relative w-lg border border-gray/20">
           <img
             src={`${process.env.NEXT_PUBLIC_HOST_URL}${backgroundImageDesktop}`}
-            className="object-cover w-full h-full"
             alt="background cover for desktop"
-            aria-hidden
           />
         </div>
 
@@ -334,24 +324,19 @@ function GetInvolvedCard({ data }: { data: GetInvolvedDefaultValueType }) {
         </div>
       </div>
 
-      <div className="">
-        <div className="mt-6">
-          <h6 className="text-base">
-            <b>Label:</b> {label}
-          </h6>
-          <h6 className="text-base">
-            <b>Heading:</b> {heading}
-          </h6>
-          <h6 className="mt-1 text-base">
-            <b>description:</b> {description}
-          </h6>
-          <h6 className="mt-1 text-base">
-            <b>CTA Text:</b> {ctaText}
-          </h6>
-          <h6 className="mt-1 text-base">
-            <b>CTA Link:</b> {ctaLink}
-          </h6>
-        </div>
+      <div className="mt-6">
+        <h6 className="text-base">
+          <b>Heading:</b> {heading}
+        </h6>
+        <h6 className="mt-1 text-base">
+          <b>Description:</b> {description}
+        </h6>
+        <h6 className="mt-1 text-base">
+          <b>CTA Text:</b> {ctaText}
+        </h6>
+        <h6 className="mt-1 text-base">
+          <b>CTA Link:</b> <Link className="underline text-blue-500" href={ctaLink} target="_blank">Link</Link>
+        </h6>
       </div>
     </article>
   );

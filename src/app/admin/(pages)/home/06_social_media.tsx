@@ -48,7 +48,7 @@ export default function SocialMedia() {
   }, []);
   return (
     <>
-      <div className="mt-10">
+      <div className="blade-top-margin">
         <SectionHeading
           heading="Section - 06 (Social Media)"
           //   description="Banner"

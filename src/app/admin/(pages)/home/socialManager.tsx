@@ -175,7 +175,7 @@ export default function SocialProfilesManager() {
       </form>
 
       <div>
-        <div className="grid grid-cols-4 h-12 bg-gray/20 items-center px-4 border-b border-b-gray/30 text-sm font-medium">
+        <div className="grid grid-cols-[0.4fr_1fr_0.5fr_0.1fr] h-12 bg-gray/20 items-center px-4 border-b border-b-gray/30 text-sm font-medium">
           <div>Platform</div>
           <div>URL</div>
           <div>Status</div>
@@ -187,12 +187,12 @@ export default function SocialProfilesManager() {
           sortedProfiles.map((p) => (
             <div
               key={p.id}
-              className="grid grid-cols-4 items-center px-4 h-14 border-b border-b-gray/20 text-sm"
+              className="grid grid-cols-[0.4fr_1fr_0.5fr_0.1fr] items-center px-4 h-14 border-b border-b-gray/20 text-sm"
             >
               <div className="capitalize">{p.slug}</div>
-              <div className="truncate">
+              <div className="truncate max-w-sm">
                 <a
-                  className="text-pink underline"
+                  className="text-pink underline "
                   href={p.value}
                   target="_blank"
                   rel="noreferrer"

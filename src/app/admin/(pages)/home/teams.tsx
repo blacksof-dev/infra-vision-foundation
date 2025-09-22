@@ -61,9 +61,7 @@ export default function TeamsTrustees() {
     try {
       setIsLoadingList(true);
       const data = (await getData(
-        `/teams/trustees?page=${page}&limit=${limit}&search=${encodeURIComponent(
-          search
-        )}`,
+        `/teams/trustees`,
         session
       )) as TrusteesResponse;
       setFormState((s) => ({ ...s, items: data.trustees ?? [] }));
@@ -161,7 +159,7 @@ export default function TeamsTrustees() {
             </div>
             <div className="flex gap-2 mt-2">
               <Button
-                theme="transparentPink"
+                theme="pink"
                 size="base"
                 text="Edit"
                 onClick={() =>

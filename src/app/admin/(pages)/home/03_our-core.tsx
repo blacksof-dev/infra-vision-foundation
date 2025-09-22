@@ -47,7 +47,7 @@ export default function OurCore() {
   }, []);
   return (
     <>
-      <div className="mt-10">
+      <div className="blade-top-margin">
         <SectionHeading
           heading="Section - 03 (Our Core)"
           //   description="Banner"

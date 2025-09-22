@@ -31,25 +31,28 @@ interface FormStateType {
 
 export default function Association() {
   const { data: session } = useSession();
+    const [confirmOpen, setConfirmOpen] = useState<boolean>(false);
+    const [deletingId, setDeletingId] = useState<string>("");
   const [formState, setFormState] = useState<FormStateType>({
     isFormOpen: false,
     intialValue: [],
   });
 
-  useEffect(() => {
-    async function fetch() {
-      try {
-        const data = await getData(
-          "/homepage/associations?page=1&limit=100&search=%20",
-          session
-        );
-        setFormState((val) => {
-          return { ...val, intialValue: data?.data ?? [] };
-        });
-      } catch (e) {
-        toast.error("Failed to load associations");
-      }
+  async function fetch() {
+    try {
+      const data = await getData(
+        "/homepage/associations",
+        session
+      ); 
+      console.log(data)
+      setFormState((val) => {
+        return { ...val, intialValue: data?.data ?? [] };
+      });
+    } catch (e) {
+      toast.error("Failed to load associations");
     }
+  }
+  useEffect(() => {
     fetch();
   }, []);
 
@@ -66,6 +69,9 @@ export default function Association() {
       console.log(res);
       if (res.status === 200) {
         toast.success("Deleted successfully!");
+         setConfirmOpen(false);
+        setDeletingId("");
+        fetch();
       } else {
         toast.error("Something went wrong");
       }
@@ -75,7 +81,7 @@ export default function Association() {
   }
   return (
     <>
-      <div className="blade-top-padding">
+      <div className="blade-top-margin">
         <SectionHeading
           heading="Section -04 (Associations)"
           ctaText="Add New"
@@ -100,7 +106,7 @@ export default function Association() {
                 className="object-contain"
               />
             </div>
-            <div className="text-xs text-center " title={item.title}>
+            <div className="text- text-center mt-6 " title={item.title}>
               {item.title}
             </div>
             <div className="pt-4">
@@ -109,7 +115,10 @@ export default function Association() {
                 text="Delete"
                 size="base"
                 className="w-full"
-                onClick={() => deleteItem(item.id)}
+               onClick={() => {
+                  setDeletingId(item.id);
+                  setConfirmOpen(true);
+                }}
               />
             </div>
           </div>
@@ -139,6 +148,41 @@ export default function Association() {
           }
         />
       )}
+           {confirmOpen && (
+              <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center ">
+                <div className="w-[24rem] relative blade-top-padding-s bg-white rounded-md shadow-2xl h-auto max-h-[70vh] overflow-auto overflow-x-hidden p-6">
+                  <div className="flex justify-between items-center mb-4">
+                    <h6 className="text-base font-medium">Confirm deletion</h6>
+                    <button
+                      type="button"
+                      aria-label="close modal"
+                      className="rounded-full ring-1 scale-75 hover:scale-90 transition-all duration-300 cursor-pointer"
+                      onClick={() => setConfirmOpen(false)}
+                    >
+                      <X />
+                    </button>
+                  </div>
+                  <p className="text-sm text-darkgray/80">
+                    This action cannot be undone. Are you sure you want to delete this
+                    research paper?
+                  </p>
+                  <div className="mt-6 flex justify-end gap-3">
+                    <Button
+                      text="Cancel"
+                      theme="transparentGray"
+                      size="small"
+                      onClick={() => setConfirmOpen(false)}
+                    />
+                    <Button
+                      text="Delete"
+                      theme="pink"
+                      size="small"
+                      onClick={() => deletingId && deleteItem(deletingId)}
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
     </>
   );
 }
@@ -198,7 +242,7 @@ function AssociationForm({
           },
         }
       );
-      console.log(res);
+      console.log(res.data);
       toast.success("Created");
       await onSuccess();
     } catch (error) {

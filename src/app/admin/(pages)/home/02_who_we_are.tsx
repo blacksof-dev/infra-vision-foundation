@@ -47,7 +47,7 @@ export default function WhoWeAre() {
   }, []);
   return (
     <>
-      <div className="mt-10">
+      <div className="blade-top-margin">
         <SectionHeading
           heading="Section - 02 (Who-we-are) "
           //   description="Banner"
