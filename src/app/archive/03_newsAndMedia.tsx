@@ -27,8 +27,69 @@ interface CardApiResponse {
   data: cardApiResponse[];
 }
 
+const allcards = [
+  {
+    id:54,
+    img: "/assets/archive/newsAndMedia/vrinda.png",
+    category: "News",
+    title: "Vrinda Singh and Priyanka Bains, Research Associates, The Infravision Foundation",
+    sectors: "",
+    date: "August 9, 2025",
+    description: "Cold Rooms in Local Markets: Securing Farmers, Delivering Nutrition",
+    link: "/assets/pdf/vrinda-singh-priyanka-bains.pdf",
+  },
+  {
+    id:53,
+    img: "/assets/archive/newsAndMedia/hyderbad.webp",
+    category: "News",
+    title: "Dr. Mutum Chaobisana",
+    sectors: "",
+    date: "August 9, 2025",
+    description: "Hyderabad's FSI deregulation:  A missed opportunity",
+    link: "/assets/pdf/hyderabad-fSI-deregulation.pdf",
+  },
+   {
+    id:52,
+    img: "/assets/archive/newsAndMedia/womanEmpowerment.jpg",
+    category: "News",
+    title: "Rumjhum Chatterjee",
+    sectors: "",
+    date: "August 9, 2025",
+    description: "Empowering Women for Viksit Bharat 2047",
+    link: "/assets/pdf/empowering-women-for-viksit-bharat.pdf",
+  },
+    {
+    id:51,
+    img: "/assets/archive/newsAndMedia/urbanFund.png",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "August 20, 2025",
+    description: "Shaping the Urban Challenge Fund",
+    link: "/assets/pdf/shaping-the-urban-challenge-fund.pdf",
+  },
+   {
+    id:50,
+    img: "/assets/archive/newsAndMedia/coal.jpg",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "July 18,2025",
+    description: "Coal, Clean, Air and  a Welcome Resolution",
+    link: "/assets/pdf/coalClean.pdf",
+  },
+  {
+    id:49,
+    img: "/assets/archive/newsAndMedia/ropeway.jpg",
+    category: "News",
+    title: "Kaveree Bamzai",
+    sectors: "",
+    date: "July 18,2025",
+    description: "Long haul:A national ropeway policy would aid urban mobility",
+    link: "/assets/archive/newsAndMedia/kaveeryMamRopways.jpeg",
+  },
 
-
+]
 export default function NewsAndMedia() {
 
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);

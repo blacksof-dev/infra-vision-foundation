@@ -1,10 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import Footer from "@/_components/organism/footer";
-import Header from "@/_components/organism/header";
+
 import { HeaderProvider } from "@/context/useHeader";
 import Provider from "./queryProvider";
-import ErrorBoundary from "./errorBoundaries";
 
 export const metadata: Metadata = {
   title: "The Infravision Foundation",
@@ -23,13 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={` antialiased `}>
-        <Provider>
-          <HeaderProvider>
-            <Header />
-            <ErrorBoundary>{children}</ErrorBoundary>
-            <Footer />
-          </HeaderProvider>
-        </Provider>
+        <HeaderProvider>
+          {/* <Header /> */}
+          <Provider>{children}</Provider>
+          {/* <Footer /> */}
+        </HeaderProvider>
       </body>
     </html>
   );

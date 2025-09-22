@@ -1,13 +1,11 @@
-// next.config.js
-module.exports = {
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  /* config options here */
+  // experimental: {
+  //   turbo: false, // turn off Turbopack
+  // },
   images: {
-    remotePatterns: [
-      {
-        protocol: "http",
-        hostname: "142.93.215.57",
-        port: "4000",
-        pathname: "/**",
-      },
-    ],
+    domains: ["142.93.215.57"],
   },
 };
