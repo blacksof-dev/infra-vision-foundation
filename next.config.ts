@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   // experimental: {
   //   turbo: false, // turn off Turbopack
   // },
+  images: {
+    domains: ["142.93.215.57"],
+  },
 };
 
 export default nextConfig;
