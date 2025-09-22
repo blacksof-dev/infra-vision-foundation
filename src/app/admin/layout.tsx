@@ -1,14 +1,19 @@
 import React from "react";
-import Sidebar from "./components/sidebar";
-
-export default function layout({ children }: { children: React.ReactNode }) {
+import { getServerSession, NextAuthOptions } from "next-auth";
+import SessionWrapper from "./sessionWapper";
+import { authOptions } from "@/app/conf/auth";
+import { ToastContainer } from "react-toastify";
+import AdminShell from "./AdminShell";
+export default async function layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const session = await getServerSession(authOptions as NextAuthOptions);
   return (
-    <div className="flex ">
-      <div className="w-75 shrink-0">
-        <Sidebar />
-      </div>
-
-      <div className="w-full p-4 ">{children}</div>
-    </div>
+    <SessionWrapper session={session}>
+      <ToastContainer />
+      <AdminShell>{children}</AdminShell>
+    </SessionWrapper>
   );
 }

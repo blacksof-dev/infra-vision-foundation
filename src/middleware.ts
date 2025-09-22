@@ -8,7 +8,16 @@ export default withAuth(
 
     // 🛑 If user is logged in and tries to access /login
     if (pathname === "/login" && token) {
-      return NextResponse.redirect(new URL("/", req.url)); // or home
+      return NextResponse.redirect(new URL("/admin/admin-list", req.url)); // or home
+    }
+    if (pathname === "/admin" && token) {
+      return NextResponse.redirect(new URL("/admin/admin-list", req.url));
+    }
+    if (pathname === "/admin" && !token) {
+      return NextResponse.redirect(new URL("/admin/login", req.url));
+    }
+    if (pathname === "/admin/loing" && token) {
+      return NextResponse.redirect(new URL("/admin/admin-list", req.url));
     }
 
     return NextResponse.next();

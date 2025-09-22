@@ -112,9 +112,8 @@ export const authOptions = {
       return session;
     },
   },
-
   pages: {
-    signIn: "/login",
+    signIn: "/admin",
     error: "/login", // Redirect to login on error
   },
 };

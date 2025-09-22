@@ -57,7 +57,7 @@ export default function LoginInForm() {
       if (response?.ok) {
         toast.success("Logged in successfully!");
         reset();
-        router.back();
+        router.push("/admin/admin-list");
         return;
       } else {
         setError(
