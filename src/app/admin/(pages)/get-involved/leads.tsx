@@ -55,7 +55,7 @@ export default function Leads() {
   });
 
   // filters
-  const [filter, setFilter] = useState<"all" | "read" | "unread">("all");
+  const [filter, setFilter] = useState<"all" | "read" | "unread">("unread");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
 
   // popup state
@@ -64,6 +64,7 @@ export default function Leads() {
 
   async function fetchLeads() {
     try {
+
       const params = new URLSearchParams({
         page: String(pagination.page),
         limit: String(pagination.limit),
@@ -71,6 +72,7 @@ export default function Leads() {
         sortOrder,
       });
 
+      
       if (filter === "read") params.append("isRead", String(true));
       if (filter === "unread") params.append("isRead", String(false));
 
@@ -129,12 +131,12 @@ export default function Leads() {
 
       {/* Filters */}
       <div className="flex flex-wrap items-center gap-4 mb-4  mt-4">
-        <Button
+        {/* <Button
           text="All"
           size="small"
           theme={filter === "all" ? "pink" : "transparentGray"}
           onClick={() => setFilter("all")}
-        />
+        /> */}
         <Button
           text="Unread"
           size="small"
@@ -252,6 +254,7 @@ export default function Leads() {
                 {selectedLead.firstName} {selectedLead.lastName}
               </h6>
               <button
+                className="cursor-pointer rounded-full ring-1 p-1 scale-90 hover:scale-100 transition-all duration-300"
                 type="button"
                 aria-label="close modal"
                 onClick={() => setSelectedLead(null)}
@@ -277,7 +280,7 @@ export default function Leads() {
                 <a
                   href={selectedLead.links}
                   target="_blank"
-                  className="text-blue-500"
+                  className="text-blue-500 underline"
                 >
                   {selectedLead.links}
                 </a>
@@ -287,7 +290,7 @@ export default function Leads() {
               <p className="text-sm mb-2">
                 <strong>File:</strong>{" "}
                 <a
-                  href={selectedLead.fileUrl}
+                  href={process.env.NEXT_PUBLIC_HOST_URL+selectedLead.fileUrl}
                   target="_blank"
                   className="text-blue-500"
                 >

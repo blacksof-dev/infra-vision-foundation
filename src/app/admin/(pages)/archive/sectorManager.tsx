@@ -27,7 +27,6 @@ interface FormStateType {
   editItem: Sector | null;
   items: Sector[];
 }
- 
 
 const sectorSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -42,11 +41,11 @@ export default function SectorsManager() {
     editItem: null,
     items: [],
   });
-  const [isLoadingList, setIsLoadingList] = useState<boolean>(false); 
+  const [isLoadingList, setIsLoadingList] = useState<boolean>(false);
 
-    const [confirmOpen, setConfirmOpen] = useState<boolean>(false);
-    const [deletingId, setDeletingId] = useState<string>("");
-  
+  const [confirmOpen, setConfirmOpen] = useState<boolean>(false);
+  const [deletingId, setDeletingId] = useState<string>("");
+
   async function loadSectors() {
     try {
       setIsLoadingList(true);
@@ -88,11 +87,20 @@ export default function SectorsManager() {
 
   return (
     <section className="blade-top-padding">
-      <SectionHeading
-        heading="Section - 05 (Gallery)"
-         
-      />
-       <div className="py-3 mt-6 text-xl flex justify-between"><h4>All Tabs</h4><div><Button text="Add new tab" theme="pink" size="small" onClick={()=>setFormState((s) => ({ ...s, isFormOpen: true, editItem: null }))}/></div></div>
+      <SectionHeading heading="Section - 05 (Gallery)" />
+      <div className="py-3 mt-6 text-xl flex justify-between">
+        <h5>All Tabs</h5>
+        <div>
+          <Button
+            text="Add new tab"
+            theme="pink"
+            size="base"
+            onClick={() =>
+              setFormState((s) => ({ ...s, isFormOpen: true, editItem: null }))
+            }
+          />
+        </div>
+      </div>
       <div className=" grid gap-3">
         {formState.items.map((s) => (
           <article key={s.id} className="border border-gray/50 rounded-md p-4">
@@ -120,9 +128,9 @@ export default function SectorsManager() {
                   theme="transparentGray"
                   size="small"
                   onClick={() => {
-                  setDeletingId(s.id);
-                  setConfirmOpen(true);
-                }}
+                    setDeletingId(s.id);
+                    setConfirmOpen(true);
+                  }}
                 />
               </div>
             </div>
@@ -139,34 +147,33 @@ export default function SectorsManager() {
           }}
         />
       )}
-       {confirmOpen && (
-              <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center ">
-                <div className="w-[24rem] relative blade-top-padding-s bg-white rounded-md shadow-2xl h-auto max-h-[70vh] overflow-auto overflow-x-hidden p-6">
-                  <div className="flex justify-between items-center mb-4">
-                    <h6 className="text-base font-medium">Confirm deletion</h6>
-                    
-                  </div>
-                  <p className="text-sm text-darkgray/80">
-                    This action cannot be undone. Are you sure you want to delete this
-                   tab?
-                  </p>
-                  <div className="mt-6 flex justify-end gap-3">
-                    <Button
-                      text="Cancel"
-                      theme="transparentGray"
-                      size="small"
-                      onClick={() => setConfirmOpen(false)}
-                    />
-                    <Button
-                      text="Delete"
-                      theme="pink"
-                      size="small"
-                      onClick={() => deletingId && deleteSector(deletingId)}
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
+      {confirmOpen && (
+        <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center ">
+          <div className="w-[24rem] relative blade-top-padding-s bg-white rounded-md shadow-2xl h-auto max-h-[70vh] overflow-auto overflow-x-hidden p-6">
+            <div className="flex justify-between items-center mb-4">
+              <h6 className="text-base font-medium">Confirm deletion</h6>
+            </div>
+            <p className="text-sm text-darkgray/80">
+              This action cannot be undone. Are you sure you want to delete this
+              tab?
+            </p>
+            <div className="mt-6 flex justify-end gap-3">
+              <Button
+                text="Cancel"
+                theme="transparentGray"
+                size="small"
+                onClick={() => setConfirmOpen(false)}
+              />
+              <Button
+                text="Delete"
+                theme="pink"
+                size="small"
+                onClick={() => deletingId && deleteSector(deletingId)}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
@@ -217,10 +224,16 @@ function SectorFormModal({
       const res = await axios.request({
         url: initalData?.id ? `${urlBase}/${initalData.id}` : urlBase,
         method: initalData?.id ? "patch" : "post",
-         data:{name: data.name, slug: slugFromName, active: true, description:"",order:1 },
+        data: {
+          name: data.name,
+          slug: slugFromName,
+          active: true,
+          description: "",
+          order: 1,
+        },
         headers: { Authorization: `Bearer ${session?.accessToken}` },
       });
-      console.log(res)
+      console.log(res);
       if (res.status === 200 || res.status === 201) {
         toast.success(
           initalData ? "Updated successfully" : "Created successfully"

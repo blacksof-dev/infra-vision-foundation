@@ -46,8 +46,8 @@ export default function OrganisationDetails() {
         ...val,
         initialValue: {
           address: data.address || "",
-          emails: data.emails?.[0] || "", // take first email
-          phones: data.phones?.[0] || "", // take first phone
+          emails: data.email || "", // take first email
+          phones: data.phone || "", // take first phone
           locationMapUrl: data.locationMapUrl || "",
         },
       };
@@ -120,8 +120,8 @@ function OrgForm({
         `${process.env.NEXT_PUBLIC_HOST_URL}/organisation/details`,
         {
           address: data.address,
-          emails: [data.emails],
-          phones: [data.phones],
+          email: data.emails,
+          phone: data.phones,
           locationMapUrl: data.locationMapUrl,
           companyTagline: "",
           vision: "",

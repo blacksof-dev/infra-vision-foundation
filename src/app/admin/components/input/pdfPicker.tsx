@@ -43,7 +43,7 @@ const PdfPicker = ({
         className={`border-[#ecedec] border-1 relative cursor-pointer rounded-lg h-[50px] flex items-center px-3 transition-colors font-regular focus-within:border-orange w-full overflow-hidden
           ${errors ? "!border-red-500" : ""}`}
       >
-        <span className="truncate text-sm text-darkgray/80">
+        <span className="truncate">
           {fileName || "No file chosen"}
         </span>
         <input

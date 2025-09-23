@@ -53,7 +53,7 @@ export default function Banner() {
         <SectionHeading
           heading="Section - 01 (Banner) "
           //   description="Banner"
-          ctaText="Update"
+          ctaText="Update banner"
           cta={true}
           handleClick={() =>
             setFormState((val) => {

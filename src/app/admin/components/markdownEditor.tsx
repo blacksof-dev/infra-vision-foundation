@@ -2,16 +2,15 @@ import React, { useState } from "react";
 import MDEditor, { ICommand, commands } from "@uiw/react-md-editor";
 import axios from "axios";
 import { useSession } from "next-auth/react";
-import { Button } from "../../components/button";
-import ImagePicker from "../../components/input/imagePicker";
+import { Button } from "./button";
 import { z } from "zod";
-import { fileSchema, generalSchema } from "../../lib/zod";
+import { fileSchema, generalSchema } from "../lib/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Copy, X } from "lucide-react";
-import { uploadImage } from "../../lib/utils";
+import { uploadImage } from "../lib/utils";
 import { toast } from "react-toastify";
-import Tooltip from "../../components/input/tooltip";
+import Tooltip from "./input/tooltip";
 
 const ImageSchema = z.object({
   blogImage: fileSchema,
@@ -148,7 +147,7 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ value, setValue }) => {
 
   return (
     <div data-color-mode="light" className="container  ">
-      <h3 className="font-lato-regular">Markdown Editor</h3>
+      
 
       {/* Markdown Editor with Custom Toolbar */}
       <MDEditor

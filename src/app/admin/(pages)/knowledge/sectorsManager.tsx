@@ -83,8 +83,8 @@ export default function SectorsManager() {
   return (
     <section className="blade-top-padding">
       <SectionHeading
-        heading="Section - 02 (Sectors)"
-        ctaText="Add new"
+        heading="Knowledge page - Sectors"
+        ctaText="Add new tab"
         cta
         handleClick={() =>
           setFormState((s) => ({ ...s, isFormOpen: true, editItem: null }))
@@ -94,7 +94,7 @@ export default function SectorsManager() {
       <div className="mt-6 grid gap-3">
         {formState.items.map((s) => (
           <article key={s.id} className="border border-gray/50 rounded-md p-4">
-            <div className="flex justify-between gap-4">
+            <div className="flex justify-between items-center gap-4">
               <div>
                 <h6 className="text-base font-medium">{s.name}</h6>
                 {/* Slug hidden intentionally */}

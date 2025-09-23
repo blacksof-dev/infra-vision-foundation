@@ -74,10 +74,10 @@ export default function KnowledgeConversations() {
   }
 
   return (
-    <section className="blade-top-padding">
+    <section className="blade-top-margin-lg">
       <SectionHeading
         heading="Section - 03 (Conversations)"
-        ctaText="Add new"
+        ctaText="Add new conversation"
         cta
         handleClick={() => {
           setEditItem(null);
@@ -85,7 +85,7 @@ export default function KnowledgeConversations() {
         }}
       />
 
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
         {items.length === 0 && (
           <div className="col-span-full text-center text-darkgray/70 py-8 border border-lightgray/30 rounded-md bg-white">
             No conversations found.
@@ -94,7 +94,7 @@ export default function KnowledgeConversations() {
         {items.map((it) => (
           <article
             key={it.id}
-            className="rounded-lg border border-lightgray/40 bg-white p-2 shadow-sm hover:shadow-md transition-shadow gap-4"
+            className="rounded-lg border border-lightgray/40 bg-white p-3 shadow-sm hover:shadow-md transition-shadow gap-4"
           >
             <img
               src={`${process.env.NEXT_PUBLIC_HOST_URL}${it.image}`}
@@ -109,23 +109,23 @@ export default function KnowledgeConversations() {
               <p className="text-sm text-darkgray/80 line-clamp-2 mt-1">
                 {it.desc}
               </p>
-              <div className="text-xs text-darkgray/70 mt-2 flex items-center gap-2 flex-wrap">
-                <span className="whitespace-nowrap">{it.date}</span>
-                <span className="mx-1">•</span>
+              <div className="  mt-3 gap-1 flex flex-col ">
+                <span className="text-xs text-darkgray/70 whitespace-nowrap block">{it.date}</span>
+                 
                 <a
                   href={it.videoLink}
                   target="_blank"
-                  className="underline text-xs break-all"
+                  className="underline   "
                 >
                   Video
                 </a>
               </div>
             </div>
-            <div className="flex justify-between gap-3 mt-4">
+            <div className="flex justify-between gap-3 mt-6">
               <Button
                 text="Delete"
-                theme="transparentGray"
-                size="large"
+                theme="transparentPink"
+                size="base"
                 onClick={() => {
                   setDeletingId(it.id);
                   setConfirmOpen(true);
@@ -134,7 +134,7 @@ export default function KnowledgeConversations() {
               <Button
                 text="Edit"
                 theme="pink"
-                size="large"
+                size="base"
                 onClick={() => {
                   setEditItem(it);
                   setFormOpen(true);
