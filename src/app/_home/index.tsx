@@ -25,10 +25,10 @@ export default function Home() {
 
       <WhoWeAre />
       {/* <Infravisionaries /> */}
-      {/* <Association /> */}
+      <Association />
       {/* <Highlights /> */}
       <StayConnected />
-      <InfravisionTalks />
+      {/* <InfravisionTalks /> */}
     </>
   );
 }

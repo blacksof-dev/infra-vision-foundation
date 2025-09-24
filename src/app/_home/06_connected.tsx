@@ -7,7 +7,7 @@ import { ApiResponse } from "./01_banner";
 
 export default function StayConnected() {
   const { data } = useApiHook<ApiResponse>({
-    url: "/content/home-social-content",
+    url: "/content/social-media",
     cacheKey: "homeContent-social",
   });
 
@@ -20,12 +20,12 @@ export default function StayConnected() {
           <div className="w-full lg:w-[50%] xl:w-[40%] ">
             <div className="flex  flex-row  items-center gap-2 md:gap-3">
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-              <h5 className="font-medium text-black">{data.tagName}</h5>
+              <h5 className="font-medium text-black">{data.label}</h5>
             </div>
             <div className=" pt-4 pb-2 sm:py-4">
               <h1
                 className="font-light text-black"
-                dangerouslySetInnerHTML={{ __html:data.title}}
+                dangerouslySetInnerHTML={{ __html:data.heading}}
               />
             </div>
 
@@ -37,8 +37,8 @@ export default function StayConnected() {
           </div>
           <div className="w-full lg:w-[50%] xl:w-[60%]  ">
             <TwitterPost
-             ctaName={data.cta?.text??""}
-             ctaLink={data.cta?.target ?? ""}
+             ctaName={data.ctaText??""}
+             ctaLink={data.ctaLink??""}
             />
           </div>
           <div className=" py-2 sm:py-4 block lg:hidden">

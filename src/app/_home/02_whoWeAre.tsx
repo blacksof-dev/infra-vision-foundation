@@ -11,6 +11,7 @@ import { useApiHook } from "@/lib/useApi";
 import { ApiResponse } from "./01_banner";
 import Loading from "../loading";
 
+
 export type TabApiResponse = {
   id: string;
   img: string;
@@ -50,11 +51,13 @@ type KnowledgeApiResponse = {
   lastUpdated: string;
 };
 
+
+
 export default function WhoWeAre() {
   const [activeTab, setActiveTab] = useState("Knowledge");
 
   const { data } = useApiHook<ApiResponse>({
-    url: "/content/home-whoWeAre-content",
+    url: "/content/who-we-are",
     cacheKey: "homeContent-whoWeAre",
   });
 
@@ -70,12 +73,12 @@ export default function WhoWeAre() {
             <div>
               <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
                 <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-                <h5 className="font-medium text-pink">{data.tagName}</h5>
+                <h5 className="font-medium text-pink">{data.label}</h5>
               </div>
               <div className="py-2 w-full sm:w-[50%] lg:w-[70%]">
                 <h1
                   className="text-black  font-light"
-                  dangerouslySetInnerHTML={{ __html: data.title }}
+                  dangerouslySetInnerHTML={{ __html: data.heading }}
                 />
               </div>
             </div>

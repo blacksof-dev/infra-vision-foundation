@@ -219,7 +219,7 @@ export default function Newsletters() {
                   <a
                     href={`${process.env.NEXT_PUBLIC_HOST_URL}${it.fileUrl}`}
                     target="_blank"
-                    className="underline text-base"
+                    className="underline text-base text-pink"
                   >
                     View PDF
                   </a>

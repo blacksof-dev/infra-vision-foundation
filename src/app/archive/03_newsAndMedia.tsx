@@ -12,12 +12,12 @@ const FILTER_TYPES: FilterType[] = ["All", "Publication year"];
 interface Card {
   id: string;
   title: string;
- category: string;
+  category: string;
   date: string;
- image: string;
+  image: string;
   description: string;
   active: boolean;
-  link:string;
+  link: string;
 }
 
 interface CardApiResponse {
@@ -159,10 +159,9 @@ export default function NewsAndMedia() {
               tabRefs.current[index] = el;
             }}
             className={`text-base cursor-pointer text-nowrap rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
-              ${
-                selectedFilter === filter
-                  ? "border border-pink text-white bg-pink font-medium"
-                  : "border border-lightgray/30"
+              ${selectedFilter === filter
+                ? "border border-pink text-white bg-pink font-medium"
+                : "border border-lightgray/30"
               }`}
             onClick={() => handleFilterClick(filter, index)}
           >
@@ -205,10 +204,9 @@ export default function NewsAndMedia() {
                 <button
                   key={tab}
                   className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4
-                    ${
-                      selectedTab === tab
-                        ? "border border-pink text-pink font-medium"
-                        : "border border-lightgray/30"
+                    ${selectedTab === tab
+                      ? "border border-pink text-pink font-medium"
+                      : "border border-lightgray/30"
                     }`}
                   onClick={() => handleTabClick(tab)}
                 >
@@ -232,7 +230,7 @@ export default function NewsAndMedia() {
                     date={card.date}
                     title={card.title}
                     image={card.image}
-                    link={card.link} 
+                    link={card.link}
                     category={card.category}
                     description={card.description}
                     classes="line-clamp-3"

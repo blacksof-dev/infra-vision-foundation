@@ -149,16 +149,20 @@ export default function InTheNews() {
                 <img
                   src={`${process.env.NEXT_PUBLIC_HOST_URL}${it.image}`}
                   alt={it.title}
-                  className="object-cover h-full w-full"
+                  className="object-cover h-full w-full rounded-md"
                 />
               </div>
               <div className="flex-1 mt-4">
-                <span className="text-sm text-darkgray/70">{it.category}</span>
+                <div className="flex justify-between">
+
+                <p className=" text-darkgray/70 flex items-center gap-2"><span className="w-2 h-2 shrink-0 bg-pink rounded-full block"/>{it.category}</p>
+                <span className="block text-darkgray text-sm">{it.date}</span>
+                </div>
                 <h6 className="text-base font-medium mt-2">{it.title}</h6>
                 <p className="text-sm text-darkgray/80 mt-1">
                   {it.description}
                 </p>
-                <span className="block text-darkgray mt-1">{it.date}</span>
+                
                 {it.link && (
                   <a
                     href={it.link}

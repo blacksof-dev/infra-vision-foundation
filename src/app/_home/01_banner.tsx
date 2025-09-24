@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useApiHook } from "@/lib/useApi";
 import dynamic from "next/dynamic";
 import Updates from "./updates";
+import { getImageUrl } from "@/lib/functionCalling";
 
 
 export interface ApiResponse {
@@ -12,10 +13,13 @@ export interface ApiResponse {
   backgroundImageDesktop?: string;
   backgroundImageMobile?: string;
  tagName?:string;
+ label?:string;
+ ctaText?:string;
+ ctaLink?:string
 }
 export default function Banner() {
   const { data } = useApiHook<ApiResponse>({
-    url: "/content/home-banner-content",
+    url: "/content/home-banner-section",
     cacheKey: "homeContent-banner",
   });
 
@@ -29,11 +33,11 @@ export default function Banner() {
         <div className="relative overflow-hidden">
           <div className="relative w-full h-[40rem] xl:h-[47rem] 2xl:h-[55rem] 3xl:h-screen">
             <Image
-              src={data.desktopImg ?? ""}
+              src={getImageUrl(data.backgroundImageDesktop)}
               fill
               alt="InfraVision Foundation"
               className="h-full w-full object-cover"
-              quality={100}
+              quality={70}
               priority
             />
           </div>
@@ -45,7 +49,7 @@ export default function Banner() {
               >
                 <h1
                   className="tracking-[-4%] font-light txt-black/90"
-                  dangerouslySetInnerHTML={{ __html: response.title }}
+                  dangerouslySetInnerHTML={{ __html: response.heading }}
                 />
               </div>
               <div className="w-[90%] sm:w-[70%] md:w-[60%] lg:w-[40%] py-4">

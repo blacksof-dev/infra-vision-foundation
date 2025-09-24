@@ -190,7 +190,7 @@ export default function Gallery() {
           <h5 className="font-medium text-pink">{content.tagName}</h5>
         </div>
         <div className="py-3 mb-4">
-          <h1 className="text-black font-light" dangerouslySetInnerHTML={{ __html: content.title }} />
+          <h1 className="text-black font-light" dangerouslySetInnerHTML={{ __html: content.heading }} />
         </div>
         <div className="flex flex-col sm:flex-row gap-6 border-b border-darkgray/20">
           <div className="sm:border-r sm:border-darkgray/20">

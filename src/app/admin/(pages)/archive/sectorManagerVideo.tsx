@@ -34,7 +34,7 @@ const sectorSchema = z.object({
 
 type SectorForm = z.infer<typeof sectorSchema>;
 
-export default function SectorsManager() {
+export default function SectorsManagerVideo() {
   const { data: session } = useSession();
   const [formState, setFormState] = useState<FormStateType>({
     isFormOpen: false,
@@ -49,7 +49,7 @@ export default function SectorsManager() {
   async function loadSectors() {
     try {
       setIsLoadingList(true);
-      const data = (await getData("/archives/tabs", session)) as Sector[];
+      const data = (await getData("/archives/videos/categories", session)) as Sector[];
       setFormState((s) => ({ ...s, items: data }));
     } catch (e) {
       toast.error("Failed to load sectors");
@@ -66,7 +66,7 @@ export default function SectorsManager() {
   async function deleteSector(id: string) {
     try {
       const res = await axios.delete(
-        `${process.env.NEXT_PUBLIC_HOST_URL}/archives/tabs/${id}`,
+        `${process.env.NEXT_PUBLIC_HOST_URL}/archives/videos/categories/${id}`,
         { headers: { Authorization: `Bearer ${session?.accessToken}` } }
       );
       if (res.status >= 200 && res.status < 300) {
@@ -211,7 +211,7 @@ function SectorFormModal({
   const submitHandler: SubmitHandler<SectorForm> = async (data) => {
     try {
       setIsLoading(true);
-      const urlBase = `${process.env.NEXT_PUBLIC_HOST_URL}/archives/tabs`;
+      const urlBase = `${process.env.NEXT_PUBLIC_HOST_URL}/archives/videos/categories`;
       // derive slug from name
       const slugFromName = data.name
         .toString()

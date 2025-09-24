@@ -6,22 +6,23 @@ import { ApiResponse } from "./01_banner";
 
 export default function InfravisionTalks() {
   const { data} = useApiHook<ApiResponse>({
-    url: "/content/home-getInvolved-content",
+    url: "/content/get-involved",
     cacheKey: "homeContent-getInvolved",
   });
 
+  console.log(data)
  if(!data){return null}
 
   return (
     <Newsletter
       id="homepage-section-7"
-      bgImage={data.desktopImg}
-      mobilebg={data.mobileImg}
-      tag={data.tagName}
-      title={data.title}
+      bgImage={data.backgroundImageDesktop}
+      mobilebg={data.backgroundImageMobile}
+      tag={data.label}
+      title={data.heading}
       desc={data.description}
-      ctatext={data.cta?.text??""}
-      ctaLink={data.cta?.target?? ""}
+      ctaText={data.ctaText ?? ""}
+      ctaLink={data.ctaLink}
     />
   );
 }

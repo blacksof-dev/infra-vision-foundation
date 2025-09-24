@@ -1,9 +1,11 @@
 import React from "react";
 import Banner from "./01_banner";
-import SectorsManager from "./sectorManager";
+import SectorsManagerGallery from "./sectorManagerGallery";
 import GallerySection from "./05_gallery";
 import Newsletters from "./02_newsletters";
 import InTheNews from "./03_InTheNews";
+import SectorsManagerVideo from "./sectorManagerVideo";
+import VideoSection from "./04_video";
  
 export default function Page() {
   return (
@@ -11,7 +13,9 @@ export default function Page() {
       <Banner />
       <Newsletters/>
       <InTheNews/>
-      <SectorsManager/>
+      <SectorsManagerVideo/>
+      <VideoSection/>
+      <SectorsManagerGallery/>
       <GallerySection/>
     </>
   );

@@ -6,7 +6,7 @@ type Newsletter = {
   tag?: string;
   title: string;
   desc?: string;
-  ctatext: string;
+  ctaText: string;
   ctaLink?: string;
   bgImage?: string;
   mobilebg?: string;
@@ -22,7 +22,7 @@ export default function Newsletter({
   bgImage,
   mobilebg,
   image,
-  ctatext,
+  ctaText,
   bgColor,
   id,
 }: Newsletter) {
@@ -33,12 +33,12 @@ export default function Newsletter({
           {bgImage && mobilebg && (
             <>
               <div
-                style={{ backgroundImage: `url(${bgImage})` }}
+                style={{ backgroundImage: `url(http://142.93.215.57:4000/${bgImage})` }}
                 className="bg-cover  object-right-bottom  absolute inset-0 hidden sm:block"
               ></div>
 
               <div
-                style={{ backgroundImage: `url(${mobilebg})` }}
+                style={{ backgroundImage: `url(http://142.93.215.57:4000/${mobilebg})` }}
                 className="bg-cover bg-center d absolute inset-0 sm:hidden block"
               ></div>
             </>
@@ -101,7 +101,7 @@ export default function Newsletter({
               <div className="w-fit">
                 
                   <HeroBtn
-                    text={ctatext}
+                    text={ctaText}
                     role="link"
                     borderColor="white"
                     link="/get-involved"

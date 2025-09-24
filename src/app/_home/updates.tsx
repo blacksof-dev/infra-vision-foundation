@@ -8,6 +8,7 @@ import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import Link from "next/link";
 import { useApiHook } from "@/lib/useApi";
+import { getImageUrl } from "@/lib/functionCalling";
 
 interface updateApiResponse {
   image: string;
@@ -28,7 +29,7 @@ export default function Updates() {
   };
 
   const { data,  } = useApiHook<any>({
-    url: "/homepage/latest-updates?activeOnly=true",
+    url: "/homepage/latest-updates",
     cacheKey: "latestUpdate",
   });
 
@@ -135,7 +136,7 @@ export default function Updates() {
                   <div className="flex flex-row gap-4 bg-[#0000005e] backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4 h-[7rem] sm:h-[9rem] lg:h-[10rem] xl:h-[13rem] xlg:h-[16rem] 2xl:h-[18rem] group-hover:bg-white transition-all duration-500 ease-linear">
                     <div className="w-[5rem] h-full md:w-[14rem] lg:w-[13rem] xl:w-[20rem] xlg:w-[30rem] relative">
                       <Image
-                        src={ele.image}
+                        src={getImageUrl(ele.image)}
                         alt={ele.title}
                         fill
                         className="object-cover object-center md:object-left rounded aspect-auto"

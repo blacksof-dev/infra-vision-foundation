@@ -6,29 +6,28 @@ import "swiper/css";
 import "@/_components/molecules/infiniteCarousel.css";
 import { useApiHook } from "@/lib/useApi";
 import { ApiResponse } from "./01_banner";
+import { getImageUrl } from "@/lib/functionCalling";
 
 interface ImageApiResponse {
-  associations: {
+  data: {
     id: string;
     name: string;
-    logoUrl: string;
+    imageUrl: string;
   }[];
 }
 
 export default function Association() {
-  const { data,isError } = useApiHook<ApiResponse>({
-    url: "/content/home-association-content",
-    cacheKey: "homeContent-association",
-  });
+
 
   const { data: imageData } = useApiHook<ImageApiResponse>({
-    url: "/associations",
+    url: "/homepage/associations",
     cacheKey: "associationImages",
   });
 
+
  
 
-  if (!data||!imageData) return null;
+  if (!imageData) return null;
 
  
 
@@ -37,17 +36,20 @@ export default function Association() {
       id="homepage-section-4"
       className="blade-bottom-padding-lg blade-top-padding-lg"
     >
-      <div className="w-container">
-        <div className="flex flex-row items-center gap-2 md:gap-3">
-          <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
-          <h5 className="font-medium text-pink">{data.tagName}</h5>
+          <div className=" w-container">
+          <div className="flex  flex-row  items-center gap-2 md:gap-3">
+            <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
+            <h5 className="font-medium text-pink">Our Associations</h5>
+          </div>
+          <div>
+            <h1 className="text-black pt-2">
+
+              <span className="font-medium text-black">
+                The synergy of collaboration
+              </span>
+            </h1>
+          </div>
         </div>
-        <div>
-          <h1 className="text-black pt-2">
-            <span className="font-medium text-black">{data.title}</span>
-          </h1>
-        </div>
-      </div>
 
       <div className="blade-top-padding-sm">
         <Swiper
@@ -72,11 +74,11 @@ export default function Association() {
             1400: { slidesPerView: "auto", spaceBetween: 50 },
           }}
         >
-          {imageData.associations.map((obj) => (
+          {imageData.data.map((obj) => (
             <SwiperSlide key={obj.id} className="!w-auto">
               <div className="flex items-center w-[10rem] h-[4rem] md:w-[8rem] md:h-[3rem] xl:w-[15rem] xl:h-[6rem] relative">
                 <Image
-                  src={`/assets/home/association/${obj.logoUrl}`}
+                  src={getImageUrl(obj.imageUrl)}
                   alt={obj.name}
                   fill
                   loading="lazy"
