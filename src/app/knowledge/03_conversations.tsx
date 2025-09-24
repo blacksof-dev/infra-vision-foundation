@@ -9,142 +9,7 @@ import { Navigation,  Pagination } from "swiper/modules";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import Link from "next/link";
 import { FaYoutube } from "react-icons/fa";
-<<<<<<< HEAD
 import { useApiHook } from "@/lib/useApi";
-=======
-
-import img1 from "@/../public/assets/knowledeg/conversations/01.jpg";
-import img2 from "@/../public/assets/knowledeg/conversations/02.png";
-import img3 from "@/../public/assets/knowledeg/conversations/03.jpg";
-import img4 from "@/../public/assets/knowledeg/conversations/04.jpg";
-import img5 from "@/../public/assets/knowledeg/conversations/05.jpg";
-import img6 from "@/../public/assets/knowledeg/conversations/06.jpg";
-import img7 from "@/../public/assets/knowledeg/conversations/07.png";
-import img8 from "@/../public/assets/knowledeg/conversations/08.png";
-import img9 from "@/../public/assets/knowledeg/conversations/09.png";
-import img10 from "@/../public/assets/knowledeg/conversations/10.png";
-
-
-const people = [
- {
-    image:img2.src,
-    videoLink: "https://www.youtube.com/embed/NJ0V0G7eZwE?si=Mp_0ul6iDz5QtJN4",
-    name: "Jagan Shah",
-     title:
-      "The Infravision Foundation CEO and senior expert in urban development policy",
-     desc:"Can the Urban Challenge Fund be a gamechanger for India’s urban future?",
-     
-    
-    date: "June 10, 2025"
-  },
-  {
-    image: img10.src,
-    videoLink:"https://www.youtube.com/embed/ZGIjUOfs91U?si=-iX4ss69vegjRpoQ",
-    name: "Tarun Sharma and Yutika Vora",
-    title:
-      "Co-founder at Nagrika ",
-    desc: "Why Smaller Cities can become Growth Hubs",
-    date:"August 21, 2025",
-  },
-    {
-    image: img3.src,
-    videoLink:
-      "https://www.youtube.com/embed/crb5-c_wDYs?si=VsMrZLNj6BDHjaxp",
-    name: "Prof. G Raghuram",
-    title:
-      "Member, Council of Advisors, TIF, and Former Director, IIM Bangalore",
-    desc: "High Speed Rail and why we need it ",
-    date:"August 9, 2025",
-  },
- 
-  {
-    image: img8.src,
-    videoLink:
-      "https://www.youtube.com/watch?v=w6oJTRqeB4A&list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em&index=9&ab_channel=TheInfravisionFoundation",
-    name: "Pratap Padode",
-    title:
-      "Founder and President, First Construction Council, and author, Tarmac to Towers: India’s Infrastructure Story",
-    desc: "Infra projects in India are invariably only 90 percent complete",
-    date:"June 10, 2025",
-  },
-  {
-    image: img2.src,
-    videoLink:
-      "https://www.youtube.com/watch?v=g5aA3Q3af1g&list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em&index=8&ab_channel=TheInfravisionFoundation",
-    name: "Jagan Shah",
-    title:
-      "The Infravision Foundation CEO and senior expert in urban development policy",
-    desc: "Why India needs a national plan to build new cities",
-     date:"June 5, 2025",
-  },
-  {
-    image: img1.src,
-    videoLink:
-      "https://www.youtube.com/embed/Sr17ZN7FLA4?si=DFB5whTWLmjG50EK",
-    name: "Professor Geetam Tiwari",
-    title:
-      "TRIPP Chair Professor at the Department of Civil Engineering, Indian Institute of Technology in New Delhi, India.",
-    desc: "Selecting the appropriate urban transport system for India's cities",
-     date:"May 30, 2024",
-  },
-  {
-    image: img7.src,
-    videoLink:
-      "https://www.youtube.com/watch?v=Jis2Q7oOfr0&list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em&index=6&ab_channel=TheInfravisionFoundation",
-    name: "Rajaji Meshram",
-    title: "Transport and Logistic Experts",
-    desc: "Sustainability Ratings : an idea whose time has come",
-     date:"September 15, 2023",
-  },
-  {
-    image: img5.src,
-    videoLink:
-      "https://www.youtube.com/watch?v=H34LNACsKZw&list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em&index=5&ab_channel=TheInfravisionFoundation",
-    name: "Prof Sandip Chakrabarti",
-    title: "Faculty Member, Public Systems Group, IIMA",
-    desc: "Making metro systems financially viable, what needs to be done?",
-     date:"October 11, 2023",
-  },
-  {
-    image: img4.src,
-    videoLink:
-      "https://www.youtube.com/watch?v=ZdLcdjJShW8&t=14s&ab_channel=TheInfravisionFoundation",
-    name: "Rajiv Ranjan Mishra",
-    title:
-      "Distinguished Fellow, The Infravision Foundation, and former Director General, National Mission for Clean Ganga     ",
-    desc: "Selecting the appropriate urban transport system for India's cities",
-     date:"October 11, 2023",
-  },
-  {
-    image: img6.src,
-    videoLink:
-      "https://www.youtube.com/watch?v=5A-JtJ-jDzw&list=PLj3lfy92K7LOMALf1Catm5Y4GYNwVm8em&index=3&ab_channel=TheInfravisionFoundation",
-    name: "Prof Gopal Naik",
-    title: "Economics and Social Science, IIM Bangalore",
-    desc: "How to improve warehousing in India and enhance credit availability",
-     date:"December 14, 2023",
-  },
-  {
-    image: img9.src,
-    videoLink:
-      "https://www.youtube.com/watch?v=OjrOlknqzu4&ab_channel=TheInfravisionFoundation",
-    name: "Jagan Shah",
-    title:
-      "The Infravision Foundation CEO and senior expert in urban development policy, Jagan Shah",
-    desc: "Air pollution: The solution has to be multi-sectoral",
-     date:"November 14, 2023",
-  },
-  {
-    image: img3.src,
-    videoLink:
-      "https://www.youtube.com/watch?v=uzP6Vc_7IrQ&ab_channel=TheInfravisionFoundation",
-    name: "Prof. G Raghuram",
-    title:
-      "Member, Council of Advisors, TIF, and Former Director, IIM Bangalore",
-    desc: "Indian Railways : Why innovation matters",
-     date:"November 6,2023",
-  },
->>>>>>> 220ebb1993f67443f659b5661a6320e7d44aeab1
 
 
 
@@ -265,13 +130,8 @@ export default function Conversations() {
                 <div className="    overflow-hidden flex flex-col h-full">
                   <div className="relative w-full h-[20rem] sm:h-[24rem] rounded-xl overflow-hidden">
                     <Image
-<<<<<<< HEAD
                       src={`${process.env.NEXT_PUBLIC_API_URL}${person.image}`}
                       alt={person.name}
-=======
-                      src={person.image}
-                       alt={person.name}
->>>>>>> 220ebb1993f67443f659b5661a6320e7d44aeab1
                       fill
                       className="object-cover"
                       style={{ zIndex: 1 }}
