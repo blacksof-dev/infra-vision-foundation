@@ -1,4 +1,4 @@
-function ToggleSwitch({
+export function ToggleSwitch({
   checked,
   onChange,
 }: {
@@ -12,7 +12,7 @@ function ToggleSwitch({
       aria-checked={checked}
       onClick={() => onChange(!checked)}
       className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-        checked ? "bg-green-500" : "bg-gray-300"
+        checked ? "bg-pink" : "bg-gray-300"
       }`}
     >
       <span
