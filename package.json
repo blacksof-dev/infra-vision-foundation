@@ -18,7 +18,11 @@
     "@radix-ui/react-select": "^2.2.4",
     "@reduxjs/toolkit": "^2.7.0",
     "@tanstack/react-query": "^5.85.5",
+<<<<<<< HEAD
     "@tanstack/react-query-devtools": "^5.85.6",
+=======
+    "@uiw/react-md-editor": "^3.14.0",
+>>>>>>> 220ebb1993f67443f659b5661a6320e7d44aeab1
     "aos": "^2.3.4",
     "axios": "^1.11.0",
     "cheerio": "^1.1.0",
@@ -30,6 +34,7 @@
     "lucide-react": "^0.508.0",
     "motion": "^12.9.1",
     "next": "^15.2.4",
+    "next-auth": "^4.24.11",
     "puppeteer": "^24.11.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -37,6 +42,7 @@
     "react-hook-form": "^7.56.3",
     "react-icons": "^5.5.0",
     "react-redux": "^9.2.0",
+    "react-toastify": "^11.0.5",
     "react-transition-group": "^4.4.5",
     "react-wrap-balancer": "^1.1.1",
     "swiper": "^11.2.6",

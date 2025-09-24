@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useApiHook } from "@/lib/useApi";
 import { ApiResponse } from "./01_banner";
 
+<<<<<<< HEAD
 import dynamic from "next/dynamic";
 import Loading from "../loading";
 
@@ -27,6 +28,71 @@ interface NewsLetterAndNews {
 interface cardApiResponse {
   data: NewsLetterAndNews[];
 }
+=======
+const newsletters = [
+    {
+      id: 28,
+    img: "/assets/archive/newsletter/crunching.png",
+    category: "Volume 28",
+    title: "Crunching Data,Analysing Information",
+    sectors: "",
+     date: "September 2025",
+    link: "/assets/pdf/crunchingData.pdf",
+  },
+  {
+    id: 27,
+    img: "/assets/archive/newsletter/agustNewsletter.png",
+    category: "Volume 27",
+    title: "TIF reaches out to stakeholders",
+    sectors: "",
+    date: "August 2025",
+    link: "/assets/pdf/augustNewsletter.pdf",
+  },
+  {
+    id: 25,
+    img: "/assets/archive/newsletter/latest1.png",
+    category: "Volume 26",
+    title: "Do you want to be an Infrapandit?",
+    sectors: "",
+    date: "July 2025",
+
+    link: "/assets/pdf/july.pdf",
+  },
+  
+];
+
+const news = [
+    {
+    id:55,
+    img: "/assets/knowledeg/researchPapers/02.jpg",
+    category: "News",
+    title: "Next game changer: High-speed rail",
+    date: "Sepetember 19, 2025",
+    subtitle: "Next game changer: High-speed rail",
+    link: "/assets/pdf/speedRail.jpg",
+  },
+  {
+    id:54,
+    img: "/assets/archive/newsAndMedia/vrinda.png",
+    category: "News",
+    title: "Cold Rooms in Local Markets: Securing Farmers, Delivering Nutrition",
+    date: "August 9, 2025",
+    subtitle: "Vrinda Singh and Priyanka Bains",
+    link: "/assets/pdf/vrinda-singh-priyanka-bains.pdf",
+  },
+  {
+    id:53,
+    img: "/assets/archive/newsAndMedia/hyderbad.webp",
+    category: "News",
+    title: "Hyderabad's FSI deregulation:  A missed opportunity",
+    date: "August 9, 2025",
+    subtitle: "Dr. Mutum Chaobisana",
+    link: "/assets/pdf/hyderabad-fSI-deregulation.pdf",
+  }
+  
+
+];
+>>>>>>> 220ebb1993f67443f659b5661a6320e7d44aeab1
 
 export default function Highlights() {
   const [activeTab, setActiveTab] = useState("Outreach and Engagements");

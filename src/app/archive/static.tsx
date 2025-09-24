@@ -39,10 +39,18 @@ import img_36 from "@/../public/assets/archive/video/36.jpg";
 import img_37 from "@/../public/assets/archive/video/37.jpg";
 import img_38 from "@/../public/assets/archive/video/38.jpg";
 import renewable from "@/../public/assets/archive/video/renewable.jpg";
-
+import urban from "@/../public/assets/archive/video/urban.jpg";
 
 
 export const allCards = [
+    {
+    image:urban,
+    subtitle: "The Infravision Conversation",
+    subdesc:
+      "Can the Urban Challenge Fund be a gamechanger for India’s urban future?",
+    link: "https://www.youtube.com/embed/NJ0V0G7eZwE?si=Mp_0ul6iDz5QtJN4",
+    date: "June 10, 2025",
+  },
   {
     image: pratapPadode,
     subtitle: "The Infravision Conversation",
@@ -338,4 +346,3 @@ allCards.sort((a, b) => {
   return dateB.getTime() - dateA.getTime();
 });
 
-{/* <iframe width="560" height="315" src="https://www.youtube.com/embed/7nkY4yY0I-g?si=6kXh1arx3LUW7B9s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> */}
