@@ -10,7 +10,8 @@ type FilterType = "All" | "Sectors";
 export interface TabApiRaw {
   id: string;
   name: string;
-  slug?: string;
+  slug: string;
+  active: boolean;
 }
 
 interface contentApiResponse {
@@ -34,19 +35,19 @@ export interface ResearchPaper {
 }
 
 const FILTER_TYPES: FilterType[] = ["All", "Sectors"];
-const INITIAL_LIMIT = 3;
 
 export default function ResearchPapers() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [selectedTab, setSelectedTab] = useState<FilterType>("All");
-  const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
-  const [limit, setLimit] = useState(INITIAL_LIMIT);
-  const [cards, setCards] = useState<ResearchPaper[]>([]);
-  const [activeTabs, setActiveTabs] = useState<{ name: string; id: string }[]>([]);
+  const [selectedFilter, setSelectedFilter] = useState<string>("All");
 
-  // Content API
+  // ✅ State: store per-tab data
+  const [records, setRecords] = useState<{
+    [key: string]: { page: number; cards: ResearchPaper[]; totalCount: number };
+  }>({});
+
   const { data: content } = useApiHook<contentApiResponse>({
     url: "/content/knowledge-reserach-content",
     cacheKey: "knowledgeContentTab",
@@ -58,52 +59,70 @@ export default function ResearchPapers() {
     cacheKey: "knowledgeSectorTab",
   });
 
-  // Cards API: fetch when selectedFilter or limit changes
+  // ✅ Key for current tab+filter
+  const currentKey = `${selectedTab}-${selectedFilter}`;
 
+  // ✅ Current state
+  const currentData = records[currentKey] ?? {
+    page: 1,
+    cards: [],
+    totalCount: 0,
+  };
 
-  const cardsApiUrl = selectedFilter
-  ? `/knowledge/research-papers/by-sector/${selectedFilter}?page=1&limit=${limit}`
-  : `/knowledge/research-papers?page=1&limit=${limit}`;
-
-
-const { data: cardData } = useApiHook<{
-  researchPapers: ResearchPaper[];
-  totalCount: number;
-}>({
-  url: cardsApiUrl,
-  cacheKey: `knowledgeCardData-page-1-limit-${limit}-sectorId-${selectedFilter ?? "all"}`,
-});
-
-  // Update active tabs once tabsData loads
-  useEffect(() => {
-    if (tabsData) {
-      setActiveTabs(tabsData.map(tab => ({ name: tab.name, id: tab.id })));
-      // set default filter if "Sectors" tab is active
-      if (selectedTab === "Sectors" && tabsData.length > 0 && !selectedFilter) {
-        setSelectedFilter(tabsData[0].id);
+  // ✅ Build API URL dynamically
+  const getApiUrl = () => {
+    if (selectedTab === "Sectors" && selectedFilter !== "All") {
+      const sector = tabsData?.find((t) => t.name === selectedFilter);
+      if (sector) {
+        return `/knowledge/research-papers/by-sector/${sector.id}?page=${currentData.page}&limit=3`;
       }
     }
-  }, [tabsData, selectedTab, selectedFilter]);
+    return `/knowledge/research-papers?page=${currentData.page}&limit=3`;
+  };
 
-  // Update cards when cardData changes
- useEffect(() => {
-  if (cardData?.researchPapers) {
-    setCards(cardData.researchPapers);
-  } else {
-    setCards([]); // clear if no data
-  }
-}, [cardData]);
+  // Cards API
+  const { data: cardData } = useApiHook<{
+    researchPapers: ResearchPaper[];
+    pagination: {
+      totalCount: number;
+      page: number;
+      limit: number;
+      totalPages: number;
+    };
+  }>({
+    url: getApiUrl(),
+    cacheKey: `knowledgeCardData-${currentKey}-page-${currentData.page}`,
+  });
 
-  // Filter cards by tab/filter
-  const filteredCards = useMemo(() => {
-    let result = cards;
-    if (selectedTab === "Sectors" && selectedFilter) {
-      result = cards.filter(card =>
-        card.sectors.some(sector => sector.slug === selectedFilter)
-      );
+  // ✅ Update state when API loads
+  useEffect(() => {
+    if (cardData?.researchPapers) {
+      setRecords((prev) => {
+        const prevState = prev[currentKey] ?? {
+          page: 1,
+          cards: [],
+          totalCount: 0,
+        };
+        return {
+          ...prev,
+          [currentKey]: {
+            page: currentData.page,
+            cards:
+              currentData.page === 1
+                ? cardData.researchPapers
+                : [...prevState.cards, ...cardData.researchPapers],
+            totalCount: cardData.pagination?.totalCount ?? 0, // ✅ fixed
+          },
+        };
+      });
     }
-    return result.slice(0, limit);
-  }, [cards, selectedTab, selectedFilter, limit]);
+  }, [cardData, currentKey, currentData.page]);
+
+  // Active tabs
+  const activeTabs = useMemo(
+    () => tabsData?.map((tab) => tab.name) ?? [],
+    [tabsData]
+  );
 
   // Scroll filter button to center
   const scrollToCenter = (index: number) => {
@@ -116,43 +135,72 @@ const { data: cardData } = useApiHook<{
     }
   };
 
-  const handleFilterClick = (filterId: string, index: number) => {
-    setSelectedFilter(filterId);
-    setLimit(INITIAL_LIMIT);
+  // ✅ Handle filter click
+  const handleFilterClick = (filterName: string, index: number) => {
+    setSelectedFilter(filterName);
     scrollToCenter(index);
+    // Reset when switching
+    setRecords((prev) => ({
+      ...prev,
+      [`${selectedTab}-${filterName}`]: { page: 1, cards: [], totalCount: 0 },
+    }));
   };
 
+  // ✅ Handle tab click
   const handleTabClick = (tab: FilterType) => {
     setSelectedTab(tab);
-    setLimit(INITIAL_LIMIT);
     if (tab === "Sectors" && activeTabs.length > 0) {
-      setSelectedFilter(activeTabs[0].id);
+      setSelectedFilter(activeTabs[0]);
+      setRecords((prev) => ({
+        ...prev,
+        [`${tab}-${activeTabs[0]}`]: { page: 1, cards: [], totalCount: 0 },
+      }));
     } else {
-      setSelectedFilter(null);
+      setSelectedFilter("All");
+      setRecords((prev) => ({
+        ...prev,
+        [`${tab}-All`]: { page: 1, cards: [], totalCount: 0 },
+      }));
     }
   };
 
+  // ✅ Handle see more
   const handleSeeMore = () => {
-    setLimit(prev => prev + 3);
+    setRecords((prev) => ({
+      ...prev,
+      [currentKey]: {
+        ...currentData,
+        page: currentData.page + 1,
+      },
+    }));
   };
+
+  // ✅ Button condition
+  const canSeeMore =
+    currentData.totalCount > 0 &&
+    currentData.cards.length < currentData.totalCount;
 
   if (!tabsData) return null;
 
-  const renderFilterButtons = (filters: { name: string; id: string }[]) => (
+  // Filter buttons
+  const renderFilterButtons = (filters: string[]) => (
     <div ref={containerRef} className="pt-5 overflow-scroll no-scrollbar">
       <div className="flex gap-3">
         {filters.map((filter, index) => (
           <button
-            key={filter.id}
-            ref={el => { tabRefs.current[index] = el; }}
-            className={`text-base text-nowrap cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3 ${
-              selectedFilter === filter.id
-                ? "border border-pink text-white bg-pink font-medium"
-                : "border border-lightgray/30"
-            }`}
-            onClick={() => handleFilterClick(filter.id, index)}
+            key={filter}
+            ref={(el: HTMLButtonElement | null): void => {
+              tabRefs.current[index] = el;
+            }}
+            className={`text-base text-nowrap cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
+              ${
+                selectedFilter === filter
+                  ? "border border-pink text-white bg-pink font-medium"
+                  : "border border-lightgray/30"
+              }`}
+            onClick={() => handleFilterClick(filter, index)}
           >
-            {filter.name}
+            {filter}
           </button>
         ))}
       </div>
@@ -162,6 +210,7 @@ const { data: cardData } = useApiHook<{
   return (
     <section id="research-papers">
       <div className="w-container blade-top-padding-sm blade-bottom-padding">
+        {/* Heading */}
         <div className="flex flex-row items-center gap-2 md:gap-3">
           <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
           <h5 className="font-medium text-pink">{content?.tagName ?? ""}</h5>
@@ -184,14 +233,15 @@ const { data: cardData } = useApiHook<{
             </div>
 
             <div className="flex flex-row gap-5">
-              {FILTER_TYPES.map(tab => (
+              {FILTER_TYPES.map((tab) => (
                 <button
                   key={tab}
-                  className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4 ${
-                    selectedTab === tab
-                      ? "border border-pink text-pink font-medium"
-                      : "border border-lightgray/30"
-                  }`}
+                  className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4
+                    ${
+                      selectedTab === tab
+                        ? "border border-pink text-pink font-medium"
+                        : "border border-lightgray/30"
+                    }`}
                   onClick={() => handleTabClick(tab)}
                 >
                   {tab}
@@ -204,28 +254,29 @@ const { data: cardData } = useApiHook<{
 
           {/* Research Paper Cards */}
           <div className="pt-8">
-            {filteredCards.length === 0 && (
+            {currentData.cards.length === 0 && (
               <div className="flex justify-center">No results</div>
             )}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 xlg:gap-24">
-              {filteredCards.map(card => (
-                <NewsCard
-                  key={card.id}
-                  date={card.date}
-                  title={card.title}
-                  image={card.image}
-                  link={card.link}
-                  category={card.sectors[0]?.name ?? ""}
-                  description={card.description}
-                  classes="line-clamp-3"
-                  ctaType="read more"
-                />
+              {currentData.cards.map((card) => (
+                <div key={card.id}>
+                  <NewsCard
+                    date={card.date}
+                    title={card.title}
+                    image={card.image}
+                    link={card.link}
+                    category={card.sectors[0]?.name ?? ""}
+                    description={card.description}
+                    classes="line-clamp-3"
+                    ctaType="read more"
+                  />
+                </div>
               ))}
             </div>
 
-            {/* See more button */}
-            {cards.length > filteredCards.length && (
-              <div className="flex justify-center mt-4">
+            {/* See More */}
+            {canSeeMore && (
+              <div className="flex justify-center mb-4 sm:mt-4">
                 <UnderlineWithHover
                   size="xxlsize"
                   color="pink"

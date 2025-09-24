@@ -1,27 +1,22 @@
 "use client";
-import { useEffect, useState, useMemo, useRef } from "react";
-
-import { useApiHook } from "@/lib/useApi";
-import { ApiResponse } from "../_home/01_banner";
-import { yearApiResponse } from "../archive/02_newsletter";
-import { TabApiRaw } from "./02_researchPapers";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import { NewsCard } from "@/_components/molecules/newsCard";
+import { useApiHook } from "@/lib/useApi";
 
 // Types
-
 type FilterType = "All" | "Publication year" | "Sectors";
 
-const FILTER_TYPES: FilterType[] = ["All", "Publication year", "Sectors"];
-const INITIAL_VISIBLE_COUNT = 3;
-
-
-
-interface Sector {
+export interface TabApiRaw {
   id: string;
   name: string;
   slug: string;
   active: boolean;
+}
+
+interface contentApiResponse {
+  tagName: string;
+  title: string;
 }
 
 interface BlogsApiResponse {
@@ -34,69 +29,117 @@ interface BlogsApiResponse {
   publishedDate: string;
   content: string;
   active: boolean;
-  createdAt: string;
-  updatedAt: string;
-  sectorIds: string[];
-  sectors: Sector[];
+  sectors: {
+    id: string;
+    name: string;
+    slug: string;
+  }[];
 }
 
 interface CardApiResponse {
   blogs: BlogsApiResponse[];
+  pagination: {
+    totalCount: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
 }
 
-let initialLimit = 3;
+const FILTER_TYPES: FilterType[] = ["All", "Publication year", "Sectors"];
+const PAGE_LIMIT = 3;
 
 export default function Blogs() {
-
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
+
   const [selectedTab, setSelectedTab] = useState<FilterType>("All");
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
 
-  const [limit, setLimit] = useState(initialLimit);
+  const [records, setRecords] = useState<{
+    [key: string]: {
+      page: number;
+      cards: BlogsApiResponse[];
+      totalCount: number;
+    };
+  }>({});
 
-  //Content API Call
-  const { data: content } = useApiHook<ApiResponse>({
+  // Content API
+  const { data: content } = useApiHook<contentApiResponse>({
     url: "/content/knowledge-blogs-content",
     cacheKey: "knowledge-blogs-content",
   });
 
-
-  // Year tab API Call
-  const { data: yearTab } = useApiHook<yearApiResponse>({
+  // Year API
+  const { data: yearTab } = useApiHook<number[]>({
     url: "/knowledge/blogs/years?activeOnly=true",
     cacheKey: "knowledge-blogs-year",
   });
 
-  //Sector tab API Call
-
+  // Sector API
   const { data: sectorTab } = useApiHook<TabApiRaw[]>({
     url: "/knowledge/sectors?activeOnly=true",
     cacheKey: "knowledge-blogs-sectors",
   });
 
-
-  //Cards data Api Call
-  const { data: cardData } = useApiHook<CardApiResponse>({
-    url: `/knowledge/blogs?page=1&limit=${limit}`,
-    cacheKey: "knowledge-blogs-cardData",
-  });
-
-
-  const response = cardData?.blogs ?? []
-
-
-
   const activeTabs = useMemo(
-    () => sectorTab?.map(tab => tab.name) ?? [],
+    () => sectorTab?.map((tab) => tab.name) ?? [],
     [sectorTab]
   );
+  const years = yearTab ?? [];
+  const currentKey = `${selectedTab}-${selectedFilter}`;
+  const currentData = records[currentKey] ?? {
+    page: 1,
+    cards: [],
+    totalCount: 0,
+  };
 
+  // Build API URL dynamically
+  const getApiUrl = () => {
+    if (selectedTab === "Sectors" && selectedFilter !== "All") {
+      const sector = sectorTab?.find((t) => t.name === selectedFilter);
+      if (sector) {
+        return `/knowledge/blogs/by-sector/${sector.id}?page=${currentData.page}&limit=${PAGE_LIMIT}`;
+      }
+    }
+    return `/knowledge/blogs?page=${currentData.page}&limit=${PAGE_LIMIT}`;
+  };
 
+  // Cards API
+  const { data: cardData } = useApiHook<CardApiResponse>({
+    url: getApiUrl(),
+    cacheKey: `knowledge-blogs-cardData-${currentKey}-page-${currentData.page}`,
+  });
+
+  // Update state when API loads
+
+  useEffect(() => {
+    if (cardData?.blogs) {
+      setRecords((prev) => {
+        const prevState = prev[currentKey] ?? {
+          page: 1,
+          cards: [],
+          totalCount: 0,
+        };
+        return {
+          ...prev,
+          [currentKey]: {
+            page: currentData.page,
+            cards:
+              currentData.page === 1
+                ? cardData.blogs
+                : [...prevState.cards, ...cardData.blogs],
+            totalCount: cardData.pagination?.totalCount ?? 0, // ✅ fixed
+          },
+        };
+      });
+    }
+  }, [cardData, currentKey, currentData.page]);
+
+  // Scroll filter button to center
   const scrollToCenter = (index: number) => {
     const tab = tabRefs.current[index];
     const container = containerRef.current;
-
     if (tab && container) {
       const offset =
         tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
@@ -104,67 +147,80 @@ export default function Blogs() {
     }
   };
 
-  const handleTabClick = (tab: FilterType) => {
-
-    setSelectedTab(tab);
-
-    if (tab === "Publication year" && yearTab?.length) {
-      setSelectedFilter(yearTab[0])
-    }
-    else if (tab === "Sectors" && sectorTab?.length) {
-      setSelectedFilter(activeTabs[0])
-    }
-    else {
-      setSelectedFilter("All")
-    }
-    setLimit(initialLimit);
-  };
-
+  // Handle filter click
   const handleFilterClick = (filterName: string, index: number) => {
     setSelectedFilter(filterName);
     scrollToCenter(index);
+    setRecords((prev) => ({
+      ...prev,
+      [`${selectedTab}-${filterName}`]: { page: 1, cards: [], totalCount: 0 },
+    }));
   };
 
-
-
-
-  const filteredCards = useMemo(() => {
-    if (selectedTab === "Publication year" && selectedFilter !== "All") {
-      return response.filter(
-        (card) =>
-          new Date(card.publishedDate).getFullYear() === Number(selectedFilter)
-      );
+  // Handle tab click
+  const handleTabClick = (tab: FilterType) => {
+    setSelectedTab(tab);
+    if (tab === "Sectors" && activeTabs.length > 0) {
+      setSelectedFilter(activeTabs[0]);
+      setRecords((prev) => ({
+        ...prev,
+        [`${tab}-${activeTabs[0]}`]: { page: 1, cards: [], totalCount: 0 },
+      }));
+    } else if (tab === "Publication year" && years.length > 0) {
+      setSelectedFilter(years[0].toString());
+      setRecords((prev) => ({
+        ...prev,
+        [`${tab}-${years[0]}`]: { page: 1, cards: [], totalCount: 0 },
+      }));
+    } else {
+      setSelectedFilter("All");
+      setRecords((prev) => ({
+        ...prev,
+        [`${tab}-All`]: { page: 1, cards: [], totalCount: 0 },
+      }));
     }
+  };
 
-    if (selectedTab === "Sectors" && selectedFilter !== "All") {
-      return response.filter((card) =>
-        card.sectors.some((sector) => sector.name === selectedFilter)
-      );
-    }
-
-    return response.slice(0, limit);;
-  }, [selectedTab, selectedFilter, response]);
-
-
+  // Handle page click
+  const handlePageClick = (page: number) => {
+    setRecords((prev) => ({
+      ...prev,
+      [currentKey]: { ...currentData, page, cards: [] },
+    }));
+  };
 
   const handleSeeMore = () => {
-    setLimit((prev) => prev + initialLimit);
+    setRecords((prev) => ({
+      ...prev,
+      [currentKey]: {
+        ...currentData,
+        page: currentData.page + 1,
+      },
+    }));
   };
 
+  // Pagination
+  const canSeeMore =
+    currentData.totalCount > 0 &&
+    currentData.cards.length < currentData.totalCount;
+
+  if (!sectorTab || !yearTab) return null;
+
+  // Render filter buttons
   const renderFilterButtons = (filters: string[]) => (
     <div ref={containerRef} className="pt-5 overflow-scroll no-scrollbar">
-      <div className="flex   gap-3">
+      <div className="flex gap-3">
         {filters.map((filter, index) => (
           <button
             key={filter}
-            ref={(el: HTMLButtonElement | null) => {
+            ref={(el) => {
               tabRefs.current[index] = el;
             }}
-            className={`text-base text-nowrap cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
-                            ${selectedFilter === filter
+            className={`text-base text-nowrap cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3 ${
+              selectedFilter === filter
                 ? "border border-pink text-white bg-pink font-medium"
                 : "border border-lightgray/30"
-              }`}
+            }`}
             onClick={() => handleFilterClick(filter, index)}
           >
             {filter}
@@ -174,22 +230,23 @@ export default function Blogs() {
     </div>
   );
 
-  if (!content || !yearTab || !sectorTab || !cardData) { return null; }
-
   return (
     <section id="blogs">
       <div className="w-container blade-top-padding-sm blade-bottom-padding-lg">
-        {/* Header Section */}
+        {/* Header */}
         <div className="flex flex-row items-center gap-2 md:gap-3">
           <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
-          <h5 className="font-medium text-pink">{content.tagName}</h5>
+          <h5 className="font-medium text-pink">{content?.tagName}</h5>
         </div>
 
         <div className="py-3 max-w-4xl">
-          <h1 className="text-black font-light" dangerouslySetInnerHTML={{ __html: content.title }} />
+          <h1
+            className="text-black font-light"
+            dangerouslySetInnerHTML={{ __html: content?.title ?? "" }}
+          />
         </div>
 
-        {/* Filter Section */}
+        {/* Tabs */}
         <div className="pt-5">
           <div className="flex flex-col sm:flex-row gap-6 border-b border-darkgray/20">
             <div className="sm:border-r sm:border-darkgray/20">
@@ -202,11 +259,11 @@ export default function Blogs() {
               {FILTER_TYPES.map((tab) => (
                 <button
                   key={tab}
-                  className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4
-                                        ${selectedTab === tab
+                  className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4 ${
+                    selectedTab === tab
                       ? "border border-pink text-pink font-medium"
                       : "border border-lightgray/30"
-                    }`}
+                  }`}
                   onClick={() => handleTabClick(tab)}
                 >
                   {tab}
@@ -215,38 +272,36 @@ export default function Blogs() {
             </div>
           </div>
 
-          {/* Filter Buttons */}
-          {selectedTab === "Publication year" && renderFilterButtons(yearTab)}
+          {/* Sub-filters */}
+          {selectedTab === "Publication year" &&
+            renderFilterButtons(yearTab.map((y) => y.toString()))}
           {selectedTab === "Sectors" && renderFilterButtons(activeTabs)}
 
-          {/* Newsletter Cards */}
-          <div
-            className={`${selectedTab === "Publication year" ? "pt-8" : "pt-8"
-              }`}
-          >
-            {filteredCards.length === 0 && (
-              <div className="flex justify-center"> No results </div>
+          {/* Blog Cards */}
+          <div className="pt-8">
+            {currentData.cards.length === 0 && (
+              <div className="flex justify-center">No results</div>
             )}
 
-
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 xlg:gap-24">
-              {filteredCards.slice(0, initialLimit).map((card) => (
-                <div key={card.id}>
-                  <NewsCard
-                    date={card.publishedDate}
-                    title={card.title}
-                    image={card.coverImage}
-                    link={card.docFile}
-                    category={card.sectors[0]?.name ?? ""}
-                    description={card.content}
-                    classes="line-clamp-3"
-                    ctaType="read more"
-                  />
-                </div>
+              {currentData.cards.map((card) => (
+                <NewsCard
+                  key={card.id}
+                  date={card.publishedDate}
+                  title={card.title}
+                  image={card.coverImage}
+                  link={card.docFile}
+                  category={card.sectors[0]?.name ?? ""}
+                  description={card.content}
+                  classes="line-clamp-3"
+                  ctaType="read more"
+                />
               ))}
             </div>
-            {initialLimit < filteredCards.length && (
-              <div className="flex justify-center sm:mt-4 mb-4">
+
+            {/* Pagination */}
+            {canSeeMore && (
+              <div className="flex justify-center mb-4 sm:mt-4">
                 <UnderlineWithHover
                   size="xxlsize"
                   color="pink"
