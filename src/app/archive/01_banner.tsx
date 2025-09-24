@@ -6,7 +6,7 @@ import { ApiResponse } from "../_home/01_banner";
 
 export default function BannerSection() {
    const { data } = useApiHook<ApiResponse>({
-      url: "/content/archive-banner-content",
+      url: "/content/archive-banner-section",
       cacheKey: "archiveBanner",
     }); 
     
@@ -18,9 +18,9 @@ export default function BannerSection() {
   return (
     <Banner
       id="archiveBanner"
-      desktopImg={data.desktopImg}
-      tagName={data.tagName}
-      title={data.title}
+      backgroundImageDesktop={data.backgroundImageDesktop}
+      tagName="Archive"
+      heading={data.heading}
       description={data.description}
     />
   );

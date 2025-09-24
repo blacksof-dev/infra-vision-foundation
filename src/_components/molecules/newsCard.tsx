@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FaYoutube } from "react-icons/fa";
 import Image from "next/image";
 import { BorderGrayHeroBtn } from "../atoms/buttons";
+import { apiDateConversion, getImageUrl } from "@/lib/functionCalling";
 
 type CardProps = {
     date: string;
@@ -15,19 +16,23 @@ type CardProps = {
 };
 
 
-
-
 export function NewsCard({ date, title, image, link, category, description, ctaType = 'yt', classes }: CardProps) {
+
+    if(date){
+      date = apiDateConversion(date);
+    }
+
 
     return (
 
         <div className="flex flex-col  h-full">
             <div className="xl:max-w-[29rem] h-[16rem] ">
                 <Image
-                    src={image ??  "/assets/globals/fallback.jpg"}
+                    src={getImageUrl(image)}
                     width={1000}
                     height={1000}
                     alt="Image"
+                    unoptimized={true}
                     className="w-full h-full object-cover rounded"
                 />
 
@@ -40,15 +45,17 @@ export function NewsCard({ date, title, image, link, category, description, ctaT
                             <p className="text-sm md:text-base font-medium text-black">{category}</p>
                         </div>
                         <div>
-                            <h6 className="text-xs md:text-base text-darkgray ">{date}</h6>
+                            <h6 className="text-xs md:text-base text-darkgray ">
+                             {date}
+                            </h6>
                         </div>
                     </div>
 
                     <div className="pt-1">
-                        <p className={`text-black font-medium text-base md:text-lg line-clamp-2`}>{description}</p>
+                        <p className={`text-black font-medium text-base md:text-lg line-clamp-2`}>{title}</p>
                     </div>
                     <div className="pt-1 ">
-                        <h6 className={`text-darkgray font-medium ${classes}`}>{title}</h6>
+                        <h6 className={`text-darkgray font-medium ${classes}`}>{description}</h6>
                     </div>
                 </div>
             </div>

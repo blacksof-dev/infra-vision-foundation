@@ -12,7 +12,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef, useState, useCallback, memo } from "react";
 import dynamic from "next/dynamic";
-import Loading from "@/app/loading";
+
 import { useApiHook } from "@/lib/useApi";
 
 const SocialMedia = dynamic(() => import("../atoms/socialMedia"), {
@@ -21,8 +21,8 @@ const SocialMedia = dynamic(() => import("../atoms/socialMedia"), {
 
 interface ContactDetailsApiResponse {
   address: string;
-  emails: string[];
-  phones: string[];
+  email: string;
+  phone: string;
   locationMapUrl: string;
 }
 
@@ -141,12 +141,10 @@ const ContactInfo = memo(({ data }: { data: ContactDetailsApiResponse }) => (
           <h5 className="text-black 2xl:text-lg py-1">Email</h5>
         </div>
         <Link
-          href={`mailto:${
-            Array.isArray(data.emails) ? data.emails[0] : data.emails
-          }`}
+          href={`mailto:${data.email}`}
         >
           <h6 className="text-darkgray ps-1 py-2 lg:py-1 text-base pl-6">
-            {Array.isArray(data.emails) ? data.emails.join(", ") : data.emails}
+            {data.email}
           </h6>
         </Link>
       </div>
@@ -157,7 +155,7 @@ const ContactInfo = memo(({ data }: { data: ContactDetailsApiResponse }) => (
           <h5 className="text-black 2xl:text-lg">Phone</h5>
         </div>
         <h6 className="text-darkgray ps-1 py-1 text-base pl-6">
-          {Array.isArray(data.phones) ? data.phones.join(", ") : data.phones}
+          {data.phone}
         </h6>
       </div>
     </div>
@@ -243,13 +241,7 @@ const Footer = () => {
     [setValue]
   );
 
-  if (isLoading) {
-    return (
-      <section className="w-full h-[40rem] flex items-center justify-center">
-        <Loading />
-      </section>
-    );
-  }
+
 
   if (error || !data) {
     return (

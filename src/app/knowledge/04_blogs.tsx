@@ -129,7 +129,7 @@ export default function Blogs() {
               currentData.page === 1
                 ? cardData.blogs
                 : [...prevState.cards, ...cardData.blogs],
-            totalCount: cardData.pagination?.totalCount ?? 0, // ✅ fixed
+            totalCount: cardData.pagination?.totalCount ?? 0, 
           },
         };
       });
@@ -292,7 +292,7 @@ export default function Blogs() {
                   image={card.coverImage}
                   link={card.docFile}
                   category={card.sectors[0]?.name ?? ""}
-                  description={card.content}
+                  description=""
                   classes="line-clamp-3"
                   ctaType="read more"
                 />

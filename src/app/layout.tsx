@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   authors: [{ name: "The Infravision Foundation" }],
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -25,7 +26,7 @@ export default function RootLayout({
       <body className={` antialiased `}>
         <Provider>
           <HeaderProvider>
-            <Header />
+            {/* <Header /> */}
             <ErrorBoundary>{children}</ErrorBoundary>
             <Footer />
           </HeaderProvider>

@@ -5,28 +5,27 @@ import { useApiHook } from "@/lib/useApi";
 import { ApiResponse } from "../_home/01_banner";
 
 
-export default function BannerSection(){
-
- const { data } = useApiHook<ApiResponse>({
-    url: "/content/knowledge-banner-content",
+export default function BannerSection() {
+  const { data } = useApiHook<ApiResponse>({
+    url: "/content/knowledge-banner-section",
     cacheKey: "knowledgeBanner",
-  }); 
-  
+  });
+
   if (!data) {
     return null;
   }
 
-  console.log(data)
 
-    return (
-        <Banner
-            id="knowledge-section1"
-             desktopImg={data.desktopImg}
-             mobileImg={data.mobileImg}
-            tagName={data.tagName}
-            title={data.title}
-            description={data.description}
-          
-        />
-    )
+
+  return (
+    <Banner
+      id="knowledge-section1"
+      backgroundImageDesktop={data.backgroundImageDesktop}
+      backgroundImageMobile={data.backgroundImageMobile}
+      tagName="Knowledge"
+      heading={data.heading}
+      description={data.description}
+
+    />
+  )
 }

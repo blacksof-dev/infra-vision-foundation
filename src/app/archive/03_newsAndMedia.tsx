@@ -1,67 +1,102 @@
 "use client";
-import { useState, useMemo, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { NewsCard } from "@/_components/molecules/newsCard";
 import { useApiHook } from "@/lib/useApi";
-import { ApiResponse } from "../_home/01_banner";
 import { yearApiResponse } from "./02_newsletter";
-
+import { UnderlineWithHover } from "@/_components/atoms/buttons";
 
 // Types
-type FilterType = "All" | "Publication year" | "sectors";
+type FilterType = "All" | "Publication year";
 const FILTER_TYPES: FilterType[] = ["All", "Publication year"];
 
-
-
-interface cardApiResponse {
+interface Card {
   id: string;
   title: string;
-  subtitle: string;
-  authoreName: string;
+ category: string;
   date: string;
-  coverImage: string;
-  publicationYear: number;
+ image: string;
+  description: string;
   active: boolean;
+  link:string;
 }
 
 interface CardApiResponse {
-  data: cardApiResponse[];
+  data: Card[];
+  meta: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
 }
 
-
-
 export default function NewsAndMedia() {
-
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectedTab, setSelectedTab] = useState<FilterType>("All");
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
 
-  const { data: content } = useApiHook<ApiResponse>({
-    url: "/content/archive-newsMedia-content",
-    cacheKey: "archive-newsAndMedia",
-  });
+  // Local store for pagination records
+  const [records, setRecords] = useState<{
+    [key: string]: { page: number; cards: Card[]; totalCount: number };
+  }>({});
 
-  //Publication year tab API Call
+  // Publication year API
   const { data: year } = useApiHook<yearApiResponse>({
     url: "/archives/media-coverage/years",
     cacheKey: "archive-year-tab",
   });
 
-  //Cards API Call
+  // Current filter key
+  const currentKey = `${selectedTab}-${selectedFilter}`;
+  const currentData = records[currentKey] ?? {
+    page: 1,
+    cards: [],
+    totalCount: 0,
+  };
+
+  // API URL builder
+  const getApiUrl = () => {
+    if (selectedTab === "Publication year" && selectedFilter !== "All") {
+      return `/archives/media-coverage?page=${currentData.page}&limit=3&year=${selectedFilter}`;
+    }
+    return `/archives/media-coverage?page=${currentData.page}&limit=3`;
+  };
+
+  // Fetch cards
   const { data: cards } = useApiHook<CardApiResponse>({
-    url: "/archives/media-coverage?page=1&limit=3",
-    cacheKey: "archive-newsMedia-cards",
+    url: getApiUrl(),
+    cacheKey: `archive-newsMedia-cards-${currentKey}-page-${currentData.page}`,
   });
 
+  // Update local record store when new data arrives
+  useEffect(() => {
+    if (cards?.data) {
+      setRecords((prev) => {
+        const prevState = prev[currentKey] ?? {
+          page: 1,
+          cards: [],
+          totalCount: 0,
+        };
+        return {
+          ...prev,
+          [currentKey]: {
+            page: currentData.page,
+            cards:
+              currentData.page === 1
+                ? cards.data
+                : [...prevState.cards, ...cards.data],
+            totalCount: cards.meta?.total ?? 0,
+          },
+        };
+      });
+    }
+  }, [cards, currentKey, currentData.page]);
 
- const response = cards?.data ?? [];
-
-
-
+  // Scroll tab into center
   const scrollToCenter = (index: number) => {
     const tab = tabRefs.current[index];
     const container = containerRef.current;
-
     if (tab && container) {
       const offset =
         tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
@@ -69,37 +104,54 @@ export default function NewsAndMedia() {
     }
   };
 
- 
-
+  // Handle tab click
   const handleTabClick = (tab: FilterType) => {
     setSelectedTab(tab);
     if (tab === "Publication year" && year?.length) {
-      setSelectedFilter(year[0])
+      setSelectedFilter(year[0]);
+      setRecords((prev) => ({
+        ...prev,
+        [`${tab}-${year[0]}`]: { page: 1, cards: [], totalCount: 0 },
+      }));
     } else {
       setSelectedFilter("All");
+      setRecords((prev) => ({
+        ...prev,
+        [`${tab}-All`]: { page: 1, cards: [], totalCount: 0 },
+      }));
     }
   };
 
+  // Handle filter click
   const handleFilterClick = (filterName: string, index: number) => {
     setSelectedFilter(filterName);
     scrollToCenter(index);
+    setRecords((prev) => ({
+      ...prev,
+      [`${selectedTab}-${filterName}`]: { page: 1, cards: [], totalCount: 0 },
+    }));
   };
 
-  const filteredCards = useMemo(() => {
-    if (selectedTab === "Publication year" && selectedFilter!="All") {
-      return response.filter(
-        (card: any) =>
-          new Date(card.date).getFullYear() === Number(selectedFilter)
-      );
-    }
-     return response.slice(0, 3);
-  }, [selectedTab, selectedFilter,response]);
+  // Handle "See More"
+  const handleSeeMore = () => {
+    setRecords((prev) => ({
+      ...prev,
+      [currentKey]: {
+        ...currentData,
+        page: currentData.page + 1,
+      },
+    }));
+  };
 
+  const canSeeMore =
+    currentData.totalCount > 0 &&
+    currentData.cards.length < currentData.totalCount;
 
+  if (!year || !cards) return null;
 
   const renderFilterButtons = (filters: readonly string[]) => (
     <div ref={containerRef} className="pt-5 overflow-scroll no-scrollbar">
-      <div className="flex  gap-3">
+      <div className="flex gap-3">
         {filters.map((filter, index) => (
           <button
             key={filter}
@@ -107,9 +159,10 @@ export default function NewsAndMedia() {
               tabRefs.current[index] = el;
             }}
             className={`text-base cursor-pointer text-nowrap rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
-                            ${selectedFilter === filter
-                ? "border border-pink text-white bg-pink font-medium"
-                : "border border-lightgray/30"
+              ${
+                selectedFilter === filter
+                  ? "border border-pink text-white bg-pink font-medium"
+                  : "border border-lightgray/30"
               }`}
             onClick={() => handleFilterClick(filter, index)}
           >
@@ -120,21 +173,22 @@ export default function NewsAndMedia() {
     </div>
   );
 
-  if (!year || !content || !cards) { return null }
-
   return (
     <section id="news-and-media" className="bg-whitesmoke">
-      <div className="w-container blade-top-padding-sm blade-bottom-padding ">
-        {/* Header Section */}
+      <div className="w-container blade-top-padding-sm blade-bottom-padding">
+        {/* Header */}
         <div className="flex flex-row items-center gap-2 md:gap-3">
           <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
-          <h5 className="font-medium text-pink">{content?.tagName}</h5>
+          <h5 className="font-medium text-pink">In the News</h5>
         </div>
 
         <div className="py-3 max-w-3xl">
-          <h1 className="text-black font-light" dangerouslySetInnerHTML={{ __html: content?.title ?? "" }} />
-
-
+          <h1 className="text-black font-light">
+            <span className="text-black font-medium">
+              The Infravision Foundation
+            </span>{" "}
+            in the public sphere
+          </h1>
         </div>
 
         {/* Filter Section */}
@@ -151,9 +205,10 @@ export default function NewsAndMedia() {
                 <button
                   key={tab}
                   className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4
-                                        ${selectedTab === tab
-                      ? "border border-pink text-pink font-medium"
-                      : "border border-lightgray/30"
+                    ${
+                      selectedTab === tab
+                        ? "border border-pink text-pink font-medium"
+                        : "border border-lightgray/30"
                     }`}
                   onClick={() => handleTabClick(tab)}
                 >
@@ -163,56 +218,47 @@ export default function NewsAndMedia() {
             </div>
           </div>
 
-          {/* Filter Buttons */}
           {selectedTab === "Publication year" && renderFilterButtons(year)}
 
-
-          {/* Newsletter Cards */}
-          <div
-            className={`${selectedTab === "Publication year" ? "pt-8" : "pt-8"
-              }`}
-          >
-         {filteredCards.length === 0 && (
-              <div className="flex justify-center"> No results </div>
-            )} 
+          {/* Cards */}
+          <div className="pt-8">
+            {currentData.cards.length === 0 && (
+              <div className="flex justify-center">No results</div>
+            )}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 xlg:gap-24">
-             {filteredCards.slice(0,).map((card: any) => (
+              {currentData.cards.map((card) => (
                 <div key={card.id}>
                   <NewsCard
                     date={card.date}
                     title={card.title}
-                    image={card.coverImage}
-                    link={card.link}
-                    category={card.subtitle}
-                    description={card.authoreName}
+                    image={card.image}
+                    link={card.link} 
+                    category={card.category}
+                    description={card.description}
                     classes="line-clamp-3"
                     ctaType="read more"
                   />
                 </div>
               ))}
             </div>
-            {/* {visibleCount < filteredCards.length && (
-              <div className="flex w-full blade-top-padding-sm">
-                <button
-                  onClick={handleSeeMore}
-                  className={`group mx-auto text-xl lg:text-2xl   text-pink hover:text-white   text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
-                >
-                  <span className="z-20 relative">See more</span>
-                  <span
-                    className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
-                  ></span>
-                  <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5] transition-all duration-700 ease-in-out z-0"></span>
-                </button>
+
+            {/* See More */}
+            {canSeeMore && (
+              <div className="flex justify-center mb-4 sm:mt-4">
+                <UnderlineWithHover
+                  size="xxlsize"
+                  color="pink"
+                  bgColor="pink"
+                  text="See more"
+                  role="button"
+                  borderColor="white"
+                  handlefun={handleSeeMore}
+                />
               </div>
-            )} */}
+            )}
           </div>
         </div>
       </div>
     </section>
   );
 }
-
-
-
-
-

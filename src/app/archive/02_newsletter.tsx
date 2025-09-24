@@ -1,16 +1,15 @@
 "use client";
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import { NewsCard } from "@/_components/molecules/newsCard";
 import { useApiHook } from "@/lib/useApi";
-import { ApiResponse } from "../_home/01_banner";
 
 // Types
-type FilterType = "All" | "Publication year" | "sectors";
+type FilterType = "All" | "Publication year";
 
 export type yearApiResponse = string[];
 
-interface cardApiResponse {
+interface Newsletter {
   id: string;
   title: string;
   subtitle: string;
@@ -20,86 +19,136 @@ interface cardApiResponse {
   fileUrl: string;
 }
 
-
-interface cardApiResponse {
-  data: cardApiResponse[];
+interface NewsletterApiResponse {
+  data: Newsletter[];
+  meta: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
 }
 
-// Main Tab 
 const FILTER_TYPES: FilterType[] = ["All", "Publication year"];
 
-
-
 export default function Newsletters() {
-
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectedTab, setSelectedTab] = useState<FilterType>("All");
-  const [selectedFilter, setSelectedFilter] = useState<string>();
+  const [selectedFilter, setSelectedFilter] = useState<string>("All");
 
+  const [records, setRecords] = useState<{
+    [key: string]: { page: number; cards: Newsletter[]; totalCount: number };
+  }>({});
 
-  //Content API Call
-  const { data: content } = useApiHook<ApiResponse>({
-    url: "/content/archive-newsletter-content",
-    cacheKey: "archive-newsletter",
-  });
-
-  //Publication year tab API Call
+  // Fetch publication years
   const { data: year } = useApiHook<yearApiResponse>({
     url: "/archives/newsletter/years",
     cacheKey: "archive-year-tab",
   });
 
-  //Cards API Call
-  const { data: cards } = useApiHook<cardApiResponse>({
-    url: "/archives/newsletter?page=1&limit=3",
-    cacheKey: "archive-newsletter-cards",
+  // Current filter key
+  const currentKey = `${selectedTab}-${selectedFilter}`;
+
+  const currentData = records[currentKey] ?? {
+    page: 1,
+    cards: [],
+    totalCount: 0,
+  };
+
+  // Build API URL based on filters
+  const getApiUrl = () => {
+    if (selectedTab === "Publication year" && selectedFilter !== "All") {
+      return `/archives/newsletter?page=${currentData.page}&limit=3&year=${selectedFilter}`;
+    }
+    return `/archives/newsletter?page=${currentData.page}&limit=3`;
+  };
+
+  // Cards API Call
+  const { data: cards } = useApiHook<NewsletterApiResponse>({
+    url: getApiUrl(),
+    cacheKey: `archive-newsletter-cards-${currentKey}-page-${currentData.page}`,
   });
 
+  // Update local record store on new data
+  useEffect(() => {
+    if (cards?.data) {
+      setRecords((prev) => {
+        const prevState = prev[currentKey] ?? {
+          page: 1,
+          cards: [],
+          totalCount: 0,
+        };
+        return {
+          ...prev,
+          [currentKey]: {
+            page: currentData.page,
+            cards:
+              currentData.page === 1
+                ? cards.data
+                : [...prevState.cards, ...cards.data],
+            totalCount: cards.meta?.total ?? 0,
+          },
+        };
+      });
+    }
+  }, [cards, currentKey, currentData.page]);
 
-
-
-  const response = cards?.data ?? [];
- 
-
+  // Scroll filter into view
   const scrollToCenter = (index: number) => {
     const tab = tabRefs.current[index];
     const container = containerRef.current;
-
     if (tab && container) {
       const offset =
         tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
-      container.scrollTo({ left: offset, behavior: 'smooth' });
+      container.scrollTo({ left: offset, behavior: "smooth" });
     }
   };
 
+  // Handle tab switching
   const handleTabClick = (tab: FilterType) => {
     setSelectedTab(tab);
     if (tab === "Publication year" && year?.length) {
-      setSelectedFilter(year[0])
+      setSelectedFilter(year[0]);
+      setRecords((prev) => ({
+        ...prev,
+        [`${tab}-${year[0]}`]: { page: 1, cards: [], totalCount: 0 },
+      }));
     } else {
       setSelectedFilter("All");
+      setRecords((prev) => ({
+        ...prev,
+        [`${tab}-All`]: { page: 1, cards: [], totalCount: 0 },
+      }));
     }
-
- 
   };
 
+  // Handle filter switching (years)
   const handleFilterClick = (filterName: string, index: number) => {
     setSelectedFilter(filterName);
-    scrollToCenter(index)
+    scrollToCenter(index);
+    setRecords((prev) => ({
+      ...prev,
+      [`${selectedTab}-${filterName}`]: { page: 1, cards: [], totalCount: 0 },
+    }));
   };
 
-  const filteredCards = useMemo(() => {
-    if (selectedTab === "Publication year") {
-      return response.filter(
-        (card) =>
-           new Date(card.publishedDate).getFullYear() === Number(selectedFilter)
-      );
-    }
-    return response;
-  }, [response, selectedTab, selectedFilter]);
+  // Load more
+  const handleSeeMore = () => {
+    setRecords((prev) => ({
+      ...prev,
+      [currentKey]: {
+        ...currentData,
+        page: currentData.page + 1,
+      },
+    }));
+  };
 
+  const canSeeMore =
+    currentData.totalCount > 0 &&
+    currentData.cards.length < currentData.totalCount;
 
+  if (!year || !cards) return null;
 
   const renderFilterButtons = (filters: readonly string[]) => (
     <div ref={containerRef} className="pt-5 overflow-scroll no-scrollbar">
@@ -111,7 +160,7 @@ export default function Newsletters() {
               tabRefs.current[index] = el;
             }}
             className={`text-base cursor-pointer text-nowrap rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
-                            ${selectedFilter === filter
+              ${selectedFilter === filter
                 ? "border border-pink text-white bg-pink font-medium"
                 : "border border-lightgray/30"
               }`}
@@ -124,22 +173,20 @@ export default function Newsletters() {
     </div>
   );
 
-
-  if (!content || !year || !cards) { return null }
-
   return (
     <section id="newsletters">
       <div className="w-container blade-top-padding-sm blade-bottom-padding">
-        {/* Header Section */}
+        {/* Header */}
         <div className="flex flex-row items-center gap-2 md:gap-3">
           <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
-          <h5 className="font-medium text-pink">{content.tagName}</h5>
+          <h5 className="font-medium text-pink">Newsletters</h5>
         </div>
 
-        <div className="py-3 max-w-[890px] ">
-          <h1 className="text-black font-light" dangerouslySetInnerHTML={{ __html: content.title }} />
-
-
+        <div className="py-3 max-w-[890px]">
+          <h1 className="text-black font-light">
+            A chronicle of our <br />
+            <span className="text-black font-medium"> monthly dispatches</span>
+          </h1>
         </div>
 
         {/* Filter Section */}
@@ -156,7 +203,7 @@ export default function Newsletters() {
                 <button
                   key={tab}
                   className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4
-                                        ${selectedTab === tab
+                    ${selectedTab === tab
                       ? "border border-pink text-pink font-medium"
                       : "border border-lightgray/30"
                     }`}
@@ -168,20 +215,15 @@ export default function Newsletters() {
             </div>
           </div>
 
-          {/* Filter Buttons */}
           {selectedTab === "Publication year" && renderFilterButtons(year)}
 
-
           {/* Newsletter Cards */}
-          <div
-            className={`${selectedTab === "Publication year" ? "pt-8" : "pt-8"
-              }`}
-          >
-            {
-              filteredCards.length === 0 && <div className="flex justify-center "> No results </div>
-            }
+          <div className="pt-8">
+            {currentData.cards.length === 0 && (
+              <div className="flex justify-center">No results</div>
+            )}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 xlg:gap-24">
-              {filteredCards.slice(0, ).map((card) => (
+              {currentData.cards.map((card) => (
                 <div key={card.id}>
                   <NewsCard
                     date={card.publishedDate}
@@ -197,8 +239,9 @@ export default function Newsletters() {
               ))}
             </div>
 
-            {/* {visibleCount < filteredCards.length && (
-              <div className="flex justify-center mb-4  blade-top-padding-sm">
+            {/* See More Button */}
+            {canSeeMore && (
+              <div className="flex justify-center mb-4 sm:mt-4">
                 <UnderlineWithHover
                   size="xxlsize"
                   color="pink"
@@ -209,7 +252,7 @@ export default function Newsletters() {
                   handlefun={handleSeeMore}
                 />
               </div>
-            )} */}
+            )}
           </div>
         </div>
       </div>

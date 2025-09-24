@@ -43,7 +43,7 @@ export default function ResearchPapers() {
   const [selectedTab, setSelectedTab] = useState<FilterType>("All");
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
 
-  // ✅ State: store per-tab data
+
   const [records, setRecords] = useState<{
     [key: string]: { page: number; cards: ResearchPaper[]; totalCount: number };
   }>({});
@@ -53,23 +53,23 @@ export default function ResearchPapers() {
     cacheKey: "knowledgeContentTab",
   });
 
-  // Tabs API
+
   const { data: tabsData } = useApiHook<TabApiRaw[]>({
     url: "/knowledge/sectors",
     cacheKey: "knowledgeSectorTab",
   });
 
-  // ✅ Key for current tab+filter
+
   const currentKey = `${selectedTab}-${selectedFilter}`;
 
-  // ✅ Current state
+
   const currentData = records[currentKey] ?? {
     page: 1,
     cards: [],
     totalCount: 0,
   };
 
-  // ✅ Build API URL dynamically
+
   const getApiUrl = () => {
     if (selectedTab === "Sectors" && selectedFilter !== "All") {
       const sector = tabsData?.find((t) => t.name === selectedFilter);
@@ -80,7 +80,7 @@ export default function ResearchPapers() {
     return `/knowledge/research-papers?page=${currentData.page}&limit=3`;
   };
 
-  // Cards API
+
   const { data: cardData } = useApiHook<{
     researchPapers: ResearchPaper[];
     pagination: {
@@ -94,7 +94,8 @@ export default function ResearchPapers() {
     cacheKey: `knowledgeCardData-${currentKey}-page-${currentData.page}`,
   });
 
-  // ✅ Update state when API loads
+
+  console.log(cardData)
   useEffect(() => {
     if (cardData?.researchPapers) {
       setRecords((prev) => {
@@ -111,20 +112,20 @@ export default function ResearchPapers() {
               currentData.page === 1
                 ? cardData.researchPapers
                 : [...prevState.cards, ...cardData.researchPapers],
-            totalCount: cardData.pagination?.totalCount ?? 0, // ✅ fixed
+            totalCount: cardData.pagination?.totalCount ?? 0,
           },
         };
       });
     }
   }, [cardData, currentKey, currentData.page]);
 
-  // Active tabs
+
   const activeTabs = useMemo(
     () => tabsData?.map((tab) => tab.name) ?? [],
     [tabsData]
   );
 
-  // Scroll filter button to center
+
   const scrollToCenter = (index: number) => {
     const tab = tabRefs.current[index];
     const container = containerRef.current;
@@ -135,7 +136,7 @@ export default function ResearchPapers() {
     }
   };
 
-  // ✅ Handle filter click
+
   const handleFilterClick = (filterName: string, index: number) => {
     setSelectedFilter(filterName);
     scrollToCenter(index);
@@ -146,7 +147,7 @@ export default function ResearchPapers() {
     }));
   };
 
-  // ✅ Handle tab click
+
   const handleTabClick = (tab: FilterType) => {
     setSelectedTab(tab);
     if (tab === "Sectors" && activeTabs.length > 0) {
@@ -164,7 +165,7 @@ export default function ResearchPapers() {
     }
   };
 
-  // ✅ Handle see more
+
   const handleSeeMore = () => {
     setRecords((prev) => ({
       ...prev,
@@ -175,14 +176,14 @@ export default function ResearchPapers() {
     }));
   };
 
-  // ✅ Button condition
+
   const canSeeMore =
     currentData.totalCount > 0 &&
     currentData.cards.length < currentData.totalCount;
 
-  if (!tabsData) return null;
+  if (!tabsData || !cardData || !content) return null;
 
-  // Filter buttons
+
   const renderFilterButtons = (filters: string[]) => (
     <div ref={containerRef} className="pt-5 overflow-scroll no-scrollbar">
       <div className="flex gap-3">

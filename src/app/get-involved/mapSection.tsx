@@ -8,24 +8,23 @@ import { ReactNode } from "react";
 import { useApiHook } from "@/lib/useApi";
 
 interface organisationApiResponse {
-  id: string;
   address: string;
-  emails: string;
-  phones: string;
+  email: string;
+  phone: string;
   locationMapUrl: string;
 
 }
 
 export default function MapComponent() {
 
-  const { data } = useApiHook<organisationApiResponse>({
+  const { data} = useApiHook<organisationApiResponse>({
     url: "/organisation/details",
-    cacheKey: "organisation",
+    cacheKey: "organisation-details",
   });
 
-
-
   if (!data) return null;
+
+
 
 
   return (
@@ -35,12 +34,12 @@ export default function MapComponent() {
           <MapAndAddress
             icon={<MdOutlineEmail className="text-2xl text-pink my-auto" />}
             title="Email"
-            desc={data.emails}
+            desc={data.email}
           />
           <MapAndAddress
             icon={<MdOutlinePhone className="text-2xl text-pink my-auto" />}
             title="Phone"
-            desc={data.phones}
+            desc={data.phone}
           />
           <MapAndAddress
             icon={
@@ -51,12 +50,9 @@ export default function MapComponent() {
           />
         </div>
 
-        <div className="w-full border-2 border-lightgray/40 rounded-md ">
-         <iframe src={data.locationMapUrl}  width="100%"
-         
-            height="320" style={{border:0}} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+        <div className="w-full h-[320px]  border-2 border-lightgray/40 rounded-md ">
+         <MapIframe url={data.locationMapUrl} />
 
-         
         </div>
         <div className="pt-4 sm:pt-10">
           <p className="text-dark text-lg">Follow us on</p>
@@ -90,3 +86,20 @@ const MapAndAddress = ({
     </>
   );
 };
+
+
+
+import dynamic from "next/dynamic";
+import Loading from "../loading";
+
+const MapIframe = dynamic(() => Promise.resolve(({ url }: { url: string }) => (
+  <iframe
+    src={url}
+    width="100%"
+    height="320"
+    style={{ border: 0 }}
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  />
+)), { ssr: false });

@@ -34,10 +34,10 @@ export default function Archive() {
         <NewsAndMedia />
       </div>
       <div id="videos" ref={sectionRefs.video}>
-        <Video />
+        {/* <Video /> */}
       </div>
       <div id="gallery" ref={sectionRefs.gallery}>
-        <Gallery />
+        {/* <Gallery /> */}
       </div>
     </>
   );

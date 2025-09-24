@@ -1,26 +1,23 @@
 
 import { HeroBtnPink } from "@/_components/atoms/buttons";
 import { getData } from "@/lib/getServerData";
+import { getImageUrl } from "@/lib/functionCalling";
 import Image from "next/image";
 import Link from "next/link";
 import { RiArrowRightSLine } from "react-icons/ri";
 
 
 type contactApiResponse = {
-  tagName: string;
-  title: string;
+   heading: string;
   description: string;
-  desktopImg: string;
-  mobileImg: string;
-  cta: {
-    text: string;
-    target: string;
-  }
+  ctaText: string;
+  ctaLink: string;
+  backgroundImageDesktop: string;
+  backgroundImageMobile: string;
 }
 
 export const GetInvolvedBanner = async () => {
-  const response = await getData<contactApiResponse>("/content/contact-banner");
-
+  const response = await getData<contactApiResponse>("/content/get-involved-banner-section");
 
   return (
     <>
@@ -30,13 +27,14 @@ export const GetInvolvedBanner = async () => {
             className={`sm:block  hidden w-full h-auto max-h-[45rem]  overflow-hidden bg-black `}
           >
             <Image
-              src={response?.desktopImg}
-              width={1000}
-              height={1000}
-              alt="Publication Banner"
+              src={getImageUrl(response.backgroundImageDesktop)}
+              width={1944}
+              height={925}
+              alt="ContactUs Banner Image"
               className="w-full h-full object-cover "
-              unoptimized={true}
-              quality={100}
+              unoptimized={false}
+              priority
+              quality={75}
             ></Image>
           </div>
 
@@ -45,10 +43,11 @@ export const GetInvolvedBanner = async () => {
             <Image
               width={500}
               height={500}
-              src={response?.mobileImg}
-              alt="Publication Banner"
+              src={getImageUrl(response.backgroundImageMobile)}
+              alt="ContactUs Banner Image"
+              priority
               className="w-full h-full object-cover object-right"
-              unoptimized={true}
+              unoptimized={false}
               quality={100}
             ></Image>
           </div>
@@ -73,19 +72,19 @@ export const GetInvolvedBanner = async () => {
                 </Link>
                 <h5 className="text-white font-light flex flex-row">
                   <RiArrowRightSLine className="text-[24px]" />
-                  {response?.tagName}
+                  Get Involved
                 </h5>
               </div>
               <div className="  w-full ">
-                <h1 className="text-white font-medium ">{response.title}</h1>
+                <h1 className="text-white font-medium ">{response.heading}</h1>
                 <div className={` py-2 sm:py-4 w-full  max-w-lg`}>
                   <h5 className="text-white font-light ">
-                    {response?.description ?? ""}
+                    {response.description}
                   </h5>
                 </div>
 
                 <HeroBtnPink
-                  text={response.cta?.text??""}
+                  text={response.ctaText}
                   role="link"
                   borderColor="pink"
                   color="white"
@@ -93,7 +92,7 @@ export const GetInvolvedBanner = async () => {
                   size="large"
                   aarowColor="white"
                   classes="font-medium"
-                  link={response.cta?.target??""}
+                  link={response.ctaLink}
                   target={"_blank"}
                 />
               </div>

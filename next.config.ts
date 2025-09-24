@@ -1,11 +1,15 @@
-import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  /* config options here */
-  // experimental: {
-  //   turbo: false, // turn off Turbopack
-  // },
+
+const nextConfig = {
   images: {
-    domains: ["142.93.215.57"],
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: '142.93.215.57',
+        pathname: '/**',
+      },
+    ],
   },
 };
+
+module.exports = nextConfig;

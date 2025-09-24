@@ -7,13 +7,11 @@ import Updates from "./updates";
 
 export interface ApiResponse {
   id: string;
-  tagName: string;
-  title: string;
+  heading: string;
   description?: string;
-  image?: string;
-  desktopImg?: string;
-  mobileImg?: string;
-
+  backgroundImageDesktop?: string;
+  backgroundImageMobile?: string;
+ tagName?:string;
 }
 export default function Banner() {
   const { data } = useApiHook<ApiResponse>({

@@ -10,6 +10,7 @@ type CardProps = {
   ctaText: string;
 };
 
+import { getImageUrl } from "@/lib/functionCalling";
 import { BorderGrayHeroBtn } from "../atoms/buttons";
 import Image from "next/image";
 
@@ -33,7 +34,7 @@ export default function Card({
       >
         <div className="relative w-full md:w-[28rem] xl:w-[23rem] 2xl:w-[28rem] h-[15rem]">
           <Image
-            src={image ?? "/assets/globals/fallback.jpg"}
+            src={getImageUrl(image)}
             alt={title}
             unoptimized={false}
             className="object-cover"

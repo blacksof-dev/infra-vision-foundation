@@ -17,7 +17,7 @@ import {
   SelectValue,
 } from "@/_components/ui/select";
 import Portal from "@/_components/atoms/popupPortal";
-import { CloudCog, Loader, X } from "lucide-react";
+import {  Loader, X } from "lucide-react";
 
 import axios from "axios";
 import  MapComponent  from "./mapSection";
