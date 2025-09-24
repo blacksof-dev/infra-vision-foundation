@@ -25,18 +25,18 @@ export default function Page() {
 
     return (
         <main>
-            <BannerSection />
-            <PublicationTabs tabs={tabs} sectionRefs={sectionRefs} />
+        <BannerSection />
+            <PublicationTabs tabs={tabs} sectionRefs={sectionRefs} /> 
             <div ref={sectionRefs.researchPapers}>
                 <ResearchPapers />
             </div>
             <div ref={sectionRefs.infravisionConversations}>
-                <Conversations />
+              <Conversations />
             </div>
             <div ref={sectionRefs.blogs}>
-                <Blogs />
+                <Blogs /> 
             </div>
-            {/* <Publications /> */}
+         <Publications /> 
         </main>
     )
 }

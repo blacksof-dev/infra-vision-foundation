@@ -17,7 +17,7 @@ import {
   SelectValue,
 } from "@/_components/ui/select";
 import Portal from "@/_components/atoms/popupPortal";
-import { Loader, X } from "lucide-react";
+import { CloudCog, Loader, X } from "lucide-react";
 
 import axios from "axios";
 import  MapComponent  from "./mapSection";
@@ -64,7 +64,7 @@ const formSchema = z.object({
 
   links: z.string(),
 
-  fileUrl: z.any(),
+  file: z.any(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -106,31 +106,30 @@ export default function ContactForm() {
 
     try {
 
-      const payload = {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        email: data.email,
-        contactNumber: data.contactNumber,
-        personType: data.personType,
-        interestedIn: data.interestedIn,
-        message: data.message,
-        links: data.links,
-      };
+    const formData = new FormData();
+    formData.append("firstName", data.firstName);
+    formData.append("lastName", data.lastName);
+    formData.append("email", data.email);
+    formData.append("contactNumber", data.contactNumber);
+    formData.append("personType", data.personType);
+    formData.append("interestedIn", data.interestedIn);
+    formData.append("message", data.message);
+    formData.append("links", data.links);
 
-      if (data.fileUrl?.[0]) {
-        data.fileUrl = data.fileUrl[0]
-      }
-
-
-      const response = await axios.post(
+    if (data.file) {
+      formData.append("file", data.file);
+    }
+  
+  
+       await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/contact/leads`,
-        payload,
+        formData,
         {
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "multipart/form-data" },
         }
       );
 
-      console.log("Backend response:", response.data);
+     
 
       if (!formRef.current) return;
 
@@ -156,6 +155,8 @@ export default function ContactForm() {
       setIsSubmitting(false);
     }
   }
+
+
 
   return (
     <>
@@ -324,6 +325,7 @@ export default function ContactForm() {
                         <span className="text-darkgray font-poppins my-auto ps-3 inline-block">
                           {filename}
                         </span>
+
                         <div className="absolute right-3 bottom-4 w-8 h-8 flex bg-pink rounded-sm">
                           <TbUpload className="text-white text-xl m-auto" />
                         </div>
@@ -336,14 +338,14 @@ export default function ContactForm() {
                           const files = e.target.files;
                           if (files && files.length > 0) {
                             setfilename(files[0].name);
-                            setValue("fileUrl", files);
+                            setValue("file", files[0]);
                           }
                         }}
                       />
                     </label>
-                    {errors.fileUrl && (
+                    {errors.file && (
                       <p className="text-red-500 text-sm mt-1">
-                        {errors.fileUrl.message as string}
+                        {errors.file.message as string}
                       </p>
                     )}
                   </div>
@@ -358,6 +360,7 @@ export default function ContactForm() {
                     {errors.links && (
                       <p className="text-red-500 text-sm mt-1">
                         {errors.links.message}
+
                       </p>
                     )}
                     <div className="absolute right-3 bottom-5 ">

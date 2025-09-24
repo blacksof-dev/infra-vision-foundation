@@ -13,10 +13,7 @@ export interface ApiResponse {
   image?: string;
   desktopImg?: string;
   mobileImg?: string;
-  cta?: {
-    text: string;
-    target: string;
-  };
+
 }
 export default function Banner() {
   const { data } = useApiHook<ApiResponse>({

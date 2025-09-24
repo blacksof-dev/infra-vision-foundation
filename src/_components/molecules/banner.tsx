@@ -1,18 +1,18 @@
 
 import Image from "next/image";
 import { RiArrowRightSLine } from "react-icons/ri";
-import { HeroBtnPink } from "../atoms/buttons";
-import Link from "next/link";
+
 import { ApiResponse } from "@/app/_home/01_banner";
+
 
 export default function Banner({
   id,
- tagName,
- title,
- desktopImg,
- mobileImg,
- description,
- 
+  tagName,
+  title,
+  desktopImg,
+  mobileImg,
+  description,
+
 
 }: ApiResponse) {
   return (
@@ -30,7 +30,7 @@ export default function Banner({
               sizes="100vw"
             ></Image>
           </div>
-          { mobileImg && (
+          {mobileImg && (
             <div className="md:hidden block h-[30rem] relative w-full">
               <Image
                 src={mobileImg}
@@ -45,7 +45,7 @@ export default function Banner({
           <div className="w-container overflow-hidden">
             <div className="absolute w-auto sm:w-auto top-9  sm:top-12 md:top-18 flex flex-col  justify-between h-[88%] sm:h-[80%]">
               <div className="flex flex-row gap-1 ">
-                <Link href="/">
+              
                   <svg
                     className="fill-white "
                     width="28"
@@ -60,7 +60,7 @@ export default function Banner({
 
                     />
                   </svg>
-                </Link>
+            
                 <h5 className="text-white font-light flex flex-row">
                   <RiArrowRightSLine className="text-[24px]" />
                   {tagName}
@@ -69,25 +69,9 @@ export default function Banner({
               <div className="  w-full ">
                 <h1 className="text-white font-medium ">{title}</h1>
                 <div className={` py-2 sm:py-4 w-full  max-w-lg`}>
-                  <h5 className="text-white font-light " dangerouslySetInnerHTML={{ __html: description??"" }} />
-
-
+                  <h5 className="text-white font-light " dangerouslySetInnerHTML={{ __html: description ?? "" }} />
                 </div>
-                {/* {cta?. && (
-                  <HeroBtnPink
-                    text={buttonText}
-                    role="link"
-                    borderColor="pink"
-                    color="white"
-                    bgColor="transparent"
-                    size="large"
-                    aarowColor="white"
-                    classes="font-medium"
-                    link={link}
-                    target={"_blank"}
-                  />
-                )} */}
-
+           
               </div>
             </div>
           </div>

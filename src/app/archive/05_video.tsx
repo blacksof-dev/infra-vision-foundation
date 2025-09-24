@@ -6,7 +6,6 @@ import VideoPopup from "../../_components/molecules/videopopup";
 import { BorderGrayHeroBtn, } from "@/_components/atoms/buttons";
 import Link from "next/link";
 import { useApiHook } from "@/lib/useApi";
-import { ApiResponse } from "../_home/01_banner";
 import { TabApiRaw } from "../knowledge/02_researchPapers";
 
 
@@ -30,6 +29,18 @@ interface cardApiResponse {
 
 interface videoCardApiResponse {
   videos: cardApiResponse[];
+}
+
+type ApiResponse = {
+  tagName: string;
+  title: string;
+  description: string;
+  desktopImg: string;
+  mobileImg: string;
+  cta: {
+    text: string;
+    target: string;
+  }
 }
 
 
@@ -83,7 +94,7 @@ function TabsSection({ tab, setTab, }: { tab: string; setTab: (tabname: string) 
   });
 
   const activeTabs = useMemo(() =>
-    tabDetails?.filter(tab => tab.active).map(tab => tab.name) ?? [],
+    tabDetails?.map(tab => tab.name) ?? [],
     [tabDetails]);
 
 
@@ -126,6 +137,7 @@ function CardSection({ tab }: { tab: string }) {
     setPopupOpen(true);
   };
 
+  
   const filteredCards = useMemo(() => {
     if (tab === "All") return response;
     return response.filter(card =>

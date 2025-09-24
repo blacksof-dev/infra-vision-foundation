@@ -1,6 +1,5 @@
 "use client";
 import { useState, useMemo, useRef, useEffect } from "react";
-
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import { NewsCard } from "@/_components/molecules/newsCard";
 import { useApiHook } from "@/lib/useApi";
@@ -11,8 +10,7 @@ type FilterType = "All" | "Sectors";
 export interface TabApiRaw {
   id: string;
   name: string;
-  slug: string;
-  active: boolean;
+  slug?: string;
 }
 
 interface contentApiResponse {
@@ -36,18 +34,19 @@ export interface ResearchPaper {
 }
 
 const FILTER_TYPES: FilterType[] = ["All", "Sectors"];
-
-let initialLimit = 3;
+const INITIAL_LIMIT = 3;
 
 export default function ResearchPapers() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [selectedTab, setSelectedTab] = useState<FilterType>("All");
-  const [selectedFilter, setSelectedFilter] = useState<string>("All");
-  const [limit, setLimit] = useState(initialLimit);
+  const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
+  const [limit, setLimit] = useState(INITIAL_LIMIT);
   const [cards, setCards] = useState<ResearchPaper[]>([]);
+  const [activeTabs, setActiveTabs] = useState<{ name: string; id: string }[]>([]);
 
+  // Content API
   const { data: content } = useApiHook<contentApiResponse>({
     url: "/content/knowledge-reserach-content",
     cacheKey: "knowledgeContentTab",
@@ -59,34 +58,48 @@ export default function ResearchPapers() {
     cacheKey: "knowledgeSectorTab",
   });
 
-  // Cards API
-  const { data: cardData } = useApiHook<{ researchPapers: ResearchPaper[]; totalCount: number; }>({
-    url: `/knowledge/research-papers?page=1&limit=${limit}`,
-    cacheKey: `knowledgeCardData-page-1-limit-${limit}`,
-  });
-
-  // Map active tabs
-  const activeTabs = useMemo(
-    () => tabsData?.map(tab => tab.name) ?? [],
-    [tabsData]
-  );
+  // Cards API: fetch when selectedFilter or limit changes
 
 
+  const cardsApiUrl = selectedFilter
+  ? `/knowledge/research-papers/by-sector/${selectedFilter}?page=1&limit=${limit}`
+  : `/knowledge/research-papers?page=1&limit=${limit}`;
 
 
-  // Append newly fetched cards
+const { data: cardData } = useApiHook<{
+  researchPapers: ResearchPaper[];
+  totalCount: number;
+}>({
+  url: cardsApiUrl,
+  cacheKey: `knowledgeCardData-page-1-limit-${limit}-sectorId-${selectedFilter ?? "all"}`,
+});
+
+  // Update active tabs once tabsData loads
   useEffect(() => {
-    if (cardData?.researchPapers) {
-      setCards(cardData.researchPapers);
+    if (tabsData) {
+      setActiveTabs(tabsData.map(tab => ({ name: tab.name, id: tab.id })));
+      // set default filter if "Sectors" tab is active
+      if (selectedTab === "Sectors" && tabsData.length > 0 && !selectedFilter) {
+        setSelectedFilter(tabsData[0].id);
+      }
     }
-  }, [cardData]);
+  }, [tabsData, selectedTab, selectedFilter]);
+
+  // Update cards when cardData changes
+ useEffect(() => {
+  if (cardData?.researchPapers) {
+    setCards(cardData.researchPapers);
+  } else {
+    setCards([]); // clear if no data
+  }
+}, [cardData]);
 
   // Filter cards by tab/filter
   const filteredCards = useMemo(() => {
     let result = cards;
-    if (selectedTab === "Sectors" && selectedFilter !== "All") {
+    if (selectedTab === "Sectors" && selectedFilter) {
       result = cards.filter(card =>
-        card.sectors.some(sector => sector.name === selectedFilter)
+        card.sectors.some(sector => sector.slug === selectedFilter)
       );
     }
     return result.slice(0, limit);
@@ -103,20 +116,20 @@ export default function ResearchPapers() {
     }
   };
 
-  const handleFilterClick = (filterName: string, index: number) => {
-    setSelectedFilter(filterName);
+  const handleFilterClick = (filterId: string, index: number) => {
+    setSelectedFilter(filterId);
+    setLimit(INITIAL_LIMIT);
     scrollToCenter(index);
-
   };
 
   const handleTabClick = (tab: FilterType) => {
     setSelectedTab(tab);
+    setLimit(INITIAL_LIMIT);
     if (tab === "Sectors" && activeTabs.length > 0) {
-      setSelectedFilter(activeTabs[0]);
+      setSelectedFilter(activeTabs[0].id);
     } else {
-      setSelectedFilter("All");
+      setSelectedFilter(null);
     }
-    setLimit(initialLimit)
   };
 
   const handleSeeMore = () => {
@@ -125,31 +138,26 @@ export default function ResearchPapers() {
 
   if (!tabsData) return null;
 
-  const renderFilterButtons = (filters: string[]) => (
+  const renderFilterButtons = (filters: { name: string; id: string }[]) => (
     <div ref={containerRef} className="pt-5 overflow-scroll no-scrollbar">
       <div className="flex gap-3">
         {filters.map((filter, index) => (
           <button
-            key={filter}
-            ref={(el: HTMLButtonElement | null): void => {
-              tabRefs.current[index] = el;
-            }}
-
-            className={`text-base text-nowrap  cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
-              ${selectedFilter === filter
+            key={filter.id}
+            ref={el => { tabRefs.current[index] = el; }}
+            className={`text-base text-nowrap cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3 ${
+              selectedFilter === filter.id
                 ? "border border-pink text-white bg-pink font-medium"
                 : "border border-lightgray/30"
-              }`}
-            onClick={() => handleFilterClick(filter, index)}
+            }`}
+            onClick={() => handleFilterClick(filter.id, index)}
           >
-            {filter}
+            {filter.name}
           </button>
         ))}
       </div>
     </div>
   );
-
-
 
   return (
     <section id="research-papers">
@@ -160,10 +168,11 @@ export default function ResearchPapers() {
         </div>
 
         <div className="py-3 max-w-4xl">
-          <h1 className="text-black font-light" dangerouslySetInnerHTML={{ __html: content?.description ?? "" }} />
+          <h1
+            className="text-black font-light"
+            dangerouslySetInnerHTML={{ __html: content?.description ?? "" }}
+          />
         </div>
-
-
 
         {/* Filter Section */}
         <div className="pt-5">
@@ -178,11 +187,11 @@ export default function ResearchPapers() {
               {FILTER_TYPES.map(tab => (
                 <button
                   key={tab}
-                  className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4
-                    ${selectedTab === tab
+                  className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4 ${
+                    selectedTab === tab
                       ? "border border-pink text-pink font-medium"
                       : "border border-lightgray/30"
-                    }`}
+                  }`}
                   onClick={() => handleTabClick(tab)}
                 >
                   {tab}
@@ -199,24 +208,24 @@ export default function ResearchPapers() {
               <div className="flex justify-center">No results</div>
             )}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 xlg:gap-24">
-              {filteredCards.slice(0, limit).map(card => (
-                <div key={card.id}>
-                  <NewsCard
-                    date={card.date}
-                    title={card.title}
-                    image={card.image}
-                    link={card.link}
-                    category={card.sectors[0]?.name ?? ""}
-                    description={card.description}
-                    classes="line-clamp-3"
-                    ctaType="read more"
-                  />
-                </div>
+              {filteredCards.map(card => (
+                <NewsCard
+                  key={card.id}
+                  date={card.date}
+                  title={card.title}
+                  image={card.image}
+                  link={card.link}
+                  category={card.sectors[0]?.name ?? ""}
+                  description={card.description}
+                  classes="line-clamp-3"
+                  ctaType="read more"
+                />
               ))}
             </div>
 
-            {(cardData?.researchPapers?.length ?? 0) === limit && (
-              <div className="flex justify-center mb-4 sm:mt-4">
+            {/* See more button */}
+            {cards.length > filteredCards.length && (
+              <div className="flex justify-center mt-4">
                 <UnderlineWithHover
                   size="xxlsize"
                   color="pink"
@@ -228,7 +237,6 @@ export default function ResearchPapers() {
                 />
               </div>
             )}
-
           </div>
         </div>
       </div>

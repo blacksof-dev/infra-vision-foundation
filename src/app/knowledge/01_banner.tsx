@@ -16,6 +16,8 @@ export default function BannerSection(){
     return null;
   }
 
+  console.log(data)
+
     return (
         <Banner
             id="knowledge-section1"
@@ -24,6 +26,7 @@ export default function BannerSection(){
             tagName={data.tagName}
             title={data.title}
             description={data.description}
+          
         />
     )
 }

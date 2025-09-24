@@ -24,9 +24,9 @@ export default function Home() {
       </Suspense>
 
       <WhoWeAre />
-      <Infravisionaries />
-      <Association />
-      <Highlights />
+      {/* <Infravisionaries /> */}
+      {/* <Association /> */}
+      {/* <Highlights /> */}
       <StayConnected />
       <InfravisionTalks />
     </>

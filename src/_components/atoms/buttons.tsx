@@ -25,7 +25,7 @@ type MasterBtnProps<T extends "submit" | "button"> = {
   isDisabled?: boolean;
   role: "button" | "submit" | "link";
   link?: string;
-  target?: "_blank" | "_self" | "_parent" | "_top";
+  target?: "_blank" | "_self" | "_parent" | "_top" 
   onClick?: T extends "submit" ? never : () => void;
   btnrole?: string;
   borderColor: string;
@@ -232,7 +232,7 @@ export function BorderGrayHeroBtn<T extends "submit" | "button">({
     <div className="w-fit group">
       {role === "link" && link != " " ? (
         <Link
-          href={link}
+          href={"#"}
           target={target}
           className={`flex gap-2 lg:gap-4 items-center justify-center ${classes}`}
           role={role}
