@@ -6,7 +6,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
-<<<<<<< HEAD
 import Link from "next/link";
 import { useApiHook } from "@/lib/useApi";
 
@@ -17,15 +16,6 @@ interface updateApiResponse {
   btnTitle: string;
   link: string;
 }
-=======
-import img_12 from "@/../public/assets/outreach-and-engagements/eventImages/august18_2025_Img4.jpeg"
-import Link from "next/link";
-import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg"
-import img_16 from "@/../public/assets/knowledeg/researchPapers/02.jpg"
-import img2 from "@/../public/assets/knowledeg/conversations/02.png";
-import img10 from "@/../public/assets/knowledeg/conversations/10.png";
-import img_17 from "@/../public/assets/knowledeg/researchPapers/14.png";
->>>>>>> 220ebb1993f67443f659b5661a6320e7d44aeab1
 
 export default function Updates() {
   const [isFirstSlide, setIsFirstSlide] = useState(true);
@@ -127,21 +117,8 @@ export default function Updates() {
               prevEl: ".swiper-solution-prev-btn-hero",
               nextEl: ".swiper-solution-next-btn-hero",
             }}
-<<<<<<< HEAD
             loop
             autoplay={{ delay: 3000, disableOnInteraction: false }}
-=======
-            pagination={{
-              el: ".custom-pagination-bullets-banner",
-              // type: "fraction",
-            }}
-            loop
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-            }}
-            grabCursor={true}
->>>>>>> 220ebb1993f67443f659b5661a6320e7d44aeab1
             speed={500}
             spaceBetween={10}
             slidesPerView={1.1}
@@ -198,59 +175,3 @@ export default function Updates() {
     </section>
   );
 }
-<<<<<<< HEAD
-=======
-
-const EventsDetails = [
-
-  {
-
-    image: img_16,
-    category: "News",
-    title: "Next game changer: High-speed rail",
-    btnTitle: "Read more",
-    link: "/assets/pdf/speedRail.jpg",
-  },
-  {
-    image: img_15,
-    category: "Blog",
-    title: "How to make India’s highways safe",
-    btnTitle: "Read more",
-    link: "/blogs/how-to-make-india-highways-safe",
-  },
-
-    {
-      
-    image: img10,
-    category: "Video",
-    title: "Why Smaller Cities can become Growth Hubs",
-    btnTitle: "Watch video",
-    link: "https://www.youtube.com/embed/ZGIjUOfs91U?si=-iX4ss69vegjRpoQ",
-
-  },
-  {
-    image: img_17,
-    category: "Research Report",
-    title: "Impact of FSI Deregulation in Hyderabad",
-    btnTitle: "Read more",
-    link: "/assets/pdf/report-fsi-deregulation-in-hyderabad.pdf",
-  },
- 
-
-
-  {
-    image: img2,
-    category: "Video",
-    title: "Can the Urban Challenge Fund be a gamechanger for India’s urban future?",
-    btnTitle: "Watch video",
-    link: "https://www.youtube.com/embed/NJ0V0G7eZwE?si=Mp_0ul6iDz5QtJN4",
-
-  },
-
-  
-
-];
-
-
-
->>>>>>> 220ebb1993f67443f659b5661a6320e7d44aeab1
