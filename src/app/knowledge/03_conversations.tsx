@@ -23,6 +23,7 @@ import img10 from "@/../public/assets/knowledeg/conversations/10.png";
 
 
 const people = [
+  
  {
     image:img2.src,
     videoLink: "https://www.youtube.com/embed/NJ0V0G7eZwE?si=Mp_0ul6iDz5QtJN4",
