@@ -3,7 +3,8 @@ import Portal from "@/_components/atoms/popupPortal";
 import { RxCross2 } from "react-icons/rx";
 import { CardData } from "./static";
 import Image from "next/image";
-
+import ReactMarkdown from "react-markdown";
+import { getImageUrl } from "@/lib/functionCalling";
 
 export default function PopupDescription({
   onclose,
@@ -29,7 +30,7 @@ export default function PopupDescription({
               {/* IMAGE SECTION */}
               <div className="relative w-full  min-h-[19rem] sm:min-h-[21rem]   md:h-[25rem] lg:w-[40%] lg:h-full ">
                 <Image
-                  src={data.image}
+                  src={getImageUrl(data.image)}
                   alt={data.title}
                   fill
                   className="object-cover object-top rounded-md w-full "
@@ -43,15 +44,7 @@ export default function PopupDescription({
                 <h6 className="text-pink font-medium sm:pt-1">{data.subtitle}</h6>
                 {data?.popupdesc && (
                   <div className="overflow-y-auto h-full pr-2 mt-2 sm:mt-3">
-                    {data.popupdesc.split('\n').map((paragraph, index) => (
-                      paragraph.trim() && (
-                        <p
-                          key={index}
-                          className="text-black text-sm md:text-base pt-2 first:pt-0"
-                          dangerouslySetInnerHTML={{ __html: paragraph }}
-                        />
-                      )
-                    ))}
+                      <ReactMarkdown>{data.popupdesc}</ReactMarkdown>
                   </div>
                 )}
              

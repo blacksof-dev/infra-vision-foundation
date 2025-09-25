@@ -136,6 +136,7 @@ export default function InfravisionariesGlobal({ role }: { role: string }) {
     cacheKey: "teams",
   });
 
+console.log(trusteesData)
   
 
   useEffect(() => {

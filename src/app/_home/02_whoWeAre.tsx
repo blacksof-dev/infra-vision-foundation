@@ -163,6 +163,8 @@ export const TabSwitch = ({
     cacheKey: "advocacy",
   });
 
+  console.log(data)
+  
   if (!data || !knowledgeInfo) {
     return null;
   }

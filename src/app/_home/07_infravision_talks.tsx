@@ -10,7 +10,7 @@ export default function InfravisionTalks() {
     cacheKey: "homeContent-getInvolved",
   });
 
-  console.log(data)
+
  if(!data){return null}
 
   return (

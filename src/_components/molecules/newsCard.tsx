@@ -20,6 +20,7 @@ export function NewsCard({ date, title, image, link, category, description, ctaT
 
     if(date){
       date = apiDateConversion(date);
+      link = getImageUrl(link)
     }
 
 

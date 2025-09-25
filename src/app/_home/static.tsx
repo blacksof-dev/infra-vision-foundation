@@ -43,7 +43,7 @@ import VrindaSingh from "@/../public/assets/home/team/VrindaSingh.jpg";
 import { StaticImageData } from "next/image";
 
 export type CardData = {
-  image: StaticImageData;
+  image:string;
   title: string;
   desig: string;
   link?: string;

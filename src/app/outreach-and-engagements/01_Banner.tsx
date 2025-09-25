@@ -5,7 +5,7 @@ import { ApiResponse } from "../_home/01_banner";
 
 export default function OutreachBanner() {
     const { data } = useApiHook<ApiResponse>({
-      url: "/content/outReach-engagement-banner-content",
+      url: "/content/outreach-and-engagements-banner",
       cacheKey: "outReach-engagement-banner-content",
     });
   
@@ -18,10 +18,10 @@ export default function OutreachBanner() {
     <>
       <Banner
         id="outreactAndEngagement"
-         desktopImg={response.desktopImg}
-        mobileImg={response.mobileImg}
-        tagName={response. tagName}
-        title={response.title}
+        backgroundImageDesktop={response.backgroundImageDesktop}
+        backgroundImageMobile={response.backgroundImageMobile}
+        tagName="Outreach and Engagements"
+        heading={response.heading}
         description={response.description}
       />
     </>

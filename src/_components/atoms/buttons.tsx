@@ -232,7 +232,7 @@ export function BorderGrayHeroBtn<T extends "submit" | "button">({
     <div className="w-fit group">
       {role === "link" && link != " " ? (
         <Link
-          href={"#"}
+          href={link}
           target={target}
           className={`flex gap-2 lg:gap-4 items-center justify-center ${classes}`}
           role={role}

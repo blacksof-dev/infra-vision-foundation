@@ -70,6 +70,8 @@ export default function Newsletters() {
     cacheKey: `archive-newsletter-cards-${currentKey}-page-${currentData.page}`,
   });
 
+
+ 
   // Update local record store on new data
   useEffect(() => {
     if (cards?.data) {

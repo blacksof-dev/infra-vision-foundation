@@ -3,16 +3,28 @@ import React, { useEffect, useMemo, useState } from "react";
 import SectionHeading from "../../components/sectionHeading";
 import TextInput from "../../components/input/textInput";
 import { z } from "zod";
-import { fileSchema, generalSchema } from "../../lib/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ImagePicker from "../../components/input/imagePicker";
 import { Button } from "../../components/button";
-import { X } from "lucide-react";
+import { Linkedin, Twitter, X } from "lucide-react";
 import { useSession } from "next-auth/react";
-import { getData, uploadImage } from "../../lib/utils";
 import { toast } from "react-toastify";
 import axios from "axios";
+import dynamic from "next/dynamic";
+import { ToggleSwitch } from "../../components/toggleSwitch";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/_components/ui/select";
+import Link from "next/link";
+// Dynamically import Markdown editor
+const MarkdownEditor = dynamic(() => import("@uiw/react-md-editor"), {
+  ssr: false,
+});
 
 type Trustee = {
   id: string;
@@ -27,16 +39,8 @@ type Trustee = {
   active: boolean;
 };
 
-type Pagination = {
-  page: number;
-  limit: number;
-  totalCount: number;
-  totalPages: number;
-};
-
 type TrusteesResponse = {
   trustees: Trustee[];
-  pagination: Pagination;
   lastUpdated?: string;
 };
 
@@ -54,18 +58,15 @@ export default function TeamsTrustees() {
     items: [],
   });
 
-  const [pagination, setPagination] = useState<Pagination | null>(null);
   const [isLoadingList, setIsLoadingList] = useState<boolean>(false);
 
-  async function loadTrustees(page = 1, limit = 100, search = " ") {
+  async function loadTrustees() {
     try {
       setIsLoadingList(true);
-      const data = (await getData(
-        `/teams/trustees`,
-        session
-      )) as TrusteesResponse;
-      setFormState((s) => ({ ...s, items: data.trustees ?? [] }));
-      setPagination(data.pagination);
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_HOST_URL}/teams/trustees`
+      );
+      setFormState((s) => ({ ...s, items: res.data.trustees ?? [] }));
     } catch (e) {
       toast.error("Failed to load trustees");
     } finally {
@@ -74,8 +75,7 @@ export default function TeamsTrustees() {
   }
 
   useEffect(() => {
-    loadTrustees(1, 100);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    loadTrustees();
   }, []);
 
   async function deleteTrustee(id: string) {
@@ -88,11 +88,10 @@ export default function TeamsTrustees() {
           },
         }
       );
-      if (res.status === 200) {
+      if (res.status === 204) {
         toast.success("Deleted successfully");
-        await loadTrustees(1, 100);
+        await loadTrustees();
       } else {
-        console.log(res);
         toast.error("Delete failed");
       }
     } catch (e: any) {
@@ -105,7 +104,7 @@ export default function TeamsTrustees() {
       <div className="blade-top-padding">
         <SectionHeading
           heading="Section - Teams (Trustees)"
-          ctaText="Add New"
+          ctaText="Add New Member"
           cta={true}
           handleClick={() =>
             setFormState((val) => {
@@ -115,45 +114,47 @@ export default function TeamsTrustees() {
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-4 mt-6">
         {formState.items.map((item) => (
           <article
             key={item.id}
             className="p-4 bg-white rounded-md border border-gray flex flex-col gap-3"
           >
             <div className="flex gap-4">
-              <div className="w-24 h-24 rounded-md overflow-hidden border border-gray/20">
-                <img
-                  src={`${process.env.NEXT_PUBLIC_HOST_URL}${item.image}`}
-                  alt={item.title}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              {item.popupImg ? (
-                <div className="w-24 h-24 rounded-md overflow-hidden border border-gray/20">
+              {item.image && (
+                <div className="w-full h-[15rem] rounded-md overflow-hidden border border-gray/20">
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_HOST_URL}${item.image}`}
+                    alt={item.title}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+              )}
+              {item.popupImg && (
+                <div className="w-full h-[15rem] rounded-md overflow-hidden border border-gray/20">
                   <img
                     src={`${process.env.NEXT_PUBLIC_HOST_URL}${item.popupImg}`}
                     alt={`${item.title} popup`}
                     className="object-cover w-full h-full"
                   />
                 </div>
-              ) : null}
+              )}
             </div>
-            <div className="text-sm">
-              <div className="font-semibold">{item.title}</div>
-              <div className="opacity-80">{item.desig}</div>
-              {item.link ? (
-                <a
+            <div className="text-base">
+              <div className="font-semibold flex justify-between"><span className="block">{item.title}</span><span className="block"> {item.link ? (
+                <Link
                   href={item.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-blue-600 underline text-xs"
+                  className="text-pink underline text-base"
                 >
-                  {item.socialMedia || "Link"}
-                </a>
-              ) : null}
-              <div className="text-xs mt-1">Order: {item.order}</div>
-              <div className="text-xs">
+                  {item.socialMedia==="linkedin"&& <Linkedin/>}
+                  {item.socialMedia==="twitter"&& <Twitter/>}
+                </Link>
+              ) : null}</span></div>
+              <div className="opacity-80">{item.desig}</div>         
+              <div className="mt-4">Order: {item.order}</div>
+              <div className="">
                 Active: {item.active ? "Yes" : "No"}
               </div>
             </div>
@@ -186,7 +187,7 @@ export default function TeamsTrustees() {
           initalData={formState.editItem}
           onClose={async (refresh?: boolean) => {
             setFormState((s) => ({ ...s, isFormOpen: false, editItem: null }));
-            if (refresh) await loadTrustees(1, 100);
+            if (refresh) await loadTrustees();
           }}
         />
       )}
@@ -195,15 +196,15 @@ export default function TeamsTrustees() {
 }
 
 const trusteeSchema = z.object({
-  title: generalSchema("Name is required"),
-  desig: generalSchema("Designation is required"),
+  title: z.string().min(1, "Name is required"),
+  desig: z.string().min(1, "Designation is required"),
   popupdesc: z.string().min(1, "Popup description is required"),
   link: z.string().optional(),
-  socialMedia: z.string().optional(),
+  socialMedia: z.enum(["linkedin", "twitter"]).optional(),
   order: z.coerce.number().min(0),
-  active: z.coerce.boolean(),
-  image: fileSchema,
-  popupImg: fileSchema,
+  active: z.boolean(),
+  image: z.any().optional(),
+  popupImg: z.any().optional(),
 });
 
 type TrusteeFormValues = z.infer<typeof trusteeSchema>;
@@ -225,31 +226,32 @@ function TrusteeForm({
         desig: "",
         popupdesc: "",
         link: "",
-        socialMedia: "",
+        socialMedia: undefined,
         order: 0,
         active: true,
-        image: "",
-        popupImg: "",
-      } as unknown as TrusteeFormValues;
+        image: undefined,
+        popupImg: undefined,
+      } as TrusteeFormValues;
     }
     return {
       title: initalData.title,
       desig: initalData.desig,
       popupdesc: initalData.popupdesc || "",
       link: initalData.link || "",
-      socialMedia: initalData.socialMedia || "",
+      socialMedia:
+        (initalData.socialMedia as "linkedin" | "twitter") || undefined,
       order: initalData.order,
       active: initalData.active,
       image: initalData.image,
       popupImg: initalData.popupImg || "",
-    } as unknown as TrusteeFormValues;
+    } as TrusteeFormValues;
   }, [initalData]);
 
   const {
     register,
     handleSubmit,
     watch,
-    setError,
+    setValue,
     formState: { errors },
   } = useForm<TrusteeFormValues>({
     resolver: zodResolver(trusteeSchema),
@@ -260,86 +262,49 @@ function TrusteeForm({
     try {
       setIsLoading(true);
 
-      // Image upload handling (primary image)
-      let imageUrl: string | null = null;
-      const imageValue = data.image as unknown;
-      if (typeof imageValue === "string" && imageValue.trim().length > 0) {
-        imageUrl = imageValue;
-      } else if (imageValue instanceof FileList && imageValue.length > 0) {
-        const file = imageValue[0] as File;
-        const res = await uploadImage(file, session, `trustee-${Date.now()}`);
-        if (!res.success) {
-          toast.error(res.errorMessage);
-          return;
-        }
-        imageUrl = res.data.url;
-      } else {
-        setError("image", { type: "manual", message: "Image is required" });
-        return;
-      }
+      const formData = new FormData();
+      formData.append("title", data.title);
+      formData.append("desig", data.desig);
+      formData.append("popupdesc", data.popupdesc);
+      formData.append("order", String(data.order));
+      formData.append("active", String(data.active));
 
-      // Popup image upload handling
-      let popupImgUrl: string | null = null;
-      const popupValue = data.popupImg as unknown;
-      if (typeof popupValue === "string" && popupValue.trim().length > 0) {
-        popupImgUrl = popupValue;
-      } else if (popupValue instanceof FileList && popupValue.length > 0) {
-        const file = popupValue[0] as File;
-        const res = await uploadImage(
-          file,
-          session,
-          `trustee-popup-${Date.now()}`
-        );
-        if (!res.success) {
-          toast.error(res.errorMessage);
-          return;
-        }
-        popupImgUrl = res.data.url;
-      } else {
-        setError("popupImg", {
-          type: "manual",
-          message: "Popup image is required",
-        });
-        return;
-      }
+      if (data.link) formData.append("link", data.link);
+      if (data.socialMedia) formData.append("socialMedia", data.socialMedia);
 
-      const body = {
-        image: imageUrl,
-        title: data.title,
-        desig: data.desig,
-        popupImg: popupImgUrl,
-        popupdesc: data.popupdesc,
-        link: data.link,
-        socialMedia: data.socialMedia,
-        order: data.order,
-        active: data.active,
-      };
+      if (data.image instanceof FileList && data.image.length > 0) {
+        formData.append("image", data.image[0]);
+      }
+      if (data.popupImg instanceof FileList && data.popupImg.length > 0) {
+        formData.append("popupImg", data.popupImg[0]);
+      }
 
       if (initalData?.id) {
-        const res = await axios.put(
+        await axios.put(
           `${process.env.NEXT_PUBLIC_HOST_URL}/teams/trustees/${initalData.id}`,
-          body,
+          formData,
           {
             headers: { Authorization: `Bearer ${session?.accessToken}` },
           }
         );
-        console.log(res);
-        if (res.status === 200) toast.success("Updated");
+        toast.success("Updated");
       } else {
-        const res = await axios.post(
+        await axios.post(
           `${process.env.NEXT_PUBLIC_HOST_URL}/teams/trustees`,
-          body,
+          formData,
           {
             headers: { Authorization: `Bearer ${session?.accessToken}` },
           }
         );
-        if (res.status === 201) toast.success("Created");
+        toast.success("Created");
       }
 
       await onClose(true);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error in form submission:", error);
-      toast.error("An unexpected error occurred");
+      toast.error(
+        error?.response?.data?.message || "An unexpected error occurred"
+      );
     } finally {
       setIsLoading(false);
     }
@@ -347,9 +312,9 @@ function TrusteeForm({
 
   return (
     <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center ">
-      <div className="w-[32rem] relative  blade-top-padding-s bg-white   rounded-md shadow-2xl h-auto max-h-[85vh] overflow-auto overflow-x-hidden">
+      <div className="w-[32rem] relative bg-white rounded-md shadow-2xl h-auto max-h-[85vh] overflow-auto overflow-x-hidden">
         <form className="h-full" onSubmit={handleSubmit(submitHandler)}>
-          <div className="  flex justify-end sticky top-2 px-1 z-[999]   ">
+          <div className="flex justify-end sticky top-2 px-1 z-[999]">
             <button
               type="button"
               aria-label="close modal"
@@ -367,7 +332,6 @@ function TrusteeForm({
                 placeholder="Enter name"
                 register={register}
                 registerer="title"
-                tooltip="Name is required"
               />
               <TextInput
                 label="Designation"
@@ -375,52 +339,72 @@ function TrusteeForm({
                 placeholder="Enter designation"
                 register={register}
                 registerer="desig"
-                tooltip="Designation is required"
               />
+
+              {/* Markdown Editor */}
+              <div>
+                <div className="font-medium   mb-1">
+                  <label className="font-medium mb-2 block">
+                    {" "}
+                    Popup Description
+                  </label>
+                </div>
+                <MarkdownEditor
+                  data-color-mode="light"
+                  commandsFilter={(command) =>
+                    command.name === "image" ? false : command
+                  }
+                  value={watch("popupdesc")}
+                  onChange={(val) => setValue("popupdesc", val || "")}
+                />
+                {errors.popupdesc && (
+                  <p className="text-red-500 mt-1">
+                    {errors.popupdesc.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Dropdown for LinkedIn / Twitter */}
+              <div className="grid grid-cols-1 gap-4">
+                <div>
+                  <label className="font-medium mb-2 block">
+                    Social media platform
+                  </label>
+                  <Select
+                    value={watch("socialMedia") || ""}
+                    onValueChange={(val: "linnkedin" | "twitter") =>
+                      setValue("socialMedia", val as "linkedin" | "twitter")
+                    }
+                  >
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Select Platform" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white border border-gray-200">
+                      <SelectItem value="linkedin">LinkedIn</SelectItem>
+                      <SelectItem value="twitter">Twitter</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <TextInput
+                    label=" Social media link"
+                    errors={errors.link}
+                    placeholder="https://..."
+                    register={register}
+                    registerer="link"
+                  />
+                </div>
+              </div>
+
               <TextInput
-                label="Popup Description"
-                errors={errors.popupdesc}
-                placeholder="Short bio for popup"
+                label="Order"
+                errors={errors.order}
+                placeholder="0"
                 register={register}
-                registerer="popupdesc"
-                tooltip="Description is required"
+                registerer="order"
               />
-              <div className="grid grid-cols-2 gap-4">
-                <TextInput
-                  label="Link (optional)"
-                  errors={errors.link}
-                  placeholder="https://..."
-                  register={register}
-                  registerer="link"
-                  tooltip="Social/profile link"
-                />
-                <TextInput
-                  label="Social Media (optional)"
-                  errors={errors.socialMedia}
-                  placeholder="linkedin | X | youtube"
-                  register={register}
-                  registerer="socialMedia"
-                  tooltip="Platform name"
-                />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <TextInput
-                  label="Order"
-                  errors={errors.order}
-                  placeholder="0"
-                  register={register}
-                  registerer="order"
-                  tooltip="Lower appears first"
-                />
-                <TextInput
-                  label="Active (true/false)"
-                  errors={errors.active}
-                  placeholder="true"
-                  register={register}
-                  registerer="active"
-                  tooltip="true or false"
-                />
-              </div>
+
+           
 
               <ImagePicker
                 label="Profile Image"
@@ -429,7 +413,6 @@ function TrusteeForm({
                 registerer="image"
                 watcher={watch("image")}
                 accept=".svg, .png, .jpg, .jpeg, .webp"
-                tooltip="Recommended square image"
               />
               <ImagePicker
                 label="Popup Image"
@@ -438,10 +421,17 @@ function TrusteeForm({
                 registerer="popupImg"
                 watcher={watch("popupImg")}
                 accept=".svg, .png, .jpg, .jpeg, .webp"
-                tooltip="Popup image"
               />
             </div>
-            <div className="mt-auto ">
+               {/* Toggle Switch for Active */}
+              <div className="flex items-center gap-3">
+                <label className="font-medium text-sm">Active</label>
+                <ToggleSwitch
+                  checked={watch("active")}
+                  onChange={(val: boolean) => setValue("active", val)}
+                />
+              </div>
+            <div className="mt-auto">
               <Button
                 type="submit"
                 theme="pink"

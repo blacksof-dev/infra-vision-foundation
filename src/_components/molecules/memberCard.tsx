@@ -1,8 +1,9 @@
 "use client";
 import Link from "next/link";
 import Image, { StaticImageData } from 'next/image'
+import { getImageUrl } from "@/lib/functionCalling";
 interface MemberCardProps {
-  image: string|StaticImageData;
+  image: string;
   title: string;
   desig: string;
   link?: string;
@@ -15,7 +16,7 @@ export default function MemberCard ({ image, title, desig, link, socialMedia }: 
     <div className="flex relative flex-col w-[19rem] h-[19rem] group-first">
       <Image
         fill
-        src={image ?? "/assets/globals/fallback.jpg"}
+        src={getImageUrl(image)}
         alt={title}
         className="w-full h-full object-cover rounded"
       />

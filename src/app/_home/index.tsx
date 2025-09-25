@@ -24,11 +24,11 @@ export default function Home() {
       </Suspense>
 
       <WhoWeAre />
-      {/* <Infravisionaries /> */}
+      <Infravisionaries />
       <Association />
-      {/* <Highlights /> */}
+      <Highlights />
       <StayConnected />
-      {/* <InfravisionTalks /> */}
+      <InfravisionTalks />
     </>
   );
 }

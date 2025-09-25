@@ -12,7 +12,7 @@ type Newsletter = {
   mobilebg?: string;
   image?: string;
   bgColor?: string;
-  id?:string;
+  id?: string;
 };
 
 export default function Newsletter({
@@ -33,14 +33,19 @@ export default function Newsletter({
           {bgImage && mobilebg && (
             <>
               <div
-                style={{ backgroundImage: `url(http://142.93.215.57:4000/${bgImage})` }}
-                className="bg-cover  object-right-bottom  absolute inset-0 hidden sm:block"
+                style={{
+                  backgroundImage: `url(http://142.93.215.57:4000${bgImage})`
+                }}
+                className="bg-cover object-right-bottom absolute inset-0 hidden sm:block"
               ></div>
 
               <div
-                style={{ backgroundImage: `url(http://142.93.215.57:4000/${mobilebg})` }}
-                className="bg-cover bg-center d absolute inset-0 sm:hidden block"
+                style={{
+                  backgroundImage: `url(http://142.93.215.57:4000${mobilebg})`
+                }}
+                className="bg-cover bg-center absolute inset-0 sm:hidden block"
               ></div>
+
             </>
           )}
 
@@ -99,20 +104,20 @@ export default function Newsletter({
                 </div>
               </div>
               <div className="w-fit">
-                
-                  <HeroBtn
-                    text={ctaText}
-                    role="link"
-                    borderColor="white"
-                    link="/get-involved"
-                    color="white"
-                    bgColor="pink"
-                    size="extralarge"
 
-                    aarowColor="text-pink"
-                    classes="font-medium cursor-pointer bg-white"
-                  />
-              
+                <HeroBtn
+                  text={ctaText}
+                  role="link"
+                  borderColor="white"
+                  link="/get-involved"
+                  color="white"
+                  bgColor="pink"
+                  size="extralarge"
+
+                  aarowColor="text-pink"
+                  classes="font-medium cursor-pointer bg-white"
+                />
+
               </div>
             </div>
 

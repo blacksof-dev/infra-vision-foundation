@@ -16,6 +16,7 @@ import { MdClose } from "react-icons/md";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { FaPlay } from "react-icons/fa";
+import { getImageUrl } from "@/lib/functionCalling";
 
 export default function EventDetailsPopup({
   onClose,
@@ -65,7 +66,7 @@ export default function EventDetailsPopup({
                         className="relative w-full h-[19rem] sm:h-[21rem] md:h-[25rem] lg:h-full block md:bg-black"
                       >
                         <Image
-                          src={obj.image}
+                          src={getImageUrl(obj.image)}
                           alt={`Event image ${idx + 1}`}
                           fill
                           unoptimized

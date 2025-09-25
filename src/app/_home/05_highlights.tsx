@@ -9,7 +9,7 @@ import InfrapanditAward from "./infraPanditAward";
 import { useHeader } from "@/context/useHeader";
 import Link from "next/link";
 import { useApiHook } from "@/lib/useApi";
-import { ApiResponse } from "./01_banner";
+
 
 import dynamic from "next/dynamic";
 import Loading from "../loading";
@@ -18,10 +18,10 @@ interface NewsLetterAndNews {
     id: string;
     title: string;
     subtitle?: string;
-    category: string;
-    date: string;
-    image: string;
-    link: string;
+    version: string;
+    publishedDate: string;
+    coverImage: string;
+    fileUrl: string;
 }
 
 interface cardApiResponse {
@@ -92,6 +92,8 @@ export const TabSwitch = ({
   if (!news || !newsletters) { return null }
 
    const responseNews = news?.data ?? [];
+
+   console.log(responseNews)
  
   return (
     <div>
@@ -205,11 +207,11 @@ export const TabContent = ({ data }: { data: NewsLetterAndNews[] }) => {
       {data.map((item) => (
         <Card
           key={item.id}
-          date={item.date}
+          date={item.publishedDate}
           title={item.title}
-          image={item.image}
-          link={item.link}
-          category={item.category}
+          image={item.coverImage}
+          link={item.fileUrl}
+          category={item.version}
           subtitle={item.subtitle}
           ctaText="Read more"
           classes="line-clamp-2 xl:line-clamp-3 text-lg md:text-xl text-black"

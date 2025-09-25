@@ -79,7 +79,7 @@ export default function Association() {
               <div className="flex items-center w-[10rem] h-[4rem] md:w-[8rem] md:h-[3rem] xl:w-[15rem] xl:h-[6rem] relative">
                 <Image
                   src={getImageUrl(obj.imageUrl)}
-                  alt={obj.name}
+                  alt={obj.id}
                   fill
                   loading="lazy"
                   className="object-contain"

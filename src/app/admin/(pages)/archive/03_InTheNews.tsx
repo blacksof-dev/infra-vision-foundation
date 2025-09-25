@@ -326,7 +326,7 @@ async function uploadFile(file: File, type: "image" | "pdf", sessionToken?: stri
       "Content-Type": "multipart/form-data",
     },
   });
-  return process.env.NEXT_PUBLIC_HOST_URL+res.data.url; // The uploaded file URL
+  return res.data.url; 
 }
 
 const submitHandler: SubmitHandler<MediaFormValues> = async (data) => {
