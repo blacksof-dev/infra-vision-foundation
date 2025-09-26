@@ -48,7 +48,7 @@ const news = [
     category: "News",
     title: "Next game changer: High-speed rail",
     date: "Sepetember 19, 2025",
-    subtitle: "Next game changer: High-speed rail",
+    subtitle: "Vinayak Chatterjee",
     link: "/assets/pdf/speedRail.jpg",
   },
   {

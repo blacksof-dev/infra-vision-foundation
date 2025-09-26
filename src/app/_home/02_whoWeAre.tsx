@@ -12,6 +12,8 @@ import Card from "@/_components/molecules/cardTemplate";
 import { useHeader } from "@/context/useHeader";
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import Link from "next/link";
+import chetan from "@/../public/assets/knowledeg/conversations/chetan.png";
+
 
 export type TabItem = {
   id: number;
@@ -34,17 +36,16 @@ const knowledge = [
     subtitle: "",
     link: "/assets/pdf/urbanCongestion.pdf",
   },
-  {
-    id: 3,
-    img: jagan.src,
+   {
+    id:3,
+    img:chetan.src,
     category: "The Infravision Conversation",
-    date: "June, 2025",
-    title:
-      "Why India needs a national plan to build new cities",
-    subtitle: "Jagan Shah",
-    link: "https://www.youtube.com/watch?v=g5aA3Q3af1g&ab_channel=TheInfravisionFoundation",
+    title:"Greater Bengaluru Authority is the Future of Urban Governance",
+    subtitle:"Prof. Chetan Vaidya",
+    link: "https://www.youtube.com/embed/wAo6LhfVPjY?si=0SlPKyLQA32W4Ewj",
     ctaText: "Watch now"
   },
+
   
   // {
   //   id: 1,

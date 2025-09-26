@@ -20,9 +20,32 @@ import img7 from "@/../public/assets/knowledeg/conversations/07.png";
 import img8 from "@/../public/assets/knowledeg/conversations/08.png";
 import img9 from "@/../public/assets/knowledeg/conversations/09.png";
 import img10 from "@/../public/assets/knowledeg/conversations/10.png";
-
+import chetan from "@/../public/assets/knowledeg/conversations/chetan.png";
+import mihir from "@/../public/assets/knowledeg/conversations/mihir.png";
 
 const people = [
+    {
+    image:chetan.src,
+    videoLink: "https://www.youtube.com/embed/wAo6LhfVPjY?si=0SlPKyLQA32W4Ewj",
+    name: "Prof. Chetan Vaidya",
+     title:
+      "Greater Bengaluru Authority is the Future of Urban Governance",
+     desc:"How should India govern its fast-growing metros? ",
+     
+    
+    date: ""
+  },
+  {
+    image:mihir.src,
+    videoLink: "https://www.youtube.com/embed/VR5Dw3lrg5Q?si=yRIlHxJXn2eyHyN0",
+    name: "Mihir Bhatt",
+     title:
+      "Citizens need a voice in urban planning",
+     desc:"How do we build cities that truly serve their citizens?",
+     
+    
+    date: ""
+  },
   
  {
     image:img2.src,

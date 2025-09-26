@@ -11,7 +11,7 @@ import img_12 from "@/../public/assets/outreach-and-engagements/eventImages/augu
 import Link from "next/link";
 import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg"
 import img_16 from "@/../public/assets/knowledeg/researchPapers/02.jpg"
-import img2 from "@/../public/assets/knowledeg/conversations/02.png";
+import chetan from "@/../public/assets/knowledeg/conversations/chetan.png";
 import img10 from "@/../public/assets/knowledeg/conversations/10.png";
 import img_17 from "@/../public/assets/knowledeg/researchPapers/14.png";
 
@@ -188,16 +188,15 @@ const EventsDetails = [
   },
  
 
-
-  {
-    image: img2,
+ {
+    image:chetan,
     category: "Video",
-    title: "Can the Urban Challenge Fund be a gamechanger for India’s urban future?",
+    title:"Greater Bengaluru Authority is the Future of Urban Governance",
     btnTitle: "Watch video",
-    link: "https://www.youtube.com/embed/NJ0V0G7eZwE?si=Mp_0ul6iDz5QtJN4",
-
-  },
-
+    link: "https://www.youtube.com/embed/wAo6LhfVPjY?si=0SlPKyLQA32W4Ewj",
+   
+   
+  }
   
 
 ];
