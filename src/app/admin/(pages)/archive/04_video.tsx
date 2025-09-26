@@ -45,7 +45,7 @@ interface VideoItem {
 }
 
 interface ListResponse {
-  videos: VideoItem[];
+  data: VideoItem[];
   totalCount: number;
 }
 
@@ -70,13 +70,16 @@ export default function VideoSection() {
         session
       )) as ListResponse;
 
-      let all = res?.videos ?? [];
+      
+      let all = res?.data ?? [];
+
       if (categoryId) {
         all = all.filter((v) =>
           v.categoryIds.includes(categoryId)
         );
       }
       setVideos(all);
+      
     } catch {
       toast.error("Failed to load videos");
     }
@@ -84,6 +87,7 @@ export default function VideoSection() {
 
   useEffect(() => {
     loadVideos();
+   
   }, [categoryId]);
 
   useEffect(() => {

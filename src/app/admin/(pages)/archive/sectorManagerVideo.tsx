@@ -87,7 +87,7 @@ export default function SectorsManagerVideo() {
 
   return (
     <section className="blade-top-padding">
-      <SectionHeading heading="Section - 05 (Gallery)" />
+      <SectionHeading heading="Section - 04 (Video)" />
       <div className="py-3 mt-6 text-xl flex justify-between">
         <h5>All Tabs</h5>
         <div>

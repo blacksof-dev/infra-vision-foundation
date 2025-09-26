@@ -42,7 +42,7 @@ export default function Banner() {
     setFormState((val) => {
       return { ...val, initialValue: data };
     });
-    console.log(data);
+    
   }, [session]);
 
   useEffect(() => {

@@ -41,7 +41,7 @@ export default function OurCore() {
       setFormState((val) => {
         return { ...val, intialValue: data };
       });
-      console.log(data);
+      
     }
     fetch();
   }, []);

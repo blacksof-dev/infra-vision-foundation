@@ -327,6 +327,8 @@ async function uploadFile(file: File, type: "image" | "pdf", sessionToken?: stri
     },
   });
   return res.data.url; 
+
+  
 }
 
 const submitHandler: SubmitHandler<MediaFormValues> = async (data) => {

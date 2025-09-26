@@ -262,12 +262,12 @@ export default function ResearchPapers() {
               {currentData.cards.map((card) => (
                 <div key={card.id}>
                   <NewsCard
-                    date={card.date}
+                    date=""
                     title={card.title}
                     image={card.image}
                     link={card.link}
                     category={card.sectors[0]?.name ?? ""}
-                    description={card.description}
+                    description=""
                     classes="line-clamp-3"
                     ctaType="read more"
                   />

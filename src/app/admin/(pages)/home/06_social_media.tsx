@@ -42,7 +42,7 @@ export default function SocialMedia() {
       setFormState((val) => {
         return { ...val, intialValue: data };
       });
-      console.log(data);
+      
     }
     fetch();
   }, []);

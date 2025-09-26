@@ -44,7 +44,7 @@ export default function Association() {
         "/homepage/associations",
         session
       ); 
-      console.log(data)
+   
       setFormState((val) => {
         return { ...val, intialValue: data?.data ?? [] };
       });

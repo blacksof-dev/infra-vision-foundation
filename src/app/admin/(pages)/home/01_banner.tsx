@@ -43,7 +43,7 @@ export default function Banner() {
       setFormState((val) => {
         return { ...val, intialValue: data };
       });
-      console.log(data);
+     
     }
     fetch();
   }, []);

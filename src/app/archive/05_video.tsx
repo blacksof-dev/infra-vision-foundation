@@ -169,6 +169,8 @@ function CardSection({ tab }: { tab: string }) {
     cacheKey: `archive-video-card-${tab}-page-${currentData.page}`,
   });
 
+  console.log(cardDetails)
+
   // merge results into local state
   useEffect(() => {
     if (cardDetails?.data) {
@@ -245,7 +247,7 @@ function CardSection({ tab }: { tab: string }) {
 
               <div className="w-full md:w-[90%]">
                 <h5 className="text-blacksecond font-medium">
-                  {ele.description}
+                  {ele.title}
                 </h5>
               </div>
             </div>

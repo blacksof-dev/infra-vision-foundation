@@ -8,6 +8,9 @@ import GetInvolved from "./07_get-involved";
 
 import SocialMedia from "./06_social_media";
 import TeamsTrustees from "./trustees";
+import TeamsPatrons from "./patrons";
+import TeamsAdvisors from "./advisor";
+import TeamsFellows from "./fellows";
 
 export default function Home() {
   return (
@@ -16,6 +19,9 @@ export default function Home() {
       <WhoWeAre />
       <OurCore />
       <TeamsTrustees/>
+      <TeamsPatrons/>
+      {/* <TeamsAdvisors/> */}
+      <TeamsFellows/>
       <Association />
       <SocialMedia />
       <GetInvolved />

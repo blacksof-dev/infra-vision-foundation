@@ -49,7 +49,7 @@ export default function GetInvolved() {
       setFormState((val) => {
         return { ...val, intialValue: data };
       });
-      console.log(data);
+     
     }
     fetch();
   }, []);
