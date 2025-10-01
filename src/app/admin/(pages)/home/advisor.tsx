@@ -31,16 +31,15 @@ type Advisors = {
   image: string;
   title: string;
   desig: string;
-  popupImg?: string;
-  link?: string;
-  socialMedia?: string;
-  popupdesc?: string;
-  order: number;
+  popupImg: string;
+  link: string;
+  socialMedia: string;
+  popupdesc: string;
   active: boolean;
 };
 
 type AdvisorsResponse = {
-  trustees: Advisors[];
+  addvisors: Advisors[];
   lastUpdated?: string;
 };
 
@@ -60,7 +59,7 @@ export default function TeamsAdvisors() {
 
   const [isLoadingList, setIsLoadingList] = useState<boolean>(false);
 
-  async function loadTrustees() {
+  async function loadAdvisors() {
     try {
       setIsLoadingList(true);
       const res = await axios.get(
@@ -76,7 +75,7 @@ export default function TeamsAdvisors() {
   }
 
   useEffect(() => {
-    loadTrustees();
+    loadAdvisors();
   }, []);
 
   async function deleteTrustee(id: string) {
@@ -91,7 +90,7 @@ export default function TeamsAdvisors() {
       );
       if (res.status === 204) {
         toast.success("Deleted successfully");
-        await loadTrustees();
+        await loadAdvisors();
       } else {
         toast.error("Delete failed");
       }
@@ -154,7 +153,7 @@ export default function TeamsAdvisors() {
                 </Link>
               ) : null}</span></div>
               <div className="opacity-80">{item.desig}</div>         
-              <div className="mt-4">Order: {item.order}</div>
+            
               <div className="">
                 Active: {item.active ? "Yes" : "No"}
               </div>
@@ -188,7 +187,7 @@ export default function TeamsAdvisors() {
           initalData={formState.editItem}
           onClose={async (refresh?: boolean) => {
             setFormState((s) => ({ ...s, isFormOpen: false, editItem: null }));
-            if (refresh) await loadTrustees();
+            if (refresh) await loadAdvisors();
           }}
         />
       )}
@@ -228,7 +227,7 @@ function AdvisorsForm({
         popupdesc: "",
         link: "",
         socialMedia: undefined,
-        order: 0,
+      
         active: true,
         image: undefined,
         popupImg: undefined,
@@ -241,7 +240,6 @@ function AdvisorsForm({
       link: initalData.link || "",
       socialMedia:
         (initalData.socialMedia as "linkedin" | "twitter") || undefined,
-      order: initalData.order,
       active: initalData.active,
       image: initalData.image,
       popupImg: initalData.popupImg || "",
@@ -267,7 +265,6 @@ function AdvisorsForm({
       formData.append("title", data.title);
       formData.append("desig", data.desig);
       formData.append("popupdesc", data.popupdesc);
-      formData.append("order", String(data.order));
       formData.append("active", String(data.active));
 
       if (data.link) formData.append("link", data.link);
@@ -397,13 +394,7 @@ function AdvisorsForm({
                 </div>
               </div>
 
-              <TextInput
-                label="Order"
-                errors={errors.order}
-                placeholder="0"
-                register={register}
-                registerer="order"
-              />
+             
 
            
 

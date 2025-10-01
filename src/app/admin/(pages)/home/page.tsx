@@ -20,7 +20,7 @@ export default function Home() {
       <OurCore />
       <TeamsTrustees/>
       <TeamsPatrons/>
-      {/* <TeamsAdvisors/> */}
+      <TeamsAdvisors/>
       <TeamsFellows/>
       <Association />
       <SocialMedia />
