@@ -44,6 +44,16 @@ const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
   {
+    id:56,
+    img: "/assets/archive/newsAndMedia/energy.jpg",
+    category: "News",
+    title: "D.K. Sen",
+    sectors: "",
+    date: "",
+    description: "India's Energy Security - The Road Ahead",
+    link: "/assets/pdf/energySecurity.pdf",
+  },
+  {
     id:55,
     img: "/assets/knowledeg/researchPapers/02.jpg",
     category: "News",

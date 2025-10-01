@@ -56,7 +56,7 @@ const people = [
      desc:"Can the Urban Challenge Fund be a gamechanger for India’s urban future?",
      
     
-    date: "June 10, 2025"
+    date: "August 28, 2025"
   },
   {
     image: img10.src,
