@@ -22,8 +22,28 @@ import img9 from "@/../public/assets/knowledeg/conversations/09.png";
 import img10 from "@/../public/assets/knowledeg/conversations/10.png";
 import chetan from "@/../public/assets/knowledeg/conversations/chetan.png";
 import mihir from "@/../public/assets/knowledeg/conversations/mihir.png";
+import piyush from "@/../public/assets/knowledeg/conversations/piyush.png";
+import kalpana from "@/../public/assets/knowledeg/conversations/kalpana.png";
 
 const people = [
+    {
+    image: kalpana.src,
+    videoLink: "https://www.youtube.com/embed/gg9NtuYLiZA?si=3IY8UMlwZb7r_LzP",
+    name: "Kalpana Viswanath",
+    title:
+      "Distinguished Fellow, The Infravision Foundation, and former Director General, National Mission for Clean Ganga",
+    desc: "Does free public transport for women improve safety?",
+    date: "",
+  },
+  {
+    image: piyush.src,
+    videoLink: "https://www.youtube.com/embed/dOvYS3ulWmY?si=x8H4VNIkkmE2WP-q",
+    name: "Raghu Tirumala and Piyush Tiwari",
+    title:
+      "Distinguished Fellow, The Infravision Foundation, and former Director General, National Mission for Clean Ganga",
+    desc: "FSI Deregulation in Hyderabad: A Missed Opportunity",
+    date: "",
+  },
     {
     image:chetan.src,
     videoLink: "https://www.youtube.com/embed/wAo6LhfVPjY?si=0SlPKyLQA32W4Ewj",

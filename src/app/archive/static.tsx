@@ -40,8 +40,24 @@ import renewable from "@/../public/assets/archive/video/renewable.jpg";
 import urban from "@/../public/assets/archive/video/urban.jpg";
 import newUser from "@/../public/assets/archive/video/newUser.jpg";
 import img11 from "@/../public/assets/knowledeg/conversations/11.jpg";
+import piyush from "@/../public/assets/archive/video/piyush.png";
+import kalpana from "@/../public/assets/archive/video/kalpana.png";
 
 export const allCards = [
+    {
+    image: kalpana,
+    subtitle: "The Infravision Conversation",
+    subdesc: "Does free public transport for women improve safety?",
+    link: "https://www.youtube.com/embed/gg9NtuYLiZA?si=3IY8UMlwZb7r_LzP",
+    date: "",
+  },
+  {
+    image: piyush,
+    subtitle: "The Infravision Conversation",
+    subdesc: "FSI Deregulation in Hyderabad: A Missed Opportunity",
+    link: "https://www.youtube.com/embed/dOvYS3ulWmY?si=x8H4VNIkkmE2WP-q",
+    date: "",
+  },
    {
     image:img11,
     subtitle: "The Infravision Conversation",

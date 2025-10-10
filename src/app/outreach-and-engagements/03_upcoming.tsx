@@ -454,7 +454,37 @@ The study identified Noida as having exceptional potential to become a model cit
       },
       {
         month: "October",
-        events: [],
+        events: [
+           {
+        month: "September",
+        events: [
+          {
+            date: "26",
+            dayTime: "Friday",
+            meetingType: "External engagement",
+            desc: "NITI Aayog and The Infravision Foundation partner to strengthen regional transport governance",
+            ctaText: "See details",
+            details: {
+              date: "",
+              images: [
+                {
+                  image:
+                    "/assets/outreach-and-engagements/eventImages/nitiAayog.jpg",
+                  description:
+                    "The Infravision Foundation CEO Jagan Shah and  NITI Aayog Programme Director Anna Roy formalise their partnership",
+                },
+              ],
+              content: `
+             The Infravision Foundation established a strategic partnership with the NITI Aayog to significantly enhance urban and regional transport governance in India’s growth hubs and economic regions.\n
+             This high-value initiative focuses on developing a future-ready governance model for multi-modal transport. Key efforts include assessing UMTA models and creating diagnostic reports, governance frameworks, and hands-on capacity building modules for policymakers and practitioners.\n
+             Under the partnership, 1–2 states or regions will receive support for adaptation and implementation on the ground to ensure scalable adoption across states.
+             
+              `,
+            },
+          },
+        ],
+        },
+        ],
       },
       {
         month: "November",
