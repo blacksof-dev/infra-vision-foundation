@@ -7,14 +7,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
-import img_12 from "@/../public/assets/outreach-and-engagements/eventImages/august18_2025_Img4.jpeg"
 import Link from "next/link";
-import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg"
-import img_16 from "@/../public/assets/knowledeg/researchPapers/02.jpg"
-import chetan from "@/../public/assets/knowledeg/conversations/chetan.png";
-import img10 from "@/../public/assets/knowledeg/conversations/10.png";
-import img_17 from "@/../public/assets/knowledeg/researchPapers/14.png";
-
+import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg";
+import img_16 from "@/../public/assets/knowledeg/researchPapers/02.jpg";
+import niti from "@/../public/assets/outreach-and-engagements/eventImages/nitiAayog.jpg";
+import piyush from "@/../public/assets/knowledeg/conversations/piyush.png";
+import kalpana from "@/../public/assets/knowledeg/conversations/kalpana.png";
+import montek from "@/../public/assets/globals/infrapanditAward.jpg";
 export default function Updates() {
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [isLastSlide, setIsLastSlide] = useState(false);
@@ -153,9 +152,21 @@ export default function Updates() {
 }
 
 const EventsDetails = [
-
   {
-
+    image: montek,
+    category: "InfraPandit Awards",
+    title: "Nurturing the Next Generation of Infra Talent and Ideas",
+    btnTitle: "See details",
+    link: "/infrapandit-awards",
+  },
+  {
+    image: niti,
+    category: "Calender",
+    title: "NITI Aayog and The Infravision Foundation",
+    btnTitle: "Read more",
+    link: "/assets/pdf/niti.pdf",
+  },
+  {
     image: img_16,
     category: "News",
     title: "Next game changer: High-speed rail",
@@ -170,36 +181,19 @@ const EventsDetails = [
     link: "/blogs/how-to-make-india-highways-safe",
   },
 
-    {
-      
-    image: img10,
-    category: "Video",
-    title: "Why Smaller Cities can become Growth Hubs",
-    btnTitle: "Watch video",
-    link: "https://www.youtube.com/embed/ZGIjUOfs91U?si=-iX4ss69vegjRpoQ",
-
-  },
   {
-    image: img_17,
-    category: "Research Report",
-    title: "Impact of FSI Deregulation in Hyderabad",
-    btnTitle: "Read more",
-    link: "/assets/pdf/report-fsi-deregulation-in-hyderabad.pdf",
-  },
- 
-
- {
-    image:chetan,
+    image: kalpana,
     category: "Video",
-    title:"Greater Bengaluru Authority is the Future of Urban Governance",
+    title: "Does free public transport for women improve safety?",
     btnTitle: "Watch video",
-    link: "https://www.youtube.com/embed/wAo6LhfVPjY?si=0SlPKyLQA32W4Ewj",
-   
-   
-  }
-  
+    link: "https://www.youtube.com/embed/gg9NtuYLiZA?si=3IY8UMlwZb7r_LzP",
+  },
 
+  {
+    image: piyush,
+    category: "Video",
+    title: "FSI Deregulation in Hyderabad: A Missed Opportunity",
+    btnTitle: "Watch video",
+    link: "https://www.youtube.com/embed/dOvYS3ulWmY?si=x8H4VNIkkmE2WP-q",
+  },
 ];
-
-
-
