@@ -53,6 +53,16 @@ const thridFilter = [
   "Health Infra",
 ];
 const allcards = [
+    {
+    id: 29,
+    img: "/assets/archive/newsletter/latestNewsletter.png",
+    category: "Volume 29",
+    title: "",
+    sectors: "",
+    date: "October 2025",
+    description: "TIF and NITI Aayog seal partnership ",
+    link: "/assets/pdf/niti.pdf",
+  },
   {
       id: 28,
     img: "/assets/archive/newsletter/crunching.png",

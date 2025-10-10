@@ -164,7 +164,7 @@ const EventsDetails = [
     category: "Calender",
     title: "NITI Aayog and The Infravision Foundation",
     btnTitle: "Read more",
-    link: "/assets/pdf/niti.pdf",
+    link: "/outreach-and-engagements",
   },
   {
     image: img_16,

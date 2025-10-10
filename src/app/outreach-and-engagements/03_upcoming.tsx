@@ -450,13 +450,6 @@ The study identified Noida as having exceptional potential to become a model cit
       },
       {
         month: "September",
-        events: [],
-      },
-      {
-        month: "October",
-        events: [
-           {
-        month: "September",
         events: [
           {
             date: "26",
@@ -483,8 +476,10 @@ The study identified Noida as having exceptional potential to become a model cit
             },
           },
         ],
-        },
-        ],
+      },
+      {
+        month: "October",
+        events: [],
       },
       {
         month: "November",
