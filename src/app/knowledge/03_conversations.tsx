@@ -47,7 +47,7 @@ const people = [
     {
     image:chetan.src,
     videoLink: "https://www.youtube.com/embed/wAo6LhfVPjY?si=0SlPKyLQA32W4Ewj",
-    name: "Prof. Chetan Vaidya,Vijaya Venkatraman and Santosh Nargund",
+    name: "Prof. Chetan Vaidya , Vijaya Venkatraman and Santosh Nargund",
      title:
       "Greater Bengaluru Authority is the Future of Urban Governance",
      desc:"How should India govern its fast-growing metros? ",
