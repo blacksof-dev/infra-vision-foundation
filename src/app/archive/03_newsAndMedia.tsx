@@ -43,6 +43,27 @@ const SECTORS: SectorType[] = [
 const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
+  
+   {
+    id:57,
+    img: "/assets/archive/newsAndMedia/rail.webp",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "November 2025",
+    description: "High-speed rail is the big move India",
+    link: "/assets/pdf/highSpeedRail.pdf",
+  },
+   {
+    id:58,
+    img: "/assets/archive/newsAndMedia/image11.webp",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "October 2025",
+    description: "Project choice key for Urban Challenge Fund",
+    link: "/assets/pdf/projectChoice.pdf",
+  },
   {
     id:56,
     img: "/assets/archive/newsAndMedia/energy.jpg",
