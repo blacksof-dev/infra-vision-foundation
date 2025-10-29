@@ -14,6 +14,7 @@ import niti from "@/../public/assets/outreach-and-engagements/eventImages/nitiAa
 import piyush from "@/../public/assets/knowledeg/conversations/piyush.png";
 import kalpana from "@/../public/assets/knowledeg/conversations/kalpana.png";
 import montek from "@/../public/assets/globals/infrapanditAward.jpg";
+import vandey from "@/../public/assets/archive/newsAndMedia/vande-bharat.jpg";
 export default function Updates() {
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [isLastSlide, setIsLastSlide] = useState(false);
@@ -153,6 +154,14 @@ export default function Updates() {
 
 const EventsDetails = [
   {
+    
+    image: vandey,
+    category: "News",
+    title: "Fast Forwarding Bharat: The Next Leap",
+     btnTitle: "See details",
+    link: "/assets/pdf/infrastructure.pdf",
+  },
+  {
     image: montek,
     category: "InfraPandit Awards",
     title: "Nurturing the Next Generation of Infra Talent and Ideas",
@@ -166,13 +175,7 @@ const EventsDetails = [
     btnTitle: "Read more",
     link: "/outreach-and-engagements",
   },
-  {
-    image: img_16,
-    category: "News",
-    title: "Next game changer: High-speed rail",
-    btnTitle: "Read more",
-    link: "/assets/pdf/speedRail.jpg",
-  },
+
   {
     image: img_15,
     category: "Blog",

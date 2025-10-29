@@ -11,6 +11,7 @@ type CardProps = {
     description?: string;
     classes?: string;
     ctaType?: 'read more' | 'yt';
+    
 };
 
 
@@ -46,6 +47,7 @@ export function NewsCard({ date, title, image, link, category, description, ctaT
                     </div>
                       <div className="pt-1 ">
                         <h6 className={`text-darkgray font-medium ${classes}`}>{title}</h6>
+                        
                     </div>
                 </div>
             </div>

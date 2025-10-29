@@ -38,6 +38,15 @@ const newsletters = [
 ];
 
 const news = [
+   {
+    id:59,
+    img: "/assets/archive/newsAndMedia/vande-bharat.jpg",
+    category: "News",
+    title: "Fast Forwarding Bharat: The Next Leap",
+    date: "September-October, 2025",
+     subtitle: "Vinayak Chatterjee",
+    link: "/assets/pdf/infrastructure.pdf",
+  },
   {
     id: 55,
     img: "/assets/knowledeg/researchPapers/02.jpg",
@@ -57,15 +66,7 @@ const news = [
     subtitle: "Vrinda Singh and Priyanka Bains",
     link: "/assets/pdf/vrinda-singh-priyanka-bains.pdf",
   },
-  {
-    id: 53,
-    img: "/assets/archive/newsAndMedia/hyderbad.webp",
-    category: "News",
-    title: "Hyderabad's FSI deregulation:  A missed opportunity",
-    date: "August 9, 2025",
-    subtitle: "Dr. Mutum Chaobisana",
-    link: "/assets/pdf/hyderabad-fSI-deregulation.pdf",
-  },
+  
 ];
 
 export default function Highlights() {

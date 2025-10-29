@@ -43,7 +43,16 @@ const SECTORS: SectorType[] = [
 const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
-  
+  {
+    id:59,
+    img: "/assets/archive/newsAndMedia/vande-bharat.jpg",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "Infrastructure Today",
+    date: "September-October 2025",
+    description: "Fast Forwarding Bharat: The Next Leap",
+    link: "/assets/pdf/infrastructure.pdf",
+  },
    {
     id:57,
     img: "/assets/archive/newsAndMedia/rail.webp",
@@ -783,6 +792,7 @@ export default function NewsAndMedia() {
                     link={card.link}
                     category={card.category}
                     description={card.description}
+                    
                     classes="line-clamp-3"
                     ctaType="read more"
                   />
