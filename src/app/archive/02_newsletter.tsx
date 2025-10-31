@@ -41,21 +41,12 @@ const SECTORS: SectorType[] = [
 ];
 const INITIAL_VISIBLE_COUNT = 3;
 
-const secondFilter = ["2025", "2024"];
-const thridFilter = [
-  "All",
-  "Transportation",
-  "Water and Sanitation",
-  "Energy",
-  "Urban Planning",
-  "Rural and Agri Infra",
-  "Education",
-  "Health Infra",
-];
+
+
 const allcards = [
     {
     id: 29,
-    img: "/assets/archive/newsletter/latestNewsletter.png",
+    img: "/assets/archive/newsletter/niti.png",
     category: "Volume 29",
     title: "",
     sectors: "",

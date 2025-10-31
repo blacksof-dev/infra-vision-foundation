@@ -31,7 +31,7 @@ const people = [
     videoLink: "https://www.youtube.com/embed/gg9NtuYLiZA?si=3IY8UMlwZb7r_LzP",
     name: "Kalpana Viswanath",
     title:
-      "Distinguished Fellow, The Infravision Foundation, and former Director General, National Mission for Clean Ganga",
+      "Kalpana Viswanath - Founder and CEO, Safetipin",
     desc: "Does free public transport for women improve safety?",
     date: "",
   },
@@ -40,7 +40,7 @@ const people = [
     videoLink: "https://www.youtube.com/embed/dOvYS3ulWmY?si=x8H4VNIkkmE2WP-q",
     name: "Raghu Tirumala and Piyush Tiwari",
     title:
-      "Distinguished Fellow, The Infravision Foundation, and former Director General, National Mission for Clean Ganga",
+      "Raghu Dharmapuri Tirumala (Senior Lecturer, University of Melbourne) and Piyush Tiwari (Professor, MRICS, FAPDI)",
     desc: "FSI Deregulation in Hyderabad: A Missed Opportunity",
     date: "",
   },

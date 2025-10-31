@@ -10,7 +10,7 @@ import Link from "next/link";
 const newsletters = [
   {
     id: 28,
-    img: "/assets/archive/newsletter/latestNewsletter.png",
+    img: "/assets/archive/newsletter/niti.png",
     category: "Volume 29",
     title: "TIF and NITI Aayog seal partnership",
     sectors: "",

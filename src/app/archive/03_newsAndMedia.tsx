@@ -43,12 +43,22 @@ const SECTORS: SectorType[] = [
 const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
+    {
+    id:60,
+    img: "/assets/archive/newsAndMedia/crumbling.avif",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "October 2025",
+    description: "Indian Cities are Crumbling",
+    link: "/assets/pdf/crumbling.pdf",
+  },
   {
     id:59,
     img: "/assets/archive/newsAndMedia/vande-bharat.jpg",
     category: "News",
     title: "Vinayak Chatterjee",
-    sectors: "Infrastructure Today",
+    sectors: "",
     date: "September-October 2025",
     description: "Fast Forwarding Bharat: The Next Leap",
     link: "/assets/pdf/infrastructure.pdf",

@@ -9,7 +9,6 @@ import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import Link from "next/link";
 import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg";
-import img_16 from "@/../public/assets/knowledeg/researchPapers/02.jpg";
 import niti from "@/../public/assets/outreach-and-engagements/eventImages/nitiAayog.jpg";
 import piyush from "@/../public/assets/knowledeg/conversations/piyush.png";
 import kalpana from "@/../public/assets/knowledeg/conversations/kalpana.png";
