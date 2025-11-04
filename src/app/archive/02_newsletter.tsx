@@ -44,6 +44,16 @@ const INITIAL_VISIBLE_COUNT = 3;
 
 
 const allcards = [
+     {
+    id: 30,
+    img: "/assets/archive/newsletter/noveberNewsletter.png",
+    category: "Volume 30",
+    title: "",
+    sectors: "",
+    date: "November 2025",
+    description: "PM gets vocal on unified transport authority",
+    link: "/assets/pdf/novemberNewsletter.pdf",
+  },
     {
     id: 29,
     img: "/assets/archive/newsletter/niti.png",
