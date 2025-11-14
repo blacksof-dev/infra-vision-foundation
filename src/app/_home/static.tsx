@@ -98,7 +98,7 @@ Currently, she co-chairs CII’s National Committee on CSR. She previously serve
     image: Kiran,
     title: "Kiran Karnik",
     desig:
-      "Trustee, The Infravision Foundation; Former President, NASSCOM; Former MD and CEO, Discovery Networks in India",
+      "Trustee,  Former President, NASSCOM; Former MD and CEO, Discovery Networks in India",
     popupImg: kiranImg.src,
     popupdesc: `Kiran Karnik is a distinguished professional with a career spanning public service and the corporate world, known for his pioneering contributions to India's communications industry. He has consistently operated at the cutting edge of technology, from working with the great Vikram Sarabhai to establish the Satellite Instructional Television Experiment, to laying the foundations of the Discovery Channel and Animal Planet in India.\n
 
@@ -504,7 +504,7 @@ Currently, she co-chairs CII’s National Committee on CSR. She previously serve
   {
     image: jagan,
     title: "Jagan Shah",
-    desig: "Cheif Executive Officer",
+    desig: "Chief Executive Officer",
     link: "https://www.linkedin.com/in/jagan-shah/",
     socialMedia: "linkedin",
     popupImg: vinayakImg.src,

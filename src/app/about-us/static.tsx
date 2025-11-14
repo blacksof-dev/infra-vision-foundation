@@ -504,7 +504,7 @@ Currently, she co-chairs CII’s National Committee on CSR. She previously serve
   {
     image: jagan,
     title: "Jagan Shah",
-    desig: "Cheif Executive Officer",
+    desig: "Chief Executive Officer",
     link: "https://www.linkedin.com/in/jagan-shah/",
     socialMedia: "linkedin",
     popupImg: vinayakImg.src,

@@ -49,7 +49,7 @@ const people = [
     videoLink: "https://www.youtube.com/embed/wAo6LhfVPjY?si=0SlPKyLQA32W4Ewj",
     name: "Prof. Chetan Vaidya , Vijaya Venkatraman and Santosh Nargund",
      title:
-      "Greater Bengaluru Authority is the Future of Urban Governance",
+      "Prof. Chetan Vaidya (Former Director SPA and NIUA), Vijaya Venkatraman (Independent Development Consultant) and Santosh Nargund (Director, Policy Engagement, Janaagraha)",
      desc:"How should India govern its fast-growing metros? ",
      
     
@@ -60,7 +60,7 @@ const people = [
     videoLink: "https://www.youtube.com/embed/VR5Dw3lrg5Q?si=yRIlHxJXn2eyHyN0",
     name: "Mihir Bhatt",
      title:
-      "Citizens need a voice in urban planning",
+      "Architect, Researcher, Urban Planner and Director of the all the India disaster Mitigation Institute",
      desc:"How do we build cities that truly serve their citizens?",
      
     
@@ -279,15 +279,15 @@ export default function Conversations() {
             breakpoints={{
               360: { slidesPerView: 1.07 },
               540: { slidesPerView: 1.2 },
-              768: { slidesPerView: 2.1 },
-              1024: { slidesPerView: 2.3 },
+              768: { slidesPerView: 1.5},
+              1024: { slidesPerView: 2 },
               1279: { slidesPerView: 2.4 },
               1366: { slidesPerView: 2.6 },
             }}
           >
             {people.map((person, idx) => (
               <SwiperSlide key={idx}>
-                <div className="    overflow-hidden flex flex-col h-full">
+                <div className=" group/desig   overflow-hidden flex flex-col h-full group/desg">
                   <div className="relative w-full h-[20rem] sm:h-[24rem] rounded-xl overflow-hidden">
                     <Image
                       src={person.image}
@@ -299,7 +299,7 @@ export default function Conversations() {
                     />
 
                     {/* <div className="absolute inset-0 bg-black/30 z-10"></div> */}
-                    <div className="absolute bottom-0 left-0 z-10 w-[85%] sm:w-[80%] pl-3 pb-3">
+                    <div className="absolute bottom-0 left-0 z-10 w-[85%] sm:w-[85%]  rounded-xl lg:max-h-[9rem]   group-hover/desg:max-h-full ">
                       <Link
                         target="_blank"
                         href={person.videoLink}
@@ -316,14 +316,14 @@ export default function Conversations() {
                         </svg>
                       </Link>
                       {/* Text overlay */}
-                      <div className="  bg-white rounded px-4 py-3 shadow z-20">
-                        <p className="font-medium text-black">{person.name}</p>
-                        <p className="text-sm text-drakgray leading-4 xl:leading-5">{person.title}</p>
+                      <div className="  bg-white rounded px-4 py-3 shadow z-20 ">
+                        <p className="font-medium text-black text-sm">{person.name}</p>
+                        <p className="xl:text-sm text-drakgray text-[9px] leading-4 xl:leading-5 lg:line-clamp-2  group-hover/desig:line-clamp-none">{person.title}</p>
                       </div>
                     </div>
                   </div>
                   <div className=" text-black/90 flex flex-col xl:flex-row xl:justify-between py-3">
-                    <h6 className="font-medium w-full xl:max-w-xs ">
+                    <h6 className="font-medium w-full xl:max-w-xs  ">
                       {person.desc}
                     </h6>
                     <h6 className="text-darkgray py-1">
