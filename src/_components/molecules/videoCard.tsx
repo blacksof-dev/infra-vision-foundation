@@ -29,6 +29,7 @@ export default function VideoCard({ data }: VideoCardProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [currentIndex, setcurrentIndex] = useState(0);
   const [videoPopUp, setvideoPopup] = useState<boolean>(false);
+
   const handleNextClick = () => {
     if (currentIndex < data.length - 1) {
       setcurrentIndex((prev) => prev + 1);
@@ -36,6 +37,7 @@ export default function VideoCard({ data }: VideoCardProps) {
       setIsOpen(false);
     }
   };
+
   const handlePrevClick = () => {
     if (currentIndex != 0) {
       setcurrentIndex((prev) => prev - 1);
@@ -109,6 +111,8 @@ export default function VideoCard({ data }: VideoCardProps) {
           videoPopupDetails={data[currentIndex]}
           handleNextClick={handleNextClick}
           handlePrevClick={handlePrevClick}
+          currentIndex={currentIndex}
+          totalLength={data.length}
         />
       )}
       {videoPopUp && (
@@ -126,11 +130,15 @@ const VideoCardPopup = ({
   videoPopupDetails,
   handleNextClick,
   handlePrevClick,
+  currentIndex,
+  totalLength,
 }: {
   onclose: () => void;
   videoPopupDetails: VideoProps;
   handleNextClick: () => void;
   handlePrevClick: () => void;
+  currentIndex: number;
+  totalLength: number;
 }) => {
   const [videoPopUp, setvideoPopup] = useState<boolean>(false);
 
@@ -206,17 +214,34 @@ const VideoCardPopup = ({
               </div>
             </div>
 
-            <div className="pt-3 pb-6 xl:py-4  flex justify-between">
-              <div
-                onClick={handlePrevClick}
-                className="w-fit flex justify-center items-center gap-4"
-              >
-                <span className="text-black font-medium cursor-pointer">
-                  Prev
-                </span>
-                <span className="rotate-180">
+            <div className="pt-3 pb-6 xl:py-4 flex justify-between ">
+
+                
+              {currentIndex > 0 && (
+                <div
+                  onClick={handlePrevClick}
+                  className="w-fit flex justify-center items-center gap-4 cursor-pointer "
+                >
+                  <span className="text-black font-medium">Prev</span>
+                  <span className="rotate-180">
+                    <BorderGrayHeroBtn
+                      text=""
+                      role="button"
+                      borderColor="darkgray/40"
+                      color="black"
+                      bgColor="white"
+                      size="base"
+                      classes="font-medium"
+                    />
+                  </span>
+                </div>
+              )}
+
+          
+              {currentIndex < totalLength - 1 && (
+                <div onClick={handleNextClick} className="w-fit cursor-pointer ">
                   <BorderGrayHeroBtn
-                    text=""
+                    text="Next"
                     role="button"
                     borderColor="darkgray/40"
                     color="black"
@@ -224,20 +249,11 @@ const VideoCardPopup = ({
                     size="base"
                     classes="font-medium"
                   />
-                </span>
-              </div>
-              <div onClick={handleNextClick} className="w-fit ">
-                <BorderGrayHeroBtn
-                  text="Next"
-                  role="button"
-                  borderColor="darkgray/40"
-                  color="black"
-                  bgColor="white"
-                  size="base"
-                  classes="font-medium"
-                />
-              </div>
+                </div>
+              )}
+
             </div>
+
           </div>
         </div>
       </div>

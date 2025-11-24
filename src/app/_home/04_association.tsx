@@ -76,7 +76,7 @@ export default function Association() {
           >
             {data.map((obj, index) => (
               <SwiperSlide key={index} className="!w-auto ">
-                <div className="flex items-center w-[10rem] h-[4rem] md:w-[8rem] md:h-[3rem] xl:w-[15rem] xl:h-[6rem] ">
+                <div className="flex items-center  w-[10rem] h-[4rem] md:w-[8rem] md:h-[3rem] xl:w-[15rem] xl:h-[6rem] ">
                   <Image
                     src={obj.logo}
                     alt={obj.id}

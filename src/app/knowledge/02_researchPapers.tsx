@@ -15,6 +15,7 @@ import img_11 from "@/../public/assets/knowledeg/researchPapers/11.jpg";
 import img_12 from "@/../public/assets/knowledeg/researchPapers/12.jpg";
 import img_13 from "@/../public/assets/knowledeg/researchPapers/13.png";
 import img_14 from "@/../public/assets/knowledeg/researchPapers/14.png";
+import img_15 from "@/../public/assets/knowledeg/researchPapers/waterBodies.png"
 
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 
@@ -62,6 +63,16 @@ const INITIAL_VISIBLE_COUNT = 3;
 
 
 const allcards = [
+     {
+    id:15,
+    img: img_15,
+    category: "Water and Sanitation",
+    title: "",
+    sectors: "Water and Sanitation",
+    date: "",
+    description: "Water Body Census: Validation, Insights and Opportunities",
+    link: "/assets/pdf/waterBody.pdf",
+  },
    
   {
     id: 14,

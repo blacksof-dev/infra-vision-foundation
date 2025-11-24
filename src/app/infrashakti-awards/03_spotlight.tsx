@@ -39,29 +39,7 @@ export default function Spotlight() {
               </span>
             </h1>
           </div>
-          {/* <div className="flex    flex-row gap-6 border-b border-darkgray/20">
-            <div className="border-r border-darkgray/20">
-              <h5 className="text-darkgray/80 sm:py-5 pr-5 text-nowrap">
-                Filter by year
-              </h5>
-            </div>
-
-            <div className="flex flex-row gap-5 mb-3 sm:mb-0">
-              {YEARS.map((tab) => (
-                <button
-                  key={tab}
-                  className={`my-auto text-base  cursor-pointer rounded-[50px] px-4 py-2  sm:px-6 sm:py-3 
-                    ${
-                      selectedTab === tab
-                        ? "border border-pink text-pink font-medium"
-                        : "border border-lightgray/30"
-                    }`}
-                >
-                  {tab}
-                </button>
-              ))}
-            </div>
-          </div> */}
+        
 
           <div className="blade-top-padding-sm  ">
             <div className="sm:relative overflow-hidden  sm:h-[22rem]  lg:h-[27rem]">
@@ -89,7 +67,7 @@ export default function Spotlight() {
                     <div className="border-l-1   border-white">
                       <div className="ms-4">
                         <h6 className="text-white font-medium">Infravisionary Award</h6>
-                        <h6 className="text-white">Sudhanshu Mani</h6>
+                        <h6 className="text-white">Sudhanshu Mani, ICF</h6>
                       </div>
                     </div>
                   </div>

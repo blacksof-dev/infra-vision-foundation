@@ -16,7 +16,7 @@ const WhoWeAre = () => {
                 A vehicle of change, ushering 
                 <span className="text-white font-medium ">
                   {" "}
-                  India's Infrastructural growth
+                  India's infrastructural growth
                 </span>
               </h1>
             </div>

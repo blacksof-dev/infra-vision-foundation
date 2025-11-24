@@ -15,7 +15,7 @@ export const MemberCard = ({ image, title, desig, link, socialMedia }: MemberCar
 
 
   return (
-    <div className="flex relative flex-col w-[19rem]  h-[19rem] group/desg">
+    <div className="flex relative flex-col w-[19rem]  h-[19rem] group/desg ">
       <Image
         src={image}
         alt={title}
@@ -60,14 +60,31 @@ export const MemberCard = ({ image, title, desig, link, socialMedia }: MemberCar
               }
             </Link>
           </div>
-        )
-       
-        }
-        <div className="bg-white w-[14rem] h-auto lg:max-h-[5rem]   group-hover/desg:max-h-full rounded isolate transition-all  duration-300 ">
-          <h6 className="pt-1 2xl:pt-2 px-2 font-medium hover:text-pink  transition-all duration">{title}</h6>
-          <p className={`px-2 text-sm font-light text-black pb-1 line-clamp-2 lg:line-clamp-2 group-hover/desg:line-clamp-none `}>{desig}</p>
+        )}
+        <div className="
+  bg-white w-[14rem]
+  max-h-[5rem]
+  group-hover/desg:max-h-[20rem]
+  smoth-height
+  overflow-hidden
+  rounded
+
+">
+          <h6 className="pt-1 2xl:pt-2 px-2 font-medium ">
+            {title}
+          </h6>
+
+          <p className="
+    px-2 text-sm font-light text-black pb-1
+    line-clamp-2
+    group-hover/desg:line-clamp-none
+  ">
+            {desig}
+          </p>
         </div>
+
       </div>
+
     </div>
   );
 };

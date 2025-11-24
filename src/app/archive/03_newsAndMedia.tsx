@@ -43,6 +43,17 @@ const SECTORS: SectorType[] = [
 const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
+   {
+    id:61,
+    img: "/assets/archive/newsAndMedia/confidence.png",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "November 2025",
+    description: "Confidence in India's logistics cost",
+    link: "/assets/pdf/confidence.pdf",
+  },
+
     {
     id:60,
     img: "/assets/archive/newsAndMedia/crumbling.avif",

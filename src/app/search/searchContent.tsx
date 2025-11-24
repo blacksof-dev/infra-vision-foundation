@@ -74,7 +74,9 @@ export default function SearchContent() {
 
 
 useEffect(() => {
+
   const handleScroll = () => {
+    if (typeof window === "undefined") return;
   
     if (window.innerWidth >= 768) {
       setResults([]);

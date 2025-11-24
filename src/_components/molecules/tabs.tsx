@@ -15,11 +15,14 @@ type Props = {
 };
 
 export default function OutreachTabs({ sectionRefs, tabs }: Props) {
+
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState<TabId>("");
   const [isStickyVisible, setStickyVisible] = useState(true);
   const { isHeaderVisible } = useHeader()
+
+
   const handleTabClick = (id: TabId, index: number) => {
     sectionRefs[id]?.current?.scrollIntoView({ behavior: "smooth" });
     setActiveTab(id);
@@ -55,7 +58,7 @@ export default function OutreachTabs({ sectionRefs, tabs }: Props) {
           }
         });
 
-        // Sort by most visible section
+     
         visibilityMap.sort((a, b) => b.ratio - a.ratio);
 
 
@@ -85,7 +88,7 @@ export default function OutreachTabs({ sectionRefs, tabs }: Props) {
     };
   }, [sectionRefs, activeTab]);
 
-  // Add effect to scroll to center when activeTab changes
+ 
   useEffect(() => {
     const activeIndex = tabs.findIndex(tab => tab.id === activeTab);
     if (activeIndex !== -1) {

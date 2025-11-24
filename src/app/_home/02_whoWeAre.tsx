@@ -41,19 +41,11 @@ const knowledge = [
     category: "The Infravision Conversation",
     title: "Does free public transport for women improve safety?",
     subtitle: "Kalpana Viswanath",
-    link: "/assets/knowledeg/conversations/kalpana.m4v",
+    link: "https://www.youtube.com/embed/gg9NtuYLiZA?si=3IY8UMlwZb7r_LzP",
     ctaText: "Watch now",
   },
 
-  // {
-  //   id: 1,
-  //   img: rail.src,
-  //   category: "Research Paper",
-  //   date: "January, 2025",
-  //   title: "The case for developing high-speed rail corridors in India",
-  //   subtitle: "Dr. Ramakrishnan T.S",
-  //   link: "/assets/home/whoWeAre/knowledge/The-Case-For-Developing-High-Speed-Rail-Corridors-In-India.pdf",
-  // },
+ 
 
   {
     id: 2,

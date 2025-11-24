@@ -136,7 +136,7 @@ Mr Munjee has provided consultancy services in housing finance to the Asian Deve
   {
     image: RajnishKumar,
     title: "Rajnish Kumar",
-    desig: "Former chairman, State Bank of India",
+    desig: "Former Chairman, State Bank of India",
     popupImg: vinayakImg.src,
     link: "https://in.linkedin.com/in/rajnish-kumar-0a1663bb",
     socialMedia: "linkedin",
@@ -201,7 +201,7 @@ Apart from being a prolific columnist in his field, Mr Singh has also authored t
   {
     image: SunilMathur,
     title: "Sunil Mathur",
-    desig: "MD & CEO Siemens India",
+    desig: "MD & CEO, Siemens India",
     link: "https://www.linkedin.com/in/sunil-mathur/",
     socialMedia: "linkedin",
     popupImg: vinayakImg.src,
@@ -241,7 +241,7 @@ He is a member of the curriculum advisory committee for the postgraduate course 
     image: ArunNanda,
     title: "Arun Nanda",
     desig:
-      "Chairman, Mahindra Holidays & Resorts Ltd. and Mahindra Lifespace Developers Ltd",
+      "Chairman, Mahindra Holidays & Resorts Ltd and Mahindra Lifespace Developers Ltd",
     popupImg: vinayakImg.src,
     popupdesc: `Arun Nanda is a fellow member of the Institute of Chartered Accountants of India (FCA) and a fellow member of the Institute of Company Secretaries of India (FCS). He also participated in a Senior Executive Programme at the London Business School. And holds a degree in Law from the University of Calcutta.\n
 
