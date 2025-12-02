@@ -24,8 +24,28 @@ import chetan from "@/../public/assets/knowledeg/conversations/chetan.png";
 import mihir from "@/../public/assets/knowledeg/conversations/mihir.png";
 import piyush from "@/../public/assets/knowledeg/conversations/piyush.png";
 import kalpana from "@/../public/assets/knowledeg/conversations/kalpana.png";
+import abha from "@/../public/assets/knowledeg/conversations/abha.png";
+import lokanath from "@/../public/assets/knowledeg/conversations/lokanath.png";
 
 const people = [
+  {
+    image: abha.src,
+    videoLink: "https://www.youtube.com/embed/7oiHaLYOpfM?si=TqLV-npHvLJFPdUJ",
+    name: "Abha Narain Lambah",
+    title:
+      "Heritage Conservationist",
+    desc: "Urban Renewal in India",
+    date: "",
+  },
+  {
+    image: lokanath.src,
+    videoLink: "https://www.youtube.com/embed/3y7U8G23O9M?si=X_3YXXx__Wd7pdKu",
+    name: "Lokanath Behra",
+    title:
+      "MD Kochi Metro Rail",
+    desc: "Making the water metro sustainable",
+    date: "",
+  },
     {
     image: kalpana.src,
     videoLink: "https://www.youtube.com/embed/gg9NtuYLiZA?si=3IY8UMlwZb7r_LzP",
