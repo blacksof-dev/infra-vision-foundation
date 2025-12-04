@@ -40,7 +40,7 @@ const people = [
   {
     image: lokanath.src,
     videoLink: "https://www.youtube.com/embed/3y7U8G23O9M?si=X_3YXXx__Wd7pdKu",
-    name: "Lokanath Behra",
+    name: "Mr. Loknath Behera",
     title:
       "MD Kochi Metro Rail",
     desc: "Making the water metro sustainable",
