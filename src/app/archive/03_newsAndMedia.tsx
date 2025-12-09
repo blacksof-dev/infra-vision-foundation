@@ -43,6 +43,17 @@ const SECTORS: SectorType[] = [
 const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
+    {
+    id:62,
+    img: "/assets/archive/newsAndMedia/budget.png",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "December 2025",
+    description: "Budget should reemphasise infrastructure",
+    link: "/assets/pdf/budget.jpg",
+  },
+
 
    {
     id:61,

@@ -9,11 +9,11 @@ import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import Link from "next/link";
 import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg";
-import niti from "@/../public/assets/archive/newsletter/niti.png";
-import piyush from "@/../public/assets/knowledeg/conversations/piyush.png";
-import kalpana from "@/../public/assets/knowledeg/conversations/kalpana.png";
+import awards from "@/../public/assets/archive/newsletter/infraPanditAward.png";
+import abha from "@/../public/assets/knowledeg/conversations/abha.png";
+import lokanath from "@/../public/assets/knowledeg/conversations/lokanath.png";
 import montek from "@/../public/assets/globals/infrapanditAward.jpg";
-import vandey from "@/../public/assets/archive/newsAndMedia/vande-bharat.jpg";
+import budget from "@/../public/assets/archive/newsAndMedia/budget.png";
 export default function Updates() {
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [isLastSlide, setIsLastSlide] = useState(false);
@@ -154,11 +154,11 @@ export default function Updates() {
 const EventsDetails = [
   {
     
-    image: vandey,
+    image: budget,
     category: "News",
-    title: "Fast Forwarding Bharat: The Next Leap",
+    title: "Budget should reemphasise infrastructure",
      btnTitle: "See details",
-    link: "/assets/pdf/infrastructure.pdf",
+    link: "/assets/pdf/budget.jpg",
   },
   {
     image: montek,
@@ -168,11 +168,11 @@ const EventsDetails = [
     link: "/infrapandit-awards",
   },
   {
-    image: niti,
-    category: "Calender",
-    title: "NITI Aayog and The Infravision Foundation",
+    image: awards,
+    category: "Newsletter",
+    title: "Infra pandit award 2025",
     btnTitle: "Read more",
-    link: "/outreach-and-engagements",
+    link: "/assets/pdf/decmber.pdf",
   },
 
   {
@@ -184,18 +184,18 @@ const EventsDetails = [
   },
 
   {
-    image: kalpana,
+    image: lokanath,
     category: "Video",
-    title: "Does free public transport for women improve safety?",
+    title: "Mr. Loknath Behera",
     btnTitle: "Watch video",
-    link: "https://www.youtube.com/embed/gg9NtuYLiZA?si=3IY8UMlwZb7r_LzP",
+    link: "https://www.youtube.com/embed/7oiHaLYOpfM?si=TqLV-npHvLJFPdUJ",
   },
 
   {
-    image: piyush,
+    image: abha,
     category: "Video",
-    title: "FSI Deregulation in Hyderabad: A Missed Opportunity",
+    title: "Abha Narain Lambah",
     btnTitle: "Watch video",
-    link: "https://www.youtube.com/embed/dOvYS3ulWmY?si=x8H4VNIkkmE2WP-q",
+    link: "https://www.youtube.com/embed/3y7U8G23O9M?si=X_3YXXx__Wd7pdKu",
   },
 ];

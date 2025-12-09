@@ -8,6 +8,24 @@ import { useHeader } from "@/context/useHeader";
 import Link from "next/link";
 
 const newsletters = [
+    {
+    id: 29,
+    img: "/assets/archive/newsletter/infraPanditAward.png",
+    category: "Volume 31",
+    title: "Infra pandit award 2025",
+    sectors: "",
+    date: "December 2025",
+    link: "/assets/pdf/decmber.pdf",
+  },
+    {
+    id: 28,
+    img: "/assets/archive/newsletter/noveberNewsletter.png",
+    category: "Volume 30",
+    title: "PM gets vocal on unified transport authority",
+    sectors: "",
+    date: "November 2025",
+    link: "/assets/pdf/novemberNewsletter.pdf",
+  },
   {
     id: 29,
     img: "/assets/archive/newsletter/niti.png",
@@ -17,27 +35,29 @@ const newsletters = [
     date: "October 2025",
     link: "/assets/pdf/niti.pdf",
   },
-  {
-    id: 28,
-    img: "/assets/archive/newsletter/crunching.png",
-    category: "Volume 28",
-    title: "Crunching Data,Analysing Information",
-    sectors: "",
-    date: "September 2025",
-    link: "/assets/pdf/crunchingData.pdf",
-  },
-  {
-    id: 27,
-    img: "/assets/archive/newsletter/agustNewsletter.png",
-    category: "Volume 27",
-    title: "TIF reaches out to stakeholders",
-    sectors: "",
-    date: "August 2025",
-    link: "/assets/pdf/augustNewsletter.pdf",
-  },
+
+  
 ];
 
 const news = [
+     {
+    id:59,
+    img: "/assets/archive/newsAndMedia/budget.png",
+    category: "News",
+    title: "Budget should reemphasise infrastructure",
+    date: "December 2025",
+     subtitle: "Vinayak Chatterjee",
+    link: "/assets/pdf/budget.jpg",
+  },
+     {
+    id:59,
+    img: "/assets/archive/newsAndMedia/confidence.png",
+    category: "News",
+    title: "Confidence in India's logistics cost",
+    date: "November 2025",
+     subtitle: "Vinayak Chatterjee",
+    link: "/assets/pdf/confidence.pdf",
+  },
    {
     id:59,
     img: "/assets/archive/newsAndMedia/vande-bharat.jpg",
@@ -47,25 +67,8 @@ const news = [
      subtitle: "Vinayak Chatterjee",
     link: "/assets/pdf/infrastructure.pdf",
   },
-  {
-    id: 55,
-    img: "/assets/knowledeg/researchPapers/02.jpg",
-    category: "News",
-    title: "Next game changer: High-speed rail",
-    date: "Sepetember 19, 2025",
-    subtitle: "Vinayak Chatterjee",
-    link: "/assets/pdf/speedRail.jpg",
-  },
-  {
-    id: 54,
-    img: "/assets/archive/newsAndMedia/vrinda.png",
-    category: "News",
-    title:
-      "Cold Rooms in Local Markets: Securing Farmers, Delivering Nutrition",
-    date: "August 9, 2025",
-    subtitle: "Vrinda Singh and Priyanka Bains",
-    link: "/assets/pdf/vrinda-singh-priyanka-bains.pdf",
-  },
+
+ 
   
 ];
 
