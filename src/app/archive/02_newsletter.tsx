@@ -44,6 +44,16 @@ const INITIAL_VISIBLE_COUNT = 3;
 
 
 const allcards = [
+  //  {
+  //   id: 31,
+  //   img: "/assets/archive/newsletter/noveberNewsletter.png",
+  //   category: "Volume 31",
+  //   title: "",
+  //   sectors: "",
+  //   date: "December 2025",
+  //   description: "PM gets vocal on unified transport authority",
+  //   link: "/assets/pdf/decmber.pdf",
+  // },
      {
     id: 30,
     img: "/assets/archive/newsletter/noveberNewsletter.png",

@@ -43,6 +43,7 @@ const SECTORS: SectorType[] = [
 const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
+
    {
     id:61,
     img: "/assets/archive/newsAndMedia/confidence.png",
@@ -655,13 +656,13 @@ const allcards = [
   },
   {
     id:46,
-    img: "/assets/archive/newsAndMedia/newsMedia46.png",
+    img: "/assets/archive/newsAndMedia/newsMedia46.jpg",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
     date: "February 22, 2023",
     description: "Rooftop solar for poverty alleviation",
-    link: "/assets/pdf/movingGatiShakti.pdf",
+    link: "https://www.business-standard.com/article/opinion/rooftop-solar-for-poverty-alleviation-123022101397_1.html",
   },
  
  
