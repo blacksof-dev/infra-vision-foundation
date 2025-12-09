@@ -28,7 +28,7 @@ const newsletters = [
   },
   {
     id: 29,
-    img: "/assets/archive/newsletter/niti.png",
+    img: "/assets/archive/newsletter/nitiNewsletter.png",
     category: "Volume 29",
     title: "TIF and NITI Aayog seal partnership",
     sectors: "",

@@ -66,7 +66,7 @@ const allcards = [
   },
     {
     id: 29,
-    img: "/assets/archive/newsletter/niti.png",
+    img: "/assets/archive/newsletter/nitiNewsletter.png",
     category: "Volume 29",
     title: "",
     sectors: "",
