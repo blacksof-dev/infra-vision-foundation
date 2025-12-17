@@ -43,6 +43,16 @@ const SECTORS: SectorType[] = [
 const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
+  {
+    id:63,
+    img: "/assets/archive/newsAndMedia/uthDelthi.png",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "December 2025",
+    description: "The megacity dream that isn't",
+    link: "/assets/pdf/uth-dehli.pdf",
+  },
     {
     id:62,
     img: "/assets/archive/newsAndMedia/budget.png",
