@@ -10,10 +10,10 @@ import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import Link from "next/link";
 import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg";
 import awards from "@/../public/assets/archive/newsletter/infraPanditAward.png";
-import abha from "@/../public/assets/knowledeg/conversations/abha.png";
-import lokanath from "@/../public/assets/knowledeg/conversations/lokanath.png";
+import abha from "@/../public/assets/home/updates/abha.png";
+import lokanath from "@/../public/assets/home/updates/lokanath.png";
 import montek from "@/../public/assets/globals/infrapanditAward.jpg";
-import budget from "@/../public/assets/archive/newsAndMedia/budget.png";
+import uthDelhi from "@/../public/assets/archive/newsAndMedia/uthDelthi.png";
 export default function Updates() {
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [isLastSlide, setIsLastSlide] = useState(false);
@@ -154,11 +154,11 @@ export default function Updates() {
 const EventsDetails = [
   {
     
-    image: budget,
+    image: uthDelhi,
     category: "News",
-    title: "Budget should reemphasise infrastructure",
+    title: "The megacity dream that isn't",
      btnTitle: "See details",
-    link: "/assets/pdf/budget.jpg",
+    link: "/assets/pdf/uth-dehli.pdf",
   },
   {
     image: montek,

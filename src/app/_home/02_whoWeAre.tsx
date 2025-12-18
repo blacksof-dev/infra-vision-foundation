@@ -1,18 +1,16 @@
 "use client";
-import rail from "@/../public/assets/home/whoWeAre/knowledge/rail.png";
+
 import highway from "@/../public/assets/home/whoWeAre/knowledge/highway.png";
-import jagan from "@/../public/assets/home/whoWeAre/knowledge/jagan.png";
-// import infraKatha from "@/../public/assets/home/whoWeAre/advocacy/infraKatha.png";
 import infraKatha from "@/../public/assets/infrakatha/banner/banner.jpg";
 import infraShakti from "@/../public/assets/home/whoWeAre/advocacy/infraPandit.png";
 import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infraPanditAward.png";
-import img_12 from "@/../public/assets/knowledeg/researchPapers/12.jpg";
+import img_12 from "@/../public/assets/knowledeg/researchPapers/waterBodies.png";
 import { useState } from "react";
 import Card from "@/_components/molecules/cardTemplate";
 import { useHeader } from "@/context/useHeader";
 
 import Link from "next/link";
-import kalpana from "@/../public/assets/knowledeg/conversations/kalpana.png";
+import abha from "@/../public/assets/home/updates/abha.png";
 
 export type TabItem = {
   id: number;
@@ -29,19 +27,19 @@ const knowledge = [
   {
     id: 10,
     img: img_12.src,
-    category: "Urban Planning",
+    category: "Water and Sanitation",
     date: " ",
-    title: "Relieving urban congestion and promoting tourism through ropeways",
+    title: "Water Body Census: Validation, Insights and Opportunities",
     subtitle: "",
-    link: "/assets/pdf/urbanCongestion.pdf",
+    link: "/assets/pdf/waterBody.pdf",
   },
   {
     id: 3,
-    img: kalpana.src,
+    img: abha.src,
     category: "The Infravision Conversation",
-    title: "Does free public transport for women improve safety?",
-    subtitle: "Kalpana Viswanath",
-    link: "https://www.youtube.com/embed/gg9NtuYLiZA?si=3IY8UMlwZb7r_LzP",
+    title: "Urban Renewal in India",
+    subtitle: "Abha Narain Lambah",
+    link: "https://www.youtube.com/embed/7oiHaLYOpfM?si=TqLV-npHvLJFPdUJ",
     ctaText: "Watch now",
   },
 

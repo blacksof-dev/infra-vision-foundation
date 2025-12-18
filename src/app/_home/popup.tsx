@@ -53,7 +53,7 @@ export default function Popup() {
                 <Image
                   src={niti}
                   alt="Mr Montek Singh Ahluwalia"
-                  className="rounded-lg w-full h-full object-contain"
+                  className="rounded-lg w-full h-full object-contain "
                 />
               </div>
               <div className=" px-3 py-6 xl:py-0 w-full sm:w-1/2 flex flex-col justify-center ">
