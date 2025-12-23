@@ -26,8 +26,17 @@ import piyush from "@/../public/assets/knowledeg/conversations/piyush.png";
 import kalpana from "@/../public/assets/knowledeg/conversations/kalpana.png";
 import abha from "@/../public/assets/knowledeg/conversations/abha.png";
 import lokanath from "@/../public/assets/knowledeg/conversations/lokanath.png";
+import anumita from "@/../public/assets/knowledeg/conversations/anumita.png";
 
 const people = [
+   {
+    image: anumita.src,
+    videoLink: "https://youtu.be/YV7VYaCB7Yw?si=af66MfWQnjdsG_op",
+    name: "Anumita Roy Choudhury",
+    title:"Executive Director, Centre for Science and Environment",
+    desc: "How to fix Delhi's air pollution",
+    date: "",
+  },
   {
     image: abha.src,
     videoLink: "https://www.youtube.com/embed/7oiHaLYOpfM?si=TqLV-npHvLJFPdUJ",

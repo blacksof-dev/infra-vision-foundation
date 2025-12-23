@@ -10,7 +10,7 @@ import Card from "@/_components/molecules/cardTemplate";
 import { useHeader } from "@/context/useHeader";
 
 import Link from "next/link";
-import abha from "@/../public/assets/home/updates/abha.png";
+import anumita from "@/../public/assets/knowledeg/conversations/anumita.png";
 
 export type TabItem = {
   id: number;
@@ -35,11 +35,11 @@ const knowledge = [
   },
   {
     id: 3,
-    img: abha.src,
+    img: anumita.src,
     category: "The Infravision Conversation",
-    title: "Urban Renewal in India",
-    subtitle: "Abha Narain Lambah",
-    link: "https://www.youtube.com/embed/7oiHaLYOpfM?si=TqLV-npHvLJFPdUJ",
+    title: "How to fix Delhi's air pollution ",
+    subtitle: "Anumita Roy Choudhury",
+    link: "https://youtu.be/YV7VYaCB7Yw?si=af66MfWQnjdsG_op",
     ctaText: "Watch now",
   },
 

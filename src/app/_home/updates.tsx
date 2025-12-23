@@ -11,9 +11,15 @@ import Link from "next/link";
 import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg";
 import awards from "@/../public/assets/archive/newsletter/infraPanditAward.png";
 import abha from "@/../public/assets/home/updates/abha.png";
-import lokanath from "@/../public/assets/home/updates/lokanath.png";
 import montek from "@/../public/assets/globals/infrapanditAward.jpg";
-import uthDelhi from "@/../public/assets/archive/newsAndMedia/uthDelthi.png";
+import soumya from "@/../public/assets/archive/newsAndMedia/soumyaNews.jpg";
+import anumita from "@/../public/assets/knowledeg/conversations/anumita.png";
+
+
+
+
+
+
 export default function Updates() {
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [isLastSlide, setIsLastSlide] = useState(false);
@@ -154,11 +160,11 @@ export default function Updates() {
 const EventsDetails = [
   {
     
-    image: uthDelhi,
+    image: soumya,
     category: "News",
-    title: "The megacity dream that isn't",
+    title: "How consistent is IMF classification of exchange rate arrangement and data adequacy?",
      btnTitle: "See details",
-    link: "/assets/pdf/uth-dehli.pdf",
+    link: "/assets/pdf/how-consistent-is-imf-classification.jpeg",
   },
   {
     image: montek,
@@ -184,11 +190,11 @@ const EventsDetails = [
   },
 
   {
-    image: lokanath,
+    image: anumita,
     category: "Video",
-    title: "Mr. Loknath Behera",
+    title: "Anumita Roy Choudhury",
     btnTitle: "Watch video",
-    link: "https://www.youtube.com/embed/7oiHaLYOpfM?si=TqLV-npHvLJFPdUJ",
+    link: "https://youtu.be/YV7VYaCB7Yw?si=af66MfWQnjdsG_op",
   },
 
   {
@@ -196,6 +202,6 @@ const EventsDetails = [
     category: "Video",
     title: "Abha Narain Lambah",
     btnTitle: "Watch video",
-    link: "https://www.youtube.com/embed/3y7U8G23O9M?si=X_3YXXx__Wd7pdKu",
+    link: "https://www.youtube.com/embed/7oiHaLYOpfM?si=TqLV-npHvLJFPdUJ",
   },
 ];

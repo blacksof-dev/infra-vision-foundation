@@ -42,12 +42,12 @@ const newsletters = [
 const news = [
      {
     id:59,
-    img: "/assets/archive/newsAndMedia/budget.png",
+    img: "/assets/archive/newsAndMedia/soumyaNews.jpg",
     category: "News",
-    title: "Budget should reemphasise infrastructure",
+    title: "How consistent is IMF classification of exchange rate arrangement and data adequacy?",
     date: "December 2025",
-     subtitle: "Vinayak Chatterjee",
-    link: "/assets/pdf/budget.jpg",
+     subtitle: "Soumya Kanti Ghosh",
+    link: "/assets/pdf/how-consistent-is-imf-classification.jpeg",
   },
      {
     id:59,

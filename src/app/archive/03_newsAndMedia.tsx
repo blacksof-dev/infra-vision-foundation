@@ -44,6 +44,16 @@ const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
   {
+    id:64,
+    img: "/assets/archive/newsAndMedia/soumyaNews.jpg",
+    category: "News",
+    title: "Soumya Kanti Ghosh",
+    sectors: "",
+    date: "December 2025",
+    description: "How consistent is IMF classification of exchange rate arrangement and data adequacy?",
+    link: "/assets/pdf/how-consistent-is-imf-classification.jpeg",
+  },
+  {
     id:63,
     img: "/assets/archive/newsAndMedia/uthDelthi.png",
     category: "News",
