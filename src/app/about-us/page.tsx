@@ -14,6 +14,7 @@ import Involved from './07_involved';
 
 
 
+
 type TabId = 'who_we_are' | 'infravisionaries' | 'vision_and_mission' | 'our_pulse' | 'project_pathway';
 
 const tabs: { id: TabId; label: string }[] = [
@@ -25,6 +26,9 @@ const tabs: { id: TabId; label: string }[] = [
 ];
 
 
+
+
+
 const AboutUs = () => {
 
     const sectionRefs: Record<TabId, React.RefObject<HTMLDivElement | null>> = {
@@ -34,6 +38,9 @@ const AboutUs = () => {
         our_pulse: useRef<HTMLDivElement | null>(null),
         project_pathway: useRef<HTMLDivElement | null>(null),
     };
+
+
+
 
   return (
     <>
