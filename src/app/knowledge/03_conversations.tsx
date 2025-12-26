@@ -224,7 +224,6 @@ const generateVideoSchema = (card: any) => ({
   "name": card.desc,
   "description": card.desc,
   "thumbnailUrl": card.image,
-  "uploadDate": new Date(card.date).toISOString(),
   "contentUrl": card.videoLink,
   "embedUrl": card.videoLink,
   "publisher": {
