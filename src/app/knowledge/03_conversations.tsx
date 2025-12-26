@@ -218,28 +218,7 @@ const people = [
 ];
 
 
-const generateVideoSchema = (card: any) => ({
-  "@context": "https://schema.org",
-  "@type": "VideoObject",
-  "name": card.desc,
-  "description": card.desc,
-  "thumbnailUrl": card.image,
-  "contentUrl": card.videoLink,
-  "embedUrl": card.videoLink,
-  "publisher": {
-    "@type": "Organization",
-    "name": "The Infravision Foundation",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://theinfravisionfoundation.org/logo.png"
-    }
-  },
-  "creator": {
-    "@type": "Person",
-    "name": card.name,
-    "jobTitle": card.title
-  }
-});
+
 
 
 export default function Conversations() {
@@ -258,21 +237,14 @@ export default function Conversations() {
     setIsEnd(swiper.isEnd);
   };
 
-    const allConversation = people.map(generateVideoSchema);
+   
 
   return (
     <section
       id="infravision-conversations"
       className="bg-whitesmoke overflow-hidden"
     >
-      <Script
-        id="infraConversation-schema"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(allConversation),
-        }}
-      />
+    
       <div className="w-container blade-top-padding-lg blade-bottom-padding-lg ">
         {/* Header Section */}
         <div className="lg:flex justify-between mb-4 lg:mb-8">
