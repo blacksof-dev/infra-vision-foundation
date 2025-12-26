@@ -2,6 +2,7 @@
 import { useEffect, useState, useMemo, useRef } from "react";
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import { NewsCard } from "@/_components/molecules/newsCard";
+import Script from "next/script";
 
 // Types
 type FilterType = "All" | "Publication year" | "sectors";
@@ -44,7 +45,7 @@ const INITIAL_VISIBLE_COUNT = 3;
 
 
 const allcards = [
-   {
+  {
     id: 31,
     img: "/assets/archive/newsletter/infraPanditAward.png",
     category: "Volume 31",
@@ -54,7 +55,7 @@ const allcards = [
     description: "Infra pandit award 2025",
     link: "/assets/pdf/decmber.pdf",
   },
-     {
+  {
     id: 30,
     img: "/assets/archive/newsletter/noveberNewsletter.png",
     category: "Volume 30",
@@ -64,7 +65,7 @@ const allcards = [
     description: "PM gets vocal on unified transport authority",
     link: "/assets/pdf/novemberNewsletter.pdf",
   },
-    {
+  {
     id: 29,
     img: "/assets/archive/newsletter/nitiNewsletter.png",
     category: "Volume 29",
@@ -75,13 +76,13 @@ const allcards = [
     link: "/assets/pdf/niti.pdf",
   },
   {
-      id: 28,
+    id: 28,
     img: "/assets/archive/newsletter/crunching.png",
     category: "Volume 28",
     title: "",
     sectors: "",
-     date: "September 2025",
-    description:"Crunching Data,Analysing Information",
+    date: "September 2025",
+    description: "Crunching Data,Analysing Information",
     link: "/assets/pdf/crunchingData.pdf",
   },
   {
@@ -106,7 +107,7 @@ const allcards = [
       "Do you want to be an Infrapandit?",
     link: "/assets/pdf/july.pdf",
   },
-   {
+  {
     id: 26,
     img: "/assets/archive/newsletter/latest2.png",
     category: "Volume 25",
@@ -129,7 +130,7 @@ const allcards = [
       "Making change happen",
     link: "/assets/pdf/letter1.pdf",
   },
-   {
+  {
     id: 2,
     img: "/assets/archive/newsletter/newsletter2.png",
     category: "Volume 23",
@@ -140,7 +141,7 @@ const allcards = [
       "Decarbonising urban transport",
     link: "/assets/pdf/letter2.pdf",
   },
-   {
+  {
     id: 3,
     img: "/assets/archive/newsletter/newsletter3.png",
     category: "Volume 22",
@@ -173,7 +174,7 @@ const allcards = [
       "Workshop on Trees Outside Forests",
     link: "/assets/pdf/letter5.pdf",
   },
-   {
+  {
     id: 6,
     img: "/assets/archive/newsletter/newsletter6.png",
     category: "Volume 19",
@@ -184,7 +185,7 @@ const allcards = [
       "Telling the story of India",
     link: "/assets/pdf/letter6.pdf",
   },
-   {
+  {
     id: 7,
     img: "/assets/archive/newsletter/newsletter7.png",
     category: "Volume 18",
@@ -195,7 +196,7 @@ const allcards = [
       "CAIRA takes shape",
     link: "/assets/pdf/letter7.pdf",
   },
-   {
+  {
     id: 8,
     img: "/assets/archive/newsletter/newsletter8.png",
     category: "Volume 17",
@@ -206,7 +207,7 @@ const allcards = [
       "The Infravision Fellowship",
     link: "/assets/pdf/letter8.pdf",
   },
-   {
+  {
     id: 9,
     img: "/assets/archive/newsletter/newsletter9.png",
     category: "Volume 16",
@@ -217,7 +218,7 @@ const allcards = [
       "Understanding Land Value Capture in urban India",
     link: "/assets/pdf/letter9.pdf",
   },
-    {
+  {
     id: 10,
     img: "/assets/archive/newsletter/newsletter10.png",
     category: "Volume 15",
@@ -295,7 +296,7 @@ const allcards = [
     link: "/assets/pdf/letter16.pdf",
   },
 
-    {
+  {
     id: 17,
     img: "/assets/archive/newsletter/newsletter17.png",
     category: "Volume 8",
@@ -306,7 +307,7 @@ const allcards = [
       "Taking Surety Bonds and Sustainability Ratings to industry audience in Bangalore",
     link: "/assets/pdf/letter17.pdf",
   },
-     {
+  {
     id: 18,
     img: "/assets/archive/newsletter/newsletter18.png",
     category: "Volume 7",
@@ -317,7 +318,7 @@ const allcards = [
       "Making commodities count for more",
     link: "/assets/pdf/letter18.pdf",
   },
-    {
+  {
     id: 19,
     img: "/assets/archive/newsletter/newsletter19.png",
     category: "Volume 6",
@@ -328,7 +329,7 @@ const allcards = [
       "Ideas aplenty at quarterly meeting",
     link: "/assets/pdf/letter19.pdf",
   },
-   {
+  {
     id: 20,
     img: "/assets/archive/newsletter/newsletter20.png",
     category: "Volume 5",
@@ -339,7 +340,7 @@ const allcards = [
       "Green signal for green ratings",
     link: "/assets/pdf/letter20.pdf",
   },
-   {
+  {
     id: 21,
     img: "/assets/archive/newsletter/newsletter21.png",
     category: "Volume 4",
@@ -350,7 +351,7 @@ const allcards = [
       "Smart city, smart PT",
     link: "/assets/pdf/letter21.pdf",
   },
-    {
+  {
     id: 22,
     img: "/assets/archive/newsletter/newsletter22.png",
     category: "Volume 3",
@@ -361,7 +362,7 @@ const allcards = [
       "The quarterly meeting",
     link: "/assets/pdf/letter22.pdf",
   },
-   {
+  {
     id: 23,
     img: "/assets/archive/newsletter/newsletter23.png",
     category: "Volume 2",
@@ -372,7 +373,7 @@ const allcards = [
       "City mobility",
     link: "/assets/pdf/letter23.pdf",
   },
-     {
+  {
     id: 24,
     img: "/assets/archive/newsletter/newsletter24.png",
     category: "Volume 1",
@@ -383,21 +384,32 @@ const allcards = [
       "Here comes the sun",
     link: "/assets/pdf/letter24.pdf",
   },
-
-
-
-
-
-
-
-  // Dummy newsletter 
-
-
-
-
- 
-
 ];
+
+
+const generateArticleSchema = (card: any) => ({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": `Infravision Newsletter – ${card.category}`,
+  "description": card.description,
+  "datePublished": new Date(card.date).toISOString(),
+  "image": `https://theinfravisionfoundation.org${card.img}`,
+  "url": "https://theinfravisionfoundation.org/newsletters",
+  "associatedMedia": {
+    "@type": "MediaObject",
+    "contentUrl": `https://theinfravisionfoundation.org${card.link}`,
+    "encodingFormat": "application/pdf"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Infravision Foundation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://theinfravisionfoundation.org/logo.png"
+    }
+  }
+});
+
 
 export default function Newsletters() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -475,8 +487,26 @@ export default function Newsletters() {
     </div>
   );
 
+
+
+  const allNewsLetterSchemas = allcards.map(generateArticleSchema);
+
+
   return (
     <section id="newsletters">
+
+
+      <Script
+        id="newsletter-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(allNewsLetterSchemas),
+        }}
+      />
+
+
+
       <div className="w-container blade-top-padding-sm blade-bottom-padding">
         {/* Header Section */}
         <div className="flex flex-row items-center gap-2 md:gap-3">
@@ -486,9 +516,9 @@ export default function Newsletters() {
 
         <div className="py-3 max-w-[890px] ">
           <h1 className="text-black font-light">
-           A chronicle of our <br/>
+            A chronicle of our <br />
             <span className="text-black font-medium">
-             {' '} monthly dispatches
+              {' '} monthly dispatches
             </span>
           </h1>
         </div>

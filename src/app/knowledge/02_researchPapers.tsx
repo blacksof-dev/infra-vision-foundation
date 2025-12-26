@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useMemo, useRef } from "react";
+import {  useState, useMemo, useRef } from "react";
 
 import img_01 from "@/../public/assets/knowledeg/researchPapers/01.jpg";
 import img_02 from "@/../public/assets/knowledeg/researchPapers/02.jpg";
@@ -34,16 +34,7 @@ type SectorType =
   | "Infrastructure"
   | "Health Infra";
 
-interface NewsletterCard {
-  id: number;
-  img: any; // Consider using a more specific type for images
-  category: string;
-  title: string;
-  sectors: SectorType;
-  date: string;
-  description: string;
-  link: string;
-}
+
 
 // Constants
 const FILTER_TYPES: FilterType[] = ["All", "Sectors"];
@@ -218,6 +209,10 @@ const allcards = [
     link: "/assets/pdf/expanding.pdf",
   },
 ];
+
+
+
+
 
 export default function ResearchPapers() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);

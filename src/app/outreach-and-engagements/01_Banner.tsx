@@ -15,7 +15,7 @@ export const metadata: Metadata = {
       { url: 'https://theinfravisionfoundation.org/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
        { url: 'https://theinfravisionfoundation.org/favicon.png' },
     ],
-    apple: '/apple-touch-icon.png',
+    apple: 'https://theinfravisionfoundation.org/apple-touch-icon.png',
   },
 
   robots: {
@@ -33,6 +33,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://theinfravisionfoundation.org/outreach-and-engagements',
+     languages: {
+      'x-default': 'https://theinfravisionfoundation.org/',
+    },
   },
   authors: [{ name: 'The Infravision Foundation' }],
   publisher: 'The Infravision Foundation',
