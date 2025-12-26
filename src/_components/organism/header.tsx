@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import logo from "@/../public/assets/globals/logo.png";
+import logo from "@/../public/logo.png";
 import { IoSearch } from "react-icons/io5";
 import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
 import { useEffect, useState } from "react";

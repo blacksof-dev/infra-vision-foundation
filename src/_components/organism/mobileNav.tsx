@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import logo from "@/../public/assets/globals/logo.png";
+import logo from "@/../public/logo.png";
 import { RxCross1 } from "react-icons/rx";
 import { FaSearch } from "react-icons/fa";
 import Link from "next/link";
