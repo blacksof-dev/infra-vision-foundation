@@ -5,6 +5,7 @@ import Footer from "@/_components/organism/footer";
 import Header from "@/_components/organism/header";
 import { HeaderProvider } from "@/context/useHeader";
 import Provider from "./queryProvider";
+import Image from "next/image";
 
 
 
@@ -77,6 +78,13 @@ export default function RootLayout({
 
         <HeaderProvider>
           <Header />
+             <Image
+        src="/assets/logo.png"
+        alt="The Infravision Foundation"
+        width={200}
+        height={60}
+        priority
+      />
           <Provider>
            {children}
           </Provider>
