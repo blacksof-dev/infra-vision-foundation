@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     icon: [
       { url: 'https://theinfravisionfoundation.org/favicon16x16.png', sizes: '16x16', type: 'image/png' },
       { url: 'https://theinfravisionfoundation.org/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: 'https://theinfravisionfoundation.org/icon.svg' },
+      { url: 'https://theinfravisionfoundation.org/favicon.png' },
     ],
     apple: '/apple-touch-icon.png',
   },
