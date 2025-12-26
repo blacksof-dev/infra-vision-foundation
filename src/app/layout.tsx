@@ -78,8 +78,8 @@ export default function RootLayout({
 
         <HeaderProvider>
           <Header />
-             <Image
-        src="/assets/logo.png"
+        <Image
+        src="/logo.png"
         alt="The Infravision Foundation"
         width={200}
         height={60}
