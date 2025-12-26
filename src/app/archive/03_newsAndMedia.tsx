@@ -713,7 +713,6 @@ const generateNewsSchema = (card: any) => ({
   "@type": "NewsArticle",
   "headline":`The Infravision Foundation - ${card.category}`,
   "description": card.description,
-  "datePublished": new Date(card.date).toISOString(),
   "image": `https://theinfravisionfoundation.org${card.img}`,
   "mainEntityOfPage": {
     "@type": "WebPage",
