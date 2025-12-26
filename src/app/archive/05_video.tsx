@@ -9,12 +9,46 @@ import {
 } from "@/_components/atoms/buttons";
 import { allCards } from "./static";
 import Link from "next/link";
+import Script from "next/script";
+
+
+
+
+const generateVideoSchema = (card: any) => ({
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": card.subtitle,
+  "description": `${card.subdesc}`,
+  "thumbnailUrl": `https://theinfravisionfoundation.org${card.image}`,
+  "embedUrl": card.link,
+  "uploadDate": card.date
+    ? new Date(card.date).toISOString()
+    : "",
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Infravision Foundation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://theinfravisionfoundation.org/logo.png"
+    }
+  }
+});
+
 
 export default function Video() {
   const [tab, setTab] = useState("All");
-
+  const allVideo = allCards.map(generateVideoSchema);
   return (
     <section id="videos" className=" blade-top-padding-lg blade-bottom-padding-lg">
+
+      <Script
+        id="video-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(allVideo),
+        }}
+      />
       <div className="w-container">
         <div>
           <div className="flex flex-row items-center gap-2 md:gap-3">
@@ -74,11 +108,10 @@ function TabsSection({
         {filter.map((ele) => (
           <button
             key={ele}
-            className={`mt-auto text-sm md:text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4 ${
-              tab === ele
+            className={`mt-auto text-sm md:text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4 ${tab === ele
                 ? "text-pink font-medium border border-pink"
                 : "border border-lightgray/30"
-            }`}
+              }`}
             onClick={() => setTab(ele)}
           >
             {ele}

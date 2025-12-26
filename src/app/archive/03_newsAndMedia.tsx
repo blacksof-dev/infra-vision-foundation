@@ -3,6 +3,7 @@ import { useState, useMemo, useRef } from "react";
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import { NewsCard } from "@/_components/molecules/newsCard";
 import Link from "next/link";
+import Script from "next/script";
 
 // Types
 type FilterType = "All" | "Publication year" | "sectors";
@@ -41,6 +42,11 @@ const SECTORS: SectorType[] = [
   "Health Infra",
 ];
 const INITIAL_VISIBLE_COUNT = 3;
+
+
+
+
+
 
 const allcards = [
   {
@@ -701,6 +707,33 @@ const allcards = [
   
 ];
 
+
+const generateNewsSchema = (card: any) => ({
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline":`The Infravision Foundation - ${card.category}`,
+  "description": card.description,
+  "datePublished": new Date(card.date).toISOString(),
+  "image": `https://theinfravisionfoundation.org${card.img}`,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": card.link
+  },
+  "author": {
+    "@type": "Person",
+    "name": card.title
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Infravision Foundation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://theinfravisionfoundation.org/logo.png"
+    }
+  }
+});
+
+
 export default function NewsAndMedia() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -776,8 +809,22 @@ export default function NewsAndMedia() {
     </div>
   );
 
+  const allNewsMedia = allcards.map(generateNewsSchema);
+
+
   return (
     <section id="news-and-media" className="bg-whitesmoke">
+
+      <Script
+        id="newsMedia-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(allNewsMedia),
+        }}
+      />
+
+
       <div className="w-container blade-top-padding-sm blade-bottom-padding ">
         {/* Header Section */}
         <div className="flex flex-row items-center gap-2 md:gap-3">

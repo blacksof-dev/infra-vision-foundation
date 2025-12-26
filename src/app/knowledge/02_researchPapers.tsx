@@ -20,6 +20,7 @@ import img_15 from "@/../public/assets/knowledeg/researchPapers/waterBodies.png"
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 
 import { NewsCard } from "@/_components/molecules/newsCard";
+import Script from "next/script";
 
 // Types
 type FilterType = "All" | "Sectors";
@@ -210,6 +211,32 @@ const allcards = [
   },
 ];
 
+const generateResearchSchema = (card: any) => ({
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": card.description,
+  "description": card.description,
+  "image": `https://theinfravisionfoundation.org${card.img}`,
+  "url": "https://theinfravisionfoundation.org/knowledge#research-papers",
+  "author": {
+    "@type": "Organization",
+    "name": "The Infravision Foundation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Infravision Foundation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://theinfravisionfoundation.org/logo.png"
+    }
+  },
+  "about": card.sectors,
+  "associatedMedia": {
+    "@type": "MediaObject",
+    "contentUrl": `https://theinfravisionfoundation.org${card.link}`,
+    "encodingFormat": "application/pdf"
+  }
+});
 
 
 
@@ -226,8 +253,6 @@ export default function ResearchPapers() {
     const container = containerRef.current;
 
     if (tab && container) {
-      // const containerRect = container.getBoundingClientRect();
-      // const tabRect = tab.getBoundingClientRect();
       const offset =
         tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
       container.scrollTo({ left: offset, behavior: 'smooth' });
@@ -240,11 +265,7 @@ export default function ResearchPapers() {
       tab === "Sectors"
         ? SECTORS[0]
         : "All"
-      // tab === "Publication Year"
-      //   ? YEARS[0]
-      //   : tab === "sectors"
-      //     ? SECTORS[0]
-      //     : "All"
+    
     );
     setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
@@ -255,11 +276,7 @@ export default function ResearchPapers() {
   };
 
   const filteredCards = useMemo(() => {
-    // if (selectedTab === "Publication Year") {
-    //   return allcards.filter(
-    //     (card) => card.date.split(" ").pop() === selectedFilter
-    //   );
-    // }
+ 
     if (selectedTab === "Sectors" && selectedFilter !== "All") {
       return allcards.filter((card) => card.sectors === selectedFilter);
     }
@@ -294,8 +311,20 @@ export default function ResearchPapers() {
     </div>
   );
 
+  const allResearchPaper = allcards.map(generateResearchSchema);
   return (
     <section id="research-papers">
+
+     <Script
+        id="researchPaper-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(allResearchPaper),
+        }}
+      />
+
+
       <div className="w-container blade-top-padding-sm blade-bottom-padding">
         {/* Header Section */}
         <div className="flex flex-row items-center gap-2 md:gap-3">

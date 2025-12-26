@@ -394,7 +394,7 @@ const generateArticleSchema = (card: any) => ({
   "description": card.description,
   "datePublished": new Date(card.date).toISOString(),
   "image": `https://theinfravisionfoundation.org${card.img}`,
-  "url": "https://theinfravisionfoundation.org/newsletters",
+  "url": "https://theinfravisionfoundation.org/archive#newsletters",
   "associatedMedia": {
     "@type": "MediaObject",
     "contentUrl": `https://theinfravisionfoundation.org${card.link}`,
