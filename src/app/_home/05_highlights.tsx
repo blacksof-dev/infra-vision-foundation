@@ -40,6 +40,15 @@ const newsletters = [
 ];
 
 const news = [
+    {
+    id:60,
+    img: "/assets/archive/newsAndMedia/invest-in-small-towns.jpg",
+    category: "News",
+    date: "December 2025",
+    title: "Invest in small towns",
+    subtitle:" Kiran Karnik",
+    link: "/assets/pdf/invest-in-small-towns.pdf",
+  },
      {
     id:59,
     img: "/assets/archive/newsAndMedia/soumyaNews.jpg",
@@ -58,16 +67,7 @@ const news = [
      subtitle: "Vinayak Chatterjee",
     link: "/assets/pdf/confidence.pdf",
   },
-   {
-    id:59,
-    img: "/assets/archive/newsAndMedia/vande-bharat.jpg",
-    category: "News",
-    title: "Fast Forwarding Bharat: The Next Leap",
-    date: "September-October, 2025",
-     subtitle: "Vinayak Chatterjee",
-    link: "/assets/pdf/infrastructure.pdf",
-  },
-
+ 
  
   
 ];

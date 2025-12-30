@@ -49,6 +49,17 @@ const INITIAL_VISIBLE_COUNT = 3;
 
 
 const allcards = [
+   {
+    id:66,
+    img: "/assets/archive/newsAndMedia/invest-in-small-towns.jpg",
+    category: "News",
+    title: "Kiran Karnik",
+    sectors: "",
+    date: "December 2025",
+    description: "Invest in small towns",
+    link: "/assets/pdf/invest-in-small-towns.pdf",
+  },
+ 
   {
     id:64,
     img: "/assets/archive/newsAndMedia/soumyaNews.jpg",

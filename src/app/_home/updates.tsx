@@ -158,14 +158,15 @@ export default function Updates() {
 }
 
 const EventsDetails = [
-  {
-    
-    image: soumya,
+   {
+   
+    image: "/assets/archive/newsAndMedia/invest-in-small-towns.jpg",
     category: "News",
-    title: "How consistent is IMF classification of exchange rate arrangement and data adequacy?",
-     btnTitle: "See details",
-    link: "/assets/pdf/how-consistent-is-imf-classification.jpeg",
+    title: "Invest in small towns",
+    btnTitle: "See details",
+    link: "/assets/pdf/invest-in-small-towns.pdf",
   },
+  
   {
     image: montek,
     category: "InfraPandit Awards",
