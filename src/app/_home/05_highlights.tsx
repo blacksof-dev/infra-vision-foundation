@@ -44,7 +44,7 @@ const news = [
     id:60,
     img: "/assets/archive/newsAndMedia/invest-in-small-towns.jpg",
     category: "News",
-    date: "December 2025",
+    date: "January 2026",
     title: "Invest in small towns",
     subtitle:" Kiran Karnik",
     link: "/assets/pdf/invest-in-small-towns.pdf",

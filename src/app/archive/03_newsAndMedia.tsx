@@ -55,7 +55,7 @@ const allcards = [
     category: "News",
     title: "Kiran Karnik",
     sectors: "",
-    date: "December 2025",
+    date: "January 2026",
     description: "Invest in small towns",
     link: "/assets/pdf/invest-in-small-towns.pdf",
   },
