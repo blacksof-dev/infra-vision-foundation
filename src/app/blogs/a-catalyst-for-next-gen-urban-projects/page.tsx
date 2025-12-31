@@ -1,6 +1,6 @@
 
 import { Metadata } from 'next';
-import { motion, useScroll, useSpring } from "motion/react";
+
 import image1 from "@/../public/assets/knowledeg/blogs/urban challenges.jpg";
 import Image from "next/image";
 import Link from "next/link";
@@ -55,13 +55,7 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-    const { scrollYProgress } = useScroll();
-    const scaleX = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
-        restDelta: 0.001,
-    });
-
+  
     return (
         <>
             <Progessbar />
