@@ -1,4 +1,4 @@
-"use client";
+
 
 import { motion, useScroll, useSpring } from "motion/react";
 import image1 from "@/../public/assets/knowledeg/blogs/marine.png";
@@ -9,21 +9,60 @@ import fishiry from "@/../public/assets/knowledeg/blogs/fishiry.jpg";
 import Image from "next/image";
 import Link from "next/link";
 import { MoveLeft } from "lucide-react";
+import { Metadata } from 'next';
+import { Progessbar } from "@/_components/molecules/timelineBlog";
+
+
+export const metadata: Metadata = {
+    title: 'India Seafood Exports: Infra Bottlenecks Exposed',
+    description: `India's $7.38B marine exports in FY24 face harbour gaps, port delays, cold chain failures, processing limits, quality rejections, water pollution & last-mile issues blocking $14B target. Analysis of bottlenecks & reforms for global competitiveness`,
+    robots: {
+        index: true,
+        follow: true,
+        nocache: false,
+        googleBot: {
+            index: true,
+            follow: true,
+            noimageindex: false,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    alternates: {
+        canonical: 'https://infravisionfoundation.org/blogs/infrastructure-bottlenecks-in-india-marine-export-sector',
+    },
+    openGraph: {
+        type: 'website',
+        locale: 'en_US',
+        url: 'https://infravisionfoundation.org/blogs/infrastructure-bottlenecks-in-india-marine-export-sector',
+        siteName: 'The Infravision Foundation',
+        title: 'India Seafood Exports: Infra Bottlenecks Exposed',
+        description: `India's $7.38B marine exports in FY24 face harbour gaps, port delays, cold chain failures, processing limits, quality rejections, water pollution & last-mile issues blocking $14B target. Analysis of bottlenecks & reforms for global competitiveness`,
+        images: [
+            {
+                url: 'https://infravisionfoundation.org/assets/knowledeg/blogs/marine.png',
+                width: 1200,
+                height: 630,
+                alt: 'The Infravision Foundation',
+                type: 'image/jpg',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'India Seafood Exports: Infra Bottlenecks Exposed',
+        description: `India's $7.38B marine exports in FY24 face harbour gaps, port delays, cold chain failures, processing limits, quality rejections, water pollution & last-mile issues blocking $14B target. Analysis of bottlenecks & reforms for global competitiveness`,
+        images: ['https://infravisionfoundation.org/assets/knowledeg/blogs/marine.png'],
+    },
+};
 
 export default function Page() {
-    const { scrollYProgress } = useScroll();
-    const scaleX = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
-        restDelta: 0.001,
-    });
+
 
     return (
         <>
-            <motion.div
-                className="fixed top-0 left-0 right-0 h-1 bg-pink origin-left z-50"
-                style={{ scaleX }}
-            />
+            <Progessbar />
 
             <div className="max-w-5xl mx-auto pt-[15%] sm:pt-[12%] lg:pt-[8%] blade-top-padding-lg blade-bottom-padding-lg px-4 md:px-6">
                 <Link
@@ -35,14 +74,12 @@ export default function Page() {
                 </Link>
 
                 <header className="mb-4">
-                    <motion.h1
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
+                    <h1
+
                         className="font-poppins text-black font-semibold text-2xl md:text-4xl lg:text-5xl mb-6"
                     >
                         Choppy Waters: Infrastructure Bottlenecks in India’s Marine Export Sector
-                    </motion.h1>
+                    </h1>
 
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-darkgray font-medium border-b border-gray/10 pb-6">
                         <span className="text-sm sm:text-base">By Vrinda Singh</span>
@@ -58,10 +95,8 @@ export default function Page() {
                 </header>
 
                 <article className="space-y-4 md:space-y-16">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.98 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.3, duration: 0.6 }}
+                    <div
+
                         className="rounded-md md:rounded-2xl overflow-hidden shadow-2xl shadow-black/5"
                     >
                         <Image
@@ -71,7 +106,7 @@ export default function Page() {
                             quality={100}
                             priority
                         />
-                    </motion.div>
+                    </div>
 
                     <div className="space-y-10">
                         <div className="py-3">

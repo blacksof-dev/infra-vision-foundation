@@ -1,6 +1,6 @@
-"use client";
 
-import { motion, useScroll, useSpring } from "motion/react";
+
+
 import image1 from "@/../public/assets/knowledeg/blogs/09.jpg";
 import hill from "@/../public/assets/knowledeg/blogs/hill.jpg";
 import tawang from "@/../public/assets/knowledeg/blogs/tawang.jpg";
@@ -12,21 +12,68 @@ import culture2 from "@/../public/assets/knowledeg/blogs/culture2.jpg";
 import Image from "next/image";
 import Link from "next/link";
 import { MoveLeft } from "lucide-react";
+import { Progessbar } from "@/_components/molecules/timelineBlog";
+import { Metadata } from 'next';
+import Script from "next/script";
+
+
+export const metadata: Metadata = {
+    title: 'Tawang to Markets: Fixing Arunachal’s Farm Infrastructure',
+    description:
+        'Arunachal Pradesh leads in kiwi and organic farming, yet weak infrastructure holds it back. Discover why better transport, storage and policy support are urgent.',
+    robots: {
+        index: true,
+        follow: true,
+        nocache: false,
+        googleBot: {
+            index: true,
+            follow: true,
+            noimageindex: false,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    alternates: {
+        canonical: 'https://infravisionfoundation.org/blogs/why-arunachal-agriculture-needs-better-infrastructure',
+    },
+    openGraph: {
+        type: 'website',
+        locale: 'en_US',
+        url: 'https://infravisionfoundation.org/blogs/why-arunachal-agriculture-needs-better-infrastructure',
+        siteName: 'The Infravision Foundation',
+        title: 'Tawang to Markets: Fixing Arunachal’s Farm Infrastructure',
+        description:
+            'Arunachal Pradesh leads in kiwi and organic farming, yet weak infrastructure holds it back. Discover why better transport, storage and policy support are urgent.',
+        images: [
+            {
+                url: 'https://infravisionfoundation.org/assets/knowledeg/blogs/09.jpg',
+                width: 1200,
+                height: 630,
+                alt: 'The Infravision Foundation',
+                type: 'image/jpg',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Tawang to Markets: Fixing Arunachal’s Farm Infrastructure',
+        description:
+            'Arunachal Pradesh leads in kiwi and organic farming, yet weak infrastructure holds it back. Discover why better transport, storage and policy support are urgent.',
+        images: ['https://infravisionfoundation.org/assets/knowledeg/blogs/09.jpg'],
+    },
+};
+
+
+
 
 export default function Page() {
-    const { scrollYProgress } = useScroll();
-    const scaleX = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
-        restDelta: 0.001,
-    });
+
 
     return (
         <>
-            <motion.div
-                className="fixed top-0 left-0 right-0 h-1 bg-pink origin-left z-50"
-                style={{ scaleX }}
-            />
+
+            <Progessbar />
 
             <div className="max-w-5xl mx-auto pt-[15%] sm:pt-[12%] lg:pt-[8%] blade-top-padding-lg blade-bottom-padding-lg px-4 md:px-6">
                 <Link
@@ -38,14 +85,12 @@ export default function Page() {
                 </Link>
 
                 <header className="mb-4">
-                    <motion.h1
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
+                    <h1
+
                         className="font-poppins text-black font-semibold text-2xl md:text-4xl lg:text-5xl mb-6"
                     >
                         Two Days to Tawang: Why Arunachal’s Agriculture Needs Better Infrastructure
-                    </motion.h1>
+                    </h1>
 
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-darkgray font-medium border-b border-gray/10 pb-6">
                         <span className="text-sm sm:text-base">
@@ -63,10 +108,8 @@ export default function Page() {
                 </header>
 
                 <article className="space-y-10">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.98 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.3, duration: 0.6 }}
+                    <div
+
                         className="rounded-md md:rounded-2xl overflow-hidden shadow-2xl shadow-black/5"
                     >
                         <Image
@@ -76,7 +119,7 @@ export default function Page() {
                             quality={100}
                             priority
                         />
-                    </motion.div>
+                    </div>
 
                     <div className="space-y-4 md:space-y-16">
                         <div className="py-3">
