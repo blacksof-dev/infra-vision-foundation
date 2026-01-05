@@ -15,17 +15,17 @@ export const MemberCard = ({ image, title, desig, link, socialMedia }: MemberCar
 
 
   return (
-    <div className="flex relative flex-col w-[19rem]  h-[19rem] group/desg ">
+    <div className="flex relative flex-col w-[19rem]   h-[19rem] group/desg ">
       <Image
         src={image}
         alt={title}
-        className="w-full h-full object-cover rounded"
+        className="w-full h-full object-cover rounded-md overflow-hidden d"
         // unoptimized={true}
         quality={90}
       />
       <div className="absolute bottom-0 left-0 w-[17rem] ">
         {(link && socialMedia) && (
-          <div className="ml-auto relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
+          <div className=" relative top-1 right-1 bg-white w-[3rem] h-[3rem] rounded flex justify-center items-center">
             <Link
               onClick={(e) => e.stopPropagation()}
               href={link}
