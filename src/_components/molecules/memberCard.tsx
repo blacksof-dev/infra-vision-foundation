@@ -19,7 +19,7 @@ export const MemberCard = ({ image, title, desig, link, socialMedia }: MemberCar
       <Image
         src={image}
         alt={title}
-        className="w-full h-full object-cover rounded-md overflow-hidden d"
+        className="w-full h-full object-cover rounded-md overflow-hidden "
         // unoptimized={true}
         quality={90}
       />
