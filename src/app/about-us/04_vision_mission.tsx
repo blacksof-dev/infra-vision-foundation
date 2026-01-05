@@ -46,12 +46,12 @@ const VisionMission = () => {
                         <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
                         <h5 className="font-medium text-pink">Mission</h5>
                     </div>
-                    <div className='pt-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3'>
+                    <div className='pt-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 '>
                         {
                             data.map((elem, idx) => {
                                 return (
-                                    <div key={idx} className='bg-[#FFFFFFB2] backdrop-blur-[10px] shadow-blur w-container py-10 rounded-md'>
-                                        <div className="flex gap-4 lg:gap-8  justify-center items-center">
+                                    <div key={idx} className='bg-[#FFFFFFB2] backdrop-blur-[10px] shadow-blur w-container py-10 rounded-md px-6'>
+                                        <div className="flex gap-4 lg:gap-8  items-center">
                                              <img className='max-xl:h-10' src={elem.icon} alt="icons" />
                                               <h5>{elem.title}</h5>
                                         </div>

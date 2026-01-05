@@ -12,7 +12,7 @@ const newsletters = [
     id: 29,
     img: "/assets/archive/newsletter/infraPanditAward.png",
     category: "Volume 31",
-    title: "Infra pandit award 2025",
+    title: "InfraPandit Award 2025",
     sectors: "",
     date: "December 2025",
     link: "/assets/pdf/decmber.pdf",
@@ -43,7 +43,7 @@ const news = [
     {
     id:60,
     img: "/assets/archive/newsAndMedia/invest-in-small-towns.jpg",
-    category: "News",
+    category: "",
     date: "January 2026",
     title: "Invest in small towns",
     subtitle:" Kiran Karnik",
@@ -52,7 +52,7 @@ const news = [
      {
     id:59,
     img: "/assets/archive/newsAndMedia/soumyaNews.jpg",
-    category: "News",
+    category: "",
     title: "How consistent is IMF classification of exchange rate arrangement and data adequacy?",
     date: "December 2025",
      subtitle: "Soumya Kanti Ghosh",
@@ -61,7 +61,7 @@ const news = [
      {
     id:59,
     img: "/assets/archive/newsAndMedia/confidence.png",
-    category: "News",
+    category: "",
     title: "Confidence in India's logistics cost",
     date: "November 2025",
      subtitle: "Vinayak Chatterjee",
@@ -215,7 +215,7 @@ export const TabSwitch = ({
                 : "Read more"
             }`}</span>
             <span
-              className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
+              className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0  transition-all duration-300`}
             ></span>
             <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[6.5] transition-all duration-700 ease-in-out z-0"></span>
           </Link>

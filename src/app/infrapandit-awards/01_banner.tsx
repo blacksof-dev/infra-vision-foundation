@@ -126,7 +126,7 @@ export default function InfraPanditBanner() {
                   </h5>
                 </div>
 
-                <HeroBtnPink
+                {/* <HeroBtnPink
                   // text="Apply now"
                   text="Applications closed"
                   role="link"
@@ -138,7 +138,7 @@ export default function InfraPanditBanner() {
                   classes="font-medium"
                   link="https://docs.google.com/forms/d/e/1FAIpQLSdjpffzJCT6qmQXNUmoUau7giN4qVTsm5j3ysGZ0r8QxiG05g/viewform?usp=sharing&ouid=118204303619309850521"
                   target={"_blank"}
-                />
+                /> */}
               </div>
             </div>
           </div>

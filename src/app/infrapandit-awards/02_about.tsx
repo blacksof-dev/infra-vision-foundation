@@ -64,7 +64,7 @@ const AboutInfraPandit = () => {
               </div>
             </div>
             <div className="pt-6 flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-8 sm:items-center">
-              <BorderGrayHeroBtn
+              {/* <BorderGrayHeroBtn
                 text="Applications closed"
                 role="link"
                 borderColor="pink"
@@ -74,7 +74,7 @@ const AboutInfraPandit = () => {
                 classes="font-medium"
                 link="https://docs.google.com/forms/d/e/1FAIpQLSdjpffzJCT6qmQXNUmoUau7giN4qVTsm5j3ysGZ0r8QxiG05g/viewform?usp=sharing&ouid=118204303619309850521"
                 target="_blank"
-              />
+              /> */}
               <div
                 role="button"
                 onClick={() => setShowPopup(true)}

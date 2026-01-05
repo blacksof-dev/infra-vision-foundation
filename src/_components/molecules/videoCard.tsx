@@ -125,7 +125,7 @@ export default function VideoCard({ data }: VideoCardProps) {
   );
 }
 
-const VideoCardPopup = ({
+export const VideoCardPopup = ({
   onclose,
   videoPopupDetails,
   handleNextClick,
@@ -161,7 +161,7 @@ const VideoCardPopup = ({
               height={50}
               unoptimized={true}
               quality={100}
-              className="rounded-lg  w-full h-full object-cover"
+              className="rounded-lg  w-full h-full object-cover "
             />
             <div className="group ">
               <button

@@ -29,7 +29,7 @@ interface NewsletterCard {
 
 // Constants
 const FILTER_TYPES: FilterType[] = ["All", "Publication year"];
-const YEARS = ["2025", "2024"] as const;
+const YEARS = ["2025", "2024","2023"] as const;
 const SECTORS: SectorType[] = [
   "All",
   "Transportation",
@@ -82,7 +82,7 @@ const allcards = [
     title: "",
     sectors: "",
     date: "September 2025",
-    description: "Crunching Data,Analysing Information",
+    description: "Crunching data, analysing information",
     link: "/assets/pdf/crunchingData.pdf",
   },
   {
@@ -104,7 +104,7 @@ const allcards = [
     sectors: "",
     date: "July 2025",
     description:
-      "Do you want to be an Infrapandit?",
+      "Do you want to be an InfraPandit?",
     link: "/assets/pdf/july.pdf",
   },
   {
@@ -115,7 +115,7 @@ const allcards = [
     sectors: "",
     date: "June 2025",
     description:
-      "Transforming Cities into Frontiers for Economic Growth ",
+      "Transforming cities into frontiers for economic growth ",
     link: "/assets/pdf/june2025.pdf",
   },
 

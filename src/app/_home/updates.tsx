@@ -170,14 +170,14 @@ const EventsDetails = [
   {
     image: montek,
     category: "InfraPandit Awards",
-    title: "Nurturing the Next Generation of Infra Talent and Ideas",
+    title: "Nurturing the next generation of infra talent and ideas",
     btnTitle: "See details",
     link: "/infrapandit-awards",
   },
   {
     image: awards,
     category: "Newsletter",
-    title: "Infra pandit award 2025",
+    title: "InfraPandit Award 2025",
     btnTitle: "Read more",
     link: "/assets/pdf/decmber.pdf",
   },

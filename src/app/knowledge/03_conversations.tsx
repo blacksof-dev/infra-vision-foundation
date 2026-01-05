@@ -27,7 +27,7 @@ import kalpana from "@/../public/assets/knowledeg/conversations/kalpana.png";
 import abha from "@/../public/assets/knowledeg/conversations/abha.png";
 import lokanath from "@/../public/assets/knowledeg/conversations/lokanath.png";
 import anumita from "@/../public/assets/knowledeg/conversations/anumita.png";
-import Script from "next/script";
+
 
 const people = [
   {
@@ -50,7 +50,7 @@ const people = [
   {
     image: lokanath.src,
     videoLink: "https://www.youtube.com/embed/3y7U8G23O9M?si=X_3YXXx__Wd7pdKu",
-    name: "Mr. Loknath Behera",
+    name: "Loknath Behera",
     title:
       "MD Kochi Metro Rail",
     desc: "Making the water metro sustainable",
@@ -61,7 +61,7 @@ const people = [
     videoLink: "https://www.youtube.com/embed/gg9NtuYLiZA?si=3IY8UMlwZb7r_LzP",
     name: "Kalpana Viswanath",
     title:
-      "Kalpana Viswanath - Founder and CEO, Safetipin",
+      "Founder and CEO, Safetipin",
     desc: "Does free public transport for women improve safety?",
     date: "",
   },
