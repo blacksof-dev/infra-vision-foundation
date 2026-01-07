@@ -1,10 +1,10 @@
 
 
-import { motion, useScroll, useSpring } from "motion/react";
+
 import image1 from "@/../public/assets/knowledeg/blogs/marine.png";
 import flow from "@/../public/assets/knowledeg/blogs/flow.png";
-import conclusionImage from "@/../public/assets/knowledeg/blogs/conclusionImage.jpg";
-import fishiry from "@/../public/assets/knowledeg/blogs/fishiry.jpg";
+import conclusionImage from "@/../public/assets/knowledeg/blogs/conclusionImage.png";
+import fishiry from "@/../public/assets/knowledeg/blogs/fishiry.png";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -567,9 +567,9 @@ export default function Page() {
 
                             <div className="my-4 md:my-10">
                                 <Image
-                                    src={flow}
+                                    src={conclusionImage}
                                     alt="Infrastructure Bottlenecks in India’s Marine Export Sector"
-                                    className="w-full max-h-[650px] object-contain rounded-md md:rounded-2xl"
+                                    className="w-full max-h-[650px] object-cover rounded-md md:rounded-2xl"
                                     quality={100}
                                     priority
                                 />
@@ -723,9 +723,9 @@ export default function Page() {
 
                             <div className="my-4 md:my-10">
                                 <Image
-                                    src={conclusionImage}
+                                    src={flow}
                                     alt="Infrastructure Bottlenecks in India’s Marine Export Sector"
-                                    className="w-full h-auto max-h-[450px] object-cover rounded-md md:rounded-2xl shadow-lg"
+                                    className="w-full h-auto max-h-[450px] object-contain rounded-md md:rounded-2xl shadow-lg"
                                     quality={100}
                                     priority
                                 />

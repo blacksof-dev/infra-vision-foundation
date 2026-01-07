@@ -2,13 +2,13 @@
 
 
 import image1 from "@/../public/assets/knowledeg/blogs/09.jpg";
-import hill from "@/../public/assets/knowledeg/blogs/hill.jpg";
-import tawang from "@/../public/assets/knowledeg/blogs/tawang.jpg";
-import tawangMonastery from "@/../public/assets/knowledeg/blogs/tawangMonastery.jpg";
-import agricultureTrade from "@/../public/assets/knowledeg/blogs/agriculture-trade.jpg";
-import culture1 from "@/../public/assets/knowledeg/blogs/culture1.jpg";
-import culture2 from "@/../public/assets/knowledeg/blogs/culture2.jpg";
-
+import arunachal1 from "@/../public/assets/knowledeg/blogs/arunachal1.jpeg";
+import hill from "@/../public/assets/knowledeg/blogs/hill.jpeg";
+import weather from "@/../public/assets/knowledeg/blogs/weather.jpeg";
+import agricultureTrade from "@/../public/assets/knowledeg/blogs/agricultureTrade.jpeg";
+import culture1 from "@/../public/assets/knowledeg/blogs/culture.jpeg";
+import culture2 from "@/../public/assets/knowledeg/blogs/culture2.jpeg";
+import tawangMonastery from "@/../public/assets/knowledeg/blogs/tawangMonastery.jpeg";
 import Image from "next/image";
 import Link from "next/link";
 import { MoveLeft } from "lucide-react";
@@ -114,7 +114,7 @@ export default function Page() {
                     >
                         <Image
                             src={image1}
-                            alt="Tawang, Arunachal Pradesh Landscape"
+                            alt="Sela Tunnel"
                             className="w-full max-h-[350px] md:max-h-[550px] object-cover"
                             quality={100}
                             priority
@@ -130,6 +130,15 @@ export default function Page() {
                             <h2 className="text-xl md:text-3xl font-poppins font-semibold text-black pt-6">
                                 Day 1 – The Starting Point
                             </h2>
+                              <div className="my-6">
+                                <Image
+                                    src={arunachal1}
+                                    alt="Food distribution in the Northeast"
+                                    className="w-full max-h-[350px] md:max-h-[550px] object-cover rounded-md md:rounded-2xl"
+                                    quality={100}
+                                    priority
+                                />
+                            </div>
                             <p className="text-darkgray pt-4 text-base md:text-xl leading-relaxed text-justify">
                                 On April 8th, I caught the 9 a.m. flight from Delhi to Guwahati, Assam. I spent the evening meeting with Food Corporation of India officers who spoke candidly about the challenges of food distribution in the Northeast—long distances, tough terrain, and inadequate transport facilities.
                             </p>
@@ -139,7 +148,7 @@ export default function Page() {
                             </h2>
                             <div className="my-6">
                                 <Image
-                                    src={hill}
+                                    src={agricultureTrade}
                                     alt="Tawang, Arunachal Pradesh Landscape"
                                     className="w-full max-h-[350px] md:max-h-[550px] object-cover rounded-md md:rounded-2xl"
                                     quality={100}
@@ -159,7 +168,7 @@ export default function Page() {
                             </h2>
                             <div className="my-6">
                                 <Image
-                                    src={tawang}
+                                    src={hill}
                                     alt="Tawang, Arunachal Pradesh Landscape"
                                     className="w-full max-h-[350px] md:max-h-[550px] object-cover rounded-md md:rounded-2xl"
                                     quality={100}
@@ -180,7 +189,7 @@ export default function Page() {
                             </p>
                             <div className="my-6">
                                 <Image
-                                    src={tawangMonastery}
+                                    src={culture1}
                                     alt="Tawang, Arunachal Pradesh Landscape"
                                     className="w-full max-h-[350px] md:max-h-[550px] object-cover rounded-md md:rounded-2xl"
                                     quality={100}
@@ -198,7 +207,7 @@ export default function Page() {
                             </p>
                             <div className="my-6">
                                 <Image
-                                    src={agricultureTrade}
+                                    src={tawangMonastery}
                                     alt="Tawang, Arunachal Pradesh Landscape"
                                     className="w-full max-h-[350px] md:max-h-[550px] object-cover rounded-md md:rounded-2xl"
                                     quality={100}
@@ -211,7 +220,7 @@ export default function Page() {
                             </h2>
                             <div className="my-6">
                                 <Image
-                                    src={culture1}
+                                    src={culture2}
                                     alt="Tawang, Arunachal Pradesh Landscape"
                                     className="w-full max-h-[350px] md:max-h-[550px] object-cover rounded-md md:rounded-2xl"
                                     quality={100}
@@ -220,7 +229,7 @@ export default function Page() {
                             </div>
                             <div className="my-6">
                                 <Image
-                                    src={culture2}
+                                    src={weather}
                                     alt="Tawang, Arunachal Pradesh Landscape"
                                     className="w-full max-h-[350px] md:max-h-[550px] object-cover rounded-md md:rounded-2xl"
                                     quality={100}
