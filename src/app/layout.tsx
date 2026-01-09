@@ -7,6 +7,7 @@ import { HeaderProvider } from "@/context/useHeader";
 import Provider from "./queryProvider";
 import Image from "next/image";
 import Script from "next/script";
+import GoogleAnalytics from "./googleAnalytics";
 
 
 
@@ -22,6 +23,8 @@ export const metadata: Metadata = {
     ],
     apple: 'https://theinfravisionfoundation.org/apple-touch-icon.png',
   },
+
+
 
   robots: {
     index: true,
@@ -79,6 +82,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <GoogleAnalytics/>
       <head>
         <Script
          id="corporation-schema"
@@ -117,6 +121,8 @@ export default function RootLayout({
 
         <HeaderProvider>
           <Header />
+
+          
           <Provider>
             {children}
           </Provider>
