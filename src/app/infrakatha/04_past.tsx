@@ -81,7 +81,7 @@ const allcards = [
     img: devdutt.src,
     category: "InfraKatha #1",
     date: "May 29, 2024",
-    title: "Featuring Mr. Devdutt Pattanaik, Author",
+    title: "Featuring Mr Devdutt Pattanaik, Author",
     link: "https://www.youtube.com/watch?v=9v61vpPmXEk&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=8&ab_channel=TheInfravisionFoundation",
     description: "Mythology & infrastructure",
   },

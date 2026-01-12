@@ -36,12 +36,15 @@ export default function Card({
         <div className="  flex justify-between flex-col ">
           <div>
             <div className="flex flex-row justify-between pt-2 pb-1 md:py-3">
+              {category && (
+
               <div className="flex  flex-row  items-center gap-3 ">
                 <span className="w-[12px]  h-[12px] rounded-full bg-pink "></span>
                 <p className="text-sm md:text-base font-medium text-black">
                   {category}
                 </p>
               </div>
+              )}
               <div>
                 <h6 className="text-sm md:text-base  text-darkgray ">{date}</h6>
               </div>

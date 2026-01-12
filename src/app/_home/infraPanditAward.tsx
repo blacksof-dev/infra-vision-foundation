@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import montek from "@/../public/assets/outreach-and-engagements/eventImages/august18_2025_Img4.jpeg"
+import nitiAayog from "@/../public/assets/outreach-and-engagements/eventImages/nitiAayog.jpg"
 import { BorderGrayHeroBtn } from "@/_components/atoms/buttons";
 
 export default function InfrapanditAward({ ctaText = "See details", link = "/outreach-and-engagements" }: { ctaText?: string, link?: string }) {
@@ -10,7 +10,7 @@ export default function InfrapanditAward({ ctaText = "See details", link = "/out
       <div className="relative  bg-white  rounded-lg   flex flex-col sm:flex-row items-cente sm:gap-4 md:gap-7 xl:gap-10 min-h-[22rem] lg:min-h-[25rem] overflow-hidden">
         <div className="w-full h-[12rem] md:h-[25rem] sm:w-[45%] lg:w-[38%]  sm:p-5 ">
           <Image
-            src={montek}
+            src={nitiAayog}
             alt="Mr Montek Singh Ahluwalia"
             className="rounded-lg w-full h-full object-cover"
           />
@@ -20,13 +20,13 @@ export default function InfrapanditAward({ ctaText = "See details", link = "/out
            External engagement
           </h2>
 
-          <div className="max-w-sm sm:pt-2 xlg:pt-6">
+          <div className="max-w-lg sm:pt-2 xlg:pt-6">
             <h2 className="font-medium pt-2 lg:pt-4 xl:pt-6">
-             HSR will be the next growth multiplier
+             NITI Aayog and The Infravision Foundation partner to strengthen regional transport governance
             </h2>
 
             <div className=" mt-2 sm:mt-4">
-              <h4 className=" text-pink">August 18, 2025</h4>
+              <h4 className=" text-pink">September 26, 2025</h4>
               <div className="cursor-pointer mt-6">
                 <BorderGrayHeroBtn
                   text={ctaText}

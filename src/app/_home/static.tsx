@@ -98,7 +98,7 @@ Currently, she co-chairs CII’s National Committee on CSR. She previously serve
     image: Kiran,
     title: "Kiran Karnik",
     desig:
-      "Trustee, The Infravision Foundation; Former President, NASSCOM; Former MD and CEO, Discovery Networks in India",
+      "Trustee,  Former President, NASSCOM; Former MD and CEO, Discovery Networks in India",
     popupImg: kiranImg.src,
     popupdesc: `Kiran Karnik is a distinguished professional with a career spanning public service and the corporate world, known for his pioneering contributions to India's communications industry. He has consistently operated at the cutting edge of technology, from working with the great Vikram Sarabhai to establish the Satellite Instructional Television Experiment, to laying the foundations of the Discovery Channel and Animal Planet in India.\n
 
@@ -136,7 +136,7 @@ Mr Munjee has provided consultancy services in housing finance to the Asian Deve
   {
     image: RajnishKumar,
     title: "Rajnish Kumar",
-    desig: "Former chairman, State Bank of India",
+    desig: "Former Chairman, State Bank of India",
     popupImg: vinayakImg.src,
     link: "https://in.linkedin.com/in/rajnish-kumar-0a1663bb",
     socialMedia: "linkedin",
@@ -201,7 +201,7 @@ Apart from being a prolific columnist in his field, Mr Singh has also authored t
   {
     image: SunilMathur,
     title: "Sunil Mathur",
-    desig: "MD & CEO Siemens India",
+    desig: "MD & CEO, Siemens India",
     link: "https://www.linkedin.com/in/sunil-mathur/",
     socialMedia: "linkedin",
     popupImg: vinayakImg.src,
@@ -241,7 +241,7 @@ He is a member of the curriculum advisory committee for the postgraduate course 
     image: ArunNanda,
     title: "Arun Nanda",
     desig:
-      "Chairman, Mahindra Holidays & Resorts Ltd. and Mahindra Lifespace Developers Ltd",
+      "Chairman, Mahindra Holidays & Resorts Ltd and Mahindra Lifespace Developers Ltd",
     popupImg: vinayakImg.src,
     popupdesc: `Arun Nanda is a fellow member of the Institute of Chartered Accountants of India (FCA) and a fellow member of the Institute of Company Secretaries of India (FCS). He also participated in a Senior Executive Programme at the London Business School. And holds a degree in Law from the University of Calcutta.\n
 
@@ -320,7 +320,7 @@ export const fellow = [
   {
     image: rasikaAthawale,
     title: "Rasika Athawale",
-    desig: "Electricity policy & regulatory expert; Consultant, Big4 Consulting",
+    desig: "Electricity Policy & Regulatory Expert; Consultant, Big4 Consulting",
     subtitle:"Distinguished Fellow (Power)",
     popupImg: vinayakImg.src,
     link: "https://www.linkedin.com/in/rasika-athawale-5072ab1/",
@@ -390,7 +390,7 @@ Currently, he serves as Chief Advisor and Chairman of the Strategy & Policy Unit
     title: "Rajaji Meshram",
     popupImg: vinayakImg.src,
      subtitle:"Distinguished Fellow (Transport and Logistics)",
-    desig: "Transport and Logistics sector expert; Consultant, World Bank in India",
+    desig: "Transport and Logistics Expert; Consultant, World Bank in India",
     link: "https://www.linkedin.com/in/rajaji-meshram-9aa3437/",
     socialMedia: "linkedin",
     popupdesc: `
@@ -443,7 +443,7 @@ Dr Ghosh has an extensive list of publications in media and international and na
     image: AkhileshTilotia,
     title: "Akhilesh Tilotia",
      subtitle:"Distinguished Fellow (Public Policy)",
-    desig: "Co-founder at Thurro; Former Head of Research at NIIF",
+    desig: "Co-Founder at Thurro; Former Head of Research at NIIF",
     link: "https://www.linkedin.com/in/atilotia/",
     socialMedia: "linkedin",
     popupImg: vinayakImg.src,
@@ -504,7 +504,7 @@ Currently, she co-chairs CII’s National Committee on CSR. She previously serve
   {
     image: jagan,
     title: "Jagan Shah",
-    desig: "Cheif Executive Officer",
+    desig: "Chief Executive Officer",
     link: "https://www.linkedin.com/in/jagan-shah/",
     socialMedia: "linkedin",
     popupImg: vinayakImg.src,
@@ -695,7 +695,7 @@ Dr Sinha holds a PhD from the Woodrow Wilson School of Public and International 
   {
     image: SNSubrahmanyan,
     title: "S. N. Subrahmanyan",
-    desig: "S N Subrahmanyan, Chairman & Managing Director, Larsen & Toubro",
+    desig: "Chairman & Managing Director, Larsen & Toubro",
     popupImg: vinayakImg.src,
     popupdesc: `
      

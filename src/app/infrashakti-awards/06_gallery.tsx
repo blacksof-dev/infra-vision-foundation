@@ -27,7 +27,7 @@ const galleryImages = [
   },
   {
     image: "assets/infraShakti/gallery/image10.png",
-    description: "Mr Arman Ali, Executive Director, National Centre for Promotion of Employment for Disabled People (NCPEDP), and Mr Tarun Garg, COO, Hyundai Motor India, presenting the Inclusive Infrastructure Award to Ms Swarnalatha J, Managing Trustee, and Dr Guruprasad T S, Trustee, from Swarga Foundation."
+    description: "Mr Arman Ali, Executive Director, National Centre for Promotion of Employment for Disabled People (NCPEDP), and Mr Tarun Garg, COO, Hyundai Motor India, presenting the Inclusive Infrastructure Award to Ms Swarnalatha J, Managing Trustee, and Dr Guruprasad T S, Trustee, of Swarga Foundation."
   },
   {
     image: "assets/infraShakti/gallery/image3.png",

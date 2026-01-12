@@ -173,7 +173,7 @@ export default function Luminaries() {
               />
             </div>
 
-            <div className="w-full overflow-x-hidden  ml-[4%]">
+            <div className="w-full overflow-x-hidden  ml-[4%] ">
               <div className="">
                 <Swiper
                   onSwiper={(swiper) => (swiperRef.current = swiper)}
@@ -193,7 +193,7 @@ export default function Luminaries() {
                     500: { slidesPerView: 1.5, centeredSlides: false },
                     768: { slidesPerView: 2.2, centeredSlides: false },
                     1024: { slidesPerView: 2, centeredSlides: false },
-                    1280: { slidesPerView: 2.9, centeredSlides: false },
+                    1280: { slidesPerView:3, centeredSlides: false },
                     1536: {
                       slidesPerView: 3.5,
                       centeredSlides: false,
@@ -295,7 +295,7 @@ export const MobileMembersSlider = ({
   }, [showPopup]);
 
   return (
-    <div className="md:hidden block pb-7 px-2">
+    <div className="md:hidden block pb-7 px-2 ">
       <div className="py-5">
         <button
           onClick={onSelectTab}
@@ -333,7 +333,7 @@ export const MobileMembersSlider = ({
                   setPopUpData(ele);
                   setShowPopup(true);
                 }}
-                className="h-fit w-fit hover:cursor-pointer"
+                className="h-fit w-fit hover:cursor-pointer d"
               >
                 <MemberCard
                   image={ele.image}

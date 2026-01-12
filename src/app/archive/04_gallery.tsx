@@ -2,10 +2,9 @@
 import { useEffect, useState, useMemo, useRef } from "react";
 
 import Image from "next/image";
-import { NewsCard } from "@/_components/molecules/newsCard";
 import { Portal } from "@radix-ui/react-select";
 import { MoveLeft, MoveRight, X } from "lucide-react";
-import { BlobOptions } from "buffer";
+
 
 // Gallery image data with random year and event type
 const galleryImages = [

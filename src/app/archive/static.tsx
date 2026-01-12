@@ -13,14 +13,12 @@ import arun from "@/../public/assets/archive/video/arun.jpg";
 import thalappil from "@/../public/assets/archive/video/thalappil.jpg";
 import anita from "@/../public/assets/archive/video/anita.jpg";
 import gita from "@/../public/assets/archive/video/gita.jpg";
-import nitin from "@/../public/assets/archive/video/nitin.jpg";
+
 import akhilesh from "@/../public/assets/archive/video/akhilesh.jpg";
 import akhilesh1 from "@/../public/assets/archive/video/akhilesh1.jpg";
 import chetan from "@/../public/assets/archive/video/chetan.jpg";
 import sudhanshu from "@/../public/assets/archive/video/sudhanshu.jpg";
-import waste from "@/../public/assets/archive/video/waste.jpg";
-import cleaning from "@/../public/assets/archive/video/cleaning.jpg";
-import water from "@/../public/assets/archive/video/water.jpg";
+
 import img_22 from "@/../public/assets/archive/video/22.jpg";
 import img_23 from "@/../public/assets/archive/video/23.jpg";
 import img_24 from "@/../public/assets/archive/video/24.jpg";
@@ -40,9 +38,41 @@ import img_37 from "@/../public/assets/archive/video/37.jpg";
 import img_38 from "@/../public/assets/archive/video/38.jpg";
 import renewable from "@/../public/assets/archive/video/renewable.jpg";
 import urban from "@/../public/assets/archive/video/urban.jpg";
-
+import newUser from "@/../public/assets/archive/video/newUser.jpg";
+import img11 from "@/../public/assets/knowledeg/conversations/11.jpg";
+import piyush from "@/../public/assets/archive/video/piyush.png";
+import kalpana from "@/../public/assets/archive/video/kalpana.png";
 
 export const allCards = [
+    {
+    image: kalpana,
+    subtitle: "The Infravision Conversation",
+    subdesc: "Does free public transport for women improve safety?",
+    link: "https://www.youtube.com/embed/gg9NtuYLiZA?si=3IY8UMlwZb7r_LzP",
+    date: "",
+  },
+  {
+    image: piyush,
+    subtitle: "The Infravision Conversation",
+    subdesc: "FSI Deregulation in Hyderabad: A Missed Opportunity",
+    link: "https://www.youtube.com/embed/dOvYS3ulWmY?si=x8H4VNIkkmE2WP-q",
+    date: "",
+  },
+   {
+    image:img11,
+    subtitle: "The Infravision Conversation",
+    subdesc:"Citizens need a voice in urban planning",
+    link: "https://www.youtube.com/embed/VR5Dw3lrg5Q?si=yRIlHxJXn2eyHyN0",
+    date: "June 10, 2025",
+  },
+    {
+    image:newUser,
+    subtitle: "The Infravision Conversation",
+    subdesc:
+      "Greater Bengaluru Authority is the Future of Urban Governance",
+    link: "https://www.youtube.com/embed/wAo6LhfVPjY?si=0SlPKyLQA32W4Ewj",
+    date: "June 10, 2025",
+  },
     {
     image:urban,
     subtitle: "The Infravision Conversation",

@@ -3,74 +3,73 @@ import Card from "@/_components/molecules/cardTemplate";
 import React, { useEffect, useRef, useState } from "react";
 import { TabItem } from "./02_whoWeAre";
 
-
-
 import InfrapanditAward from "./infraPanditAward";
 import { useHeader } from "@/context/useHeader";
-import Link from "next/link"
+import Link from "next/link";
 
 const newsletters = [
     {
-      id: 28,
-    img: "/assets/archive/newsletter/crunching.png",
-    category: "Volume 28",
-    title: "Crunching Data,Analysing Information",
+    id: 29,
+    img: "/assets/archive/newsletter/infraPanditAward.png",
+    category: "Volume 31",
+    title: "InfraPandit Award 2025",
     sectors: "",
-     date: "September 2025",
-    link: "/assets/pdf/crunchingData.pdf",
+    date: "December 2025",
+    link: "/assets/pdf/decmber.pdf",
+  },
+    {
+    id: 28,
+    img: "/assets/archive/newsletter/noveberNewsletter.png",
+    category: "Volume 30",
+    title: "PM gets vocal on unified transport authority",
+    sectors: "",
+    date: "November 2025",
+    link: "/assets/pdf/novemberNewsletter.pdf",
   },
   {
-    id: 27,
-    img: "/assets/archive/newsletter/agustNewsletter.png",
-    category: "Volume 27",
-    title: "TIF reaches out to stakeholders",
+    id: 29,
+    img: "/assets/archive/newsletter/nitiNewsletter.png",
+    category: "Volume 29",
+    title: "TIF and NITI Aayog seal partnership",
     sectors: "",
-    date: "August 2025",
-    link: "/assets/pdf/augustNewsletter.pdf",
+    date: "October 2025",
+    link: "/assets/pdf/niti.pdf",
   },
-  {
-    id: 25,
-    img: "/assets/archive/newsletter/latest1.png",
-    category: "Volume 26",
-    title: "Do you want to be an Infrapandit?",
-    sectors: "",
-    date: "July 2025",
 
-    link: "/assets/pdf/july.pdf",
-  },
   
 ];
 
 const news = [
     {
-    id:55,
-    img: "/assets/knowledeg/researchPapers/02.jpg",
-    category: "News",
-    title: "Next game changer: High-speed rail",
-    date: "Sepetember 19, 2025",
-    subtitle: "Next game changer: High-speed rail",
-    link: "/assets/pdf/speedRail.jpg",
+    id:60,
+    img: "/assets/archive/newsAndMedia/invest-in-small-towns.jpg",
+    category: "",
+    date: "January 2026",
+    title: "Invest in small towns",
+    subtitle:" Kiran Karnik",
+    link: "/assets/pdf/invest-in-small-towns.pdf",
   },
-  {
-    id:54,
-    img: "/assets/archive/newsAndMedia/vrinda.png",
-    category: "News",
-    title: "Cold Rooms in Local Markets: Securing Farmers, Delivering Nutrition",
-    date: "August 9, 2025",
-    subtitle: "Vrinda Singh and Priyanka Bains",
-    link: "/assets/pdf/vrinda-singh-priyanka-bains.pdf",
+     {
+    id:59,
+    img: "/assets/archive/newsAndMedia/soumyaNews.jpg",
+    category: "",
+    title: "How consistent is IMF classification of exchange rate arrangement and data adequacy?",
+    date: "December 2025",
+     subtitle: "Soumya Kanti Ghosh",
+    link: "/assets/pdf/how-consistent-is-imf-classification.jpeg",
   },
-  {
-    id:53,
-    img: "/assets/archive/newsAndMedia/hyderbad.webp",
-    category: "News",
-    title: "Hyderabad's FSI deregulation:  A missed opportunity",
-    date: "August 9, 2025",
-    subtitle: "Dr. Mutum Chaobisana",
-    link: "/assets/pdf/hyderabad-fSI-deregulation.pdf",
-  }
+     {
+    id:59,
+    img: "/assets/archive/newsAndMedia/confidence.png",
+    category: "",
+    title: "Confidence in India's logistics cost",
+    date: "November 2025",
+     subtitle: "Vinayak Chatterjee",
+    link: "/assets/pdf/confidence.pdf",
+  },
+ 
+ 
   
-
 ];
 
 export default function Highlights() {
@@ -114,7 +113,7 @@ export const TabSwitch = ({
   setActiveTab: (value: string) => void;
   activeTab: string;
 }) => {
-  const { isHeaderVisible } = useHeader()
+  const { isHeaderVisible } = useHeader();
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollToCenter = (index: number) => {
@@ -126,7 +125,7 @@ export const TabSwitch = ({
       // const tabRect = tab.getBoundingClientRect();
       const offset =
         tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
-      container.scrollTo({ left: offset, behavior: 'smooth' });
+      container.scrollTo({ left: offset, behavior: "smooth" });
     }
   };
 
@@ -137,37 +136,50 @@ export const TabSwitch = ({
 
   return (
     <div>
-      <div ref={containerRef} className={`blade-top-padding-sm overflow-x-scroll bg-whitesmoke no-scrollbar transition-all duration-300 ease-linear z-[999] sticky ${isHeaderVisible ? "top-20   lg:top-24" : "top-0"} `}>
+      <div
+        ref={containerRef}
+        className={`blade-top-padding-sm overflow-x-scroll bg-whitesmoke no-scrollbar transition-all duration-300 ease-linear z-[999] sticky ${
+          isHeaderVisible ? "top-20   lg:top-24" : "top-0"
+        } `}
+      >
         <div className="flex flex-row gap-6 sm:gap-12  lg:gap-12 md:gap-18 border-b   border-darkgray/16 w-fit ">
           <button
-            ref={(el: HTMLButtonElement | null) => { tabRefs.current[0] = el }}
+            ref={(el: HTMLButtonElement | null) => {
+              tabRefs.current[0] = el;
+            }}
             onClick={() => handleFilterClick("Outreach and Engagements", 0)}
-            className={` cursor-pointer text-sm sm:text-xl text-nowrap  ${activeTab === "Outreach and Engagements"
-              ? "font-medium  border-b-2 border-pink pb-3 text-pink"
-              : "text-darkgray  pb-3"
-              }`}
+            className={` cursor-pointer text-sm sm:text-xl text-nowrap  ${
+              activeTab === "Outreach and Engagements"
+                ? "font-medium  border-b-2 border-pink pb-3 text-pink"
+                : "text-darkgray  pb-3"
+            }`}
           >
             Outreach and Engagements
           </button>
 
           <button
-            ref={(el: HTMLButtonElement | null) => { tabRefs.current[1] = el }}
-
+            ref={(el: HTMLButtonElement | null) => {
+              tabRefs.current[1] = el;
+            }}
             onClick={() => handleFilterClick("Newsletters", 1)}
-            className={` text-sm cursor-pointer  sm:text-xl text-nowrap ${activeTab === "Newsletters"
-              ? "font-medium  border-b-2 pb-3 border-pink text-pink"
-              : "text-darkgray  pb-3"
-              }`}
+            className={` text-sm cursor-pointer  sm:text-xl text-nowrap ${
+              activeTab === "Newsletters"
+                ? "font-medium  border-b-2 pb-3 border-pink text-pink"
+                : "text-darkgray  pb-3"
+            }`}
           >
             Newsletters
           </button>
           <button
-            ref={(el: HTMLButtonElement | null) => { tabRefs.current[2] = el }}
+            ref={(el: HTMLButtonElement | null) => {
+              tabRefs.current[2] = el;
+            }}
             onClick={() => handleFilterClick("In the News", 2)}
-            className={` text-sm cursor-pointer  sm:text-xl text-nowrap ${activeTab === "In the News"
-              ? "font-medium  border-b-2 pb-3 border-pink text-pink"
-              : "text-darkgray  pb-3"
-              }`}
+            className={` text-sm cursor-pointer  sm:text-xl text-nowrap ${
+              activeTab === "In the News"
+                ? "font-medium  border-b-2 pb-3 border-pink text-pink"
+                : "text-darkgray  pb-3"
+            }`}
           >
             In the News
           </button>
@@ -181,16 +193,33 @@ export const TabSwitch = ({
       </div>
       <div className="mt-4 md:mt-8">
         <div className="flex  justify-center">
-          <Link className={`group  text-xl lg:text-2xl text-pink hover:text-white cursor-pointer  text-nowrap px-2  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
-            href={activeTab === "Outreach and Engagements" ? "/outreach-and-engagements" : activeTab === "Newsletters" ? "/archive#newsletters" : activeTab === "In the News" ? "/archive#news-and-media" : ""}>
-            <span className="z-50 relative">{`${activeTab === "Outreach and Engagements" ? "View all events" : activeTab === "Newsletters" ? "Browse newsletters" : activeTab === "In the News" ? "Browse news" : "Read more"}`}</span>
+          <Link
+            className={`group  text-xl lg:text-2xl text-pink hover:text-white cursor-pointer  text-nowrap px-2  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
+            href={
+              activeTab === "Outreach and Engagements"
+                ? "/outreach-and-engagements"
+                : activeTab === "Newsletters"
+                ? "/archive#newsletters"
+                : activeTab === "In the News"
+                ? "/archive#news-and-media"
+                : ""
+            }
+          >
+            <span className="z-50 relative">{`${
+              activeTab === "Outreach and Engagements"
+                ? "View all events"
+                : activeTab === "Newsletters"
+                ? "Browse newsletters"
+                : activeTab === "In the News"
+                ? "Browse news"
+                : "Read more"
+            }`}</span>
             <span
-              className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
+              className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0  transition-all duration-300`}
             ></span>
             <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[6.5] transition-all duration-700 ease-in-out z-0"></span>
           </Link>
         </div>
-
       </div>
     </div>
   );
@@ -208,7 +237,6 @@ export const TabContent = ({ data }: { data: TabItem[] }) => {
           link={item.link}
           category={item.category}
           subtitle={item.subtitle}
-
           ctaText="Read more"
           classes="line-clamp-2 xl:line-clamp-3 text-lg md:text-xl text-black"
         />
@@ -216,9 +244,3 @@ export const TabContent = ({ data }: { data: TabItem[] }) => {
     </div>
   );
 };
- 
-    
-  
-
-  
-    

@@ -1,201 +1,223 @@
+"use client";
+
+import { motion, useScroll, useSpring } from "motion/react";
 import image1 from "@/../public/assets/resource/blogs/image1.png";
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import Image from "next/image";
-import RecentPostDetails from "../02_recentPost";
+import Link from "next/link";
+import { MoveLeft } from "lucide-react";
+
+
 
 export default function Page() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
   return (
     <>
-      <div className="max-w-5xl mx-auto pt-[27%] sm:pt-[20%] lg:pt-[10%] blade-bottom-padding-lg">
-        <div className="px-4 ">
-          <h2 className="font-poppins text-black font-medium">
-            How to make India’s highways safe
-          </h2>
-          <div>
-            <div className="flex-col md:flex-row flex justify-between pt-3">
-              <div>
-                <h6 className="text-sm sm:text-base  text-lightgray max-w-xl">
-                  {" "}
-                  Author: Jagan Shah, CEO, The Infravision Foundation
-                </h6>
-              </div>
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-pink origin-left z-50"
+        style={{ scaleX }}
+      />
 
-              <div className="">
-                <h6 className="text-base text-lightgray md:border-l md:border-lightgray/30 md:ps-4 py-2">
-                  October 16, 2024
-                </h6>
-              </div>
-            </div>
-            <div className=" py-4 md:py-8">
-              <div className="w-full h-full ">
-                <Image
-                  src={image1}
-                  alt="Highways safe"
-                  className="w-full h-full object-cover"
-                  quality={100}
+      <div className="max-w-4xl mx-auto pt-[15%] sm:pt-[12%] lg:pt-[8%] blade-top-padding-lg blade-bottom-padding-lg px-4 md:px-6">
+        <Link
+          href="/knowledge"
+          className="flex items-center gap-2 text-lightgray hover:text-black transition-colors mb-8 group w-fit"
+        >
+          <MoveLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+          <span className="text-sm font-medium">Back to Knowledge</span>
+        </Link>
+
+        <header className="mb-4">
+          <motion.h1
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="font-poppins text-black font-semibold text-3xl md:text-4xl lg:text-5xl  mb-6"
+          >
+            How to make India’s highways safe
+          </motion.h1>
+
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-darkgray font-medium border-b border-gray/10 pb-6">
+            <span className="text-sm sm:text-base">
+              By Jagan Shah
+            </span>
+            <span className="w-1.5 h-1.5 rounded-full bg-pink/20" />
+            <span className="text-sm sm:text-base text-lightgray font-normal">
+              October 16, 2024
+            </span>
+            <span className="w-1.5 h-1.5 rounded-full bg-pink/20" />
+            <span className="text-sm sm:text-base text-lightgray font-normal italic">
+              6 min read
+            </span>
+          </div>
+        </header>
+
+        <article className="space-y-10">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="rounded-2xl overflow-hidden shadow-2xl shadow-black/5"
+          >
+            <Image
+              src={image1}
+              alt="Highways safe"
+              className="w-full h-auto object-cover"
+              quality={100}
+              priority
+            />
+          </motion.div>
+
+          <div className="space-y-8">
+            <div className="py-3">
+              <p className="text-darkgray text-lg md:text-xl leading-relaxed text-justify ">
+                A fully empowered National Road Safety Authority, as proposed
+                in the 2014 Draft Road Transport and Safety Bill, to maintain
+                standards, conduct audits, ensure compliance, and bridge central
+                and state efforts, may well be the solution for India’s rising
+                number of road accidents. The authority could penalise
+                non-compliant agencies and contractors, thereby fostering
+                accountability. This is one of several suggestions made in a
+                road safety study by The Infravision Foundation and IIT Delhi’s
+                Transportation Research and Injury Prevention Centre. India’s
+                expanding highway network boosts the economy but also destroys
+                lives. While these arterial and trunk roads expand, they are
+                increasingly becoming corridors of death, claiming thousands of
+                lives each year. Experts and policymakers are calling for a
+                radical shift in the approach to safety. As Minister for Road
+                Transport and Highways Nitin Gadkari said recently, more people
+                have lost their lives in road crashes than in wars, militancy,
+                and Naxalism combined. He has called it a governmental failure,
+                a “dark issue” for his ministry, and symptomatic of a society
+                lacking both “fear and respect for the law.”
+              </p>
+              <p className="text-darkgray pt-6 text-lg md:text-xl leading-relaxed text-justify">
+                The Ministry of Road Transport and Highways (MoRTH) reports that
+                in 2022 alone, India witnessed 4,61,312 road accidents that
+                resulted in 1,68,491 deaths and 4.43,366 injuries — an increase
+                of 11.9 per cent in accidents, 9.4 per cent in fatalities, and
+                15.3 per cent in injuries, compared to the previous year.
+                National highways claim the highest toll: 45 deaths annually per
+                100 km. Fatalities due to road traffic crashes rank as the sixth
+                leading cause of death among the working-age population (15-49
+                years). The ministry has estimated the socio-economic impact of
+                road accidents at 3.5 per cent to 5 per cent of national gross
+                domestic product.
+              </p>
+
+              <p className="text-darkgray pt-6 text-lg md:text-xl leading-relaxed text-justify">
+                The challenges of road safety are multifaceted, including
+                infrastructure deficiencies, driver behaviour and enforcement
+                challenges. Inadequate road design, poor lighting, and lack of
+                pedestrian crossings contribute to accidents. Driver negligence,
+                such as speeding and ignoring traffic signals, further
+                exacerbates the problem. Black spots — dangerous stretches of
+                highways where accidents frequently occur — are a significant
+                concern, with over 5,800 identified across the national
+                highways, particularly concentrated in states like Tamil Nadu,
+                West Bengal, and Telangana. Despite the National Highways
+                Authority of India (NHAI) spending Rs 15,702.80 crore on repairs
+                and improvements over the past five financial years, new black
+                spots continue to emerge each year. In a recent speech, Mr
+                Gadkari admitted that the number of black spots is rising due to
+                poor detailed project reports (DPRs) for road projects.
+              </p>
+
+              <p className="text-darkgray pt-6 text-lg md:text-xl leading-relaxed text-justify">
+                While India’s road safety record continues to deteriorate, other
+                countries in the Indo-Pacific region, such as Indonesia,
+                Thailand and Sri Lanka, have successfully reduced road traffic
+                fatalities despite rising motorisation. Traffic deaths were
+                increasing in all countries prior to 1960, but most high-income
+                nations experienced a decline due to a shift in scientific
+                understanding. The Swedish parliament fundamentally redefined
+                global responses to road safety by introducing the “Vision Zero”
+                approach in 1997, which posits that no loss of life is
+                acceptable within the road transport system and that safety must
+                take precedence over mobility. All components of the transport
+                system — road infrastructure, vehicle design, trauma centres,
+                institutions and legislation — must work cohesively to prevent
+                fatal accidents, with other parts acting as safeguards if one
+                fails.
+              </p>
+
+              <p className="text-darkgray pt-6 text-lg md:text-xl leading-relaxed text-justify">
+                The Infravision Foundation-IIT Delhi study suggests that India
+                must align with global best practices to make its highways
+                safer. Road-owning and operating agencies, primarily the NHAI
+                and state public works departments (PWDs), have a crucial role
+                and bear responsibility for ensuring highway safety. These
+                agencies must incorporate safety audits at the design stage of
+                highway projects, as mandated by NHAI’s Standard EPC
+                (Engineering, Procurement and Construction) Agreement, which
+                requires the appointment of a safety consultant whose
+                recommendations must be integrated into the highway design, with
+                engineers and contractors held professionally liable for
+                compliance.
+              </p>
+
+              <p className="text-darkgray pt-6 text-lg md:text-xl leading-relaxed text-justify">
+                A multifaceted approach is necessary, combining institutional
+                reforms, technological advancements, and comprehensive policy
+                measures. In the short term, MoRTH must undertake comprehensive
+                analyses to understand, for example, why and how public funds
+                are being used to build highways that do not meet all Indian
+                Roads Congress (IRC) standards. It is crucial and time-sensitive
+                to identify and rectify gaps in contract documents that address
+                safety compliance and liability.In the medium term, MoRTH should
+                spearhead the development of new standards in areas where IRC or
+                global standards are currently lacking. It should also mandate
+                the establishment of safety sections or cells within all
+                road-owning agencies and state PWDs. These units should be
+                staffed with permanently appointed and trained safety officers
+                and consultants, ensuring that safety remains a top priority at
+                every stage of highway development.
+              </p>
+
+              <p className="text-darkgray pt-6 text-lg md:text-xl leading-relaxed text-justify">
+                Technological solutions play a crucial role in this endeavour.
+                MoRTH has initiated a programme for black spot identification
+                and rectification since 2015. The recent implementation of the
+                Advanced Traffic Management System (ATMS) on National Highways,
+                mandated by the Motor Vehicles (Amendment) Act, 2019, includes
+                electronic monitoring devices like speed cameras and Automatic
+                Number Plate Recognition (ANPR) systems. These advancements
+                align with Mr Gadkari’s commitment to reducing road accident
+                deaths by 50 per cent by 2030, focusing on the “4Es” of road
+                safety: Engineering, Enforcement, Education, and Emergency
+                medical services. While a lot is happening in education and
+                emergency services, the first two Es must also receive due
+                attention.As India continues its journey towards Viksit Bharat,
+                ensuring the safety of its citizens on its highways is paramount.
+                Adopting a holistic approach that combines global best practices,
+                technological innovation, and a robust institutional framework,
+                can transform its highways from deadly corridors into safe
+                arteries of progress.
+              </p>
+
+
+              <div className="w-fit py-3 px-2 mt-8 overflow-hidden">
+                <UnderlineWithHover
+                  size="small"
+                  color="pink"
+                  bgColor="pink"
+                  text="Read research paper"
+                  role="link"
+                  target="_blank"
+                  link="/assets/knowledeg/blogsPdf/safeHighRailway.pdf"
+                  borderColor="white"
+                  classes="text-[16px] whitespace-nowrap"
                 />
               </div>
-              <div>
-               
-                <div className="py-3">
-                  <p className="text-darkgray text-sm sm:text-base">
-                    A fully empowered National Road Safety Authority, as
-                    proposed in the 2014 Draft Road Transport and Safety Bill,
-                    to maintain standards, conduct audits, ensure compliance,
-                    and bridge central and state efforts, may well be the
-                    solution for India’s rising number of road accidents. The
-                    authority could penalise non-compliant agencies and
-                    contractors, thereby fostering accountability. This is one
-                    of several suggestions made in a road safety study by The
-                    Infravision Foundation and IIT Delhi’s Transportation
-                    Research and Injury Prevention Centre. India’s expanding
-                    highway network boosts the economy but also destroys lives.
-                    While these arterial and trunk roads expand, they are
-                    increasingly becoming corridors of death, claiming thousands
-                    of lives each year. Experts and policymakers are calling for
-                    a radical shift in the approach to safety. As Minister for
-                    Road Transport and Highways Nitin Gadkari said recently,
-                    more people have lost their lives in road crashes than in
-                    wars, militancy, and Naxalism combined. He has called it a
-                    governmental failure, a “dark issue” for his ministry, and
-                    symptomatic of a society lacking both “fear and respect for
-                    the law.”
-                  </p>
-                  <p className="text-darkgray pt-3 text-sm sm:text-base">
-                    The Ministry of Road Transport and Highways (MoRTH) reports
-                    that in 2022 alone, India witnessed 4,61,312 road accidents
-                    that resulted in 1,68,491 deaths and 4.43,366 injuries — an
-                    increase of 11.9 per cent in accidents, 9.4 per cent in
-                    fatalities, and 15.3 per cent in injuries, compared to the
-                    previous year. National highways claim the highest toll: 45
-                    deaths annually per 100 km. Fatalities due to road traffic
-                    crashes rank as the sixth leading cause of death among the
-                    working-age population (15-49 years). The ministry has
-                    estimated the socio-economic impact of road accidents at 3.5
-                    per cent to 5 per cent of national gross domestic product.
-                  </p>
-
-                  <p className="text-darkgray pt-3 text-sm sm:text-base">
-                    The challenges of road safety are multifaceted, including
-                    infrastructure deficiencies, driver behaviour and
-                    enforcement challenges. Inadequate road design, poor
-                    lighting, and lack of pedestrian crossings contribute to
-                    accidents. Driver negligence, such as speeding and ignoring
-                    traffic signals, further exacerbates the problem. Black
-                    spots — dangerous stretches of highways where accidents
-                    frequently occur — are a significant concern, with over
-                    5,800 identified across the national highways, particularly
-                    concentrated in states like Tamil Nadu, West Bengal, and
-                    Telangana. Despite the National Highways Authority of India
-                    (NHAI) spending Rs 15,702.80 crore on repairs and
-                    improvements over the past five financial years, new black
-                    spots continue to emerge each year. In a recent speech, Mr
-                    Gadkari admitted that the number of black spots is rising
-                    due to poor detailed project reports (DPRs) for road
-                    projects.
-                  </p>
-
-                  <p className="text-darkgray pt-3 text-sm sm:text-base">
-                    While India’s road safety record continues to deteriorate,
-                    other countries in the Indo-Pacific region, such as
-                    Indonesia, Thailand and Sri Lanka, have successfully reduced
-                    road traffic fatalities despite rising motorisation. Traffic
-                    deaths were increasing in all countries prior to 1960, but
-                    most high-income nations experienced a decline due to a
-                    shift in scientific understanding. The Swedish parliament
-                    fundamentally redefined global responses to road safety by
-                    introducing the “Vision Zero” approach in 1997, which posits
-                    that no loss of life is acceptable within the road transport
-                    system and that safety must take precedence over mobility.
-                    All components of the transport system — road
-                    infrastructure, vehicle design, trauma centres, institutions
-                    and legislation — must work cohesively to prevent fatal
-                    accidents, with other parts acting as safeguards if one
-                    fails.
-                  </p>
-
-                  <p className="text-darkgray pt-3  text-sm sm:text-base">
-                    The Infravision Foundation-IIT Delhi study suggests that
-                    India must align with global best practices to make its
-                    highways safer. Road-owning and operating agencies,
-                    primarily the NHAI and state public works departments
-                    (PWDs), have a crucial role and bear responsibility for
-                    ensuring highway safety. These agencies must incorporate
-                    safety audits at the design stage of highway projects, as
-                    mandated by NHAI’s Standard EPC (Engineering, Procurement
-                    and Construction) Agreement, which requires the appointment
-                    of a safety consultant whose recommendations must be
-                    integrated into the highway design, with engineers and
-                    contractors held professionally liable for compliance.
-                  </p>
-
-                  <p className="text-darkgray pt-3 text-sm sm:text-base">
-                    A multifaceted approach is necessary, combining
-                    institutional reforms, technological advancements, and
-                    comprehensive policy measures. In the short term, MoRTH must
-                    undertake comprehensive analyses to understand, for example,
-                    why and how public funds are being used to build highways
-                    that do not meet all Indian Roads Congress (IRC) standards.
-                    It is crucial and time-sensitive to identify and rectify
-                    gaps in contract documents that address safety compliance
-                    and liability.In the medium term, MoRTH should spearhead the
-                    development of new standards in areas where IRC or global
-                    standards are currently lacking. It should also mandate the
-                    establishment of safety sections or cells within all
-                    road-owning agencies and state PWDs. These units should be
-                    staffed with permanently appointed and trained safety
-                    officers and consultants, ensuring that safety remains a top
-                    priority at every stage of highway development.
-                  </p>
-
-                  <p className="text-darkgray pt-3 text-sm sm:text-base">
-                    Technological solutions play a crucial role in this
-                    endeavour. MoRTH has initiated a programme for black spot
-                    identification and rectification since 2015. The recent
-                    implementation of the Advanced Traffic Management System
-                    (ATMS) on National Highways, mandated by the Motor Vehicles
-                    (Amendment) Act, 2019, includes electronic monitoring
-                    devices like speed cameras and Automatic Number Plate
-                    Recognition (ANPR) systems. These advancements align with Mr
-                    Gadkari’s commitment to reducing road accident deaths by 50
-                    per cent by 2030, focusing on the “4Es” of road safety:
-                    Engineering, Enforcement, Education, and Emergency medical
-                    services. While a lot is happening in education and
-                    emergency services, the first two Es must also receive due
-                    attention.As India continues its journey towards Viksit
-                    Bharat, ensuring the safety of its citizens on its highways
-                    is paramount. Adopting a holistic approach that combines
-                    global best practices, technological innovation, and a
-                    robust institutional framework, can transform its highways
-                    from deadly corridors into safe arteries of progress.
-                  </p>
-
-                  <div className="my-7">
-                    {/* <p className="text-black/80 font-medium">By Jagan Shah </p>
-                    <p className="text-black/80 font-medium pt-3">
-                      [Jagan Shah is the CEO, The Infravision Foundation]{" "}
-                    </p> */}
-                    <div className="w-fit py-3 px-2 overflow-hidden">
-                      <UnderlineWithHover
-                        size="small"
-                        color="pink"
-                        bgColor="pink"
-                        text="Read research paper"
-                        role="link"
-                        target="_blank"
-                        link="/assets/knowledeg/blogsPdf/safeHighRailway.pdf"
-                        borderColor="white"
-                        classes="text-[16px]"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-            {/* <RecentPostDetails /> */}
-            {/* <CategoryDetailForm/> */}
           </div>
-        </div>
+        </article>
       </div>
     </>
   );

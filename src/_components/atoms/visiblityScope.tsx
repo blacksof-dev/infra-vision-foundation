@@ -7,6 +7,7 @@ export default function ArrowScope() {
   const [visible, setVisible] = useState<boolean>(false);
 
   const handleScroll = () => {
+   if (typeof window === "undefined") return;
     const currentScrollY = window.scrollY;
     if (currentScrollY > 1000) {
       setVisible(true);
@@ -16,6 +17,7 @@ export default function ArrowScope() {
   };
 
   useEffect(() => {
+      if (typeof window === "undefined") return;
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);

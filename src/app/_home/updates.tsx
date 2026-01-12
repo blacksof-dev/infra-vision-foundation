@@ -7,13 +7,18 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
-import img_12 from "@/../public/assets/outreach-and-engagements/eventImages/august18_2025_Img4.jpeg"
 import Link from "next/link";
-import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg"
-import img_16 from "@/../public/assets/knowledeg/researchPapers/02.jpg"
-import img2 from "@/../public/assets/knowledeg/conversations/02.png";
-import img10 from "@/../public/assets/knowledeg/conversations/10.png";
-import img_17 from "@/../public/assets/knowledeg/researchPapers/14.png";
+import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg";
+import awards from "@/../public/assets/archive/newsletter/infraPanditAward.png";
+import abha from "@/../public/assets/home/updates/abha.png";
+import montek from "@/../public/assets/globals/infrapanditAward.jpg";
+import soumya from "@/../public/assets/archive/newsAndMedia/soumyaNews.jpg";
+import anumita from "@/../public/assets/knowledeg/conversations/anumita.png";
+
+
+
+
+
 
 export default function Updates() {
   const [isFirstSlide, setIsFirstSlide] = useState(true);
@@ -153,15 +158,30 @@ export default function Updates() {
 }
 
 const EventsDetails = [
-
-  {
-
-    image: img_16,
+   {
+   
+    image: "/assets/archive/newsAndMedia/invest-in-small-towns.jpg",
     category: "News",
-    title: "Next game changer: High-speed rail",
-    btnTitle: "Read more",
-    link: "/assets/pdf/speedRail.jpg",
+    title: "Invest in small towns",
+    btnTitle: "See details",
+    link: "/assets/pdf/invest-in-small-towns.pdf",
   },
+  
+  {
+    image: montek,
+    category: "InfraPandit Awards",
+    title: "Nurturing the next generation of infra talent and ideas",
+    btnTitle: "See details",
+    link: "/infrapandit-awards",
+  },
+  {
+    image: awards,
+    category: "Newsletter",
+    title: "InfraPandit Award 2025",
+    btnTitle: "Read more",
+    link: "/assets/pdf/decmber.pdf",
+  },
+
   {
     image: img_15,
     category: "Blog",
@@ -170,37 +190,19 @@ const EventsDetails = [
     link: "/blogs/how-to-make-india-highways-safe",
   },
 
-    {
-      
-    image: img10,
-    category: "Video",
-    title: "Why Smaller Cities can become Growth Hubs",
-    btnTitle: "Watch video",
-    link: "https://www.youtube.com/embed/ZGIjUOfs91U?si=-iX4ss69vegjRpoQ",
-
-  },
   {
-    image: img_17,
-    category: "Research Report",
-    title: "Impact of FSI Deregulation in Hyderabad",
-    btnTitle: "Read more",
-    link: "/assets/pdf/report-fsi-deregulation-in-hyderabad.pdf",
+    image: anumita,
+    category: "Video",
+    title: "Anumita Roy Choudhury",
+    btnTitle: "Watch video",
+    link: "https://youtu.be/YV7VYaCB7Yw?si=af66MfWQnjdsG_op",
   },
- 
-
 
   {
-    image: img2,
+    image: abha,
     category: "Video",
-    title: "Can the Urban Challenge Fund be a gamechanger for India’s urban future?",
+    title: "Abha Narain Lambah",
     btnTitle: "Watch video",
-    link: "https://www.youtube.com/embed/NJ0V0G7eZwE?si=Mp_0ul6iDz5QtJN4",
-
+    link: "https://www.youtube.com/embed/7oiHaLYOpfM?si=TqLV-npHvLJFPdUJ",
   },
-
-  
-
 ];
-
-
-

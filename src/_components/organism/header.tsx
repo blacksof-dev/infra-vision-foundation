@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import logo from "@/../public/assets/globals/logo.png";
+import logo from "@/../public/logo.png";
 import { IoSearch } from "react-icons/io5";
 import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
 import { useEffect, useState } from "react";
@@ -55,18 +55,20 @@ function Header() {
 
   useEffect(() => {
     if (!mounted) return;
+    if (typeof window === "undefined") return;
     setShowNavbar(true);
     setlastScrollY(window.scrollY);
   }, [pathname, setShowNavbar, mounted]);
 
   useEffect(() => {
     if (!mounted) return;
-
+if (typeof window === "undefined") return;
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
     const handleResize = () => {
+      if (typeof window === "undefined") return;
       checkMobile();
       if (window.innerWidth <= 768) {
         setShowNavbar(true);
@@ -74,6 +76,7 @@ function Header() {
     };
 
     const handleScroll = () => {
+      if (typeof window === "undefined") return;
       const currentScrollY = window.scrollY;
       if (currentScrollY > lastScrollY && currentScrollY > 100 && !isMobile) {
         setShowNavbar(false);

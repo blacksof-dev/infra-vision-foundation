@@ -320,7 +320,7 @@ export const fellow = [
   {
     image: rasikaAthawale,
     title: "Rasika Athawale",
-    desig: "Electricity policy & regulatory expert; Consultant, Big4 Consulting",
+    desig: "Electricity Policy & Regulatory Expert; Consultant, Big4 Consulting",
     subtitle:"Distinguished Fellow (Power)",
     popupImg: vinayakImg.src,
     link: "https://www.linkedin.com/in/rasika-athawale-5072ab1/",
@@ -390,7 +390,7 @@ Currently, he serves as Chief Advisor and Chairman of the Strategy & Policy Unit
     title: "Rajaji Meshram",
     popupImg: vinayakImg.src,
      subtitle:"Distinguished Fellow (Transport and Logistics)",
-    desig: "Transport and Logistics sector expert; Consultant, World Bank in India",
+    desig: "Transport and Logistics Expert; Consultant, World Bank in India",
     link: "https://www.linkedin.com/in/rajaji-meshram-9aa3437/",
     socialMedia: "linkedin",
     popupdesc: `
@@ -443,7 +443,7 @@ Dr Ghosh has an extensive list of publications in media and international and na
     image: AkhileshTilotia,
     title: "Akhilesh Tilotia",
      subtitle:"Distinguished Fellow (Public Policy)",
-    desig: "Co-founder at Thurro; Former Head of Research at NIIF",
+    desig: "Co-Founder at Thurro; Former Head of Research at NIIF",
     link: "https://www.linkedin.com/in/atilotia/",
     socialMedia: "linkedin",
     popupImg: vinayakImg.src,
@@ -504,7 +504,7 @@ Currently, she co-chairs CII’s National Committee on CSR. She previously serve
   {
     image: jagan,
     title: "Jagan Shah",
-    desig: "Cheif Executive Officer",
+    desig: "Chief Executive Officer",
     link: "https://www.linkedin.com/in/jagan-shah/",
     socialMedia: "linkedin",
     popupImg: vinayakImg.src,
@@ -695,7 +695,7 @@ Dr Sinha holds a PhD from the Woodrow Wilson School of Public and International 
   {
     image: SNSubrahmanyan,
     title: "S. N. Subrahmanyan",
-    desig: "S N Subrahmanyan, Chairman & Managing Director, Larsen & Toubro",
+    desig: " Chairman & Managing Director, Larsen & Toubro",
     popupImg: vinayakImg.src,
     popupdesc: `
      
@@ -731,7 +731,7 @@ He is a graduate in Electronics Engineering from Pune University and an alumnus 
     image: GeetanjaliKirloskar,
     title: "Geetanjali Vikram Kirloskar",
     desig: "Chairperson and MD, Kirloskar Systems Pvt Ltd; Chairperson, Toyota Tsusho Insurance Broker Pvt Ltd",
-    link: "https://www.linkedin.com/in/geetanjali-kirloskar-b04203154/",
+    link: "https://www.linkedin.com/in/geetanjali-vikram-kirloskar-b04203154/",
     socialMedia: "linkedin",
     popupImg: vinayakImg.src,
     popupdesc: `

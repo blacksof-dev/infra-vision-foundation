@@ -3,6 +3,7 @@ import { useState, useMemo, useRef } from "react";
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import { NewsCard } from "@/_components/molecules/newsCard";
 import Link from "next/link";
+import Script from "next/script";
 
 // Types
 type FilterType = "All" | "Publication year" | "sectors";
@@ -42,7 +43,116 @@ const SECTORS: SectorType[] = [
 ];
 const INITIAL_VISIBLE_COUNT = 3;
 
+
+
+
+
+
 const allcards = [
+   {
+    id:66,
+    img: "/assets/archive/newsAndMedia/invest-in-small-towns.jpg",
+    category: "News",
+    title: "Kiran Karnik",
+    sectors: "",
+    date: "January 2026",
+    description: "Invest in small towns",
+    link: "/assets/pdf/invest-in-small-towns.pdf",
+  },
+ 
+  {
+    id:64,
+    img: "/assets/archive/newsAndMedia/soumyaNews.jpg",
+    category: "News",
+    title: "Soumya Kanti Ghosh",
+    sectors: "",
+    date: "December 2025",
+    description: "How consistent is IMF classification of exchange rate arrangement and data adequacy?",
+    link: "/assets/pdf/how-consistent-is-imf-classification.jpeg",
+  },
+  {
+    id:63,
+    img: "/assets/archive/newsAndMedia/uthDelthi.png",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "December 2025",
+    description: "The megacity dream that isn't",
+    link: "/assets/pdf/uth-dehli.pdf",
+  },
+    {
+    id:62,
+    img: "/assets/archive/newsAndMedia/budget.png",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "December 2025",
+    description: "Budget should reemphasise infrastructure",
+    link: "/assets/pdf/budget.jpg",
+  },
+
+
+   {
+    id:61,
+    img: "/assets/archive/newsAndMedia/confidence.png",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "November 2025",
+    description: "Confidence in India's logistics cost",
+    link: "/assets/pdf/confidence.pdf",
+  },
+
+    {
+    id:60,
+    img: "/assets/archive/newsAndMedia/crumbling.avif",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "October 2025",
+    description: "Indian Cities are Crumbling",
+    link: "/assets/pdf/crumbling.pdf",
+  },
+  {
+    id:59,
+    img: "/assets/archive/newsAndMedia/vande-bharat.jpg",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "September-October 2025",
+    description: "Fast Forwarding Bharat: The Next Leap",
+    link: "/assets/pdf/infrastructure.pdf",
+  },
+   {
+    id:57,
+    img: "/assets/archive/newsAndMedia/rail.webp",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "November 2025",
+    description: "High-speed rail is the big move India",
+    link: "/assets/pdf/highSpeedRail.pdf",
+  },
+   {
+    id:58,
+    img: "/assets/archive/newsAndMedia/image11.webp",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "October 2025",
+    description: "Project choice key for Urban Challenge Fund",
+    link: "/assets/pdf/projectChoice.pdf",
+  },
+  {
+    id:56,
+    img: "/assets/archive/newsAndMedia/energy.jpg",
+    category: "News",
+    title: "D.K. Sen",
+    sectors: "",
+    date: "",
+    description: "India's Energy Security - The Road Ahead",
+    link: "/assets/pdf/energySecurity.pdf",
+  },
   {
     id:55,
     img: "/assets/knowledeg/researchPapers/02.jpg",
@@ -594,19 +704,45 @@ const allcards = [
   },
   {
     id:46,
-    img: "/assets/archive/newsAndMedia/newsMedia46.png",
+    img: "/assets/archive/newsAndMedia/newsMedia46.jpg",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
     date: "February 22, 2023",
     description: "Rooftop solar for poverty alleviation",
-    link: "/assets/pdf/movingGatiShakti.pdf",
+    link: "https://www.business-standard.com/article/opinion/rooftop-solar-for-poverty-alleviation-123022101397_1.html",
   },
  
  
   
   
 ];
+
+
+const generateNewsSchema = (card: any) => ({
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline":`The Infravision Foundation - ${card.category}`,
+  "description": card.description,
+  "image": `https://theinfravisionfoundation.org${card.img}`,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": card.link
+  },
+  "author": {
+    "@type": "Person",
+    "name": card.title
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Infravision Foundation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://theinfravisionfoundation.org/logo.png"
+    }
+  }
+});
+
 
 export default function NewsAndMedia() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -683,8 +819,22 @@ export default function NewsAndMedia() {
     </div>
   );
 
+  const allNewsMedia = allcards.map(generateNewsSchema);
+
+
   return (
     <section id="news-and-media" className="bg-whitesmoke">
+
+      <Script
+        id="newsMedia-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(allNewsMedia),
+        }}
+      />
+
+
       <div className="w-container blade-top-padding-sm blade-bottom-padding ">
         {/* Header Section */}
         <div className="flex flex-row items-center gap-2 md:gap-3">
@@ -752,6 +902,7 @@ export default function NewsAndMedia() {
                     link={card.link}
                     category={card.category}
                     description={card.description}
+                    
                     classes="line-clamp-3"
                     ctaType="read more"
                   />

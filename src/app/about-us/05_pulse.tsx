@@ -49,7 +49,7 @@ const Pulse = () => {
                 </div>
                 <div className="w-full md:w-[45%]">
                     <h6 className="text-black font-light tracking-[1%] mb-4 text-sm xl:text-lg">
-                       To become ‘Viksit Bharat’ by 2047, India needs to address its infrastructure gaps swiftly and efficiently through proportionate, need-specific developments. Developments that are innovative, inclusive, steadfast, and sustainable. This demands active collaboration among policymakers, the private sector, and citizens, driven by increased awareness.
+                       To become <span className="font-medium">‘Viksit Bharat’</span> by 2047, India needs to address its infrastructure gaps swiftly and efficiently through proportionate, need-specific developments. Developments that are innovative, inclusive, steadfast, and sustainable. This demands active collaboration among policymakers, the private sector, and citizens, driven by increased awareness.
                     </h6>
                     <h6 className="font-light text-black"><span className='font-medium text-sm xl:text-lg'>The Infravision Foundation</span> fosters this link, upholding an impartial and enlightened voice of reason through its three essential pillars.</h6>
                 </div>

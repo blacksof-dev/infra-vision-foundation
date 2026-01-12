@@ -20,14 +20,19 @@ import renewableAward from "@/../public/assets/infraShakti/overview/renewableAwa
 import transportAward from "@/../public/assets/infraShakti/overview/transportAward.png";
 import urbanAwards from "@/../public/assets/infraShakti/overview/urbanAwards.png";
 import ruralInfraAward from "@/../public/assets/infraShakti/overview/ruralInfraAward.png";
+import VideoPopupGlobal from "@/_components/molecules/videopopup";
 
 export default function Spotlight() {
-  const YEARS = ["2024"] as const;
-  const [selectedTab, setSelectedTab] = useState("2024");
+  const [videoPopUp, setvideoPopup] = useState<boolean>(false);
+
+  const handleRedirect = () => {
+    setvideoPopup(true);
+
+  }
   return (
     <>
       <div className="bg-whitesmoke">
-        <div className="blade-top-padding-lg blade-bottom-padding-lg w-container">
+        <div className="blade-top-padding-lg blade-bottom-padding-lg w-container ">
           <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
             <h5 className="font-medium text-pink">In the Spotlight</h5>
@@ -39,44 +44,22 @@ export default function Spotlight() {
               </span>
             </h1>
           </div>
-          {/* <div className="flex    flex-row gap-6 border-b border-darkgray/20">
-            <div className="border-r border-darkgray/20">
-              <h5 className="text-darkgray/80 sm:py-5 pr-5 text-nowrap">
-                Filter by year
-              </h5>
-            </div>
 
-            <div className="flex flex-row gap-5 mb-3 sm:mb-0">
-              {YEARS.map((tab) => (
-                <button
-                  key={tab}
-                  className={`my-auto text-base  cursor-pointer rounded-[50px] px-4 py-2  sm:px-6 sm:py-3 
-                    ${
-                      selectedTab === tab
-                        ? "border border-pink text-pink font-medium"
-                        : "border border-lightgray/30"
-                    }`}
-                >
-                  {tab}
-                </button>
-              ))}
-            </div>
-          </div> */}
 
           <div className="blade-top-padding-sm  ">
             <div className="sm:relative overflow-hidden  sm:h-[22rem]  lg:h-[27rem]">
               <Image
                 src={sudhanshuBanner}
                 alt="Sudhanshu Mani"
-                className="w-full h-[27rem]  object-cover   hidden sm:block   rounded-md" 
+                className="w-full h-[27rem]  object-cover   hidden sm:block   rounded-md"
                 style={{ objectPosition: "20% center" }}
               />
-               <Image
+              <Image
                 src={sudhanshuMobileView}
                 alt="Sudhanshu Mani"
                 className="w-full h-[20rem] object-cover block object-top sm:hidden"
               />
-              <div className="w-full sm:w-[45%] h-auto lg:h-[23rem]  sm:absolute right-3 top-1/2 sm:-translate-y-1/2 ">
+              <div className="w-full sm:w-[45%] h-auto lg:h-[23rem]   sm:absolute right-3 top-1/2 sm:-translate-y-1/2 ">
                 <div className="w-full h-full  p-2 md:p-8 bg-pink">
                   <div className="flex flex-row gap-3  ">
                     <div>
@@ -89,7 +72,7 @@ export default function Spotlight() {
                     <div className="border-l-1   border-white">
                       <div className="ms-4">
                         <h6 className="text-white font-medium">Infravisionary Award</h6>
-                        <h6 className="text-white">Sudhanshu Mani</h6>
+                        <h6 className="text-white">Sudhanshu Mani, ICF</h6>
                       </div>
                     </div>
                   </div>
@@ -102,20 +85,18 @@ export default function Spotlight() {
                       the creation of the country's fastest train, Vande Bharat,
                       in a mere 18 months, despite all odds.
                     </p>
-                    <div className="py-4">
+                    <div role="button" onClick={handleRedirect} className="py-4">
                       <HeroBtn
                         text="Watch video"
-                        target="_blank"
-                        role="link"
-                         borderColor="white"
+                        role="button"
+                        borderColor="white"
                         color="white"
                         bgColor="pink"
                         size="base"
-                         link="https://www.youtube.com/embed/9DIAhTDim9Y?start=13850&end=13887"
                         aarowColor="white"
                         classes="font-medium cursor-pointer "
                       />
-                      
+
                     </div>
                   </div>
                 </div>
@@ -125,6 +106,12 @@ export default function Spotlight() {
               <VideoCard data={videoCard} />
             </div>
           </div>
+          {videoPopUp && (
+            <VideoPopupGlobal
+              src="https://www.youtube.com/embed/9DIAhTDim9Y?start=13850&end=13887"
+              onClose={() => setvideoPopup(false)}
+            />
+          )}
         </div>
       </div>
     </>
@@ -141,7 +128,7 @@ const videoCard = [
     logo: infraShaktiAward.src,
     awardslogo: waterSaviourAward.src,
     desc: " For engaging and empowering local communities to replenish 460+ lakes and water bodies in their neighbourhood across 18 states.",
-   
+
   },
   {
     thumbnailImage: sandeep.src,
@@ -152,7 +139,7 @@ const videoCard = [
     logo: infraShaktiAward.src,
     awardslogo: urbanAwards.src,
     desc: "For recycling 2,00,000+ MT of dry waste annually across the country, from Ahmedabad to Indore, Pune to Jamnagar, through a circular end-to-end PPP model.",
-    
+
   },
 
   {
@@ -164,7 +151,7 @@ const videoCard = [
     logo: infraShaktiAward.src,
     awardslogo: ruralInfraAward.src,
     desc: "For using digitisation to transform the lives of 2.7 million farmers and 12,000 rural entrepreneurs with easily accessible online services.",
-   
+
   },
   {
     thumbnailImage: afcons.src,
@@ -175,7 +162,7 @@ const videoCard = [
     logo: infraShaktiAward.src,
     awardslogo: transportAward.src,
     desc: "For building the world's highest arch railway bridge, the Chenab bridge, and improving the last-mile connectivity in the terrorist-prone areas of Jammu and Kashmir.",
-     
+
   },
   {
     thumbnailImage: pankaj.src,
@@ -186,9 +173,9 @@ const videoCard = [
     logo: infraShaktiAward.src,
     awardslogo: renewableAward.src,
     desc: "For using dams and reservoirs for floating solar power solutions that generate energy while saving on real estate and reducing evaporation by 70%.",
-   
+
   },
-   {
+  {
     thumbnailImage: swarnalatha.src,
     awardName: "People’s Choice Award for Inclusive Infrastructure",
     name: "Swarnalatha J, Swarga Foundation",
@@ -197,7 +184,7 @@ const videoCard = [
     logo: infraShaktiAward.src,
     awardslogo: peopleChoiceAward.src,
     desc: "For making an impact on 10 crore differently-abled Indians with her initiatives and advocacy of inclusive infrastructure.",
-   
+
   },
- 
+
 ];

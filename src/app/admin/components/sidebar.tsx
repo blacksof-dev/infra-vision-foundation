@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import logo from "@/../public/assets/globals/logo.png";
+import logo from "@/../public/logo.png";
 import { Button } from "./button";
 import Link from "next/link";
 import { signOut } from "next-auth/react";

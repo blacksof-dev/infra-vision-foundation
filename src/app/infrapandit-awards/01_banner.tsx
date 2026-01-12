@@ -1,9 +1,71 @@
 import bannerBg from "@/../public/assets/infrapandit/bannerBg.png";
 import bannerBgMobile from "@/../public/assets/infrapandit/BannerBgMobile.png";
 import { HeroBtnPink } from "@/_components/atoms/buttons";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { RiArrowRightSLine } from "react-icons/ri";
+
+export const metadata: Metadata = {
+  title: 'Recognising top infrastructure researchers | InfraPandit Awards',
+  description:'An initiative by The Infravision Foundation uniting industry, academia, & government by rewarding top doctoral research on India’s core infrastructure issues.', 
+  keywords: ['think tank india','think tanks','the infravision foundation','infravision foundation','policy research','public policy','Infrapandit-award'],
+  icons: {
+    icon: [
+      { url: 'https://theinfravisionfoundation.org/favicon16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: 'https://theinfravisionfoundation.org/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+       { url: 'https://theinfravisionfoundation.org/favicon.png' },
+    ],
+    apple: 'https://theinfravisionfoundation.org/apple-touch-icon.png',
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://theinfravisionfoundation.org/infrapandit-awards',
+     languages: {
+      'x-default': 'https://theinfravisionfoundation.org/',
+    },
+  },
+  authors: [{ name: 'The Infravision Foundation' }],
+  publisher: 'The Infravision Foundation',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://theinfravisionfoundation.org/infrapandit-awards',
+    siteName: 'The Infravision Foundation',
+    title: 'Recognising top infrastructure researchers | InfraPandit Awards',
+    description:
+      'An initiative by The Infravision Foundation uniting industry, academia, & government by rewarding top doctoral research on India’s core infrastructure issues.',
+    images: [
+      {
+        url: 'https://theinfravisionfoundation.org/assets/og/ogImage.png',
+        width: 1200,
+        height: 630,
+        alt: 'The Infravision Foundation',
+        type: 'image/png',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Recognising top infrastructure researchers | InfraPandit Awards',
+    description:
+      'An initiative by The Infravision Foundation uniting industry, academia, & government by rewarding top doctoral research on India’s core infrastructure issues.',
+    images: ['https://theinfravisionfoundation.org/assets/og/ogImage.png'],
+  },
+};
 
 export default function InfraPanditBanner() {
   return (
@@ -64,7 +126,7 @@ export default function InfraPanditBanner() {
                   </h5>
                 </div>
 
-                <HeroBtnPink
+                {/* <HeroBtnPink
                   // text="Apply now"
                   text="Applications closed"
                   role="link"
@@ -76,7 +138,7 @@ export default function InfraPanditBanner() {
                   classes="font-medium"
                   link="https://docs.google.com/forms/d/e/1FAIpQLSdjpffzJCT6qmQXNUmoUau7giN4qVTsm5j3ysGZ0r8QxiG05g/viewform?usp=sharing&ouid=118204303619309850521"
                   target={"_blank"}
-                />
+                /> */}
               </div>
             </div>
           </div>

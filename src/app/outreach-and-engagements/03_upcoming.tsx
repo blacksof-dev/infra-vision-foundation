@@ -90,7 +90,7 @@ const Upcoming = () => {
         ],
       },
       {
-        month: "Feburary",
+        month: "February",
         events: [],
       },
       {
@@ -100,6 +100,87 @@ const Upcoming = () => {
       {
         month: "April",
         events: [
+           {
+            date: "1",
+            dayTime: "Tuesday",
+            meetingType: "External engagement",
+            desc: "Formal presentation of the Compensatory Afforestation Management and Planning Authority (CAMPA) report",
+            ctaText: "See details",
+
+            details: {
+              date: "April 1, 2025",
+              images: [
+                {
+                  image:
+                    "/assets/outreach-and-engagements/eventImages/Formal-presentation.png",
+                  description:
+                    "The Infravision Foundation team, including Kaveree Bamzai, Head of Advocacy; Rumjhum Chatterjee, Co-Founder & Managing Trustee; and CEO Jagan Shah, presenting the study on 'Implementation of Compensatory Afforestation in India' to the Union Minister of Environment, Forest and Climate Change, Shri Bhupender Yadav.",
+                },
+              ],
+              content: `
+              The Infravision Foundation’s Co-Founder Rumjhum Chatterjee, CEO Jagan Shah, and Advocacy Head Kaveree Bamzai presented crucial findings to Union Environment Minister Shri Bhupender Yadav, recommending comprehensive reforms to the Compensatory Afforestation Management and Planning Authority (CAMPA).\n
+               This collaborative research with The Energy and Resources Institute (TERI) identified systemic weaknesses, including poor fund utilisation, inadequate plantation outcomes, and fragmented institutional record-keeping.`,
+
+              cta: {
+                ctaText: "Download report",
+                link: "/assets/pdf/afforestation.pdf",
+              },
+            },
+          },
+            {
+            date: "8",
+            dayTime: "Tuesday",
+            meetingType: "External engagement",
+            desc: "High-level roundtable: Decarbonising urban transport using ITMS data",
+            ctaText: "See details",
+            details: {
+              images: [
+                {
+                  image:
+                    "/assets/outreach-and-engagements/eventImages/High-level-roundtable-5.png",
+                  description:
+                    "A diverse audience of participants and students keenly attending the national seminar.",
+                },
+              ],
+              date: "April 8, 2025",
+
+              content: `
+The Infravision Foundation organised a national seminar on “Decarbonising Urban Transport using ITMS data” based on a pioneering study conducted jointly by The Infravision Foundation and IIT Delhi.\n
+
+The study identified Noida as having exceptional potential to become a model city for data-driven decarbonisation initiatives. The seminar was widely covered by the media, including stories by DD News, IANS, and The Print.
+
+`,
+            },
+          },
+           {
+            date: "10",
+            dayTime: "Thursday",
+            meetingType: "External engagement",
+            desc: "Conclave-cum-Buyer-Seller meet on Expanding Arunachal Pradesh's agriculture through infrastructure development",
+            ctaText: "See details",
+            details: {
+              images: [
+                {
+                  image:
+                    "/assets/outreach-and-engagements/eventImages/Conclave-cum-Buyer-Seller.png",
+                  description:
+                    "Hon. Chief Minister of Arunachal Pradesh, Pema Khandu; Minister of Agriculture, Government of Arunachal Pradesh, Gabriel Denwang Wangsu; Chief Secretary (CS), Government of Arunachal Pradesh, Manish Gupta; Former Union Secretary, Government of India, Siraj Hussain, and Chairman of APEDA, Abhishek Dev, and other guests.",
+                },
+              ],
+              date: "April 10, 2025",
+
+              content: `
+The Infravision Foundation made a field visit and did a detailed report on the potential in the state's agri exports and the infrastructure bottlenecks for the Agricultural & Processed Food Products Export Development Authority (APEDA).
+
+`,
+              cta: {
+                ctaText: "Download report",
+                link: "/assets/pdf/arunachal.pdf",
+              },
+            },
+          },
+        
+         
           {
             date: "17",
             dayTime: "Thursday",
@@ -153,85 +234,7 @@ The dual-purpose gathering strengthened the Foundation's governance while establ
 `,
             },
           },
-          {
-            date: "10",
-            dayTime: "Thursday",
-            meetingType: "External engagement",
-            desc: "Conclave-cum-Buyer-Seller meet on Expanding Arunachal Pradesh's agriculture through infrastructure development",
-            ctaText: "See details",
-            details: {
-              images: [
-                {
-                  image:
-                    "/assets/outreach-and-engagements/eventImages/Conclave-cum-Buyer-Seller.png",
-                  description:
-                    "Hon. Chief Minister of Arunachal Pradesh, Pema Khandu; Minister of Agriculture, Government of Arunachal Pradesh, Gabriel Denwang Wangsu; Chief Secretary (CS), Government of Arunachal Pradesh, Manish Gupta; Former Union Secretary, Government of India, Siraj Hussain, and Chairman of APEDA, Abhishek Dev, and other guests.",
-                },
-              ],
-              date: "April 10, 2025",
-
-              content: `
-The Infravision Foundation made a field visit and did a detailed report on the potential in the state's agri exports and the infrastructure bottlenecks for the Agricultural & Processed Food Products Export Development Authority (APEDA).
-
-`,
-              cta: {
-                ctaText: "Download report",
-                link: "/assets/pdf/arunachal.pdf",
-              },
-            },
-          },
-          {
-            date: "8",
-            dayTime: "Tuesday",
-            meetingType: "External engagement",
-            desc: "High-level roundtable: Decarbonising urban transport using ITMS data",
-            ctaText: "See details",
-            details: {
-              images: [
-                {
-                  image:
-                    "/assets/outreach-and-engagements/eventImages/High-level-roundtable-5.png",
-                  description:
-                    "A diverse audience of participants and students keenly attending the national seminar.",
-                },
-              ],
-              date: "April 8, 2025",
-
-              content: `
-The Infravision Foundation organised a national seminar on “Decarbonising Urban Transport using ITMS data” based on a pioneering study conducted jointly by The Infravision Foundation and IIT Delhi.\n
-
-The study identified Noida as having exceptional potential to become a model city for data-driven decarbonisation initiatives. The seminar was widely covered by the media, including stories by DD News, IANS, and The Print.
-
-`,
-            },
-          },
-          {
-            date: "1",
-            dayTime: "Tuesday",
-            meetingType: "External engagement",
-            desc: "Formal presentation of the Compensatory Afforestation Management and Planning Authority (CAMPA) report",
-            ctaText: "See details",
-
-            details: {
-              date: "April 1, 2025",
-              images: [
-                {
-                  image:
-                    "/assets/outreach-and-engagements/eventImages/Formal-presentation.png",
-                  description:
-                    "The Infravision Foundation team, including Kaveree Bamzai, Head of Advocacy; Rumjhum Chatterjee, Co-Founder & Managing Trustee; and CEO Jagan Shah, presenting the study on 'Implementation of Compensatory Afforestation in India' to the Union Minister of Environment, Forest and Climate Change, Shri Bhupender Yadav.",
-                },
-              ],
-              content: `
-              The Infravision Foundation’s Co-Founder Rumjhum Chatterjee, CEO Jagan Shah, and Advocacy Head Kaveree Bamzai presented crucial findings to Union Environment Minister Shri Bhupender Yadav, recommending comprehensive reforms to the Compensatory Afforestation Management and Planning Authority (CAMPA).\n
-               This collaborative research with The Energy and Resources Institute (TERI) identified systemic weaknesses, including poor fund utilisation, inadequate plantation outcomes, and fragmented institutional record-keeping.`,
-
-              cta: {
-                ctaText: "Download report",
-                link: "/assets/pdf/afforestation.pdf",
-              },
-            },
-          },
+         
         ],
       },
       {
@@ -267,13 +270,13 @@ The study identified Noida as having exceptional potential to become a model cit
                   image:
                     "/assets/outreach-and-engagements/eventImages/june3_2025.jpg",
                   description:
-                    "Trustee Kiran Karnik (at podium) addresses the audience at the launch of the InfraPandit Awards. Pictured alongside are Council of Advisors member Somya Kanti Ghosh, Co-Founder and Managing Trustee Rumjhum Chatterjee, Council of Advisors member  Prof G Raghuram, and Founder and Managing Trustee Vinayak Chatterjee.",
+                    "Trustee Kiran Karnik (at podium) addresses the audience at the launch of the InfraPandit Awards. Pictured alongside are Council of Advisors member Soumya Kanti Ghosh, Co-Founder and Managing Trustee Rumjhum Chatterjee, Council of Advisors member  Prof G Raghuram, and Founder and Managing Trustee Vinayak Chatterjee.",
                 },
                 {
                   image:
                     "/assets/outreach-and-engagements/eventImages/infrapandit_2025.jpg",
                   description:
-                    "Founder and Managing Trustee of The Infravision Foundation, Vinayak Chatterjee, announces the launch of the InfraPandit Awards. Also pictured are Co-Founder and  Managing Trustee Rumjhum Chatterjee, Trustee Kiran Karnik, and Council of Advisors members Somya Kanti Ghosh and Prof G Raghuram.",
+                    "Founder and Managing Trustee of The Infravision Foundation, Vinayak Chatterjee, announces the launch of the InfraPandit Awards. Also pictured are Co-Founder and  Managing Trustee Rumjhum Chatterjee, Trustee Kiran Karnik, and Council of Advisors members Soumya Kanti Ghosh and Prof G Raghuram.",
                 },
                 {
                   image:
@@ -450,7 +453,32 @@ The study identified Noida as having exceptional potential to become a model cit
       },
       {
         month: "September",
-        events: [],
+        events: [
+          {
+            date: "26",
+            dayTime: "Friday",
+            meetingType: "External engagement",
+            desc: "NITI Aayog and The Infravision Foundation partner to strengthen regional transport governance",
+            ctaText: "See details",
+            details: {
+              date: "",
+              images: [
+                {
+                  image:
+                    "/assets/outreach-and-engagements/eventImages/nitiAayog.jpg",
+                  description:
+                    "The Infravision Foundation CEO Jagan Shah and  NITI Aayog Programme Director Anna Roy formalise their partnership",
+                },
+              ],
+              content: `
+             The Infravision Foundation established a strategic partnership with the NITI Aayog to significantly enhance urban and regional transport governance in India’s growth hubs and economic regions.\n
+             This high-value initiative focuses on developing a future-ready governance model for multi-modal transport. Key efforts include assessing UMTA models and creating diagnostic reports, governance frameworks, and hands-on capacity building modules for policymakers and practitioners.\n
+             Under the partnership, 1–2 states or regions will receive support for adaptation and implementation on the ground to ensure scalable adoption across states.
+             
+              `,
+            },
+          },
+        ],
       },
       {
         month: "October",
@@ -497,7 +525,7 @@ The study identified Noida as having exceptional potential to become a model cit
         ],
       },
       {
-        month: "Feburary",
+        month: "February",
         events: [
           {
             date: "17",
@@ -1085,7 +1113,7 @@ The study identified Noida as having exceptional potential to become a model cit
         ],
       },
       {
-        month: "Feburary",
+        month: "February",
         events: [],
       },
       {

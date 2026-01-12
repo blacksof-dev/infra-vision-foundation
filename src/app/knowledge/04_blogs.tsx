@@ -4,11 +4,15 @@ import { useEffect, useState, useMemo, useRef } from "react";
 import img_01 from "@/../public/assets/knowledeg/blogs/01.jpg";
 import img_02 from "@/../public/assets/knowledeg/blogs/02.jpg";
 import img_03 from "@/../public/assets/knowledeg/blogs/03.jpg";
-import img_04 from "@/../public/assets/knowledeg/blogs/04.png";
+import img_04 from "@/../public/assets/knowledeg/blogs/04.jpg";
 import img_05 from "@/../public/assets/knowledeg/blogs/05.jpg";
 import img_06 from "@/../public/assets/knowledeg/blogs/06.jpg";
 import img_07 from "@/../public/assets/knowledeg/blogs/07.jpg";
 import img_08 from "@/../public/assets/knowledeg/blogs/08.jpg";
+import img_09 from "@/../public/assets/knowledeg/blogs/09.jpg";
+import img_10 from "@/../public/assets/knowledeg/blogs/marine.png";
+import img_11 from "@/../public/assets/knowledeg/blogs/urban challenges.jpg";
+import img_12 from "@/../public/assets/knowledeg/blogs/transit.png";
 
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 
@@ -21,7 +25,8 @@ type SectorType =
   | "Transportation"
   | "Energy"
   | "Urban Planning"
-  | "Rural and Agri Infra";
+  | "Rural and Agri Infra"
+  | "Infrastructure";
 
 interface NewsletterCard {
   id: number;
@@ -36,17 +41,72 @@ interface NewsletterCard {
 
 // Constants
 const FILTER_TYPES: FilterType[] = ["All", "Publication year", "Sectors"];
-const YEARS = ["2024", "2023"] as const;
+const YEARS = ["2025", "2024", "2023"] as const;
 const SECTORS: SectorType[] = [
   "All",
   "Transportation",
   "Energy",
   "Urban Planning",
   "Rural and Agri Infra",
+  "Infrastructure",
 ];
+
 const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
+  {
+    id: 12,
+    img: img_12,
+    slug: "transit-oriented-development-and-urban-mobility-in-india",
+    category: "Urban Planning",
+    title: "",
+    sectors: "Urban Planning",
+    date: "December 31, 2025",
+    description:
+      "Transit-Oriented Development and Urban Mobility in India",
+    link: "/blogs/transit-oriented-development-and-urban-mobility-in-india",
+  },
+
+  {
+    id: 11,
+    img: img_11,
+    slug: "a-catalyst-for-next-gen-urban-projects",
+    category: "Urban Planning",
+    title: "",
+    sectors: "Urban Planning",
+    date: "December 31, 2025",
+    description:
+      "Urban Challenge Fund: A Catalyst for Next-Gen Urban Projects",
+    link: "/blogs/a-catalyst-for-next-gen-urban-projects",
+  },
+
+  {
+    id: 10,
+    img: img_10,
+    slug: "infrastructure-bottlenecks-in-india-marine-export-sector",
+    category: "Infrastructure",
+    title: "",
+    sectors: "Infrastructure",
+    date: "December 31, 2025",
+    description:
+      "Choppy Waters: Infrastructure Bottlenecks in India’s Marine Export Sector",
+    link: "/blogs/infrastructure-bottlenecks-in-india-marine-export-sector",
+  },
+
+  {
+    id: 9,
+    img: img_09,
+    slug: "why-arunachal-agriculture-needs-better-infrastructure",
+    category: "Rural and Agri Infra",
+    title: "",
+    sectors: "Rural and Agri Infra",
+    date: "December 31, 2025",
+    description:
+      "Two Days to Tawang: Why Arunachal’s Agriculture Needs Better Infrastructure",
+    link: "/blogs/why-arunachal-agriculture-needs-better-infrastructure",
+  },
+
+
   {
     id: 1,
     img: img_01,
@@ -106,7 +166,7 @@ const allcards = [
   {
     id: 6,
     img: img_06,
-    slug:"urban-mobility-in-india-why-metro-is-not-the-only-solution",
+    slug: "urban-mobility-in-india-why-metro-is-not-the-only-solution",
     category: "Transportation",
     title: "",
     sectors: "Transportation",
@@ -116,11 +176,11 @@ const allcards = [
     link: "/blogs/urban-mobility-in-india-why-metro-is-not-the-only-solution",
   },
   {
-     id: 7,
-     img: img_07,
-     slug:"getting-surety-bonds-market-ready",
-     category: "Infrastructure",
-     title: "",
+    id: 7,
+    img: img_07,
+    slug: "getting-surety-bonds-market-ready",
+    category: "Infrastructure",
+    title: "",
     sectors: "Infrastructure",
     date: "May 18, 2023",
     description: "Getting Surety Bonds Market Ready",
@@ -128,15 +188,15 @@ const allcards = [
   },
   {
     id: 8,
-     img: img_08,
-     slug:"rooftop-solar-for-poverty-alleviation",
-     category: "Energy",
-     title: "",
+    img: img_08,
+    slug: "rooftop-solar-for-poverty-alleviation",
+    category: "Energy",
+    title: "",
     sectors: "Energy",
     date: "March 2, 2023",
-     description: "Rooftop Solar for Poverty Alleviation",
-     link: "/blogs/rooftop-solar-for-poverty-alleviation",
-   },
+    description: "Rooftop Solar for Poverty Alleviation",
+    link: "/blogs/rooftop-solar-for-poverty-alleviation",
+  },
 ];
 
 export default function Blogs() {
@@ -165,8 +225,8 @@ export default function Blogs() {
       tab === "Publication year"
         ? YEARS[0]
         : tab === "Sectors"
-        ? SECTORS[0]
-        : "All"
+          ? SECTORS[0]
+          : "All"
     );
     setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
@@ -183,7 +243,7 @@ export default function Blogs() {
       );
     }
     if (selectedTab === "Sectors" && selectedFilter !== "All") {
-      return allcards.filter((card) => card.sectors === selectedFilter);
+      return allcards.filter((card) => card.category === selectedFilter);
     }
     return allcards;
   }, [selectedTab, selectedFilter]);
@@ -202,11 +262,10 @@ export default function Blogs() {
               tabRefs.current[index] = el;
             }}
             className={`text-base text-nowrap cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
-                            ${
-                              selectedFilter === filter
-                                ? "border border-pink text-white bg-pink font-medium"
-                                : "border border-lightgray/30"
-                            }`}
+                            ${selectedFilter === filter
+                ? "border border-pink text-white bg-pink font-medium"
+                : "border border-lightgray/30"
+              }`}
             onClick={() => handleFilterClick(filter, index)}
           >
             {filter}
@@ -250,11 +309,10 @@ export default function Blogs() {
                 <button
                   key={tab}
                   className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4
-                                        ${
-                                          selectedTab === tab
-                                            ? "border border-pink text-pink font-medium"
-                                            : "border border-lightgray/30"
-                                        }`}
+                                        ${selectedTab === tab
+                      ? "border border-pink text-pink font-medium"
+                      : "border border-lightgray/30"
+                    }`}
                   onClick={() => handleTabClick(tab)}
                 >
                   {tab}
@@ -269,9 +327,8 @@ export default function Blogs() {
 
           {/* Newsletter Cards */}
           <div
-            className={`${
-              selectedTab === "Publication year" ? "pt-8" : "pt-8"
-            }`}
+            className={`${selectedTab === "Publication year" ? "pt-8" : "pt-8"
+              }`}
           >
             {filteredCards.length === 0 && (
               <div className="flex justify-center"> No results </div>

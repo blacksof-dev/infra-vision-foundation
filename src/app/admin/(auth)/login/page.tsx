@@ -1,20 +1,19 @@
 "use client";
 
-import { ReactNode, useState, type FormEvent } from "react";
+import {   useState  } from "react";
 import { z } from "zod";
 import { Eye, EyeOff } from "lucide-react";
 import { Input } from "@/_components/ui/input";
-import logo from "@/../public/assets/globals/logo.png";
+import logo from "@/../public/logo.png";
 import Image from "next/image";
 // import { HeroBtn } from "@/_components/atom/button";
-import Link from "next/link";
-import { BlobOptions } from "buffer";
+ 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { ErrorType } from "next/dist/client/components/react-dev-overlay/pages/pages-dev-overlay";
+ 
 import { Button } from "../../components/button";
 
 const formSchema = z.object({

@@ -10,6 +10,8 @@ import {
 import { allCards } from "./static";
 import Link from "next/link";
 
+
+
 export default function Video() {
   const [tab, setTab] = useState("All");
 
@@ -74,11 +76,10 @@ function TabsSection({
         {filter.map((ele) => (
           <button
             key={ele}
-            className={`mt-auto text-sm md:text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4 ${
-              tab === ele
+            className={`mt-auto text-sm md:text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4 ${tab === ele
                 ? "text-pink font-medium border border-pink"
                 : "border border-lightgray/30"
-            }`}
+              }`}
             onClick={() => setTab(ele)}
           >
             {ele}
