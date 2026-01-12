@@ -158,13 +158,13 @@ export default function Updates() {
 }
 
 const EventsDetails = [
-  //   {
-  //   image: "/assets/archive/newsAndMedia/invest-in-small-towns.jpg",
-  //   category: "Video",
-  //   link: "https://www.youtube.com/embed/l_tOqH0ZpIE?si=AnuQwfGGP_POegUy",
-  //   title: "Why we need better planning of public transport",
-  //   btnTitle: "Watch video",
-  // },
+    {
+    image: "/assets/home/updates/op.png",
+    category: "Video",
+    link: "https://www.youtube.com/embed/l_tOqH0ZpIE?si=AnuQwfGGP_POegUy",
+    title: "Why we need better planning of public transport",
+    btnTitle: "Watch video",
+  },
    
    {
    
