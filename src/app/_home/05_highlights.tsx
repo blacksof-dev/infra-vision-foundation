@@ -8,6 +8,15 @@ import { useHeader } from "@/context/useHeader";
 import Link from "next/link";
 
 const newsletters = [
+   {
+    id: 30,
+    img: "/assets/archive/newsletter/analysisAction.png",
+    category: "Volume 32",
+    title: "Analysis and Action",
+    sectors: "",
+    date: "January 2026",
+    link: "/assets/pdf/analysisAction.pdf",
+  },
     {
     id: 29,
     img: "/assets/archive/newsletter/infraPanditAward.png",
@@ -26,15 +35,7 @@ const newsletters = [
     date: "November 2025",
     link: "/assets/pdf/novemberNewsletter.pdf",
   },
-  {
-    id: 29,
-    img: "/assets/archive/newsletter/nitiNewsletter.png",
-    category: "Volume 29",
-    title: "TIF and NITI Aayog seal partnership",
-    sectors: "",
-    date: "October 2025",
-    link: "/assets/pdf/niti.pdf",
-  },
+  
 
   
 ];
@@ -59,7 +60,7 @@ const news = [
     link: "/assets/pdf/how-consistent-is-imf-classification.jpeg",
   },
      {
-    id:59,
+    id:58,
     img: "/assets/archive/newsAndMedia/confidence.png",
     category: "",
     title: "Confidence in India's logistics cost",

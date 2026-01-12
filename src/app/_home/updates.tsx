@@ -9,7 +9,7 @@ import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import Link from "next/link";
 import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg";
-import awards from "@/../public/assets/archive/newsletter/infraPanditAward.png";
+import analysis from "@/../public/assets/archive/newsletter/analysisAction.png";
 import abha from "@/../public/assets/home/updates/abha.png";
 import montek from "@/../public/assets/globals/infrapanditAward.jpg";
 import soumya from "@/../public/assets/archive/newsAndMedia/soumyaNews.jpg";
@@ -158,6 +158,14 @@ export default function Updates() {
 }
 
 const EventsDetails = [
+  //   {
+  //   image: "/assets/archive/newsAndMedia/invest-in-small-towns.jpg",
+  //   category: "Video",
+  //   link: "https://www.youtube.com/embed/l_tOqH0ZpIE?si=AnuQwfGGP_POegUy",
+  //   title: "Why we need better planning of public transport",
+  //   btnTitle: "Watch video",
+  // },
+   
    {
    
     image: "/assets/archive/newsAndMedia/invest-in-small-towns.jpg",
@@ -175,11 +183,11 @@ const EventsDetails = [
     link: "/infrapandit-awards",
   },
   {
-    image: awards,
+    image: analysis,
     category: "Newsletter",
-    title: "InfraPandit Award 2025",
+    title: "Analysis and Action",
     btnTitle: "Read more",
-    link: "/assets/pdf/decmber.pdf",
+    link: "/assets/pdf/analysisAction.pdf",
   },
 
   {

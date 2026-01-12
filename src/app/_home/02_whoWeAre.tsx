@@ -33,6 +33,13 @@ const knowledge = [
     subtitle: "",
     link: "/assets/pdf/waterBody.pdf",
   },
+  //  {
+  //   image: "/assets/archive/newsAndMedia/invest-in-small-towns.jpg",
+  //   category: "Video",
+  //   link: "https://www.youtube.com/embed/l_tOqH0ZpIE?si=AnuQwfGGP_POegUy",
+  //   title: "Why we need better planning of public transport",
+  //   btnTitle: "Watch video",
+  // },
   {
     id: 3,
     img: anumita.src,
