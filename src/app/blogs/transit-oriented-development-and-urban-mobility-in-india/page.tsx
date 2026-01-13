@@ -77,7 +77,7 @@ export default function Page() {
 
                         className="font-poppins text-black font-semibold text-2xl md:text-4xl lg:text-5xl mb-6"
                     >
-                        Transit-Oriented Development and Urban Mobility in India
+                        Transit-Oriented Development and urban mobility in India
                     </h1>
 
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-darkgray font-medium border-b border-gray/10 pb-6">

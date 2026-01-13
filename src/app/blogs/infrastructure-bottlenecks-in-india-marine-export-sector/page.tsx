@@ -78,7 +78,7 @@ export default function Page() {
 
                         className="font-poppins text-black font-semibold text-2xl md:text-4xl lg:text-5xl mb-6"
                     >
-                        Choppy Waters: Infrastructure Bottlenecks in India’s Marine Export Sector
+                       Choppy Waters: Infrastructure bottlenecks in India’s marine export sector
                     </h1>
 
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-darkgray font-medium border-b border-gray/10 pb-6">

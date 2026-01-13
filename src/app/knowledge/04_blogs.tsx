@@ -63,7 +63,7 @@ const allcards = [
     sectors: "Urban Planning",
     date: "December 31, 2025",
     description:
-      "Transit-Oriented Development and Urban Mobility in India",
+      "Transit-Oriented Development and urban mobility in India",
     link: "/blogs/transit-oriented-development-and-urban-mobility-in-india",
   },
 
@@ -76,7 +76,7 @@ const allcards = [
     sectors: "Urban Planning",
     date: "December 31, 2025",
     description:
-      "Urban Challenge Fund: A Catalyst for Next-Gen Urban Projects",
+      "Urban Challenge Fund: A catalyst for next-gen urban projects",
     link: "/blogs/a-catalyst-for-next-gen-urban-projects",
   },
 
@@ -89,7 +89,7 @@ const allcards = [
     sectors: "Infrastructure",
     date: "December 31, 2025",
     description:
-      "Choppy Waters: Infrastructure Bottlenecks in India’s Marine Export Sector",
+      "Choppy Waters: Infrastructure bottlenecks in India’s marine export sector",
     link: "/blogs/infrastructure-bottlenecks-in-india-marine-export-sector",
   },
 
@@ -102,7 +102,7 @@ const allcards = [
     sectors: "Rural and Agri Infra",
     date: "December 31, 2025",
     description:
-      "Two Days to Tawang: Why Arunachal’s Agriculture Needs Better Infrastructure",
+      "Two Days to Tawang: Why Arunachal’s agriculture needs better infrastructure",
     link: "/blogs/why-arunachal-agriculture-needs-better-infrastructure",
   },
 

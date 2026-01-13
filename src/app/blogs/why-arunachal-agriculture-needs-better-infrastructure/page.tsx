@@ -89,7 +89,7 @@ export default function Page() {
 
                         className="font-poppins text-black font-semibold text-2xl md:text-4xl lg:text-5xl mb-6"
                     >
-                        Two Days to Tawang: Why Arunachal’s Agriculture Needs Better Infrastructure
+                        Two Days to Tawang: Why Arunachal’s agriculture needs better infrastructure
                     </h1>
 
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-darkgray font-medium border-b border-gray/10 pb-6">
