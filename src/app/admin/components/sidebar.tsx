@@ -14,16 +14,13 @@ interface NavItemType {
 
 const navItems: NavItemType[] = [
   { label: "Home", href: "/admin/home" },
-  // { label: "Infrakatha", href: "/admin/infrakatha" },
   { label: "Knowledge", href: "/admin/knowledge" },
   { label: "Archive", href: "/admin/archive" },
-  // { label: "Infrapandit Awards", href: "/admin/infrapandit-awards" },
-  // { label: "About Us", href: "/admin/about-us" },
- 
-  // { label: "Infrashakti Awards", href: "/admin/infrashakti-awards" },
+  { label: "Infrakatha", href: "/admin/infrakatha" },
   { label: "Get Involved", href: "/admin/get-involved" },
   { label: "Newsletters", href: "/admin/newsletter" },
-   {
+  { label: "Infrashakti Awards", href: "/admin/infrashakti-awards" },
+  {
     label: "Outreach and Engagements",
     href: "/admin/outreach-and-engagements",
   },
@@ -36,9 +33,11 @@ export default function Sidebar() {
     <nav>
       <div className="flex flex-col gap-4 p-4 2xl:pt-8 h-screen border-r border-gray/30">
         {/* Logo */}
-        <div className="w-[7rem] md:w-[7rem] xl:w-[9rem] pl-3">
-          <Image src={logo} alt="Infravision Foundation Logo" />
-        </div>
+        <Link href="/">
+          <div className="w-[7rem] md:w-[7rem] xl:w-[9rem] pl-3">
+            <Image src={logo} alt="Infravision Foundation Logo" />
+          </div>
+        </Link>
 
         {/* Nav Links */}
         <div className="h-auto flex flex-col gap-y-3 2xl:gap-y-6 mt-4 2x:mt-8 overflow-y-auto pr-2">

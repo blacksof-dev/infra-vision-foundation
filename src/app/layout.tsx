@@ -4,7 +4,7 @@ import Footer from "@/_components/organism/footer";
 import Header from "@/_components/organism/header";
 import { HeaderProvider } from "@/context/useHeader";
 import Provider from "./queryProvider";
-import Image from "next/image";
+ 
 import Script from "next/script";
 import GoogleAnalytics from "./googleAnalytics";
 
@@ -116,14 +116,14 @@ export default function RootLayout({
       </head>
       <body className={` antialiased `}>
         <HeaderProvider>
-          <Header />
+          {/* <Header /> */}
 
           
           <Provider>
             {children}
           </Provider>
 
-          <Footer />
+          {/* <Footer /> */}
         </HeaderProvider>
       </body>
     </html>
