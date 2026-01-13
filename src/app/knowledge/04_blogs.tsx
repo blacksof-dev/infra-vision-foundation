@@ -89,7 +89,7 @@ const allcards = [
     sectors: "Infrastructure",
     date: "December 31, 2025",
     description:
-      "Choppy Waters: Infrastructure bottlenecks in India’s marine export sector",
+      "Choppy waters: Infrastructure bottlenecks in India’s marine export sector",
     link: "/blogs/infrastructure-bottlenecks-in-india-marine-export-sector",
   },
 
@@ -102,7 +102,7 @@ const allcards = [
     sectors: "Rural and Agri Infra",
     date: "December 31, 2025",
     description:
-      "Two Days to Tawang: Why Arunachal’s agriculture needs better infrastructure",
+      "Two days to Tawang: Why Arunachal’s agriculture needs better infrastructure",
     link: "/blogs/why-arunachal-agriculture-needs-better-infrastructure",
   },
 
