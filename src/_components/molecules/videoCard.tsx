@@ -56,7 +56,7 @@ export default function VideoCard({ data }: VideoCardProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-8 xl:gap-14">
         {data.map((elem, index) => (
           <div key={index}>
-            <div className="relative w-full h-[18rem]">
+            <div  className="relative w-full h-[18rem]">
               <Image
                 src={elem.thumbnailImage}
                 width={500}
