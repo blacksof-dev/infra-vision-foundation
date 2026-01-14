@@ -11,7 +11,7 @@ export default function StayConnected() {
     <section id="homepage-section-6">
       <div className="blade-top-padding-lg blade-bottom-padding-lg">
         <div className="w-container flex flex-col lg:flex-row gap-7 sm:gap-6 lg:gap-20">
-          <div className="w-full lg:w-[50%] xl:w-[40%] ">
+          <div className="w-full lg:w-[65%] xl:w-[70%] ">
             <div className="flex  flex-row  items-center gap-2 md:gap-3">
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
               <h5 className="font-medium text-black">Social Media</h5>
@@ -62,9 +62,9 @@ export default function StayConnected() {
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-[50%] xl:w-[60%]  ">
+          {/* <div className="w-full lg:w-[50%] xl:w-[60%]  ">
             <TwitterPost />
-          </div>
+          </div> */}
           <div className=" py-2 sm:py-4 block lg:hidden">
             <h6 className="text-pink font-medium">Follow us on</h6>
             <div className="flex flex-row gap-5 py-2 ">
