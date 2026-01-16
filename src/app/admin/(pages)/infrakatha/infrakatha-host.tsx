@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "../../components/button";
 import TextInput from "../../components/input/textInput";
 import z from "zod";
-import { X } from "lucide-react";
+import { SquareArrowOutUpRight, X } from "lucide-react";
 import { useForm } from "react-hook-form";
 import {
   Select,
@@ -20,7 +20,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useSession } from "next-auth/react";
 import ConfirmationPopup from "../../components/confirmationPopup";
-
 const FormSchema = z.object({
   name: z
     .string()
@@ -31,7 +30,7 @@ const FormSchema = z.object({
     .max(150, "Should not exceed 150 characters")
     .min(1, "Required"),
   socialUrl: z.string().max(500, "URL is too long").optional(),
-  socialType: z.enum(["linkedin", "X"]),
+  socialType: z.enum(["linkedin", "X", "null"]).optional(),
   type: z.enum([
     "infrashakti-the-esteemed-jury",
     "infrashakti-guests-of-honour",
@@ -48,15 +47,29 @@ const FormSchema = z.object({
 
 type FormData = z.infer<typeof FormSchema>;
 
+type API_KEY_TYPE =
+  | "infrashakti-the-esteemed-jury"
+  | "infrashakti-guests-of-honour"
+  | "infrashakti-pre-eminent leaders"
+  | "Infrakath-hosts"
+  | "Infrapandit-award-jury";
 interface Response extends FormData {
   id: string;
   createdAt: string;
   updatedAt: string;
 }
 
-const KEY = "Infrakath-hosts";
+// const KEY = "Infrakath-hosts";
 
-export default function InfrakathaHost() {
+export default function Members({
+  apiKey,
+  title,
+  ctaText,
+}: {
+  apiKey: API_KEY_TYPE;
+  title: string;
+  ctaText: string;
+}) {
   const [hostData, setHostData] = useState<Response[]>([]);
   const [editHostData, setEditHostData] = useState<Response | null>(null);
   const [deleteId, setDeletingId] = useState<string | null>(null);
@@ -67,17 +80,21 @@ export default function InfrakathaHost() {
     try {
       setIsLoading(true);
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_HOST_URL}/members?type=${KEY}`
+        `${process.env.NEXT_PUBLIC_HOST_URL}/members?type=${apiKey}`
       );
-      const data = (await res.json()) as Response[];
-      setHostData(data);
+      if (!res.ok) {
+        throw new Error("Failed to fetch data");
+      }
+      const data = await res.json();
+      setHostData(Array.isArray(data) ? data : []);
     } catch (error) {
       console.error("Error fetching hosts:", error);
       toast.error("Failed to fetch hosts");
+      setHostData([]);
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [apiKey]);
 
   const handleClose = useCallback(() => {
     setEditHostData(null);
@@ -125,6 +142,7 @@ export default function InfrakathaHost() {
           onClose={handleClose}
           editingData={editHostData}
           onSuccess={fetchHost}
+          apiKey={apiKey}
         />
       )}
       {deleteId && (
@@ -136,8 +154,8 @@ export default function InfrakathaHost() {
       <section>
         <div className="blade-top-margin">
           <SectionHeading
-            heading="Section - 02 (About Infrakatha - The Host)"
-            ctaText="Add New Host"
+            heading={title}
+            ctaText={ctaText}
             cta={true}
             handleClick={() => {
               setEditHostData(null);
@@ -146,63 +164,72 @@ export default function InfrakathaHost() {
           />
         </div>
 
-        {isLoading ? (
-          <div className="mt-6 text-center">Loading...</div>
+        {(hostData || []).length === 0 ? (
+          <div className="mt-6 text-center h-35 border-2 border-dashed border-gray-300 rounded-md flex justify-center items-center text-gray-500">
+            No {title} data found.
+          </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 xlg:grid-cols-4 2xl:grid-cols-5 gap-10 mt-6">
-            {hostData.map((host) => (
-              <div
-                key={host.id}
-                className="border flex flex-col font-poppin border-gray-200 rounded-md pb-4 "
-              >
-                <div className="flex-1 mb-4">
-                  <img
-                    className="rounded-md overflow-hidden w-full h-65 object-cover"
-                    src={`${process.env.NEXT_PUBLIC_HOST_URL}${host.image}`}
-                    alt={host.name}
-                  />
-                  <div className="mt-4 px-4">
-                    <h4 className="text-base text-gray-950">{host.name}</h4>
-                    <p className="text-sm text-gray-700">{host.designation}</p>
-                    {host.socialUrl && (
-                      <Link
-                        href={host.socialUrl}
-                        target="_blank"
-                        className="underline text-pink mt-2 inline-block"
-                      >
-                        {host.socialType}
-                      </Link>
-                    )}
-                    <div className="pt-2 mt-auto">
+            {Array.isArray(hostData) &&
+              hostData.map((host) => (
+                <div
+                  key={host?.id}
+                  className="border flex flex-col font-poppin border-gray-200 rounded-md pb-4 "
+                >
+                  <div className="flex-1 mb-4">
+                    <img
+                      className="rounded-md overflow-hidden w-full h-65 object-cover"
+                      src={`${process.env.NEXT_PUBLIC_HOST_URL}${host?.image}`}
+                      alt={host?.name}
+                    />
+                    <div className="mt-4 px-4">
+                      <h4 className="text-base text-gray-950">{host?.name}</h4>
+                      <p className="text-sm text-gray-700">
+                        {host?.designation}
+                      </p>
+                      {host?.socialUrl && (
+                        <Link
+                          href={host?.socialUrl}
+                          target="_blank"
+                          className="underline text-pink mt-2 inline-block group"
+                        >
+                          {host?.socialType}{" "}
+                          <SquareArrowOutUpRight
+                            size={16}
+                            className="inline ml-1 group-hover:scale-110 transition transform duration-300"
+                          />
+                        </Link>
+                      )}
+                      {/* <div className="pt-2 mt-auto">
                       <p className="text-xs text-gray-600 bg-gray-100 p-1 rounded-sm">
                         Created At:{" "}
                         {new Date(host.createdAt).toLocaleDateString()}
                       </p>
+                    </div> */}
                     </div>
                   </div>
+                  <div className="flex gap-3 mt-auto pt-4 justify-end items-center mx-4 border-t border-t-gray-200">
+                    <ToggleSwitch
+                      checked={host?.active ?? false}
+                      onChange={() => {
+                        host?.id && handleToggle(host.id);
+                      }}
+                    />
+                    <Button
+                      theme="transparentGray"
+                      size="small"
+                      text="Delete"
+                      onClick={() => host?.id && setDeletingId(host.id)}
+                    />
+                    <Button
+                      theme="pink"
+                      size="small"
+                      text="Edit"
+                      onClick={() => setEditHostData(host)}
+                    />
+                  </div>
                 </div>
-                <div className="flex gap-3 mt-auto pt-4 justify-end items-center mx-4 border-t border-t-gray-200">
-                  <ToggleSwitch
-                    checked={host.active}
-                    onChange={() => {
-                      handleToggle(host.id);
-                    }}
-                  />
-                  <Button
-                    theme="transparentGray"
-                    size="small"
-                    text="Delete"
-                    onClick={() => setDeletingId(host.id)}
-                  />
-                  <Button
-                    theme="pink"
-                    size="small"
-                    text="Edit"
-                    onClick={() => setEditHostData(host)}
-                  />
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         )}
       </section>
@@ -214,10 +241,12 @@ const HostForm = ({
   onClose,
   editingData: initialData,
   onSuccess,
+  apiKey,
 }: {
   onClose: () => void;
   editingData: Response | null;
   onSuccess: () => void;
+  apiKey: string;
 }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { data: session } = useSession();
@@ -233,7 +262,7 @@ const HostForm = ({
     defaultValues: initialData || {
       active: true,
       socialType: "linkedin",
-      type: KEY as any,
+      type: apiKey as any,
     },
   });
 
@@ -254,7 +283,7 @@ const HostForm = ({
       });
 
       // Ensure type is set
-      formData.set("type", KEY);
+      formData.set("type", apiKey);
 
       if (initialData?.id) {
         // Update existing host
@@ -330,7 +359,7 @@ const HostForm = ({
               <div className="grid grid-cols-1 gap-4">
                 <div>
                   <label className="font-medium mb-2 block">
-                    Social media platform
+                    Social media platform (Optional)
                   </label>
                   <Select
                     value={watch("socialType") || "linkedin"}
@@ -342,6 +371,7 @@ const HostForm = ({
                       <SelectValue placeholder="Select Platform" />
                     </SelectTrigger>
                     <SelectContent className="bg-white border border-gray-200">
+                      <SelectItem value="null">---</SelectItem>
                       <SelectItem value="linkedin">LinkedIn</SelectItem>
                       <SelectItem value="X">X</SelectItem>
                     </SelectContent>
@@ -349,7 +379,7 @@ const HostForm = ({
                 </div>
                 <div>
                   <TextInput
-                    label="Social media link"
+                    label="Social media link (Optional)"
                     errors={errors.socialUrl}
                     placeholder="https://..."
                     register={register}
@@ -359,7 +389,7 @@ const HostForm = ({
               </div>
 
               <ImagePicker
-                label="Image"
+                label="Image "
                 errors={errors.image}
                 register={register}
                 registerer="image"

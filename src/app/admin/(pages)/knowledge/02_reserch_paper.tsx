@@ -1,9 +1,9 @@
 "use client";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useCallback } from "react";
 import SectionHeading from "../../components/sectionHeading";
 import TextInput from "../../components/input/textInput";
 import { Button } from "../../components/button";
-import { X } from "lucide-react";
+import { X, Calendar, ExternalLink } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { getData } from "../../lib/utils";
 import axios from "axios";
@@ -12,8 +12,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import ImagePicker from "../../components/input/imagePicker";
 import PdfPicker from "../../components/input/pdfPicker";
+import { ToggleSwitch } from "../../components/toggleSwitch";
 import { fileSchema, generalSchema } from "../../lib/zod";
 import { toast } from "react-toastify";
+import ConfirmationPopup from "../../components/confirmationPopup";
 import {
   Select,
   SelectContent,
@@ -33,7 +35,6 @@ type Sector = {
 interface ResearchPaperItem {
   id: string;
   title: string;
-  description: string;
   image: string; // cover image path
   link: string; // pdf link path
   date: string; // YYYY-MM-DD
@@ -60,8 +61,6 @@ interface FormStateType {
   items: ResearchPaperItem[];
 }
 
-// sectors will be fetched dynamically in the form
-
 export default function KnowledgeResearchPapers() {
   const { data: session } = useSession();
   const [formState, setFormState] = useState<FormStateType>({
@@ -69,173 +68,279 @@ export default function KnowledgeResearchPapers() {
     editItem: null,
     items: [],
   });
+  const [sectors, setSectors] = useState<Sector[]>([]);
   const [pagination, setPagination] = useState<Pagination | null>(null);
-  const [isLoadingList, setIsLoadingList] = useState<boolean>(false);
-  const [page, setPage] = useState<number>(1);
-  const [limit] = useState<number>(10);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  async function loadPapers(nextPage = page) {
+  // Filters
+  const [page, setPage] = useState<number>(1);
+  const [limit] = useState<number>(12);
+  const [selectedSector, setSelectedSector] = useState<string>("all");
+
+  const fetchSectors = useCallback(async () => {
     try {
-      setIsLoadingList(true);
-      const res = (await getData(
-        `/knowledge/research-papers?page=${nextPage}&limit=${limit}`,
-        session
-      )) as ListResponse;
-      setFormState((s) => ({ ...s, items: res?.researchPapers ?? [] }));
-      setPagination(res?.pagination ?? null);
-      setPage(nextPage);
+      const data = (await getData("/knowledge/sectors", session)) as Sector[];
+      setSectors(data || []);
     } catch (e) {
-      toast.error("Failed to load research papers");
-    } finally {
-      setIsLoadingList(false);
+      console.error("Failed to load sectors:", e);
     }
-  }
+  }, [session]);
+
+  const loadPapers = useCallback(
+    async (targetPage = page) => {
+      try {
+        setIsLoading(true);
+        const query = new URLSearchParams({
+          page: String(targetPage),
+          limit: String(limit),
+        });
+        if (selectedSector !== "all") query.append("sectorId", selectedSector);
+
+        const res = (await getData(
+          `/knowledge/research-papers?${query.toString()}`,
+          session
+        )) as ListResponse;
+
+        setFormState((s) => ({ ...s, items: res?.researchPapers ?? [] }));
+        setPagination(res?.pagination ?? null);
+        setPage(targetPage);
+      } catch (e) {
+        toast.error("Failed to load research papers");
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [session, limit, selectedSector, page]
+  );
+
+  useEffect(() => {
+    fetchSectors();
+  }, [fetchSectors]);
 
   useEffect(() => {
     loadPapers(1);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [selectedSector]);
 
-  const [confirmOpen, setConfirmOpen] = useState<boolean>(false);
-  const [deletingId, setDeletingId] = useState<string>("");
+  const handleToggle = async (id: string) => {
+    try {
+      await axios.patch(
+        `${process.env.NEXT_PUBLIC_HOST_URL}/knowledge/research-papers/${id}/toggle-status`,
+        null,
+        {
+          headers: { Authorization: `Bearer ${session?.accessToken}` },
+        }
+      );
+      toast.success("Status updated");
+      loadPapers(page);
+    } catch (error: any) {
+      toast.error(error?.response?.data?.message || "Failed to toggle status");
+    }
+  };
+
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   async function deletePaper(id: string) {
     try {
-      const res = await axios.delete(
+      await axios.delete(
         `${process.env.NEXT_PUBLIC_HOST_URL}/knowledge/research-papers/${id}`,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
         }
       );
-      if (res.status >= 200 && res.status < 300) {
-        toast.success("Deleted successfully");
-        setFormState((s) => ({
-          ...s,
-          items: s.items.filter((p) => p.id !== id),
-        }));
-        setConfirmOpen(false);
-        setDeletingId("");
-      } else {
-        toast.error("Delete failed");
-      }
+      toast.success("Deleted successfully");
+      setDeletingId(null);
+      loadPapers(page);
     } catch (e: any) {
       toast.error(e?.response?.data?.message || "Delete failed");
     }
   }
 
-  return (
-    <section className="blade-top-margin-lg">
-      <SectionHeading
-        heading="Section - 02 (Research Papers)"
-        ctaText="Add new research papers"
-        cta
-        handleClick={() =>
-          setFormState((s) => ({ ...s, isFormOpen: true, editItem: null }))
-        }
-      />
+  // Format date to YYYY/MM/DD
+  const formatDate = (dateStr: string) => {
+    if (!dateStr) return "";
+    const date = new Date(dateStr);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}/${month}/${day}`;
+  };
 
-      {/* List */}
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
-        {formState.items.length === 0 && (
-          <div className="col-span-full text-center text-darkgray/70 py-8 border border-lightgray/30 rounded-md bg-white">
-            No research papers found.
+  return (
+    <>
+      <section className="blade-top-margin pb-10">
+        <SectionHeading
+          heading="Research Papers"
+          ctaText="Add New Paper"
+          cta
+          handleClick={() =>
+            setFormState((s) => ({ ...s, isFormOpen: true, editItem: null }))
+          }
+        />
+
+        {/* Filters */}
+        <div className="flex flex-wrap gap-4 mt-6">
+          <Select value={selectedSector} onValueChange={setSelectedSector}>
+            <SelectTrigger className="w-56 h-11 border-gray bg-white">
+              <SelectValue placeholder="All Sectors" />
+            </SelectTrigger>
+            <SelectContent className="bg-white border border-gray-200">
+              <SelectItem value="all">All Sectors</SelectItem>
+              {sectors.map((s) => (
+                <SelectItem key={s.id} value={s.id}>
+                  {s.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        {isLoading && formState.items.length === 0 ? (
+          <div className="mt-10 text-center py-20 bg-white/50 rounded-lg">
+            <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-pink border-t-transparent"></div>
+            <p className="mt-2 text-gray-500 font-poppin">
+              Loading research papers...
+            </p>
+          </div>
+        ) : formState.items.length === 0 ? (
+          <div className="mt-10 flex flex-col items-center justify-center py-20 bg-white border border-dashed border-gray-300 rounded-lg translate-y-2">
+            <p className="text-gray-500 font-medium font-poppin">
+              No research papers found.
+            </p>
+          </div>
+        ) : (
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
+            {formState.items.map((it) => (
+              <article
+                key={it.id}
+                className="group bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-all duration-300"
+              >
+                <div className="relative h-56 overflow-hidden bg-gray-100">
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_HOST_URL}${it.image}`}
+                    alt={it.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute top-2 left-2 flex flex-wrap gap-1">
+                    {(it.sectors && it.sectors.length > 0
+                      ? it.sectors
+                      : [{ name: "Uncategorized" }]
+                    ).map((s: any, idx) => (
+                      <span
+                        key={idx}
+                        className="bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] font-bold text-pink uppercase tracking-wider shadow-sm"
+                      >
+                        {s.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-4 flex flex-col flex-1">
+                  
+ <div className="text-xs w-fit mb-2 font-medium text-pink px-2 py-0.5 bg-pink/10 rounded-full">
+                      {new Date(formatDate(it.date)).toLocaleDateString("en-GB", {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                      })}
+                    </div>
+                  <h3 className="text-base font-bold text-gray-900 leading-tight mb-2 line-clamp-2 min-h-[2.5rem]">
+                    {it.title}
+                  </h3>
+
+                  <div className="mb-4 pt-2 border-t border-gray-50">
+                    <a
+                      href={`${process.env.NEXT_PUBLIC_HOST_URL}${it.link}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 hover:text-blue-700 uppercase tracking-widest transition-colors"
+                    >
+                      <ExternalLink className="w-3 h-3" />
+                      View PDF
+                    </a>
+                  </div>
+
+                  <div className="mt-auto pt-4 border-t border-gray-100 space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <ToggleSwitch
+                          checked={it.active}
+                          onChange={() => handleToggle(it.id)}
+                        />
+                        <span className="text-[10px] uppercase font-bold text-gray-400">
+                          {it.active ? "Active" : "Inactive"}
+                        </span>
+                      </div>
+                      <div className="flex gap-2">
+                        <Button
+                          theme="transparentGray"
+                          size="small"
+                          text="Delete"
+                          onClick={() => setDeletingId(it.id)}
+                        />
+                        <Button
+                          theme="pink"
+                          size="small"
+                          text="Edit"
+                          onClick={() =>
+                            setFormState((s) => ({
+                              ...s,
+                              isFormOpen: true,
+                              editItem: it,
+                            }))
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
         )}
-        {formState.items.map((it) => (
-          <article
-            key={it.id}
-            className="rounded-lg border border-lightgray/40 bg-white p-3 shadow-sm hover:shadow-md transition-shadow gap-4 flex flex-col justify-between"
-          > 
-          <div>
 
-            <img
-              src={`${process.env.NEXT_PUBLIC_HOST_URL}${it.image}`}
-              alt={it.title}
-              className="w-full object-cover rounded-md border border-lightgray/40"
+        {/* Pagination */}
+        {pagination && pagination.totalPages > 1 && (
+          <div className="flex items-center justify-center gap-4 pt-10 mt-6 border-t border-gray-100">
+            <Button
+              text="Previous"
+              theme="transparentGray"
+              size="small"
+              isDisabled={page <= 1}
+              onClick={() => loadPapers(page - 1)}
             />
-            <div className="flex-1 mt-3">
-              <h6 className="text-base font-medium leading-snug">{it.title}</h6>
-              <p className="text-sm text-darkgray/80 line-clamp-2 ">
-                {it.description}
-              </p>
-              <div className="text-xs text-darkgray/70 mt-3 flex items-center gap-2 flex-wrap">
-                <span className="whitespace-nowrap">
-                  {new Date(it.date).toLocaleDateString()}
-                </span>
-                <span className="mx-1">•</span>
-                <span className="truncate">
-                  {(it.sectors && it.sectors.length > 0
-                    ? it.sectors.map((s) => s.name)
-                    : it.sectorIds
-                  ).join(", ")}
-                </span>
-              </div>
-              <div className="mt-2">
-                <a
-                  href={`${process.env.NEXT_PUBLIC_HOST_URL}${it.link}`}
-                  target="_blank"
-                  className="underline text-base"
+            <div className="flex gap-2">
+              {Array.from(
+                { length: pagination.totalPages },
+                (_, i) => i + 1
+              ).map((p) => (
+                <button
+                  key={p}
+                  onClick={() => loadPapers(p)}
+                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${
+                    p === page
+                      ? "bg-pink text-white shadow-md shadow-pink/20"
+                      : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
+                  }`}
                 >
-                  View PDF
-                </a>
-              </div>
+                  {p}
+                </button>
+              ))}
             </div>
+            <Button
+              text="Next"
+              theme="transparentGray"
+              size="small"
+              isDisabled={page >= pagination.totalPages}
+              onClick={() => loadPapers(page + 1)}
+            />
           </div>
-
-            <div className="flex justify-between gap-3 mt-4">
-              <Button
-                text="Delete"
-                theme="transparentPink"
-                size="base"
-                onClick={() => {
-                  setDeletingId(it.id);
-                  setConfirmOpen(true);
-                }}
-              />
-              <Button
-                text="Edit"
-                theme="pink"
-                size="base"
-                onClick={() =>
-                  setFormState((s) => ({
-                    ...s,
-                    isFormOpen: true,
-                    editItem: it,
-                  }))
-                }
-              />
-            </div>
-          </article>
-        ))}
-      </div>
-
-      {/* Pagination */}
-      {pagination && (
-        <div className="flex items-center justify-center gap-4 pt-6 mt-6 border-t border-lightgray/30">
-          <Button
-            text="Prev"
-            theme="pink"
-            size="small"
-            isDisabled={page <= 1}
-            onClick={() => loadPapers(Math.max(1, page - 1))}
-          />
-          <span className="text-base text-darkgray/80">
-            Page {page} of {pagination.totalPages ?? 1}
-          </span>
-          <Button
-            text="Next"
-            theme="pink"
-            size="small"
-            isDisabled={page >= (pagination.totalPages ?? 1)}
-            onClick={() =>
-              loadPapers(Math.min(pagination.totalPages, page + 1))
-            }
-          />
-        </div>
-      )}
+        )}
+      </section>
 
       {formState.isFormOpen && (
         <ResearchPaperForm
+          sectors={sectors}
           initalData={formState.editItem}
           onClose={async () => {
             setFormState((s) => ({ ...s, isFormOpen: false, editItem: null }));
@@ -244,51 +349,22 @@ export default function KnowledgeResearchPapers() {
         />
       )}
 
-      {confirmOpen && (
-        <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center ">
-          <div className="w-[24rem] relative blade-top-padding-s bg-white rounded-md shadow-2xl h-auto max-h-[70vh] overflow-auto overflow-x-hidden p-6">
-            <div className="flex justify-between items-center mb-4">
-              <h6 className="text-base font-medium">Confirm deletion</h6>
-              <button
-                type="button"
-                aria-label="close modal"
-                className="rounded-full ring-1 scale-75 hover:scale-90 transition-all duration-300 cursor-pointer"
-                onClick={() => setConfirmOpen(false)}
-              >
-                <X />
-              </button>
-            </div>
-            <p className="text-sm text-darkgray/80">
-              This action cannot be undone. Are you sure you want to delete this
-              research paper?
-            </p>
-            <div className="mt-6 flex justify-end gap-3">
-              <Button
-                text="Cancel"
-                theme="transparentGray"
-                size="small"
-                onClick={() => setConfirmOpen(false)}
-              />
-              <Button
-                text="Delete"
-                theme="pink"
-                size="small"
-                onClick={() => deletingId && deletePaper(deletingId)}
-              />
-            </div>
-          </div>
-        </div>
+      {deletingId && (
+        <ConfirmationPopup
+          onClose={() => setDeletingId(null)}
+          onDelete={() => deletePaper(deletingId)}
+        />
       )}
-    </section>
+    </>
   );
 }
 
 const researchPaperSchema = z.object({
-  title: generalSchema("Title is required"),
-  description: generalSchema("Description is required"),
-  date: generalSchema("Publication date is required"),
-  imageFile: fileSchema,
-  pdfFile: fileSchema,
+  title: z.string().min(1, "Title is required"),
+  date: z.string().min(1, "Publication date is required"),
+  active: z.boolean(),
+  imageFile: z.any(),
+  pdfFile: z.any(),
   sectorIds: z
     .array(z.string())
     .min(1, { message: "Select at least one sector" }),
@@ -297,69 +373,34 @@ const researchPaperSchema = z.object({
 type ResearchPaperFormValues = z.infer<typeof researchPaperSchema>;
 
 function ResearchPaperForm({
+  sectors,
   initalData,
   onClose,
 }: {
+  sectors: Sector[];
   initalData: ResearchPaperItem | null;
   onClose: () => void;
 }) {
   const { data: session } = useSession();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [sectors, setSectors] = useState<Sector[]>([]);
-
-  useEffect(() => {
-    async function fetchSectors() {
-      try {
-        const data = (await getData(
-          "/knowledge/sectors?activeOnly=true",
-          session
-        )) as Sector[];
-        setSectors(data.filter((s) => s.active));
-      } catch (e) {
-        try {
-          const data = (await getData(
-            "/knowledge/sectors",
-            session
-          )) as Sector[];
-          setSectors(data.filter((s) => s.active));
-        } catch {}
-      }
-    }
-    fetchSectors();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const defaultValues: Partial<ResearchPaperFormValues> = useMemo(() => {
-    if (!initalData) {
-      return {
-        title: "",
-        description: "",
-        date: "",
-        imageFile: "",
-        pdfFile: "",
-        sectorIds: [],
-      };
-    }
-    return {
-      title: initalData.title,
-      description: initalData.description,
-      date: initalData.date?.slice(0, 10) || "",
-      imageFile: initalData.image,
-      pdfFile: initalData.link,
-      sectorIds: initalData.sectorIds,
-    };
-  }, [initalData]);
 
   const {
     register,
     handleSubmit,
     watch,
     setError,
-    formState: { errors },
     setValue,
+    formState: { errors },
   } = useForm<ResearchPaperFormValues>({
     resolver: zodResolver(researchPaperSchema),
-    defaultValues: defaultValues as ResearchPaperFormValues,
+    defaultValues: {
+      title: initalData?.title || "",
+      date: initalData?.date?.slice(0, 10) || "",
+      active: initalData ? initalData.active : true,
+      imageFile: initalData?.image || undefined,
+      pdfFile: initalData?.link || "",
+      sectorIds: initalData?.sectorIds || [],
+    } as any,
   });
 
   const submitHandler: SubmitHandler<ResearchPaperFormValues> = async (
@@ -370,31 +411,34 @@ function ResearchPaperForm({
 
       const formData = new FormData();
       formData.append("title", data.title);
-      formData.append("description", data.description);
+      // Sending title as description to satisfy backend requirement if any
+      formData.append("description", data.title);
       formData.append("date", data.date);
-      formData.append("active", "true");
+      formData.append("active", String(data.active));
       data.sectorIds.forEach((s) => formData.append("sectorIds", s));
 
-      const imgVal = data.imageFile as unknown;
-      if (typeof imgVal === "string" && imgVal.trim()) {
+      const imgVal = data.imageFile;
+      if (imgVal instanceof FileList && imgVal.length > 0) {
+        formData.append("imageFile", imgVal[0]);
+      } else if (typeof imgVal === "string" && imgVal.trim()) {
         formData.append("imageUrl", imgVal);
-      } else if (imgVal instanceof FileList && imgVal.length > 0) {
-        formData.append("imageFile", imgVal[0] as File);
-      } else {
+      } else if (!initalData) {
         setError("imageFile", {
           type: "manual",
           message: "Cover image is required",
         });
+        setIsLoading(false);
         return;
       }
 
-      const pdfVal = data.pdfFile as unknown;
-      if (typeof pdfVal === "string" && pdfVal.trim()) {
+      const pdfVal = data.pdfFile;
+      if (pdfVal instanceof FileList && pdfVal.length > 0) {
+        formData.append("pdfFile", pdfVal[0]);
+      } else if (typeof pdfVal === "string" && pdfVal.trim()) {
         formData.append("pdfUrl", pdfVal);
-      } else if (pdfVal instanceof FileList && pdfVal.length > 0) {
-        formData.append("pdfFile", pdfVal[0] as File);
-      } else {
+      } else if (!initalData) {
         setError("pdfFile", { type: "manual", message: "PDF is required" });
+        setIsLoading(false);
         return;
       }
 
@@ -419,9 +463,7 @@ function ResearchPaperForm({
         toast.success(
           initalData ? "Updated successfully" : "Created successfully"
         );
-        onClose(); // auto-close and parent will refresh
-      } else {
-        toast.error("Save failed");
+        onClose();
       }
     } catch (e: any) {
       toast.error(e?.response?.data?.message || "Save failed");
@@ -430,118 +472,128 @@ function ResearchPaperForm({
     }
   };
 
-  function onSelectSectorIds(e: React.ChangeEvent<HTMLSelectElement>) {
-    const values = Array.from(e.target.selectedOptions).map((o) => o.value);
-    setValue("sectorIds", values, { shouldValidate: true, shouldDirty: true });
-  }
-
   return (
-    <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center ">
-      <div className="w-[32rem] relative blade-top-padding-s bg-white rounded-md shadow-2xl h-auto max-h-[85vh] overflow-auto overflow-x-hidden">
-        <form className="h-full" onSubmit={handleSubmit(submitHandler)}>
-          <div className="flex justify-end sticky top-2 px-1 z-[999]">
-            <button
-              type="button"
-              aria-label="close modal"
-              className="rounded-full ring-1 scale-75 hover:scale-90 transition-all duration-300 cursor-pointer"
-              onClick={onClose}
-            >
-              <X />
-            </button>
-          </div>
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+      <div
+        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        onClick={onClose}
+      ></div>
+      <div className="relative w-full max-w-2xl bg-white rounded-xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+        <div className="flex items-center justify-between p-6 border-b border-gray-100 bg-white sticky top-0 z-10">
+          <h2 className="text-xl font-bold text-gray-900 font-poppin">
+            {initalData ? "Edit Research Paper" : "Create New Research Paper"}
+          </h2>
+          <button
+            onClick={onClose}
+            className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+          >
+            <X className="w-6 h-6 text-gray-500" />
+          </button>
+        </div>
 
-          <div className="flex flex-col gap-y-6 h-full p-8 pt-1">
-            <div className="grid grid-cols-1 gap-4">
+        <form
+          onSubmit={handleSubmit(submitHandler)}
+          className="flex-1 overflow-y-auto p-6 space-y-6"
+        >
+          <div className="space-y-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <TextInput
-                label="Title"
+                label="Paper Title"
                 errors={errors.title}
-                placeholder="Enter title"
+                placeholder="e.g. Urban Policy Review 2024"
                 register={register}
                 registerer="title"
-                tooltip="Title is required"
               />
               <TextInput
-                label="Description"
-                errors={errors.description}
-                placeholder="Enter description"
-                register={register}
-                registerer="description"
-                tooltip="Description is required"
-              />
-              <TextInput
-                label="Publication Date (YYYY-MM-DD)"
+                label="Publication Date"
+                placeholder="yyyy/mm/dd"
                 errors={errors.date}
-                placeholder="2025-01-31"
                 register={register}
                 registerer="date"
-                tooltip="Format: YYYY-MM-DD"
               />
+            </div>
 
-              {/* Active field removed: defaults to true */}
+            <div className="space-y-2">
+              <label className="text-sm font-bold text-gray-700 font-poppin">
+                Sector Category
+              </label>
+              <Select
+                value={
+                  ((watch("sectorIds") as unknown as string[]) || [])[0] || ""
+                }
+                onValueChange={(val) =>
+                  setValue("sectorIds", val ? [val] : [], {
+                    shouldValidate: true,
+                    shouldDirty: true,
+                  })
+                }
+              >
+                <SelectTrigger className="w-full h-11 border border-gray bg-white rounded-lg">
+                  <SelectValue placeholder="Select primary sector" />
+                </SelectTrigger>
+                <SelectContent className="bg-white border border-gray-200 z-[1001] shadow-xl">
+                  {sectors.map((s) => (
+                    <SelectItem key={s.id} value={s.id}>
+                      {s.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              {errors.sectorIds && (
+                <p className="text-red-500 text-xs pt-1">
+                  {errors.sectorIds.message as any}
+                </p>
+              )}
+            </div>
 
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <ImagePicker
                 label="Cover Image"
                 errors={errors.imageFile}
                 register={register}
                 registerer="imageFile"
                 watcher={watch("imageFile")}
-                accept=".svg, .png, .jpg, .jpeg, .webp"
-                tooltip="Max 2MB. Recommended 1200x628"
+                accept=".png, .jpg, .jpeg, .webp"
               />
-
               <PdfPicker
-                label="PDF File"
+                label="PDF Document"
                 errors={errors.pdfFile}
                 register={register}
                 registerer="pdfFile"
                 watcher={watch("pdfFile")}
                 accept=".pdf"
-                tooltip="PDF only"
-              />
-
-              <div>
-                <div className="font-medium pb-1.5">Sectors</div>
-                <Select
-                  value={
-                    ((watch("sectorIds") as unknown as string[]) || [])[0] || ""
-                  }
-                  onValueChange={(val) =>
-                    setValue("sectorIds", val ? [val] : [], {
-                      shouldValidate: true,
-                      shouldDirty: true,
-                    })
-                  }
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a sector" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-white">
-                    {sectors.map((s) => (
-                      <SelectItem key={s.id} value={s.id}>
-                        {s.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                {errors.sectorIds && (
-                  <p className="text-red-500 text-[15px] pt-1">
-                    {errors.sectorIds.message as any}
-                  </p>
-                )}
-              </div>
-            </div>
-
-            <div className="mt-auto">
-              <Button
-                type="submit"
-                theme="pink"
-                size="large"
-                className="w-full"
-                text={initalData ? "Update" : "Create"}
-                isLoading={isLoading}
-                isDisabled={isLoading}
               />
             </div>
+
+            <div className="flex items-center gap-3 py-2">
+              <label className="font-medium text-sm text-gray-700">
+                Display Active
+              </label>
+              <ToggleSwitch
+                checked={watch("active")}
+                onChange={(val: boolean) => setValue("active", val)}
+              />
+            </div>
+          </div>
+
+          <div className="mt-8 flex gap-3 sticky bottom-0 bg-white pb-2">
+            <Button
+              type="button"
+              text="Cancel"
+              theme="transparentGray"
+              size="large"
+              className="flex-1"
+              onClick={onClose}
+            />
+            <Button
+              type="submit"
+              text={initalData ? "Update Paper" : "Create Paper"}
+              theme="pink"
+              size="large"
+              className="flex-1"
+              isLoading={isLoading}
+              isDisabled={isLoading}
+            />
           </div>
         </form>
       </div>

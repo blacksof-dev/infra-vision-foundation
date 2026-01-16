@@ -16,14 +16,17 @@ const navItems: NavItemType[] = [
   { label: "Home", href: "/admin/home" },
   { label: "Knowledge", href: "/admin/knowledge" },
   { label: "Archive", href: "/admin/archive" },
+  { label: "About Us", href: "/admin/about-us" },
   { label: "Infrakatha", href: "/admin/infrakatha" },
-  { label: "Get Involved", href: "/admin/get-involved" },
-  { label: "Newsletters", href: "/admin/newsletter" },
   { label: "Infrashakti Awards", href: "/admin/infrashakti-awards" },
+  { label: "Infrapandit Awards", href: "/admin/infrapandit-awards" },
+  { label: "Gallery", href: "/admin/gallery" },
   {
-    label: "Outreach and Engagements",
+    label: "Outreach & Engagements",
     href: "/admin/outreach-and-engagements",
   },
+  { label: "Get Involved", href: "/admin/get-involved" },
+  { label: "Newsletters", href: "/admin/newsletter" },
 ];
 
 export default function Sidebar() {

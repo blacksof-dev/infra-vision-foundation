@@ -1,9 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import SectionHeading from "../../components/sectionHeading";
 import TextInput from "../../components/input/textInput";
 import { z } from "zod";
-import { fileSchema, generalSchema } from "../../lib/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ImagePicker from "../../components/input/imagePicker";
@@ -37,42 +36,47 @@ export default function Banner() {
     },
   });
 
-  useEffect(() => {
-    async function fetch() {
+  const fetch = useCallback(async () => {
+    try {
       const data = await getData("/content/knowledge-banner-section", session);
-      setFormState((val) => {
-        return { ...val, intialValue: data };
-      });
-      console.log(data);
+      if (data) {
+        setFormState((val) => ({ ...val, intialValue: data }));
+      }
+    } catch (e) {
+      console.error("Failed to load knowledge banner data:", e);
     }
+  }, [session]);
+
+  useEffect(() => {
     fetch();
-  }, []);
+  }, [fetch]);
+
   return (
     <>
-      <div>
+      <section className="blade-top-margin pb-10">
         <SectionHeading
-          heading="Section - 01 (Banner) "
-          //   description="Banner"
-          ctaText="Update banner"
+          heading="Knowledge Hub Banner Section"
+          description="Update the main banner content and background images for desktop and mobile."
+          ctaText="Update Banner"
           cta={true}
           handleClick={() =>
-            setFormState((val) => {
-              return { ...val, isFormOpen: true };
-            })
+            setFormState((val) => ({ ...val, isFormOpen: true }))
           }
         />
-      </div>
-      <div>
-        <BannerCard data={formState.intialValue} />
-      </div>
+
+        <div className="mt-10">
+          <BannerCard data={formState.intialValue} />
+        </div>
+      </section>
+
       {formState.isFormOpen && (
         <BannerForm
           initalData={formState.intialValue}
-          onClose={() =>
-            setFormState((val) => {
-              return { ...val, isFormOpen: false };
-            })
-          }
+          onClose={() => setFormState((val) => ({ ...val, isFormOpen: false }))}
+          onSuccess={() => {
+            fetch();
+            setFormState((val) => ({ ...val, isFormOpen: false }));
+          }}
         />
       )}
     </>
@@ -80,27 +84,22 @@ export default function Banner() {
 }
 
 const bannerSchema = z.object({
-  heading: generalSchema("Heading is required"),
-  description: generalSchema("Description is required"),
-  backgroundImageDesktop: fileSchema,
-  backgroundImageMobile: fileSchema,
+  heading: z.string().min(1, "Heading is required"),
+  description: z.string().min(1, "Description is required"),
+  backgroundImageDesktop: z.any(),
+  backgroundImageMobile: z.any(),
 });
-
-const bannerDefaultValue = {
-  heading: "",
-  description: "",
-  backgroundImageDesktop: "",
-  backgroundImageMobile: "",
-};
 
 type BannerFormValues = z.infer<typeof bannerSchema>;
 
 function BannerForm({
   initalData,
   onClose,
+  onSuccess,
 }: {
   initalData: BannerDefaultValueType;
   onClose: () => void;
+  onSuccess: () => void;
 }) {
   const { data: session } = useSession();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -109,158 +108,150 @@ function BannerForm({
     register,
     handleSubmit,
     watch,
-    setError,
     formState: { errors },
   } = useForm<BannerFormValues>({
     resolver: zodResolver(bannerSchema),
-    defaultValues: initalData,
+    defaultValues: initalData as any,
   });
 
   const submitHandler: SubmitHandler<BannerFormValues> = async (data) => {
     try {
       setIsLoading(true);
 
-      // Determine Desktop Image URL: reuse existing string or upload new file
-      let desktopImageUrl: string | null = null;
-      const desktopValue = data.backgroundImageDesktop as unknown;
-      if (typeof desktopValue === "string" && desktopValue.trim().length > 0) {
-        desktopImageUrl = desktopValue;
-      } else if (desktopValue instanceof FileList && desktopValue.length > 0) {
-        const desktopImageFile = desktopValue[0] as File;
-        const desktopImageResult = await uploadImage(
-          desktopImageFile,
+      // Determine Desktop Image URL
+      let desktopImageUrl = initalData.backgroundImageDesktop;
+      const desktopValue = data.backgroundImageDesktop;
+      if (desktopValue instanceof FileList && desktopValue.length > 0) {
+        const result = await uploadImage(
+          desktopValue[0],
           session,
-          `banner-desktop-${Date.now()}`
+          `knowledge-banner-desktop-${Date.now()}`
         );
-        if (!desktopImageResult.success) {
-          toast.error(
-            `Desktop image upload failed: ${desktopImageResult.errorMessage}`
-          );
+        if (!result.success) {
+          toast.error(`Desktop upload failed: ${result.errorMessage}`);
           return;
         }
-        desktopImageUrl = desktopImageResult.data.url;
-      } else {
-        setError("backgroundImageDesktop", {
-          type: "manual",
-          message: "Background image for desktop is required",
-        });
-        return;
+        desktopImageUrl = result.data.url;
       }
 
-      // Determine Mobile Image URL: reuse existing string or upload new file
-      let mobileImageUrl: string | null = null;
-      const mobileValue = data.backgroundImageMobile as unknown;
-      if (typeof mobileValue === "string" && mobileValue.trim().length > 0) {
-        mobileImageUrl = mobileValue;
-      } else if (mobileValue instanceof FileList && mobileValue.length > 0) {
-        const mobileImageFile = mobileValue[0] as File;
-        const mobileImageResult = await uploadImage(
-          mobileImageFile,
+      // Determine Mobile Image URL
+      let mobileImageUrl = initalData.backgroundImageMobile;
+      const mobileValue = data.backgroundImageMobile;
+      if (mobileValue instanceof FileList && mobileValue.length > 0) {
+        const result = await uploadImage(
+          mobileValue[0],
           session,
-          `banner-mobile-${Date.now()}`
+          `knowledge-banner-mobile-${Date.now()}`
         );
-        if (!mobileImageResult.success) {
-          toast.error(
-            `Mobile image upload failed: ${mobileImageResult.errorMessage}`
-          );
+        if (!result.success) {
+          toast.error(`Mobile upload failed: ${result.errorMessage}`);
           return;
         }
-        mobileImageUrl = mobileImageResult.data.url;
-      } else {
-        setError("backgroundImageMobile", {
-          type: "manual",
-          message: "Background image for mobile is required",
-        });
-        return;
+        mobileImageUrl = result.data.url;
       }
 
-      // Now update content with the correct image URLs
       const result = await updateContent(
         "/content/knowledge-banner-section",
         session,
         {
           heading: data.heading,
           description: data.description,
-          backgroundImageDesktop: desktopImageUrl as string,
-          backgroundImageMobile: mobileImageUrl as string,
+          backgroundImageDesktop: desktopImageUrl,
+          backgroundImageMobile: mobileImageUrl,
         }
       );
 
       if (result.success) {
-        toast.success("Content updated successfully");
+        toast.success("Banner updated successfully");
+        onSuccess();
       } else {
         toast.error(result.errorMessage);
       }
     } catch (error) {
-      console.error("Error in form submission:", error);
+      console.error("Submission error:", error);
       toast.error("An unexpected error occurred");
     } finally {
       setIsLoading(false);
     }
   };
-  return (
-    <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center ">
-      <div className="w-[27rem] relative  blade-top-padding-s bg-white   rounded-md shadow-2xl h-auto max-h-[80vh] overflow-auto overflow-x-hidden">
-        <form className="h-full" onSubmit={handleSubmit(submitHandler)}>
-          <div className="  flex justify-end sticky top-2 px-1 z-[999]   ">
-            <button
-              type="button"
-              aria-label="close modal"
-              className="rounded-full ring-1 scale-75 hover:scale-90 transition-all duration-300 cursor-pointer"
-              onClick={onClose}
-            >
-              <X />
-            </button>
-          </div>
-          <div className="flex flex-col gap-y-8 h-full p-8 pt-1">
-            <div className="flex flex-col gap-y-4">
-              <TextInput
-                label="Heading"
-                errors={errors.heading}
-                placeholder="Enter heading"
-                register={register}
-                registerer="heading"
-                tooltip="Heading is required"
-              />
-              <TextInput
-                label="Description"
-                errors={errors.description}
-                placeholder="Enter description"
-                register={register}
-                registerer="description"
-                tooltip="description is required"
-              />
-              <ImagePicker
-                label="Background Image (Desktop)"
-                errors={errors.backgroundImageDesktop}
-                register={register}
-                registerer="backgroundImageDesktop"
-                watcher={watch("backgroundImageDesktop")}
-                accept=".svg, .png, .jpg, .jpeg, .webp"
-                tooltip="Extensions: .png/.jpg/.jpeg/.webp <br/> Image size - 1920x1130"
-              />
 
-              <ImagePicker
-                label="Background Image (Mobile)"
-                errors={errors.backgroundImageMobile}
-                register={register}
-                registerer="backgroundImageMobile"
-                watcher={watch("backgroundImageMobile")}
-                accept=".svg, .png, .jpg, .jpeg, .webp"
-                tooltip="Extensions: /.png/.jpg/.jpeg/.webp <br/> Image size - 390x690"
-              />
-            </div>
-            <div className="mt-auto ">
-              <Button
-                type="submit"
-                theme="pink"
-                size="large"
-                className="w-full"
-                text="Update"
-                isLoading={isLoading}
-                isDisabled={isLoading}
-              />
-            </div>
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+      <div
+        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        onClick={onClose}
+      ></div>
+      <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+        <div className="flex items-center justify-between p-6 border-b border-gray-100 bg-white sticky top-0 z-10">
+          <h2 className="text-xl font-bold text-gray-900 font-poppin">
+            Update Knowledge Hub Banner
+          </h2>
+          <button
+            onClick={onClose}
+            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+          >
+            <X className="w-6 h-6 text-gray-500" />
+          </button>
+        </div>
+
+        <form
+          onSubmit={handleSubmit(submitHandler)}
+          className="flex-1 overflow-y-auto p-8 space-y-6"
+        >
+          <TextInput
+            label="Main Heading"
+            errors={errors.heading}
+            placeholder="e.g. Exploring Infrastructure Knowledge"
+            register={register}
+            registerer="heading"
+          />
+
+          <TextInput
+            label="Sub-description"
+            errors={errors.description}
+            placeholder="Enter a brief description..."
+            register={register}
+            registerer="description"
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+            <ImagePicker
+              label="Desktop Background (1920x1130)"
+              errors={errors.backgroundImageDesktop}
+              register={register}
+              registerer="backgroundImageDesktop"
+              watcher={watch("backgroundImageDesktop")}
+              accept=".png, .jpg, .jpeg, .webp"
+            />
+
+            <ImagePicker
+              label="Mobile Background (390x690)"
+              errors={errors.backgroundImageMobile}
+              register={register}
+              registerer="backgroundImageMobile"
+              watcher={watch("backgroundImageMobile")}
+              accept=".png, .jpg, .jpeg, .webp"
+            />
+          </div>
+
+          <div className="flex gap-4 pt-6">
+            <Button
+              type="button"
+              text="Cancel"
+              theme="transparentGray"
+              size="large"
+              className="flex-1"
+              onClick={onClose}
+            />
+            <Button
+              type="submit"
+              text="Update Content"
+              theme="pink"
+              size="large"
+              className="flex-1"
+              isLoading={isLoading}
+              isDisabled={isLoading}
+            />
           </div>
         </form>
       </div>
@@ -275,35 +266,76 @@ function BannerCard({ data }: { data: BannerDefaultValueType }) {
     heading,
     description,
   } = data;
+
   return (
-    <article className="h-full border border-gray p-4 rounded-md mt-6 w-fit">
-      <div className="flex gap-10">
-        <div className="rounded-md overflow-hidden relative  w-lg  border border-gray/20">
-          <img
-            src={`${process.env.NEXT_PUBLIC_HOST_URL}${backgroundImageDesktop}`}
-            className=""
-            alt="background cover for desktop"
-            aria-hidden
-          />
+    <article className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 max-w-6xl">
+      <div className="p-8">
+        <div className="flex flex-col lg:flex-row gap-10">
+          {/* Visual Previews */}
+          <div className="lg:w-2/3 space-y-4">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-[10px] font-bold text-pink uppercase tracking-widest bg-pink/5 px-2 py-1 rounded">
+                Desktop Layout Preview
+              </span>
+            </div>
+            <div className="rounded-xl overflow-hidden border border-gray-100 shadow-inner bg-gray-50 aspect-[16/9]">
+              {backgroundImageDesktop ? (
+                <img
+                  src={`${process.env.NEXT_PUBLIC_HOST_URL}${backgroundImageDesktop}`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  alt="Desktop Preview"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-gray-400">
+                  No Desktop Image
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="lg:w-1/3 flex flex-col">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-[10px] font-bold text-pink uppercase tracking-widest bg-pink/5 px-2 py-1 rounded">
+                Mobile Layout
+              </span>
+            </div>
+            <div className="flex-1 rounded-xl overflow-hidden border border-gray-100 shadow-inner bg-gray-50 aspect-[9/16] lg:aspect-auto min-h-[300px]">
+              {backgroundImageMobile ? (
+                <img
+                  src={`${process.env.NEXT_PUBLIC_HOST_URL}${backgroundImageMobile}`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  alt="Mobile Preview"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-gray-400">
+                  No Mobile Image
+                </div>
+              )}
+            </div>
+          </div>
         </div>
 
-        <div className="w-40 rounded-md overflow-hidden border border-gray/20">
-          <img
-            src={`${process.env.NEXT_PUBLIC_HOST_URL}${backgroundImageMobile}`}
-            alt="mobile cover"
-            className="object-cover bottom-0 w-full h-full"
-          />
-        </div>
-      </div>
-
-      <div className="">
-        <div className="mt-6">
-          <h6 className="text-base">
-            <b>Heading:</b> {heading}
-          </h6>
-          <h6 className="mt-1 text-base">
-            <b>description:</b> {description}
-          </h6>
+        {/* Textual Content */}
+        <div className="mt-10 pt-8 border-t border-gray-100">
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+            <div>
+              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
+                Heading
+              </p>
+              <h3
+                className="text-2xl font-normal text-gray-900 leading-tight font-poppin"
+                dangerouslySetInnerHTML={{ __html: heading }}
+              />
+            </div>
+            <div>
+              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
+                Description
+              </p>
+              <p className="text-gray-600 leading-relaxed max-w-3xl">
+                {description}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </article>

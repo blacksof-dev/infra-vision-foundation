@@ -1,20 +1,30 @@
 "use client";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useCallback } from "react";
 import SectionHeading from "../../components/sectionHeading";
 import TextInput from "../../components/input/textInput";
+import MessageInput from "../../components/input/textareaInput";
 import { z } from "zod";
-import { fileSchema, generalSchema } from "../../lib/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ImagePicker from "../../components/input/imagePicker";
 import { Button } from "../../components/button";
-import { X } from "lucide-react";
+import { X, ExternalLink, Info } from "lucide-react";
 import { useSession } from "next-auth/react";
-import { getData, uploadImage } from "../../lib/utils";
+import { getData } from "../../lib/utils";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { ToggleSwitch } from "../../components/toggleSwitch";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/_components/ui/select";
+import ConfirmationPopup from "../../components/confirmationPopup";
+import { fileSchema } from "../../lib/zod";
 
-type Trustee = {
+type TeamMember = {
   id: string;
   image: string;
   title: string;
@@ -27,431 +37,511 @@ type Trustee = {
   active: boolean;
 };
 
-type Pagination = {
-  page: number;
-  limit: number;
-  totalCount: number;
-  totalPages: number;
-};
-
-type TrusteesResponse = {
-  trustees: Trustee[];
-  pagination: Pagination;
+type TeamResponse = {
+  team: TeamMember[];
   lastUpdated?: string;
 };
 
-interface FormStateType {
-  isFormOpen: boolean;
-  editItem: Trustee | null;
-  items: Trustee[];
-}
-
 export default function Teams() {
   const { data: session } = useSession();
-  const [formState, setFormState] = useState<FormStateType>({
-    isFormOpen: false,
-    editItem: null,
-    items: [],
-  });
+  const [items, setItems] = useState<TeamMember[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const [pagination, setPagination] = useState<Pagination | null>(null);
-  const [isLoadingList, setIsLoadingList] = useState<boolean>(false);
+  // Form State
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [editingItem, setEditingItem] = useState<TeamMember | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
-  async function loadTrustees(page = 1, limit = 100, search = " ") {
+  const loadTeam = useCallback(async () => {
     try {
-      setIsLoadingList(true);
-      const data = (await getData(
-        `/teams/trustees`,
-        session
-      )) as TrusteesResponse;
-      setFormState((s) => ({ ...s, items: data.trustees ?? [] }));
-      setPagination(data.pagination);
+      setIsLoading(true);
+      const data = (await getData(`/teams/team`, session)) as TeamResponse;
+      setItems(data.team ?? []);
     } catch (e) {
-      toast.error("Failed to load trustees");
+      toast.error("Failed to load team members");
     } finally {
-      setIsLoadingList(false);
+      setIsLoading(false);
     }
-  }
+  }, [session]);
 
   useEffect(() => {
-    loadTrustees(1, 100);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    loadTeam();
+  }, [loadTeam]);
 
-  async function deleteTrustee(id: string) {
+  // const handleToggle = async (id: string) => {
+  //   try {
+  //     await axios.put(
+  //       `${process.env.NEXT_PUBLIC_HOST_URL}/teams/team/${id}`,
+  //       { active: !items.find((i) => i.id === id)?.active },
+  //       {
+  //         headers: { Authorization: `Bearer ${session?.accessToken}` },
+  //       }
+  //     );
+  //     toast.success("Status updated");
+  //     loadTeam();
+  //   } catch (error: any) {
+  //     toast.error(error?.response?.data?.message || "Failed to toggle status");
+  //   }
+  // };
+
+  const handleDelete = async (id: string) => {
     try {
-      const res = await axios.delete(
-        `${process.env.NEXT_PUBLIC_HOST_URL}/teams/trustees/${id}`,
+      await axios.delete(
+        `${process.env.NEXT_PUBLIC_HOST_URL}/teams/team/${id}`,
         {
-          headers: {
-            Authorization: `Bearer ${session?.accessToken}`,
-          },
+          headers: { Authorization: `Bearer ${session?.accessToken}` },
         }
       );
-      if (res.status === 200) {
-        toast.success("Deleted successfully");
-        await loadTrustees(1, 100);
-      } else {
-        console.log(res);
-        toast.error("Delete failed");
-      }
-    } catch (e: any) {
-      toast.error(e?.response?.data?.message || "Delete failed");
+      toast.success("Member deleted successfully");
+      setDeletingId(null);
+      loadTeam();
+    } catch (error: any) {
+      toast.error(error?.response?.data?.message || "Failed to delete member");
     }
-  }
+  };
 
   return (
     <>
-      <div className="blade-top-padding">
+      <section className="blade-top-margin pb-10">
         <SectionHeading
-          heading="Section - Teams (Trustees)"
-          ctaText="Add New"
+          heading="Team"
+          // description="Manage the profile, social links, and display order of your team members."
+          ctaText="Add Team Member"
           cta={true}
-          handleClick={() =>
-            setFormState((val) => {
-              return { ...val, isFormOpen: true, editItem: null };
-            })
-          }
-        />
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
-        {formState.items.map((item) => (
-          <article
-            key={item.id}
-            className="p-4 bg-white rounded-md border border-gray flex flex-col gap-3"
-          >
-            <div className="flex gap-4">
-              <div className="w-24 h-24 rounded-md overflow-hidden border border-gray/20">
-                <img
-                  src={`${process.env.NEXT_PUBLIC_HOST_URL}${item.image}`}
-                  alt={item.title}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              {item.popupImg ? (
-                <div className="w-24 h-24 rounded-md overflow-hidden border border-gray/20">
-                  <img
-                    src={`${process.env.NEXT_PUBLIC_HOST_URL}${item.popupImg}`}
-                    alt={`${item.title} popup`}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-              ) : null}
-            </div>
-            <div className="text-sm">
-              <div className="font-semibold">{item.title}</div>
-              <div className="opacity-80">{item.desig}</div>
-              {item.link ? (
-                <a
-                  href={item.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-blue-600 underline text-xs"
-                >
-                  {item.socialMedia || "Link"}
-                </a>
-              ) : null}
-              <div className="text-xs mt-1">Order: {item.order}</div>
-              <div className="text-xs">
-                Active: {item.active ? "Yes" : "No"}
-              </div>
-            </div>
-            <div className="flex gap-2 mt-2">
-              <Button
-                theme="pink"
-                size="base"
-                text="Edit"
-                onClick={() =>
-                  setFormState((s) => ({
-                    ...s,
-                    isFormOpen: true,
-                    editItem: item,
-                  }))
-                }
-              />
-              <Button
-                theme="transparentPink"
-                size="base"
-                text="Delete"
-                onClick={() => deleteTrustee(item.id)}
-              />
-            </div>
-          </article>
-        ))}
-      </div>
-
-      {formState.isFormOpen && (
-        <TrusteeForm
-          initalData={formState.editItem}
-          onClose={async (refresh?: boolean) => {
-            setFormState((s) => ({ ...s, isFormOpen: false, editItem: null }));
-            if (refresh) await loadTrustees(1, 100);
+          handleClick={() => {
+            setEditingItem(null);
+            setIsFormOpen(true);
           }}
+        />
+
+        {isLoading ? (
+          <div className="mt-10 text-center py-20 bg-white/50 rounded-lg">
+            <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-pink border-t-transparent"></div>
+            <p className="mt-2 text-gray-500">Loading team...</p>
+          </div>
+        ) : items.length === 0 ? (
+          <div className="mt-10 text-center py-20 bg-white border border-dashed border-gray-300 rounded-lg">
+            <p className="text-gray-500">No team members found.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 mt-6">
+            {items.map((item) => (
+              <TeamMemberCard
+                key={item.id}
+                item={item}
+                onEdit={() => {
+                  setEditingItem(item);
+                  setIsFormOpen(true);
+                }}
+                onDelete={() => setDeletingId(item.id)}
+                // onToggle={() => handleToggle(item.id)}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* Instructions Note */}
+        <div className="mt-10 p-6 bg-pink/5 rounded-2xl border border-pink/10 flex items-start gap-4 max-w-4xl">
+          <div className="w-10 h-10 bg-pink/10 rounded-full flex items-center justify-center flex-shrink-0">
+            <Info className="w-5 h-5 text-pink" />
+          </div>
+          <div>
+            <h5 className="text-sm font-bold text-gray-900 mb-1">
+              Admin Pro-Tip -{" "}
+              <span className="font-medium text-gray-400">
+                Only applicable for popup description
+              </span>
+            </h5>
+            <ul className="list-disc list-outside pl-4">
+              <li className="text-sm text-gray-600 leading-relaxed">
+                To make text appear <span className="font-bold">bold</span>,
+                wrap it in double asterisks: <br />
+                <code className="bg-white px-2 py-1 rounded border border-pink/20 text-xs mt-2 inline-block">
+                  **your bold text here**
+                </code>
+              </li>
+              <li className="text-sm text-gray-600 leading-relaxed mt-2">
+                Use{" "}
+                <code className="bg-white px-2 py-1 rounded border border-pink/20 text-xs mt-2 inline-block">
+                  &lt;br class="block" /&gt;
+                </code>{" "}
+                for line break
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {isFormOpen && (
+        <TeamForm
+          initialData={editingItem}
+          onClose={() => {
+            setIsFormOpen(false);
+            setEditingItem(null);
+          }}
+          onSuccess={() => {
+            loadTeam();
+            setIsFormOpen(false);
+            setEditingItem(null);
+          }}
+        />
+      )}
+
+      {deletingId && (
+        <ConfirmationPopup
+          onClose={() => setDeletingId(null)}
+          onDelete={() => handleDelete(deletingId)}
         />
       )}
     </>
   );
 }
 
-const trusteeSchema = z.object({
-  title: generalSchema("Name is required"),
-  desig: generalSchema("Designation is required"),
+function TeamMemberCard({
+  item,
+  onEdit,
+  onDelete,
+}: // onToggle,
+{
+  item: TeamMember;
+  onEdit: () => void;
+  onDelete: () => void;
+  // onToggle: () => void;
+}) {
+  return (
+    <article className="group bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-all duration-300">
+      <div className="relative h-64 overflow-hidden bg-gray-100">
+        <img
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          src={`${process.env.NEXT_PUBLIC_HOST_URL}${item.image}`}
+          alt={item.title}
+        />
+        <div className="absolute top-2 right-2 flex flex-col gap-1">
+          <span className="bg-black/50 backdrop-blur-md text-white px-2 py-0.5 rounded text-[10px] font-bold">
+            Order: {item.order}
+          </span>
+        </div>
+
+        {item.popupImg && (
+          <div className="absolute bottom-2 right-2 w-16 h-16 bg-white backdrop-blur-sm rounded-lg p-0.5 shadow-md border border-gray-100 overflow-hidden">
+            <img
+              src={`${process.env.NEXT_PUBLIC_HOST_URL}${item.popupImg}`}
+              alt="Popup"
+              className="w-full h-full object-cover rounded-[6px]"
+            />
+            <div className="absolute inset-0  pointer-events-none"></div>
+          </div>
+        )}
+      </div>
+
+      <div className="p-4 flex-1 flex flex-col">
+        <div className="mb-2">
+          <h4 className="text-lg font-bold text-gray-900 leading-tight">
+            {item.title}
+          </h4>
+          <p className="text-pink text-xs font-semibold uppercase tracking-wide mt-1">
+            {item.desig}
+          </p>
+        </div>
+        <p className="text-xs text-gray-500 line-clamp-3 mb-4 flex-1">
+          {item.popupdesc}
+        </p>
+
+        {item.link && (
+          <a
+            href={item.link}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs text-blue-600 hover:text-blue-700 font-medium mb-4"
+          >
+            <ExternalLink className="w-3.5 h-3.5" />
+            {item.socialMedia || "Profile"}
+          </a>
+        )}
+
+        <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-end">
+          {/* <div className="flex items-center gap-2">
+            <ToggleSwitch checked={item.active} onChange={onToggle} />
+            <span className="text-[10px] uppercase font-bold text-gray-400">
+              {item.active ? "Active" : "Inactive"}
+            </span>
+          </div> */}
+          <div className="flex gap-2">
+            <Button
+              theme="transparentGray"
+              size="small"
+              text="Delete"
+              onClick={onDelete}
+            />
+            <Button theme="pink" size="small" text="Edit" onClick={onEdit} />
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+const teamSchema = z.object({
+  title: z.string().min(1, "Name is required"),
+  desig: z.string().min(1, "Designation is required"),
   popupdesc: z.string().min(1, "Popup description is required"),
-  link: z.string().optional(),
-  socialMedia: z.string().optional(),
-  order: z.coerce.number().min(0),
-  active: z.coerce.boolean(),
-  image: fileSchema,
-  popupImg: fileSchema,
+  link: z.string().optional().or(z.literal("")),
+  socialMedia: z.string().optional().or(z.literal("")),
+  order: z.coerce.number(),
+  active: z.boolean(),
+  image: z.union([
+    z.string().min(1, "image is required"),
+    z.any().refine((file) => file?.length > 0, "image is required"),
+  ]),
+  popupImg: z.union([z.string(), z.any()]).optional(),
 });
 
-type TrusteeFormValues = z.infer<typeof trusteeSchema>;
+type TeamFormValues = z.infer<typeof teamSchema>;
 
-function TrusteeForm({
-  initalData,
+function TeamForm({
+  initialData,
   onClose,
+  onSuccess,
 }: {
-  initalData: Trustee | null;
-  onClose: (refresh?: boolean) => void | Promise<void>;
+  initialData: TeamMember | null;
+  onClose: () => void;
+  onSuccess: () => void;
 }) {
   const { data: session } = useSession();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const defaultValues = useMemo(() => {
-    if (!initalData) {
-      return {
-        title: "",
-        desig: "",
-        popupdesc: "",
-        link: "",
-        socialMedia: "",
-        order: 0,
-        active: true,
-        image: "",
-        popupImg: "",
-      } as unknown as TrusteeFormValues;
-    }
-    return {
-      title: initalData.title,
-      desig: initalData.desig,
-      popupdesc: initalData.popupdesc || "",
-      link: initalData.link || "",
-      socialMedia: initalData.socialMedia || "",
-      order: initalData.order,
-      active: initalData.active,
-      image: initalData.image,
-      popupImg: initalData.popupImg || "",
-    } as unknown as TrusteeFormValues;
-  }, [initalData]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
     register,
     handleSubmit,
     watch,
+    setValue,
     setError,
     formState: { errors },
-  } = useForm<TrusteeFormValues>({
-    resolver: zodResolver(trusteeSchema),
-    defaultValues,
+  } = useForm<TeamFormValues>({
+    resolver: zodResolver(teamSchema),
+    defaultValues: initialData
+      ? {
+          title: initialData.title,
+          desig: initialData.desig,
+          popupdesc: initialData.popupdesc,
+          link: initialData.link || "",
+          socialMedia: initialData.socialMedia || "",
+          order: initialData.order,
+          active: initialData.active,
+          image: initialData.image,
+          popupImg: initialData.popupImg,
+        }
+      : {
+          title: "",
+          desig: "",
+          popupdesc: "",
+          active: true,
+          order: 0,
+          image: undefined,
+          popupImg: undefined,
+        },
   });
 
-  const submitHandler: SubmitHandler<TrusteeFormValues> = async (data) => {
+  const onSubmit: SubmitHandler<TeamFormValues> = async (data) => {
     try {
-      setIsLoading(true);
+      setIsSubmitting(true);
+      const formData = new FormData();
 
-      // Image upload handling (primary image)
-      let imageUrl: string | null = null;
-      const imageValue = data.image as unknown;
-      if (typeof imageValue === "string" && imageValue.trim().length > 0) {
-        imageUrl = imageValue;
-      } else if (imageValue instanceof FileList && imageValue.length > 0) {
-        const file = imageValue[0] as File;
-        const res = await uploadImage(file, session, `trustee-${Date.now()}`);
-        if (!res.success) {
-          toast.error(res.errorMessage);
-          return;
-        }
-        imageUrl = res.data.url;
-      } else {
+      formData.append("title", data.title);
+      formData.append("desig", data.desig);
+      formData.append("popupdesc", data.popupdesc);
+      formData.append("order", String(data.order));
+      formData.append("active", String(data.active));
+
+      if (data.link) formData.append("link", data.link);
+      if (data.socialMedia) formData.append("socialMedia", data.socialMedia);
+
+      // Handle main image
+      const imageVal = data.image as any;
+      if (imageVal instanceof FileList && imageVal.length > 0) {
+        formData.append("image", imageVal[0]);
+      } else if (!initialData) {
         setError("image", { type: "manual", message: "Image is required" });
+        setIsSubmitting(false);
         return;
       }
 
-      // Popup image upload handling
-      let popupImgUrl: string | null = null;
-      const popupValue = data.popupImg as unknown;
-      if (typeof popupValue === "string" && popupValue.trim().length > 0) {
-        popupImgUrl = popupValue;
-      } else if (popupValue instanceof FileList && popupValue.length > 0) {
-        const file = popupValue[0] as File;
-        const res = await uploadImage(
-          file,
-          session,
-          `trustee-popup-${Date.now()}`
-        );
-        if (!res.success) {
-          toast.error(res.errorMessage);
-          return;
-        }
-        popupImgUrl = res.data.url;
-      } else {
-        setError("popupImg", {
-          type: "manual",
-          message: "Popup image is required",
-        });
-        return;
+      // Handle popup image
+      const popupImgVal = data.popupImg as any;
+      if (popupImgVal instanceof FileList && popupImgVal.length > 0) {
+        formData.append("popupImg", popupImgVal[0]);
       }
 
-      const body = {
-        image: imageUrl,
-        title: data.title,
-        desig: data.desig,
-        popupImg: popupImgUrl,
-        popupdesc: data.popupdesc,
-        link: data.link,
-        socialMedia: data.socialMedia,
-        order: data.order,
-        active: data.active,
-      };
+      const method = initialData ? "put" : "post";
+      const url = initialData
+        ? `${process.env.NEXT_PUBLIC_HOST_URL}/teams/team/${initialData.id}`
+        : `${process.env.NEXT_PUBLIC_HOST_URL}/teams/team`;
 
-      if (initalData?.id) {
-        const res = await axios.put(
-          `${process.env.NEXT_PUBLIC_HOST_URL}/teams/trustees/${initalData.id}`,
-          body,
-          {
-            headers: { Authorization: `Bearer ${session?.accessToken}` },
-          }
-        );
-        console.log(res);
-        if (res.status === 200) toast.success("Updated");
-      } else {
-        const res = await axios.post(
-          `${process.env.NEXT_PUBLIC_HOST_URL}/teams/trustees`,
-          body,
-          {
-            headers: { Authorization: `Bearer ${session?.accessToken}` },
-          }
-        );
-        if (res.status === 201) toast.success("Created");
-      }
+      await axios({
+        method,
+        url,
+        data: formData,
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${session?.accessToken}`,
+        },
+      });
 
-      await onClose(true);
-    } catch (error) {
-      console.error("Error in form submission:", error);
-      toast.error("An unexpected error occurred");
+      toast.success(initialData ? "Member updated" : "Member created");
+      onSuccess();
+    } catch (error: any) {
+      console.error("Submission error:", error);
+      toast.error(error?.response?.data?.message || "Something went wrong");
     } finally {
-      setIsLoading(false);
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center ">
-      <div className="w-[32rem] relative  blade-top-padding-s bg-white   rounded-md shadow-2xl h-auto max-h-[85vh] overflow-auto overflow-x-hidden">
-        <form className="h-full" onSubmit={handleSubmit(submitHandler)}>
-          <div className="  flex justify-end sticky top-2 px-1 z-[999]   ">
-            <button
-              type="button"
-              aria-label="close modal"
-              className="rounded-full ring-1 scale-75 hover:scale-90 transition-all duration-300 cursor-pointer"
-              onClick={() => onClose(false)}
-            >
-              <X />
-            </button>
-          </div>
-          <div className="flex flex-col gap-y-6 h-full p-8 pt-1">
-            <div className="grid grid-cols-1 gap-4">
+    <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center z-50">
+      <div className="w-[40rem] relative bg-white rounded-xl shadow-2xl h-auto max-h-[90vh] flex flex-col">
+        <div className="flex justify-between items-center p-6 border-b border-gray-100">
+          <h3 className="text-xl font-bold text-gray-900">
+            {initialData ? "Edit Team Member" : "Create New Team Member"}
+          </h3>
+          <button
+            type="button"
+            className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+            onClick={onClose}
+          >
+            <X className="w-6 h-6 text-gray-500" />
+          </button>
+        </div>
+
+        <form
+          className="overflow-y-auto flex-1 p-6"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <div className="space-y-5">
+            <div className="grid grid-cols-2 gap-4">
               <TextInput
-                label="Name"
+                label="Full Name"
                 errors={errors.title}
-                placeholder="Enter name"
+                placeholder="e.g. John Doe"
                 register={register}
                 registerer="title"
-                tooltip="Name is required"
               />
               <TextInput
                 label="Designation"
                 errors={errors.desig}
-                placeholder="Enter designation"
+                placeholder="e.g. CEO & Founder"
                 register={register}
                 registerer="desig"
-                tooltip="Designation is required"
               />
-              <TextInput
-                label="Popup Description"
-                errors={errors.popupdesc}
-                placeholder="Short bio for popup"
-                register={register}
-                registerer="popupdesc"
-                tooltip="Description is required"
-              />
-              <div className="grid grid-cols-2 gap-4">
-                <TextInput
-                  label="Link (optional)"
-                  errors={errors.link}
-                  placeholder="https://..."
-                  register={register}
-                  registerer="link"
-                  tooltip="Social/profile link"
-                />
-                <TextInput
-                  label="Social Media (optional)"
-                  errors={errors.socialMedia}
-                  placeholder="linkedin | X | youtube"
-                  register={register}
-                  registerer="socialMedia"
-                  tooltip="Platform name"
-                />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <TextInput
-                  label="Order"
-                  errors={errors.order}
-                  placeholder="0"
-                  register={register}
-                  registerer="order"
-                  tooltip="Lower appears first"
-                />
-                <TextInput
-                  label="Active (true/false)"
-                  errors={errors.active}
-                  placeholder="true"
-                  register={register}
-                  registerer="active"
-                  tooltip="true or false"
-                />
-              </div>
+            </div>
 
+            <MessageInput
+              label="Popup Bio Description"
+              errors={errors.popupdesc}
+              placeholder="Tell something about this member..."
+              register={register}
+              registerer="popupdesc"
+            />
+
+            <div className="grid grid-cols-2 gap-4">
+              <TextInput
+                label="Social/Profile Link"
+                errors={errors.link}
+                placeholder="https://linkedin.com/in/..."
+                register={register}
+                registerer="link"
+              />
+              <div>
+                <label className="font-semibold text-sm mb-2 block text-gray-700">
+                  Platform Name
+                </label>
+                <Select
+                  value={watch("socialMedia") || ""}
+                  onValueChange={(val: string) => setValue("socialMedia", val)}
+                >
+                  <SelectTrigger className="w-full h-11 border-gray-200 focus:ring-pink focus:border-pink bg-white">
+                    <SelectValue placeholder="Select Platform" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-white border border-gray-100 shadow-xl rounded-xl z-[150]">
+                    <SelectItem
+                      value="linkedin"
+                      className="focus:bg-pink/5 focus:text-pink"
+                    >
+                      LinkedIn
+                    </SelectItem>
+                    <SelectItem
+                      value="x"
+                      className="focus:bg-pink/5 focus:text-pink"
+                    >
+                      X (Twitter)
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+                {errors.socialMedia && (
+                  <p className="text-xs text-red-500 mt-1">
+                    {errors.socialMedia.message}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <TextInput
+                label="Display Order"
+                errors={errors.order}
+                placeholder="0"
+                register={register}
+                registerer="order"
+              />
+              <div className="flex items-center gap-3 py-2">
+                <label className="font-medium text-sm text-gray-700">
+                  Active Status
+                </label>
+                <ToggleSwitch
+                  checked={watch("active")}
+                  onChange={(val: boolean) => setValue("active", val)}
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <ImagePicker
-                label="Profile Image"
+                label="Profile Photo"
                 errors={errors.image}
                 register={register}
                 registerer="image"
                 watcher={watch("image")}
-                accept=".svg, .png, .jpg, .jpeg, .webp"
-                tooltip="Recommended square image"
+                accept=".png, .jpg, .jpeg, .webp"
               />
               <ImagePicker
-                label="Popup Image"
+                label="Popup Secondary Photo"
                 errors={errors.popupImg}
                 register={register}
                 registerer="popupImg"
                 watcher={watch("popupImg")}
-                accept=".svg, .png, .jpg, .jpeg, .webp"
-                tooltip="Popup image"
+                accept=".png, .jpg, .jpeg, .webp"
               />
             </div>
-            <div className="mt-auto ">
-              <Button
-                type="submit"
-                theme="pink"
-                size="large"
-                className="w-full"
-                text={initalData ? "Update" : "Create"}
-                isLoading={isLoading}
-                isDisabled={isLoading}
-              />
-            </div>
+          </div>
+
+          <div className="mt-8 flex gap-3">
+            <Button
+              type="button"
+              theme="transparentGray"
+              size="large"
+              className="flex-1"
+              text="Cancel"
+              onClick={onClose}
+            />
+            <Button
+              type="submit"
+              theme="pink"
+              size="large"
+              className="flex-1"
+              text={initialData ? "Update Member" : "Create Member"}
+              isLoading={isSubmitting}
+              isDisabled={isSubmitting}
+            />
           </div>
         </form>
       </div>

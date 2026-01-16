@@ -23,7 +23,7 @@ import {
 import { getData } from "../../lib/utils";
 import ConfirmationPopup from "../../components/confirmationPopup";
 
-type Trustee = {
+type Patron = {
   id: string;
   image: string;
   title: string;
@@ -36,69 +36,50 @@ type Trustee = {
   active: boolean;
 };
 
-type TrusteesResponse = {
-  trustees: Trustee[];
+type PatronsResponse = {
+  patrons: Patron[];
   lastUpdated?: string;
 };
 
-export default function TeamsTrustees() {
+export default function Patrons() {
   const { data: session } = useSession();
-  const [items, setItems] = useState<Trustee[]>([]);
+  const [items, setItems] = useState<Patron[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // Form State
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [editingItem, setEditingItem] = useState<Trustee | null>(null);
+  const [editingItem, setEditingItem] = useState<Patron | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
-  const loadTrustees = useCallback(async () => {
+  const loadPatrons = useCallback(async () => {
     try {
       setIsLoading(true);
-      const res = (await getData(
-        `/teams/trustees`,
-        session
-      )) as TrusteesResponse;
-      setItems(res.trustees ?? []);
+      const res = (await getData(`/teams/patrons`, session)) as PatronsResponse;
+      setItems(res.patrons ?? []);
     } catch (e) {
-      toast.error("Failed to load trustees");
+      toast.error("Failed to load patrons");
     } finally {
       setIsLoading(false);
     }
   }, [session]);
 
   useEffect(() => {
-    loadTrustees();
-  }, [loadTrustees]);
-
-  // const handleToggle = async (id: string) => {
-  //   try {
-  //     await axios.put(
-  //       `${process.env.NEXT_PUBLIC_HOST_URL}/teams/trustees/${id}`,
-  //       { active: !items.find((i) => i.id === id)?.active },
-  //       {
-  //         headers: { Authorization: `Bearer ${session?.accessToken}` },
-  //       }
-  //     );
-  //     toast.success("Status updated");
-  //     loadTrustees();
-  //   } catch (error: any) {
-  //     toast.error(error?.response?.data?.message || "Failed to toggle status");
-  //   }
-  // };
+    loadPatrons();
+  }, []);
 
   const handleDelete = async (id: string) => {
     try {
       await axios.delete(
-        `${process.env.NEXT_PUBLIC_HOST_URL}/teams/trustees/${id}`,
+        `${process.env.NEXT_PUBLIC_HOST_URL}/teams/patrons/${id}`,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
         }
       );
-      toast.success("Trustee deleted successfully");
+      toast.success("Patron deleted successfully");
       setDeletingId(null);
-      loadTrustees();
+      loadPatrons();
     } catch (error: any) {
-      toast.error(error?.response?.data?.message || "Failed to delete trustee");
+      toast.error(error?.response?.data?.message || "Failed to delete patron");
     }
   };
 
@@ -106,9 +87,9 @@ export default function TeamsTrustees() {
     <>
       <section className="blade-top-margin pb-10">
         <SectionHeading
-          heading="Trustees"
-          // description="Manage the board of trustees, their biographies, and social media presence."
-          ctaText="Add New Trustee"
+          heading="Founding Patrons"
+          //   description="Manage project patrons, their roles, and bios."
+          ctaText="Add New Patron"
           cta={true}
           handleClick={() => {
             setEditingItem(null);
@@ -119,16 +100,16 @@ export default function TeamsTrustees() {
         {isLoading ? (
           <div className="mt-10 text-center py-20 bg-white/50 rounded-lg">
             <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-pink border-t-transparent"></div>
-            <p className="mt-2 text-gray-500">Loading trustees...</p>
+            <p className="mt-2 text-gray-500">Loading patrons...</p>
           </div>
         ) : items.length === 0 ? (
           <div className="mt-10 text-center py-20 bg-white border border-dashed border-gray-300 rounded-lg">
-            <p className="text-gray-500">No trustees found.</p>
+            <p className="text-gray-500">No patrons found.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6">
             {items.map((item) => (
-              <TrusteeMemberCard
+              <PatronCard
                 key={item.id}
                 item={item}
                 onEdit={() => {
@@ -175,14 +156,14 @@ export default function TeamsTrustees() {
       </section>
 
       {isFormOpen && (
-        <TrusteeForm
+        <PatronForm
           initialData={editingItem}
           onClose={() => {
             setIsFormOpen(false);
             setEditingItem(null);
           }}
           onSuccess={() => {
-            loadTrustees();
+            loadPatrons();
             setIsFormOpen(false);
             setEditingItem(null);
           }}
@@ -199,13 +180,13 @@ export default function TeamsTrustees() {
   );
 }
 
-function TrusteeMemberCard({
+function PatronCard({
   item,
   onEdit,
   onDelete,
 }: // onToggle,
 {
-  item: Trustee;
+  item: Patron;
   onEdit: () => void;
   onDelete: () => void;
   // onToggle: () => void;
@@ -282,7 +263,7 @@ function TrusteeMemberCard({
   );
 }
 
-const trusteeSchema = z.object({
+const patronSchema = z.object({
   title: z.string().min(1, "Name is required"),
   desig: z.string().min(1, "Designation is required"),
   popupdesc: z.string().min(1, "Popup description is required"),
@@ -297,14 +278,14 @@ const trusteeSchema = z.object({
   popupImg: z.union([z.string(), z.any()]).optional(),
 });
 
-type TrusteeFormValues = z.infer<typeof trusteeSchema>;
+type PatronFormValues = z.infer<typeof patronSchema>;
 
-function TrusteeForm({
+function PatronForm({
   initialData,
   onClose,
   onSuccess,
 }: {
-  initialData: Trustee | null;
+  initialData: Patron | null;
   onClose: () => void;
   onSuccess: () => void;
 }) {
@@ -318,8 +299,8 @@ function TrusteeForm({
     setValue,
     setError,
     formState: { errors },
-  } = useForm<TrusteeFormValues>({
-    resolver: zodResolver(trusteeSchema),
+  } = useForm<PatronFormValues>({
+    resolver: zodResolver(patronSchema),
     defaultValues: initialData
       ? {
           title: initialData.title,
@@ -343,7 +324,7 @@ function TrusteeForm({
         },
   });
 
-  const onSubmit: SubmitHandler<TrusteeFormValues> = async (data) => {
+  const onSubmit: SubmitHandler<PatronFormValues> = async (data) => {
     try {
       setIsSubmitting(true);
       const formData = new FormData();
@@ -375,8 +356,8 @@ function TrusteeForm({
 
       const method = initialData ? "put" : "post";
       const url = initialData
-        ? `${process.env.NEXT_PUBLIC_HOST_URL}/teams/trustees/${initialData.id}`
-        : `${process.env.NEXT_PUBLIC_HOST_URL}/teams/trustees`;
+        ? `${process.env.NEXT_PUBLIC_HOST_URL}/teams/patrons/${initialData.id}`
+        : `${process.env.NEXT_PUBLIC_HOST_URL}/teams/patrons`;
 
       await axios({
         method,
@@ -388,7 +369,7 @@ function TrusteeForm({
         },
       });
 
-      toast.success(initialData ? "Trustee updated" : "Trustee created");
+      toast.success(initialData ? "Patron updated" : "Patron created");
       onSuccess();
     } catch (error: any) {
       console.error("Submission error:", error);
@@ -403,7 +384,7 @@ function TrusteeForm({
       <div className="w-[40rem] relative bg-white rounded-xl shadow-2xl h-auto max-h-[90vh] flex flex-col">
         <div className="flex justify-between items-center p-6 border-b border-gray-100">
           <h3 className="text-xl font-bold text-gray-900">
-            {initialData ? "Edit Trustee Profile" : "Add New Trustee"}
+            {initialData ? "Edit Patron Profile" : "Add New Patron"}
           </h3>
           <button
             type="button"
@@ -423,14 +404,14 @@ function TrusteeForm({
               <TextInput
                 label="Full Name"
                 errors={errors.title}
-                placeholder="e.g. Dr. Jane Smith"
+                placeholder="e.g. John Smith"
                 register={register}
                 registerer="title"
               />
               <TextInput
                 label="Designation/Role"
                 errors={errors.desig}
-                placeholder="e.g. Chairperson"
+                placeholder="e.g. Founding Patron"
                 register={register}
                 registerer="desig"
               />
@@ -439,7 +420,7 @@ function TrusteeForm({
             <MessageInput
               label="Detailed Biography (Popup)"
               errors={errors.popupdesc}
-              placeholder="Tell something about this trustee..."
+              placeholder="Tell something about this patron..."
               register={register}
               registerer="popupdesc"
             />
@@ -496,7 +477,7 @@ function TrusteeForm({
               />
               <div className="flex items-center gap-3 py-2">
                 <label className="font-medium text-sm text-gray-700">
-                  Display Profile
+                  Active Status
                 </label>
                 <ToggleSwitch
                   checked={watch("active")}
@@ -507,7 +488,7 @@ function TrusteeForm({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <ImagePicker
-                label="Trustee Photo"
+                label="Patron Photo"
                 errors={errors.image}
                 register={register}
                 registerer="image"
@@ -539,7 +520,7 @@ function TrusteeForm({
               theme="pink"
               size="large"
               className="flex-1"
-              text={initialData ? "Update Trustee" : "Create Trustee"}
+              text={initialData ? "Update Patron" : "Create Patron"}
               isLoading={isSubmitting}
               isDisabled={isSubmitting}
             />

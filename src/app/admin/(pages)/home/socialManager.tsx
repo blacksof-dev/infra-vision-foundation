@@ -6,6 +6,8 @@ import { useSession } from "next-auth/react";
 import { getData } from "../../lib/utils";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { Trash2, Link, Globe, Plus } from "lucide-react";
+import ConfirmationPopup from "../../components/confirmationPopup";
 
 type SocialProfile = {
   id: string;
@@ -28,11 +30,10 @@ export default function SocialProfilesManager() {
   const { data: session } = useSession();
   const [slug, setSlug] = useState<string>("");
   const [value, setValue] = useState<string>("");
-  const [active, setActive] = useState<boolean>(true);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
   const [items, setItems] = useState<SocialProfile[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [deletingSlug, setDeletingSlug] = useState<string | null>(null);
 
   async function loadProfiles() {
     try {
@@ -62,29 +63,26 @@ export default function SocialProfilesManager() {
     e.preventDefault();
     if (isSubmitting) return;
     if (!slug || !value) {
-      setError("Slug and URL are required");
-      setTimeout(() => setError(""), 2500);
+      toast.warning("Platform and URL are required");
       return;
     }
     try {
       setIsSubmitting(true);
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_HOST_URL}/social-profiles`,
-        { slug, value, active },
+        { slug, value, active: true },
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
         }
       );
       if (res.status === 201 || res.status === 200) {
-        toast.success("Saved");
+        toast.success("Social profile saved");
       }
       setSlug("");
       setValue("");
-      setActive(true);
       await loadProfiles();
     } catch (err: any) {
-      setError(err?.response?.data?.message || err?.message || "Create failed");
-      setTimeout(() => setError(""), 2500);
+      toast.error(err?.response?.data?.message || "Failed to save profile");
     } finally {
       setIsSubmitting(false);
     }
@@ -99,120 +97,161 @@ export default function SocialProfilesManager() {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
         }
       );
-      if (res.status === 200) toast.success("Deleted");
+      if (res.status === 200) {
+        toast.success("Profile deleted");
+        setDeletingSlug(null);
+      }
       await loadProfiles();
     } catch (err: any) {
-      setError(err?.response?.data?.message || err?.message || "Delete failed");
-      setTimeout(() => setError(""), 2500);
+      toast.error(err?.response?.data?.message || "Delete failed");
     }
   }
 
   return (
-    <section className="space-y-8 mt-10">
-      <div>
-        <h3 className="text-xl font-medium">Social Profiles</h3>
-        <p className="text-sm text-darkgray/70">
-          Manage social profile links and status.
-        </p>
+    <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm max-w-4xl">
+      <div className="p-6 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
+        <div>
+          <h3 className="text-lg font-bold text-gray-900">
+            Social Profile Accounts
+          </h3>
+          <p className="text-xs text-gray-500 mt-1">
+            Connect and manage your official social media presence.
+          </p>
+        </div>
       </div>
 
-      <form
-        onSubmit={handleCreate}
-        className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end"
-      >
-        <div>
-          <div className="font-medium pb-1.5 flex justify-between">
-            <label>Platform</label>
-          </div>
-          <select
-            value={slug}
-            onChange={(e) => setSlug(e.target.value)}
-            className="border-[#ecedec] border-1 rounded-lg h-[50px] px-3 w-full outline-none"
-          >
-            <option value="">Select platform</option>
-            {SLUG_OPTIONS.map((s) => (
-              <option key={s} value={s}>
-                {s}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div>
-          <div className="font-medium pb-1.5 flex justify-between">
-            <label>URL</label>
-          </div>
-          <div
-            className={`border-[#ecedec] border-1 rounded-lg h-[50px] flex items-center pl-3 transition-colors font-regular`}
-          >
-            <input
-              type="text"
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
-              className={`ml-2.5 rounded-lg border-none w-11/12 h-full outline-none font-regular`}
-              placeholder="https://..."
-            />
-          </div>
-        </div>
-
-        <div className="flex gap-4 items-center h-[50px]">
-          <label className="flex items-center gap-2 text-sm">
-            <input
-              type="checkbox"
-              checked={active}
-              onChange={(e) => setActive(e.target.checked)}
-            />
-            Active
-          </label>
-          <Button
-            type="submit"
-            theme="pink"
-            text={isSubmitting ? "Saving..." : "Add / Update"}
-            isDisabled={isSubmitting}
-          />
-        </div>
-        {error && <p className="text-red-500 text-sm md:col-span-3">{error}</p>}
-      </form>
-
-      <div>
-        <div className="grid grid-cols-[0.4fr_1fr_0.5fr_0.1fr] h-12 bg-gray/20 items-center px-4 border-b border-b-gray/30 text-sm font-medium">
-          <div>Platform</div>
-          <div>URL</div>
-          <div>Status</div>
-          <div className="w-40">Action</div>
-        </div>
-        {isLoading ? (
-          <div className="px-4 py-6 text-sm text-darkgray">Loading...</div>
-        ) : (
-          sortedProfiles.map((p) => (
-            <div
-              key={p.id}
-              className="grid grid-cols-[0.4fr_1fr_0.5fr_0.1fr] items-center px-4 h-14 border-b border-b-gray/20 text-sm"
+      <div className="p-8">
+        <form
+          onSubmit={handleCreate}
+          className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end bg-pink/5 p-6 rounded-xl border border-pink/10 mb-10"
+        >
+          <div className="md:col-span-4">
+            <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
+              Select Platform
+            </label>
+            <select
+              value={slug}
+              onChange={(e) => setSlug(e.target.value)}
+              className="w-full h-11 px-4 bg-white border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-pink/20 focus:border-pink outline-none transition-all"
             >
-              <div className="capitalize">{p.slug}</div>
-              <div className="truncate max-w-sm">
-                <a
-                  className="text-pink underline "
-                  href={p.value}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {p.value}
-                </a>
+              <option value="">Choose a platform...</option>
+              {SLUG_OPTIONS.map((s) => (
+                <option key={s} value={s}>
+                  {s.charAt(0).toUpperCase() + s.slice(1)}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="md:col-span-12 lg:md:col-span-6">
+            <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
+              Profile URL
+            </label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+                <Link className="w-4 h-4" />
               </div>
-              <div>{p.active ? "Active" : "Inactive"}</div>
-              <div className="w-40 flex gap-3">
-                <Button
-                  theme="transparentGray"
-                  text="Delete"
-                  size="small"
-                  onClick={() => handleDelete(p.slug)}
-                />
-              </div>
+              <input
+                type="text"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                className="w-full h-11 pl-10 pr-4 bg-white border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-pink/20 focus:border-pink outline-none transition-all"
+                placeholder="https://social-platform.com/your-brand"
+              />
             </div>
-          ))
-        )}
+          </div>
+
+          <div className="md:col-span-12 lg:md:col-span-2">
+            <Button
+              type="submit"
+              theme="pink"
+              size="base"
+              className="w-full h-11 font-bold"
+              text={isSubmitting ? "Saving..." : "Connect"}
+              isDisabled={isSubmitting}
+            />
+          </div>
+        </form>
+
+        <div className="space-y-3">
+          <div className="grid grid-cols-12 h-10 px-4 items-center text-[10px] font-bold text-gray-400 uppercase tracking-widest border-b border-gray-100">
+            <div className="col-span-3">Platform</div>
+            <div className="col-span-6">Account URL</div>
+            <div className="col-span-3 text-right">Actions</div>
+          </div>
+
+          {isLoading ? (
+            <div className="py-20 flex flex-col items-center justify-center text-gray-400 bg-gray-50/30 rounded-xl border border-dashed border-gray-200">
+              <div className="animate-spin rounded-full h-8 w-8 border-4 border-pink border-t-transparent mb-4"></div>
+              <p className="text-sm">Loading connections...</p>
+            </div>
+          ) : sortedProfiles.length === 0 ? (
+            <div className="py-12 flex flex-col items-center justify-center text-gray-400 bg-gray-50/30 rounded-xl border border-dashed border-gray-200">
+              <Globe className="w-10 h-10 mb-4 opacity-20" />
+              <p className="text-sm">No social profiles connected yet.</p>
+            </div>
+          ) : (
+            sortedProfiles.map((p) => (
+              <div
+                key={p.id}
+                className="grid grid-cols-12 items-center px-4 h-16 bg-white border border-gray-100 rounded-xl group hover:border-pink/30 hover:shadow-sm transition-all"
+              >
+                <div className="col-span-3">
+                  <span className="capitalize text-sm font-bold text-gray-900 px-3 py-1 bg-gray-100 rounded-lg group-hover:bg-pink/5 group-hover:text-pink transition-colors">
+                    {p.slug}
+                  </span>
+                </div>
+                <div className="col-span-6 truncate">
+                  <a
+                    className="text-xs text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-2"
+                    href={p.value}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    {p.value}
+                  </a>
+                </div>
+                <div className="col-span-3 flex justify-end">
+                  <Button
+                    theme="transparentGray"
+                    size="small"
+                    className="group-hover:bg-red-50 group-hover:text-red-600 transition-colors"
+                    onClick={() => setDeletingSlug(p.slug)}
+                    text="Disconnect"
+                  />
+                </div>
+              </div>
+            ))
+          )}
+        </div>
       </div>
-    </section>
+
+      {deletingSlug && (
+        <ConfirmationPopup
+          onClose={() => setDeletingSlug(null)}
+          onDelete={() => handleDelete(deletingSlug)}
+        />
+      )}
+    </div>
+  );
+}
+
+function ExternalLink({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+      <polyline points="15 3 21 3 21 9" />
+      <line x1="10" y1="14" x2="21" y2="3" />
+    </svg>
   );
 }

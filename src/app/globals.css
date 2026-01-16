@@ -221,9 +221,9 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #bbbbbb;
+  background-color: #bbbbbb6e;
   border-radius: 20px;
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 
 .no-scrollbar::-webkit-scrollbar {

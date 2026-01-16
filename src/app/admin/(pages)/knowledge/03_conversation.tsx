@@ -1,16 +1,19 @@
 "use client";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useCallback } from "react";
 import SectionHeading from "../../components/sectionHeading";
 import { Button } from "../../components/button";
 import TextInput from "../../components/input/textInput";
+import MessageInput from "../../components/input/textareaInput";
 import ImagePicker from "../../components/input/imagePicker";
-import { X } from "lucide-react";
+import { X, Calendar, Video } from "lucide-react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { toast } from "react-toastify";
+import ConfirmationPopup from "../../components/confirmationPopup";
+import { getData } from "../../lib/utils";
 
 type ConversationItem = {
   id: string;
@@ -25,36 +28,62 @@ type ConversationItem = {
   updatedAt?: string;
 };
 
+interface Pagination {
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+  hasNext: boolean;
+  hasPrev: boolean;
+}
+
+interface ListResponse {
+  data: ConversationItem[];
+  meta: Pagination;
+}
+
 export default function KnowledgeConversations() {
   const { data: session } = useSession();
   const [items, setItems] = useState<ConversationItem[]>([]);
-  const [isLoadingList, setIsLoadingList] = useState<boolean>(false);
-  const [formOpen, setFormOpen] = useState<boolean>(false);
-  const [editItem, setEditItem] = useState<ConversationItem | null>(null);
-  const [confirmOpen, setConfirmOpen] = useState<boolean>(false);
-  const [deletingId, setDeletingId] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
+  const [editingItem, setEditingItem] = useState<ConversationItem | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [pagination, setPagination] = useState<Pagination | null>(null);
+  const [page, setPage] = useState<number>(1);
+  const [limit] = useState<number>(12);
 
-  async function loadList() {
-    try {
-      setIsLoadingList(true);
-      const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_HOST_URL}/knowledge/conversation`,
-        { params: { page: 1, limit: 100 }, headers: { Accept: "*/*" } }
-      );
-      const data = res?.data?.data as ConversationItem[];
-      setItems(Array.isArray(data) ? data : []);
-    } catch (e) {
-      toast.error("Failed to load conversations");
-    } finally {
-      setIsLoadingList(false);
-    }
-  }
+  const loadList = useCallback(
+    async (targetPage = page) => {
+      try {
+        setIsLoading(true);
+        const query = new URLSearchParams({
+          page: String(targetPage),
+          limit: String(limit),
+        });
+
+        const res = (await getData(
+          `/knowledge/conversation?${query.toString()}`,
+          session
+        )) as ListResponse;
+
+        setItems(Array.isArray(res?.data) ? res.data : []);
+        setPagination(res?.meta ?? null);
+        setPage(targetPage);
+      } catch (e) {
+        toast.error("Failed to load conversations");
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [session, limit, page]
+  );
 
   useEffect(() => {
-    loadList();
+    loadList(1);
   }, []);
 
-  async function deleteItem(id: string) {
+  const handleDelete = async (id: string) => {
     try {
       const res = await axios.delete(
         `${process.env.NEXT_PUBLIC_HOST_URL}/knowledge/conversation/${id}`,
@@ -62,144 +91,173 @@ export default function KnowledgeConversations() {
       );
       if (res.status >= 200 && res.status < 300) {
         toast.success("Deleted successfully");
-        setItems((prev) => prev.filter((x) => x.id !== id));
-        setConfirmOpen(false);
-        setDeletingId("");
-      } else {
-        toast.error("Delete failed");
+        setDeletingId(null);
+        loadList(page);
       }
     } catch (e: any) {
       toast.error(e?.response?.data?.message || "Delete failed");
     }
-  }
+  };
 
   return (
-    <section className="blade-top-margin-lg">
-      <SectionHeading
-        heading="Section - 03 (Conversations)"
-        ctaText="Add new conversation"
-        cta
-        handleClick={() => {
-          setEditItem(null);
-          setFormOpen(true);
-        }}
-      />
+    <>
+      <section className="blade-top-margin pb-10">
+        <SectionHeading
+          heading="Knowledge Conversations"
+          ctaText="Add New Conversation"
+          cta
+          handleClick={() => {
+            setEditingItem(null);
+            setIsFormOpen(true);
+          }}
+        />
 
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
-        {items.length === 0 && (
-          <div className="col-span-full text-center text-darkgray/70 py-8 border border-lightgray/30 rounded-md bg-white">
-            No conversations found.
+        {isLoading && items.length === 0 ? (
+          <div className="mt-10 text-center py-20 bg-white/50 rounded-lg">
+            <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-pink border-t-transparent"></div>
+            <p className="mt-2 text-gray-500 font-poppin">
+              Loading conversations...
+            </p>
           </div>
-        )}
-        {items.map((it) => (
-          <article
-            key={it.id}
-            className="rounded-lg border border-lightgray/40 bg-white p-3 shadow-sm hover:shadow-md transition-shadow gap-4"
-          >
-            <img
-              src={`${process.env.NEXT_PUBLIC_HOST_URL}${it.image}`}
-              alt={it.name}
-              className="w-full object-cover rounded-md border border-lightgray/40"
-            />
-            <div className="flex-1 mt-3">
-              <h6 className="text-base font-medium leading-snug">{it.name}</h6>
-              <p className="text-sm text-darkgray/80 line-clamp-2 ">
-                {it.title}
-              </p>
-              <p className="text-sm text-darkgray/80 line-clamp-2 mt-1">
-                {it.desc}
-              </p>
-              <div className="  mt-3 gap-1 flex flex-col ">
-                <span className="text-xs text-darkgray/70 whitespace-nowrap block">{it.date}</span>
-                 
-                <a
-                  href={it.videoLink}
-                  target="_blank"
-                  className="underline   "
+        ) : items.length === 0 ? (
+          <div className="mt-10 flex flex-col items-center justify-center py-20 bg-white border border-dashed border-gray-300 rounded-lg translate-y-2">
+            <p className="text-gray-500 font-medium font-poppin">
+              No conversations found.
+            </p>
+          </div>
+        ) : (
+          <>
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
+              {items.map((it) => (
+                <article
+                  key={it.id}
+                  className="group bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-all duration-300"
                 >
-                  Video
-                </a>
-              </div>
-            </div>
-            <div className="flex justify-between gap-3 mt-6">
-              <Button
-                text="Delete"
-                theme="transparentPink"
-                size="base"
-                onClick={() => {
-                  setDeletingId(it.id);
-                  setConfirmOpen(true);
-                }}
-              />
-              <Button
-                text="Edit"
-                theme="pink"
-                size="base"
-                onClick={() => {
-                  setEditItem(it);
-                  setFormOpen(true);
-                }}
-              />
-            </div>
-          </article>
-        ))}
-      </div>
+                  <div className="relative h-56 overflow-hidden bg-gray-100">
+                    <img
+                      src={`${process.env.NEXT_PUBLIC_HOST_URL}${it.image}`}
+                      alt={it.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
 
-      {formOpen && (
+                  <div className="p-4 flex flex-col flex-1">
+                    <div className="text-xs w-fit font-medium text-pink px-2 py-0.5 mb-2 bg-pink/10 rounded-full">
+                      {it.date}
+                    </div>
+
+                    <h3 className="text-base font-bold text-gray-900 leading-tight mb-1  ">
+                      {it.name}
+                    </h3>
+                    <p className="text-sm font-medium text-pink   tracking-wider mb-2 ">
+                      {it.title}
+                    </p>
+
+                    <p className="text-xs text-gray-500 line-clamp-3 mb-4 flex-1">
+                      {it.desc}
+                    </p>
+
+                    <div className="mb-4 pt-2 border-t border-gray-50">
+                      <a
+                        href={it.videoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-[11px] font-bold text-blue-600 hover:text-blue-700 uppercase tracking-widest transition-colors"
+                      >
+                        <Video className="w-3.5 h-3.5" />
+                        Watch Conversation
+                      </a>
+                    </div>
+
+                    <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between gap-2">
+                      <Button
+                        theme="transparentGray"
+                        size="small"
+                        text="Delete"
+                        onClick={() => setDeletingId(it.id)}
+                      />
+                      <Button
+                        theme="pink"
+                        size="small"
+                        text="Edit"
+                        onClick={() => {
+                          setEditingItem(it);
+                          setIsFormOpen(true);
+                        }}
+                      />
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            {/* Pagination */}
+            {pagination && (
+              <div className="flex items-center justify-center gap-4 pt-10 mt-6 border-t border-gray-100">
+                <Button
+                  text="Previous"
+                  theme="transparentGray"
+                  size="small"
+                  isDisabled={page <= 1}
+                  onClick={() => loadList(page - 1)}
+                />
+                <div className="flex gap-2">
+                  {Array.from(
+                    { length: pagination.totalPages },
+                    (_, i) => i + 1
+                  ).map((p) => (
+                    <button
+                      key={p}
+                      onClick={() => loadList(p)}
+                      className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${
+                        p === page
+                          ? "bg-pink text-white shadow-md shadow-pink/20"
+                          : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
+                      }`}
+                    >
+                      {p}
+                    </button>
+                  ))}
+                </div>
+                <Button
+                  text="Next"
+                  theme="transparentGray"
+                  size="small"
+                  isDisabled={page >= pagination.totalPages}
+                  onClick={() => loadList(page + 1)}
+                />
+              </div>
+            )}
+          </>
+        )}
+      </section>
+
+      {isFormOpen && (
         <ConversationForm
-          initalData={editItem}
-          onClose={async () => {
-            setFormOpen(false);
-            setEditItem(null);
-            await loadList();
+          initialData={editingItem}
+          onClose={() => setIsFormOpen(false)}
+          onSuccess={() => {
+            setIsFormOpen(false);
+            loadList(page);
           }}
         />
       )}
 
-      {confirmOpen && (
-        <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center ">
-          <div className="w-[24rem] relative blade-top-padding-s bg-white rounded-md shadow-2xl h-auto max-h-[70vh] overflow-auto overflow-x-hidden p-6">
-            <div className="flex justify-between items-center mb-4">
-              <h6 className="text-base font-medium">Confirm deletion</h6>
-              <button
-                type="button"
-                aria-label="close modal"
-                className="rounded-full ring-1 scale-75 hover:scale-90 transition-all duration-300 cursor-pointer"
-                onClick={() => setConfirmOpen(false)}
-              >
-                <X />
-              </button>
-            </div>
-            <p className="text-sm text-darkgray/80">
-              This action cannot be undone. Are you sure you want to delete this
-              conversation?
-            </p>
-            <div className="mt-6 flex justify-end gap-3">
-              <Button
-                text="Cancel"
-                theme="transparentGray"
-                size="small"
-                onClick={() => setConfirmOpen(false)}
-              />
-              <Button
-                text="Delete"
-                theme="pink"
-                size="small"
-                onClick={() => deletingId && deleteItem(deletingId)}
-              />
-            </div>
-          </div>
-        </div>
+      {deletingId && (
+        <ConfirmationPopup
+          onClose={() => setDeletingId(null)}
+          onDelete={() => handleDelete(deletingId)}
+        />
       )}
-    </section>
+    </>
   );
 }
 
 const conversationSchema = z.object({
   name: z.string().min(1, "Name is required"),
-  title: z.string().min(1, "Title is required"),
+  title: z.string().min(1, "Title/Designation is required"),
   desc: z.string().min(1, "Description is required"),
-  videoLink: z.string().url("Valid YouTube link is required"),
+  videoLink: z.string().url("Valid video link is required"),
   date: z.string().min(1, "Date is required"),
   imageFile: z.any(),
 });
@@ -207,35 +265,16 @@ const conversationSchema = z.object({
 type ConversationFormValues = z.infer<typeof conversationSchema>;
 
 function ConversationForm({
-  initalData,
+  initialData,
   onClose,
+  onSuccess,
 }: {
-  initalData: ConversationItem | null;
+  initialData: ConversationItem | null;
   onClose: () => void;
+  onSuccess: () => void;
 }) {
   const { data: session } = useSession();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const defaultValues: Partial<ConversationFormValues> = useMemo(() => {
-    if (!initalData) {
-      return {
-        name: "",
-        title: "",
-        desc: "",
-        videoLink: "",
-        date: "",
-        imageFile: "",
-      };
-    }
-    return {
-      name: initalData.name,
-      title: initalData.title,
-      desc: initalData.desc,
-      videoLink: initalData.videoLink,
-      date: initalData.date,
-      imageFile: initalData.image,
-    };
-  }, [initalData]);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   const {
     register,
@@ -245,12 +284,19 @@ function ConversationForm({
     formState: { errors },
   } = useForm<ConversationFormValues>({
     resolver: zodResolver(conversationSchema),
-    defaultValues: defaultValues as ConversationFormValues,
+    defaultValues: {
+      name: initialData?.name || "",
+      title: initialData?.title || "",
+      desc: initialData?.desc || "",
+      videoLink: initialData?.videoLink || "",
+      date: initialData?.date || "",
+      imageFile: initialData?.image || undefined,
+    } as any,
   });
 
-  const submitHandler: SubmitHandler<ConversationFormValues> = async (data) => {
+  const onSubmit: SubmitHandler<ConversationFormValues> = async (data) => {
     try {
-      setIsLoading(true);
+      setIsSubmitting(true);
       const formData = new FormData();
       formData.append("name", data.name);
       formData.append("title", data.title);
@@ -259,25 +305,25 @@ function ConversationForm({
       formData.append("date", data.date);
       formData.append("active", "true");
 
-      const imgVal = data.imageFile as unknown;
-      if (typeof imgVal === "string" && imgVal.trim()) {
-        // existing URL/path
+      const imgVal = data.imageFile;
+      if (imgVal instanceof FileList && imgVal.length > 0) {
+        formData.append("imageFile", imgVal[0]);
+      } else if (typeof imgVal === "string" && imgVal.trim()) {
         formData.append("imageUrl", imgVal);
-      } else if (imgVal instanceof FileList && imgVal.length > 0) {
-        formData.append("imageFile", imgVal[0] as File);
-      } else {
+      } else if (!initialData) {
         setError("imageFile", { type: "manual", message: "Image is required" });
+        setIsSubmitting(false);
         return;
       }
 
       let url = `${process.env.NEXT_PUBLIC_HOST_URL}/knowledge/conversation`;
       let method: "post" | "patch" = "post";
-      if (initalData?.id) {
-        url = `${url}/${initalData.id}`;
+      if (initialData?.id) {
+        url = `${url}/${initialData.id}`;
         method = "patch";
       }
 
-      const res = await axios.request({
+      await axios.request({
         url,
         method,
         data: formData,
@@ -287,98 +333,110 @@ function ConversationForm({
         },
       });
 
-      if (res.status === 200 || res.status === 201) {
-        toast.success(
-          initalData ? "Updated successfully" : "Created successfully"
-        );
-        onClose();
-      } else {
-        toast.error("Save failed");
-      }
+      toast.success(
+        initialData ? "Updated successfully" : "Created successfully"
+      );
+      onSuccess();
     } catch (e: any) {
       toast.error(e?.response?.data?.message || "Save failed");
     } finally {
-      setIsLoading(false);
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center ">
-      <div className="w-[32rem] relative blade-top-padding-s bg-white rounded-md shadow-2xl h-auto max-h-[85vh] overflow-auto overflow-x-hidden">
-        <form className="h-full" onSubmit={handleSubmit(submitHandler)}>
-          <div className="flex justify-end sticky top-2 px-1 z-[999]">
-            <button
-              type="button"
-              aria-label="close modal"
-              className="rounded-full ring-1 scale-75 hover:scale-90 transition-all duration-300 cursor-pointer"
-              onClick={onClose}
-            >
-              <X />
-            </button>
-          </div>
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+      <div
+        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        onClick={onClose}
+      ></div>
+      <div className="relative w-full max-w-2xl bg-white rounded-xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col font-poppin">
+        <div className="flex items-center justify-between p-6 border-b border-gray-100 bg-white sticky top-0 z-10">
+          <h2 className="text-xl font-bold text-gray-900">
+            {initialData ? "Edit Conversation" : "Create New Conversation"}
+          </h2>
+          <button
+            onClick={onClose}
+            className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+          >
+            <X className="w-6 h-6 text-gray-500" />
+          </button>
+        </div>
 
-          <div className="flex flex-col gap-y-6 h-full p-8 pt-1">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex-1 overflow-y-auto p-6 space-y-6"
+        >
+          <div className="space-y-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <TextInput
+                label="Full Name"
+                errors={errors.name}
+                placeholder="Enter speaker name"
+                register={register}
+                registerer="name"
+              />
+              <TextInput
+                label="Date / Month"
+                errors={errors.date}
+                placeholder="e.g. June 25, 2025"
+                register={register}
+                registerer="date"
+              />
+            </div>
+
             <TextInput
-              label="Name"
-              errors={errors.name}
-              placeholder="Enter name"
-              register={register}
-              registerer="name"
-              tooltip="Name is required"
-            />
-            <TextInput
-              label="Title"
+              label="Designation"
               errors={errors.title}
-              placeholder="Enter title/designation"
+              placeholder="e.g. Managing Director at ABC Corp"
               register={register}
               registerer="title"
-              tooltip="Title is required"
             />
-            <TextInput
-              label="Description"
+
+            <MessageInput
+              label="Topic Description"
               errors={errors.desc}
-              placeholder="Enter description/topic"
+              placeholder="Write a brief overview of the conversation topic..."
               register={register}
               registerer="desc"
-              tooltip="Description is required"
             />
+
             <TextInput
-              label="YouTube Link"
+              label="Video URL (YouTube)"
               errors={errors.videoLink}
               placeholder="https://www.youtube.com/watch?v=..."
               register={register}
               registerer="videoLink"
-              tooltip="Valid YouTube link"
             />
-            <TextInput
-              label="Date"
-              errors={errors.date}
-              placeholder="June, 2025"
-              register={register}
-              registerer="date"
-              tooltip="Display date"
-            />
+
             <ImagePicker
-              label="Image"
+              label="Cover Image"
               errors={errors.imageFile}
               register={register}
               registerer="imageFile"
               watcher={watch("imageFile")}
-              accept=".svg, .png, .jpg, .jpeg, .webp"
-              tooltip="Max 2MB. Recommended 1200x628"
+              accept=".png, .jpg, .jpeg, .webp"
             />
+          </div>
 
-            <div className="mt-auto">
-              <Button
-                type="submit"
-                theme="pink"
-                size="large"
-                className="w-full"
-                text={initalData ? "Update" : "Create"}
-                isLoading={isLoading}
-                isDisabled={isLoading}
-              />
-            </div>
+          <div className="mt-8 flex gap-3 sticky bottom-0 bg-white pb-2">
+            <Button
+              type="button"
+              text="Cancel"
+              theme="transparentGray"
+              size="large"
+              className="flex-1"
+              onClick={onClose}
+            />
+            <Button
+              type="submit"
+              text={initialData ? "Update Conversation" : "Create Conversation"}
+              theme="pink"
+              size="large"
+              className="flex-1"
+              isLoading={isSubmitting}
+              isDisabled={isSubmitting}
+            />
           </div>
         </form>
       </div>

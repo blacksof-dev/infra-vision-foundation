@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useMemo, useState, useCallback } from "react";
 import SectionHeading from "../../components/sectionHeading";
 import TextInput from "../../components/input/textInput";
 import MessageInput from "../../components/input/textareaInput";
@@ -10,6 +10,7 @@ import ImagePicker from "../../components/input/imagePicker";
 import { Button } from "../../components/button";
 import { X, ExternalLink, Info } from "lucide-react";
 import { useSession } from "next-auth/react";
+import { getData } from "../../lib/utils";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { ToggleSwitch } from "../../components/toggleSwitch";
@@ -20,10 +21,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/_components/ui/select";
-import { getData } from "../../lib/utils";
 import ConfirmationPopup from "../../components/confirmationPopup";
 
-type Trustee = {
+type Advisor = {
   id: string;
   image: string;
   title: string;
@@ -32,55 +32,55 @@ type Trustee = {
   link?: string;
   socialMedia?: string;
   popupdesc?: string;
-  order: number;
   active: boolean;
 };
 
-type TrusteesResponse = {
-  trustees: Trustee[];
+type AdvisorsResponse = {
+  advisors: Advisor[];
+  totalCount: number;
   lastUpdated?: string;
 };
 
-export default function TeamsTrustees() {
+export default function Advisors() {
   const { data: session } = useSession();
-  const [items, setItems] = useState<Trustee[]>([]);
+  const [items, setItems] = useState<Advisor[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // Form State
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [editingItem, setEditingItem] = useState<Trustee | null>(null);
+  const [editingItem, setEditingItem] = useState<Advisor | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
-  const loadTrustees = useCallback(async () => {
+  const loadAdvisors = useCallback(async () => {
     try {
       setIsLoading(true);
-      const res = (await getData(
-        `/teams/trustees`,
+      const data = (await getData(
+        `/teams/advisors`,
         session
-      )) as TrusteesResponse;
-      setItems(res.trustees ?? []);
+      )) as AdvisorsResponse;
+      setItems(data.advisors ?? []);
     } catch (e) {
-      toast.error("Failed to load trustees");
+      toast.error("Failed to load advisors");
     } finally {
       setIsLoading(false);
     }
   }, [session]);
 
   useEffect(() => {
-    loadTrustees();
-  }, [loadTrustees]);
+    loadAdvisors();
+  }, [loadAdvisors]);
 
   // const handleToggle = async (id: string) => {
   //   try {
-  //     await axios.put(
-  //       `${process.env.NEXT_PUBLIC_HOST_URL}/teams/trustees/${id}`,
-  //       { active: !items.find((i) => i.id === id)?.active },
+  //     await axios.patch(
+  //       `${process.env.NEXT_PUBLIC_HOST_URL}/teams/advisors/${id}/toggle-status`,
+  //       null,
   //       {
   //         headers: { Authorization: `Bearer ${session?.accessToken}` },
   //       }
   //     );
   //     toast.success("Status updated");
-  //     loadTrustees();
+  //     loadAdvisors();
   //   } catch (error: any) {
   //     toast.error(error?.response?.data?.message || "Failed to toggle status");
   //   }
@@ -89,16 +89,16 @@ export default function TeamsTrustees() {
   const handleDelete = async (id: string) => {
     try {
       await axios.delete(
-        `${process.env.NEXT_PUBLIC_HOST_URL}/teams/trustees/${id}`,
+        `${process.env.NEXT_PUBLIC_HOST_URL}/teams/advisors/${id}`,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
         }
       );
-      toast.success("Trustee deleted successfully");
+      toast.success("Advisor deleted successfully");
       setDeletingId(null);
-      loadTrustees();
+      loadAdvisors();
     } catch (error: any) {
-      toast.error(error?.response?.data?.message || "Failed to delete trustee");
+      toast.error(error?.response?.data?.message || "Failed to delete advisor");
     }
   };
 
@@ -106,9 +106,9 @@ export default function TeamsTrustees() {
     <>
       <section className="blade-top-margin pb-10">
         <SectionHeading
-          heading="Trustees"
-          // description="Manage the board of trustees, their biographies, and social media presence."
-          ctaText="Add New Trustee"
+          heading="Council of Advisors  "
+          // description="Manage advisory board members, their profile, and biographies."
+          ctaText="Add Advisor"
           cta={true}
           handleClick={() => {
             setEditingItem(null);
@@ -119,16 +119,16 @@ export default function TeamsTrustees() {
         {isLoading ? (
           <div className="mt-10 text-center py-20 bg-white/50 rounded-lg">
             <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-pink border-t-transparent"></div>
-            <p className="mt-2 text-gray-500">Loading trustees...</p>
+            <p className="mt-2 text-gray-500">Loading advisors...</p>
           </div>
         ) : items.length === 0 ? (
           <div className="mt-10 text-center py-20 bg-white border border-dashed border-gray-300 rounded-lg">
-            <p className="text-gray-500">No trustees found.</p>
+            <p className="text-gray-500">No advisors found.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 mt-6">
             {items.map((item) => (
-              <TrusteeMemberCard
+              <AdvisorCard
                 key={item.id}
                 item={item}
                 onEdit={() => {
@@ -175,14 +175,14 @@ export default function TeamsTrustees() {
       </section>
 
       {isFormOpen && (
-        <TrusteeForm
+        <AdvisorForm
           initialData={editingItem}
           onClose={() => {
             setIsFormOpen(false);
             setEditingItem(null);
           }}
           onSuccess={() => {
-            loadTrustees();
+            loadAdvisors();
             setIsFormOpen(false);
             setEditingItem(null);
           }}
@@ -199,30 +199,25 @@ export default function TeamsTrustees() {
   );
 }
 
-function TrusteeMemberCard({
+function AdvisorCard({
   item,
   onEdit,
   onDelete,
 }: // onToggle,
 {
-  item: Trustee;
+  item: Advisor;
   onEdit: () => void;
   onDelete: () => void;
   // onToggle: () => void;
 }) {
   return (
     <article className="group bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-all duration-300">
-      <div className="relative aspect-[4/5] overflow-hidden bg-gray-100">
+      <div className="relative h-64 overflow-hidden bg-gray-100">
         <img
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           src={`${process.env.NEXT_PUBLIC_HOST_URL}${item.image}`}
           alt={item.title}
         />
-        <div className="absolute top-2 right-2 flex flex-col gap-1">
-          <span className="bg-black/50 backdrop-blur-md text-white px-2 py-0.5 rounded text-[10px] font-bold">
-            Order: {item.order}
-          </span>
-        </div>
 
         {item.popupImg && (
           <div className="absolute bottom-2 right-2 w-16 h-16 bg-white backdrop-blur-sm rounded-lg p-0.5 shadow-md border border-gray-100 overflow-hidden">
@@ -282,29 +277,28 @@ function TrusteeMemberCard({
   );
 }
 
-const trusteeSchema = z.object({
+const advisorSchema = z.object({
   title: z.string().min(1, "Name is required"),
   desig: z.string().min(1, "Designation is required"),
   popupdesc: z.string().min(1, "Popup description is required"),
   link: z.string().optional().or(z.literal("")),
   socialMedia: z.string().optional().or(z.literal("")),
-  order: z.coerce.number(),
   active: z.boolean(),
   image: z.union([
     z.string().min(1, "image is required"),
     z.any().refine((file) => file?.length > 0, "image is required"),
   ]),
-  popupImg: z.union([z.string(), z.any()]).optional(),
+  popupImage: z.union([z.string(), z.any()]).optional(),
 });
 
-type TrusteeFormValues = z.infer<typeof trusteeSchema>;
+type AdvisorFormValues = z.infer<typeof advisorSchema>;
 
-function TrusteeForm({
+function AdvisorForm({
   initialData,
   onClose,
   onSuccess,
 }: {
-  initialData: Trustee | null;
+  initialData: Advisor | null;
   onClose: () => void;
   onSuccess: () => void;
 }) {
@@ -318,32 +312,30 @@ function TrusteeForm({
     setValue,
     setError,
     formState: { errors },
-  } = useForm<TrusteeFormValues>({
-    resolver: zodResolver(trusteeSchema),
+  } = useForm<AdvisorFormValues>({
+    resolver: zodResolver(advisorSchema),
     defaultValues: initialData
       ? {
           title: initialData.title,
           desig: initialData.desig,
-          popupdesc: initialData.popupdesc || "",
+          popupdesc: initialData.popupdesc,
           link: initialData.link || "",
           socialMedia: initialData.socialMedia || "",
-          order: initialData.order,
           active: initialData.active,
           image: initialData.image,
-          popupImg: initialData.popupImg,
+          popupImage: initialData.popupImg,
         }
       : {
           title: "",
           desig: "",
           popupdesc: "",
           active: true,
-          order: 0,
           image: undefined,
-          popupImg: undefined,
+          popupImage: undefined,
         },
   });
 
-  const onSubmit: SubmitHandler<TrusteeFormValues> = async (data) => {
+  const onSubmit: SubmitHandler<AdvisorFormValues> = async (data) => {
     try {
       setIsSubmitting(true);
       const formData = new FormData();
@@ -351,7 +343,6 @@ function TrusteeForm({
       formData.append("title", data.title);
       formData.append("desig", data.desig);
       formData.append("popupdesc", data.popupdesc);
-      formData.append("order", String(data.order));
       formData.append("active", String(data.active));
 
       if (data.link) formData.append("link", data.link);
@@ -367,16 +358,16 @@ function TrusteeForm({
         return;
       }
 
-      // Handle popup image
-      const popupImgVal = data.popupImg as any;
+      // Handle popup image - API parameter is popupImage
+      const popupImgVal = data.popupImage as any;
       if (popupImgVal instanceof FileList && popupImgVal.length > 0) {
-        formData.append("popupImg", popupImgVal[0]);
+        formData.append("popupImage", popupImgVal[0]);
       }
 
       const method = initialData ? "put" : "post";
       const url = initialData
-        ? `${process.env.NEXT_PUBLIC_HOST_URL}/teams/trustees/${initialData.id}`
-        : `${process.env.NEXT_PUBLIC_HOST_URL}/teams/trustees`;
+        ? `${process.env.NEXT_PUBLIC_HOST_URL}/teams/advisors/${initialData.id}`
+        : `${process.env.NEXT_PUBLIC_HOST_URL}/teams/advisors`;
 
       await axios({
         method,
@@ -388,7 +379,7 @@ function TrusteeForm({
         },
       });
 
-      toast.success(initialData ? "Trustee updated" : "Trustee created");
+      toast.success(initialData ? "Advisor updated" : "Advisor created");
       onSuccess();
     } catch (error: any) {
       console.error("Submission error:", error);
@@ -403,7 +394,7 @@ function TrusteeForm({
       <div className="w-[40rem] relative bg-white rounded-xl shadow-2xl h-auto max-h-[90vh] flex flex-col">
         <div className="flex justify-between items-center p-6 border-b border-gray-100">
           <h3 className="text-xl font-bold text-gray-900">
-            {initialData ? "Edit Trustee Profile" : "Add New Trustee"}
+            {initialData ? "Edit Advisor" : "Create New Advisor"}
           </h3>
           <button
             type="button"
@@ -423,38 +414,38 @@ function TrusteeForm({
               <TextInput
                 label="Full Name"
                 errors={errors.title}
-                placeholder="e.g. Dr. Jane Smith"
+                placeholder="e.g. Nasser Munjee"
                 register={register}
                 registerer="title"
               />
               <TextInput
                 label="Designation/Role"
                 errors={errors.desig}
-                placeholder="e.g. Chairperson"
+                placeholder="e.g. Chairman"
                 register={register}
                 registerer="desig"
               />
             </div>
 
             <MessageInput
-              label="Detailed Biography (Popup)"
+              label="Popup Bio Description"
               errors={errors.popupdesc}
-              placeholder="Tell something about this trustee..."
+              placeholder="Detailed profile bio..."
               register={register}
               registerer="popupdesc"
             />
 
             <div className="grid grid-cols-2 gap-4">
               <TextInput
-                label="Profile URL"
+                label="Social/Profile Link"
                 errors={errors.link}
-                placeholder="https://..."
+                placeholder="https://linkedin.com/in/..."
                 register={register}
                 registerer="link"
               />
               <div>
                 <label className="font-semibold text-sm mb-2 block text-gray-700">
-                  Social Platform
+                  Platform Name
                 </label>
                 <Select
                   value={watch("socialMedia") || ""}
@@ -486,28 +477,19 @@ function TrusteeForm({
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <TextInput
-                label="Order Priority"
-                errors={errors.order}
-                placeholder="0"
-                register={register}
-                registerer="order"
+            <div className="flex items-center gap-3 py-2">
+              <label className="font-medium text-sm text-gray-700">
+                Active Status
+              </label>
+              <ToggleSwitch
+                checked={watch("active")}
+                onChange={(val: boolean) => setValue("active", val)}
               />
-              <div className="flex items-center gap-3 py-2">
-                <label className="font-medium text-sm text-gray-700">
-                  Display Profile
-                </label>
-                <ToggleSwitch
-                  checked={watch("active")}
-                  onChange={(val: boolean) => setValue("active", val)}
-                />
-              </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <ImagePicker
-                label="Trustee Photo"
+                label="Advisor Photo"
                 errors={errors.image}
                 register={register}
                 registerer="image"
@@ -515,11 +497,11 @@ function TrusteeForm({
                 accept=".png, .jpg, .jpeg, .webp"
               />
               <ImagePicker
-                label="Secondary/Popup Photo"
-                errors={errors.popupImg}
+                label="Popup Secondary Photo"
+                errors={errors.popupImage}
                 register={register}
-                registerer="popupImg"
-                watcher={watch("popupImg")}
+                registerer="popupImage"
+                watcher={watch("popupImage")}
                 accept=".png, .jpg, .jpeg, .webp"
               />
             </div>
@@ -539,7 +521,7 @@ function TrusteeForm({
               theme="pink"
               size="large"
               className="flex-1"
-              text={initialData ? "Update Trustee" : "Create Trustee"}
+              text={initialData ? "Update Advisor" : "Create Advisor"}
               isLoading={isSubmitting}
               isDisabled={isSubmitting}
             />
