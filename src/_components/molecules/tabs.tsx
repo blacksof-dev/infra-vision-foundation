@@ -105,7 +105,7 @@ export default function OutreachTabs({ sectionRefs, tabs }: Props) {
         "bg-white",
         "z-50",
         " sticky top-0",
-        isHeaderVisible ? " top-20 xl:top-24" : "top-0"
+        isHeaderVisible ? " top-14 xl:top-18" : "top-0"
       )}
     >
       <div className="flex gap-2   w-container sm:gap-20   justify-start    z-40  ">

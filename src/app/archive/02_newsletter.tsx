@@ -52,7 +52,7 @@ const allcards = [
     title: "",
     sectors: "",
     date: "January 2026",
-    description: "Analysis and Action",
+    description: "Analysis and action",
     link: "/assets/pdf/analysisAction.pdf",
   },
   {
@@ -62,7 +62,7 @@ const allcards = [
     title: "",
     sectors: "",
     date: "December 2025",
-    description: "Infra pandit award 2025",
+    description: "InfraPandit Awards 2025",
     link: "/assets/pdf/decmber.pdf",
   },
   {

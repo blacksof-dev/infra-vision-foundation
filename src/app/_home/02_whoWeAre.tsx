@@ -45,7 +45,7 @@ const knowledge = [
     img: anumita.src,
     category: "The Infravision Conversation",
     title: "How to fix Delhi's air pollution ",
-    subtitle: "Anumita Roy Choudhury",
+    subtitle: "Anumita Roychowdhury",
     link: "https://youtu.be/YV7VYaCB7Yw?si=af66MfWQnjdsG_op",
     ctaText: "Watch now",
   },

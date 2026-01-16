@@ -63,7 +63,7 @@ export default function VideoCard({ data }: VideoCardProps) {
                 height={500}
                 alt="Image"
                 quality={100}
-                className="w-full h-full object-cover object-top rounded-md"
+                className="w-full h-full object-cover  object-top rounded-md"
               />
               <div className="group absolute right-4 bottom-4">
                 <button
@@ -145,10 +145,10 @@ export const VideoCardPopup = ({
   return (
     <Portal>
       <div className="flex justify-center md:items-center fixed inset-0 bg-black/90 z-[9999] py-4 overflow-y-auto">
-        <div className="bg-white my-auto  rounded-lg w-full max-w-lg md:max-w-4xl h-auto relative m-2 md:m-4 p-3 sm:p-4 flex flex-col md:flex-row md:gap-8 overflow-auto">
+        <div className="bg-white my-auto  rounded-lg w-full max-w-lg md:max-w-5xl d  relative m-2 md:m-4 p-3 sm:p-4 flex flex-col md:flex-row md:gap-8 overflow-auto">
           <button
             onClick={onclose}
-            className="scale-75 sm:scale-90 z-1 hover:scale-100 absolute top-1 right-1 sm:top-4 sm:right-4 h-10 w-10 text-pink bg-white border border-pink transition-all duration-300 ease-linear rounded-full flex justify-center items-center text-xl cursor-pointer"
+            className="scale-75 sm:scale-90 z-1 hover:scale-100 absolute top-1 right-1 sm:top-4 sm:right-4 h-10 w-10 d text-pink bg-white border border-pink transition-all duration-300 ease-linear rounded-full flex justify-center items-center text-xl cursor-pointer"
           >
             <RxCross2 className="text-2xl" />
           </button>
@@ -161,7 +161,7 @@ export const VideoCardPopup = ({
               height={50}
               unoptimized={true}
               quality={100}
-              className="rounded-lg  w-full h-full object-cover "
+              className="rounded-lg  w-full h-full object-contain border border-pink/30 "
             />
             <div className="group ">
               <button
@@ -173,7 +173,7 @@ export const VideoCardPopup = ({
             </div>
           </div>
 
-          <div className="w-full  md:w-1/2 flex flex-col justify-center">
+          <div className="w-full   md:w-1/2 flex flex-col justify-center">
             <Image
               src={videoPopupDetails.logo}
               alt="Logo"

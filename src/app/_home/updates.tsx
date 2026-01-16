@@ -105,10 +105,10 @@ export default function Updates() {
             onSlideChange={handleSlideChange}
           >
             {EventsDetails.map((ele, index) => (
-              <SwiperSlide key={index} className="  group ">
+              <SwiperSlide key={index} className="  group  ">
                 <Link href={ele.link} target="_blank">
-                  <div className="flex flex-row gap-4 bg-[#0000005e] backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4  h-[8rem] sm:h-[9rem]  lg:h-[10rem] xl:h-[13rem] xlg:h-[16rem] 2xl:h-[18rem] group-hover:bg-white transition-all duration-500 ease-linear">
-                    <div className="w-[6rem]   h-full md:w-[14rem] lg:w-[13rem]  xl:w-[20rem] xlg:w-[30rem]  relative ">
+                  <div className="flex flex-row gap-4 bg-[#0000005e] backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4  group h-[8rem] sm:h-[9rem]  lg:h-[10rem] xl:h-[13rem] xlg:h-[16rem] 2xl:h-[18rem] group-hover:bg-white transition-all duration-500 ease-linear ">
+                    <div className="w-[6rem]   h-full md:w-[14rem] lg:w-[13rem]  xl:w-[20rem] xlg:w-[30rem]  relative  group-hover:border group-hover:border-gray-300 ">
                       <Image
                         src={ele.image}
                         alt={ele.title}
@@ -162,7 +162,7 @@ const EventsDetails = [
     image: "/assets/home/updates/op.png",
     category: "Video",
     link: "https://www.youtube.com/embed/l_tOqH0ZpIE?si=AnuQwfGGP_POegUy",
-    title: "Why we need better planning of public transport",
+    title: "Dr O.P. Agarwal",
     btnTitle: "Watch video",
   },
    
@@ -185,7 +185,7 @@ const EventsDetails = [
   {
     image: analysis,
     category: "Newsletter",
-    title: "Analysis and Action",
+    title: "Analysis and action",
     btnTitle: "Read more",
     link: "/assets/pdf/analysisAction.pdf",
   },

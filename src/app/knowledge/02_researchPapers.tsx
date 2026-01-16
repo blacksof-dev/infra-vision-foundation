@@ -31,9 +31,8 @@ type SectorType =
   | "Energy"
   | "Urban Planning"
   | "Rural and Agri Infra"
-  | "Education"
   | "Infrastructure"
-  | "Health Infra";
+
 
 
 
@@ -47,8 +46,6 @@ const SECTORS: SectorType[] = [
   "Energy",
   "Urban Planning",
   "Rural and Agri Infra",
-  "Education",
-  "Health Infra",
   "Infrastructure"
 ];
 const INITIAL_VISIBLE_COUNT = 3;
@@ -73,7 +70,7 @@ const allcards = [
     title: "",
     sectors: "Urban Planning",
     date: " ",
-    description:"Impact of FSI Deregulation in Hyderabad",
+    description:"Impact of FSI deregulation in Hyderabad",
     link: "/assets/pdf/report-fsi-deregulation-in-hyderabad.pdf",
   },
    {
@@ -83,7 +80,7 @@ const allcards = [
     title: "",
     sectors: "Infrastructure",
     date: " ",
-    description:"Removing Barriers to Faster Penetration of Trees Outside Forests Productsin Construction Sector",
+    description:"Removing Barriers to Faster Penetration of Trees Outside Forests Products in Construction Sector",
     link: "/assets/pdf/removing-barriers-to-faster-penetration-of-trees-final-report.pdf",
   },
    {
@@ -192,9 +189,9 @@ const allcards = [
   {
     id: 11,
     img: img_10,
-    category: "Urban Planning",
+    category: "Transportation",
     title: "",
-    sectors: "Urban Planning",
+    sectors: "Transportation",
     date: " ",
     description: "Decarbonizing urban transport using traffic and transport data from ICCC: A Pilot Study in NOIDA",
     link: "/assets/pdf/decarbonizing.pdf",
@@ -368,11 +365,10 @@ export default function ResearchPapers() {
             </div>
           </div>
 
-          {/* Filter Buttons */}
-          {/* {selectedTab === "Publication Year" && renderFilterButtons(YEARS)} */}
+       
           {selectedTab === "Sectors" && renderFilterButtons(SECTORS)}
 
-          {/* Newsletter Cards */}
+         
           <div
             className={`pt-8`}
           >

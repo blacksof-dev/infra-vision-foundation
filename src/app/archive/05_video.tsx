@@ -54,10 +54,11 @@ export default function Video() {
 const filter = [
   "All",
   "Projects",
-  "Quarterly meet",
+ 
   "Infrakatha",
   "The Infravision Conversation",
-  "InfraShakti Awards"
+  "InfraShakti Awards",
+   "Quarterly meet"
 ];
 
 function TabsSection({

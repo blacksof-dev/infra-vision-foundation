@@ -61,7 +61,7 @@ const Footer = () => {
     setMessage("Thanks for joining our newsletter.");
     setTimeout(() => {
       setMessage(" ");
-    }, 2000);
+    }, 4000);
     reset();
   };
 

@@ -26,7 +26,6 @@ const dropdownOptions = [
   "Participation in events",
   "Media inquiry",
   "Intellectual contribution",
-  // FIXME: Permission to use our intellectual property, remove "our" because of overflow on mobile
   "Permission to use intellectual property",
   "Others",
 ];
@@ -221,8 +220,12 @@ export default function ContactForm() {
                     <Input
                       id="contactNumber"
                       type="number"
+                      maxLength={10}
                       placeholder="Contact number* "
-                      {...register("contactNumber")}
+                      {...register("contactNumber",{
+                        required:"Contact number is required",
+                       
+                      })}
                     />
                     {errors.contactNumber && (
                       <p className="text-red-500 text-sm mt-1">

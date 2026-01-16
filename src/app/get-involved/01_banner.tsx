@@ -1,6 +1,5 @@
 import banner from "@/../public/assets/contact/banner.png";
 import bannerMob from "@/../public/assets/contact/bannerMobile.png";
-import { HeroBtnPink } from "@/_components/atoms/buttons";
 import Image from "next/image";
 import Link from "next/link";
 import { RiArrowRightSLine } from "react-icons/ri";
@@ -66,18 +65,7 @@ export default function GetInvolvedBanner() {
                   </h5>
                 </div>
 
-                <HeroBtnPink
-                  text="Apply now"
-                  role="link"
-                  borderColor="pink"
-                  color="white"
-                  bgColor="transparent"
-                  size="large"
-                  aarowColor="white"
-                  classes="font-medium"
-                  link="https://docs.google.com/forms/d/e/1FAIpQLSdjpffzJCT6qmQXNUmoUau7giN4qVTsm5j3ysGZ0r8QxiG05g/viewform?usp=sharing&ouid=118204303619309850521"
-                  target={"_blank"}
-                />
+               
               </div>
             </div>
           </div>
