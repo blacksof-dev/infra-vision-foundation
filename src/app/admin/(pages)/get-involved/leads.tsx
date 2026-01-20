@@ -64,7 +64,6 @@ export default function Leads() {
 
   async function fetchLeads() {
     try {
-
       const params = new URLSearchParams({
         page: String(pagination.page),
         limit: String(pagination.limit),
@@ -72,7 +71,6 @@ export default function Leads() {
         sortOrder,
       });
 
-      
       if (filter === "read") params.append("isRead", String(true));
       if (filter === "unread") params.append("isRead", String(false));
 
@@ -92,7 +90,7 @@ export default function Leads() {
     try {
       const res = await axios.delete(
         `${process.env.NEXT_PUBLIC_HOST_URL}/contact/leads/${id}`,
-        { headers: { Authorization: `Bearer ${session?.accessToken}` } }
+        { headers: { Authorization: `Bearer ${session?.accessToken}` } },
       );
       if (res.status >= 200 && res.status < 300) {
         toast.success("Deleted successfully");
@@ -112,7 +110,7 @@ export default function Leads() {
       await axios.patch(
         `${process.env.NEXT_PUBLIC_HOST_URL}/contact/leads/${id}/mark-read`,
         {},
-        { headers: { Authorization: `Bearer ${session?.accessToken}` } }
+        { headers: { Authorization: `Bearer ${session?.accessToken}` } },
       );
       fetchLeads();
     } catch (e) {
@@ -290,7 +288,7 @@ export default function Leads() {
               <p className="text-sm mb-2">
                 <strong>File:</strong>{" "}
                 <a
-                  href={process.env.NEXT_PUBLIC_HOST_URL+selectedLead.fileUrl}
+                  href={process.env.NEXT_PUBLIC_HOST_URL + selectedLead.fileUrl}
                   target="_blank"
                   className="text-blue-500"
                 >

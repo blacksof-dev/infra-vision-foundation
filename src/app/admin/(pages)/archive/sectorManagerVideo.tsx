@@ -49,7 +49,10 @@ export default function SectorsManagerVideo() {
   async function loadSectors() {
     try {
       setIsLoadingList(true);
-      const data = (await getData("/archives/videos/categories", session)) as Sector[];
+      const data = (await getData(
+        "/archives/videos/categories",
+        session,
+      )) as Sector[];
       setFormState((s) => ({ ...s, items: data }));
     } catch (e) {
       toast.error("Failed to load sectors");
@@ -67,7 +70,7 @@ export default function SectorsManagerVideo() {
     try {
       const res = await axios.delete(
         `${process.env.NEXT_PUBLIC_HOST_URL}/archives/videos/categories/${id}`,
-        { headers: { Authorization: `Bearer ${session?.accessToken}` } }
+        { headers: { Authorization: `Bearer ${session?.accessToken}` } },
       );
       if (res.status >= 200 && res.status < 300) {
         toast.success("Deleted successfully");
@@ -87,9 +90,11 @@ export default function SectorsManagerVideo() {
 
   return (
     <section className="blade-top-padding">
-      <SectionHeading heading="Section - 05 (Gallery)" />
+      <SectionHeading heading="Archives - Video Categories" />
       <div className="py-3 mt-6 text-xl flex justify-between">
-        <h5>All Tabs</h5>
+        <h5 className="font-poppin font-bold text-gray-900">
+          Manage Video Tabs
+        </h5>
         <div>
           <Button
             text="Add new tab"
@@ -229,14 +234,13 @@ function SectorFormModal({
           slug: slugFromName,
           active: true,
           description: "",
-          order: 1,
         },
         headers: { Authorization: `Bearer ${session?.accessToken}` },
       });
       console.log(res);
       if (res.status === 200 || res.status === 201) {
         toast.success(
-          initalData ? "Updated successfully" : "Created successfully"
+          initalData ? "Updated successfully" : "Created successfully",
         );
         onClose();
       } else {

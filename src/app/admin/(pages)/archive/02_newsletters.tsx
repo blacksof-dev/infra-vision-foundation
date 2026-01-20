@@ -1,9 +1,9 @@
 "use client";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useCallback } from "react";
 import SectionHeading from "../../components/sectionHeading";
 import TextInput from "../../components/input/textInput";
 import { Button } from "../../components/button";
-import { X } from "lucide-react";
+import { X, Calendar, ExternalLink } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { getData } from "../../lib/utils";
 import axios from "axios";
@@ -12,8 +12,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import ImagePicker from "../../components/input/imagePicker";
 import PdfPicker from "../../components/input/pdfPicker";
+import { ToggleSwitch } from "../../components/toggleSwitch";
 import { fileSchema, generalSchema } from "../../lib/zod";
 import { toast } from "react-toastify";
+import ConfirmationPopup from "../../components/confirmationPopup";
 import {
   Select,
   SelectContent,
@@ -26,7 +28,7 @@ interface NewsletterItem {
   id: string;
   title: string;
   subtitle: string;
-  version: string;
+
   publishedDate: string; // YYYY-MM-DD
   coverImage: string;
   fileUrl: string;
@@ -65,42 +67,47 @@ export default function Newsletters() {
   const [pagination, setPagination] = useState<Pagination | null>(null);
   const [isLoadingList, setIsLoadingList] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
-  const [limit] = useState<number>(10);
-  const [sortBy, setSortBy] = useState<string>("publishedDate");
+  const [limit] = useState<number>(12);
+  const [sortBy] = useState<string>("publishedDate");
   const [sortOrder, setSortOrder] = useState<string>("desc");
   const [year, setYear] = useState<string>("All years");
-  const [activeOnly, setActiveOnly] = useState<boolean>(true);
+
   const [years, setYears] = useState<number[]>([]);
 
-  async function loadNewsletters(nextPage = page) {
-    try {
-      setIsLoadingList(true);
-      const query = new URLSearchParams({
-        page: String(nextPage),
-        limit: String(limit),
-        sortBy,
-        sortOrder,
-        activeOnly: String(activeOnly),
-      });
-      if (year && year!=="All years") query.append("year", year);
+  const loadNewsletters = useCallback(
+    async (nextPage = page) => {
+      try {
+        setIsLoadingList(true);
+        const query = new URLSearchParams({
+          page: String(nextPage),
+          limit: String(limit),
+          sortBy,
+          sortOrder,
+        });
+        if (year && year !== "All years") query.append("year", year);
 
-      const res = (await getData(
-        `/archives/newsletter?${query.toString()}`,
-        session
-      )) as ListResponse;
-      setFormState((s) => ({ ...s, items: res?.data ?? [] }));
-      setPagination(res?.meta ?? null);
-      setPage(nextPage);
-    } catch (e) {
-      toast.error("Failed to load newsletters");
-    } finally {
-      setIsLoadingList(false);
-    }
-  }
+        const res = (await getData(
+          `/archives/newsletter?${query.toString()}`,
+          session,
+        )) as ListResponse;
+        setFormState((s) => ({ ...s, items: res?.data ?? [] }));
+        setPagination(res?.meta ?? null);
+        setPage(nextPage);
+      } catch (e) {
+        toast.error("Failed to load newsletters");
+      } finally {
+        setIsLoadingList(false);
+      }
+    },
+    [session, limit, sortBy, sortOrder, year, page],
+  );
 
   async function loadYears() {
     try {
-      const res = (await getData("/archives/newsletter/years",session)) as number[];
+      const res = (await getData(
+        "/archives/newsletter/years",
+        session,
+      )) as number[];
       setYears(res ?? []);
     } catch {}
   }
@@ -108,11 +115,9 @@ export default function Newsletters() {
   useEffect(() => {
     loadNewsletters(1);
     loadYears();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sortBy, sortOrder, year, activeOnly]);
+  }, [year, sortOrder, status]);
 
-  const [confirmOpen, setConfirmOpen] = useState<boolean>(false);
-  const [deletingId, setDeletingId] = useState<string>("");
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   async function deleteNewsletter(id: string) {
     try {
@@ -120,16 +125,12 @@ export default function Newsletters() {
         `${process.env.NEXT_PUBLIC_HOST_URL}/archives/newsletter/${id}`,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
-        }
+        },
       );
       if (res.status >= 200 && res.status < 300) {
         toast.success("Deleted successfully");
-        setFormState((s) => ({
-          ...s,
-          items: s.items.filter((p) => p.id !== id),
-        }));
-        setConfirmOpen(false);
-        setDeletingId("");
+        setDeletingId(null);
+        loadNewsletters(page);
       } else {
         toast.error("Delete failed");
       }
@@ -139,144 +140,166 @@ export default function Newsletters() {
   }
 
   return (
-    <section className="blade-top-margin-lg">
-      <SectionHeading
-        heading="Section 02 - (Newsletters)"
-        ctaText="Add new newsletter"
-        cta
-        handleClick={() =>
-          setFormState((s) => ({ ...s, isFormOpen: true, editItem: null }))
-        }
-      />
+    <>
+      <section className="blade-top-margin pb-10">
+        <SectionHeading
+          heading="Archives - Newsletters"
+          ctaText="Add New Newsletter"
+          cta
+          handleClick={() =>
+            setFormState((s) => ({ ...s, isFormOpen: true, editItem: null }))
+          }
+        />
 
-      {/* Filters */}
-      <div className="flex flex-wrap gap-4 items-center my-6">
-        <Select value={year} onValueChange={setYear}>
-          <SelectTrigger className="w-40">
-            <SelectValue placeholder="Filter by year" />
-          </SelectTrigger>
-          <SelectContent className="bg-white border border-gray">
-            <SelectItem key="i3xgm4u9gh8ajfk03c" value="All years">All years</SelectItem>
-            {years.map((y) => (
-              <SelectItem key={y} value={String(y)}>
-                {y}
-              </SelectItem>
+        {/* Filters */}
+        <div className="flex flex-wrap gap-4 mt-6">
+          <Select value={year} onValueChange={setYear}>
+            <SelectTrigger className="w-48 h-11 border-gray bg-white">
+              <SelectValue placeholder="Filter by year" />
+            </SelectTrigger>
+            <SelectContent className="bg-white border border-gray-200">
+              <SelectItem value="All years">All years</SelectItem>
+              {years.map((y) => (
+                <SelectItem key={y} value={String(y)}>
+                  {y}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          <Select value={sortOrder} onValueChange={setSortOrder}>
+            <SelectTrigger className="w-48 h-11 border-gray bg-white">
+              <SelectValue placeholder="Sort order" />
+            </SelectTrigger>
+            <SelectContent className="bg-white border border-gray-200">
+              <SelectItem value="asc">Oldest first</SelectItem>
+              <SelectItem value="desc">Newest first</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        {isLoadingList && formState.items.length === 0 ? (
+          <div className="mt-10 text-center py-20 bg-white/50 rounded-lg">
+            <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-pink border-t-transparent"></div>
+            <p className="mt-2 text-gray-500 font-poppin">
+              Loading newsletters...
+            </p>
+          </div>
+        ) : formState.items.length === 0 ? (
+          <div className="mt-10 flex flex-col items-center justify-center py-20 bg-white border border-dashed border-gray-300 rounded-lg translate-y-2">
+            <p className="text-gray-500 font-medium font-poppin">
+              No newsletters found.
+            </p>
+          </div>
+        ) : (
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
+            {formState.items.map((it) => (
+              <article
+                key={it.id}
+                className="group bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-all duration-300"
+              >
+                <div className="relative h-56 overflow-hidden bg-gray-100 border-b border-gray-100">
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_HOST_URL}${it.coverImage}`}
+                    alt={it.title}
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+
+                <div className="p-4 flex flex-col flex-1">
+                  <div className="text-xs w-fit mb-2 font-medium text-pink px-2 py-0.5 bg-pink/10 rounded-full flex items-center gap-1.5">
+                    <Calendar className="w-3 h-3" />
+                    {new Date(it.publishedDate).toLocaleDateString("en-GB", {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric",
+                    })}
+                  </div>
+
+                  <h3 className="text-base font-bold text-gray-900 leading-tight mb-2 line-clamp-3  mt-2">
+                    {it.title}
+                  </h3>
+
+                  <div className="mb-4 pt-2 border-t border-gray-50">
+                    <a
+                      href={`${process.env.NEXT_PUBLIC_HOST_URL}${it.fileUrl}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 hover:text-blue-700 uppercase tracking-widest transition-colors"
+                    >
+                      <ExternalLink className="w-3 h-3" />
+                      View PDF
+                    </a>
+                  </div>
+
+                  <div className="mt-auto pt-4 border-t border-gray-100 space-y-4">
+                    <div className="flex items-center justify-end">
+                      <div className="flex gap-2">
+                        <Button
+                          theme="transparentGray"
+                          size="small"
+                          text="Delete"
+                          onClick={() => setDeletingId(it.id)}
+                        />
+                        <Button
+                          theme="pink"
+                          size="small"
+                          text="Edit"
+                          onClick={() =>
+                            setFormState((s) => ({
+                              ...s,
+                              isFormOpen: true,
+                              editItem: it,
+                            }))
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
             ))}
-          </SelectContent>
-        </Select>
-
-        <Select value={sortOrder} onValueChange={setSortOrder}>
-          <SelectTrigger className="w-40">
-            <SelectValue placeholder="Sort order" />
-          </SelectTrigger>
-          <SelectContent className="bg-white border border-gray">
-            <SelectItem value="asc">Oldest first</SelectItem>
-            <SelectItem value="desc">Newest first</SelectItem>
-          </SelectContent>
-        </Select>
-
-        {/* <Button
-          text={activeOnly ? "Active Only" : "All"}
-          theme="transparentPink"
-          size="large"
-          className="py-3.5"
-          onClick={() => setActiveOnly((v) => !v)}
-        /> */}
-      </div>
-
-      {/* List */}
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
-        {formState.items.length === 0 && (
-          <div className="col-span-full text-center text-darkgray/70 py-8 border border-lightgray/30 rounded-md bg-white">
-            No newsletters found.
           </div>
         )}
-        {formState.items.map((it) => (
-          <article
-            key={it.id}
-            className="rounded-lg border border-lightgray/40 bg-white p-3 shadow-sm hover:shadow-md transition-shadow gap-4 flex flex-col justify-between"
-          >
-            <div> 
-                <div className="w-full h-[14rem] rounded-md border border-gray">
 
-              <img
-                src={`${process.env.NEXT_PUBLIC_HOST_URL}${it.coverImage}`}
-                alt={it.title}
-                className=" object-cover h-full w-full object-top "
-                />
-                </div>
-              <div className="flex-1 mt-4">
-                
-                <div className="    flex justify-between">
-                  <span className=" flex items-center gap-2"><span className="block w-2 h-2 shrink-0 bg-pink rounded-full"></span>{it.version}</span>  
-                  <span className="block text-darkgray">
-                  {new Date(it.publishedDate).toLocaleDateString()}
-                  </span>
-                </div>
-                <h6 className="text-base font-medium mt-4">{it.title}</h6>
-                {/* <p className="text-sm text-darkgray/80">{it.subtitle}</p> */}
-                <div className="mt-2">
-                  <a
-                    href={`${process.env.NEXT_PUBLIC_HOST_URL}${it.fileUrl}`}
-                    target="_blank"
-                    className="underline text-base text-pink"
-                  >
-                    View PDF
-                  </a>
-                </div>
-              </div>
+        {/* Pagination */}
+        {pagination && pagination.totalPages > 1 && (
+          <div className="flex items-center justify-center gap-4 pt-10 mt-6 border-t border-gray-100">
+            <Button
+              text="Previous"
+              theme="transparentGray"
+              size="small"
+              isDisabled={page <= 1}
+              onClick={() => loadNewsletters(page - 1)}
+            />
+            <div className="flex gap-2">
+              {Array.from(
+                { length: pagination.totalPages },
+                (_, i) => i + 1,
+              ).map((p) => (
+                <button
+                  key={p}
+                  onClick={() => loadNewsletters(p)}
+                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${
+                    p === page
+                      ? "bg-pink text-white shadow-md shadow-pink/20"
+                      : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
+                  }`}
+                >
+                  {p}
+                </button>
+              ))}
             </div>
-            <div className="flex justify-between gap-3 mt-4">
-              <Button
-                text="Delete"
-                theme="transparentPink"
-                size="base"
-                onClick={() => {
-                  setDeletingId(it.id);
-                  setConfirmOpen(true);
-                }}
-              />
-              <Button
-                text="Edit"
-                theme="pink"
-                size="base"
-                onClick={() =>
-                  setFormState((s) => ({
-                    ...s,
-                    isFormOpen: true,
-                    editItem: it,
-                  }))
-                }
-              />
-            </div>
-          </article>
-        ))}
-      </div>
-
-      {/* Pagination */}
-      {pagination && (
-        <div className="flex items-center justify-center gap-4 pt-6 mt-6 border-t border-lightgray/30">
-          <Button
-            text="Prev"
-            theme="pink"
-            size="small"
-            isDisabled={page <= 1}
-            onClick={() => loadNewsletters(Math.max(1, page - 1))}
-          />
-          <span className="text-base text-darkgray/80">
-            Page {page} of {pagination.totalPages ?? 1}
-          </span>
-          <Button
-            text="Next"
-            theme="pink"
-            size="small"
-            isDisabled={page >= (pagination.totalPages ?? 1)}
-            onClick={() =>
-              loadNewsletters(Math.min(pagination.totalPages, page + 1))
-            }
-          />
-        </div>
-      )}
+            <Button
+              text="Next"
+              theme="transparentGray"
+              size="small"
+              isDisabled={page >= pagination.totalPages}
+              onClick={() => loadNewsletters(page + 1)}
+            />
+          </div>
+        )}
+      </section>
 
       {formState.isFormOpen && (
         <NewsletterForm
@@ -288,35 +311,13 @@ export default function Newsletters() {
         />
       )}
 
-      {confirmOpen && (
-        <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center ">
-          <div className="w-[24rem] relative bg-white rounded-md shadow-2xl h-auto max-h-[70vh] overflow-auto p-6">
-            <div className="flex justify-between items-center mb-4">
-              <h6 className="text-base font-medium">Confirm deletion</h6>
-              
-            </div>
-            <p className="text-sm text-darkgray/80">
-              This action cannot be undone. Are you sure you want to delete this
-              newsletter?
-            </p>
-            <div className="mt-6 flex justify-end gap-3">
-              <Button
-                text="Cancel"
-                theme="transparentGray"
-                size="small"
-                onClick={() => setConfirmOpen(false)}
-              />
-              <Button
-                text="Delete"
-                theme="pink"
-                size="small"
-                onClick={() => deletingId && deleteNewsletter(deletingId)}
-              />
-            </div>
-          </div>
-        </div>
+      {deletingId && (
+        <ConfirmationPopup
+          onClose={() => setDeletingId(null)}
+          onDelete={() => deleteNewsletter(deletingId)}
+        />
       )}
-    </section>
+    </>
   );
 }
 
@@ -325,10 +326,11 @@ export default function Newsletters() {
 const newsletterSchema = z.object({
   title: generalSchema("Title is required"),
   subtitle: z.string().optional(),
-  version: generalSchema("Version is required"),
+
   publishedDate: generalSchema("Publication date is required"),
-  coverImageFile: fileSchema,
-  pdfFile: fileSchema,
+  active: z.boolean(),
+  coverImageFile: z.any(),
+  pdfFile: z.any(),
 });
 
 type NewsletterFormValues = z.infer<typeof newsletterSchema>;
@@ -343,36 +345,24 @@ function NewsletterForm({
   const { data: session } = useSession();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const defaultValues: Partial<NewsletterFormValues> = useMemo(() => {
-    if (!initalData) {
-      return {
-        title: "",
-        subtitle: "",
-        version: "",
-        publishedDate: "",
-        coverImageFile: undefined,
-        pdfFile: undefined,
-      };
-    }
-    return {
-      title: initalData.title,
-      subtitle: initalData.subtitle,
-      version: initalData.version,
-      publishedDate: initalData.publishedDate?.slice(0, 10) || "",
-      coverImageFile: initalData.coverImage,
-      pdfFile: initalData.fileUrl,
-    };
-  }, [initalData]);
-
   const {
     register,
     handleSubmit,
     watch,
     setError,
+
     formState: { errors },
   } = useForm<NewsletterFormValues>({
     resolver: zodResolver(newsletterSchema),
-    defaultValues: defaultValues as NewsletterFormValues,
+    defaultValues: {
+      title: initalData?.title || "",
+      subtitle: initalData?.subtitle || "",
+
+      publishedDate: initalData?.publishedDate?.slice(0, 10) || "",
+      active: initalData ? initalData.active : true,
+      coverImageFile: initalData?.coverImage || undefined,
+      pdfFile: initalData?.fileUrl || undefined,
+    } as any,
   });
 
   const submitHandler: SubmitHandler<NewsletterFormValues> = async (data) => {
@@ -380,32 +370,35 @@ function NewsletterForm({
       setIsLoading(true);
 
       const formData = new FormData();
-      formData.append("title", data.title ?? "");
-      formData.append("subtitle", data.subtitle ?? "");
-      formData.append("version", data.version);
-      formData.append("publishedDate", data.publishedDate);
-      formData.append("active", "true");
+      formData.append("title", data.title);
+      formData.append("subtitle", data.subtitle || "");
 
-      const imgVal = data.coverImageFile as unknown;
-      if (typeof imgVal === "string" && imgVal.trim()) {
+      formData.append("publishedDate", data.publishedDate);
+      formData.append("version", ""); //We have remoe this field from frontend
+      formData.append("active", String(true));
+
+      const imgVal = data.coverImageFile;
+      if (imgVal instanceof FileList && imgVal.length > 0) {
+        formData.append("coverImageFile", imgVal[0]);
+      } else if (typeof imgVal === "string" && imgVal.trim()) {
         formData.append("coverImageUrl", imgVal);
-      } else if (imgVal instanceof FileList && imgVal.length > 0) {
-        formData.append("coverImageFile", imgVal[0] as File);
-      } else {
+      } else if (!initalData) {
         setError("coverImageFile", {
           type: "manual",
           message: "Cover image is required",
         });
+        setIsLoading(false);
         return;
       }
 
-      const pdfVal = data.pdfFile as unknown;
-      if (typeof pdfVal === "string" && pdfVal.trim()) {
+      const pdfVal = data.pdfFile;
+      if (pdfVal instanceof FileList && pdfVal.length > 0) {
+        formData.append("pdfFile", pdfVal[0]);
+      } else if (typeof pdfVal === "string" && pdfVal.trim()) {
         formData.append("pdfUrl", pdfVal);
-      } else if (pdfVal instanceof FileList && pdfVal.length > 0) {
-        formData.append("pdfFile", pdfVal[0] as File);
-      } else {
+      } else if (!initalData) {
         setError("pdfFile", { type: "manual", message: "PDF is required" });
+        setIsLoading(false);
         return;
       }
 
@@ -428,11 +421,9 @@ function NewsletterForm({
 
       if (res.status === 200 || res.status === 201) {
         toast.success(
-          initalData ? "Updated successfully" : "Created successfully"
+          initalData ? "Updated successfully" : "Created successfully",
         );
         onClose();
-      } else {
-        toast.error("Save failed");
       }
     } catch (e: any) {
       toast.error(e?.response?.data?.message || "Save failed");
@@ -442,51 +433,47 @@ function NewsletterForm({
   };
 
   return (
-    <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center ">
-      <div className="w-[32rem] relative bg-white rounded-md shadow-2xl h-auto max-h-[85vh] overflow-auto">
-        <form className="h-full" onSubmit={handleSubmit(submitHandler)}>
-          <div className="flex justify-end sticky top-2 px-1 z-[999]">
-            <button
-              type="button"
-              aria-label="close modal"
-              className="rounded-full ring-1 scale-75 hover:scale-90 transition-all duration-300 cursor-pointer"
-              onClick={onClose}
-            >
-              <X />
-            </button>
-          </div>
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+      <div
+        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        onClick={onClose}
+      ></div>
+      <div className="relative w-full max-w-2xl bg-white rounded-xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+        <div className="flex items-center justify-between p-6 border-b border-gray-100 bg-white sticky top-0 z-10">
+          <h2 className="text-xl font-bold text-gray-900 font-poppin">
+            {initalData ? "Edit Newsletter" : "Create New Newsletter"}
+          </h2>
+          <button
+            onClick={onClose}
+            className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+          >
+            <X className="w-6 h-6 text-gray-500" />
+          </button>
+        </div>
 
-          <div className="flex flex-col gap-y-6 h-full p-8 pt-1">
-            <div className="grid grid-cols-1 gap-4">
+        <form
+          onSubmit={handleSubmit(submitHandler)}
+          className="flex-1 overflow-y-auto p-6 space-y-6"
+        >
+          <div className="space-y-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <TextInput
-                label="Title"
+                label="Newsletter Title"
                 errors={errors.title}
-                placeholder="Enter title"
+                placeholder="e.g. Monthly Infrastructure Update"
                 register={register}
                 registerer="title"
               />
-              {/* <TextInput
-                label="Subtitle"
-                errors={errors.subtitle}
-                placeholder="Enter subtitle"
-                register={register}
-                registerer="subtitle"
-              /> */}
-              <TextInput
-                label="Version"
-                errors={errors.version}
-                placeholder="Vol. 1, Issue 2"
-                register={register}
-                registerer="version"
-              />
               <TextInput
                 label="Publication Date"
+                placeholder="yyyy-mm-dd"
                 errors={errors.publishedDate}
-                placeholder="2025-01-31"
                 register={register}
                 registerer="publishedDate"
               />
+            </div>
 
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <ImagePicker
                 label="Cover Image"
                 errors={errors.coverImageFile}
@@ -495,9 +482,8 @@ function NewsletterForm({
                 watcher={watch("coverImageFile")}
                 accept=".svg, .png, .jpg, .jpeg, .webp"
               />
-
               <PdfPicker
-                label="PDF File"
+                label="PDF Document"
                 errors={errors.pdfFile}
                 register={register}
                 registerer="pdfFile"
@@ -505,18 +491,26 @@ function NewsletterForm({
                 accept=".pdf"
               />
             </div>
+          </div>
 
-            <div className="mt-auto">
-              <Button
-                type="submit"
-                theme="pink"
-                size="large"
-                className="w-full"
-                text={initalData ? "Update" : "Create"}
-                isLoading={isLoading}
-                isDisabled={isLoading}
-              />
-            </div>
+          <div className="mt-8 flex gap-3 sticky bottom-0 bg-white pb-2">
+            <Button
+              type="button"
+              text="Cancel"
+              theme="transparentGray"
+              size="large"
+              className="flex-1"
+              onClick={onClose}
+            />
+            <Button
+              type="submit"
+              text={initalData ? "Update Newsletter" : "Create Newsletter"}
+              theme="pink"
+              size="large"
+              className="flex-1"
+              isLoading={isLoading}
+              isDisabled={isLoading}
+            />
           </div>
         </form>
       </div>

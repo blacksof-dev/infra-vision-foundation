@@ -6,17 +6,17 @@ import Newsletters from "./02_newsletters";
 import InTheNews from "./03_InTheNews";
 import SectorsManagerVideo from "./sectorManagerVideo";
 import VideoSection from "./04_video";
- 
+
 export default function Page() {
   return (
     <>
       <Banner />
-      <Newsletters/>
-      <InTheNews/>
-      <SectorsManagerVideo/>
-      <VideoSection/>
-      <SectorsManagerGallery/>
-      <GallerySection/>
+      <Newsletters />
+      <InTheNews />
+      <SectorsManagerVideo />
+      <VideoSection />
+      {/* <SectorsManagerGallery/> */}
+      {/* <GallerySection/> */}
     </>
   );
 }
