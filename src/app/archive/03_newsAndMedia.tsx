@@ -51,7 +51,7 @@ const INITIAL_VISIBLE_COUNT = 3;
 const allcards = [
    {
     id:66,
-    img: "/assets/archive/newsAndMedia/invest-in-small-towns.jpg",
+    img: "/assets/archive/newsAndMedia/invest-in-small-towns.png",
     category: "News",
     title: "Kiran Karnik",
     sectors: "",
@@ -105,7 +105,7 @@ const allcards = [
 
     {
     id:60,
-    img: "/assets/archive/newsAndMedia/crumbling.avif",
+    img: "/assets/archive/newsAndMedia/crumbling.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -135,7 +135,7 @@ const allcards = [
   },
    {
     id:58,
-    img: "/assets/archive/newsAndMedia/image11.webp",
+    img: "/assets/archive/newsAndMedia/image11.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -145,7 +145,7 @@ const allcards = [
   },
   {
     id:56,
-    img: "/assets/archive/newsAndMedia/energy.jpg",
+    img: "/assets/archive/newsAndMedia/energy.png",
     category: "News",
     title: "D.K. Sen",
     sectors: "",

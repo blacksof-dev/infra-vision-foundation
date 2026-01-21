@@ -10,12 +10,12 @@ import img_06 from "@/../public/assets/knowledeg/researchPapers/06.jpg";
 import img_07 from "@/../public/assets/knowledeg/researchPapers/07.jpg";
 import img_08 from "@/../public/assets/knowledeg/researchPapers/08.jpg";
 import img_09 from "@/../public/assets/knowledeg/researchPapers/09.jpg";
-import img_10 from "@/../public/assets/knowledeg/researchPapers/10.png";
-import img_11 from "@/../public/assets/knowledeg/researchPapers/11.jpg";
+import img_10 from "@/../public/assets/knowledeg/researchPapers/10.jpg";
+import img_11 from "@/../public/assets/knowledeg/researchPapers/11.png";
 import img_12 from "@/../public/assets/knowledeg/researchPapers/12.jpg";
 import img_13 from "@/../public/assets/knowledeg/researchPapers/13.png";
-import img_14 from "@/../public/assets/knowledeg/researchPapers/14.png";
-import img_15 from "@/../public/assets/knowledeg/researchPapers/waterBodies.png"
+import img_14 from "@/../public/assets/knowledeg/researchPapers/14.jpg";
+import img_15 from "@/../public/assets/knowledeg/researchPapers/waterBodies.jpg"
 
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 

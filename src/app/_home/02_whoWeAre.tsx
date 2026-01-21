@@ -4,7 +4,7 @@ import highway from "@/../public/assets/home/whoWeAre/knowledge/highway.png";
 import infraKatha from "@/../public/assets/infrakatha/banner/banner.jpg";
 import infraShakti from "@/../public/assets/home/whoWeAre/advocacy/infraPandit.png";
 import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infraPanditAward.png";
-import img_12 from "@/../public/assets/knowledeg/researchPapers/waterBodies.png";
+import img_12 from "@/../public/assets/knowledeg/researchPapers/waterBodies.jpg";
 import { useState } from "react";
 import Card from "@/_components/molecules/cardTemplate";
 import { useHeader } from "@/context/useHeader";
