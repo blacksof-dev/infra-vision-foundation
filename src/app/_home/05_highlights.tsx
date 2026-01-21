@@ -43,7 +43,7 @@ const newsletters = [
 const news = [
     {
     id:60,
-    img: "/assets/archive/newsAndMedia/invest-in-small-towns.jpg",
+    img: "/assets/archive/newsAndMedia/invest-in-small-towns.png",
     category: "",
     date: "January 2026",
     title: "Invest in small towns",
@@ -68,7 +68,7 @@ const news = [
      subtitle: "Vinayak Chatterjee",
     link: "/assets/pdf/confidence.pdf",
   },
- 
+  
  
   
 ];

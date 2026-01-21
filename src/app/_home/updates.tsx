@@ -168,7 +168,7 @@ const EventsDetails = [
    
    {
    
-    image: "/assets/archive/newsAndMedia/invest-in-small-towns.jpg",
+    image: "/assets/archive/newsAndMedia/invest-in-small-towns.png",
     category: "News",
     title: "Invest in small towns",
     btnTitle: "See details",

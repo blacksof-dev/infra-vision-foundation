@@ -115,7 +115,7 @@ const allcards = [
   },
   {
     id:59,
-    img: "/assets/archive/newsAndMedia/vande-bharat.jpg",
+    img: "/assets/archive/newsAndMedia/vande-bharat.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
