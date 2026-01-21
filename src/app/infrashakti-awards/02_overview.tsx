@@ -7,7 +7,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import waterSaviour from "@/../public/assets/infraShakti/overview/waterSaviour.png";
 import urban from "@/../public/assets/infraShakti/overview/urban.png";
 import transport from "@/../public/assets/infraShakti/overview/transport.png";
-import ruralInfra from "@/../public/assets/infraShakti/overview/ruralInfra.png";
+import ruralInfra from "@/../public/assets/infraShakti/overview/ruralInfra-new.png";
 import renewable from "@/../public/assets/infraShakti/overview/renewable.png";
 import peopleChoice from "@/../public/assets/infraShakti/overview/peopleChoice.png";
 import infravisionaryAward from "@/../public/assets/infraShakti/overview/infravisionaryAward.png";
