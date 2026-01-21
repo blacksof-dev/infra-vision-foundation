@@ -160,7 +160,7 @@ export default function Leads() {
 
       {/* Leads Table */}
       <div>
-        <div className="bg-gray h-12 grid grid-cols-[1fr_1.2fr_1fr_0.3fr] px-2 font-medium">
+        <div className="bg-gray h-12 grid grid-cols-[1fr_1.2fr_1fr_0.3fr] px-2 font-medium rounded-md">
           <div className="content-center">Name</div>
           <div className="content-center">Email</div>
           <div className="content-center">Type</div>
