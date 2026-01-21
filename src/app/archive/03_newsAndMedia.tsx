@@ -51,7 +51,7 @@ const INITIAL_VISIBLE_COUNT = 3;
 const allcards = [
    {
     id:66,
-    img: "/assets/archive/newsAndMedia/invest-in-small-towns.jpg",
+    img: "/assets/archive/newsAndMedia/invest-in-small-towns.png",
     category: "News",
     title: "Kiran Karnik",
     sectors: "",
@@ -105,7 +105,7 @@ const allcards = [
 
     {
     id:60,
-    img: "/assets/archive/newsAndMedia/crumbling.avif",
+    img: "/assets/archive/newsAndMedia/crumbling.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -115,7 +115,7 @@ const allcards = [
   },
   {
     id:59,
-    img: "/assets/archive/newsAndMedia/vande-bharat.jpg",
+    img: "/assets/archive/newsAndMedia/vande-bharat.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -135,7 +135,7 @@ const allcards = [
   },
    {
     id:58,
-    img: "/assets/archive/newsAndMedia/image11.webp",
+    img: "/assets/archive/newsAndMedia/image11.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -145,7 +145,7 @@ const allcards = [
   },
   {
     id:56,
-    img: "/assets/archive/newsAndMedia/energy.jpg",
+    img: "/assets/archive/newsAndMedia/energy.png",
     category: "News",
     title: "D.K. Sen",
     sectors: "",
@@ -226,7 +226,7 @@ const allcards = [
 
    {
     id:48,
-    img: "/assets/archive/newsAndMedia/planning.jpeg",
+    img: "/assets/archive/newsAndMedia/planning-new.jpg",
     category: "News",
     title: "Jagan Shah",
     sectors: "",
@@ -236,7 +236,7 @@ const allcards = [
   },
      {
     id:47,
-    img: "/assets/archive/newsAndMedia/urbanCity.jpg",
+    img: "/assets/archive/newsAndMedia/urbanCity.webp",
     category: "News",
     title: "Jagan Shah",
     sectors: "",
@@ -300,7 +300,7 @@ const allcards = [
   },
   {
     id: 6,
-    img: "/assets/archive/newsAndMedia/newsMedia5.png",
+    img: "/assets/archive/newsAndMedia/newsMedia5-new.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -384,7 +384,7 @@ const allcards = [
   },
   {
     id: 14,
-    img: "/assets/archive/newsAndMedia/newsMedia12.png",
+    img: "/assets/archive/newsAndMedia/newsMedia12-new.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -484,7 +484,7 @@ const allcards = [
   },
   {
     id: 24,
-    img: "/assets/archive/newsAndMedia/newsMedia24.png",
+    img: "/assets/archive/newsAndMedia/newsMedia24-new.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -624,7 +624,7 @@ const allcards = [
   },
   {
     id:38,
-    img: "/assets/archive/newsAndMedia/newsMedia38.png",
+    img: "/assets/archive/newsAndMedia/newsMedia38.jpg",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",
@@ -704,7 +704,7 @@ const allcards = [
   },
   {
     id:46,
-    img: "/assets/archive/newsAndMedia/newsMedia46.jpg",
+    img: "/assets/archive/newsAndMedia/newsMedia46.png",
     category: "News",
     title: "Vinayak Chatterjee",
     sectors: "",

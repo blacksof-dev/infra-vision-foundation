@@ -54,21 +54,20 @@ function Header() {
   }, [toggle]);
 
   useEffect(() => {
-    if (!mounted) return;
-    if (typeof window === "undefined") return;
-    setShowNavbar(true);
-    setlastScrollY(window.scrollY);
-  }, [pathname, setShowNavbar, mounted]);
+    if (typeof window !== "undefined") {
+      setShowNavbar(true);
+      setlastScrollY(window.scrollY);
+    }
+  }, [pathname, setShowNavbar]);
 
   useEffect(() => {
-    if (!mounted) return;
-if (typeof window === "undefined") return;
+ 
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
     const handleResize = () => {
-      if (typeof window === "undefined") return;
+      if (!mounted) return;
       checkMobile();
       if (window.innerWidth <= 768) {
         setShowNavbar(true);
@@ -76,7 +75,7 @@ if (typeof window === "undefined") return;
     };
 
     const handleScroll = () => {
-      if (typeof window === "undefined") return;
+      if (!mounted) return;
       const currentScrollY = window.scrollY;
       if (currentScrollY > lastScrollY && currentScrollY > 100 && !isMobile) {
         setShowNavbar(false);
@@ -97,16 +96,19 @@ if (typeof window === "undefined") return;
     window.addEventListener("resize", handleResize);
 
     window.addEventListener("scroll", handleScroll);
-
+  
     return () => {
+      if (!mounted) return;
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
-    };
+  
+  }
+  
   }, [lastScrollY, isMobile, mounted, setShowNavbar]);
 
   // Handle body scroll lock for mobile menu
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (!mounted) return;
 
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -116,8 +118,19 @@ if (typeof window === "undefined") return;
   }, [isMenuOpen, mounted]);
 
   useEffect(() => {
+  if (!mounted) return;
+
+  const handleScroll = () => {
     setOpenDropdown(null);
-  }, [window.scrollY]);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, [mounted]);
+
 
   //Navbar color change for specific routes
   useEffect(() => {
@@ -181,15 +194,13 @@ if (typeof window === "undefined") return;
   return (
     <>
       <nav
-        className={`fixed  top-0 left-0 w-full transition-all ease-linear duration-200 px-0 sm:px-3 py-3 z-[9999] ${
-          isMobile
+        className={`fixed  top-0 left-0 w-full transition-all ease-linear duration-200 px-0 sm:px-3 py-3 z-[9999] ${isMobile
             ? "translate-y-0"
             : showNavbar
-            ? "translate-y-0"
-            : "-translate-y-full"
-        } ${showNavBg ? "bg-white " : "bg-transparent"} ${
-          scrolled ? "bg-white" : ""
-        }`}
+              ? "translate-y-0"
+              : "-translate-y-full"
+          } ${showNavBg ? "bg-white " : "bg-transparent"} ${scrolled ? "bg-white" : ""
+          }`}
       >
         <div className="w-container">
           <div className="flex flex-row justify-between">

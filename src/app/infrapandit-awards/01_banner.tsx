@@ -122,7 +122,7 @@ export default function InfraPanditBanner() {
                 <div className={` py-2 sm:py-4 w-full  max-w-lg`}>
                   <h5 className="text-white font-light ">
                     Celebrating the next generation of infrastructure
-                    changemakers
+                    changemakers.
                   </h5>
                 </div>
 

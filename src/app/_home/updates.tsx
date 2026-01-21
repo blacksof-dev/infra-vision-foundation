@@ -9,7 +9,7 @@ import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import Link from "next/link";
 import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg";
-import awards from "@/../public/assets/archive/newsletter/infraPanditAward.png";
+import analysis from "@/../public/assets/archive/newsletter/analysisAction.png";
 import abha from "@/../public/assets/home/updates/abha.png";
 import montek from "@/../public/assets/globals/infrapanditAward.jpg";
 import soumya from "@/../public/assets/archive/newsAndMedia/soumyaNews.jpg";
@@ -105,10 +105,10 @@ export default function Updates() {
             onSlideChange={handleSlideChange}
           >
             {EventsDetails.map((ele, index) => (
-              <SwiperSlide key={index} className="  group ">
+              <SwiperSlide key={index} className="  group  ">
                 <Link href={ele.link} target="_blank">
-                  <div className="flex flex-row gap-4 bg-[#0000005e] backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4  h-[8rem] sm:h-[9rem]  lg:h-[10rem] xl:h-[13rem] xlg:h-[16rem] 2xl:h-[18rem] group-hover:bg-white transition-all duration-500 ease-linear">
-                    <div className="w-[6rem]   h-full md:w-[14rem] lg:w-[13rem]  xl:w-[20rem] xlg:w-[30rem]  relative ">
+                  <div className="flex flex-row gap-4 bg-[#0000005e] backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4  group h-[8rem] sm:h-[9rem]  lg:h-[10rem] xl:h-[13rem] xlg:h-[16rem] 2xl:h-[18rem] group-hover:bg-white transition-all duration-500 ease-linear ">
+                    <div className="w-[6rem]   h-full md:w-[14rem] lg:w-[13rem]  xl:w-[20rem] xlg:w-[30rem]  relative  group-hover:border group-hover:border-gray-300 ">
                       <Image
                         src={ele.image}
                         alt={ele.title}
@@ -158,9 +158,17 @@ export default function Updates() {
 }
 
 const EventsDetails = [
+    {
+    image: "/assets/home/updates/op.png",
+    category: "Video",
+    link: "https://www.youtube.com/embed/l_tOqH0ZpIE?si=AnuQwfGGP_POegUy",
+    title: "Dr O.P. Agarwal",
+    btnTitle: "Watch video",
+  },
+   
    {
    
-    image: "/assets/archive/newsAndMedia/invest-in-small-towns.jpg",
+    image: "/assets/archive/newsAndMedia/invest-in-small-towns.png",
     category: "News",
     title: "Invest in small towns",
     btnTitle: "See details",
@@ -175,11 +183,11 @@ const EventsDetails = [
     link: "/infrapandit-awards",
   },
   {
-    image: awards,
+    image: analysis,
     category: "Newsletter",
-    title: "InfraPandit Award 2025",
+    title: "Analysis and action",
     btnTitle: "Read more",
-    link: "/assets/pdf/decmber.pdf",
+    link: "/assets/pdf/analysisAction.pdf",
   },
 
   {

@@ -731,7 +731,7 @@ He is a graduate in Electronics Engineering from Pune University and an alumnus 
     image: GeetanjaliKirloskar,
     title: "Geetanjali Vikram Kirloskar",
     desig: "Chairperson and MD, Kirloskar Systems Pvt Ltd; Chairperson, Toyota Tsusho Insurance Broker Pvt Ltd",
-    link: "https://www.linkedin.com/in/geetanjali-kirloskar-b04203154/",
+    link: "https://www.linkedin.com/in/geetanjali-kirloskar-b04203154",
     socialMedia: "linkedin",
     popupImg: vinayakImg.src,
     popupdesc: `

@@ -33,10 +33,10 @@ export function NewsCard({ date, title, image, link, category, description, ctaT
             <div className="flex flex-col justify-between">
                 <div>
                     <div className="flex flex-row justify-between pt-2 pb-1 md:py-3 items-center">
-                        <div className="flex flex-row items-center gap-2 ">
+                        {/* <div className="flex flex-row items-center gap-2 ">
                             <span className="w-[10px] h-[10px] rounded-full bg-pink "></span>
                             <p className="text-sm md:text-base font-medium text-black">{category}</p>
-                        </div>
+                        </div> */}
                         <div>
                             <h6 className="text-xs md:text-base text-darkgray ">{date}</h6>
                         </div>

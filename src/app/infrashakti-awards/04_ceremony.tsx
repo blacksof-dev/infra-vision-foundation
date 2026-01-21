@@ -71,7 +71,6 @@ function VideoCard({ data }: { data: VideoCard[] }) {
       <div className="flex flex-col justify-center items-center md:flex-row md:justify-start md:items-start gap-5 blade-top-padding-sm">
         {data.map((ele: VideoCard, index: number) => {
           return (
-            <>
               <div key={index} className=" max-w-sm relative h-[28rem]  w-full">
                 <Image
                   src={ele.image}
@@ -105,7 +104,7 @@ function VideoCard({ data }: { data: VideoCard[] }) {
                   </div>
                 </div>
               </div>
-            </>
+         
           );
         })}
         {openPopUp && activeVideoSrc !== null && (

@@ -18,14 +18,14 @@ const Jury = () => {
       name: "Ms Savita Mahajan",
       position: "Advisor and Independent Director"
     },
-    
-     
+
+
     {
       image: "/assets/infrapandit/jury/soumya.png",
       name: "Dr Soumya Kanti Ghosh",
       position: "Group Chief Economic Advisor, SBI; Member, PM’s Economic Advisory Council, and Distinguished Fellow, The Infravision Foundation"
     },
-  
+
     {
       image: "/assets/infrapandit/jury/janmejaya.png",
       name: "Dr Janmejaya Sinha",
@@ -45,17 +45,18 @@ const Jury = () => {
             Meet the panel
           </h1>
         </div>
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  2xl:grid-cols-5 blade-top-margin gap-10'>
-          {data.map((elem, idx) => {
-            return (
-              <div className='flex flex-col items-center ' key={idx}>
-                <img src={elem.image} alt={elem.name} />
-                <h6 className='font-semibold mt-4 mb-1 text-center'>{elem.name}</h6>
-                <p className='text-sm text-center max-w-[17rem] sm:w-[85%] text-[#0A0A0A]'>{elem.position}</p>
-              </div>
-            )
-          })}
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 blade-top-margin gap-10 justify-center'>
+          {data.map((elem, idx) => (
+            <div className='flex flex-col items-center' key={idx}>
+              <img src={elem.image} alt={elem.name} />
+              <h6 className='font-semibold mt-4 mb-1 text-center'>{elem.name}</h6>
+              <p className='text-sm text-center max-w-[17rem] sm:w-[85%] text-[#0A0A0A]'>
+                {elem.position}
+              </p>
+            </div>
+          ))}
         </div>
+
       </div>
     </section>
   )

@@ -7,7 +7,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import waterSaviour from "@/../public/assets/infraShakti/overview/waterSaviour.png";
 import urban from "@/../public/assets/infraShakti/overview/urban.png";
 import transport from "@/../public/assets/infraShakti/overview/transport.png";
-import ruralInfra from "@/../public/assets/infraShakti/overview/ruralInfra.png";
+import ruralInfra from "@/../public/assets/infraShakti/overview/ruralInfra-new.png";
 import renewable from "@/../public/assets/infraShakti/overview/renewable.png";
 import peopleChoice from "@/../public/assets/infraShakti/overview/peopleChoice.png";
 import infravisionaryAward from "@/../public/assets/infraShakti/overview/infravisionaryAward.png";
@@ -65,7 +65,7 @@ export default function Overview() {
           </div>
         </div>
 
-        <div className="overflow-visible">
+        <div className="overflow-visible  w-container">
           <div className="flex flex-row justify-end mt-4 ">
             <div className="flex w-fit gap-3">
               <button
@@ -85,7 +85,7 @@ export default function Overview() {
             </div>
           </div>
 
-          <div className="w-container overflow-visible pt-6 sm:pt-10">
+          <div className="w-container overflow-visible pt-6 sm:pt-10 ">
             <Swiper
               modules={[Navigation, Pagination]}
               className="!overflow-visible  w-full"
@@ -106,15 +106,15 @@ export default function Overview() {
                   slidesPerView: 1.2,
                 },
                 500: { slidesPerView: 2 },
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 2.0 },
-                1280: { slidesPerView: 3.0 },
-                1536: { slidesPerView: 2.7 },
+                768: { slidesPerView: 1.5 },
+                1024: { slidesPerView: 1.8 },
+                1280: { slidesPerView: 2.2 },
+                1536: { slidesPerView: 2.5 },
               }}
             >
               {OberviewDetails.map((elem, index) => (
                 <SwiperSlide key={index} className="">
-                  <div className="relative h-[23rem] w-full rounded overflow-hidden shadow-md">
+                  <div className="relative h-[18rem] sm:h-[23rem] w-full rounded overflow-hidden shadow-md ">
                     <Image
                       src={elem.image}
                       alt={elem.title}

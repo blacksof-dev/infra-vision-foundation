@@ -46,13 +46,23 @@ const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
   {
+    id: 32,
+    img: "/assets/archive/newsletter/analysisAction.png",
+    category: "Volume 32",
+    title: "",
+    sectors: "",
+    date: "January 2026",
+    description: "Analysis and action",
+    link: "/assets/pdf/analysisAction.pdf",
+  },
+  {
     id: 31,
     img: "/assets/archive/newsletter/infraPanditAward.png",
     category: "Volume 31",
     title: "",
     sectors: "",
     date: "December 2025",
-    description: "Infra pandit award 2025",
+    description: "InfraPandit Awards 2025",
     link: "/assets/pdf/decmber.pdf",
   },
   {

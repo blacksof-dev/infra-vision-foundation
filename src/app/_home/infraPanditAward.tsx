@@ -12,7 +12,8 @@ export default function InfrapanditAward({ ctaText = "See details", link = "/out
           <Image
             src={nitiAayog}
             alt="Mr Montek Singh Ahluwalia"
-            className="rounded-lg w-full h-full object-cover"
+            className="rounded-lg w-full h-full object-contain "
+            unoptimized={false}
           />
         </div>
         <div className=" px-3 py-6 xl:py-0 w-full sm:w-1/2 flex flex-col justify-center ">

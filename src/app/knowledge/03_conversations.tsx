@@ -27,13 +27,22 @@ import kalpana from "@/../public/assets/knowledeg/conversations/kalpana.png";
 import abha from "@/../public/assets/knowledeg/conversations/abha.png";
 import lokanath from "@/../public/assets/knowledeg/conversations/lokanath.png";
 import anumita from "@/../public/assets/knowledeg/conversations/anumita.png";
+import op from "@/../public/assets/knowledeg/conversations/op.png";
 
 
 const people = [
+   {
+    image: op.src,
+    videoLink: "https://www.youtube.com/embed/l_tOqH0ZpIE?si=AnuQwfGGP_POegUy",
+    name: "Dr O.P. Agarwal",
+    title: "Transport thought leader and Distinguished Fellow at Niti Aayog",
+    desc: "Why we need better planning of public transport",
+    date: "",
+  },
   {
     image: anumita.src,
     videoLink: "https://youtu.be/YV7VYaCB7Yw?si=af66MfWQnjdsG_op",
-    name: "Anumita Roy Choudhury",
+    name: "Anumita Roychowdhury",
     title: "Executive Director, Centre for Science and Environment",
     desc: "How to fix Delhi's air pollution",
     date: "",

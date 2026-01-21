@@ -61,7 +61,7 @@ const Footer = () => {
     setMessage("Thanks for joining our newsletter.");
     setTimeout(() => {
       setMessage(" ");
-    }, 2000);
+    }, 4000);
     reset();
   };
 
@@ -411,7 +411,7 @@ const Footer = () => {
           <div className="flex sm:flex-row  flex-col justify-between py-5  lg:pt-9 ">
             <div className=" my-auto ">
               <p className="text-darkgray/80   smallText">
-                Copyright 2025. All rights reserved.
+                Copyright 2026. All rights reserved.
               </p>
               <Link href="https://www.blacksof.com/">
                 <p className="text-darkgray/80 smallText py-1 sm:py-2 underline underline-offset-1">
