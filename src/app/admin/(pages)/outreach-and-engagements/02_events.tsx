@@ -487,7 +487,7 @@ function EventForm({
 
       // Handle CTA Logic
       let finalLink = "";
-      let finalCtaText = data.details.ctaText?.trim() || "";
+      const finalCtaText = data.details.ctaText?.trim() || "";
 
       // Only process CTA details if ctaText is provided
       if (finalCtaText) {
