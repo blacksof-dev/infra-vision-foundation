@@ -41,6 +41,7 @@ type Engagement = {
   updatedAt?: string;
 };
 
+// Schema handling the choice between Link and PDF
 const engagementSchema = z
   .object({
     date: z.string().min(1, "Date is required"),
@@ -51,31 +52,50 @@ const engagementSchema = z
     details: z.object({
       images: z.array(
         z.object({
-          image: z.any(), // FileList | string
+          image: z.any(),
           description: z.string().optional(),
-        })
+        }),
       ),
-      content: z.string().optional(),
-      cta: z
-        .object({
-          ctaText: z.string().optional(),
-          link: z.string().optional(),
-        })
-        .optional(),
+      content: z.string().min(1, "Details content is required"),
+      ctaText: z.string().optional(),
+      link: z.string().optional(),
     }),
-    pdfFile: z.any().optional(), // FileList | undefined
+    pdfFile: z.any().optional(),
+    ctaOption: z.enum(["link", "pdf"]),
   })
-  .refine(
-    (data) => {
-      const hasPdf = data.pdfFile instanceof FileList && data.pdfFile.length > 0;
-      const hasLink = data.details?.cta?.link && data.details.cta.link.trim() !== "";
-      return !(hasPdf && hasLink); // must not have both
-    },
-    {
-      message: "Provide either a PDF file OR an external link, not both",
-      path: ["pdfFile"],
+  .superRefine((data, ctx) => {
+    // Logic: If CTA Text is present, then Link or PDF is required based on selection
+    if (data.details.ctaText && data.details.ctaText.trim().length > 0) {
+      if (data.ctaOption === "link") {
+        if (!data.details.link || data.details.link.trim().length === 0) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "Link is required when CTA Text is provided",
+            path: ["details", "link"],
+          });
+        }
+      } else if (data.ctaOption === "pdf") {
+        // Validation for PDF
+        // Case 1: New upload (FileList)
+        const isNewFile =
+          data.pdfFile instanceof FileList && data.pdfFile.length > 0;
+        // Case 2: Existing file (we might have it in the link field conceptually, but here we check pdfFile or existing link logic)
+        // For simplicity, if we are in "pdf" mode and it's an edit, we rely on the logic that if they didn't upload a new one, the old one persists.
+        // But validating that "some pdf exists" is tricky without extra state.
+        // We will check: if no new file AND no existing link (which would be the pdf url), then error.
+        const hasExistingLink =
+          data.details.link && data.details.link.trim().length > 0;
+
+        if (!isNewFile && !hasExistingLink) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "PDF file is required when CTA Text is provided",
+            path: ["pdfFile"],
+          });
+        }
+      }
     }
-  );
+  });
 
 type FormValues = z.infer<typeof engagementSchema>;
 
@@ -140,7 +160,10 @@ export default function AdminCalendarManager() {
   async function loadEvents(yr: number) {
     try {
       setIsLoading(true);
-      const res = await getData(`/outreach-and-engagements?year=${yr}`, session);
+      const res = await getData(
+        `/outreach-and-engagements?year=${yr}`,
+        session,
+      );
       setEvents(res?.data ?? []);
     } catch (e) {
       toast.error("Failed to load events");
@@ -154,7 +177,7 @@ export default function AdminCalendarManager() {
     try {
       await axios.delete(
         `${process.env.NEXT_PUBLIC_HOST_URL}/outreach-and-engagements/${id}`,
-        { headers: { Authorization: `Bearer ${session?.accessToken}` } }
+        { headers: { Authorization: `Bearer ${session?.accessToken}` } },
       );
       toast.success("Deleted successfully");
       setEvents((s) => s.filter((e) => e.id !== id));
@@ -169,7 +192,7 @@ export default function AdminCalendarManager() {
       await axios.patch(
         `${process.env.NEXT_PUBLIC_HOST_URL}/outreach-and-engagements/${id}`,
         { active: value },
-        { headers: { Authorization: `Bearer ${session?.accessToken}` } }
+        { headers: { Authorization: `Bearer ${session?.accessToken}` } },
       );
       toast.success("Status updated");
       await loadEvents(year);
@@ -192,7 +215,10 @@ export default function AdminCalendarManager() {
 
       {/* Year selector */}
       <div className="mt-6">
-        <Select value={String(year)} onValueChange={(val) => setYear(Number(val))}>
+        <Select
+          value={String(year)}
+          onValueChange={(val) => setYear(Number(val))}
+        >
           <SelectTrigger className="w-40">
             <SelectValue placeholder="Select Year" />
           </SelectTrigger>
@@ -231,13 +257,19 @@ export default function AdminCalendarManager() {
                           {new Date(ev.date).getDate()}
                         </span>
                         <span className="  inline-block mx-2 w-[1px] h-5 bg-darkgray"></span>
-                        <span className="text-darkgray 2xl:text-base text-sm">{ev.dayTime}</span>
+                        <span className="text-darkgray 2xl:text-base text-sm">
+                          {ev.dayTime}
+                        </span>
                       </div>
                       <div className="flex items-center mt-1 2xl:mt-4 gap-2 text-darkgray">
                         <span className="w-2 h-2 shrink-0 bg-pink rounded-full"></span>
-                        <span className="text-sm 2xl:text-lg">{ev.meetingType}</span>
+                        <span className="text-sm 2xl:text-lg">
+                          {ev.meetingType}
+                        </span>
                       </div>
-                      <div className="text-[13px] 2xl:text-sm font-normal mt-2 2xl:mt-4 ">{ev.desc}</div>
+                      <div className="text-[13px] 2xl:text-sm font-normal mt-2 2xl:mt-4 ">
+                        {ev.desc}
+                      </div>
                     </div>
 
                     <div className="flex mt-8 justify-between gap-2">
@@ -333,6 +365,16 @@ function EventForm({
 }) {
   const [isSaving, setIsSaving] = useState(false);
 
+  // Helper to determine initial CTA option
+  const getInitialCtaOption = (data: Engagement | null): "link" | "pdf" => {
+    if (!data || !data.details?.cta?.link) return "link";
+    const link = data.details.cta.link;
+    // Heuristic: if link ends with .pdf or looks like a file upload url
+    // For now we default to link, unless it looks like our upload.
+    // However, if it IS a PDF url, we might want to show it as PDF.
+    return "link";
+  };
+
   const defaultValues = useMemo<FormValues>(() => {
     if (!initalData) {
       return {
@@ -342,7 +384,8 @@ function EventForm({
         desc: "",
         active: true,
         pdfFile: undefined,
-        details: { images: [], content: "", cta: { ctaText: "", link: "" } },
+        details: { images: [], content: "", ctaText: "", link: "" },
+        ctaOption: "link" as "link" | "pdf",
       };
     }
     return {
@@ -352,6 +395,7 @@ function EventForm({
       desc: initalData.desc ?? "",
       active: Boolean(initalData.active),
       pdfFile: undefined,
+      ctaOption: getInitialCtaOption(initalData),
       details: {
         images:
           initalData.details?.images?.map((im) => ({
@@ -359,7 +403,8 @@ function EventForm({
             description: im.description ?? "",
           })) ?? [],
         content: initalData.details?.content ?? "",
-        cta: initalData.details?.cta ?? { ctaText: "", link: "" },
+        ctaText: initalData.details?.cta?.ctaText ?? "",
+        link: initalData.details?.cta?.link ?? "",
       },
     };
   }, [initalData]);
@@ -383,23 +428,33 @@ function EventForm({
   });
 
   const detailsContent = watch("details.content") || "";
+  const ctaOption = watch("ctaOption");
+  const currentCtaText = watch("details.ctaText");
 
   useEffect(() => {
     reset(defaultValues);
-  }, [initalData]);
+  }, [initalData, reset, defaultValues]);
 
-  async function uploadFile(file: File, type: "image" | "pdf", sessionToken?: string) {
+  async function uploadFile(
+    file: File,
+    type: "image" | "pdf",
+    sessionToken?: string,
+  ) {
     const formData = new FormData();
     formData.append("file", file);
-  
+
     const endpoint = type === "image" ? "/uploads/image" : "/uploads/pdf";
-    const res = await axios.post(`${process.env.NEXT_PUBLIC_HOST_URL}${endpoint}`, formData, {
-      headers: {
-        Authorization: `Bearer ${sessionToken}`,
-        "Content-Type": "multipart/form-data",
+    const res = await axios.post(
+      `${process.env.NEXT_PUBLIC_HOST_URL}${endpoint}`,
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${sessionToken}`,
+          "Content-Type": "multipart/form-data",
+        },
       },
-    });
-    return process.env.NEXT_PUBLIC_HOST_URL+res.data.url; // The uploaded file URL
+    );
+    return process.env.NEXT_PUBLIC_HOST_URL + res.data.url; // The uploaded file URL
   }
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
@@ -423,19 +478,41 @@ function EventForm({
           }
           url = result;
         }
-        if (url) processedImages.push({ image: url, description: img.description || "" });
+        if (url)
+          processedImages.push({
+            image: url,
+            description: img.description || "",
+          });
       }
 
-      // Handle PDF vs Link
-      let finalLink = data.details?.cta?.link?.trim() || "";
-      if (!finalLink && data.pdfFile instanceof FileList && data.pdfFile.length > 0) {
-        const result = await uploadFile(data.pdfFile[0], "pdf", session?.accessToken);
-        if (!result) {
-          toast.error("PDF upload failed");
-          setIsSaving(false);
-          return;
+      // Handle CTA Logic
+      let finalLink = "";
+      let finalCtaText = data.details.ctaText?.trim() || "";
+
+      // Only process CTA details if ctaText is provided
+      if (finalCtaText) {
+        if (data.ctaOption === "link") {
+          finalLink = data.details.link?.trim() || "";
+        } else {
+          // PDF Option
+          // If new file uploaded
+          if (data.pdfFile instanceof FileList && data.pdfFile.length > 0) {
+            const result = await uploadFile(
+              data.pdfFile[0],
+              "pdf",
+              session?.accessToken,
+            );
+            if (!result) {
+              toast.error("PDF upload failed");
+              setIsSaving(false);
+              return;
+            }
+            finalLink = result;
+          } else {
+            // If no new file, preserve existing link (assumed to be the PDF url)
+            finalLink = data.details.link || "";
+          }
         }
-        finalLink = result;
       }
 
       const payload = {
@@ -443,16 +520,17 @@ function EventForm({
         dayTime: data.dayTime,
         meetingType: data.meetingType,
         desc: data.desc,
-        active: data.active, 
-        ctaText:"null",
+        active: data.active,
         details: {
           date: data.date,
           images: processedImages,
           content: data.details.content ?? "",
-          cta: {
-            ctaText: data.details?.cta?.ctaText ?? "",
-            link: finalLink || "",
-          },
+          cta: finalCtaText
+            ? {
+                ctaText: finalCtaText,
+                link: finalLink,
+              }
+            : undefined, // Send undefined (or null) if no text provided
         },
       };
 
@@ -470,7 +548,11 @@ function EventForm({
       onClose();
     } catch (e: any) {
       console.error(e);
-      toast.error(e?.response?.data?.message || "Save failed");
+      toast.error(
+        e?.response?.data?.message[0] ||
+          e?.response?.data?.message ||
+          "Save failed",
+      );
     } finally {
       setIsSaving(false);
     }
@@ -480,7 +562,9 @@ function EventForm({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
       <div className="w-[48rem] max-h-[90vh] overflow-auto bg-white rounded p-6 shadow-xl">
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-semibold">{initalData ? "Edit Event" : "Add Event"}</h3>
+          <h3 className="text-lg font-semibold">
+            {initalData ? "Edit Event" : "Add Event"}
+          </h3>
           <button
             onClick={onClose}
             aria-label="Close"
@@ -494,7 +578,10 @@ function EventForm({
           {/* Active toggle */}
           <div className="flex items-center gap-3">
             <div className="font-medium text-sm">Active</div>
-            <ToggleSwitch checked={Boolean(watch("active"))} onChange={(val) => setValue("active", val)} />
+            <ToggleSwitch
+              checked={Boolean(watch("active"))}
+              onChange={(val) => setValue("active", val)}
+            />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
@@ -534,32 +621,71 @@ function EventForm({
             errors={errors.desc}
           />
 
-          <div className="grid grid-cols-2 gap-4">
-            <TextInput
-              placeholder="See more"
-              errors={errors?.details?.cta?.ctaText}
-              label="CTA Text (optional)"
-              register={register}
-              registerer="details.cta.ctaText"
-            />
-            <TextInput
-              placeholder="https://example.com"
-              errors={errors?.details?.cta?.link}
-              label="CTA Link (optional)"
-              register={register}
-              registerer="details.cta.link"
-            />
-          </div>
+          {/* CTA Section */}
+          <div className="border border-gray/30 rounded p-4 bg-gray/5">
+            <h4 className="text-sm font-medium mb-3">
+              Call to Action (Optional)
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <TextInput
+                placeholder="e.g. Read More"
+                errors={errors?.details?.ctaText}
+                label="CTA Text"
+                register={register}
+                registerer="details.ctaText"
+              />
 
-          <PdfPicker
-            label="PDF Upload (optional)"
-            errors={errors.pdfFile}
-            register={register}
-            registerer="pdfFile"
-            watcher={watch("pdfFile")}
-            accept=".pdf"
-            tooltip="Upload a PDF if no external link is provided"
-          />
+              <div className="flex flex-col gap-1">
+                <label className="text-sm font-medium">CTA Type</label>
+                <Select
+                  value={ctaOption}
+                  onValueChange={(val: "link" | "pdf") =>
+                    setValue("ctaOption", val)
+                  }
+                >
+                  <SelectTrigger className="w-full bg-white">
+                    <SelectValue placeholder="Select Type" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-white">
+                    <SelectItem value="link">External Link</SelectItem>
+                    <SelectItem value="pdf">Upload PDF</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
+            {/* Conditional Input based on Type */}
+            <div className="mt-4">
+              {ctaOption === "link" ? (
+                <TextInput
+                  placeholder="https://example.com"
+                  errors={errors?.details?.link}
+                  label="Target Link"
+                  register={register}
+                  registerer="details.link"
+                  tooltip={
+                    currentCtaText
+                      ? "Required if CTA Text is present"
+                      : "Optional"
+                  }
+                />
+              ) : (
+                <PdfPicker
+                  label="PDF Document"
+                  errors={errors.pdfFile}
+                  register={register}
+                  registerer="pdfFile"
+                  watcher={watch("pdfFile")}
+                  accept=".pdf"
+                  tooltip={
+                    currentCtaText
+                      ? "Required if CTA Text is present"
+                      : "Optional"
+                  }
+                />
+              )}
+            </div>
+          </div>
 
           {/* Images */}
           <div className="border border-gray/40 rounded-md p-2">
@@ -576,7 +702,10 @@ function EventForm({
 
             <div className="flex flex-col gap-3 mt-2 ">
               {fields.map((field, i) => (
-                <div key={field.id} className="flex justify-items-normal items-end gap-2  border border-gray p-2 rounded-md first:mt-2">
+                <div
+                  key={field.id}
+                  className="flex justify-items-normal items-end gap-2  border border-gray p-2 rounded-md first:mt-2"
+                >
                   <ImagePicker
                     label={`Image - ${i + 1}`}
                     errors={errors.details?.images?.[i]?.image}
@@ -586,7 +715,6 @@ function EventForm({
                     accept="image/*"
                   />
                   <TextInput
-                   
                     label={`Description - ${i + 1}`}
                     placeholder="Image description"
                     register={register}
@@ -597,7 +725,7 @@ function EventForm({
                     theme="transparentPink"
                     size="small"
                     text="Remove"
-                    type="button" 
+                    type="button"
                     className="py-3"
                     onClick={() => remove(i)}
                   />
@@ -608,12 +736,17 @@ function EventForm({
 
           {/* Markdown */}
           <div>
-            <div className="font-medium text-sm mb-1">Details (Markdown)</div>
+            <div className="font-medium text-sm mb-1">Details (Markdown)*</div>
+
             <MarkdownEditor
               value={detailsContent}
-              // onChange={(v) => setValue("details.content", v ?? "")}
               setValue={(val: string) => setValue("details.content", val)}
             />
+            {errors.details?.content && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.details.content.message}
+              </p>
+            )}
           </div>
 
           <div className="flex justify-end mt-4 gap-3">

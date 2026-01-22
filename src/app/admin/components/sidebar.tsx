@@ -25,6 +25,7 @@ const navItems: NavItemType[] = [
     label: "Outreach & Engagements",
     href: "/admin/outreach-and-engagements",
   },
+  {label:"Entry Popup",href:"/admin/entry-popup"},
   { label: "Get Involved", href: "/admin/get-involved" },
   { label: "Newsletters", href: "/admin/newsletter" },
 ];
