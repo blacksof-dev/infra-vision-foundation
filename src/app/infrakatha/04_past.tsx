@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import bg from "@/../public/assets/infrakatha/past-events/bgcircle.png";
 import montek from "@/../public/assets/infrakatha/past-events/montek.png";
 import william from "@/../public/assets/infrakatha/past-events/william.png";
@@ -9,8 +9,6 @@ import devdutt from "@/../public/assets/infrakatha/past-events/devdutt.png";
 import deepaMalik from "@/../public/assets/infrakatha/past-events/deepaMalik.png";
 import sanjeev from "@/../public/assets/infrakatha/past-events/sanjeev.png";
 import aman from "@/../public/assets/infrakatha/past-events/aman.png";
-
-import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import Image from "next/image";
 import { NewsCard } from "@/_components/molecules/newsCard";
 
@@ -168,9 +166,9 @@ export default function PastEvents() {
             <div className="flex justify-center xl:mt-4">
               <div>
                 <button
-                onClick={handleSeeMoreCta}
+                  onClick={handleSeeMoreCta}
                   className={`group  text-xl lg:text-2xl   text-pink hover:text-white cursor-pointer  text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
-                  
+
                 >
                   <span className="z-50 relative"> See more</span>
                   <span
