@@ -7,7 +7,7 @@ const nextConfig = {
         protocol: 'http',
         hostname: '142.93.215.57',
         pathname: '/**',
-      },
+      }
     ],
   },
 };

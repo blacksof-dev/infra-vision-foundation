@@ -5,10 +5,10 @@ import logo from "@/../public/logo.png";
 import { Anchor, TextAnchor } from "../atoms/links";
 import Link from "next/link";
 import SocialMedia from "../atoms/socialMedia";
+import { usePathname } from "next/navigation";
 import {
   ArrowRightIcon,
   Loader,
-  MapPin,
 
 } from "lucide-react";
 import { Checkbox } from "../ui/checkbox";
@@ -27,6 +27,7 @@ const newsletterSchema = z.object({
 type NewsletterForm = z.infer<typeof newsletterSchema>;
 
 const Footer = () => {
+  const pathname = usePathname();
   const formRef = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string>("");
@@ -65,11 +66,22 @@ const Footer = () => {
     reset();
   };
 
+
+  const footer_not_allowed = [
+    "/signup",
+    "/register",
+    "/login",
+    "/forgot-password",
+    "/reset-password"
+  ]
+
+  const hideFooter = footer_not_allowed.includes(pathname) || pathname.startsWith("/admin");
+
   return (
     <>
-      <footer className="blade-top-padding ">
-        <div className=" w-container">
-          <div className=" flex lg:flex-row flex-col lg:justify-between lg:items-end border-b-1 border-gray/60 pb-6 md:pb-9">
+      <footer className={`blade-top-padding  ${hideFooter? " hidden " :""}`}>
+        <div className=" w-container ">
+          <div className=" flex lg:flex-row flex-col lg:justify-between lg:items-end border-b-1 border-gray/60 pb-6 md:pb-9 ">
             <div className="w-[45%] sm:w-[35%]  h-[30%] md:h-full  lg:w-[20%] mb-4 md:mb-0">
               <Anchor href="/">
                 <Image
@@ -431,7 +443,7 @@ const Footer = () => {
         </div>
       </footer>
 
-      {/* <ArrowScope /> */}
+      
     </>
   );
 };

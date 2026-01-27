@@ -36,3 +36,31 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details......
 
 ..
+
+
+
+// UI/Ux check,labels check , tooltip label and content check, Add message input,  give image size, check image update, required and non required things check,
+
+
+knowledge 
+EntryPopup
+Infrashakti
+InfraKatha
+Newsletter ---> done 
+Get-involved ---> done
+
+
+
+Gallery - Common tested by both
+
+
+Home
+About us
+Archive
+Infrashakti award
+Infrapandir awards
+Outreach and engagement
+
+
+
+

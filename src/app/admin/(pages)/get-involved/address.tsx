@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import SectionHeading from "../../components/sectionHeading";
 import TextInput from "../../components/input/textInput";
 import { z } from "zod";
-import { generalSchema } from "../../lib/zod";
+import { emailSchema, generalSchema, telephoneSchema, urlSchema } from "../../lib/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../../components/button";
@@ -64,7 +64,7 @@ export default function OrganisationDetails() {
     <section className="blade-top-margin pb-10 border-t border-gray-100 pt-10">
       <SectionHeading
         heading="Organisation Details"
-        description="Update contact information, physical address, and office location map."
+        description=""
         ctaText="Update Details"
         cta={true}
         handleClick={() =>
@@ -89,9 +89,9 @@ export default function OrganisationDetails() {
 
 const orgSchema = z.object({
   address: generalSchema("Address is required"),
-  emails: generalSchema("Email is required"),
-  phones: generalSchema("Phone is required"),
-  locationMapUrl: generalSchema("Map URL is required"),
+  emails: emailSchema,
+  phones: telephoneSchema,
+  locationMapUrl: urlSchema
 });
 
 type OrgFormValues = z.infer<typeof orgSchema>;

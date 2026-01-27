@@ -68,7 +68,7 @@ export default function GetInvolvedBanner() {
       <section className="blade-top-margin pb-10">
         <SectionHeading
           heading="Get Involved Banner Section"
-          description="Update the header content and background images for the Get Involved page."
+          description=""
           ctaText="Update Banner"
           cta={true}
           handleClick={() =>
@@ -287,7 +287,7 @@ function BannerCard({ data }: { data: BannerDefaultValueType }) {
           <div className="lg:w-2/3 space-y-4">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-[10px] font-bold text-pink uppercase tracking-widest bg-pink/5 px-2 py-1 rounded">
-                Desktop Layout Preview
+                Desktop Layout
               </span>
             </div>
             <div className="rounded-xl overflow-hidden border border-gray-100 shadow-inner bg-gray-50 aspect-[16/9]">
