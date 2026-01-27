@@ -182,14 +182,14 @@ function OrgForm({
           <div className="space-y-5">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <TextInput
-                label="Public Email Address"
+                label="Public Email Address*"
                 errors={errors.emails}
                 placeholder="e.g. contact@infravision.org"
                 register={register}
                 registerer="emails"
               />
               <TextInput
-                label="Contact Phone Number"
+                label="Contact Phone Number*"
                 errors={errors.phones}
                 placeholder="e.g. +91 0000 000 000"
                 register={register}
@@ -198,7 +198,7 @@ function OrgForm({
             </div>
 
             <TextInput
-              label="Physical Office Address"
+              label="Physical Office Address*"
               errors={errors.address}
               placeholder="Full building address..."
               register={register}
@@ -206,7 +206,7 @@ function OrgForm({
             />
 
             <TextInput
-              label="Google Maps Location URL"
+              label="Google Maps Location URL*"
               errors={errors.locationMapUrl}
               placeholder="https://maps.google.com/..."
               register={register}

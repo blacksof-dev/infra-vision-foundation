@@ -211,7 +211,7 @@ function BannerForm({
           className="flex-1 overflow-y-auto p-8 space-y-6"
         >
           <TextInput
-            label="Main Heading"
+            label="Main Heading*"
             errors={errors.heading}
             placeholder="e.g. Get Involved"
             register={register}
@@ -219,7 +219,7 @@ function BannerForm({
           />
 
           <TextInput
-            label="Sub-description"
+            label="Sub-description*"
             errors={errors.description}
             placeholder="Enter a brief description..."
             register={register}
@@ -228,7 +228,7 @@ function BannerForm({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
             <ImagePicker
-              label="Desktop Background (1920x1024)"
+              label="Desktop Background (1920x1024)*"
               errors={errors.backgroundImageDesktop}
               register={register}
               registerer="backgroundImageDesktop"
@@ -237,7 +237,7 @@ function BannerForm({
             />
 
             <ImagePicker
-              label="Mobile Background (390x690)"
+              label="Mobile Background (390x690)*"
               errors={errors.backgroundImageMobile}
               register={register}
               registerer="backgroundImageMobile"

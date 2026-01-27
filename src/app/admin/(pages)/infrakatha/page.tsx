@@ -10,7 +10,7 @@ export default function Page() {
       <Banner />
       <Members
         apiKey="Infrakath-hosts"
-        title="Section - 02 (About Infrakatha - The Host)"
+        title="About Infrakatha "
         ctaText="Add New Host"
       />
       <PastSessions />

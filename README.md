@@ -44,8 +44,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 knowledge 
 EntryPopup
-Infrashakti
-InfraKatha
+Infrashakti ---->done
+InfraKatha ----> done
 Newsletter ---> done 
 Get-involved ---> done
 
@@ -57,7 +57,6 @@ Gallery - Common tested by both
 Home
 About us
 Archive
-Infrashakti award
 Infrapandir awards
 Outreach and engagement
 

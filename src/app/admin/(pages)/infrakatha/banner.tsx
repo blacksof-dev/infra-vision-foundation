@@ -54,7 +54,7 @@ export default function Banner() {
     <>
       <section className="blade-top-margin pb-10">
         <SectionHeading
-          heading="Infrakatha Banner Section"
+          heading="Infrakatha Banner"
           description=""
           ctaText="Update Banner"
           cta={true}
@@ -198,7 +198,7 @@ function BannerForm({
           className="flex-1 overflow-y-auto p-8 space-y-6"
         >
           <TextInput
-            label="Main Heading"
+            label="Main Heading*"
             errors={errors.heading}
             placeholder="e.g. Infrakatha - The Story of Infrastructure"
             register={register}
@@ -206,7 +206,7 @@ function BannerForm({
           />
 
           <MessageInput
-            label="Sub-description"
+            label="Sub-description*"
             errors={errors.description}
             placeholder="Enter a brief description..."
             register={register}
@@ -215,7 +215,7 @@ function BannerForm({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
             <ImagePicker
-              label="Desktop Background (1920x1130)"
+              label="Desktop Background (1920x1130)*"
               errors={errors.backgroundImageDesktop}
               register={register}
               registerer="backgroundImageDesktop"
@@ -224,7 +224,7 @@ function BannerForm({
             />
 
             <ImagePicker
-              label="Mobile Background (393x564)"
+              label="Mobile Background (393x564)*"
               errors={errors.backgroundImageMobile}
               register={register}
               registerer="backgroundImageMobile"
