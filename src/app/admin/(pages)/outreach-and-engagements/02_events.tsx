@@ -263,7 +263,7 @@ export default function AdminCalendarManager() {
                       </div>
                       <div className="flex items-center mt-1 2xl:mt-4 gap-2 text-darkgray">
                         <span className="w-2 h-2 shrink-0 bg-pink rounded-full"></span>
-                        <span className="text-sm 2xl:text-lg">
+                        <span className="text-sm -my-2">
                           {ev.meetingType}
                         </span>
                       </div>
@@ -454,7 +454,7 @@ function EventForm({
         },
       },
     );
-    return process.env.NEXT_PUBLIC_HOST_URL + res.data.url; // The uploaded file URL
+    return  res.data.url; // The uploaded file URL
   }
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
@@ -586,7 +586,7 @@ function EventForm({
 
           <div className="grid grid-cols-2 gap-4">
             <TextInput
-              label="Date"
+              label="Date (YYYY-MM-DD)*"
               placeholder="YYYY-MM-DD"
               tooltip="Date is required"
               register={register}
@@ -594,7 +594,7 @@ function EventForm({
               errors={errors.date}
             />
             <TextInput
-              label="Day/Time"
+              label="Day/Time*"
               placeholder="e.g. Monday, 3:00 PM"
               tooltip="Day and time required"
               register={register}
@@ -604,7 +604,7 @@ function EventForm({
           </div>
 
           <TextInput
-            label="Meeting Type"
+            label="Meeting Type*"
             placeholder="External engagement"
             register={register}
             registerer="meetingType"
@@ -613,7 +613,7 @@ function EventForm({
           />
 
           <TextInput
-            label="Short Summary"
+            label="Short Summary*"
             placeholder="Short Summary"
             tooltip="Short Summary is required"
             register={register}
@@ -690,7 +690,7 @@ function EventForm({
           {/* Images */}
           <div className="border border-gray/40 rounded-md p-2">
             <div className="flex justify-between gap-1 items-center">
-              <div className="text-lg font-medium">Images</div>
+              <div className="text-lg font-medium">Images*</div>
               <Button
                 size="small"
                 theme="transparentPink"
@@ -736,7 +736,7 @@ function EventForm({
 
           {/* Markdown */}
           <div>
-            <div className="font-medium text-sm mb-1">Details (Markdown)*</div>
+            <div className="font-medium text-base mb-1">Details (Markdown)*</div>
 
             <MarkdownEditor
               value={detailsContent}

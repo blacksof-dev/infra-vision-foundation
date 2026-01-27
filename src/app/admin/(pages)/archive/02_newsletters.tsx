@@ -23,6 +23,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/_components/ui/select";
+import MessageInput from "../../components/input/textareaInput";
 
 interface NewsletterItem {
   id: string;
@@ -143,7 +144,7 @@ export default function Newsletters() {
     <>
       <section className="blade-top-margin pb-10">
         <SectionHeading
-          heading="Archives - Newsletters"
+          heading="Newsletters"
           ctaText="Add New Newsletter"
           cta
           handleClick={() =>
@@ -216,7 +217,7 @@ export default function Newsletters() {
                     })}
                   </div>
 
-                  <h3 className="text-base font-bold text-gray-900 leading-tight mb-2 line-clamp-3  mt-2">
+                  <h3 className="text-base font-medium text-gray-900 leading-tight mb-2 line-clamp-3  mt-2">
                     {it.title}
                   </h3>
 
@@ -225,7 +226,7 @@ export default function Newsletters() {
                       href={`${process.env.NEXT_PUBLIC_HOST_URL}${it.fileUrl}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 hover:text-blue-700 uppercase tracking-widest transition-colors"
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-pink hover:underline uppercase tracking-widest transition-colors"
                     >
                       <ExternalLink className="w-3 h-3" />
                       View PDF
@@ -445,7 +446,7 @@ function NewsletterForm({
           </h2>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-1 hover:bg-gray-100 rounded-full transition-colors cursor-pointer"
           >
             <X className="w-6 h-6 text-gray-500" />
           </button>
@@ -456,26 +457,26 @@ function NewsletterForm({
           className="flex-1 overflow-y-auto p-6 space-y-6"
         >
           <div className="space-y-5">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <TextInput
-                label="Newsletter Title"
+            
+              <MessageInput
+                label="Newsletter Title*"
                 errors={errors.title}
                 placeholder="e.g. Monthly Infrastructure Update"
                 register={register}
                 registerer="title"
               />
+             
               <TextInput
-                label="Publication Date"
+                label="Publication Date*"
                 placeholder="yyyy-mm-dd"
                 errors={errors.publishedDate}
                 register={register}
                 registerer="publishedDate"
               />
-            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <ImagePicker
-                label="Cover Image"
+                label="Cover Image*"
                 errors={errors.coverImageFile}
                 register={register}
                 registerer="coverImageFile"
@@ -483,7 +484,7 @@ function NewsletterForm({
                 accept=".svg, .png, .jpg, .jpeg, .webp"
               />
               <PdfPicker
-                label="PDF Document"
+                label="PDF Document*"
                 errors={errors.pdfFile}
                 register={register}
                 registerer="pdfFile"

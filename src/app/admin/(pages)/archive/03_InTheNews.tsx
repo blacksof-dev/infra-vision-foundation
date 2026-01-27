@@ -154,7 +154,7 @@ export default function InTheNews() {
     <>
       <section className="blade-top-margin pb-10">
         <SectionHeading
-          heading="Archives - In the News"
+          heading="In the News"
           ctaText="Add New Entry"
           cta
           handleClick={() =>
@@ -221,22 +221,25 @@ export default function InTheNews() {
                       <ImageIcon className="w-12 h-12 opacity-20" />
                     </div>
                   )}
-                  <div className="absolute top-2 left-2">
-                    <span className="bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] font-bold text-pink uppercase tracking-wider shadow-sm">
-                      {it.author}
-                    </span>
-                  </div>
+                  
                 </div>
 
                 <div className="p-4 flex flex-col flex-1">
                   <div className="text-xs w-fit mb-2 font-medium text-pink px-2 py-0.5 bg-pink/10 rounded-full flex items-center gap-1.5">
                     <Calendar className="w-3 h-3" />
-                    {it.date}
+                    {new Date(it.date).toLocaleDateString("en-IN",{
+                      day:"2-digit",
+                      month:"short",
+                      year:"numeric"
+                    })}
                   </div>
 
-                  <h3 className="text-base font-bold text-gray-900 leading-tight mb-2 line-clamp-3 min-h-[3.75rem]">
+                  <h3 className="text-base font-medium text-gray-900 leading-tight mb-2 line-clamp-3  ">
                     {it.title}
-                  </h3>
+                  </h3> 
+                  <h4 className="text-sm font-medium text-gray-500 leading-tight mb-2 line-clamp-3">
+                    {it.author}
+                  </h4>
 
                   <div className="flex flex-wrap gap-3 mb-4 pt-2 border-t border-gray-50">
                     {it.link && (
@@ -244,7 +247,7 @@ export default function InTheNews() {
                         href={it.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 hover:text-blue-700 uppercase tracking-widest transition-colors"
+                        className="inline-flex items-center gap-1 text-[11px] font-bold text-pink hover:underline uppercase tracking-widest transition-colors"
                       >
                         <LinkIcon className="w-3 h-3" />
                         Link
@@ -255,7 +258,7 @@ export default function InTheNews() {
                         href={`${process.env.NEXT_PUBLIC_HOST_URL}${it.pdfFile}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-[11px] font-bold text-pink hover:text-pink/80 uppercase tracking-widest transition-colors"
+                        className="inline-flex items-center gap-1 text-[11px] font-bold text-pink hover:underline uppercase tracking-widest transition-colors"
                       >
                         <FileText className="w-3 h-3" />
                         PDF
@@ -266,7 +269,7 @@ export default function InTheNews() {
                         href={`${process.env.NEXT_PUBLIC_HOST_URL}${it.imageFile}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-600 hover:text-emerald-700 uppercase tracking-widest transition-colors"
+                        className="inline-flex items-center gap-1 text-[11px] font-bold text-pink hover:underline uppercase tracking-widest transition-colors"
                       >
                         <ImageIcon className="w-3 h-3" />
                         Image
@@ -524,7 +527,7 @@ function MediaForm({
           </h2>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-1 hover:bg-gray-100 rounded-full transition-colors cursor-pointer"
           >
             <X className="w-6 h-6 text-gray-500" />
           </button>
@@ -537,14 +540,14 @@ function MediaForm({
           <div className="space-y-5">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <TextInput
-                label="Article Title"
+                label="Article Title*"
                 errors={errors.title}
                 placeholder="Title of the news piece"
                 register={register}
                 registerer="title"
               />
               <TextInput
-                label="Publication / Author"
+                label="Publication / Author*"
                 errors={errors.author}
                 placeholder="e.g. The Economic Times"
                 register={register}
@@ -553,7 +556,7 @@ function MediaForm({
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <ImagePicker
-                label="Thumbnail / Cover Image"
+                label="Thumbnail / Cover Image*"
                 errors={errors.thumbnail}
                 register={register}
                 registerer="thumbnail"
@@ -561,7 +564,7 @@ function MediaForm({
                 accept=".svg, .png, .jpg, .jpeg, .webp"
               />
               <TextInput
-                label="Date"
+                label="Date (YYYY/MM/DD)*"
                 placeholder="YYYY/MM/DD"
                 errors={errors.date}
                 register={register}
@@ -578,7 +581,7 @@ function MediaForm({
               />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <PdfPicker
-                  label="PDF Version (Optional)"
+                  label="PDF   (Optional)"
                   errors={errors.pdfFile}
                   register={register}
                   registerer="pdfFile"

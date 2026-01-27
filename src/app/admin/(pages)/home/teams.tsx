@@ -124,7 +124,7 @@ export default function Teams() {
             <p className="text-gray-500">No team members found.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 gap-6 mt-6">
             {items.map((item) => (
               <TeamMemberCard
                 key={item.id}
@@ -210,7 +210,7 @@ function TeamMemberCard({
 }) {
   return (
     <article className="group bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-all duration-300">
-      <div className="relative h-64 overflow-hidden bg-gray-100">
+      <div className="relative h-72 overflow-hidden bg-gray-100">
         <img
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           src={`${process.env.NEXT_PUBLIC_HOST_URL}${item.image}`}
@@ -243,7 +243,7 @@ function TeamMemberCard({
             {item.desig}
           </p>
         </div>
-        <p className="text-xs text-gray-500 line-clamp-3 mb-4 flex-1">
+        <p className="text-xs text-gray-500 line-clamp-2 mb-4 flex-1">
           {item.popupdesc}
         </p>
 
@@ -252,7 +252,7 @@ function TeamMemberCard({
             href={item.link}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs text-blue-600 hover:text-blue-700 font-medium mb-4"
+            className="inline-flex items-center gap-1.5 text-sm text-pink hover:underline font-medium mb-4"
           >
             <ExternalLink className="w-3.5 h-3.5" />
             {item.socialMedia || "Profile"}
@@ -293,7 +293,10 @@ const teamSchema = z.object({
     z.string().min(1, "image is required"),
     z.any().refine((file) => file?.length > 0, "image is required"),
   ]),
-  popupImg: z.union([z.string(), z.any()]).optional(),
+  popupImg: z.union([
+    z.string().min(1, "image is required"),
+    z.any().refine((file) => file?.length > 0, "image is required"),
+  ]),
 });
 
 type TeamFormValues = z.infer<typeof teamSchema>;
@@ -406,7 +409,7 @@ function TeamForm({
           </h3>
           <button
             type="button"
-            className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-1 hover:bg-gray-100 rounded-full transition-colors cursor-pointer"
             onClick={onClose}
           >
             <X className="w-6 h-6 text-gray-500" />
@@ -420,14 +423,14 @@ function TeamForm({
           <div className="space-y-5">
             <div className="grid grid-cols-2 gap-4">
               <TextInput
-                label="Full Name"
+                label="Full Name*"
                 errors={errors.title}
                 placeholder="e.g. John Doe"
                 register={register}
                 registerer="title"
               />
               <TextInput
-                label="Designation"
+                label="Designation/Role*"
                 errors={errors.desig}
                 placeholder="e.g. CEO & Founder"
                 register={register}
@@ -436,7 +439,7 @@ function TeamForm({
             </div>
 
             <MessageInput
-              label="Popup Bio Description"
+              label="Description (Popup)*"
               errors={errors.popupdesc}
               placeholder="Tell something about this member..."
               register={register}
@@ -445,7 +448,7 @@ function TeamForm({
 
             <div className="grid grid-cols-2 gap-4">
               <TextInput
-                label="Social/Profile Link"
+                label="Social URL (optional)"
                 errors={errors.link}
                 placeholder="https://linkedin.com/in/..."
                 register={register}
@@ -487,7 +490,7 @@ function TeamForm({
 
             <div className="grid grid-cols-2 gap-4">
               <TextInput
-                label="Display Order"
+                label="Display Order(Optional)"
                 errors={errors.order}
                 placeholder="0"
                 register={register}
@@ -506,7 +509,7 @@ function TeamForm({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <ImagePicker
-                label="Profile Photo"
+                label="Profile Image*"
                 errors={errors.image}
                 register={register}
                 registerer="image"
@@ -514,7 +517,7 @@ function TeamForm({
                 accept=".png, .jpg, .jpeg, .webp"
               />
               <ImagePicker
-                label="Popup Secondary Photo"
+                label="Popup/Secondary Image*"
                 errors={errors.popupImg}
                 register={register}
                 registerer="popupImg"

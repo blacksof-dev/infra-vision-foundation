@@ -73,6 +73,27 @@ export default function GetInvolved() {
         <div className="mt-10">
           <GetInvolvedCard data={formState.intialValue} />
         </div>
+            {/* Instructions Note */}
+                <div className="mt-10 p-6 bg-pink/5 rounded-2xl border border-pink/10 flex items-start gap-4 max-w-4xl">
+                  <div className="w-10 h-10 bg-pink/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Info className="w-5 h-5 text-pink" />
+                  </div>
+                  <div>
+                    <h5 className="text-sm font-bold text-gray-900 mb-1">
+                      Admin Pro-Tip
+                    </h5>
+                    <ul className="list-disc list-outside pl-4">
+                      <li className="text-sm text-gray-600 leading-relaxed">
+                        To make text appear <span className="font-bold">bold</span>,
+                        wrap it in double asterisks: <br />
+                        <code className="bg-white px-2 py-1 rounded border border-pink/20 text-xs mt-2 inline-block">
+                          **your bold text here**
+                        </code>
+                      </li>
+                      
+                    </ul>
+                  </div>
+                </div>
       </section>
 
       {formState.isFormOpen && (
@@ -200,14 +221,14 @@ function GetInvolvedForm({
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <TextInput
-              label="Tag Label"
+              label="Tag Label*"
               errors={errors.label}
               placeholder="e.g. GET INVOLVED"
               register={register}
               registerer="label"
             />
             <TextInput
-              label="Main Heading"
+              label="Main Heading*"
               errors={errors.heading}
               placeholder="Enter section heading"
               register={register}
@@ -216,7 +237,7 @@ function GetInvolvedForm({
           </div>
 
           <TextInput
-            label="Description"
+            label="Description*"
             errors={errors.description}
             placeholder="Enter description..."
             register={register}
@@ -225,14 +246,14 @@ function GetInvolvedForm({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <TextInput
-              label="CTA Text"
+              label="CTA Text*"
               errors={errors.ctaText}
               placeholder="e.g. JOIN THE MOVEMENT"
               register={register}
               registerer="ctaText"
             />
             <TextInput
-              label="CTA Link"
+              label="CTA Link*"
               errors={errors.ctaLink}
               placeholder="e.g. /join-us"
               register={register}
@@ -242,7 +263,7 @@ function GetInvolvedForm({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
             <ImagePicker
-              label="Desktop Background (1920x1024)"
+              label="Desktop Background* (1920x1024)"
               errors={errors.backgroundImageDesktop}
               register={register}
               registerer="backgroundImageDesktop"
@@ -250,7 +271,7 @@ function GetInvolvedForm({
               accept=".png, .jpg, .jpeg, .webp"
             />
             <ImagePicker
-              label="Mobile Background (390x690)"
+              label="Mobile Background* (390x690)"
               errors={errors.backgroundImageMobile}
               register={register}
               registerer="backgroundImageMobile"
@@ -360,8 +381,15 @@ function GetInvolvedCard({ data }: { data: GetInvolvedDefaultValueType }) {
                   Heading
                 </p>
                 <h3
-                  className="text-2xl font-bold text-gray-900 leading-tight font-poppin"
-                  dangerouslySetInnerHTML={{ __html: heading }}
+                  className="text-2xl   text-gray-900 leading-tight font-poppin"
+                  // dangerouslySetInnerHTML={{ __html: heading }}
+                    dangerouslySetInnerHTML={{
+                __html:
+                  heading?.replace(
+                    /\*\*(.*?)\*\*/g,
+                    "<strong>$1</strong>"
+                  ) || "No Description Provided",
+              }}
                 />
               </div>
             </div>
@@ -371,9 +399,18 @@ function GetInvolvedCard({ data }: { data: GetInvolvedDefaultValueType }) {
                 <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
                   Description
                 </p>
-                <p className="text-gray-600 leading-relaxed text-sm max-w-xl">
-                  {description}
-                </p>
+                <p className="text-gray-600 leading-relaxed text-sm max-w-xl"
+                  dangerouslySetInnerHTML={{
+                __html:
+                  description?.replace(
+                    /\*\*(.*?)\*\*/g,
+                    "<strong>$1</strong>"
+                  ) || "No Description Provided",
+              }}
+                />
+                 
+
+                 
               </div>
               <div className="flex gap-10">
                 <div>
@@ -388,7 +425,7 @@ function GetInvolvedCard({ data }: { data: GetInvolvedDefaultValueType }) {
                   <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
                     CTA Link
                   </p>
-                  <p className="text-sm font-semibold text-blue-600 flex items-center gap-1">
+                  <p className="text-sm font-semibold text-pink flex items-center gap-1">
                     <ExternalLink className="w-3.5 h-3.5" />
                     {ctaLink || "Not Set"}
                   </p>

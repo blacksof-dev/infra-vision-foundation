@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import SectionHeading from "../../components/sectionHeading";
 import TextInput from "../../components/input/textInput";
 import { z } from "zod";
-import { fileSchema, generalSchema } from "../../lib/zod";
+// import MessageInput from
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ImagePicker from "../../components/input/imagePicker";
@@ -12,6 +12,7 @@ import { X, Info } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { getData, updateContent, uploadImage } from "../../lib/utils";
 import { toast } from "react-toastify";
+import MessageInput from "../../components/input/textareaInput";
 
 interface BannerDefaultValueType {
   heading: string;
@@ -51,8 +52,8 @@ export default function Banner() {
     <>
       <section className="blade-top-margin pb-10">
         <SectionHeading
-          heading="Homepage Banner Section"
-          description="Update the main banner content and background images for desktop and mobile."
+          heading="Section -01 (Homepage Banner)"
+          // description="Update the main banner content and background images for desktop and mobile."
           ctaText="Update Banner"
           cta={true}
           handleClick={() =>
@@ -73,7 +74,7 @@ export default function Banner() {
           </div>
           <div>
             <h5 className="text-sm font-bold text-gray-900 mb-1">
-              Admin Pro-Tip
+              Admin Pro-Tip  
             </h5>
             <p className="text-sm text-gray-600 leading-relaxed">
               To make specific words in the heading appear in{" "}
@@ -207,7 +208,7 @@ function BannerForm({
           </h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-2 hover:bg-gray-100 rounded-full transition-colors cursor-pointer"
           >
             <X className="w-6 h-6 text-gray-500" />
           </button>
@@ -217,17 +218,17 @@ function BannerForm({
           onSubmit={handleSubmit(submitHandler)}
           className="flex-1 overflow-y-auto p-8 space-y-6"
         >
-          <TextInput
-            label="Main Heading"
+          <MessageInput
+            label="Main Heading*"
             errors={errors.heading}
             placeholder="e.g. Transforming Urban Infrastructure"
             register={register}
             registerer="heading"
-            tooltip="You can use <span class='text-[#c82249]'>...</span> for pink text"
+            // tooltip="You can use <span class='text-[#c82249]'>...</span> for pink text"
           />
 
-          <TextInput
-            label="Sub-description"
+          <MessageInput
+            label="Sub-description*"
             errors={errors.description}
             placeholder="Enter a brief description..."
             register={register}
@@ -236,7 +237,7 @@ function BannerForm({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
             <ImagePicker
-              label="Desktop Background (1920x1130)"
+              label="Desktop Background* (1920x1024)"
               errors={errors.backgroundImageDesktop}
               register={register}
               registerer="backgroundImageDesktop"
@@ -245,7 +246,7 @@ function BannerForm({
             />
 
             <ImagePicker
-              label="Mobile Background (390x690)"
+              label="Mobile Background* (390x690)"
               errors={errors.backgroundImageMobile}
               register={register}
               registerer="backgroundImageMobile"

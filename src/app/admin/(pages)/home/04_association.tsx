@@ -77,8 +77,8 @@ export default function Association() {
     <>
       <section className="blade-top-margin pb-10">
         <SectionHeading
-          heading="Associations Management"
-          description="Manage logos and titles of partner organizations and associations."
+          heading="Our Associations"
+          // description="Manage logos and titles of partner organizations and associations."
           ctaText="Add New Association"
           cta={true}
           handleClick={() => {
@@ -157,7 +157,7 @@ function AssociationCard({
             theme="transparentPink"
             size="small"
             text="Delete"
-            className="w-full text-[11px] font-bold tracking-tight"
+            className="w-full  "
             onClick={onDelete}
           />
         </div>
@@ -250,7 +250,7 @@ function AssociationForm({
           </h3>
           <button
             type="button"
-            className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-1 hover:bg-gray-100 rounded-full transition-colors cursor-pointer"
             onClick={onClose}
           >
             <X className="w-6 h-6 text-gray-500" />
@@ -263,7 +263,7 @@ function AssociationForm({
         >
           <div className="space-y-6">
             <TextInput
-              label="Association Title"
+              label="Association Title*"
               errors={errors.title}
               placeholder="e.g. India Infrastructure Body"
               register={register}
@@ -271,7 +271,7 @@ function AssociationForm({
             />
 
             <ImagePicker
-              label="Organization Logo"
+              label="Organization Logo*"
               errors={errors.image}
               register={register}
               registerer="image"
@@ -295,7 +295,7 @@ function AssociationForm({
               theme="pink"
               size="base"
               className="flex-1"
-              text="Create Association"
+              text="Create"
               isLoading={isSubmitting}
               isDisabled={isSubmitting}
             />

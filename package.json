@@ -32,6 +32,7 @@
     "cheerio": "^1.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "editorjs-html": "^4.0.5",
     "editorjs-text-color-plugin": "^2.0.4",
     "fuse.js": "^7.1.0",
     "gsap": "^3.12.7",
