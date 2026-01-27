@@ -241,15 +241,15 @@ function AwardTypeForm({
     resolver: zodResolver(awardTypeSchema),
     defaultValues: initialData
       ? {
-          title: initialData.title,
-          description: initialData.description,
-          active: initialData.active,
-          imageFile: initialData.image,
-          iconFile: initialData.icon,
-        }
+        title: initialData.title,
+        description: initialData.description,
+        active: initialData.active,
+        imageFile: initialData.image,
+        iconFile: initialData.icon,
+      }
       : {
-          active: true,
-        },
+        active: true,
+      },
   });
 
   const onSubmit: SubmitHandler<AwardTypeFormValues> = async (data) => {
@@ -335,14 +335,14 @@ function AwardTypeForm({
         >
           <div className="space-y-5">
             <TextInput
-              label="Title"
+              label="Title*"
               errors={errors.title}
               placeholder="Enter award type title"
               register={register}
               registerer="title"
             />
             <MessageInput
-              label="Description"
+              label="Description*"
               errors={errors.description}
               placeholder="Enter description"
               register={register}
@@ -351,7 +351,7 @@ function AwardTypeForm({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <ImagePicker
-                label="Cover Image"
+                label="Cover Image*"
                 errors={errors.imageFile}
                 register={register}
                 registerer="imageFile"
@@ -359,7 +359,7 @@ function AwardTypeForm({
                 accept=".png, .jpg, .jpeg, .webp"
               />
               <ImagePicker
-                label="Icon Image"
+                label="Icon Logo*"
                 errors={errors.iconFile}
                 register={register}
                 registerer="iconFile"

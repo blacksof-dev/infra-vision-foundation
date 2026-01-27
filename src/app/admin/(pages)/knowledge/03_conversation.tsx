@@ -146,23 +146,24 @@ export default function KnowledgeConversations() {
                       {it.date}
                     </div>
 
-                    <h3 className="text-base font-bold text-gray-900 leading-tight mb-1  ">
+                    <h3 className="text-base font-bold text-gray-900 leading-tight mt-2  ">
                       {it.name}
                     </h3>
-                    <p className="text-sm font-medium text-pink   tracking-wider mb-2 ">
+                    <p className="text-xs font-medium text-gray-600   tracking-wider mb-2 ">
                       {it.title}
                     </p>
 
-                    <p className="text-xs text-gray-500 line-clamp-3 mb-4 flex-1">
-                      {it.desc}
-                    </p>
 
-                    <div className="mb-4 pt-2 border-t border-gray-50">
+
+                    <div className=" border-t border-gray-50  my-4">
+                      <p className="text-md  text-gray-900 line-clamp-3 py-1 flex-1">
+                        {it.desc}
+                      </p>
                       <a
                         href={it.videoLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-[11px] font-bold text-blue-600 hover:text-blue-700 uppercase tracking-widest transition-colors"
+                        className="inline-flex items-center gap-1.5 text-[11px] font-bold text-gray-600 hover:text-gray-700 uppercase tracking-widest transition-colors"
                       >
                         <Video className="w-3.5 h-3.5" />
                         Watch Conversation
@@ -209,11 +210,10 @@ export default function KnowledgeConversations() {
                     <button
                       key={p}
                       onClick={() => loadList(p)}
-                      className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${
-                        p === page
-                          ? "bg-pink text-white shadow-md shadow-pink/20"
-                          : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
-                      }`}
+                      className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${p === page
+                        ? "bg-pink text-white shadow-md shadow-pink/20"
+                        : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
+                        }`}
                     >
                       {p}
                     </button>
@@ -357,7 +357,7 @@ function ConversationForm({
           </h2>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-1 hover:bg-gray-100 rounded-full transition-colors cursor-pointer"
           >
             <X className="w-6 h-6 text-gray-500" />
           </button>
@@ -370,14 +370,14 @@ function ConversationForm({
           <div className="space-y-5">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <TextInput
-                label="Full Name"
+                label="Name*"
                 errors={errors.name}
                 placeholder="Enter speaker name"
                 register={register}
                 registerer="name"
               />
               <TextInput
-                label="Date / Month"
+                label="Date*"
                 errors={errors.date}
                 placeholder="e.g. June 25, 2025"
                 register={register}
@@ -386,7 +386,7 @@ function ConversationForm({
             </div>
 
             <TextInput
-              label="Designation"
+              label="Designation*"
               errors={errors.title}
               placeholder="e.g. Managing Director at ABC Corp"
               register={register}
@@ -394,7 +394,7 @@ function ConversationForm({
             />
 
             <MessageInput
-              label="Topic Description"
+              label="Topic Description*"
               errors={errors.desc}
               placeholder="Write a brief overview of the conversation topic..."
               register={register}
@@ -402,7 +402,7 @@ function ConversationForm({
             />
 
             <TextInput
-              label="Video URL (YouTube)"
+              label="Video URL*"
               errors={errors.videoLink}
               placeholder="https://www.youtube.com/watch?v=..."
               register={register}
@@ -410,7 +410,7 @@ function ConversationForm({
             />
 
             <ImagePicker
-              label="Cover Image"
+              label="Cover Image*"
               errors={errors.imageFile}
               register={register}
               registerer="imageFile"

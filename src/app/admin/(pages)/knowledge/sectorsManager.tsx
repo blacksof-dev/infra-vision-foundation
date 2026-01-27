@@ -203,10 +203,10 @@ function SectorFormModal({
   };
 
   return (
-    <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center ">
-      <div className="w-[28rem] relative blade-top-padding-s bg-white rounded-md shadow-2xl h-auto max-h-[85vh] overflow-auto overflow-x-hidden">
+    <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center  z-[999]">
+      <div className="w-[28rem] relative  bg-white rounded-md shadow-2xl h-auto max-h-[85vh] overflow-auto overflow-x-hidden">
         <form className="h-full" onSubmit={handleSubmit(submitHandler)}>
-          <div className="flex justify-end sticky top-2 px-1 z-[999]">
+          <div className="flex justify-end sticky -top-4 p-4 z-[999]">
             <button
               type="button"
               aria-label="close modal"
@@ -219,12 +219,12 @@ function SectorFormModal({
 
           <div className="flex flex-col gap-y-6 h-full p-8 pt-1">
             <TextInput
-              label="Name"
+              label="Name*"
               errors={errors.name}
               placeholder="Enter name"
               register={register}
               registerer="name"
-              tooltip="Name is required"
+
             />
             {/* Description and Active inputs removed as per requirement */}
 

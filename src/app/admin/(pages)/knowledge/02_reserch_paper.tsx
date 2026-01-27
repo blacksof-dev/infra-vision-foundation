@@ -236,14 +236,14 @@ export default function KnowledgeResearchPapers() {
                 </div>
 
                 <div className="p-4 flex flex-col flex-1">
-                  
- <div className="text-xs w-fit mb-2 font-medium text-pink px-2 py-0.5 bg-pink/10 rounded-full">
-                      {new Date(formatDate(it.date)).toLocaleDateString("en-GB", {
-                        day: "numeric",
-                        month: "short",
-                        year: "numeric",
-                      })}
-                    </div>
+
+                  <div className="text-xs w-fit mb-2 font-medium text-pink px-2 py-0.5 bg-pink/10 rounded-full">
+                    {new Date(formatDate(it.date)).toLocaleDateString("en-GB", {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric",
+                    })}
+                  </div>
                   <h3 className="text-base font-bold text-gray-900 leading-tight mb-2 line-clamp-2 min-h-[2.5rem]">
                     {it.title}
                   </h3>
@@ -253,7 +253,7 @@ export default function KnowledgeResearchPapers() {
                       href={`${process.env.NEXT_PUBLIC_HOST_URL}${it.link}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 hover:text-blue-700 uppercase tracking-widest transition-colors"
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-gray-700 hover:text-gray-700 uppercase tracking-widest transition-colors"
                     >
                       <ExternalLink className="w-3 h-3" />
                       View PDF
@@ -317,11 +317,10 @@ export default function KnowledgeResearchPapers() {
                 <button
                   key={p}
                   onClick={() => loadPapers(p)}
-                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${
-                    p === page
-                      ? "bg-pink text-white shadow-md shadow-pink/20"
-                      : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
-                  }`}
+                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${p === page
+                    ? "bg-pink text-white shadow-md shadow-pink/20"
+                    : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
+                    }`}
                 >
                   {p}
                 </button>
@@ -473,7 +472,7 @@ function ResearchPaperForm({
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[90] flex items-center justify-center p-4">
       <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={onClose}
@@ -498,14 +497,14 @@ function ResearchPaperForm({
           <div className="space-y-5">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <TextInput
-                label="Paper Title"
+                label="Title*"
                 errors={errors.title}
                 placeholder="e.g. Urban Policy Review 2024"
                 register={register}
                 registerer="title"
               />
               <TextInput
-                label="Publication Date"
+                label="Publication Date*"
                 placeholder="yyyy/mm/dd"
                 errors={errors.date}
                 register={register}
@@ -515,7 +514,7 @@ function ResearchPaperForm({
 
             <div className="space-y-2">
               <label className="text-sm font-bold text-gray-700 font-poppin">
-                Sector Category
+                Sector Category*
               </label>
               <Select
                 value={
@@ -548,7 +547,7 @@ function ResearchPaperForm({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <ImagePicker
-                label="Cover Image"
+                label="Cover Image*"
                 errors={errors.imageFile}
                 register={register}
                 registerer="imageFile"
@@ -556,7 +555,7 @@ function ResearchPaperForm({
                 accept=".png, .jpg, .jpeg, .webp"
               />
               <PdfPicker
-                label="PDF Document"
+                label="PDF Document*"
                 errors={errors.pdfFile}
                 register={register}
                 registerer="pdfFile"

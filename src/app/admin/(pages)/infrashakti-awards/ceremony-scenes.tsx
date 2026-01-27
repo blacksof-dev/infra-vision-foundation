@@ -179,7 +179,7 @@ export default function CeremonyScenes() {
             <p className="text-gray-500">No ceremony scenes found.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4  gap-6 mt-6">
             {items.map((item) => (
               <article
                 key={item.id}
@@ -215,6 +215,21 @@ export default function CeremonyScenes() {
                   <p className="text-sm text-gray-500 line-clamp-3 mb-4 flex-1">
                     {item.description}
                   </p>
+
+                  {item.youtubeVideoUrl && (
+                    <a
+                      href={
+                        item.youtubeVideoUrl
+                      }
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-medium text-black   underline   my-2     "
+                    >
+                      Watch on YouTube
+                    </a>
+                  )
+
+                  }
 
                   <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
                     <div className="flex items-center gap-2">
@@ -268,11 +283,10 @@ export default function CeremonyScenes() {
                 <button
                   key={p}
                   onClick={() => fetchScenes(p)}
-                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${
-                    p === page
-                      ? "bg-pink text-white"
-                      : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
-                  }`}
+                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${p === page
+                    ? "bg-pink text-white"
+                    : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
+                    }`}
                 >
                   {p}
                 </button>
@@ -340,16 +354,16 @@ function CeremonySceneForm({
     resolver: zodResolver(ceremonySceneSchema),
     defaultValues: initialData
       ? {
-          title: initialData.title,
-          name: initialData.name,
-          description: initialData.description,
-          youtubeVideoUrl: initialData.youtubeVideoUrl,
-          active: initialData.active,
-          thumbnailFile: initialData.thumbnailUrl,
-        }
+        title: initialData.title,
+        name: initialData.name,
+        description: initialData.description,
+        youtubeVideoUrl: initialData.youtubeVideoUrl,
+        active: initialData.active,
+        thumbnailFile: initialData.thumbnailUrl,
+      }
       : {
-          active: true,
-        },
+        active: true,
+      },
   });
 
   const onSubmit: SubmitHandler<CeremonySceneFormValues> = async (data) => {
@@ -425,14 +439,14 @@ function CeremonySceneForm({
         >
           <div className="space-y-5">
             <TextInput
-              label="Title"
+              label="Title*"
               errors={errors.title}
               placeholder="e.g. Juror talk"
               register={register}
               registerer="title"
             />
             <TextInput
-              label="Name"
+              label="Name*"
               errors={errors.name}
               placeholder="e.g. Mr Pranav Adani"
               register={register}
@@ -440,7 +454,7 @@ function CeremonySceneForm({
             />
 
             <MessageInput
-              label="Description"
+              label="Description*"
               errors={errors.description}
               placeholder="Enter occupation/description"
               register={register}
@@ -448,7 +462,7 @@ function CeremonySceneForm({
             />
 
             <TextInput
-              label="YouTube Video URL"
+              label="YouTube Video URL*"
               errors={errors.youtubeVideoUrl}
               placeholder="https://youtube.com/watch?v=..."
               register={register}
@@ -456,7 +470,7 @@ function CeremonySceneForm({
             />
 
             <ImagePicker
-              label="Thumbnail Image"
+              label="Thumbnail Image*"
               errors={errors.thumbnailFile}
               register={register}
               registerer="thumbnailFile"

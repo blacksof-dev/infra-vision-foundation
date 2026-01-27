@@ -68,7 +68,7 @@ export default function GetInvolvedBanner() {
       <section className="blade-top-margin pb-10">
         <SectionHeading
           heading="Get Involved Banner Section"
-          description="Update the header content and background images for the Get Involved page."
+          description=""
           ctaText="Update Banner"
           cta={true}
           handleClick={() =>
@@ -211,7 +211,7 @@ function BannerForm({
           className="flex-1 overflow-y-auto p-8 space-y-6"
         >
           <TextInput
-            label="Main Heading"
+            label="Main Heading*"
             errors={errors.heading}
             placeholder="e.g. Get Involved"
             register={register}
@@ -219,7 +219,7 @@ function BannerForm({
           />
 
           <TextInput
-            label="Sub-description"
+            label="Sub-description*"
             errors={errors.description}
             placeholder="Enter a brief description..."
             register={register}
@@ -228,7 +228,7 @@ function BannerForm({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
             <ImagePicker
-              label="Desktop Background (1920x1024)"
+              label="Desktop Background (1920x1024)*"
               errors={errors.backgroundImageDesktop}
               register={register}
               registerer="backgroundImageDesktop"
@@ -237,7 +237,7 @@ function BannerForm({
             />
 
             <ImagePicker
-              label="Mobile Background (390x690)"
+              label="Mobile Background (390x690)*"
               errors={errors.backgroundImageMobile}
               register={register}
               registerer="backgroundImageMobile"
@@ -287,7 +287,7 @@ function BannerCard({ data }: { data: BannerDefaultValueType }) {
           <div className="lg:w-2/3 space-y-4">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-[10px] font-bold text-pink uppercase tracking-widest bg-pink/5 px-2 py-1 rounded">
-                Desktop Layout Preview
+                Desktop Layout
               </span>
             </div>
             <div className="rounded-xl overflow-hidden border border-gray-100 shadow-inner bg-gray-50 aspect-[16/9]">

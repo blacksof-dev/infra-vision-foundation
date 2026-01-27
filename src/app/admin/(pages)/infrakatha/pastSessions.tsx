@@ -149,7 +149,7 @@ export default function PastSessions() {
     <>
       <section className="blade-top-margin">
         <SectionHeading
-          heading="Section - 03 (Past Sessions)"
+          heading="Past Sessions"
           ctaText="Add New Session"
           cta={true}
           handleClick={() => {
@@ -160,10 +160,10 @@ export default function PastSessions() {
 
         {/* Filters */}
         <div className="flex flex-wrap gap-4   mt-6  ">
-          
+
           <div className="flex gap-4">
             <div className="flex flex-col gap-1">
-               
+
               <Select value={sort} onValueChange={setSort}>
                 <SelectTrigger className="w-40 h-11 border-gray">
                   <SelectValue placeholder="Sort order" />
@@ -176,7 +176,7 @@ export default function PastSessions() {
             </div>
 
             <div className="flex flex-col gap-1">
-              
+
               <Select value={active} onValueChange={setActive}>
                 <SelectTrigger className="w-40 h-11 border-gray">
                   <SelectValue placeholder="Status" />
@@ -215,14 +215,14 @@ export default function PastSessions() {
                     src={`${process.env.NEXT_PUBLIC_HOST_URL}${item.thumbnailUrl}`}
                     alt={item.title}
                   />
-                 
+
                 </div>
 
                 <div className="p-5 flex-1 flex flex-col">
                   <div className="flex justify-between items-start mb-2">
-                     <div className="  bg-white/90   px-2 py-1 rounded-md text-sm font-semibold text-pink shadow-sm   tracking-wider">
-                    {item.infraKathaLabel}
-                  </div>
+                    <div className="  bg-white/90   px-2 py-1 rounded-md text-sm font-semibold text-pink shadow-sm   tracking-wider">
+                      {item.infraKathaLabel}
+                    </div>
                     <span className="text-xs font-medium text-pink px-2 py-0.5 bg-pink/10 rounded-full">
                       {new Date(item.date).toLocaleDateString("en-GB", {
                         day: "numeric",
@@ -230,7 +230,7 @@ export default function PastSessions() {
                         year: "numeric",
                       })}
                     </span>
-                   
+
                   </div>
 
                   <h4 className="text-lg font-bold text-gray-900 line-clamp-2 leading-tight mb-2  mt-2">
@@ -243,7 +243,7 @@ export default function PastSessions() {
                   <div className="mt-auto pt-4 border-t border-gray-200 flex items-center justify-between">
                     <a
                       href={
-                         item.youtubeVideoUrl
+                        item.youtubeVideoUrl
                       }
                       target="_blank"
                       rel="noopener noreferrer"
@@ -253,16 +253,16 @@ export default function PastSessions() {
                     </a>
 
                     <div className="flex gap-3 items-center">
-                         <ToggleSwitch
-                      checked={item.active}
-                      onChange={() => handleToggle(item.id)}
-                    />
+                      <ToggleSwitch
+                        checked={item.active}
+                        onChange={() => handleToggle(item.id)}
+                      />
                       <Button
                         theme="transparentGray"
                         size="small"
                         text="Delete"
                         onClick={() => setDeletingId(item.id)}
-                        // className="py-1 px-3 !text-[11px] font-semibold"
+                      // className="py-1 px-3 !text-[11px] font-semibold"
                       />
                       <Button
                         theme="pink"
@@ -272,7 +272,7 @@ export default function PastSessions() {
                           setEditingItem(item);
                           setIsFormOpen(true);
                         }}
-                        // className="py-1 px-3 !text-[11px] font-semibold"
+                      // className="py-1 px-3 !text-[11px] font-semibold"
                       />
                     </div>
                   </div>
@@ -300,11 +300,10 @@ export default function PastSessions() {
                 <button
                   key={p}
                   onClick={() => fetchSessions(p)}
-                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${
-                    p === page
-                      ? "bg-pink text-white"
-                      : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
-                  }`}
+                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${p === page
+                    ? "bg-pink text-white"
+                    : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
+                    }`}
                 >
                   {p}
                 </button>
@@ -382,13 +381,13 @@ function InfraKathaForm({
     resolver: zodResolver(infraKathaSchema),
     defaultValues: initialData
       ? {
-          ...initialData,
-          date: getFormattedDate(initialData.date),
-          thumbnail: initialData.thumbnailUrl,
-        }
+        ...initialData,
+        date: getFormattedDate(initialData.date),
+        thumbnail: initialData.thumbnailUrl,
+      }
       : {
-          active: true,
-        },
+        active: true,
+      },
   });
 
   const onSubmit: SubmitHandler<InfraKathaFormValues> = async (data) => {
@@ -407,10 +406,7 @@ function InfraKathaForm({
       if (thumbValue instanceof FileList && thumbValue.length > 0) {
         formData.append("thumbnail", thumbValue[0]);
       } else if (typeof thumbValue === "string" && thumbValue.length > 0) {
-        // Keeping existing thumbnail
-        // Backend handles patch without thumbnail if not provided,
-        // but if we want to explicitly keep it, we might not need to append anything
-        // unless the backend requires it. Usually patch only updates sent fields.
+
       } else if (!initialData) {
         setError("thumbnail", {
           type: "manual",
@@ -442,7 +438,7 @@ function InfraKathaForm({
       onSuccess();
     } catch (error: any) {
       console.error("Submit error:", error);
-      toast.error(error?.response?.data?.message || "Something went wrong");
+      toast.error(error?.response?.data?.message[0] || "Something went wrong");
     } finally {
       setIsSubmitting(false);
     }
@@ -465,20 +461,20 @@ function InfraKathaForm({
         </div>
 
         <form
-          className="overflow-y-auto flex-1 p-6"
+          className="overflow-y-auto flex-1 p-6 "
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="space-y-5">
             <div className="grid grid-cols-2 gap-4">
               <TextInput
-                label="InfraKatha Label"
+                label="InfraKatha Label*"
                 errors={errors.infraKathaLabel}
                 placeholder="e.g. InfraKatha #8"
                 register={register}
                 registerer="infraKathaLabel"
               />
               <TextInput
-                label="Date (DD-MM-YYYY)"
+                label="Date (DD-MM-YYYY)*"
                 errors={errors.date}
                 placeholder="DD-MM-YYYY"
                 register={register}
@@ -487,23 +483,23 @@ function InfraKathaForm({
             </div>
 
             <TextInput
-              label="Title"
+              label="Title*"
               errors={errors.title}
               placeholder="Enter session title"
               register={register}
               registerer="title"
             />
             <MessageInput
-            label="Description"
-            errors={errors.description}
-            placeholder="Enter session description"
-            register={register}
-            registerer="description"
+              label="Description*"
+              errors={errors.description}
+              placeholder="Enter session description"
+              register={register}
+              registerer="description"
             />
-             
+
 
             <TextInput
-              label="YouTube Video URL"
+              label="YouTube Video URL*"
               errors={errors.youtubeVideoUrl}
               placeholder="https://youtube.com/watch?v=..."
               register={register}
@@ -511,7 +507,7 @@ function InfraKathaForm({
             />
 
             <ImagePicker
-              label="Thumbnail Image"
+              label="Thumbnail Image*"
               errors={errors.thumbnail}
               register={register}
               registerer="thumbnail"

@@ -14,7 +14,7 @@ import { GoArrowRight } from "react-icons/go";
 
 import gsap from "gsap";
 import SearchContent from "@/app/search/searchContent";
-import path from "path";
+
 
 interface NavItem {
   label: string;
@@ -160,6 +160,17 @@ function Header() {
     setIsMenuOpen((prev) => !prev);
   };
 
+
+  const footer_not_allowed = [
+    "/signup",
+    "/login",
+    "/register",
+    "/forgot-password",
+    "/reset-password",
+  ]
+
+  const hideHeader = footer_not_allowed.includes(pathname)||pathname.startsWith("/admin")
+
   const AboutUsDropDown: NavItem[] = [
     { label: "Who We Are", href: "/about-us#who-we-are" },
     { label: "The Infravisionaries", href: "/about-us#infravisionaries" },
@@ -200,7 +211,7 @@ function Header() {
               ? "translate-y-0"
               : "-translate-y-full"
           } ${showNavBg ? "bg-white " : "bg-transparent"} ${scrolled ? "bg-white" : ""
-          }`}
+          } ${hideHeader?"hidden":""}`}
       >
         <div className="w-container">
           <div className="flex flex-row justify-between">

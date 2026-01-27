@@ -184,10 +184,10 @@ function BannerForm({
   };
 
   return (
-    <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center z-50">
-      <div className="w-[27rem] relative blade-top-padding-s bg-white rounded-md shadow-2xl h-auto max-h-[80vh] overflow-auto overflow-x-hidden">
+    <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center z-50 ">
+      <div className="w-[35rem] relative blade-top-padding-s bg-white rounded-md shadow-2xl h-auto max-h-[80vh] overflow-auto overflow-x-hidden">
         <form className="h-full" onSubmit={handleSubmit(submitHandler)}>
-          <div className="flex justify-end sticky top-2 px-1 z-[999]">
+          <div className="flex justify-end sticky top-4 px-4 z-[999]">
             <button
               type="button"
               aria-label="close modal"
@@ -200,35 +200,35 @@ function BannerForm({
           <div className="flex flex-col gap-y-8 h-full p-8 pt-1">
             <div className="flex flex-col gap-y-4">
               <TextInput
-                label="Title"
+                label="Title*"
                 errors={errors.title}
                 placeholder="Enter title"
                 register={register}
                 registerer="title"
               />
               <TextInput
-                label="Description"
+                label="Description*"
                 errors={errors.description}
                 placeholder="Enter description"
                 register={register}
                 registerer="description"
               />
               <TextInput
-                label="CTA Text"
+                label="CTA Text*"
                 errors={errors.ctaText}
                 placeholder="Enter CTA text"
                 register={register}
                 registerer="ctaText"
               />
               <TextInput
-                label="CTA Link"
+                label="CTA Link*"
                 errors={errors.ctaLink}
                 placeholder="Enter CTA link"
                 register={register}
                 registerer="ctaLink"
               />
               <ImagePicker
-                label="Background Image (Desktop)"
+                label="Background Image (Desktop)*"
                 errors={errors.backgroundImageDesktop}
                 register={register}
                 registerer="backgroundImageDesktop"
@@ -236,7 +236,7 @@ function BannerForm({
                 accept=".svg, .png, .jpg, .jpeg, .webp"
               />
               <ImagePicker
-                label="Background Image (Mobile)"
+                label="Background Image (Mobile)*"
                 errors={errors.backgroundImageMobile}
                 register={register}
                 registerer="backgroundImageMobile"

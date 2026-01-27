@@ -20,6 +20,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useSession } from "next-auth/react";
 import ConfirmationPopup from "../../components/confirmationPopup";
+import { urlSchema } from "../../lib/zod";
 const FormSchema = z.object({
   name: z
     .string()
@@ -29,7 +30,7 @@ const FormSchema = z.object({
     .string()
     .max(150, "Should not exceed 150 characters")
     .min(1, "Required"),
-  socialUrl: z.string().max(500, "URL is too long").optional(),
+  socialUrl: z.string().optional(),
   socialType: z.enum(["linkedin", "X", "null"]).optional(),
   type: z.enum([
     "infrashakti-the-esteemed-jury",
@@ -169,7 +170,7 @@ export default function Members({
             No {title} data found.
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 xlg:grid-cols-4 2xl:grid-cols-5 gap-10 mt-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 xlg:grid-cols-4 2xl:grid-cols-4 gap-10 mt-6">
             {Array.isArray(hostData) &&
               hostData.map((host) => (
                 <div
@@ -178,12 +179,12 @@ export default function Members({
                 >
                   <div className="flex-1 mb-4">
                     <img
-                      className="rounded-md overflow-hidden w-full h-65 object-cover"
+                      className="rounded-md overflow-hidden w-full h-65 object-cover object-[0%_6%]"
                       src={`${process.env.NEXT_PUBLIC_HOST_URL}${host?.image}`}
                       alt={host?.name}
                     />
                     <div className="mt-4 px-4">
-                      <h4 className="text-base text-gray-950">{host?.name}</h4>
+                      <h4 className="text-base text-gray-900 font-medium">{host?.name}</h4>
                       <p className="text-sm text-gray-700">
                         {host?.designation}
                       </p>
@@ -191,7 +192,7 @@ export default function Members({
                         <Link
                           href={host?.socialUrl}
                           target="_blank"
-                          className="underline text-pink mt-2 inline-block group"
+                          className="underline text-pink mt-8 inline-block group"
                         >
                           {host?.socialType}{" "}
                           <SquareArrowOutUpRight
@@ -200,12 +201,7 @@ export default function Members({
                           />
                         </Link>
                       )}
-                      {/* <div className="pt-2 mt-auto">
-                      <p className="text-xs text-gray-600 bg-gray-100 p-1 rounded-sm">
-                        Created At:{" "}
-                        {new Date(host.createdAt).toLocaleDateString()}
-                      </p>
-                    </div> */}
+
                     </div>
                   </div>
                   <div className="flex gap-3 mt-auto pt-4 justify-end items-center mx-4 border-t border-t-gray-200">
@@ -329,7 +325,7 @@ const HostForm = ({
     <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center z-50">
       <div className="w-[32rem] relative bg-white rounded-md shadow-2xl h-auto max-h-[85vh] overflow-auto overflow-x-hidden">
         <form className="h-full" onSubmit={handleSubmit(submitHandler)}>
-          <div className="flex justify-end sticky top-2 px-1 z-[999]">
+          <div className="flex justify-end sticky top-2 p-4 z-[999]">
             <button
               type="button"
               aria-label="close modal"
@@ -342,14 +338,14 @@ const HostForm = ({
           <div className="flex flex-col gap-y-6 h-full p-8 pt-1">
             <div className="grid grid-cols-1 gap-4">
               <TextInput
-                label="Host Name"
+                label="Name*"
                 errors={errors.name}
                 placeholder="Enter host name"
                 register={register}
                 registerer="name"
               />
               <TextInput
-                label="Designation"
+                label="Designation*"
                 errors={errors.designation}
                 placeholder="Enter designation"
                 register={register}
@@ -389,7 +385,7 @@ const HostForm = ({
               </div>
 
               <ImagePicker
-                label="Image "
+                label="Image*"
                 errors={errors.image}
                 register={register}
                 registerer="image"
@@ -397,7 +393,7 @@ const HostForm = ({
                 accept=".svg, .png, .jpg, .jpeg, .webp"
               />
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 ">
               <label className="font-medium text-sm">Active</label>
               <ToggleSwitch
                 checked={watch("active") ?? true}

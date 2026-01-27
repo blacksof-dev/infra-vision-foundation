@@ -182,7 +182,7 @@ export default function Awardees() {
             <p className="text-gray-500">No awardees found.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-6 mt-6 ">
             {items.map((item) => (
               <article
                 key={item.id}
@@ -224,13 +224,15 @@ export default function Awardees() {
                     <h4 className="text-sm font-medium text-pink/80 mb-2  ">
                       {item.awardee}
                     </h4>
-                    <h3 className="text-base font-bold text-gray-900 line-clamp-2 leading-tight">
+                    <h3 className="text-base font-bold text-gray-900 line-clamp-2 leading-tight ">
                       {item.title}
                     </h3>
                   </div>
                   <p className="text-xs text-gray-500 line-clamp-3 mb-4 flex-1">
                     {item.description}
                   </p>
+
+
 
                   {item.partnersLogo && (
                     <div className="mb-4 pt-3 border-t border-gray-50 flex items-center gap-2">
@@ -245,8 +247,28 @@ export default function Awardees() {
                     </div>
                   )}
 
-                  <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
-                    <div className="flex items-center gap-2">
+                  {item.videoUrlYoutube && (
+                    <a
+                      href={
+                        item.videoUrlYoutube
+                      }
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-medium text-black   underline   my-2     "
+                    >
+                      Watch on YouTube
+                    </a>
+                  )
+
+                  }
+
+
+
+
+
+
+                  <div className="mt-auto  py-6 flex items-center justify-between ">
+                    <div className="flex  items-center gap-2">
                       <ToggleSwitch
                         checked={item.active}
                         onChange={() => handleToggle(item.id)}
@@ -297,11 +319,10 @@ export default function Awardees() {
                 <button
                   key={p}
                   onClick={() => fetchAwardees(p)}
-                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${
-                    p === page
-                      ? "bg-pink text-white"
-                      : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
-                  }`}
+                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${p === page
+                    ? "bg-pink text-white"
+                    : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
+                    }`}
                 >
                   {p}
                 </button>
@@ -369,19 +390,19 @@ function AwardeeForm({
     resolver: zodResolver(awardeeSchema),
     defaultValues: initialData
       ? {
-          awardType: initialData.awardType,
-          awardee: initialData.awardee,
-          title: initialData.title,
-          description: initialData.description,
-          videoUrlYoutube: initialData.videoUrlYoutube,
-          active: initialData.active,
-          thumbnailFile: initialData.thumbnailUrl,
-          iconFile: initialData.iconUrl,
-          partnersLogo: initialData.partnersLogo || undefined,
-        }
+        awardType: initialData.awardType,
+        awardee: initialData.awardee,
+        title: initialData.title,
+        description: initialData.description,
+        videoUrlYoutube: initialData.videoUrlYoutube,
+        active: initialData.active,
+        thumbnailFile: initialData.thumbnailUrl,
+        iconFile: initialData.iconUrl,
+        partnersLogo: initialData.partnersLogo || undefined,
+      }
       : {
-          active: true,
-        },
+        active: true,
+      },
   });
 
   const onSubmit: SubmitHandler<AwardeeFormValues> = async (data) => {
@@ -453,7 +474,7 @@ function AwardeeForm({
   };
 
   return (
-    <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center z-50">
+    <div className="fixed inset-0 w-screen h-screen bg-black/60 backdrop-blur-sm flex justify-center items-center z-50 ">
       <div className="w-[40rem] relative bg-white rounded-xl shadow-2xl h-auto max-h-[90vh] flex flex-col">
         <div className="flex justify-between items-center p-6 border-b border-gray-100">
           <h3 className="text-xl font-bold text-gray-900">
@@ -461,7 +482,7 @@ function AwardeeForm({
           </h3>
           <button
             type="button"
-            className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-1 hover:bg-gray-100 rounded-full transition-colors cursor-pointer"
             onClick={onClose}
           >
             <X className="w-6 h-6 text-gray-500" />
@@ -475,14 +496,14 @@ function AwardeeForm({
           <div className="space-y-5">
             <div className="grid grid-cols-2 gap-4">
               <TextInput
-                label="Award Type"
+                label="Award Type*"
                 errors={errors.awardType}
                 placeholder="e.g. Urban Infra Hero Award"
                 register={register}
                 registerer="awardType"
               />
               <TextInput
-                label="Awardee Name"
+                label="Awardee Name*"
                 errors={errors.awardee}
                 placeholder="Name & Organization"
                 register={register}
@@ -491,7 +512,7 @@ function AwardeeForm({
             </div>
 
             <TextInput
-              label="Award Title"
+              label="Award Title*"
               errors={errors.title}
               placeholder="Enter award title"
               register={register}
@@ -499,7 +520,7 @@ function AwardeeForm({
             />
 
             <MessageInput
-              label="Description"
+              label="Description*"
               errors={errors.description}
               placeholder="Enter description"
               register={register}
@@ -507,7 +528,7 @@ function AwardeeForm({
             />
 
             <TextInput
-              label="YouTube Video URL"
+              label="YouTube Video URL*"
               errors={errors.videoUrlYoutube}
               placeholder="https://youtube.com/watch?v=..."
               register={register}
@@ -516,7 +537,7 @@ function AwardeeForm({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <ImagePicker
-                label="Thumbnail Image"
+                label="Thumbnail Image*"
                 errors={errors.thumbnailFile}
                 register={register}
                 registerer="thumbnailFile"
@@ -524,7 +545,7 @@ function AwardeeForm({
                 accept=".png, .jpg, .jpeg, .webp"
               />
               <ImagePicker
-                label="Icon Image"
+                label="Icon Logo*"
                 errors={errors.iconFile}
                 register={register}
                 registerer="iconFile"

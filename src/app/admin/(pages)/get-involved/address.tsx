@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import SectionHeading from "../../components/sectionHeading";
 import TextInput from "../../components/input/textInput";
 import { z } from "zod";
-import { generalSchema } from "../../lib/zod";
+import { emailSchema, generalSchema, telephoneSchema, urlSchema } from "../../lib/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../../components/button";
@@ -64,7 +64,7 @@ export default function OrganisationDetails() {
     <section className="blade-top-margin pb-10 border-t border-gray-100 pt-10">
       <SectionHeading
         heading="Organisation Details"
-        description="Update contact information, physical address, and office location map."
+        description=""
         ctaText="Update Details"
         cta={true}
         handleClick={() =>
@@ -89,9 +89,9 @@ export default function OrganisationDetails() {
 
 const orgSchema = z.object({
   address: generalSchema("Address is required"),
-  emails: generalSchema("Email is required"),
-  phones: generalSchema("Phone is required"),
-  locationMapUrl: generalSchema("Map URL is required"),
+  emails: emailSchema,
+  phones: telephoneSchema,
+  locationMapUrl: urlSchema
 });
 
 type OrgFormValues = z.infer<typeof orgSchema>;
@@ -182,14 +182,14 @@ function OrgForm({
           <div className="space-y-5">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <TextInput
-                label="Public Email Address"
+                label="Public Email Address*"
                 errors={errors.emails}
                 placeholder="e.g. contact@infravision.org"
                 register={register}
                 registerer="emails"
               />
               <TextInput
-                label="Contact Phone Number"
+                label="Contact Phone Number*"
                 errors={errors.phones}
                 placeholder="e.g. +91 0000 000 000"
                 register={register}
@@ -198,7 +198,7 @@ function OrgForm({
             </div>
 
             <TextInput
-              label="Physical Office Address"
+              label="Physical Office Address*"
               errors={errors.address}
               placeholder="Full building address..."
               register={register}
@@ -206,7 +206,7 @@ function OrgForm({
             />
 
             <TextInput
-              label="Google Maps Location URL"
+              label="Google Maps Location URL*"
               errors={errors.locationMapUrl}
               placeholder="https://maps.google.com/..."
               register={register}

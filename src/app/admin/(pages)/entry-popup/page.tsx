@@ -56,14 +56,12 @@ function ToggleSwitch({
       aria-checked={checked}
       disabled={disabled}
       onClick={() => onChange(!checked)}
-      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${
-        disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
-      } ${checked ? "bg-pink" : "bg-gray-300"}`}
+      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
+        } ${checked ? "bg-pink" : "bg-gray-300"}`}
     >
       <span
-        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-          checked ? "translate-x-6" : "translate-x-1"
-        }`}
+        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${checked ? "translate-x-6" : "translate-x-1"
+          }`}
       />
     </button>
   );
@@ -94,7 +92,7 @@ export default function EntryPopupAdmin() {
     if (session?.accessToken) {
       fetchPopupData();
     }
-  }, [session]);
+  }, []);
 
   const handleToggleStatus = async () => {
     if (!data || isToggling) return;
@@ -180,19 +178,19 @@ function PopupPreviewCard({
   return (
     <article className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 max-w-5xl">
       <div className="p-8">
-        <div className="flex flex-col md:flex-row gap-10">
+        <div className="flex flex-col  md:flex-row gap-10">
           {/* Image Side */}
-          <div className="md:w-1/3">
+          <div className="md:w-1/3 border border-gray-300 rounded-xl">
             <div className="flex items-center gap-2 mb-3">
               <span className="text-[10px] font-bold text-pink uppercase tracking-widest bg-pink/5 px-2 py-1 rounded">
                 Popup Image
               </span>
             </div>
-            <div className="rounded-xl overflow-hidden border border-gray-100   bg-gray-50">
+            <div className="rounded-xl  overflow-hidden border border-gray-100   bg-gray-50">
               {data.imageUrl ? (
                 <img
                   src={`${process.env.NEXT_PUBLIC_HOST_URL}${data.imageUrl}`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 "
                   alt="Popup Preview"
                 />
               ) : (
@@ -204,90 +202,79 @@ function PopupPreviewCard({
           </div>
 
           {/* Content Side */}
-          <div className="md:w-2/3 flex flex-col justify-between">
-            <div className="space-y-6">
-              <div className="flex justify-between items-start">
-                <div>
-                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
-                    Status
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <span
-                      className={`px-2 py-1 rounded text-xs font-bold uppercase ${data.active ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}
-                    >
-                      {data.active ? "Active" : "Inactive"}
-                    </span>
-                    <ToggleSwitch
-                      checked={data.active}
-                      onChange={onToggle}
-                      disabled={isToggling}
-                    />
-                  </div>
-                </div>
-                {data.date && data.date.trim() !== "" && (
-                  <div className="text-right">
-                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
-                      Event Date
-                    </p>
-                    <p className="text-sm font-medium text-gray-900">
-                      {(() => {
-                        const d = new Date(data.date);
-                        return isNaN(d.getTime())
-                          ? "Invalid Date"
-                          : d.toLocaleDateString("en-GB");
-                      })()}
-                    </p>
-                  </div>
-                )}
-              </div>
-
-              <div>
-                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
-                  Title
-                </p>
+          <div className="md:w-2/3 flex flex-col justify-between ">
+            <div className="flex justify-between">
+              <div className="">
                 <h3 className="text-2xl font-semibold text-gray-900 leading-tight">
                   {data.title}
                 </h3>
-              </div>
-
-              <div>
-                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
-                  Description
-                </p>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed mt-2 max-w-sm">
                   {data.description}
                 </p>
+
+
+                <div className="grid grid-cols-2 gap-6 pt-6">
+                  <div>
+                    {data.cta && (
+                      <>
+                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
+                          CTA Text
+                        </p>
+
+                        <p className="text-sm font-medium text-gray-900">
+                          {data.cta}
+                        </p>
+                      </>
+                    )}
+                  </div>
+                  <div>
+                    {data.ctaLink && (
+                      <>
+                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
+                          CTA Link
+                        </p>
+
+                        <p
+                          className="text-sm font-medium text-gray-900 truncate"
+                          title={data.ctaLink}
+                        >
+                          {data.ctaLink || "N/A"}
+                        </p>
+                      </>
+                    )}
+                  </div>
+                </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-6">
-                <div>
-                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
-                    CTA Text
+              {data.date && data.date.trim() !== "" && (
+                <div className="text-end  h-fit ">
+
+                  <p className="text-sm font-medium text-gray-900">
+                    {(() => {
+                      const d = new Date(data.date);
+                      return isNaN(d.getTime())
+                        ? "Invalid Date"
+                        : d.toLocaleDateString("en-GB");
+                    })()}
                   </p>
-                  {data.cta && (
-                    <p className="text-sm font-medium text-gray-900">
-                      {data.cta}
-                    </p>
-                  )}
                 </div>
-                <div>
-                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
-                    CTA Link
-                  </p>
-                  {data.ctaLink && (
-                    <p
-                      className="text-sm font-medium text-pink truncate"
-                      title={data.ctaLink}
-                    >
-                      {data.ctaLink || "N/A"}
-                    </p>
-                  )}
-                </div>
-              </div>
+              )}
             </div>
 
-            <div className="mt-8 pt-6 border-t border-gray-100 flex items-center justify-between text-[10px] text-gray-400 uppercase tracking-widest">
-              <span>
+
+
+            <div className=" text-[10px] text-gray-600 font-medium uppercase tracking-widest  flex justify-between">
+              <div className="flex items-center gap-3 pt-4 border-t border-gray-50">
+                <ToggleSwitch
+                  checked={data.active}
+                  onChange={onToggle}
+                  disabled={isToggling}
+                />
+                <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">
+                  {data.active ? "Live on website" : "Not live on website"}
+                </span>
+              </div>
+              <span className="mt-auto">
                 Last Updated: {new Date(data.updatedAt).toLocaleString()}
               </span>
             </div>
@@ -377,8 +364,8 @@ function PopupForm({
       console.error("Error updating popup:", error);
       toast.error(
         error?.response?.data?.message[0] ||
-          error?.response?.data?.message ||
-          "Failed to update popup",
+        error?.response?.data?.message ||
+        "Failed to update popup",
       );
     } finally {
       setIsSaving(false);
@@ -391,7 +378,7 @@ function PopupForm({
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={onClose}
       />
-      <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+      <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[100vh] flex flex-col ">
         <div className="flex items-center justify-between p-6 border-b border-gray-100 bg-white sticky top-0 z-10">
           <h2 className="text-xl font-bold text-gray-900 font-poppin">
             Update Entry Popup
@@ -406,7 +393,7 @@ function PopupForm({
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex-1 overflow-y-auto p-8 space-y-6"
+          className="flex-1 overflow-y-auto p-8 space-y-6 "
         >
           <div className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
             <span className="text-sm font-medium text-gray-700">

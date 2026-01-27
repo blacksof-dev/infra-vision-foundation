@@ -116,14 +116,14 @@ export default function RootLayout({
       </head>
       <body className={` antialiased `}>
         <HeaderProvider>
-          {/* <Header /> */}
+          <Header />
 
           
           <Provider>
             {children}
           </Provider>
 
-          {/* <Footer /> */}
+          <Footer />
         </HeaderProvider>
       </body>
     </html>

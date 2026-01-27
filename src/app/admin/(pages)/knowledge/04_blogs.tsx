@@ -40,7 +40,7 @@ interface BlogItem {
   id: string;
   title: string;
   subtitle: string;
-  slug:string;
+  slug: string;
   coverImage: string | null;
   docFile: string | null;
   publishedDate: string;
@@ -284,7 +284,7 @@ export default function KnowledgeBlogs() {
                       year: "numeric",
                     })}
                   </div>
-                  <h3 className="text-base font-bold text-gray-900 leading-tight mb-2 line-clamp-2 min-h-[2.5rem]">
+                  <h3 className="text-base my-2 font-bold text-gray-900 leading-tight mb-2 line-clamp-2 min-h-[2.5rem]">
                     {it.title}
                   </h3>
                   <p className="text-sm text-gray-600 line-clamp-2 mb-4">
@@ -296,7 +296,7 @@ export default function KnowledgeBlogs() {
                       href={`/blogs/${it.slug}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 hover:text-blue-700 uppercase tracking-widest transition-colors"
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-gray-700 hover:text-gray-700 uppercase tracking-widest transition-colors"
                     >
                       <ExternalLink className="w-3 h-3" />
                       View Blog
@@ -371,11 +371,10 @@ export default function KnowledgeBlogs() {
                 <button
                   key={p}
                   onClick={() => loadBlogs(p, sectorFilter, yearFilter)}
-                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${
-                    p === page
-                      ? "bg-pink text-white shadow-md shadow-pink/20"
-                      : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
-                  }`}
+                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${p === page
+                    ? "bg-pink text-white shadow-md shadow-pink/20"
+                    : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
+                    }`}
                 >
                   {p}
                 </button>
@@ -467,7 +466,7 @@ function BlogForm({
           session,
         )) as Sector[];
         setSectors(data.filter((s) => s.active));
-      } catch {}
+      } catch { }
     }
     fetchSectors();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -587,7 +586,7 @@ function BlogForm({
           </h2>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-1 hover:bg-gray-100 rounded-full transition-colors cursor-pointer"
           >
             <X className="w-6 h-6 text-gray-500" />
           </button>
@@ -600,14 +599,14 @@ function BlogForm({
           <div className="space-y-5">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <TextInput
-                label="Blog Title"
+                label="Title*"
                 errors={errors.title}
                 placeholder="e.g. Infrastructure Development Trends 2024"
                 register={register}
                 registerer="title"
               />
               <TextInput
-                label="Publication Date"
+                label="Publication Date*"
                 placeholder="YYYY-MM-DD"
                 errors={errors.publishedDate}
                 register={register}
@@ -616,7 +615,7 @@ function BlogForm({
             </div>
 
             <TextInput
-              label="Description"
+              label="Description*"
               errors={errors.subtitle}
               placeholder="A short description  "
               register={register}
@@ -625,7 +624,7 @@ function BlogForm({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <TextInput
-                label="Author"
+                label="Author*"
                 errors={errors.author}
                 placeholder="e.g. By Lawrence Cardoza"
                 register={register}
@@ -633,7 +632,7 @@ function BlogForm({
               />
               <div>
                 <label className="text-sm font-bold text-gray-700 font-poppin block mb-2">
-                  Reading Time (minutes)
+                  Reading Time (minutes)*
                 </label>
                 <input
                   type="number"
@@ -660,7 +659,7 @@ function BlogForm({
 
             <div className="space-y-2">
               <label className="text-sm font-bold text-gray-700 font-poppin">
-                Sector Category
+                Sector Category*
               </label>
               <Select
                 value={
@@ -692,7 +691,7 @@ function BlogForm({
             </div>
 
             <ImagePicker
-              label="Thumbnail"
+              label="Thumbnail*"
               errors={errors.coverImageFile}
               register={register}
               registerer="coverImageFile"
@@ -737,31 +736,31 @@ function BlogForm({
               isDisabled={isLoading}
             />
           </div>
-        <div className="rounded-xl border border-pink/20 bg-pink/5 p-4 sm:p-5 space-y-3">
-      {/* Header */}
-      <div className="flex items-center gap-2 text-pink font-semibold">
-        <Info className="w-4 h-4" />
-        <span>Blog Metadata Guidelines</span>
-      </div>
+          <div className="rounded-xl border border-pink/20 bg-pink/5 p-4 sm:p-5 space-y-3">
+            {/* Header */}
+            <div className="flex items-center gap-2 text-pink font-semibold">
+              <Info className="w-4 h-4" />
+              <span>Blog Metadata Guidelines</span>
+            </div>
 
-      {/* Content */}
-      <ul className="space-y-2 text-sm sm:text-[15px] text-gray-700">
-        <li>
-          <span className="font-medium text-pink ">
-            Title, description, date, author,cover image, and reading time
-          </span>{" "}
-          are used as metadata for the blog.
-        </li>
+            {/* Content */}
+            <ul className="space-y-2 text-sm sm:text-[15px] text-gray-700">
+              <li>
+                <span className="font-medium text-pink ">
+                  Title, description, date, author,cover image, and reading time
+                </span>{" "}
+                are used as metadata for the blog.
+              </li>
 
-        <li>
-          <span className="font-medium text-pink">
-            Always use a unique title
-          </span>{" "}
-          because it will be used to generate the blog URL.
-        </li>
-      </ul>
-    </div>
-        </form> 
+              <li>
+                <span className="font-medium text-pink">
+                  Always use a unique title
+                </span>{" "}
+                because it will be used to generate the blog URL.
+              </li>
+            </ul>
+          </div>
+        </form>
       </div>
 
       {isEditorOpen && (
