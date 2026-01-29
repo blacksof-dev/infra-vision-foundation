@@ -56,7 +56,7 @@ export default function SocialMedia() {
       <section className="blade-top-margin pb-10">
         <SectionHeading
           heading="Social Media Section Management"
-          description="Update the introductory text and manage your social profile accounts."
+          // description="Update the introductory text and manage your social profile accounts."
           ctaText="Update Intro Text"
           cta={true}
           handleClick={() =>
@@ -184,15 +184,15 @@ function ContentForm({
           className="flex-1 overflow-y-auto p-8 space-y-6"
         >
           <TextInput
-            label="Section Tag"
+            label="Section Tag*"
             errors={errors.label}
-            placeholder="e.g. JOIN THE MOVEMENT"
+            placeholder="e.g. Social Media"
             register={register}
             registerer="label"
           />
 
           <TextInput
-            label="Section Heading"
+            label="Section Heading*"
             errors={errors.heading}
             placeholder="Enter heading"
             register={register}
@@ -200,7 +200,7 @@ function ContentForm({
           />
 
           <MessageInput
-            label="Description"
+            label="Description*"
             errors={errors.description}
             placeholder="Enter section description..."
             register={register}
@@ -252,8 +252,12 @@ function ContentCard({ data }: { data: DefaultValueType }) {
               Heading
             </p>
             <h3
-              className="text-2xl font-bold text-gray-900 leading-tight"
-              dangerouslySetInnerHTML={{ __html: heading || "No Heading" }}
+              className="text-2xl   text-gray-900 leading-tight"
+              dangerouslySetInnerHTML={{ __html:
+                  heading?.replace(
+                    /\*\*(.*?)\*\*/g,
+                    "<strong>$1</strong>"
+                  ) || "No Heading" }}
             />
           </div>
 

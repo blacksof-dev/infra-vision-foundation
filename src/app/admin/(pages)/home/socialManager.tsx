@@ -203,7 +203,7 @@ export default function SocialProfilesManager() {
                 </div>
                 <div className="col-span-6 truncate">
                   <a
-                    className="text-xs text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-2"
+                    className="text-xs text-pink hover:underline flex items-center gap-2"
                     href={p.value}
                     target="_blank"
                     rel="noreferrer"

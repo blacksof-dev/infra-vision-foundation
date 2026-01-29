@@ -72,7 +72,7 @@ export default function WhoWeAre() {
           </div>
           <div>
             <h5 className="text-sm font-bold text-gray-900 mb-1">
-              Admin Pro-Tip
+              Admin Pro-Tip  
             </h5>
             <ul className="list-disc list-outside pl-4">
               <li className="text-sm text-gray-600 leading-relaxed">
@@ -186,7 +186,7 @@ function WhoWeAreForm({
           className="flex-1 overflow-y-auto p-8 space-y-6"
         >
           <TextInput
-            label="Section Tag"
+            label="Section Tag*"
             errors={errors.label}
             placeholder="e.g. WHO WE ARE"
             register={register}
@@ -194,14 +194,14 @@ function WhoWeAreForm({
           />
 
           <TextInput
-            label="Main Heading"
+            label="Main Heading*"
             errors={errors.heading}
             placeholder="Enter section heading"
             register={register}
             registerer="heading"
           />
           <MessageInput
-            label="Description"
+            label="Description*"
             errors={errors.description}
             placeholder="Enter context description..."
             register={register}
@@ -237,7 +237,7 @@ function WhoWeAreForm({
             />
             <Button
               type="submit"
-              text="Save Changes"
+              text="Update"
               theme="pink"
               size="large"
               className="flex-1"
@@ -271,8 +271,14 @@ function WhoWeAreCard({ data }: { data: WhoWeAreDefaultValueType }) {
               Heading
             </p>
             <h3
-              className="text-2xl font-bold text-gray-900 leading-tight font-poppin"
-              dangerouslySetInnerHTML={{ __html: heading || "No Heading" }}
+              className="text-2xl font-normal text-gray-900 leading-tight font-poppin"
+              dangerouslySetInnerHTML={{
+                __html:
+                  heading.replace(
+                    /\*\*(.*?)\*\*/g,
+                    "<strong>$1</strong>"
+                  ) || "No Heading Provided",
+              }}
             />
           </div>
 

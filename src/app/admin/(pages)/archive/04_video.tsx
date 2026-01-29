@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState, useCallback } from "react";
 import SectionHeading from "../../components/sectionHeading";
 import TextInput from "../../components/input/textInput";
 import { Button } from "../../components/button";
-import { X, Calendar, Play, ExternalLink } from "lucide-react";
+import { X, Calendar, Play, ExternalLink, Info } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { getData } from "../../lib/utils";
 import axios from "axios";
@@ -213,14 +213,14 @@ export default function VideoSection() {
                 </div>
 
                 <div className="p-4 flex flex-col flex-1">
-                  <div className="text-[10px] w-fit mb-2 font-bold text-gray-400 uppercase flex items-center gap-1.5">
-                    <Calendar className="w-3 h-3" />
-                    {new Date(it.date).toLocaleDateString("en-GB", {
-                      day: "numeric",
-                      month: "short",
-                      year: "numeric",
-                    })}
-                  </div>
+                 <div className="text-xs w-fit mb-2 font-medium text-pink px-2 py-0.5 bg-pink/10 rounded-full flex items-center gap-1.5">
+                                     <Calendar className="w-3 h-3" />
+                                     {new Date(it.date).toLocaleDateString("en-IN",{
+                                       day:"2-digit",
+                                       month:"short",
+                                       year:"numeric"
+                                     })}
+                                   </div>
 
                   <h3 className="text-sm font-bold text-gray-900 leading-tight mb-1 line-clamp-3   pb-2">
                     {it.title}
@@ -454,7 +454,7 @@ function VideoForm({
           </h2>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-1 hover:bg-gray-100 rounded-full transition-colors cursor-pointer"
           >
             <X className="w-6 h-6 text-gray-500" />
           </button>
@@ -467,7 +467,7 @@ function VideoForm({
           <div className="space-y-5">
             <div className="grid  ">
               <TextInput
-                label="Video Title"
+                label="Video Title*"
                 errors={errors.title}
                 placeholder="e.g. HSR will be the next multiplier"
                 register={register}
@@ -484,7 +484,7 @@ function VideoForm({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <TextInput
-                label="Embed Link"
+                label="Embed Link(Youtuber video)*"
                 errors={errors.link}
                 placeholder="https://www.youtube.com/embed/..."
                 register={register}
@@ -492,7 +492,7 @@ function VideoForm({
                 tooltip="Please provide a valid embed URL"
               />
               <TextInput
-                label="Published Date"
+                label="Published Date*"
                 errors={errors.date}
                 placeholder="YYYY-MM-DD"
                 register={register}
@@ -502,8 +502,8 @@ function VideoForm({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
               <div>
-                <label className="font-medium text-sm text-gray-700 block mb-1.5">
-                  Available Sector (Tab)
+                <label className="font-medium text-base   block mb-1.5">
+                  Available Sector (Tab)*
                 </label>
                 <Select
                   value={watch("tab") || ""}
@@ -533,7 +533,7 @@ function VideoForm({
                 )}
               </div>
               <ImagePicker
-                label="Thumbnail Image"
+                label="Thumbnail Image*"
                 errors={errors.image}
                 register={register}
                 registerer="image"
@@ -543,7 +543,25 @@ function VideoForm({
               />
             </div>
           </div>
-
+        
+           {/* Instructions Note */}
+        <div className="mt-10 p-6 bg-pink/5 rounded-2xl border border-pink/10 flex items-start gap-4 max-w-4xl">
+          <div className="w-10 h-10 bg-pink/10 rounded-full flex items-center justify-center flex-shrink-0">
+            <Info className="w-5 h-5 text-pink" />
+          </div>
+          <div>
+            <h5 className="text-base text-gray-900 mb-1">
+             Note:  Please use the <span className="font-medium">YouTube embed URL</span> (not the normal watch link).
+            </h5>
+            <p className="text-sm text-gray-600 leading-relaxed">
+               {`<iframe width="560" height="315" `}
+              <code className="bg-white px-2 py-1 rounded border border-pink/20 text-xs mt-2 inline-block font-mono">
+               src="https://www.youtube.com/embed/dOvYS3ulWmY?si=BlhgvXOjXfR2wNIv"
+              </code>
+              {`title="YouTube video player"`}<br/> {`frameborder="0"`} <br/>  {`allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> `}<br/>{`</iframe>`}
+            </p>
+          </div>
+        </div>
           {/* Modal Footer */}
           <div className="mt-8 flex gap-3 sticky bottom-0 bg-white pb-2">
             <Button

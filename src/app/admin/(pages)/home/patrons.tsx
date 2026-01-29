@@ -107,7 +107,7 @@ export default function Patrons() {
             <p className="text-gray-500">No patrons found.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mt-6">
             {items.map((item) => (
               <PatronCard
                 key={item.id}
@@ -193,7 +193,7 @@ function PatronCard({
 }) {
   return (
     <article className="group bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-all duration-300">
-      <div className="relative aspect-[4/5] overflow-hidden bg-gray-100">
+      <div className="relative h-72 overflow-hidden bg-gray-100">
         <img
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           src={`${process.env.NEXT_PUBLIC_HOST_URL}${item.image}`}
@@ -225,7 +225,7 @@ function PatronCard({
             {item.desig}
           </p>
         </div>
-        <p className="text-xs text-gray-500 line-clamp-3 mb-4 flex-1">
+        <p className="text-xs text-gray-500 line-clamp-2 mb-4 flex-1">
           {item.popupdesc}
         </p>
 
@@ -234,7 +234,7 @@ function PatronCard({
             href={item.link}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs text-blue-600 hover:text-blue-700 font-medium mb-4"
+            className="inline-flex items-center gap-1.5 text-sm text-pink hover:underline font-medium mb-4"
           >
             <ExternalLink className="w-3.5 h-3.5" />
             {item.socialMedia || "Profile"}
@@ -275,7 +275,10 @@ const patronSchema = z.object({
     z.string().min(1, "image is required"),
     z.any().refine((file) => file?.length > 0, "image is required"),
   ]),
-  popupImg: z.union([z.string(), z.any()]).optional(),
+  popupImg:z.union([
+    z.string().min(1, "image is required"),
+    z.any().refine((file) => file?.length > 0, "image is required"),
+  ]),
 });
 
 type PatronFormValues = z.infer<typeof patronSchema>;
@@ -388,7 +391,7 @@ function PatronForm({
           </h3>
           <button
             type="button"
-            className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-1 hover:bg-gray-100 rounded-full transition-colors cursor-pointer"
             onClick={onClose}
           >
             <X className="w-6 h-6 text-gray-500" />
@@ -402,14 +405,14 @@ function PatronForm({
           <div className="space-y-5">
             <div className="grid grid-cols-2 gap-4">
               <TextInput
-                label="Full Name"
+                label="Full Name*"
                 errors={errors.title}
                 placeholder="e.g. John Smith"
                 register={register}
                 registerer="title"
               />
               <TextInput
-                label="Designation/Role"
+                label="Designation/Role*"
                 errors={errors.desig}
                 placeholder="e.g. Founding Patron"
                 register={register}
@@ -418,7 +421,7 @@ function PatronForm({
             </div>
 
             <MessageInput
-              label="Detailed Biography (Popup)"
+              label="Description (Popup)*"
               errors={errors.popupdesc}
               placeholder="Tell something about this patron..."
               register={register}
@@ -427,7 +430,7 @@ function PatronForm({
 
             <div className="grid grid-cols-2 gap-4">
               <TextInput
-                label="Profile URL"
+                label="Social URL*"
                 errors={errors.link}
                 placeholder="https://..."
                 register={register}
@@ -469,7 +472,7 @@ function PatronForm({
 
             <div className="grid grid-cols-2 gap-4">
               <TextInput
-                label="Order Priority"
+                label="Order Priority (optional)"
                 errors={errors.order}
                 placeholder="0"
                 register={register}
@@ -477,7 +480,7 @@ function PatronForm({
               />
               <div className="flex items-center gap-3 py-2">
                 <label className="font-medium text-sm text-gray-700">
-                  Active Status
+                  Active
                 </label>
                 <ToggleSwitch
                   checked={watch("active")}
@@ -488,7 +491,7 @@ function PatronForm({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <ImagePicker
-                label="Patron Photo"
+                label="Patron Image*"
                 errors={errors.image}
                 register={register}
                 registerer="image"
@@ -496,7 +499,7 @@ function PatronForm({
                 accept=".png, .jpg, .jpeg, .webp"
               />
               <ImagePicker
-                label="Secondary/Popup Photo"
+                label="Secondary/Popup Image*"
                 errors={errors.popupImg}
                 register={register}
                 registerer="popupImg"

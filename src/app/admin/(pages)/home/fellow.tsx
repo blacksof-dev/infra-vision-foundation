@@ -124,7 +124,7 @@ export default function Fellows() {
             <p className="text-gray-500">No fellows found.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 gap-6 mt-6">
             {items.map((item) => (
               <FellowCard
                 key={item.id}
@@ -210,7 +210,7 @@ function FellowCard({
 }) {
   return (
     <article className="group bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-all duration-300">
-      <div className="relative h-64 overflow-hidden bg-gray-100">
+      <div className="relative h-72 overflow-hidden bg-gray-100">
         <img
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           src={`${process.env.NEXT_PUBLIC_HOST_URL}${item.image}`}
@@ -238,7 +238,7 @@ function FellowCard({
           </p>
           <p className="text-gray-600 text-xs font-medium mt-1">{item.desig}</p>
         </div>
-        <p className="text-xs text-gray-500 line-clamp-3 mb-4 flex-1">
+        <p className="text-xs text-gray-500 line-clamp-2 mb-4 flex-1">
           {item.popupdesc}
         </p>
 
@@ -247,7 +247,7 @@ function FellowCard({
             href={item.link}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs text-blue-600 hover:text-blue-700 font-medium mb-4"
+            className="inline-flex items-center gap-1.5 text-sm text-pink hover:underline font-medium mb-4"
           >
             <ExternalLink className="w-3.5 h-3.5" />
             {item.socialMedia || "Profile"}
@@ -288,7 +288,10 @@ const fellowSchema = z.object({
     z.string().min(1, "image is required"),
     z.any().refine((file) => file?.length > 0, "image is required"),
   ]),
-  popupImage: z.union([z.string(), z.any()]).optional(),
+  popupImage: z.union([
+    z.string().min(1, "image is required"),
+    z.any().refine((file) => file?.length > 0, "image is required"),
+  ]),
 });
 
 type FellowFormValues = z.infer<typeof fellowSchema>;
@@ -401,7 +404,7 @@ function FellowForm({
           </h3>
           <button
             type="button"
-            className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-1 hover:bg-gray-100 rounded-full transition-colors cursor-pointer"
             onClick={onClose}
           >
             <X className="w-6 h-6 text-gray-500" />
@@ -415,31 +418,32 @@ function FellowForm({
           <div className="space-y-5">
             <div className="grid grid-cols-2 gap-4">
               <TextInput
-                label="Full Name"
+                label="Full Name*"
                 errors={errors.title}
                 placeholder="e.g. Rasika Athawale"
                 register={register}
                 registerer="title"
               />
               <TextInput
-                label="Subtitle (Role Type)"
-                errors={errors.subtitle}
-                placeholder="e.g. Distinguished Fellow"
-                register={register}
-                registerer="subtitle"
-              />
-            </div>
-
-            <TextInput
-              label="Designation/Expertise"
+              label="Designation/Expertise*"
               errors={errors.desig}
               placeholder="e.g. Electricity policy expert"
               register={register}
               registerer="desig"
             />
+            </div>
+
+           
+             <TextInput
+                label="Subtitle (Role Type)*"
+                errors={errors.subtitle}
+                placeholder="e.g. Distinguished Fellow"
+                register={register}
+                registerer="subtitle"
+              />
 
             <MessageInput
-              label="Popup Bio Description"
+              label="Description (Popup)*"
               errors={errors.popupdesc}
               placeholder="Detailed profile bio..."
               register={register}
@@ -448,7 +452,7 @@ function FellowForm({
 
             <div className="grid grid-cols-2 gap-4">
               <TextInput
-                label="Social/Profile Link"
+                label="Social URL (Optional)"
                 errors={errors.link}
                 placeholder="https://linkedin.com/in/..."
                 register={register}
@@ -500,7 +504,7 @@ function FellowForm({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <ImagePicker
-                label="Fellow Photo"
+                label="Fellow Image*"
                 errors={errors.image}
                 register={register}
                 registerer="image"
@@ -508,7 +512,7 @@ function FellowForm({
                 accept=".png, .jpg, .jpeg, .webp"
               />
               <ImagePicker
-                label="Popup Secondary Photo"
+                label="Secondary/Popup Image*"
                 errors={errors.popupImage}
                 register={register}
                 registerer="popupImage"

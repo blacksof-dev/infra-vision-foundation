@@ -11,6 +11,7 @@ import { X, Info, Trash2, Image as ImageIcon, AlertCircle } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { getData, updateContent, uploadImage } from "../../lib/utils";
 import { toast } from "react-toastify";
+import MessageInput from "../../components/input/textareaInput";
 
 // Constants
 const SECTION_KEY = "about-us-banner";
@@ -142,8 +143,8 @@ export default function AboutUsBanner() {
     <>
       <section className="blade-top-margin pb-10">
         <SectionHeading
-          heading="About Us Banner Section"
-          description="Manage the about us page banner with title, description, and multiple images (up to 5)."
+          heading="Banner "
+          // description="Manage the about us page banner with title, description, and multiple images (up to 5)."
           ctaText="Update Banner"
           cta={true}
           handleClick={handleOpenForm}
@@ -344,16 +345,23 @@ function BannerForm({
         >
           {/* Title */}
           <TextInput
-            label="Banner Title"
+            label="Banner Title*"
             errors={errors.title}
             placeholder="e.g. About InfraVision Foundation"
             register={register}
             registerer="title"
-            tooltip="Enter a compelling title for the banner"
+            // tooltip="Enter a compelling title for the banner"
           />
-
+          
+          <MessageInput
+          label="Description*"
+          errors={errors.description}
+          placeholder="Enter the banner description..."
+          register={register}
+          registerer="description"
+          />
           {/* Description */}
-          <div className="space-y-2">
+          {/* <div className="space-y-2">
             <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
               Description
               <span className="text-red-500">*</span>
@@ -371,7 +379,7 @@ function BannerForm({
                 {errors.description.message}
               </p>
             )}
-          </div>
+          </div> */}
 
           {/* Images Section */}
           <div className="space-y-4">

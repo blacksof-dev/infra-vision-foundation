@@ -14,12 +14,10 @@ import { useSession } from "next-auth/react";
 import { z } from "zod";
 import { generalSchema } from "../../lib/zod";
 import { getData } from "../../lib/utils";
-import dynamic from "next/dynamic";
+import edjsHTML from "editorjs-html";
 import ReactMarkdown from "react-markdown";
-// Dynamically import Markdown editor
-const MarkdownEditor = dynamic(() => import("@uiw/react-md-editor"), {
-  ssr: false,
-});
+import EditorJSWrapper from "../../components/editorjs";
+import { OutputData } from "@editorjs/editorjs";
 
 // --- Types ---
 
@@ -27,7 +25,7 @@ interface MainContent {
   id: string;
   active: boolean;
   title: string;
-  content: string;
+  content: any;
   posterImageUrl: string;
 }
 
@@ -35,7 +33,7 @@ interface Eligibility {
   id: string;
   ctaText: string;
   active: boolean;
-  content: string;
+  content: any;
 }
 
 interface Application {
@@ -57,6 +55,7 @@ export default function InfraPanditAwards() {
   const { data: session } = useSession();
   const [data, setData] = useState<AwardResponse | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const edjsParser = edjsHTML();
 
   // Form Modals
   const [activeForm, setActiveForm] = useState<
@@ -68,7 +67,7 @@ export default function InfraPanditAwards() {
       setIsLoading(true);
       const res = (await getData(
         "/infrapandit-awards",
-        session
+        session,
       )) as AwardResponse;
       setData(res);
     } catch (error) {
@@ -141,8 +140,8 @@ export default function InfraPanditAwards() {
                     onClick={() => setActiveForm("main")}
                   />
                 </div>
-                <div className="prose prose-sm max-w-none text-gray-600   mb-8 ">
-                  <ReactMarkdown>{data.main.content}</ReactMarkdown>
+                <div className="prose prose-sm max-w-none text-gray-600 mb-8  overflow-y-auto">
+                  <EditorContent content={data.main.content} />
                 </div>
                 <div className="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -201,8 +200,8 @@ export default function InfraPanditAwards() {
                 isDisabled={isMainDeactivated}
               />
             </div>
-            <div className="flex-1 bg-gray-50/50 rounded-xl p-5 border border-gray-100 mb-6 overflow-hidden max-h-48 overflow-y-auto italic text-gray-600 text-sm">
-              <ReactMarkdown>{data.eligibility.content}</ReactMarkdown>
+            <div className="flex-1 bg-gray-50/50 rounded-xl p-5 border border-gray-100 mb-6 overflow-hidden max-h-100 overflow-y-auto   text-gray-600 text-sm">
+              <EditorContent content={data.eligibility.content} isSmall />
             </div>
             <div className="flex items-center gap-3 pt-4 border-t border-gray-50">
               <ToggleSwitch
@@ -313,7 +312,6 @@ export default function InfraPanditAwards() {
 
 const mainSchema = z.object({
   title: generalSchema("Title is required"),
-  content: generalSchema("Content is required"),
   active: z.boolean(),
   posterImage: z.any().optional(),
 });
@@ -329,6 +327,18 @@ function MainForm({
 }) {
   const { data: session } = useSession();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isEditorOpen, setIsEditorOpen] = useState(false);
+  const [editorData, setEditorData] = useState<OutputData | undefined>(
+    initialData.content
+      ? typeof initialData.content === "string"
+        ? (JSON.parse(initialData.content) as OutputData)
+        : (initialData.content as OutputData)
+      : undefined,
+  );
+  const [editorHolderId] = useState(
+    () =>
+      `editorjs-main-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+  );
 
   const {
     register,
@@ -340,7 +350,6 @@ function MainForm({
     resolver: zodResolver(mainSchema),
     defaultValues: {
       title: initialData.title,
-      content: initialData.content,
       active: initialData.active,
       posterImage: initialData.posterImageUrl,
     },
@@ -351,25 +360,22 @@ function MainForm({
       setIsSubmitting(true);
       const formData = new FormData();
       formData.append("title", data.title);
-      formData.append("content", data.content);
       formData.append("active", String(data.active));
+
+      if (editorData) {
+        formData.append("content", JSON.stringify(editorData));
+      }
 
       if (data.posterImage instanceof FileList && data.posterImage.length > 0) {
         formData.append("posterImage", data.posterImage[0]);
       }
-
-      // Log for debugging
-      console.log(
-        "Submitting Main Content:",
-        Object.fromEntries((formData as any).entries())
-      );
 
       await axios.patch(
         `${process.env.NEXT_PUBLIC_HOST_URL}/infrapandit-awards/main`,
         formData,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
-        }
+        },
       );
 
       toast.success("Main content updated");
@@ -382,82 +388,97 @@ function MainForm({
   };
 
   return (
-    <ModalWrapper title="Edit Main Content" onClose={onClose}>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        <TextInput
-          label="Title"
-          register={register}
-          registerer="title"
-          errors={errors.title}
-          placeholder="Enter title"
-        />
-
-        <div>
-          <label className="block text-sm font-bold text-gray-700 mb-2">
-            Description / Content (Markdown)
-          </label>
-          <MarkdownEditor
-            value={watch("content")}
-            onChange={(val) => setValue("content", val || "")}
-            data-color-mode="light"
-            height={300}
+    <>
+      <ModalWrapper title="Edit Main Content" onClose={onClose}>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <TextInput
+            label="Title"
+            register={register}
+            registerer="title"
+            errors={errors.title}
+            placeholder="Enter title"
           />
-          {errors.content && (
-            <p className="text-red-500 text-xs mt-1">
-              {errors.content.message as string}
-            </p>
-          )}
-        </div>
 
-        <ImagePicker
-          label="Poster Image"
-          register={register}
-          registerer="posterImage"
-          watcher={watch("posterImage")}
-          errors={errors.posterImage}
-          accept=".png, .jpg, .jpeg, .webp"
-        />
-
-        <div className="flex items-center gap-3 py-2 bg-gray-50 p-4 rounded-xl border border-gray-100">
-          <div className="flex-1">
-            <div className="font-bold text-sm text-gray-900">Active Status</div>
-            <p className="text-[10px] text-gray-500 uppercase font-medium">
-              Deactivating this will hide the entire InfraPandit section from
-              the public.
+          <div className="space-y-2">
+            <label className="text-sm font-bold text-gray-700 block">
+              Main Content
+            </label>
+            <p className="text-xs text-gray-500 mb-2">
+              Add rich content using the editor.
             </p>
+            <Button
+              type="button"
+              text="Open Content Editor"
+              theme="transparentPink"
+              size="small"
+              onClick={() => setIsEditorOpen(true)}
+            />
           </div>
-          <ToggleSwitch
-            checked={watch("active")}
-            onChange={(val) => setValue("active", val)}
-          />
-        </div>
 
-        <div className="flex gap-4 pt-4">
-          <Button
-            type="button"
-            text="Cancel"
-            theme="transparentGray"
-            size="large"
-            className="flex-1"
-            onClick={onClose}
+          <ImagePicker
+            label="Poster Image"
+            register={register}
+            registerer="posterImage"
+            watcher={watch("posterImage")}
+            errors={errors.posterImage}
+            accept=".png, .jpg, .jpeg, .webp"
           />
-          <Button
-            type="submit"
-            text="Save Changes"
-            theme="pink"
-            size="large"
-            className="flex-1"
-            isLoading={isSubmitting}
-          />
-        </div>
-      </form>
-    </ModalWrapper>
+
+          <div className="flex items-center gap-3 py-2 bg-gray-50 p-4 rounded-xl border border-gray-100">
+            <div className="flex-1">
+              <div className="font-bold text-sm text-gray-900">
+                Active Status
+              </div>
+              <p className="text-[10px] text-gray-500 uppercase font-medium">
+                Deactivating this will hide the entire InfraPandit section from
+                the public.
+              </p>
+            </div>
+            <ToggleSwitch
+              checked={watch("active")}
+              onChange={(val) => setValue("active", val)}
+            />
+          </div>
+
+          <div className="flex gap-4 pt-4">
+            <Button
+              type="button"
+              text="Cancel"
+              theme="transparentGray"
+              size="large"
+              className="flex-1"
+              onClick={onClose}
+            />
+            <Button
+              type="submit"
+              text="Save Changes"
+              theme="pink"
+              size="large"
+              className="flex-1"
+              isLoading={isSubmitting}
+            />
+          </div>
+        </form>
+      </ModalWrapper>
+
+      {isEditorOpen && (
+        <EditorModal
+          holder={editorHolderId}
+          data={editorData}
+          onSave={(data) => {
+            setEditorData(data);
+            setIsEditorOpen(false);
+          }}
+          onClose={() => setIsEditorOpen(false)}
+          title="Edit Main Content"
+        />
+      )}
+    </>
   );
 }
 
 const eligibilitySchema = z.object({
   ctaText: generalSchema("Button text is required"),
-  content: generalSchema("Content is required"),
   active: z.boolean(),
 });
 
@@ -472,6 +493,20 @@ function EligibilityForm({
 }) {
   const { data: session } = useSession();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isEditorOpen, setIsEditorOpen] = useState(false);
+  const [editorData, setEditorData] = useState<OutputData | undefined>(
+    initialData.content
+      ? typeof initialData.content === "string"
+        ? (JSON.parse(initialData.content) as OutputData)
+        : (initialData.content as OutputData)
+      : undefined,
+  );
+  const [editorHolderId] = useState(
+    () =>
+      `editorjs-eligibility-${Date.now()}-${Math.random()
+        .toString(36)
+        .substr(2, 9)}`,
+  );
 
   const {
     register,
@@ -483,7 +518,6 @@ function EligibilityForm({
     resolver: zodResolver(eligibilitySchema),
     defaultValues: {
       ctaText: initialData.ctaText,
-      content: initialData.content,
       active: initialData.active,
     },
   });
@@ -491,23 +525,21 @@ function EligibilityForm({
   const onSubmit = async (data: any) => {
     try {
       setIsSubmitting(true);
-      const formData = new FormData();
-      formData.append("ctaText", data.ctaText);
-      formData.append("content", data.content);
-      formData.append("active", String(data.active));
-
-      // Log for debugging
-      console.log(
-        "Submitting Eligibility Form:",
-        Object.fromEntries((formData as any).entries())
-      );
+      const payload = {
+        ctaText: data.ctaText,
+        active: data.active,
+        content: editorData || {},
+      };
 
       await axios.patch(
         `${process.env.NEXT_PUBLIC_HOST_URL}/infrapandit-awards/eligibility`,
-        formData,
+        payload,
         {
-          headers: { Authorization: `Bearer ${session?.accessToken}` },
-        }
+          headers: {
+            Authorization: `Bearer ${session?.accessToken}`,
+            "Content-Type": "application/json",
+          },
+        },
       );
 
       toast.success("Eligibility updated");
@@ -520,63 +552,77 @@ function EligibilityForm({
   };
 
   return (
-    <ModalWrapper title="Edit Eligibility Criteria" onClose={onClose}>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        <TextInput
-          label="CTA Button Text"
-          register={register}
-          registerer="ctaText"
-          errors={errors.ctaText}
-          placeholder="e.g. Eligibility"
-        />
-
-        <div>
-          <label className="block text-sm font-bold text-gray-700 mb-2">
-            Eligibility Content (Markdown)
-          </label>
-          <MarkdownEditor
-            value={watch("content")}
-            onChange={(val) => setValue("content", val || "")}
-            data-color-mode="light"
-            height={300}
+    <>
+      <ModalWrapper title="Edit Eligibility Criteria" onClose={onClose}>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <TextInput
+            label="CTA Button Text"
+            register={register}
+            registerer="ctaText"
+            errors={errors.ctaText}
+            placeholder="e.g. Eligibility"
           />
-          {errors.content && (
-            <p className="text-red-500 text-xs mt-1">
-              {errors.content.message as string}
+
+          <div className="space-y-2">
+            <label className="text-sm font-bold text-gray-700 block">
+              Eligibility Content
+            </label>
+            <p className="text-xs text-gray-500 mb-2">
+              Add criteria details using the editor.
             </p>
-          )}
-        </div>
+            <Button
+              type="button"
+              text="Open Eligibility Editor"
+              theme="transparentPink"
+              size="small"
+              onClick={() => setIsEditorOpen(true)}
+            />
+          </div>
 
-        <div className="flex items-center gap-3">
-          <label className="text-sm font-bold text-gray-700 flex-1">
-            Is Eligibility Section Active?
-          </label>
-          <ToggleSwitch
-            checked={watch("active")}
-            onChange={(val) => setValue("active", val)}
-          />
-        </div>
+          <div className="flex items-center gap-3">
+            <label className="text-sm font-bold text-gray-700 flex-1">
+              Is Eligibility Section Active?
+            </label>
+            <ToggleSwitch
+              checked={watch("active")}
+              onChange={(val) => setValue("active", val)}
+            />
+          </div>
 
-        <div className="flex gap-4 pt-4">
-          <Button
-            type="button"
-            text="Cancel"
-            theme="transparentGray"
-            size="large"
-            className="flex-1"
-            onClick={onClose}
-          />
-          <Button
-            type="submit"
-            text="Save Changes"
-            theme="pink"
-            size="large"
-            className="flex-1"
-            isLoading={isSubmitting}
-          />
-        </div>
-      </form>
-    </ModalWrapper>
+          <div className="flex gap-4 pt-4">
+            <Button
+              type="button"
+              text="Cancel"
+              theme="transparentGray"
+              size="large"
+              className="flex-1"
+              onClick={onClose}
+            />
+            <Button
+              type="submit"
+              text="Save Changes"
+              theme="pink"
+              size="large"
+              className="flex-1"
+              isLoading={isSubmitting}
+            />
+          </div>
+        </form>
+      </ModalWrapper>
+
+      {isEditorOpen && (
+        <EditorModal
+          holder={editorHolderId}
+          data={editorData}
+          onSave={(data) => {
+            setEditorData(data);
+            setIsEditorOpen(false);
+          }}
+          onClose={() => setIsEditorOpen(false)}
+          title="Edit Eligibility Criteria"
+        />
+      )}
+    </>
   );
 }
 
@@ -625,7 +671,7 @@ function ApplicationForm({
             Authorization: `Bearer ${session?.accessToken}`,
             "Content-Type": "application/json",
           },
-        }
+        },
       );
 
       toast.success("Application form details updated");
@@ -689,6 +735,133 @@ function ApplicationForm({
 }
 
 // --- Utils ---
+
+function EditorModal({
+  holder,
+  data,
+  onSave,
+  onClose,
+  title,
+}: {
+  holder: string;
+  data?: OutputData;
+  onSave: (data: OutputData) => void;
+  onClose: () => void;
+  title: string;
+}) {
+  const [editorData, setEditorData] = useState<OutputData | undefined>(data);
+
+  return (
+    <div className="fixed inset-0 bg-black/40 z-[9999] flex items-center justify-center p-4">
+      <div className="w-full max-w-5xl h-[90vh] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+        {/* Header */}
+        <div className="flex justify-between items-center p-6 border-b border-gray-100">
+          <h6 className="text-xl font-bold text-gray-900">{title}</h6>
+          <button
+            onClick={onClose}
+            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+          >
+            <X className="w-6 h-6 text-gray-500" />
+          </button>
+        </div>
+
+        {/* Editor Body */}
+        <div className="flex-1 overflow-auto p-8 bg-gray-50">
+          <div className="max-w-4xl mx-auto">
+            <EditorJSWrapper
+              holder={holder}
+              data={editorData}
+              onChange={(newData) => setEditorData(newData)}
+            />
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="flex justify-end gap-3 p-6 border-t border-gray-100 bg-white">
+          <Button
+            text="Discard Changes"
+            theme="transparentGray"
+            size="large"
+            type="button"
+            onClick={onClose}
+          />
+          <Button
+            text="Save Content"
+            theme="pink"
+            size="large"
+            type="button"
+            onClick={() => {
+              if (editorData) onSave(editorData);
+              else onClose();
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function EditorContent({
+  content,
+  isSmall,
+}: {
+  content: any;
+  isSmall?: boolean;
+}) {
+  if (!content) return <p className="text-gray-400">No content</p>;
+
+  // Legacy support for string content
+  if (typeof content === "string") {
+    return <ReactMarkdown>{content}</ReactMarkdown>;
+  }
+
+  try {
+    const edjsParser = edjsHTML();
+    const parsed = edjsParser.parse(content);
+    const html = Array.isArray(parsed)
+      ? parsed.join("")
+      : (parsed as unknown as string);
+
+    return (
+      <div className={`editorjs-content ${isSmall ? "text-sm" : ""}`}>
+        {/* Simple inline styles for EditorJS elements */}
+        <div className="space-y-4" dangerouslySetInnerHTML={{ __html: html }} />
+        <style jsx global>{`
+          .editorjs-content ul {
+            list-style-type: disc !important;
+            padding-left: 1.5rem !important;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+                
+          }
+          .editorjs-content ol {
+            list-style-type: decimal !important;
+            padding-left: 1.5rem !important;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+              
+          }
+          .editorjs-content li {
+            margin-bottom: 0.25rem;
+            
+           font-size: 16px;
+
+          } 
+          .editorjs-content p {
+           font-size: 16px;
+           
+          } 
+           .editorjs-content {
+              color: #000;
+           }
+        `}</style>
+      </div>
+    );
+  } catch (error) {
+    console.error("Error parsing EditorJS content:", error);
+    return <p className="text-red-500">Error rendering content</p>;
+  }
+}
 
 function ModalWrapper({
   children,

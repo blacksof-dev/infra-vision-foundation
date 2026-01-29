@@ -11,6 +11,7 @@ import { X } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { getData, updateContent, uploadImage } from "../../lib/utils";
 import { toast } from "react-toastify";
+import MessageInput from "../../components/input/textareaInput";
 
 interface OAEDefaultValueType {
   heading: string;
@@ -189,7 +190,7 @@ function OutreachForm({
           </h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-2 hover:bg-gray-100 rounded-full transition-colors cursor-pointer"
           >
             <X className="w-6 h-6 text-gray-500" />
           </button>
@@ -200,15 +201,15 @@ function OutreachForm({
           className="flex-1 overflow-y-auto p-8 space-y-6"
         >
           <TextInput
-            label="Heading"
+            label="Heading*"
             errors={errors.heading}
             placeholder="Enter heading..."
             register={register}
             registerer="heading"
           />
 
-          <TextInput
-            label="Description"
+          <MessageInput
+            label="Description*"
             errors={errors.description}
             placeholder="Enter description..."
             register={register}
@@ -217,7 +218,7 @@ function OutreachForm({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
             <ImagePicker
-              label="Desktop Background (1920x1130)"
+              label="Desktop Background* (1920x1024)"
               errors={errors.backgroundImageDesktop}
               register={register}
               registerer="backgroundImageDesktop"
@@ -226,7 +227,7 @@ function OutreachForm({
             />
 
             <ImagePicker
-              label="Mobile Background (390x690)"
+              label="Mobile Background* (390x690)"
               errors={errors.backgroundImageMobile}
               register={register}
               registerer="backgroundImageMobile"

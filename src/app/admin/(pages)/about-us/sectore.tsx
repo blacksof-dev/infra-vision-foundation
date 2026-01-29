@@ -180,7 +180,7 @@ export default function Sectors() {
                 key={item.id}
                 className="group bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-all duration-300"
               >
-                <div className="relative h-48 overflow-hidden bg-gray-100">
+                <div className="relative h-60 overflow-hidden bg-gray-100">
                   <img
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     src={`${process.env.NEXT_PUBLIC_HOST_URL}${item.image}`}
@@ -393,7 +393,7 @@ function SectorForm({
         >
           <div className="space-y-5">
             <TextInput
-              label="Sector Name"
+              label="Sector Name*"
               errors={errors.sector}
               placeholder="e.g. Energy, Water, Transport"
               register={register}
@@ -401,7 +401,7 @@ function SectorForm({
             />
 
             <ImagePicker
-              label="Sector Image"
+              label="Sector Image*"
               errors={errors.imageFile}
               register={register}
               registerer="imageFile"

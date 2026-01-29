@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import SectionHeading from "../../components/sectionHeading";
 import TextInput from "../../components/input/textInput";
 import { z } from "zod";
-import { fileSchema, generalSchema } from "../../lib/zod";
+ 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import ImagePicker from "../../components/input/imagePicker";
+ 
 import { Button } from "../../components/button";
 import { X, Info } from "lucide-react";
 import { useSession } from "next-auth/react";
@@ -184,7 +184,7 @@ function OurCoreForm({
           className="flex-1 overflow-y-auto p-8 space-y-6"
         >
           <TextInput
-            label="Section Tag"
+            label="Section Tag*"
             errors={errors.label}
             placeholder="e.g. OUR CORE"
             register={register}
@@ -192,7 +192,7 @@ function OurCoreForm({
           />
 
           <TextInput
-            label="Main Heading"
+            label="Main Heading*"
             errors={errors.heading}
             placeholder="Enter section heading"
             register={register}
@@ -200,11 +200,12 @@ function OurCoreForm({
           />
 
           <MessageInput
-            label="Description"
+            label="Description*"
             errors={errors.description}
             placeholder="Enter core content description..."
             register={register}
-            registerer="description"
+            registerer="description" 
+            
           />
 
           <div className="flex gap-4 pt-4">
@@ -252,8 +253,11 @@ function OurCoreCard({ data }: { data: OurCoreDefaultValueType }) {
               Heading
             </p>
             <h3
-              className="text-2xl font-bold text-gray-900 leading-tight font-poppin"
-              dangerouslySetInnerHTML={{ __html: heading || "No Heading" }}
+              className="text-2xl  text-gray-900 leading-tight font-poppin"
+              dangerouslySetInnerHTML={{ __html:  heading?.replace(
+                    /\*\*(.*?)\*\*/g,
+                    "<strong>$1</strong>"
+                  ) || "No Heading" }}
             />
           </div>
 
