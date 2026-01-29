@@ -74,7 +74,8 @@ export default function KnowledgeResearchPapers() {
 
   // Filters
   const [page, setPage] = useState<number>(1);
-  const [limit] = useState<number>(12);
+  const [limit] = useState<number>(3);
+
   const [selectedSector, setSelectedSector] = useState<string>("all");
 
   const fetchSectors = useCallback(async () => {
