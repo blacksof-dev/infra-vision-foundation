@@ -12,7 +12,6 @@ import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg";
 import analysis from "@/../public/assets/archive/newsletter/analysisAction.png";
 import abha from "@/../public/assets/home/updates/abha.png";
 import montek from "@/../public/assets/globals/infrapanditAward.jpg";
-import soumya from "@/../public/assets/archive/newsAndMedia/soumyaNews.jpg";
 import anumita from "@/../public/assets/knowledeg/conversations/anumita.png";
 
 
@@ -168,11 +167,11 @@ const EventsDetails = [
    
    {
    
-    image: "/assets/archive/newsAndMedia/invest-in-small-towns.png",
+    image: "/assets/archive/newsAndMedia/landValue.png",
     category: "News",
-    title: "Invest in small towns",
+    title: "Land value capture",
     btnTitle: "See details",
-    link: "/assets/pdf/invest-in-small-towns.pdf",
+    link: "/assets/pdf/landValue.pdf",
   },
   
   {

@@ -41,6 +41,15 @@ const newsletters = [
 ];
 
 const news = [
+   {
+    id:60,
+    img: "/assets/archive/newsAndMedia/landValue.png",
+    category: "",
+    date: "January 2026",
+    title: "Land value capture",
+    subtitle:"Vinayak Chatterjee",
+    link: "/assets/pdf/landValue.pdf",
+  },
     {
     id:60,
     img: "/assets/archive/newsAndMedia/invest-in-small-towns.png",
@@ -59,15 +68,7 @@ const news = [
      subtitle: "Soumya Kanti Ghosh",
     link: "/assets/pdf/how-consistent-is-imf-classification.jpeg",
   },
-     {
-    id:58,
-    img: "/assets/archive/newsAndMedia/confidence.png",
-    category: "",
-    title: "Confidence in India's logistics cost",
-    date: "November 2025",
-     subtitle: "Vinayak Chatterjee",
-    link: "/assets/pdf/confidence.pdf",
-  },
+     
   
  
   
