@@ -39,7 +39,7 @@ export default function Banner() {
 
   const fetch = useCallback(async () => {
     try {
-      const data = await getData("/content/about-banner-section", session);
+      const data = await getData("/content/infrakatha-banner", session);
       setFormState((val) => ({ ...val, intialValue: data }));
     } catch (e) {
       console.error("Failed to load banner data:", e);
@@ -150,7 +150,7 @@ function BannerForm({
       }
 
       const result = await updateContent(
-        "/content/about-banner-section",
+        "/content/infrakatha-banner",
         session,
         {
           heading: data.heading,
