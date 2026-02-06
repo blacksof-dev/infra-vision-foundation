@@ -13,11 +13,7 @@ import analysis from "@/../public/assets/archive/newsletter/analysisAction.png";
 import abha from "@/../public/assets/home/updates/abha.png";
 import montek from "@/../public/assets/globals/infrapanditAward.jpg";
 import anumita from "@/../public/assets/knowledeg/conversations/anumita.png";
-
-
-
-
-
+import img_16 from "@/../public/assets/knowledeg/researchPapers/16.jpg";
 
 export default function Updates() {
   const [isFirstSlide, setIsFirstSlide] = useState(true);
@@ -157,23 +153,22 @@ export default function Updates() {
 }
 
 const EventsDetails = [
-    {
+  {
     image: "/assets/home/updates/op.png",
     category: "Video",
     link: "https://www.youtube.com/embed/l_tOqH0ZpIE?si=AnuQwfGGP_POegUy",
     title: "Dr O.P. Agarwal",
     btnTitle: "Watch video",
   },
-   
-   {
-   
+
+  {
     image: "/assets/archive/newsAndMedia/landValue.png",
     category: "News",
     title: "Land value capture",
     btnTitle: "See details",
     link: "/assets/pdf/landValue.pdf",
   },
-  
+
   {
     image: montek,
     category: "InfraPandit Awards",
@@ -211,5 +206,13 @@ const EventsDetails = [
     title: "Abha Narain Lambah",
     btnTitle: "Watch video",
     link: "https://www.youtube.com/embed/7oiHaLYOpfM?si=TqLV-npHvLJFPdUJ",
+  },
+  {
+    image: img_16,
+    category: "Research Paper",
+    title:
+      "Land Value Capture for urban and regional public transport infrastructure financing",
+    btnTitle: "Read more",
+    link: "/assets/pdf/LVC-report-for-urban-and-regional-public-transport.pdf",
   },
 ];

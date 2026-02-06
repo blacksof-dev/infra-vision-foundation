@@ -4,7 +4,7 @@ import highway from "@/../public/assets/home/whoWeAre/knowledge/highway.png";
 import infraKatha from "@/../public/assets/infrakatha/banner/banner.jpg";
 import infraShakti from "@/../public/assets/home/whoWeAre/advocacy/infraPandit.png";
 import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infraPanditAward.png";
-import img_12 from "@/../public/assets/knowledeg/researchPapers/waterBodies.jpg";
+import img_16 from "@/../public/assets/knowledeg/researchPapers/16.jpg";
 import { useState } from "react";
 import Card from "@/_components/molecules/cardTemplate";
 import { useHeader } from "@/context/useHeader";
@@ -25,21 +25,15 @@ export type TabItem = {
 
 const knowledge = [
   {
-    id: 10,
-    img: img_12.src,
-    category: "Water and Sanitation",
-    date: " ",
-    title: "Water body census: validation, insights and opportunities",
-    subtitle: "",
-    link: "/assets/pdf/waterBody.pdf",
+    id: 1,
+    img: img_16.src,
+    category: "Infrastructure",
+    date: "",
+    title:
+      "Land Value Capture for urban and regional public transport infrastructure financing",
+    link: "/assets/pdf/LVC-report-for-urban-and-regional-public-transport.pdf",
   },
-  //  {
-  //   image: "/assets/archive/newsAndMedia/invest-in-small-towns.jpg",
-  //   category: "Video",
-  //   link: "https://www.youtube.com/embed/l_tOqH0ZpIE?si=AnuQwfGGP_POegUy",
-  //   title: "Why we need better planning of public transport",
-  //   btnTitle: "Watch video",
-  // },
+
   {
     id: 3,
     img: anumita.src,
@@ -49,8 +43,6 @@ const knowledge = [
     link: "https://youtu.be/YV7VYaCB7Yw?si=af66MfWQnjdsG_op",
     ctaText: "Watch now",
   },
-
- 
 
   {
     id: 2,
