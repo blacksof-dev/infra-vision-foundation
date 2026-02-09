@@ -1,5 +1,5 @@
 "use client";
-import {  useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef } from "react";
 
 import img_01 from "@/../public/assets/knowledeg/researchPapers/01.jpg";
 import img_02 from "@/../public/assets/knowledeg/researchPapers/02.jpg";
@@ -15,7 +15,8 @@ import img_11 from "@/../public/assets/knowledeg/researchPapers/11.png";
 import img_12 from "@/../public/assets/knowledeg/researchPapers/12.jpg";
 import img_13 from "@/../public/assets/knowledeg/researchPapers/13.png";
 import img_14 from "@/../public/assets/knowledeg/researchPapers/14.jpg";
-import img_15 from "@/../public/assets/knowledeg/researchPapers/waterBodies.jpg"
+import img_15 from "@/../public/assets/knowledeg/researchPapers/waterBodies.jpg";
+import img_16 from "@/../public/assets/knowledeg/researchPapers/16.jpg";
 
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 
@@ -31,10 +32,7 @@ type SectorType =
   | "Energy"
   | "Urban Planning"
   | "Rural and Agri Infra"
-  | "Infrastructure"
-
-
-
+  | "Infrastructure";
 
 // Constants
 const FILTER_TYPES: FilterType[] = ["All", "Sectors"];
@@ -46,14 +44,24 @@ const SECTORS: SectorType[] = [
   "Energy",
   "Urban Planning",
   "Rural and Agri Infra",
-  "Infrastructure"
+  "Infrastructure",
 ];
 const INITIAL_VISIBLE_COUNT = 3;
 
-
 const allcards = [
-     {
-    id:15,
+  {
+    id: 16,
+    img: img_16,
+    category: "Infrastructure",
+    title: "",
+    sectors: "Infrastructure",
+    date: "",
+    description:
+      "Land Value Capture for urban and regional public transport infrastructure financing",
+    link: "/assets/pdf/LVC-report-for-urban-and-regional-public-transport.pdf",
+  },
+  {
+    id: 15,
     img: img_15,
     category: "Water and Sanitation",
     title: "",
@@ -62,7 +70,7 @@ const allcards = [
     description: "Water Body Census: Validation, Insights and Opportunities",
     link: "/assets/pdf/waterBody.pdf",
   },
-   
+
   {
     id: 14,
     img: img_14,
@@ -70,27 +78,29 @@ const allcards = [
     title: "",
     sectors: "Urban Planning",
     date: " ",
-    description:"Impact of FSI deregulation in Hyderabad",
+    description: "Impact of FSI deregulation in Hyderabad",
     link: "/assets/pdf/report-fsi-deregulation-in-hyderabad.pdf",
   },
-   {
+  {
     id: 13,
     img: img_13,
     category: "Infrastructure",
     title: "",
     sectors: "Infrastructure",
     date: " ",
-    description:"Removing Barriers to Faster Penetration of Trees Outside Forests Products in Construction Sector",
+    description:
+      "Removing Barriers to Faster Penetration of Trees Outside Forests Products in Construction Sector",
     link: "/assets/pdf/removing-barriers-to-faster-penetration-of-trees-final-report.pdf",
   },
-   {
+  {
     id: 10,
     img: img_12,
     category: "Urban Planning",
     title: "",
     sectors: "Urban Planning",
     date: " ",
-    description:"Relieving urban congestion and promoting tourism through ropeways",
+    description:
+      "Relieving urban congestion and promoting tourism through ropeways",
     link: "/assets/pdf/urbanCongestion.pdf",
   },
   {
@@ -162,7 +172,8 @@ const allcards = [
     title: "",
     sectors: "Transportation",
     date: " ",
-    description: "A framework for selecting an appropriate urban transport system",
+    description:
+      "A framework for selecting an appropriate urban transport system",
     link: "/assets/pdf/Urban-Transport-Project-White-Paper.pdf",
   },
   {
@@ -172,7 +183,8 @@ const allcards = [
     title: "",
     sectors: "Infrastructure",
     date: " ",
-    description: "Surety bonds: Evaluation for diversifying risk in infrastructure financing",
+    description:
+      "Surety bonds: Evaluation for diversifying risk in infrastructure financing",
     link: "/assets/pdf/Surety-Bond-White-Paper.pdf",
   },
   {
@@ -182,10 +194,11 @@ const allcards = [
     title: "",
     sectors: "Rural and Agri Infra",
     date: " ",
-    description: "Ways to enhance warehouse-based sales and lending for agriculture commodities",
+    description:
+      "Ways to enhance warehouse-based sales and lending for agriculture commodities",
     link: "/assets/pdf/Warehousing-Whitepaper.pdf",
   },
- 
+
   {
     id: 11,
     img: img_10,
@@ -193,7 +206,8 @@ const allcards = [
     title: "",
     sectors: "Transportation",
     date: " ",
-    description: "Decarbonizing urban transport using traffic and transport data from ICCC: A Pilot Study in NOIDA",
+    description:
+      "Decarbonizing urban transport using traffic and transport data from ICCC: A Pilot Study in NOIDA",
     link: "/assets/pdf/decarbonizing.pdf",
   },
   {
@@ -203,7 +217,8 @@ const allcards = [
     title: "",
     sectors: "Rural and Agri Infra",
     date: " ",
-    description: "Expanding agricultural exports of Arunachal Pradesh through infrastructure development",
+    description:
+      "Expanding agricultural exports of Arunachal Pradesh through infrastructure development",
     link: "/assets/pdf/expanding.pdf",
   },
 ];
@@ -211,32 +226,29 @@ const allcards = [
 const generateResearchSchema = (card: any) => ({
   "@context": "https://schema.org",
   "@type": "ScholarlyArticle",
-  "headline": card.description,
-  "description": card.description,
-  "image": `https://theinfravisionfoundation.org${card.img}`,
-  "url": "https://theinfravisionfoundation.org/knowledge#research-papers",
-  "author": {
+  headline: card.description,
+  description: card.description,
+  image: `https://theinfravisionfoundation.org${card.img}`,
+  url: "https://theinfravisionfoundation.org/knowledge#research-papers",
+  author: {
     "@type": "Organization",
-    "name": "The Infravision Foundation"
+    name: "The Infravision Foundation",
   },
-  "publisher": {
+  publisher: {
     "@type": "Organization",
-    "name": "The Infravision Foundation",
-    "logo": {
+    name: "The Infravision Foundation",
+    logo: {
       "@type": "ImageObject",
-      "url": "https://theinfravisionfoundation.org/logo.png"
-    }
+      url: "https://theinfravisionfoundation.org/logo.png",
+    },
   },
-  "about": card.sectors,
-  "associatedMedia": {
+  about: card.sectors,
+  associatedMedia: {
     "@type": "MediaObject",
-    "contentUrl": `https://theinfravisionfoundation.org${card.link}`,
-    "encodingFormat": "application/pdf"
-  }
+    contentUrl: `https://theinfravisionfoundation.org${card.link}`,
+    encodingFormat: "application/pdf",
+  },
 });
-
-
-
 
 export default function ResearchPapers() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -252,18 +264,13 @@ export default function ResearchPapers() {
     if (tab && container) {
       const offset =
         tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
-      container.scrollTo({ left: offset, behavior: 'smooth' });
+      container.scrollTo({ left: offset, behavior: "smooth" });
     }
   };
 
   const handleTabClick = (tab: FilterType) => {
     setSelectedTab(tab);
-    setSelectedFilter(
-      tab === "Sectors"
-        ? SECTORS[0]
-        : "All"
-    
-    );
+    setSelectedFilter(tab === "Sectors" ? SECTORS[0] : "All");
     setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
 
@@ -273,7 +280,6 @@ export default function ResearchPapers() {
   };
 
   const filteredCards = useMemo(() => {
- 
     if (selectedTab === "Sectors" && selectedFilter !== "All") {
       return allcards.filter((card) => card.sectors === selectedFilter);
     }
@@ -287,7 +293,6 @@ export default function ResearchPapers() {
   const renderFilterButtons = (filters: readonly string[]) => (
     <div ref={containerRef} className="pt-5 overflow-scroll no-scrollbar">
       <div className="flex  gap-3 ">
-
         {filters.map((filter, index) => (
           <button
             key={filter}
@@ -295,10 +300,11 @@ export default function ResearchPapers() {
               tabRefs.current[index] = el;
             }}
             className={`text-base text-nowrap cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
-                            ${selectedFilter === filter
-                ? "border border-pink text-white bg-pink font-medium"
-                : "border border-lightgray/30"
-              }`}
+                            ${
+                              selectedFilter === filter
+                                ? "border border-pink text-white bg-pink font-medium"
+                                : "border border-lightgray/30"
+                            }`}
             onClick={() => handleFilterClick(filter, index)}
           >
             {filter}
@@ -311,8 +317,7 @@ export default function ResearchPapers() {
   const allResearchPaper = allcards.map(generateResearchSchema);
   return (
     <section id="research-papers">
-
-     <Script
+      <Script
         id="researchPaper-schema"
         type="application/ld+json"
         strategy="afterInteractive"
@@ -320,7 +325,6 @@ export default function ResearchPapers() {
           __html: JSON.stringify(allResearchPaper),
         }}
       />
-
 
       <div className="w-container blade-top-padding-sm blade-bottom-padding">
         {/* Header Section */}
@@ -353,10 +357,11 @@ export default function ResearchPapers() {
                 <button
                   key={tab}
                   className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4
-                                        ${selectedTab === tab
-                      ? "border border-pink text-pink font-medium"
-                      : "border border-lightgray/30"
-                    }`}
+                                        ${
+                                          selectedTab === tab
+                                            ? "border border-pink text-pink font-medium"
+                                            : "border border-lightgray/30"
+                                        }`}
                   onClick={() => handleTabClick(tab)}
                 >
                   {tab}
@@ -365,18 +370,13 @@ export default function ResearchPapers() {
             </div>
           </div>
 
-       
           {selectedTab === "Sectors" && renderFilterButtons(SECTORS)}
 
-         
-          <div
-            className={`pt-8`}
-          >
-            {
-              filteredCards.length === 0 && <div className="flex justify-center"> No results </div>
-            }
+          <div className={`pt-8`}>
+            {filteredCards.length === 0 && (
+              <div className="flex justify-center"> No results </div>
+            )}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 xlg:gap-24">
-
               {filteredCards.slice(0, visibleCount).map((card) => (
                 <div key={card.id}>
                   <NewsCard
