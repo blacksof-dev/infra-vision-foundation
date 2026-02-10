@@ -31,7 +31,7 @@ const knowledge = [
     date: "",
     title:
       "Land Value Capture for urban and regional public transport infrastructure financing",
-    link: "/assets/pdf/LVC-report-for-urban-and-regional-public-transport.pdf",
+    link: "/assets/pdf/LVC-report-for-urban-and-regional-public-transport-new.pdf",
   },
 
   {

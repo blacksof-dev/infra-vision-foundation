@@ -213,6 +213,6 @@ const EventsDetails = [
     title:
       "Land Value Capture for urban and regional public transport infrastructure financing",
     btnTitle: "Read more",
-    link: "/assets/pdf/LVC-report-for-urban-and-regional-public-transport.pdf",
+    link: "/assets/pdf/LVC-report-for-urban-and-regional-public-transport-new.pdf",
   },
 ];
