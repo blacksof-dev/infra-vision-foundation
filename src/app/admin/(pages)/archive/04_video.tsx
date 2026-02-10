@@ -102,7 +102,7 @@ export default function VideoSection() {
         setIsLoadingList(false);
       }
     },
-    [session, limit, activeTabId, page],
+    [session, limit, activeTabId],
   );
 
   const loadTabs = useCallback(async () => {
@@ -213,14 +213,14 @@ export default function VideoSection() {
                 </div>
 
                 <div className="p-4 flex flex-col flex-1">
-                 <div className="text-xs w-fit mb-2 font-medium text-pink px-2 py-0.5 bg-pink/10 rounded-full flex items-center gap-1.5">
-                                     <Calendar className="w-3 h-3" />
-                                     {new Date(it.date).toLocaleDateString("en-IN",{
-                                       day:"2-digit",
-                                       month:"short",
-                                       year:"numeric"
-                                     })}
-                                   </div>
+                  <div className="text-xs w-fit mb-2 font-medium text-pink px-2 py-0.5 bg-pink/10 rounded-full flex items-center gap-1.5">
+                    <Calendar className="w-3 h-3" />
+                    {new Date(it.date).toLocaleDateString("en-IN", {
+                      day: "2-digit",
+                      month: "short",
+                      year: "numeric",
+                    })}
+                  </div>
 
                   <h3 className="text-sm font-bold text-gray-900 leading-tight mb-1 line-clamp-3   pb-2">
                     {it.title}
@@ -543,25 +543,31 @@ function VideoForm({
               />
             </div>
           </div>
-        
-           {/* Instructions Note */}
-        <div className="mt-10 p-6 bg-pink/5 rounded-2xl border border-pink/10 flex items-start gap-4 max-w-4xl">
-          <div className="w-10 h-10 bg-pink/10 rounded-full flex items-center justify-center flex-shrink-0">
-            <Info className="w-5 h-5 text-pink" />
+
+          {/* Instructions Note */}
+          <div className="mt-10 p-6 bg-pink/5 rounded-2xl border border-pink/10 flex items-start gap-4 max-w-4xl">
+            <div className="w-10 h-10 bg-pink/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <Info className="w-5 h-5 text-pink" />
+            </div>
+            <div>
+              <h5 className="text-base text-gray-900 mb-1">
+                Note: Please use the{" "}
+                <span className="font-medium">YouTube embed URL</span> (not the
+                normal watch link).
+              </h5>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                {`<iframe width="560" height="315" `}
+                <code className="bg-white px-2 py-1 rounded border border-pink/20 text-xs mt-2 inline-block font-mono">
+                  src="https://www.youtube.com/embed/dOvYS3ulWmY?si=BlhgvXOjXfR2wNIv"
+                </code>
+                {`title="YouTube video player"`}
+                <br /> {`frameborder="0"`} <br />{" "}
+                {`allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> `}
+                <br />
+                {`</iframe>`}
+              </p>
+            </div>
           </div>
-          <div>
-            <h5 className="text-base text-gray-900 mb-1">
-             Note:  Please use the <span className="font-medium">YouTube embed URL</span> (not the normal watch link).
-            </h5>
-            <p className="text-sm text-gray-600 leading-relaxed">
-               {`<iframe width="560" height="315" `}
-              <code className="bg-white px-2 py-1 rounded border border-pink/20 text-xs mt-2 inline-block font-mono">
-               src="https://www.youtube.com/embed/dOvYS3ulWmY?si=BlhgvXOjXfR2wNIv"
-              </code>
-              {`title="YouTube video player"`}<br/> {`frameborder="0"`} <br/>  {`allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> `}<br/>{`</iframe>`}
-            </p>
-          </div>
-        </div>
           {/* Modal Footer */}
           <div className="mt-8 flex gap-3 sticky bottom-0 bg-white pb-2">
             <Button

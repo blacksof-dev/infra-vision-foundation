@@ -144,7 +144,7 @@ export default function AdminCalendarManager() {
     async function fetchYears() {
       try {
         const res = await getData(`/outreach-and-engagements/years`, session);
-        if (res?.years) setYears(res.years); 
+        if (res?.years) setYears(res.years);
       } catch (e) {
         console.error(e);
       }
@@ -163,8 +163,8 @@ export default function AdminCalendarManager() {
       const res = await getData(
         `/outreach-and-engagements/year/${yr}`,
         session,
-      ); 
-   
+      );
+
       setEvents(res?.data ?? []);
     } catch (e) {
       toast.error("Failed to load events");

@@ -81,7 +81,7 @@ export default function Members({
     try {
       setIsLoading(true);
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_HOST_URL}/members?type=${apiKey}`
+        `${process.env.NEXT_PUBLIC_HOST_URL}/members?type=${apiKey}`,
       );
       if (!res.ok) {
         throw new Error("Failed to fetch data");
@@ -125,7 +125,7 @@ export default function Members({
           headers: {
             Authorization: `Bearer ${session?.accessToken}`,
           },
-        }
+        },
       );
       fetchHost();
     } catch (error: any) {
@@ -170,7 +170,7 @@ export default function Members({
             No {title} data found.
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 xlg:grid-cols-4 2xl:grid-cols-4 gap-10 mt-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 xlg:grid-cols-4 2xl:grid-cols-5 gap-10 mt-6">
             {Array.isArray(hostData) &&
               hostData.map((host) => (
                 <div
@@ -184,7 +184,9 @@ export default function Members({
                       alt={host?.name}
                     />
                     <div className="mt-4 px-4">
-                      <h4 className="text-base text-gray-900 font-medium">{host?.name}</h4>
+                      <h4 className="text-base text-gray-900 font-medium">
+                        {host?.name}
+                      </h4>
                       <p className="text-sm text-gray-700">
                         {host?.designation}
                       </p>
@@ -201,7 +203,6 @@ export default function Members({
                           />
                         </Link>
                       )}
-
                     </div>
                   </div>
                   <div className="flex gap-3 mt-auto pt-4 justify-end items-center mx-4 border-t border-t-gray-200">
@@ -291,7 +292,7 @@ const HostForm = ({
               "Content-Type": "multipart/form-data",
               Authorization: `Bearer ${session?.accessToken}`,
             },
-          }
+          },
         );
         toast.success("Host updated successfully");
       } else {
@@ -304,7 +305,7 @@ const HostForm = ({
               "Content-Type": "multipart/form-data",
               Authorization: `Bearer ${session?.accessToken}`,
             },
-          }
+          },
         );
         toast.success("New Host created successfully");
       }
@@ -314,7 +315,7 @@ const HostForm = ({
     } catch (error: any) {
       console.error("Submit error:", error);
       toast.error(
-        error?.response?.data?.message || "An unexpected error occurred"
+        error?.response?.data?.message || "An unexpected error occurred",
       );
     } finally {
       setIsSubmitting(false);

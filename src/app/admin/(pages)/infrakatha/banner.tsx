@@ -124,7 +124,7 @@ function BannerForm({
         const result = await uploadImage(
           desktopValue[0],
           session,
-          `infrakatha-banner-desktop-${Date.now()}`
+          `infrakatha-banner-desktop-${Date.now()}`,
         );
         if (!result.success) {
           toast.error(`Desktop upload failed: ${result.errorMessage}`);
@@ -140,7 +140,7 @@ function BannerForm({
         const result = await uploadImage(
           mobileValue[0],
           session,
-          `infrakatha-banner-mobile-${Date.now()}`
+          `infrakatha-banner-mobile-${Date.now()}`,
         );
         if (!result.success) {
           toast.error(`Mobile upload failed: ${result.errorMessage}`);
@@ -157,7 +157,7 @@ function BannerForm({
           description: data.description,
           backgroundImageDesktop: desktopImageUrl,
           backgroundImageMobile: mobileImageUrl,
-        }
+        },
       );
 
       if (result.success) {
@@ -215,7 +215,7 @@ function BannerForm({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
             <ImagePicker
-              label="Desktop Background (1920x1130)*"
+              label="Desktop Background (1920x1024)*"
               errors={errors.backgroundImageDesktop}
               register={register}
               registerer="backgroundImageDesktop"

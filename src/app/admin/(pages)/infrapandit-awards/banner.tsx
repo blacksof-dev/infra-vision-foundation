@@ -3,7 +3,6 @@ import React, { useEffect, useState, useCallback } from "react";
 import SectionHeading from "../../components/sectionHeading";
 import TextInput from "../../components/input/textInput";
 import { z } from "zod";
-import { fileSchema, generalSchema } from "../../lib/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ImagePicker from "../../components/input/imagePicker";
@@ -14,42 +13,25 @@ import { getData, updateContent, uploadImage } from "../../lib/utils";
 import { toast } from "react-toastify";
 import MessageInput from "../../components/input/textareaInput";
 
-interface BannerDataType {
-  title: string;
+interface BannerDefaultValueType {
+  heading: string;
   description: string;
-  ctaText: string;
-  ctaLink: string;
   backgroundImageDesktop: string;
   backgroundImageMobile: string;
 }
 
 interface FormStateType {
   isFormOpen: boolean;
-  initialValue: BannerDataType;
+  intialValue: BannerDefaultValueType;
 }
-
-const infrashaktiBannerSchema = z.object({
-  title: generalSchema("Title is required"),
-  description: generalSchema("Description is required"),
-  ctaText: generalSchema("CTA Text is required"),
-  ctaLink: generalSchema("CTA Link is required"),
-  backgroundImageDesktop: fileSchema,
-  backgroundImageMobile: fileSchema,
-});
-
-type BannerFormValues = z.infer<typeof infrashaktiBannerSchema>;
-
-const ENDPOINT = "/content/infrashakti-banner";
 
 export default function Banner() {
   const { data: session } = useSession();
   const [formState, setFormState] = useState<FormStateType>({
     isFormOpen: false,
-    initialValue: {
-      title: "",
+    intialValue: {
+      heading: "",
       description: "",
-      ctaText: "",
-      ctaLink: "",
       backgroundImageDesktop: "",
       backgroundImageMobile: "",
     },
@@ -57,12 +39,10 @@ export default function Banner() {
 
   const fetch = useCallback(async () => {
     try {
-      const data = await getData(ENDPOINT, session);
-      if (data) {
-        setFormState((val) => ({ ...val, initialValue: data }));
-      }
-    } catch (error) {
-      console.error("Error fetching banner data:", error);
+      const data = await getData("/content/infrapandit-banner", session);
+      setFormState((val) => ({ ...val, intialValue: data }));
+    } catch (e) {
+      console.error("Failed to load banner data:", e);
     }
   }, [session]);
 
@@ -74,7 +54,7 @@ export default function Banner() {
     <>
       <section className="blade-top-margin pb-10">
         <SectionHeading
-          heading="InfraShakti Banner"
+          heading="InfraPandit Banner"
           description=""
           ctaText="Update Banner"
           cta={true}
@@ -82,14 +62,15 @@ export default function Banner() {
             setFormState((val) => ({ ...val, isFormOpen: true }))
           }
         />
+
         <div className="mt-10">
-          <BannerCard data={formState.initialValue} />
+          <BannerCard data={formState.intialValue} />
         </div>
       </section>
 
       {formState.isFormOpen && (
         <BannerForm
-          initalData={formState.initialValue}
+          initalData={formState.intialValue}
           onClose={() => setFormState((val) => ({ ...val, isFormOpen: false }))}
           onSuccess={() => {
             fetch();
@@ -101,12 +82,21 @@ export default function Banner() {
   );
 }
 
+const bannerSchema = z.object({
+  heading: z.string().min(1, "Heading is required"),
+  description: z.string().min(1, "Description is required"),
+  backgroundImageDesktop: z.any(),
+  backgroundImageMobile: z.any(),
+});
+
+type BannerFormValues = z.infer<typeof bannerSchema>;
+
 function BannerForm({
   initalData,
   onClose,
   onSuccess,
 }: {
-  initalData: BannerDataType;
+  initalData: BannerDefaultValueType;
   onClose: () => void;
   onSuccess: () => void;
 }) {
@@ -119,7 +109,7 @@ function BannerForm({
     watch,
     formState: { errors },
   } = useForm<BannerFormValues>({
-    resolver: zodResolver(infrashaktiBannerSchema),
+    resolver: zodResolver(bannerSchema),
     defaultValues: initalData as any,
   });
 
@@ -127,50 +117,48 @@ function BannerForm({
     try {
       setIsLoading(true);
 
-      // Desktop Image Handling
+      // Determine Desktop Image URL
       let desktopImageUrl = initalData.backgroundImageDesktop;
-      const desktopValue = data.backgroundImageDesktop as any;
-      if (typeof desktopValue === "string" && desktopValue.trim().length > 0) {
-        desktopImageUrl = desktopValue;
-      } else if (desktopValue instanceof FileList && desktopValue.length > 0) {
+      const desktopValue = data.backgroundImageDesktop;
+      if (desktopValue instanceof FileList && desktopValue.length > 0) {
         const result = await uploadImage(
           desktopValue[0],
           session,
-          `infrashakti-banner-desktop-${Date.now()}`,
+          `infrapandit-banner-desktop-${Date.now()}`,
         );
         if (!result.success) {
-          toast.error(`Desktop image upload failed: ${result.errorMessage}`);
+          toast.error(`Desktop upload failed: ${result.errorMessage}`);
           return;
         }
         desktopImageUrl = result.data.url;
       }
 
-      // Mobile Image Handling
+      // Determine Mobile Image URL
       let mobileImageUrl = initalData.backgroundImageMobile;
-      const mobileValue = data.backgroundImageMobile as any;
-      if (typeof mobileValue === "string" && mobileValue.trim().length > 0) {
-        mobileImageUrl = mobileValue;
-      } else if (mobileValue instanceof FileList && mobileValue.length > 0) {
+      const mobileValue = data.backgroundImageMobile;
+      if (mobileValue instanceof FileList && mobileValue.length > 0) {
         const result = await uploadImage(
           mobileValue[0],
           session,
-          `infrashakti-banner-mobile-${Date.now()}`,
+          `infrapandit-banner-mobile-${Date.now()}`,
         );
         if (!result.success) {
-          toast.error(`Mobile image upload failed: ${result.errorMessage}`);
+          toast.error(`Mobile upload failed: ${result.errorMessage}`);
           return;
         }
         mobileImageUrl = result.data.url;
       }
 
-      const result = await updateContent(ENDPOINT, session, {
-        title: data.title,
-        description: data.description,
-        ctaText: data.ctaText,
-        ctaLink: data.ctaLink,
-        backgroundImageDesktop: desktopImageUrl,
-        backgroundImageMobile: mobileImageUrl,
-      });
+      const result = await updateContent(
+        "/content/infrapandit-banner",
+        session,
+        {
+          heading: data.heading,
+          description: data.description,
+          backgroundImageDesktop: desktopImageUrl,
+          backgroundImageMobile: mobileImageUrl,
+        },
+      );
 
       if (result.success) {
         toast.success("Banner updated successfully");
@@ -179,7 +167,7 @@ function BannerForm({
         toast.error(result.errorMessage);
       }
     } catch (error) {
-      console.error("Error updating banner:", error);
+      console.error("Submission error:", error);
       toast.error("An unexpected error occurred");
     } finally {
       setIsLoading(false);
@@ -195,7 +183,7 @@ function BannerForm({
       <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
         <div className="flex items-center justify-between p-6 border-b border-gray-100 bg-white sticky top-0 z-10">
           <h2 className="text-xl font-bold text-gray-900 font-poppin">
-            Update InfraShakti Banner
+            Update InfraPandit Banner
           </h2>
           <button
             onClick={onClose}
@@ -209,29 +197,12 @@ function BannerForm({
           onSubmit={handleSubmit(submitHandler)}
           className="flex-1 overflow-y-auto p-8 space-y-6"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <TextInput
-              label="Main Title*"
-              errors={errors.title}
-              placeholder="e.g. InfraShakti Awards"
-              register={register}
-              registerer="title"
-            />
-            <TextInput
-              label="CTA Text*"
-              errors={errors.ctaText}
-              placeholder="e.g. Nominate Now"
-              register={register}
-              registerer="ctaText"
-            />
-          </div>
-
           <TextInput
-            label="CTA Link*"
-            errors={errors.ctaLink}
-            placeholder="https://..."
+            label="Main Heading*"
+            errors={errors.heading}
+            placeholder="e.g. InfraPandit Awards"
             register={register}
-            registerer="ctaLink"
+            registerer="heading"
           />
 
           <MessageInput
@@ -287,14 +258,12 @@ function BannerForm({
   );
 }
 
-function BannerCard({ data }: { data: BannerDataType }) {
+function BannerCard({ data }: { data: BannerDefaultValueType }) {
   const {
     backgroundImageDesktop,
     backgroundImageMobile,
-    title,
+    heading,
     description,
-    ctaText,
-    ctaLink,
   } = data;
 
   return (
@@ -347,34 +316,22 @@ function BannerCard({ data }: { data: BannerDataType }) {
 
         {/* Textual Content */}
         <div className="mt-10 pt-8 border-t border-gray-100">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
             <div>
               <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
-                Title
+                Heading
               </p>
               <h3
                 className="text-2xl font-normal text-gray-900 leading-tight font-poppin"
-                dangerouslySetInnerHTML={{ __html: title }}
+                dangerouslySetInnerHTML={{ __html: heading }}
               />
             </div>
             <div>
               <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
                 Description
               </p>
-              <p className="text-gray-600 leading-relaxed">{description}</p>
-            </div>
-            <div>
-              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
-                CTA Button
-              </p>
-              <p className="text-gray-900 font-medium">{ctaText}</p>
-            </div>
-            <div>
-              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
-                CTA Link
-              </p>
-              <p className="text-pink hover:underline break-all truncate">
-                {ctaLink}
+              <p className="text-gray-600 leading-relaxed max-w-3xl">
+                {description}
               </p>
             </div>
           </div>
