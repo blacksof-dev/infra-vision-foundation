@@ -3,9 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig = {
   images: {
     remotePatterns: [
+       
       {
         protocol: 'http',
-        hostname: '142.93.215.57',
+        hostname: '64.227.188.3',
         pathname: '/**',
       }
     ],

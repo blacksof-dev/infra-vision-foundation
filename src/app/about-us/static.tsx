@@ -43,11 +43,11 @@ import VrindaSingh from "@/../public/assets/home/team/VrindaSingh.jpg";
 import { StaticImageData } from "next/image";
 
 export type CardData = {
-  image: StaticImageData;
+  image: StaticImageData | string;
   title: string;
   desig: string;
   link?: string;
-  subtitle?:string;
+  subtitle?: string;
   socialMedia?: string;
   popupImg: string;
   popupdesc: string;
@@ -320,8 +320,9 @@ export const fellow = [
   {
     image: rasikaAthawale,
     title: "Rasika Athawale",
-    desig: "Electricity Policy & Regulatory Expert; Consultant, Big4 Consulting",
-    subtitle:"Distinguished Fellow (Power)",
+    desig:
+      "Electricity Policy & Regulatory Expert; Consultant, Big4 Consulting",
+    subtitle: "Distinguished Fellow (Power)",
     popupImg: vinayakImg.src,
     link: "https://www.linkedin.com/in/rasika-athawale-5072ab1/",
     socialMedia: "linkedin",
@@ -344,7 +345,7 @@ She was a faculty for a Distribution Reforms training programme by USAID from 20
     title: "Supratim Sarkar",
     desig: "Former Executive Vice President and Group Head, SBICAPS",
     popupImg: vinayakImg.src,
-     subtitle:"Distinguished Fellow (Financial Services)",
+    subtitle: "Distinguished Fellow (Financial Services)",
     link: "https://www.linkedin.com/in/supratim-sarkar-577a0629b",
     socialMedia: "linkedin",
     popupdesc: `
@@ -364,10 +365,11 @@ After graduating as a Mechanical Engineer from Jadavpur University in 1988, Mr S
     image: rajivRanjanMishra,
     title: "Rajiv Ranjan Mishra",
     popupImg: vinayakImg.src,
-     subtitle:"Distinguished Fellow (Water Conservation)",
+    subtitle: "Distinguished Fellow (Water Conservation)",
     link: "https://www.linkedin.com/in/rajiv-mishra-48413553",
     socialMedia: "linkedin",
-    desig: "Formerly Director General, National Mission for Clean Ganga; Chief Technical Advisor, NIUA",
+    desig:
+      "Formerly Director General, National Mission for Clean Ganga; Chief Technical Advisor, NIUA",
     popupdesc: `
      Mr Rajiv Ranjan Mishra recently retired from his position as Director General for the National Mission for Clean Ganga (NMCG), a role in which he transformed the Namami Gange Programme into an integrated, multi-sectoral model framework for river rejuvenation in India.\n
 
@@ -389,7 +391,7 @@ Currently, he serves as Chief Advisor and Chairman of the Strategy & Policy Unit
     image: rajajiMeshram,
     title: "Rajaji Meshram",
     popupImg: vinayakImg.src,
-     subtitle:"Distinguished Fellow (Transport and Logistics)",
+    subtitle: "Distinguished Fellow (Transport and Logistics)",
     desig: "Transport and Logistics Expert; Consultant, World Bank in India",
     link: "https://www.linkedin.com/in/rajaji-meshram-9aa3437/",
     socialMedia: "linkedin",
@@ -420,8 +422,9 @@ Rajaji holds an MBA from IIM Ahmedabad and participated in the prestigious Guruk
   {
     image: SoumyaKantiGhosh,
     title: "Dr Soumya Kanti Ghosh",
-     subtitle:"Distinguished Fellow (Economic Policy)",
-    desig: "Group Chief Economic Advisor at SBI; Member, PM's Economic Advisory Council; Member, Sixteenth Finance Commission",
+    subtitle: "Distinguished Fellow (Economic Policy)",
+    desig:
+      "Group Chief Economic Advisor at SBI; Member, PM's Economic Advisory Council; Member, Sixteenth Finance Commission",
     popupImg: vinayakImg.src,
     link: "https://www.linkedin.com/in/soumya-kanti-ghosh-2043921a/",
     socialMedia: "linkedin",
@@ -442,7 +445,7 @@ Dr Ghosh has an extensive list of publications in media and international and na
   {
     image: AkhileshTilotia,
     title: "Akhilesh Tilotia",
-     subtitle:"Distinguished Fellow (Public Policy)",
+    subtitle: "Distinguished Fellow (Public Policy)",
     desig: "Co-Founder at Thurro; Former Head of Research at NIIF",
     link: "https://www.linkedin.com/in/atilotia/",
     socialMedia: "linkedin",
@@ -634,7 +637,8 @@ He graduated from Yale University and received his MBA from Harvard Business Sch
   {
     image: NarotamSekhsaria,
     title: "Narotam Sekhsaria",
-    desig: "Chairman Emeritus, Ambuja Cements Ltd; Chairman, Narotam Sekhsaria Foundation; Chairman, Ambuja Foundation",
+    desig:
+      "Chairman Emeritus, Ambuja Cements Ltd; Chairman, Narotam Sekhsaria Foundation; Chairman, Ambuja Foundation",
     popupImg: vinayakImg.src,
 
     popupdesc: `
@@ -730,7 +734,8 @@ He is a graduate in Electronics Engineering from Pune University and an alumnus 
   {
     image: GeetanjaliKirloskar,
     title: "Geetanjali Vikram Kirloskar",
-    desig: "Chairperson and MD, Kirloskar Systems Pvt Ltd; Chairperson, Toyota Tsusho Insurance Broker Pvt Ltd",
+    desig:
+      "Chairperson and MD, Kirloskar Systems Pvt Ltd; Chairperson, Toyota Tsusho Insurance Broker Pvt Ltd",
     link: "https://www.linkedin.com/in/geetanjali-vikram-kirloskar-b04203154/",
     socialMedia: "linkedin",
     popupImg: vinayakImg.src,

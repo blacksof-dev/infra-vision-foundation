@@ -12,7 +12,6 @@ export default function PopupDescription({
   onclose: () => void;
   data: CardData;
 }) {
- 
   useEffect(() => {
     console.log(data);
   }, []);
@@ -31,7 +30,7 @@ export default function PopupDescription({
               {/* IMAGE SECTION */}
               <div className="relative w-full  min-h-[19rem] sm:min-h-[21rem]   md:h-[25rem] lg:w-[40%] lg:h-full ">
                 <Image
-                  src={data.image.src}
+                  src={data.image}
                   alt={data.title}
                   fill
                   className="object-cover object-top rounded-md w-full "
@@ -42,21 +41,25 @@ export default function PopupDescription({
               <div className="flex flex-col w-full lg:w-[60%]  pt-2 overflow-hidden lg:pr-10">
                 <h2 className=" font-semibold">{data.title}</h2>
                 <h6 className="text-pink font-medium sm:pt-1">{data.desig}</h6>
-                <h6 className="text-pink font-medium sm:pt-1">{data.subtitle}</h6>
+                <h6 className="text-pink font-medium sm:pt-1">
+                  {data.subtitle}
+                </h6>
                 {data?.popupdesc && (
                   <div className="overflow-y-auto h-full pr-2 mt-2 sm:mt-3">
-                    {data.popupdesc.split('\n').map((paragraph, index) => (
-                      paragraph.trim() && (
-                        <p
-                          key={index}
-                          className="text-black text-sm md:text-base pt-2 first:pt-0"
-                          dangerouslySetInnerHTML={{ __html: paragraph }}
-                        />
-                      )
-                    ))}
+                    {data.popupdesc
+                      .split("\n")
+                      .map(
+                        (paragraph, index) =>
+                          paragraph.trim() && (
+                            <p
+                              key={index}
+                              className="text-black text-sm md:text-base pt-2 first:pt-0"
+                              dangerouslySetInnerHTML={{ __html: paragraph }}
+                            />
+                          ),
+                      )}
                   </div>
                 )}
-             
               </div>
             </div>
           </div>

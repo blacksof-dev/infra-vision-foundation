@@ -108,7 +108,14 @@ export default function EventDetailsPopup({
               </div>
               <h2 className="font-semibold">{data?.desc}</h2>
               <h6 className="text-pink font-medium sm:pt-1 ">
-                {data?.details?.date}
+                {/* {data?.details?.date}  */}
+                {
+                  new Date(data?.details?.date).toLocaleString("en-US",{
+                    month:"long",
+                    day:"2-digit",
+                    year:"numeric" 
+                  })
+                }
               </h6>
               {data?.details && (
                 <div className="overflow-y-auto h-full pr-2 mt-2  sm:mt-3">

@@ -1,19 +1,10 @@
-import infravisionfoundationBg from "@/../public/assets/home/infravisionfoundationBg.png";
-import infravisionTalkMobile from "@/../public/assets/home/infravisionTalkMobile.jpg";
-import Newsletter from "@/_components/molecules/newsletter";
+"use client";
+import dynamic from "next/dynamic";
+
+const Newsletter = dynamic(() => import("@/_components/molecules/newsletter"), {
+  ssr: true,
+});
 
 export default function InfravisionTalks() {
-  return (
-    <>
-      <Newsletter
-        bgImage={infravisionfoundationBg}
-        mobilebg={infravisionTalkMobile}
-        tag="Get Involved"
-        title="Engage and contribute to change with  <span class='font-medium text-white'> The Infravision Foundation</span>"
-        desc="Join our family, ask questions, suggest solutions, and participate in building a resilient India."
-        ctatext="Connect with us"
-        ctaLink="/get-involved"
-      />
-    </>
-  );
+  return <Newsletter />;
 }

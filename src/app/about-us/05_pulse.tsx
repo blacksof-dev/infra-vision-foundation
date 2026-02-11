@@ -1,210 +1,191 @@
-import React from 'react'
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperClass } from "swiper/types";
 import Image from "next/image";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
-
-import img1 from "@/../public/assets/about-us/pulse/sectors/image-1.png";
-import img2 from "@/../public/assets/about-us/pulse/sectors/image-2.png";
-import img3 from "@/../public/assets/about-us/pulse/sectors/image-3.png";
-import img4 from "@/../public/assets/about-us/pulse/sectors/image-4.png";
-import img5 from "@/../public/assets/about-us/pulse/sectors/image-5.png";
-import img6 from "@/../public/assets/about-us/pulse/sectors/image-6.png";
-import img7 from "@/../public/assets/about-us/pulse/sectors/image-7.png";
+import { useQuery } from "@tanstack/react-query";
+import { getFetch } from "@/lib/api";
+import { getUrl } from "@/lib/getUrl";
 import Link from "next/link";
 
-const Pulse = () => {
-
-    const data = [
-        {
-            icon: "/assets/about-us/pulse/icon-1.svg",
-            title: "Research",
-            desc: "To deconstruct key infrastructure issues with in-depth evaluation, analysis, and recommendations across the spectrum."
-        },
-        {
-            icon: "/assets/about-us/pulse/icon-2.svg",
-            title: "Knowledge",
-            desc: "To inform and shape public policymaking in infrastructure, leveraging insights and counsel from national and international domain experts."
-        },
-        {
-            icon: "/assets/about-us/pulse/icon-3.svg",
-            title: "Capacity building",
-            desc: "To enable impactful implementation of recommendations through capacity-building programmes, revitalising on-ground operations and governance."
-        },
-    ]
-
-    return (
-        <section className='blade-top-padding blade-bottom-padding-lg bg-[#F6F6F6]'>
-            <div className="w-container flex flex-col md:flex-row justify-between md:items-center blade-bottom-margin">
-                <div>
-                    <div className="flex  flex-row  items-center gap-2 md:gap-3">
-                        <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-                        <h5 className="font-medium text-pink text-sm xl:text-lg">Our Foundational Pillars
-                        </h5>
-                    </div>
-                    <div className="pt-4 pb-2 md:py-5 flex justify-between">
-                        <h1 className="text-black font-light">Transformation <br className='md:block hidden' /> grounded in <span className='font-medium'>insights, <br /> knowledge, and action</span></h1>
-                    </div>
-                </div>
-                <div className="w-full md:w-[45%]">
-                    <h6 className="text-black font-light tracking-[1%] mb-4 text-sm xl:text-lg">
-                       To become <span className="font-medium">‘Viksit Bharat’</span> by 2047, India needs to address its infrastructure gaps swiftly and efficiently through proportionate, need-specific developments. Developments that are innovative, inclusive, steadfast, and sustainable. This demands active collaboration among policymakers, the private sector, and citizens, driven by increased awareness.
-                    </h6>
-                    <h6 className="font-light text-black"><span className='font-medium text-sm xl:text-lg'>The Infravision Foundation</span> fosters this link, upholding an impartial and enlightened voice of reason through its three essential pillars.</h6>
-                </div>
-            </div>
-            <div className='w-container'>
-                <div className=' border-darkgray/20 border-t border-b  grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3'>
-                    {
-                        data.map((elem, idx) => {
-                            return (
-                                <div key={idx} className={` w-container py-10
-                                    ${idx === 1 ? ' xl:border-r xl:border-darkgray/20' : ''} 
-                                    ${idx !== data.length - 1 ? 'xl:border-r xl:border-darkgray/20' : ''}
-                                `}>
-                                    <img src={elem.icon} alt="" />
-                                    <h4 className='font-medium my-5 '>{elem.title}</h4>
-                                    <p className='lg:max-w-[350px] 2xl:max-w-full'>{elem.desc}</p>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-            </div>
-            <div className='overflow-hidden blade-top-margin'>
-                <div className='flex items-center justify-between w-container'>
-                    <div className="flex  flex-row  items-center gap-2 md:gap-3 mb-5 md:mb-5    ">
-                        <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-                        <h5 className="font-medium text-pink">Sectors of Operation</h5>
-                    </div>
-                    <div className="hidden lg:block">
-                        <div className="flex gap-5 py-4 justify-center  lg:justify-start md:gap-4 ">
-                            <button
-                                className={`swiper-solution-prev-btn-hero cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white
-                                }`}
-
-                            >
-                                <GoArrowLeft />
-                            </button>
-                            <button
-                                className={`swiper-solution-next-btn-hero cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white
-                                }`}
-
-                            >
-                                <GoArrowRight />
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div className="">
-                    <div
-                        className="max-sm:px-2 sm:w-[98%] lg:w-[95%] xl:w-[90%] origin-left ml-auto"
-                    >
-                        <Swiper
-                            modules={[Navigation, Autoplay, Pagination]}
-                            navigation={{
-                                prevEl: ".swiper-solution-prev-btn-hero",
-                                nextEl: ".swiper-solution-next-btn-hero",
-                            }}
-                            pagination={{
-                                el: ".custom-pagination-bullets-banner",
-                                type: 'fraction',
-                            }}
-                            autoplay
-                            loop
-                            grabCursor={true}
-                            speed={500}
-                            spaceBetween={20}
-                            slidesPerView={1.2}
-                            breakpoints={{
-                                200: {
-                                    slidesPerView: 1.2,
-                                },
-                                435: {
-                                    slidesPerView: 1,
-                                },
-                                500: { slidesPerView: 2 },
-                                768: { slidesPerView: 2.2 },
-                                1024: { slidesPerView: 3 },
-                                1280: { slidesPerView: 3.5 },
-                                1536: { slidesPerView: 4.23 },
-                            }}
-                        // onSlideChange={handleSlideChange}
-                        >
-                            {EventsDetails.map((elem, index) => (
-                                <SwiperSlide key={index} className=" group ">
-                                    <div className="relative flex flex-row gap-4 rounded-lg p-2 md:p-4   h-[17rem]   xl:h-[22rem] group-hover:bg-white">
-                                        <Image
-                                            src={elem.image}
-                                            alt={elem.title}
-                                            fill
-                                            className="object-cover object-left rounded"
-                                        />
-                                        <h4 className='text-white absolute bottom-5'>{elem.title}</h4>
-                                    </div>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-                    </div>
-                </div>
-            </div>
-        </section>
-    )
+interface Sector {
+  id: string;
+  sector: string;
+  image: string;
+  active: boolean;
+  date: string;
 }
 
-const EventsDetails = [
-    {
-        image: img1,
-        category: "News & media",
-        title: "Transportation",
-        btnTitle: "Read more",
-        link: "https://www.business-standard.com/opinion/columns/group-taxation-regime-for-infrastructure-124081500813_1.html",
-    },
-    {
-        image: img2,
-        category: "Upcoming event",
-        title:
-            "Energy",
-        btnTitle: "Register now",
-        link: "https://www.youtube.com/watch?v=o6nb3IejARc&t=13s&ab_channel=TheInfravisionFoundation",
-    },
-    {
-        image: img3,
-        category: "Research paper",
-        title: "Water and Sanitation",
-        btnTitle: "Read more",
-        link: "https://theinfravisionfoundation.org/wp-content/uploads/2025/03/Study-on-Implementation-of-Compensatory-Afforestation-in-India.pdf",
-    },
-    {
-        image: img4,
-        category: "InfraKatha",
-        title:
-            "Urban Planning",
-        btnTitle: "Watch now",
-        link: "https://www.youtube.com/watch?v=o6nb3IejARc&t=13s&ab_channel=TheInfravisionFoundation",
-    },
-    {
-        image: img5,
-        category: "Blog",
-        title: "Rural and Agri Infra",
-        btnTitle: "Read more",
-        link: "https://theinfravisionfoundation.org/2023/11/25/poor-regulatory-capacity-of-the-warehousing-and-development-regulatory-authority-impacts-warehouse-based-sales-of-agri-commodities-and-issue-of-e-negotiable-warehouse-receipts/",
-    },
-    {
-        image: img6,
-        category: "Blog",
-        title: "Health Infra",
-        btnTitle: "Read more",
-        link: "https://theinfravisionfoundation.org/2023/11/25/poor-regulatory-capacity-of-the-warehousing-and-development-regulatory-authority-impacts-warehouse-based-sales-of-agri-commodities-and-issue-of-e-negotiable-warehouse-receipts/",
-    },
-    {
-        image: img7,
-        category: "Blog",
-        title: "Education",
-        btnTitle: "Read more",
-        link: "https://theinfravisionfoundation.org/2023/11/25/poor-regulatory-capacity-of-the-warehousing-and-development-regulatory-authority-impacts-warehouse-based-sales-of-agri-commodities-and-issue-of-e-negotiable-warehouse-receipts/",
-    },
-];
+interface SectorResponse {
+  sectors: Sector[];
+  pagination: {
+    totalCount: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
+  lastUpdated: string;
+}
 
-export default Pulse
+const Pulse = () => {
+  const data = [
+    {
+      icon: "/assets/about-us/pulse/icon-1.svg",
+      title: "Research",
+      desc: "To deconstruct key infrastructure issues with in-depth evaluation, analysis, and recommendations across the spectrum.",
+    },
+    {
+      icon: "/assets/about-us/pulse/icon-2.svg",
+      title: "Knowledge",
+      desc: "To inform and shape public policymaking in infrastructure, leveraging insights and counsel from national and international domain experts.",
+    },
+    {
+      icon: "/assets/about-us/pulse/icon-3.svg",
+      title: "Capacity building",
+      desc: "To enable impactful implementation of recommendations through capacity-building programmes, revitalising on-ground operations and governance.",
+    },
+  ];
+
+  const { data: sectorsData } = useQuery({
+    queryKey: ["sectors"],
+    queryFn: () => getFetch<SectorResponse>("/about-us/sectors?limit=30"),
+  });
+
+  return (
+    <section className="blade-top-padding blade-bottom-padding-lg bg-[#F6F6F6]">
+      <div className="w-container flex flex-col md:flex-row justify-between md:items-center blade-bottom-margin">
+        <div>
+          <div className="flex  flex-row  items-center gap-2 md:gap-3">
+            <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
+            <h5 className="font-medium text-pink text-sm xl:text-lg">
+              Our Foundational Pillars
+            </h5>
+          </div>
+          <div className="pt-4 pb-2 md:py-5 flex justify-between">
+            <h1 className="text-black font-light">
+              Transformation <br className="md:block hidden" /> grounded in{" "}
+              <span className="font-medium">
+                insights, <br /> knowledge, and action
+              </span>
+            </h1>
+          </div>
+        </div>
+        <div className="w-full md:w-[45%]">
+          <h6 className="text-black font-light tracking-[1%] mb-4 text-sm xl:text-lg">
+            To become <span className="font-medium">‘Viksit Bharat’</span> by
+            2047, India needs to address its infrastructure gaps swiftly and
+            efficiently through proportionate, need-specific developments.
+            Developments that are innovative, inclusive, steadfast, and
+            sustainable. This demands active collaboration among policymakers,
+            the private sector, and citizens, driven by increased awareness.
+          </h6>
+          <h6 className="font-light text-black">
+            <span className="font-medium text-sm xl:text-lg">
+              The Infravision Foundation
+            </span>{" "}
+            fosters this link, upholding an impartial and enlightened voice of
+            reason through its three essential pillars.
+          </h6>
+        </div>
+      </div>
+      <div className="w-container">
+        <div className=" border-darkgray/20 border-t border-b  grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
+          {data.map((elem, idx) => {
+            return (
+              <div
+                key={idx}
+                className={` w-container py-10
+                                    ${idx === 1 ? " xl:border-r xl:border-darkgray/20" : ""} 
+                                    ${idx !== data.length - 1 ? "xl:border-r xl:border-darkgray/20" : ""}
+                                `}
+              >
+                <img src={elem.icon} alt="" />
+                <h4 className="font-medium my-5 ">{elem.title}</h4>
+                <p className="lg:max-w-[350px] 2xl:max-w-full">{elem.desc}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div className="overflow-hidden blade-top-margin">
+        <div className="flex items-center justify-between w-container">
+          <div className="flex  flex-row  items-center gap-2 md:gap-3 mb-5 md:mb-5    ">
+            <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
+            <h5 className="font-medium text-pink">Sectors of Operation</h5>
+          </div>
+          <div className="hidden lg:block">
+            <div className="flex gap-5 py-4 justify-center  lg:justify-start md:gap-4 ">
+              <button
+                className={`swiper-solution-prev-btn-hero cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white
+                                }`}
+              >
+                <GoArrowLeft />
+              </button>
+              <button
+                className={`swiper-solution-next-btn-hero cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white
+                                }`}
+              >
+                <GoArrowRight />
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="">
+          <div className="max-sm:px-2 sm:w-[98%] lg:w-[95%] xl:w-[90%] origin-left ml-auto">
+            <Swiper
+              modules={[Navigation, Autoplay, Pagination]}
+              navigation={{
+                prevEl: ".swiper-solution-prev-btn-hero",
+                nextEl: ".swiper-solution-next-btn-hero",
+              }}
+              pagination={{
+                el: ".custom-pagination-bullets-banner",
+                type: "fraction",
+              }}
+              autoplay
+              loop
+              grabCursor={true}
+              speed={500}
+              spaceBetween={20}
+              slidesPerView={1.2}
+              breakpoints={{
+                200: {
+                  slidesPerView: 1.2,
+                },
+                435: {
+                  slidesPerView: 1,
+                },
+                500: { slidesPerView: 2 },
+                768: { slidesPerView: 2.2 },
+                1024: { slidesPerView: 3 },
+                1280: { slidesPerView: 3.5 },
+                1536: { slidesPerView: 4.23 },
+              }}
+              // onSlideChange={handleSlideChange}
+            >
+              {sectorsData?.sectors.map((sector, index) => (
+                <SwiperSlide key={index} className=" group ">
+                  <div className="relative flex flex-row gap-4 rounded-lg p-2 md:p-4   h-[17rem]   xl:h-[22rem] group-hover:bg-white">
+                    <Image
+                      src={getUrl(sector.image)}
+                      alt={sector.sector}
+                      fill
+                      className="object-cover object-left rounded"
+                      unoptimized
+                    />
+                    <h4 className="text-white absolute bottom-5">
+                      {sector.sector}
+                    </h4>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Pulse;

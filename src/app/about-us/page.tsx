@@ -61,7 +61,7 @@ const AboutUs = () => {
         <div id='project-pathway' ref={sectionRefs.project_pathway}>
             <Pathway />
         </div>
-        <Involved />
+        {/* <Involved /> */}
     </>
   )
 }

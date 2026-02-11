@@ -2,10 +2,10 @@ import axios, { AxiosRequestConfig } from "axios";
 
 export async function getFetch<T>(
   url: string,
-  options?: AxiosRequestConfig
+  options?: AxiosRequestConfig,
 ): Promise<T> {
   try {
-    const response = await axios(`${process.env.NEXT_PUBLIC_API_URL}${url}`, {
+    const response = await axios(`${process.env.NEXT_PUBLIC_HOST_URL}${url}`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -13,6 +13,7 @@ export async function getFetch<T>(
     });
     return response.data;
   } catch (error: any) {
+    console.log(error);
     throw new Error(error.message);
   }
 }
@@ -20,18 +21,18 @@ export async function getFetch<T>(
 export async function postFetch<T, B = unknown>(
   url: string,
   body: B,
-  options?: AxiosRequestConfig
+  options?: AxiosRequestConfig,
 ): Promise<T> {
   try {
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}${url}`,
+      `${process.env.NEXT_PUBLIC_HOST_URL}${url}`,
       body,
       {
         headers: {
           "Content-Type": "application/json",
         },
         ...options,
-      }
+      },
     );
     return response.data;
   } catch (error: any) {
@@ -41,17 +42,17 @@ export async function postFetch<T, B = unknown>(
 
 export async function deleteFetch<T>(
   url: string,
-  options?: AxiosRequestConfig
+  options?: AxiosRequestConfig,
 ): Promise<T> {
   try {
     const response = await axios.delete(
-      `${process.env.NEXT_PUBLIC_API_URL}${url}`,
+      `${process.env.NEXT_PUBLIC_HOST_URL}${url}`,
       {
         headers: {
           "Content-Type": "application/json",
         },
         ...options,
-      }
+      },
     );
     return response.data;
   } catch (error: any) {
@@ -62,18 +63,18 @@ export async function deleteFetch<T>(
 export async function patchFetch<T, B = unknown>(
   url: string,
   body?: B,
-  options?: AxiosRequestConfig
+  options?: AxiosRequestConfig,
 ): Promise<T> {
   try {
     const response = await axios.patch(
-      `${process.env.NEXT_PUBLIC_API_URL}${url}`,
+      `${process.env.NEXT_PUBLIC_HOST_URL}${url}`,
       body,
       {
         headers: {
           "Content-Type": "application/json",
         },
         ...options,
-      }
+      },
     );
     return response.data;
   } catch (error: any) {

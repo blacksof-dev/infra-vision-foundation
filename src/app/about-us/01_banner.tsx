@@ -6,27 +6,33 @@ import "@/_components/molecules/infiniteCarousel.css";
 import { Autoplay } from "swiper/modules";
 import Link from "next/link";
 import { RiArrowRightSLine } from "react-icons/ri";
+import { useQuery } from "@tanstack/react-query";
+import { getFetch } from "@/lib/api";
+import { getUrl } from "@/lib/getUrl";
+
+interface BannerData {
+  title: string;
+  description: string;
+  images: string[];
+}
+
 export default function Association() {
+  const { data } = useQuery({
+    queryKey: ["about-banner"],
+    queryFn: () => getFetch<BannerData>("/content/about-us-banner"),
+  });
+
   return (
     <>
       <div id="aboutUs" className=" relative">
         <div className="blade-top-padding-sm ">
           <Swiper className="" slidesPerView={1} autoplay modules={[Autoplay]}>
-            {data.map((obj, index) => (
+            {data?.images.map((obj, index) => (
               <SwiperSlide key={index} className="">
-                <div className="relative w-screen h-screen sm:block hidden">
+                <div className="relative w-screen h-screen  max-h-[450px] md:max-h-[768px] xl:max-h-[1024px]">
                   <Image
-                    src={obj.logo}
-                    alt={obj.id}
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                </div>
-                <div className="relative w-screen h-screen block sm:hidden">
-                  <Image
-                    src={obj.mobilelogo}
-                    alt={obj.id}
+                    src={getUrl(obj)}
+                    alt={obj}
                     fill
                     className="object-cover"
                     unoptimized
@@ -36,7 +42,7 @@ export default function Association() {
             ))}
           </Swiper>
         </div>
-        <div className="  absolute   bottom-20 z-[22] pointer-events-none h-[45rem] w-full">
+        <div className="  absolute   bottom-4 sm:bottom-20 z-[22] pointer-events-none h-[45rem] w-full">
           <div className="w-container   top-9  sm:top-12 md:top-18 flex flex-col  justify-between h-full">
             <div className="flex flex-row   gap-1 ">
               <Link href="/">
@@ -60,12 +66,9 @@ export default function Association() {
               </h5>
             </div>
             <div className="  w-full ">
-              <h1 className="text-white font-medium ">About Us</h1>
+              <h1 className="text-white font-medium ">{data?.title}</h1>
               <div className={` py-2 sm:py-4 w-full  max-w-lg`}>
-                <h5 className="text-white font-light ">
-                  Nation at heart. Infrastructure in mind.<br/> Economic prosperity
-                  in action.
-                </h5>
+                <h5 className="text-white font-light ">{data?.description}</h5>
               </div>
             </div>
           </div>
@@ -74,21 +77,3 @@ export default function Association() {
     </>
   );
 }
-
-const data = [
-  {
-    id: "1",
-    logo: "/assets/about-us/bannerBg.png",
-    mobilelogo:"/assets/about-us/mobile1.png"
-  },
-  {
-    id: "2",
-    logo: "/assets/about-us/bannerBg1.png",
-     mobilelogo:"/assets/about-us/mobile2.png"
-  },
-  {
-    id: "3",
-    logo: "/assets/about-us/bannerBg2.png",
-     mobilelogo:"/assets/about-us/mobile3.png"
-  },
-];

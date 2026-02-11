@@ -1,17 +1,19 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import type { Swiper as SwiperClass } from "swiper/types";
 import type { Swiper as SwiperType } from "swiper/types";
-import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { advisory, CardData, fellow, patrons, team, trustee } from "./static";
+import { CardData } from "./static";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import PopupDescription from "../_home/popupDescription";
 import { MemberCard } from "@/_components/molecules/memberCard";
+import { useQuery } from "@tanstack/react-query";
+import { getFetch } from "@/lib/api";
+import { getUrl } from "@/lib/getUrl";
 
 type ButtonTabProps = {
   label: string;
@@ -19,6 +21,24 @@ type ButtonTabProps = {
   data: string;
   setdata: (val: string) => void;
 };
+
+interface Member {
+  id: string;
+  image: string;
+  title: string;
+  desig: string;
+  subtitle?: string;
+  popupImg: string;
+  popupdesc: string;
+  link?: string;
+  socialMedia?: string;
+}
+
+interface ApiResponse<T> {
+  pagination: any;
+  lastUpdated: string;
+  [key: string]: T[] | any;
+}
 
 interface MobileMembersSliderProps {
   title: string;
@@ -83,31 +103,75 @@ export default function Infravisionaries() {
     }
   }, [showPopup]);
 
+  const transformData = (members: Member[] = []): CardData[] => {
+    return members.map((member) => ({
+      image: getUrl(member.image),
+      title: member.title,
+      desig: member.desig,
+      link: member.link,
+      socialMedia: member.socialMedia,
+      popupImg: getUrl(member.popupImg),
+      popupdesc: member.popupdesc,
+      subtitle: member.subtitle,
+    }));
+  };
+
+  const { data: trusteesData } = useQuery({
+    queryKey: ["trustees"],
+    queryFn: () => getFetch<ApiResponse<Member>>("/teams/trustees?limit=100"),
+  });
+
+  const { data: patronsData } = useQuery({
+    queryKey: ["patrons"],
+    queryFn: () => getFetch<ApiResponse<Member>>("/teams/patrons?limit=100"),
+  });
+
+  const { data: advisorsData } = useQuery({
+    queryKey: ["advisors"],
+    queryFn: () => getFetch<ApiResponse<Member>>("/teams/advisors?limit=100"),
+  });
+
+  const { data: fellowsData } = useQuery({
+    queryKey: ["fellows"],
+    queryFn: () => getFetch<ApiResponse<Member>>("/teams/fellow?limit=100"),
+  });
+
+  const { data: teamData } = useQuery({
+    queryKey: ["team"],
+    queryFn: () => getFetch<ApiResponse<Member>>("/teams/team?limit=100"),
+  });
+
+  const trusteesList = transformData(trusteesData?.trustees || []);
+  const patronsList = transformData(patronsData?.patrons || []);
+  const advisorsList = transformData(advisorsData?.advisors || []);
+  const fellowsList = transformData(fellowsData?.fellow || []);
+  const teamsList = transformData(teamData?.team || []);
+
   useEffect(() => {
     let cardDetails: CardData[] = [];
 
     switch (data) {
       case "trustee":
-        cardDetails = trustee;
+        cardDetails = trusteesList;
         break;
       case "advisory":
-        cardDetails = advisory;
+        cardDetails = advisorsList;
         break;
       case "fellow":
-        cardDetails = fellow;
+        cardDetails = fellowsList;
         break;
       case "team":
-        cardDetails = team;
+        cardDetails = teamsList;
         break;
       case "patrons":
-        cardDetails = patrons;
+        cardDetails = patronsList;
         break;
       default:
         cardDetails = [];
     }
 
     setcarddata(cardDetails);
-  }, [data]);
+  }, [data, trusteesData, patronsData, advisorsData, fellowsData, teamData]);
 
   return (
     <>
@@ -290,7 +354,7 @@ export default function Infravisionaries() {
 
           <MobileMembersSlider
             title="Trustees"
-            data={trustee}
+            data={trusteesList}
             navClass="trustee"
             setShowPopup={setShowPopup}
             setPopUpData={setPopUpData}
@@ -300,7 +364,7 @@ export default function Infravisionaries() {
           />
           <MobileMembersSlider
             title="Founding Patrons"
-            data={patrons}
+            data={patronsList}
             navClass="patrons"
             setShowPopup={setShowPopup}
             setPopUpData={setPopUpData}
@@ -311,7 +375,7 @@ export default function Infravisionaries() {
 
           <MobileMembersSlider
             title="Council of Advisors"
-            data={advisory}
+            data={advisorsList}
             navClass="advisory"
             setShowPopup={setShowPopup}
             setPopUpData={setPopUpData}
@@ -322,7 +386,7 @@ export default function Infravisionaries() {
 
           <MobileMembersSlider
             title="Distinguished Fellows"
-            data={fellow}
+            data={fellowsList}
             navClass="fellow"
             setShowPopup={setShowPopup}
             setPopUpData={setPopUpData}
@@ -333,7 +397,7 @@ export default function Infravisionaries() {
 
           <MobileMembersSlider
             title="Team"
-            data={team}
+            data={teamsList}
             navClass="team"
             setShowPopup={setShowPopup}
             setPopUpData={setPopUpData}
