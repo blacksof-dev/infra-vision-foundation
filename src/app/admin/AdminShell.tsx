@@ -13,7 +13,7 @@ export default function AdminShell({
   const showSidebar = pathname !== "/admin/login";
 
   return (
-    <div className="flex ">
+    <div className="flex max-w-[1920px] w-full mx-auto">
       {showSidebar && (
         <div className="w-75 shrink-0">
           <Sidebar />

@@ -74,7 +74,7 @@ export default function KnowledgeResearchPapers() {
 
   // Filters
   const [page, setPage] = useState<number>(1);
-  const [limit] = useState<number>(50);
+  const [limit] = useState<number>(10);
 
   const [selectedSector, setSelectedSector] = useState<string>("all");
 
@@ -99,7 +99,7 @@ export default function KnowledgeResearchPapers() {
 
         const res = (await getData(
           `/knowledge/research-papers?${query.toString()}`,
-          session
+          session,
         )) as ListResponse;
 
         setFormState((s) => ({ ...s, items: res?.researchPapers ?? [] }));
@@ -111,7 +111,7 @@ export default function KnowledgeResearchPapers() {
         setIsLoading(false);
       }
     },
-    [session, limit, selectedSector, page]
+    [session, limit, selectedSector],
   );
 
   useEffect(() => {
@@ -120,7 +120,7 @@ export default function KnowledgeResearchPapers() {
 
   useEffect(() => {
     loadPapers(1);
-  }, [selectedSector]);
+  }, [selectedSector, loadPapers]);
 
   const handleToggle = async (id: string) => {
     try {
@@ -129,7 +129,7 @@ export default function KnowledgeResearchPapers() {
         null,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
-        }
+        },
       );
       toast.success("Status updated");
       loadPapers(page);
@@ -146,7 +146,7 @@ export default function KnowledgeResearchPapers() {
         `${process.env.NEXT_PUBLIC_HOST_URL}/knowledge/research-papers/${id}`,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
-        }
+        },
       );
       toast.success("Deleted successfully");
       setDeletingId(null);
@@ -237,7 +237,6 @@ export default function KnowledgeResearchPapers() {
                 </div>
 
                 <div className="p-4 flex flex-col flex-1">
-
                   <div className="text-xs w-fit mb-2 font-medium text-pink px-2 py-0.5 bg-pink/10 rounded-full">
                     {new Date(formatDate(it.date)).toLocaleDateString("en-GB", {
                       day: "numeric",
@@ -313,15 +312,16 @@ export default function KnowledgeResearchPapers() {
             <div className="flex gap-2">
               {Array.from(
                 { length: pagination.totalPages },
-                (_, i) => i + 1
+                (_, i) => i + 1,
               ).map((p) => (
                 <button
                   key={p}
                   onClick={() => loadPapers(p)}
-                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${p === page
-                    ? "bg-pink text-white shadow-md shadow-pink/20"
-                    : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
-                    }`}
+                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${
+                    p === page
+                      ? "bg-pink text-white shadow-md shadow-pink/20"
+                      : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
+                  }`}
                 >
                   {p}
                 </button>
@@ -404,7 +404,7 @@ function ResearchPaperForm({
   });
 
   const submitHandler: SubmitHandler<ResearchPaperFormValues> = async (
-    data
+    data,
   ) => {
     try {
       setIsLoading(true);
@@ -461,7 +461,7 @@ function ResearchPaperForm({
 
       if (res.status === 200 || res.status === 201) {
         toast.success(
-          initalData ? "Updated successfully" : "Created successfully"
+          initalData ? "Updated successfully" : "Created successfully",
         );
         onClose();
       }

@@ -113,7 +113,7 @@ export default function InfraPanditAwards() {
                 <img
                   src={`${process.env.NEXT_PUBLIC_HOST_URL}${data.main.posterImageUrl}`}
                   alt="Poster"
-                  className="w-full h-full object-contain object-top  "
+                  className="w-full h-full object-contain object-top "
                 />
                 {!data.main.active && (
                   <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center">

@@ -12,6 +12,7 @@ source .bashrc -- It install the nvm
 nvm install --lts - It install the node js 
 sudo apt-get install nginx
 
+
 template for sites avilable 
 
 server {

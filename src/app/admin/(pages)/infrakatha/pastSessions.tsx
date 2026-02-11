@@ -72,7 +72,7 @@ export default function PastSessions() {
 
   // Filters
   const [page, setPage] = useState<number>(1);
-  const [limit] = useState<number>(10);
+  const [limit] = useState<number>(9);
   const [sort, setSort] = useState<string>("desc");
   const [active, setActive] = useState<string>("all");
 
@@ -94,7 +94,7 @@ export default function PastSessions() {
 
         const res = (await getData(
           `/infrakatha?${query.toString()}`,
-          session
+          session,
         )) as ListResponse;
         setItems(res?.data || []);
         setPagination(res?.meta || null);
@@ -106,7 +106,7 @@ export default function PastSessions() {
         setIsLoading(false);
       }
     },
-    [session, limit, sort, active, page]
+    [session, limit, sort, active, page],
   );
 
   useEffect(() => {
@@ -120,7 +120,7 @@ export default function PastSessions() {
         null,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
-        }
+        },
       );
       toast.success("Status updated");
       fetchSessions(page);
@@ -135,7 +135,7 @@ export default function PastSessions() {
         `${process.env.NEXT_PUBLIC_HOST_URL}/infrakatha/${id}`,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
-        }
+        },
       );
       toast.success("Session deleted successfully");
       setDeletingId(null);
@@ -160,10 +160,8 @@ export default function PastSessions() {
 
         {/* Filters */}
         <div className="flex flex-wrap gap-4   mt-6  ">
-
           <div className="flex gap-4">
             <div className="flex flex-col gap-1">
-
               <Select value={sort} onValueChange={setSort}>
                 <SelectTrigger className="w-40 h-11 border-gray">
                   <SelectValue placeholder="Sort order" />
@@ -176,7 +174,6 @@ export default function PastSessions() {
             </div>
 
             <div className="flex flex-col gap-1">
-
               <Select value={active} onValueChange={setActive}>
                 <SelectTrigger className="w-40 h-11 border-gray">
                   <SelectValue placeholder="Status" />
@@ -215,7 +212,6 @@ export default function PastSessions() {
                     src={`${process.env.NEXT_PUBLIC_HOST_URL}${item.thumbnailUrl}`}
                     alt={item.title}
                   />
-
                 </div>
 
                 <div className="p-5 flex-1 flex flex-col">
@@ -230,7 +226,6 @@ export default function PastSessions() {
                         year: "numeric",
                       })}
                     </span>
-
                   </div>
 
                   <h4 className="text-lg font-bold text-gray-900 line-clamp-2 leading-tight mb-2  mt-2">
@@ -242,9 +237,7 @@ export default function PastSessions() {
 
                   <div className="mt-auto pt-4 border-t border-gray-200 flex items-center justify-between">
                     <a
-                      href={
-                        item.youtubeVideoUrl
-                      }
+                      href={item.youtubeVideoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm font-medium text-pink   underline        "
@@ -262,7 +255,7 @@ export default function PastSessions() {
                         size="small"
                         text="Delete"
                         onClick={() => setDeletingId(item.id)}
-                      // className="py-1 px-3 !text-[11px] font-semibold"
+                        // className="py-1 px-3 !text-[11px] font-semibold"
                       />
                       <Button
                         theme="pink"
@@ -272,7 +265,7 @@ export default function PastSessions() {
                           setEditingItem(item);
                           setIsFormOpen(true);
                         }}
-                      // className="py-1 px-3 !text-[11px] font-semibold"
+                        // className="py-1 px-3 !text-[11px] font-semibold"
                       />
                     </div>
                   </div>
@@ -295,15 +288,16 @@ export default function PastSessions() {
             <div className="flex gap-2 items-center">
               {Array.from(
                 { length: pagination.totalPages },
-                (_, i) => i + 1
+                (_, i) => i + 1,
               ).map((p) => (
                 <button
                   key={p}
                   onClick={() => fetchSessions(p)}
-                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${p === page
-                    ? "bg-pink text-white"
-                    : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
-                    }`}
+                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${
+                    p === page
+                      ? "bg-pink text-white"
+                      : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
+                  }`}
                 >
                   {p}
                 </button>
@@ -381,13 +375,13 @@ function InfraKathaForm({
     resolver: zodResolver(infraKathaSchema),
     defaultValues: initialData
       ? {
-        ...initialData,
-        date: getFormattedDate(initialData.date),
-        thumbnail: initialData.thumbnailUrl,
-      }
+          ...initialData,
+          date: getFormattedDate(initialData.date),
+          thumbnail: initialData.thumbnailUrl,
+        }
       : {
-        active: true,
-      },
+          active: true,
+        },
   });
 
   const onSubmit: SubmitHandler<InfraKathaFormValues> = async (data) => {
@@ -406,7 +400,6 @@ function InfraKathaForm({
       if (thumbValue instanceof FileList && thumbValue.length > 0) {
         formData.append("thumbnail", thumbValue[0]);
       } else if (typeof thumbValue === "string" && thumbValue.length > 0) {
-
       } else if (!initialData) {
         setError("thumbnail", {
           type: "manual",
@@ -496,7 +489,6 @@ function InfraKathaForm({
               register={register}
               registerer="description"
             />
-
 
             <TextInput
               label="YouTube Video URL*"

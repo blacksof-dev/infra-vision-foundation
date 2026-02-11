@@ -430,7 +430,7 @@ function PatronForm({
 
             <div className="grid grid-cols-2 gap-4">
               <TextInput
-                label="Social URL*"
+                label="Social URL(Optioanl)"
                 errors={errors.link}
                 placeholder="https://..."
                 register={register}

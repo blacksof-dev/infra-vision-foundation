@@ -50,6 +50,16 @@ const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
    {
+    id:67,
+    img: "/assets/archive/newsAndMedia/landValue.png",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "January 2026",
+    description: "Land value capture",
+    link: "/assets/pdf/landValue.pdf",
+  },
+   {
     id:66,
     img: "/assets/archive/newsAndMedia/invest-in-small-towns.png",
     category: "News",

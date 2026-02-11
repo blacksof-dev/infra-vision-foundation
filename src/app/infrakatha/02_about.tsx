@@ -14,7 +14,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { BorderGrayHeroBtn } from "@/_components/atoms/buttons";
-import Link from "next/link";
+
 
 export default function About() {
   const members = [
@@ -43,7 +43,7 @@ export default function About() {
       image: image_04,
       title: "DN 'Bonny' Mukerjea",
       desig: "Senior Media Executive",
-      link:"https://www.linkedin.com/in/d-n-bonny-mukerjea-a4009a3/",
+      link: "https://www.linkedin.com/in/d-n-bonny-mukerjea-a4009a3/",
       socialMedia: "linkedin",
     },
   ];
@@ -81,7 +81,7 @@ export default function About() {
             perfect blend of storytelling, scholarship, and strategy.
           </h6>
           <div className="mt-2 sm:mt-6">
-         
+
             <BorderGrayHeroBtn
               text="Watch the videos"
               role="link"
@@ -93,7 +93,7 @@ export default function About() {
               link="https://www.youtube.com/playlist?list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa"
               classes="font-medium text-lg"
             />
-           
+
           </div>
         </div>
         {/* Right: Hosts Cards */}
@@ -157,24 +157,14 @@ export default function About() {
                 ))}
               </Swiper>
 
-              {/* <div className="swiper-button-prev !text-pink !w-10 !h-10 !bg-white !rounded-full !shadow-md hover:!bg-pink hover:!text-white transition-colors duration-300"></div>
-              <div className="swiper-button-next !text-pink !w-10 !h-10 !bg-white !rounded-full !shadow-md hover:!bg-pink hover:!text-white transition-colors duration-300"></div> */}
+
 
               <div className="custom-swiper-pagination space-x-2 w-fit mx-auto sm:ml-auto sm:mr-4 mt-4 "></div>
             </div>
           </div>
         </div>
       </div>
-      {/* <style jsx global>{`
-        .swiper-pagination-bullet {
-          background: #C82249 !important;
-          opacity: 0.3; 
-          
-        }
-        .swiper-pagination-bullet-active {
-          opacity: 1 !important;
-        }
-      `}</style> */}
+
     </section>
   );
 }

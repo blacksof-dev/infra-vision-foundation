@@ -20,7 +20,7 @@ import { getData } from "../../lib/utils";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useForm, useFieldArray, SubmitHandler } from "react-hook-form";
-import { z } from "zod";
+import { array, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // ------------------ Types & Schema ------------------
@@ -164,6 +164,7 @@ export default function AdminCalendarManager() {
         `/outreach-and-engagements/year/${yr}`,
         session,
       );
+
       setEvents(res?.data ?? []);
     } catch (e) {
       toast.error("Failed to load events");
@@ -263,9 +264,7 @@ export default function AdminCalendarManager() {
                       </div>
                       <div className="flex items-center mt-1 2xl:mt-4 gap-2 text-darkgray">
                         <span className="w-2 h-2 shrink-0 bg-pink rounded-full"></span>
-                        <span className="text-sm -my-2">
-                          {ev.meetingType}
-                        </span>
+                        <span className="text-sm -my-2">{ev.meetingType}</span>
                       </div>
                       <div className="text-[13px] 2xl:text-sm font-normal mt-2 2xl:mt-4 ">
                         {ev.desc}
@@ -454,7 +453,7 @@ function EventForm({
         },
       },
     );
-    return  res.data.url; // The uploaded file URL
+    return res.data.url; // The uploaded file URL
   }
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
@@ -548,11 +547,14 @@ function EventForm({
       onClose();
     } catch (e: any) {
       console.error(e);
-      toast.error(
-        e?.response?.data?.message[0] ||
-          e?.response?.data?.message ||
-          "Save failed",
-      );
+      if (
+        e?.response?.data?.message &&
+        Array.isArray(e?.response?.data?.message)
+      ) {
+        toast.error(e?.response?.data?.message[0]);
+      } else {
+        toast.error(e?.response?.data?.message || "Save failed");
+      }
     } finally {
       setIsSaving(false);
     }
@@ -736,7 +738,9 @@ function EventForm({
 
           {/* Markdown */}
           <div>
-            <div className="font-medium text-base mb-1">Details (Markdown)*</div>
+            <div className="font-medium text-base mb-1">
+              Details (Markdown)*
+            </div>
 
             <MarkdownEditor
               value={detailsContent}

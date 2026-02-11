@@ -47,7 +47,7 @@ export const allCards = [
     {
     image: kalpana,
     subtitle: "The Infravision Conversation",
-    subdesc: "Does free public transport for women improve safety?",
+    subdesc: "Does free public transport for women improve safety?", 
     link: "https://www.youtube.com/embed/gg9NtuYLiZA?si=3IY8UMlwZb7r_LzP",
     date: "",
   },
