@@ -161,7 +161,7 @@ export default function AdminCalendarManager() {
     try {
       setIsLoading(true);
       const res = await getData(
-        `/outreach-and-engagements?year=${yr}`,
+        `/outreach-and-engagements/year/${yr}`,
         session,
       );
       setEvents(res?.data ?? []);

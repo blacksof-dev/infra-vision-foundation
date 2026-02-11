@@ -1,50 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+apt-get update
+apt-get upgrade
+adduser blacksof
+Blacksof2026
+usermod -aG sudo blacksof
+create ssh folder
+inside that create authorization_key filr
+nano authorization_key
+create ssh key and save their
+to install node js - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+source .bashrc -- It install the nvm
+nvm install --lts - It install the node js 
+sudo apt-get install nginx
 
-## Getting Started
+template for sites avilable 
 
-First, run the development server:
+server {
+  listen 80;
+  server_name 143.110.242.141;
+  location / {
+    proxy_pass http://localhost:3000;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+  }
+}
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+link site enabled
+sudo ln -s /etc/nginx/sites-available/rahulGupte /etc/nginx/sites-enabled/rahulGupte
+sudo nginx -t - check configuration 
+sudo service nginx restart - restart 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details......
-
-..
-
-
-
-// UI/Ux check,labels check , tooltip label and content check, Add message input,  give image size, check image update, required and non required things check,
+ssh-keygen -t ed25519 -C "blacksof-vps"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+cat ~/.ssh/id_ed25519.pub
+ssh -T git@github.com
 
 
- 
-Apply 
-
-
-
-
+sudo nginx -t
+sudo systemctl reload nginx

@@ -74,7 +74,7 @@ export default function KnowledgeResearchPapers() {
 
   // Filters
   const [page, setPage] = useState<number>(1);
-  const [limit] = useState<number>(3);
+  const [limit] = useState<number>(50);
 
   const [selectedSector, setSelectedSector] = useState<string>("all");
 
@@ -332,7 +332,7 @@ export default function KnowledgeResearchPapers() {
               theme="transparentGray"
               size="small"
               isDisabled={page >= pagination.totalPages}
-              onClick={() => loadPapers(page + 1)}
+              onClick={() => loadPapers(page + 4)}
             />
           </div>
         )}
