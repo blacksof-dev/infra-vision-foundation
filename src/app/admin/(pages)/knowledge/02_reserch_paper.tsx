@@ -332,7 +332,7 @@ export default function KnowledgeResearchPapers() {
               theme="transparentGray"
               size="small"
               isDisabled={page >= pagination.totalPages}
-              onClick={() => loadPapers(page + 1)}
+              onClick={() => loadPapers(page + 4)}
             />
           </div>
         )}

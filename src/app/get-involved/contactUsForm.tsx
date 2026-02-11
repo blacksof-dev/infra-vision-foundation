@@ -175,6 +175,7 @@ export default function ContactForm() {
                         pattern="[A-Za-z\s]*"
                         type="text"
                         id="firstName"
+                        
                         placeholder="First name*"
                         {...register("firstName")}
                       />
