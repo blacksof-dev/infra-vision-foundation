@@ -368,6 +368,8 @@ const allcards = [
   },
 ];
 
+
+
 const generateArticleSchema = (card: any) => ({
   "@context": "https://schema.org",
   "@type": "Article",

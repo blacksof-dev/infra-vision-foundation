@@ -4,7 +4,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Textarea } from "@/_components/ui/textarea";
-import { type ReactNode, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { HiOutlineLink } from "react-icons/hi";
 import { TbUpload } from "react-icons/tb";
 import emailjs from "@emailjs/browser";
@@ -19,6 +19,8 @@ import {
 import Portal from "@/_components/atoms/popupPortal";
 import { Loader, X } from "lucide-react";
 import MapComponent from "./mapSection";
+import useContactFormMutation from "@/lib/muted";
+import axios from "axios";
 
 const dropdownOptions = [
   "Institutional collaboration",
@@ -57,24 +59,23 @@ const formSchema = z.object({
 
   message: z.string(),
 
-  interest: z.string().min(2, { message: "Select any option" }),
-  designation: z.string().min(2, { message: "Select any option" }),
+  personType: z.string().min(2, { message: "Select any option" }),
+  interestedIn: z.string().min(2, { message: "Select any option" }),
 
   links: z.string(),
 
   file: z.any(),
 });
 
-type FormValues = z.infer<typeof formSchema>;
+export type FormValues = z.infer<typeof formSchema>;
 
 export default function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const [filename, setfilename] = useState("Select a file to upload ");
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [setsuccess, setIsSuccess] = useState<boolean>(false);
   const [Isopen, setIsopen] = useState<boolean>(false);
   const [interest, setInterest] = useState("");
-  const [designation, setDesignation] = useState("");
+  const [personType, setPersonType] = useState("");
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -82,11 +83,10 @@ export default function ContactForm() {
       firstName: "",
       lastName: "",
       email: "",
-      interest: "",
-      designation: "",
+      interestedIn: "",
+      personType: "",
       contactNumber: "",
       links: "",
-      // file: "",
       message: "",
     },
   });
@@ -99,26 +99,26 @@ export default function ContactForm() {
     setValue,
   } = form;
 
-  // Handle form submission
-  async function onSubmit(data: any) {
-    setIsSubmitting(true);
+  const { mutateAsync: FormReactQuery, isPending: isFormPending } =
+    useContactFormMutation("/contact/leads");
 
+  async function onSubmit(data: any) {
     try {
-      // Create a FormData object if you need to send files
       const formData = new FormData();
       formData.append("firstName", data.firstName);
       formData.append("lastName", data.lastName);
       formData.append("email", data.email);
       formData.append("contactNumber", data.contactNumber);
-      formData.append("interest", data.interest);
-      formData.append("designation", data.designation);
+      formData.append("interestedIn", data.interestedIn);
+      formData.append("personType", data.personType);
       formData.append("message", data.message);
       formData.append("links", data.links);
 
-   
+      if (data.file && data.file[0]) {
+        formData.append("file", data.file[0]);
+      }
 
-      console.log("Form submitted:", data);
-     
+      await FormReactQuery(formData);
 
       if (!formRef.current) return;
 
@@ -128,21 +128,17 @@ export default function ContactForm() {
         formRef.current,
         {
           publicKey: "svBJIois6z0vhJqFf",
-        }
+        },
       );
-
-      console.log("SUCCESS!");
 
       setIsSuccess(true);
       setIsopen(true);
       setInterest("");
-      setDesignation("");
+      setPersonType("");
       setfilename("Select a file to upload  *");
       reset();
     } catch (error) {
       console.error("Error submitting form:", error);
-    } finally {
-      setIsSubmitting(false);
     }
   }
 
@@ -175,7 +171,6 @@ export default function ContactForm() {
                         pattern="[A-Za-z\s]*"
                         type="text"
                         id="firstName"
-                        
                         placeholder="First name*"
                         {...register("firstName")}
                       />
@@ -223,9 +218,8 @@ export default function ContactForm() {
                       type="number"
                       maxLength={10}
                       placeholder="Contact number* "
-                      {...register("contactNumber",{
-                        required:"Contact number is required",
-                       
+                      {...register("contactNumber", {
+                        required: "Contact number is required",
                       })}
                     />
                     {errors.contactNumber && (
@@ -238,40 +232,10 @@ export default function ContactForm() {
                   {/* Dropdown */}
                   <div className="relative">
                     <Select
-                      value={designation}
-                      onValueChange={(value) => {
-                        setDesignation(value);
-                        setValue("designation", value);
-                      }}
-                    >
-                      <SelectTrigger id="designation">
-                        <SelectValue placeholder="I am a*" />
-                      </SelectTrigger>
-                      <SelectContent className=" bg-white border-lightgray rounded-sm">
-                        {designationDropdownOptions.map((role) => (
-                          <SelectItem
-                            key={role}
-                            value={role}
-                            className="cursor-pointer"
-                          >
-                            {role}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <input type="hidden" name="designation" value={designation} />
-                    {errors.designation && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {errors.designation.message}
-                      </p>
-                    )}
-                  </div>
-                  <div className="relative">
-                    <Select
                       value={interest}
                       onValueChange={(value) => {
                         setInterest(value);
-                        setValue("interest", value);
+                        setValue("interestedIn", value);
                       }}
                     >
                       <SelectTrigger id="interest">
@@ -289,10 +253,41 @@ export default function ContactForm() {
                         ))}
                       </SelectContent>
                     </Select>
- <input type="hidden" name="interest" value={interest} />
-                    {errors.interest && (
+                    <input type="hidden" name="interestedIn" value={interest} />
+                    {errors.interestedIn && (
                       <p className="text-red-500 text-sm mt-1">
-                        {errors.interest.message}
+                        {errors.interestedIn.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="relative">
+                    <Select
+                      value={personType}
+                      onValueChange={(value) => {
+                        setPersonType(value);
+                        setValue("personType", value);
+                      }}
+                    >
+                      <SelectTrigger id="personType">
+                        <SelectValue placeholder="I am a*" />
+                      </SelectTrigger>
+                      <SelectContent className=" bg-white border-lightgray rounded-sm">
+                        {designationDropdownOptions.map((role) => (
+                          <SelectItem
+                            key={role}
+                            value={role}
+                            className="cursor-pointer"
+                          >
+                            {role}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <input type="hidden" name="personType" value={personType} />
+                    {errors.personType && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.personType.message}
                       </p>
                     )}
                   </div>
@@ -364,9 +359,9 @@ export default function ContactForm() {
                     <button
                       type="submit"
                       className="bg-pink hover:bg-[#9c082a] cursor-pointer sm:w-fit w-full text-white font-poppins mx-auto md:mx-0 px-14 font-medium text-xl py-4 rounded-md transition-all duration-300 ease-linear"
-                      disabled={isSubmitting}
+                      disabled={isFormPending}
                     >
-                      {isSubmitting ? <Loadering /> : "Submit"}
+                      {isFormPending ? <Loadering /> : "Submit"}
                     </button>
                   </div>
                 </form>
@@ -398,13 +393,6 @@ export default function ContactForm() {
                 inquiries. Rest assured, our team is committed to responding to
                 each one. Please allow up to 3 business days to respond.
               </p>
-
-              {/* <button
-                onClick={() => setIsopen(false)}
-                className="bg-pink text-white cursor-pointer font-poppins mx-auto md:mx-0 px-14 font-medium text-xl py-4 rounded-md"
-              >
-                Okay
-              </button> */}
             </div>
           </div>
         </Portal>

@@ -36,7 +36,7 @@ export default function InfraShakti() {
 
   return (
     <>
-      <BannerSection />
+      {/* <BannerSection /> */}
       <PublicationTabs tabs={tabs} sectionRefs={sectionRefs} />
       <div id="overview" ref={sectionRefs.overview}>
         <Overview />

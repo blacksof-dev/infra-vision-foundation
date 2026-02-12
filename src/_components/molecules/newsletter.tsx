@@ -2,8 +2,8 @@
 import { HeroBtn, UnderlineCta } from "@/_components/atoms/buttons";
 import { getFetch } from "@/lib/api";
 import { getUrl } from "@/lib/getUrl";
-import Image, { StaticImageData } from "next/image";
-import Link from "next/link";
+
+
 
 interface GetInvolved {
   label: string;
