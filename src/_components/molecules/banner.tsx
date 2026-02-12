@@ -1,5 +1,4 @@
 import Image, { StaticImageData } from "next/image";
-import Balancer from "react-wrap-balancer";
 
 interface bannerProps {
   id?: string;

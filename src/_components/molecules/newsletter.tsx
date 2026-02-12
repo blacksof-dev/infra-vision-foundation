@@ -2,9 +2,6 @@
 import { HeroBtn, UnderlineCta } from "@/_components/atoms/buttons";
 import { getFetch } from "@/lib/api";
 import { getUrl } from "@/lib/getUrl";
-import Image, { StaticImageData } from "next/image";
-import Link from "next/link";
-
 interface GetInvolved {
   label: string;
   heading: string;
@@ -36,7 +33,7 @@ export default async function GetInvolvedSection() {
               ></div>
             </>
           )}
-
+   
        
 
           <div className="w-container flex flex-col md:flex-row  gap-14 md:gap-16 h-[25rem] xl:h-[38rem] xlg:h-[45rem] ">

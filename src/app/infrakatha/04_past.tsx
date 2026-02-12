@@ -1,108 +1,53 @@
 "use client";
 import { useState } from "react";
 import bg from "@/../public/assets/infrakatha/past-events/bgcircle.png";
-import montek from "@/../public/assets/infrakatha/past-events/montek.png";
-import william from "@/../public/assets/infrakatha/past-events/william.png";
-import shailesh from "@/../public/assets/infrakatha/past-events/shailesh.png";
-import gurucharan from "@/../public/assets/infrakatha/past-events/gurucharan.png";
-import devdutt from "@/../public/assets/infrakatha/past-events/devdutt.png";
-import deepaMalik from "@/../public/assets/infrakatha/past-events/deepaMalik.png";
-import sanjeev from "@/../public/assets/infrakatha/past-events/sanjeev.png";
-import aman from "@/../public/assets/infrakatha/past-events/aman.png";
+
 import Image from "next/image";
 import { NewsCard } from "@/_components/molecules/newsCard";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { getFetch } from "@/lib/api";
+import { getUrl } from "@/lib/getUrl";
+import { UnderlineWithHover } from "@/_components/atoms/buttons";
 
-const yearFilters = ["2024"];
+interface Datetype {
+  id: string;
+  infraKathaLabel: string;
+  title: string;
+  description: string;
+  date: string;
+  youtubeVideoUrl: string;
+  thumbnailUrl: string;
+}
 
-const allcards = [
-  {
-    img: montek.src,
-    category: "InfraKatha #8",
-    date: "December 14, 2024",
-    title: "Featuring Mr Montek Singh Ahluwalia, Former Deputy Chairman, the Planning Commission",
-    link: "https://www.youtube.com/watch?v=o6nb3IejARc&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=1&ab_channel=TheInfravisionFoundation",
-    description:
-      "Can Public Private Partnerships be revitalised?",
-  },
-  {
-    img: william.src,
-    category: "InfraKatha #7",
-    date: "November 24, 2024",
-    title: "Featuring Mr William Dalrymple, Historian and Author",
-    link: "https://www.youtube.com/watch?v=ae8InU9IGgk&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=2&ab_channel=TheInfravisionFoundation",
-    description: "Indosphere: How Indian trade grew",
-  },
-  {
-    img: shailesh.src,
-    category: "InfraKatha #6",
-    date: "October 5, 2024",
-    title: "Featuring Mr Shailesh Kochhar, AI Specialist",
-    link: "https://www.youtube.com/watch?v=hIzp4YhZcMo&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=3&ab_channel=TheInfravisionFoundation",
-    description: "Artificial Intelligence: Reshaping the digital infra landscape",
-  },
-  {
-    img: aman.src,
-    category: "InfraKatha #5",
-    date: "September 7, 2024",
-    title: "Featuring Mr Aman Nath, Co-Founder and Chairman, Neemrana Hotels and noted heritage restorer",
-    link: "https://www.youtube.com/watch?v=u-SEobnWU6U&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=4&ab_channel=TheInfravisionFoundation",
-    description:
-      "Heritage tourism infrastructure",
-  },
-  {
-    img: sanjeev.src,
-    category: "InfraKatha #4",
-    date: "August 17, 2024",
-    title: "Featuring Mr Sanjeev Sanyal, Author, Economist, Member of the PM’s Advisory Economic Council",
-    link: "https://www.youtube.com/watch?v=sygLq4cccIY&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=5&ab_channel=TheInfravisionFoundation",
-    description:
-      "Saraswati, the lost river",
-  },
-  {
-    img: gurucharan.src,
-    category: "InfraKatha #3",
-    date: " July 19, 2024",
-    title: "Featuring Mr Gurcharan Das, Author",
-    link: "https://www.youtube.com/watch?v=FCDeGlsb7q0&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=6&ab_channel=TheInfravisionFoundation",
-    description: "Indian infrastructure — The difficulty of being good",
-  },
-  {
-    img: deepaMalik.src,
-    category: "InfraKatha #2",
-    date: "June 19, 2024",
-    title: "Featuring Padma Shri Dr Deepa Malik, Para-athlete and Former President of the Paralympic Committee of India",
-    link: "https://www.youtube.com/watch?v=5uzHmHzU7q0&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=7&ab_channel=TheInfravisionFoundation",
-    description:
-      "Inclusive infrastructure",
-  },
-  {
-    img: devdutt.src,
-    category: "InfraKatha #1",
-    date: "May 29, 2024",
-    title: "Featuring Mr Devdutt Pattanaik, Author",
-    link: "https://www.youtube.com/watch?v=9v61vpPmXEk&list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa&index=8&ab_channel=TheInfravisionFoundation",
-    description: "Mythology & infrastructure",
-  },
-];
+interface DataResponse {
+  data: Datetype[];
+  meta: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
+}
 
 export default function PastEvents() {
-  const [selectedYear, setSelectedYear] = useState(yearFilters[0]);
-  const mobileview = 3;
-  const [visiblecountmobile, setvisiblecountmobile] = useState(mobileview);
+  const {
+    data: data,
+    hasNextPage,
+    fetchNextPage,
+  } = useInfiniteQuery({
+    queryKey: ["infrakath-video"],
+    queryFn: ({ pageParam = 1 }) =>
+      getFetch<DataResponse>(
+        `/infrakatha?page=${pageParam}&limit=3&sort=desc&active=true`,
+      ),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => {
+      if (lastPage.meta.totalPages < lastPage.meta.page) return undefined;
+      return lastPage.meta.page + 1;
+    },
+  });
 
-  const handleYearClick = (year: string) => {
-    setSelectedYear(year);
-    setvisiblecountmobile(mobileview);
-  };
-
-  const FilteredCard = () => {
-    return allcards.filter((card) => card.date.includes(selectedYear));
-  };
-
-  const handleSeeMoreCta = () => {
-    setvisiblecountmobile((prev) => prev + 3);
-  };
-
+  console.log(data);
   return (
     <section className="relative bg-white">
       <Image
@@ -123,52 +68,43 @@ export default function PastEvents() {
           </h1>
         </div>
         <div className="md:pt-5">
-          {/* <div className="flex flex-row items-center gap-4  pb-4 mb-4 sm:mb-8">
-            <div className="border-r border-darkgray/20">
-              <h5 className="text-darkgray/80 sm:py-5 pr-5 text-nowrap">
-                Filter by year
-              </h5>
-            </div>
-            <div className="flex flex-row gap-2 ">
-              {yearFilters.map((year) => (
-                <button
-                  key={year}
-                  className={`mt-auto text-sm md:text-base cursor-pointer rounded-[50px] px-4 py-2  sm:px-6 sm:py-3  ${
-                    selectedYear === year
-                      ? "border border-pink text-pink font-medium"
-                      : "border border-lightgray/30"
-                  }`}
-                  onClick={() => handleYearClick(year)}
-                >
-                  {year}
-                </button>
-              ))}
-            </div>
-          </div> */}
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-24">
-            {FilteredCard()
-              .slice(0, visiblecountmobile)
+            {data?.pages
+              .flatMap((page) => page.data)
               .map((ele, index) => (
                 <div key={index}>
                   <NewsCard
                     date={ele.date}
                     title={ele.title}
-                    image={ele.img}
-                    link={ele.link}
-                    category={ele.category}
+                    image={getUrl(ele.thumbnailUrl)}
+                    link={ele.youtubeVideoUrl}
+                    category={ele.infraKathaLabel}
                     description={ele.description}
                     classes="line-clamp-3 "
                   />
                 </div>
               ))}
           </div>
-          {visiblecountmobile < FilteredCard().length && (
+          {hasNextPage && (
+            <div className="flex justify-center mb-4  blade-top-padding-sm  relative z-1">
+              <UnderlineWithHover
+                size="xxlsize"
+                color="pink"
+                bgColor="pink"
+                text="See more"
+                role="button"
+                borderColor="white"
+                classes=""
+                handlefun={fetchNextPage}
+              />
+            </div>
+          )}
+          {/* {visiblecountmobile < FilteredCard().length && (
             <div className="flex justify-center xl:mt-4">
               <div>
                 <button
                   onClick={handleSeeMoreCta}
                   className={`group  text-xl lg:text-2xl   text-pink hover:text-white cursor-pointer  text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
-
                 >
                   <span className="z-50 relative"> See more</span>
                   <span
@@ -178,7 +114,7 @@ export default function PastEvents() {
                 </button>
               </div>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </section>

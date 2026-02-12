@@ -1,219 +1,135 @@
 "use client";
-import { useEffect, useState, useMemo, useRef } from "react";
-
+import { useState, useMemo, useRef } from "react";
 import Image from "next/image";
 import { Portal } from "@radix-ui/react-select";
 import { MoveLeft, MoveRight, X } from "lucide-react";
-
-
-// Gallery image data with random year and event type
-const galleryImages = [
-  {
-    image: "assets/archive/gallery/image1.png",
-    year: 2025,
-    event: "InfraShakti",
-    description:
-      "The Infravision Foundation CEO Jagan Shah, at the CII South India Annual Convention 2025.",
-  },
-  {
-    image: "assets/archive/gallery/image6.png",
-    year: 2025,
-    event: "Annual Get-together 2025",
-    description:"The Infravision Foundation CEO Jagan Shah, delivering the welcome address.",
-  },
-  {
-    image: "assets/archive/gallery/image11.png",
-    year: 2023,
-    event: "InfraShakti",
-    description:
-      "The Infravision Foundation Co-Founder, Rumjhum Chatterjee, at an interactive discussion with employees from Suzuki Motor Corporation, Japan, at IIM Ahmedabad’s Next Bharat Thinking programme.",
-  },
-  {
-    image: "assets/archive/gallery/image2.png",
-    year: 2024,
-    event: "InfraShakti Awards",
-    description:" Hon'ble Union Minister Mr Nitin Gadkari presenting the Transport Trailblazer Award to Mr Giridhar Rajagopalan, Deputy Managing Director at AFCONS Infrastructure Limited.",
-  },
-  {
-    image: "assets/archive/gallery/image7.png",
-    year: 2025,
-    event: "Annual Get-together 2025",
-    description:"The Infravision community at the Foundation’s annual get-together.",
-  },
-  {
-    image: "assets/archive/gallery/new1.png",
-    year: 2024,
-    event: "InfraShakti",
-    description: "The second Municipal Finance Champions Lab, organised by The Infravision Foundation, underway at IIM Mumbai with key stakeholders.",
-  },
-  {
-    image: "assets/archive/gallery/new4.png",
-    year: 2025,
-    event: "InfraPandit  Awards",
-    description:
-      "The Infravision Foundation team presenting the study on “Implementation of Compensatory Afforestation in India” to the Union Minister of Environment, Forest and Climate Change,  Mr Bhupender Yadav.",
-  },
-
-  {
-    image: "assets/archive/gallery/image8.png",
-    year: 2025,
-    event: "Annual Get-together 2025",
-    description:"The Infravision community at the Foundation’s annual get-together.",
-  },
-
-  {
-    image: "assets/archive/gallery/image13.png",
-    year: 2025,
-    event: "Annual Get-together 2025",
-    description: "The Infravision community at the Foundation’s annual get-together.",
-  },
-  {
-    image: "assets/archive/gallery/new2.png",
-    year: 2025,
-    event: "InfraShakti",
-    description: "Kaveree Bamzai, Head of Advocacy at The Infravision Foundation, facilitating IIT Delhi Professor Emeritus Dr Geetam Tiwari at a national seminar on Decarbonising Urban Transport.",
-  },
-  {
-    image: "assets/archive/gallery/image9.png",
-    year: 2025,
-    event: "Annual Get-together 2025",
-    description:
-      "The Infravision community at the Foundation’s annual get-together.",
-  },
-  {
-    image: "assets/archive/gallery/new3.png",
-    year: 2023,
-    event: "InfraShakti",
-    description:
-      "Debasish Panda, Chairman of the Insurance Regulatory and Development Authority of India (IRDAI), speaking at the roundtable on Surety Bonds organised by the CII under the auspices of The Infravision Foundation.",
-  },
-  {
-    image: "assets/archive/gallery/image5.png",
-    year: 2025,
-    event: "InfraShakti Awards",
-    description:
-      "NDTV Editor-in-Chief Mr Sanjay Pugalia with three-time Grammy Award winner and  Padma Shri awardee Mr Ricky Kej.",
-  },
-
-  {
-    image: "assets/archive/gallery/image10.png",
-    year: 2023,
-    event: "InfraShakti",
-    description:
-      "Ms Rumjhum Chatterjee, Co-Founder, The Infravision Foundation; at CII’s Corporate Women Leadership Awards, along with Ms Radhika Gupta, MD and CEO, Edelweiss Asset Management; Ms Ameera Shah, Promoter and MD, Metropolis Healthcare; Ms Rituparna Chakraborty, Co-Founder, Teamlease Services; and others.",
-  },
-  {
-    image: "assets/archive/gallery/image15.png",
-    year: 2023,
-    event: "InfraShakti",
-    description: "JCB CEO Deepak Shetty, The Infravision Foundation Founder and Managing Trustee Vinayak Chatterjee, IRDAI Chairman Debasish Panda, and Bajaj Allianz CEO Tapan Singhel at a roundtable on Surety Bonds organised by CII.",
-  },
-
-    {
-    image: "assets/archive/gallery/image16.jpg",
-    year: 2025,
-    event: "TIF Meetings",
-    description: "Founder and Managing Trustee of The Infravision Foundation, Mr Vinayak Chatterjee, in conversation with Council of Advisors member Prof G. Raghuram and Prof Sandip Chakrabarti of IIM-A.",
-  },
-
-
-    {
-    image: "assets/archive/gallery/image17.jpg",
-    year: 2025,
-    event: "TIF Meetings",
-    description: "Ms Soma Banerjee, Executive Director, CII, along with Mr Vinayak Chatterjee, Prof G. Raghuram and Prof Sandip Chakrabarti.",
-  },
-  {
-    image: "assets/archive/gallery/image18.jpeg",
-    year: 2025  ,
-    event: "TIF Meetings",
-    description: "Prof G. Raghuram in conversation with the media on the sidelines of the roundtable.",
-  },
-    
-];
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { getFetch } from "@/lib/api";
+import { getUrl } from "@/lib/getUrl";
+import Script from "next/script";
+import { UnderlineWithHover } from "@/_components/atoms/buttons";
 
 // Types
 type FilterType = "All" | "Year" | "Event";
-type EventType =
-  | "All"
-  | "InfraShakti Awards"
-  | "InfraPandit  Awards"
-  | "Annual Get-together 2025"
-  | "TIF Meetings";
 
-interface NewsletterCard {
-  id: number;
-  img: any; // Consider using a more specific type for images
-  category: string;
-  title: string;
-  event: EventType;
-  date: string;
+interface GalleryImage {
+  id: string;
+  imageUrl: string;
   description: string;
-  link: string;
+  event: string;
+  date: string;
+  activeOnMain: boolean;
+  archived: boolean;
+}
+
+interface GalleryResponse {
+  data: GalleryImage[];
+  meta: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
+}
+
+interface FilterResponse {
+  years: string[];
+  events: string[];
 }
 
 // Constants
 const FILTER_TYPES: FilterType[] = ["All", "Year", "Event"];
-const YEARS = [2023, 2024, 2025 ] as const;
-const SECTORS: EventType[] = [
-  "All",
- "InfraShakti Awards",
-  "InfraPandit  Awards",
-  "Annual Get-together 2025",
-  "TIF Meetings",
-];
-// const INITIAL_VISIBLE_COUNT = 19;
+
+const generateImageSchema = (img: GalleryImage) => ({
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  contentUrl: getUrl(img.imageUrl),
+  description: img.description,
+  name: img.event,
+  uploadDate: img.date,
+  publisher: {
+    "@type": "Organization",
+    name: "The Infravision Foundation",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://theinfravisionfoundation.org/logo.png",
+    },
+  },
+});
 
 export default function Gallery() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectedTab, setSelectedTab] = useState<FilterType>("All");
-  // Default filter: if Year tab, default to 2025, else All
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
-  // const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  // Fetch Filters
+  const { data: filters } = useQuery({
+    queryKey: ["gallery-filters"],
+    queryFn: () => getFetch<FilterResponse>("/gallery/filters"),
+  });
+
+  // Fetch Gallery Images
+  const {
+    data: galleryData,
+    fetchNextPage,
+    hasNextPage,
+  } = useInfiniteQuery({
+    queryKey: ["gallery-images", selectedTab, selectedFilter],
+    queryFn: async ({ pageParam = 1 }) => {
+      let url = "/gallery?archived=true&page=" + pageParam + "&limit=20";
+      if (selectedTab === "Year" && selectedFilter !== "All") {
+        url += `&year=${selectedFilter}`;
+      } else if (selectedTab === "Event" && selectedFilter !== "All") {
+        url += `&event=${encodeURIComponent(selectedFilter)}`;
+      }
+      return getFetch<GalleryResponse>(url);
+    },
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => {
+      if (lastPage.meta.totalPages < lastPage.meta.page) return undefined;
+      return lastPage.meta.page + 1;
+    },
+  });
+
+  const images = galleryData?.pages.flatMap((page) => page.data) || [];
+
   const scrollToCenter = (index: number) => {
     const tab = tabRefs.current[index];
     const container = containerRef.current;
 
     if (tab && container) {
-      // const containerRect = container.getBoundingClientRect();
-      // const tabRect = tab.getBoundingClientRect();
       const offset =
         tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
       container.scrollTo({ left: offset, behavior: "smooth" });
     }
   };
 
-  // Filtering logic
-  const filteredImages = useMemo(() => {
-    if (selectedTab === "Year" && selectedFilter !== "All") {
-      return galleryImages.filter(
-        (img) => img.year.toString() === selectedFilter
-      );
-    }
-    if (selectedTab === "Event" && selectedFilter !== "All") {
-      return galleryImages.filter((img) => img.event === selectedFilter);
-    }
-    return galleryImages;
-  }, [selectedTab, selectedFilter]);
-
   // Tab click handler
   const handleTabClick = (tab: FilterType) => {
     setSelectedTab(tab);
     if (tab === "Year") {
-      setSelectedFilter("2025");
+      // Default to the first year if available, otherwise "All"
+      const defaultYear =
+        filters?.years && filters.years.length > 0 ? filters.years[0] : "All";
+      setSelectedFilter(defaultYear);
+    } else if (tab === "Event") {
+      // Default to the first event if available, otherwise "All"
+      const defaultEvent =
+        filters?.events && filters.events.length > 0
+          ? filters.events[0]
+          : "All";
+      setSelectedFilter(defaultEvent);
     } else {
       setSelectedFilter("All");
     }
-    // setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
 
   // Filter button click handler
   const handleFilterClick = (filter: string, index: number) => {
     setSelectedFilter(filter);
-    // setVisibleCount(INITIAL_VISIBLE_COUNT);
     scrollToCenter(index);
   };
 
@@ -223,21 +139,21 @@ export default function Gallery() {
   };
 
   // Render filter buttons for Year or Event
-  const renderFilterButtons = (filters: readonly string[]) => (
+  const renderFilterButtons = (items: string[]) => (
     <div ref={containerRef} className="pt-5 overflow-scroll no-scrollbar">
       <div className="flex  gap-3">
-        {filters.map((filter, index) => (
+        {items.map((filter, index) => (
           <button
             key={filter}
             ref={(el: HTMLButtonElement | null) => {
               tabRefs.current[index] = el;
             }}
             className={`text-base cursor-pointer text-nowrap rounded-[50px] px-3 py-1 sm:px-6 sm:py-3 ${
-              selectedFilter === filter.toString()
+              selectedFilter === filter
                 ? "border border-pink text-white bg-pink font-medium"
                 : "border border-lightgray/30"
             }`}
-            onClick={() => handleFilterClick(filter.toString(), index)}
+            onClick={() => handleFilterClick(filter, index)}
           >
             {filter}
           </button>
@@ -246,8 +162,18 @@ export default function Gallery() {
     </div>
   );
 
+  const allImageSchemas = images.map(generateImageSchema);
+
   return (
     <section id="gallery" className="bg-whitesmoke">
+      <Script
+        id="gallery-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(allImageSchemas),
+        }}
+      />
       <div className="w-container blade-top-padding-sm blade-bottom-padding-sm">
         {/* Header Section */}
         <div className="flex flex-row items-center gap-2 md:gap-3">
@@ -257,11 +183,8 @@ export default function Gallery() {
 
         <div className="py-3 mb-4">
           <h1 className="text-black font-light">
-          
-            <span className="text-black font-medium">
-           Images of {' '}
-            </span>
-             impact
+            <span className="text-black font-medium">Images of </span>
+            impact
           </h1>
         </div>
         {/* Filter Bar */}
@@ -288,46 +211,46 @@ export default function Gallery() {
           </div>
         </div>
         {/* Conditional filter buttons for Year or Event */}
-        {selectedTab === "Year" && renderFilterButtons(YEARS.map(String))}
-        {selectedTab === "Event" && renderFilterButtons(SECTORS)}
+        {selectedTab === "Year" && renderFilterButtons(filters?.years || [])}
+        {selectedTab === "Event" && renderFilterButtons(filters?.events || [])}
         {/* Gallery Grid */}
         <div className="pt-8">
-          {filteredImages.length === 0 && (
+          {images.length === 0 && (
             <div className="flex justify-center"> No results </div>
           )}
           <div className="columns-2  sm:columns-3 lg:columns-4 xl:columns-5 gap-1 sm:gap-3 space-y-1 sm:space-y-3">
-            {filteredImages.map((img, idx) => (
+            {images.map((img, idx) => (
               <div
                 key={idx}
                 onClick={() => handleClickOnImage(idx)}
                 className="overflow-hidden group cursor-pointer  mb-1 sm:mb-3 break-inside-avoid shadow-sm bg-white"
               >
                 <Image
-                  src={img.image}
-                  alt={`Gallery Photo ${idx + 1}`}
+                  src={getUrl(img.imageUrl)}
+                  alt={img.description || img.event}
                   width={300}
                   height={256}
                   className="w-full h-auto object-cover transition-all duration-300 ease-linear group-hover:scale-[1.05]"
-                  unoptimized
+                  unoptimized // Assuming external images might need this or based on previous code
                 />
               </div>
             ))}
           </div>
-          {isOpen && (
+          {isOpen && images.length > 0 && (
             <Portal>
               <div className="w-screen h-screen p-3   fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] flex">
                 <div className="relative w-[38rem] h-[38rem] bg-black m-auto">
                   <Image
                     className=" object-contain z-0 [mask-image:linear-gradient(to_bottom,black,transparent)]"
                     fill
-                    src={filteredImages[currentIndex].image}
+                    src={getUrl(images[currentIndex].imageUrl)}
                     unoptimized
                     quality={100}
-                    alt={filteredImages[currentIndex].event}
+                    alt={images[currentIndex].event}
                   ></Image>
                   <div className="absolute bottom-4 z-10 w-full">
                     <p className="px-3 text-base xl:text-lg text-white text-center font-light">
-                      {filteredImages[currentIndex].description}
+                      {images[currentIndex].description}
                     </p>
                   </div>
                   <div className="z-10  absolute top-1/2 -translate-y-1/2 flex w-full px-3 sm:px-4 justify-between">
@@ -339,7 +262,7 @@ export default function Gallery() {
                       <MoveLeft />
                     </button>
                     <button
-                      disabled={currentIndex >= filteredImages.length - 1}
+                      disabled={currentIndex >= images.length - 1}
                       onClick={() => setCurrentIndex((prev) => prev + 1)}
                       className="bg-white p-2 rounded-full text-pink hover:bg-pink hover:text-white transition-all duration-300 ease-linear disabled:opacity-[50%] cursor-pointer disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-pink"
                     >
@@ -357,6 +280,20 @@ export default function Gallery() {
             </Portal>
           )}
         </div>
+      {hasNextPage && (
+        <div className="flex justify-center mb-4  blade-top-padding-sm  relative z-1">
+          <UnderlineWithHover
+            size="xxlsize"
+            color="pink"
+            bgColor="pink"
+            text="See more"
+            role="button"
+            borderColor="white" 
+            classes="  "
+            handlefun={fetchNextPage}
+          />
+        </div>
+      )}
       </div>
     </section>
   );

@@ -68,8 +68,8 @@ export default function BannerSection() {
     return (
         <Banner
             id="knowledge-section1"
-            image={image}
-            mobileimage={bannerMobile}
+            image={image.src}
+            mobileimage={bannerMobile.src}
             heading="Knowledge"
             title="Knowledge"
             subdesc="In-depth and independent analyses of India's infrastructure-related issues."

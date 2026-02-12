@@ -1,9 +1,6 @@
 import React from "react";
 import bg from "@/../public/assets/infrakatha/about/bgcircle.png";
-import image_01 from "@/../public/assets/infrakatha/about/dilip-cherian.jpg";
-import image_02 from "@/../public/assets/infrakatha/about/vinayak-chatterjee.jpg";
-import image_03 from "@/../public/assets/infrakatha/about/jagan-shah.jpg";
-import image_04 from "@/../public/assets/infrakatha/about/bonny-mukerjea.jpg";
+ 
 import { MemberCard } from "@/_components/molecules/memberCard";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,40 +11,27 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { BorderGrayHeroBtn } from "@/_components/atoms/buttons";
+import { useQuery } from "@tanstack/react-query";
+import { getFetch } from "@/lib/api";
+import { getUrl } from "@/lib/getUrl";
 
-
+interface Datetyep {
+    id: string
+    name:string
+    designation: string
+    socialUrl: string
+    socialType: string
+    image: string 
+}
+ 
 export default function About() {
-  const members = [
-    {
-      image: image_01,
-      title: "Dilip Cherian",
-      desig: "Member, Council of Advisors",
-      link: "https://www.linkedin.com/in/dilipcherian/",
-      socialMedia: "linkedin",
-    },
-    {
-      image: image_02,
-      title: "Vinayak Chatterjee",
-      desig: "Founder & Managing Trustee",
-      link: "https://x.com/infra_vinayakch?lang=en",
-      socialMedia: "X",
-    },
-    {
-      image: image_03,
-      title: "Jagan Shah",
-      desig: "Chief Executive Officer",
-      link: "https://www.linkedin.com/in/jagan-shah/",
-      socialMedia: "linkedin",
-    },
-    {
-      image: image_04,
-      title: "DN 'Bonny' Mukerjea",
-      desig: "Senior Media Executive",
-      link: "https://www.linkedin.com/in/d-n-bonny-mukerjea-a4009a3/",
-      socialMedia: "linkedin",
-    },
-  ];
-
+   const {data:members} = useQuery({
+   queryKey:["tif-host"],
+   queryFn:()=>getFetch<Datetyep[]>("/members?type=Infrakath-hosts&active=true")
+   })  
+  
+  console.log(members)
+  
   return (
     <section className="relative blade-top-padding-lg blade-bottom-padding-lg bg-whitesmoke">
       <Image
@@ -142,22 +126,20 @@ export default function About() {
                 }}
                 className="!overflow-visible sm:!overflow-hidden"
               >
-                {members.map((member, index) => (
+                {members?.map((member, index) => (
                   <SwiperSlide key={index}>
                     <div className="flex justify-center">
                       <MemberCard
-                        image={member.image}
-                        title={member.title}
-                        desig={member.desig}
-                        link={member.link}
-                        socialMedia={member.socialMedia}
+                        image={getUrl(member.image)}
+                        title={member.name}
+                        desig={member.designation}
+                        link={member.socialUrl}
+                        socialMedia={member.socialType}
                       />
                     </div>
                   </SwiperSlide>
                 ))}
               </Swiper>
-
-
 
               <div className="custom-swiper-pagination space-x-2 w-fit mx-auto sm:ml-auto sm:mr-4 mt-4 "></div>
             </div>

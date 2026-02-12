@@ -385,7 +385,7 @@ export default function ResearchPapers() {
                     image={card.img.src}
                     link={card.link}
                     category={card.category}
-                    description={card.description}
+                    // description={card.description}
                     classes="line-clamp-3"
                     ctaType="read more"
                   />

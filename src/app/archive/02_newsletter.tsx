@@ -1,383 +1,52 @@
 "use client";
-import { useEffect, useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef } from "react";
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 import { NewsCard } from "@/_components/molecules/newsCard";
 import Script from "next/script";
+import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
+import { getFetch } from "@/lib/api";
+import { getUrl } from "@/lib/getUrl";
 
 // Types
 type FilterType = "All" | "Publication year" | "sectors";
-type SectorType =
-  | "All"
-  | "Transportation"
-  | "Water and Sanitation"
-  | "Energy"
-  | "Urban Planning"
-  | "Rural and Agri Infra"
-  | "Education"
-  | "Health Infra";
 
-interface NewsletterCard {
-  id: number;
-  img: any; // Consider using a more specific type for images
-  category: string;
+interface Newsletter {
+  id: string;
   title: string;
-  sectors: SectorType;
-  date: string;
-  description: string;
-  link: string;
+  subtitle: string;
+  publishedDate: string;
+  coverImage: string;
+  fileUrl: string;
+  active: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+interface NewsletterResponse {
+  data: Newsletter[];
+  meta: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+    hasNext: boolean;
+    hasPrevious: boolean;
+  };
 }
 
 // Constants
 const FILTER_TYPES: FilterType[] = ["All", "Publication year"];
-const YEARS = ["2025", "2024", "2023"] as const;
-const SECTORS: SectorType[] = [
-  "All",
-  "Transportation",
-  "Water and Sanitation",
-  "Energy",
-  "Urban Planning",
-  "Rural and Agri Infra",
-  "Education",
-  "Health Infra",
-];
-const INITIAL_VISIBLE_COUNT = 3;
 
-const allcards = [
-  {
-    id: 32,
-    img: "/assets/archive/newsletter/analysisAction.png",
-    category: "Volume 32",
-    title: "",
-    sectors: "",
-    date: "January 2026",
-    description: "Analysis and action",
-    link: "/assets/pdf/analysisAction.pdf",
-  },
-  {
-    id: 31,
-    img: "/assets/archive/newsletter/infraPanditAward.png",
-    category: "Volume 31",
-    title: "",
-    sectors: "",
-    date: "December 2025",
-    description: "InfraPandit Awards 2025",
-    link: "/assets/pdf/decmber.pdf",
-  },
-  {
-    id: 30,
-    img: "/assets/archive/newsletter/noveberNewsletter.png",
-    category: "Volume 30",
-    title: "",
-    sectors: "",
-    date: "November 2025",
-    description: "PM gets vocal on unified transport authority",
-    link: "/assets/pdf/novemberNewsletter.pdf",
-  },
-  {
-    id: 29,
-    img: "/assets/archive/newsletter/nitiNewsletter.png",
-    category: "Volume 29",
-    title: "",
-    sectors: "",
-    date: "October 2025",
-    description: "TIF and NITI Aayog seal partnership ",
-    link: "/assets/pdf/niti.pdf",
-  },
-  {
-    id: 28,
-    img: "/assets/archive/newsletter/crunching.png",
-    category: "Volume 28",
-    title: "",
-    sectors: "",
-    date: "September 2025",
-    description: "Crunching data, analysing information",
-    link: "/assets/pdf/crunchingData.pdf",
-  },
-  {
-    id: 27,
-    img: "/assets/archive/newsletter/agustNewsletter.png",
-    category: "Volume 27",
-    title: "",
-    sectors: "",
-    date: "August 2025",
-    description: "TIF reaches out to stakeholders",
-    link: "/assets/pdf/augustNewsletter.pdf",
-  },
-  {
-    id: 25,
-    img: "/assets/archive/newsletter/latest1.png",
-    category: "Volume 26",
-    title: " ",
-    sectors: "",
-    date: "July 2025",
-    description: "Do you want to be an InfraPandit?",
-    link: "/assets/pdf/july.pdf",
-  },
-  {
-    id: 26,
-    img: "/assets/archive/newsletter/latest2.png",
-    category: "Volume 25",
-    title: " ",
-    sectors: "",
-    date: "June 2025",
-    description: "Transforming cities into frontiers for economic growth ",
-    link: "/assets/pdf/june2025.pdf",
-  },
-
-  {
-    id: 1,
-    img: "/assets/archive/newsletter/newsletter1.png",
-    category: "Volume 24",
-    title: "",
-    sectors: "",
-    date: "May 2025",
-    description: "Making change happen",
-    link: "/assets/pdf/letter1.pdf",
-  },
-  {
-    id: 2,
-    img: "/assets/archive/newsletter/newsletter2.png",
-    category: "Volume 23",
-    title: " ",
-    sectors: "",
-    date: "April 2025",
-    description: "Decarbonising urban transport",
-    link: "/assets/pdf/letter2.pdf",
-  },
-  {
-    id: 3,
-    img: "/assets/archive/newsletter/newsletter3.png",
-    category: "Volume 22",
-    title: " ",
-    sectors: "",
-    date: "March 2025",
-    description: "Fast-tracking High-Speed Rail",
-    link: "/assets/pdf/letter3.pdf",
-  },
-  {
-    id: 4,
-    img: "/assets/archive/newsletter/newsletter4.png",
-    category: "Volume 21",
-    title: " ",
-    sectors: "",
-    date: "February 2025",
-    description: "CAIRA Roundtable on agri exports is a success",
-    link: "/assets/pdf/letter4.pdf",
-  },
-  {
-    id: 5,
-    img: "/assets/archive/newsletter/newsletter5.png",
-    category: "Volume 20",
-    title: " ",
-    sectors: "",
-    date: "January 2025",
-    description: "Workshop on Trees Outside Forests",
-    link: "/assets/pdf/letter5.pdf",
-  },
-  {
-    id: 6,
-    img: "/assets/archive/newsletter/newsletter6.png",
-    category: "Volume 19",
-    title: " ",
-    sectors: "",
-    date: "December 2024",
-    description: "Telling the story of India",
-    link: "/assets/pdf/letter6.pdf",
-  },
-  {
-    id: 7,
-    img: "/assets/archive/newsletter/newsletter7.png",
-    category: "Volume 18",
-    title: " ",
-    sectors: "",
-    date: "November 2024",
-    description: "CAIRA takes shape",
-    link: "/assets/pdf/letter7.pdf",
-  },
-  {
-    id: 8,
-    img: "/assets/archive/newsletter/newsletter8.png",
-    category: "Volume 17",
-    title: " ",
-    sectors: "",
-    date: "October 2024",
-    description: "The Infravision Fellowship",
-    link: "/assets/pdf/letter8.pdf",
-  },
-  {
-    id: 9,
-    img: "/assets/archive/newsletter/newsletter9.png",
-    category: "Volume 16",
-    title: " ",
-    sectors: "",
-    date: "September 2024",
-    description: "Understanding Land Value Capture in urban India",
-    link: "/assets/pdf/letter9.pdf",
-  },
-  {
-    id: 10,
-    img: "/assets/archive/newsletter/newsletter10.png",
-    category: "Volume 15",
-    title: " ",
-    sectors: "",
-    date: "August 2024",
-    description: "The need for high-speed rail corridors",
-    link: "/assets/pdf/letter10.pdf",
-  },
-  {
-    id: 11,
-    img: "/assets/archive/newsletter/newsletter11.png",
-    category: "Volume 14",
-    title: " ",
-    sectors: "",
-    date: "July 2024",
-    description: "Champions Lab takes off",
-    link: "/assets/pdf/letter11.pdf",
-  },
-  {
-    id: 12,
-    img: "/assets/archive/newsletter/newsletter12.png",
-    category: "Volume 13",
-    title: " ",
-    sectors: "",
-    date: "June 2024",
-    description: "The building blocks of mythology",
-    link: "/assets/pdf/letter12.pdf",
-  },
-  {
-    id: 13,
-    img: "/assets/archive/newsletter/newsletter13.png",
-    category: "Volume 12",
-    title: " ",
-    sectors: "",
-    date: "May 2024",
-    description: "Diving into the water bodies census",
-    link: "/assets/pdf/letter13.pdf",
-  },
-  {
-    id: 14,
-    img: "/assets/archive/newsletter/mumbai.png",
-    category: "Volume 11",
-    title: " ",
-    sectors: "",
-    date: "April 2024",
-    description: "Sustainability Ratings is the buzz in Mumbai",
-    link: "/assets/pdf/letter14.pdf",
-  },
-  {
-    id: 15,
-    img: "/assets/archive/newsletter/newsletter15.png",
-    category: "Volume 10",
-    title: " ",
-    sectors: "",
-    date: "March 2024",
-    description: "No grain drain",
-    link: "/assets/pdf/letter15.pdf",
-  },
-  {
-    id: 16,
-    img: "/assets/archive/newsletter/newsletter16.png",
-    category: "Volume 9",
-    title: " ",
-    sectors: "",
-    date: "February 2024",
-    description: "Sooraj Se Rozgari gets PM nod",
-    link: "/assets/pdf/letter16.pdf",
-  },
-
-  {
-    id: 17,
-    img: "/assets/archive/newsletter/newsletter17.png",
-    category: "Volume 8",
-    title: " ",
-    sectors: "",
-    date: "January 2024",
-    description:
-      "Taking Surety Bonds and Sustainability Ratings to industry audience in Bangalore",
-    link: "/assets/pdf/letter17.pdf",
-  },
-  {
-    id: 18,
-    img: "/assets/archive/newsletter/newsletter18.png",
-    category: "Volume 7",
-    title: " ",
-    sectors: "",
-    date: "December 2023",
-    description: "Making commodities count for more",
-    link: "/assets/pdf/letter18.pdf",
-  },
-  {
-    id: 19,
-    img: "/assets/archive/newsletter/newsletter19.png",
-    category: "Volume 6",
-    title: " ",
-    sectors: "",
-    date: "November 2023",
-    description: "Ideas aplenty at quarterly meeting",
-    link: "/assets/pdf/letter19.pdf",
-  },
-  {
-    id: 20,
-    img: "/assets/archive/newsletter/newsletter20.png",
-    category: "Volume 5",
-    title: " ",
-    sectors: "",
-    date: "October 2023",
-    description: "Green signal for green ratings",
-    link: "/assets/pdf/letter20.pdf",
-  },
-  {
-    id: 21,
-    img: "/assets/archive/newsletter/newsletter21.png",
-    category: "Volume 4",
-    title: " ",
-    sectors: "",
-    date: "September 2023",
-    description: "Smart city, smart PT",
-    link: "/assets/pdf/letter21.pdf",
-  },
-  {
-    id: 22,
-    img: "/assets/archive/newsletter/newsletter22.png",
-    category: "Volume 3",
-    title: " ",
-    sectors: "",
-    date: "August 2023",
-    description: "The quarterly meeting",
-    link: "/assets/pdf/letter22.pdf",
-  },
-  {
-    id: 23,
-    img: "/assets/archive/newsletter/newsletter23.png",
-    category: "Volume 2",
-    title: " ",
-    sectors: "",
-    date: "July 2023",
-    description: "City mobility",
-    link: "/assets/pdf/letter23.pdf",
-  },
-  {
-    id: 24,
-    img: "/assets/archive/newsletter/newsletter24.png",
-    category: "Volume 1",
-    title: " ",
-    sectors: "",
-    date: "June 2023",
-    description: "Here comes the sun",
-    link: "/assets/pdf/letter24.pdf",
-  },
-];
-
-const generateArticleSchema = (card: any) => ({
+const generateArticleSchema = (card: Newsletter) => ({
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: `Infravision Newsletter – ${card.category}`,
-  description: card.description,
-  image: `https://theinfravisionfoundation.org${card.img}`,
+  headline: `Infravision Newsletter – ${card.title}`,
+  description: card.title || card.subtitle,
+  image: getUrl(card.coverImage),
   url: "https://theinfravisionfoundation.org/archive#newsletters",
   associatedMedia: {
     "@type": "MediaObject",
-    contentUrl: `https://theinfravisionfoundation.org${card.link}`,
+    contentUrl: getUrl(card.fileUrl),
     encodingFormat: "application/pdf",
   },
   publisher: {
@@ -388,6 +57,7 @@ const generateArticleSchema = (card: any) => ({
       url: "https://theinfravisionfoundation.org/logo.png",
     },
   },
+  datePublished: card.publishedDate,
 });
 
 export default function Newsletters() {
@@ -395,15 +65,44 @@ export default function Newsletters() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectedTab, setSelectedTab] = useState<FilterType>("All");
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
-  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
+
+  // Fetch Years
+  const { data: years = [] } = useQuery({
+    queryKey: ["newsletter-years"],
+    queryFn: () => getFetch<number[]>("/archives/newsletter/years"),
+  });
+
+  const availableYears = useMemo(() => years.map(String), [years]);
+
+  // Fetch Newsletters
+  const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
+    queryKey: ["newsletters", selectedTab, selectedFilter],
+    queryFn: async ({ pageParam = 1 }) => {
+      let url = `/archives/newsletter?page=${pageParam}&limit=3&activeOnly=true`;
+      if (selectedTab === "Publication year" && selectedFilter !== "All") {
+        url += `&year=${selectedFilter}`;
+      }
+      return getFetch<NewsletterResponse>(url);
+    },
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => {
+      if (lastPage?.meta?.hasNext) {
+        return lastPage.meta.page + 1;
+      }
+      return undefined;
+    },
+  });
+
+  const newsletters = useMemo(
+    () => data?.pages.flatMap((page) => page.data) || [],
+    [data],
+  );
 
   const scrollToCenter = (index: number) => {
     const tab = tabRefs.current[index];
     const container = containerRef.current;
 
     if (tab && container) {
-      // const containerRect = container.getBoundingClientRect();
-      // const tabRect = tab.getBoundingClientRect();
       const offset =
         tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
       container.scrollTo({ left: offset, behavior: "smooth" });
@@ -412,14 +111,11 @@ export default function Newsletters() {
 
   const handleTabClick = (tab: FilterType) => {
     setSelectedTab(tab);
-    setSelectedFilter(
-      tab === "Publication year"
-        ? YEARS[0]
-        : tab === "sectors"
-          ? SECTORS[0]
-          : "All",
-    );
-    setVisibleCount(INITIAL_VISIBLE_COUNT);
+    if (tab === "Publication year") {
+      setSelectedFilter(availableYears[0] || "All");
+    } else {
+      setSelectedFilter("All");
+    }
   };
 
   const handleFilterClick = (filterName: string, index: number) => {
@@ -427,20 +123,8 @@ export default function Newsletters() {
     scrollToCenter(index);
   };
 
-  const filteredCards = useMemo(() => {
-    if (selectedTab === "Publication year") {
-      return allcards.filter(
-        (card) => card.date.split(" ").pop() === selectedFilter,
-      );
-    }
-    if (selectedTab === "sectors" && selectedFilter !== "All") {
-      return allcards.filter((card) => card.sectors === selectedFilter);
-    }
-    return allcards;
-  }, [selectedTab, selectedFilter]);
-
   const handleSeeMore = () => {
-    setVisibleCount((prev) => prev + INITIAL_VISIBLE_COUNT);
+    fetchNextPage();
   };
 
   const renderFilterButtons = (filters: readonly string[]) => (
@@ -467,7 +151,7 @@ export default function Newsletters() {
     </div>
   );
 
-  const allNewsLetterSchemas = allcards.map(generateArticleSchema);
+  const allNewsLetterSchemas = newsletters.map(generateArticleSchema);
 
   return (
     <section id="newsletters">
@@ -522,8 +206,8 @@ export default function Newsletters() {
           </div>
 
           {/* Filter Buttons */}
-          {selectedTab === "Publication year" && renderFilterButtons(YEARS)}
-          {selectedTab === "sectors" && renderFilterButtons(SECTORS)}
+          {selectedTab === "Publication year" &&
+            renderFilterButtons(availableYears)}
 
           {/* Newsletter Cards */}
           <div
@@ -531,26 +215,32 @@ export default function Newsletters() {
               selectedTab === "Publication year" ? "pt-8" : "pt-8"
             }`}
           >
-            {filteredCards.length === 0 && (
+            {newsletters.length === 0 && (
               <div className="flex justify-center "> No results </div>
             )}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 xlg:gap-24">
-              {filteredCards.slice(0, visibleCount).map((card) => (
+              {newsletters.map((card) => (
                 <div key={card.id}>
                   <NewsCard
-                    date={card.date}
+                    date={
+                      card.publishedDate
+                        ? new Date(card.publishedDate).toLocaleDateString(
+                            "en-US",
+                            { month: "short", year: "numeric" },
+                          )
+                        : ""
+                    }
                     title={card.title}
-                    image={card.img}
-                    link={card.link}
-                    category={card.category}
-                    description={card.description}
+                    image={getUrl(card.coverImage)}
+                    link={getUrl(card.fileUrl)}
+                    category={"Newsletter"}
                     classes="line-clamp-3"
                     ctaType="read more"
                   />
                 </div>
               ))}
             </div>
-            {visibleCount < filteredCards.length && (
+            {hasNextPage && (
               <div className="flex justify-center mb-4  blade-top-padding-sm">
                 <UnderlineWithHover
                   size="xxlsize"

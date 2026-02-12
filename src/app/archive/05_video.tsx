@@ -1,22 +1,127 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState, useMemo } from "react";
 import Image from "next/image";
 import { FaYoutube } from "react-icons/fa";
 import VideoPopup from "../../_components/molecules/videopopup";
-import {
-  BorderGrayHeroBtn,
-  UnderlineWithHover,
-} from "@/_components/atoms/buttons";
-import { allCards } from "./static";
+import { BorderGrayHeroBtn } from "@/_components/atoms/buttons";
 import Link from "next/link";
+import Script from "next/script";
+import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
+import { getFetch } from "@/lib/api";
+import { getUrl } from "@/lib/getUrl";
 
+interface Category {
+  id: string;
+  name: string;
+  slug: string;
+  active: boolean;
+}
 
+interface Video {
+  id: string;
+  image: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  link: string;
+  date: string;
+  active: boolean;
+  categories: Category[];
+}
 
-export default function Video() {
-  const [tab, setTab] = useState("All");
+interface VideoResponse {
+  data: Video[];
+  meta: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+    hasNext: boolean;
+    hasPrevious: boolean;
+  };
+}
+
+const generateVideoSchema = (video: Video) => ({
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  name: video.title,
+  description: video.description || video.title,
+  thumbnailUrl: getUrl(video.image),
+  uploadDate: video.date,
+  contentUrl: video.link,
+  embedUrl: video.link,
+  publisher: {
+    "@type": "Organization",
+    name: "The Infravision Foundation",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://theinfravisionfoundation.org/logo.png",
+    },
+  },
+});
+
+export default function VideoSection() {
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [videoLink, setVideoLink] = useState("");
+  const [popupOpen, setPopupOpen] = useState(false);
+
+  // Fetch Categories
+  const { data: categories = [] } = useQuery({
+    queryKey: ["video-categories"],
+    queryFn: () =>
+      getFetch<Category[]>("/archives/videos/categories?activeOnly=true"),
+  });
+
+  // Fetch Videos
+  const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
+    queryKey: ["videos", selectedCategory],
+    queryFn: async ({ pageParam = 1 }) => {
+      let url = "";
+      if (selectedCategory === "All") {
+        url = `/archives/videos?page=${pageParam}&limit=3`;
+      } else {
+        url = `/archives/videos/categories/${selectedCategory}?page=${pageParam}&limit=3`;
+      }
+      return getFetch<VideoResponse>(url);
+    },
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => {
+      if (lastPage?.meta?.hasNext) {
+        return lastPage.meta.page + 1;
+      }
+      return undefined;
+    },
+  });
+
+  const videos = useMemo(
+    () => data?.pages.flatMap((page) => page.data) || [],
+    [data],
+  );
+
+  const handleVideoClick = (link: string) => {
+    setVideoLink(link);
+    setPopupOpen(true);
+  };
+
+  const handleSeeMore = () => {
+    fetchNextPage();
+  };
+
+  const allVideoSchemas = videos.map(generateVideoSchema);
 
   return (
-    <section id="videos" className=" blade-top-padding-lg blade-bottom-padding-lg">
+    <section
+      id="videos"
+      className=" blade-top-padding-lg blade-bottom-padding-lg"
+    >
+      <Script
+        id="video-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(allVideoSchemas),
+        }}
+      />
       <div className="w-container">
         <div>
           <div className="flex flex-row items-center gap-2 md:gap-3">
@@ -42,147 +147,117 @@ export default function Video() {
             </div>
           </div>
         </div>
+
         <div className="lg:pt-4">
-          <TabsSection tab={tab} setTab={setTab} />
-          <CardSection tab={tab} />
+          {/* Tabs Section */}
+          <div className="flex flex-col md:flex-row gap-6 border-b border-darkgray/20">
+            <div className="sm:border-r sm:border-darkgray/20">
+              <h5 className="text-darkgray/80 sm:py-5 pr-5 text-nowrap">
+                Filter by
+              </h5>
+            </div>
+            <div className="flex flex-row gap-4 md:gap-5 flex-wrap">
+              <button
+                className={`mt-auto text-sm md:text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4 ${
+                  selectedCategory === "All"
+                    ? "text-pink font-medium border border-pink"
+                    : "border border-lightgray/30"
+                }`}
+                onClick={() => setSelectedCategory("All")}
+              >
+                All
+              </button>
+              {categories.map((cat) => (
+                <button
+                  key={cat.id}
+                  className={`mt-auto text-sm md:text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4 ${
+                    selectedCategory === cat.id
+                      ? "text-pink font-medium border border-pink"
+                      : "border border-lightgray/30"
+                  }`}
+                  onClick={() => setSelectedCategory(cat.id)}
+                >
+                  {cat.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Card Section */}
+          <div className="grid grid-cols-1  sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-6 md:gap-10 xl:gap-10 ">
+            {videos.map((ele) => (
+              <div key={ele.id} className="pt-4  md:pt-10 xl:pt-12">
+                <div className="h-[18rem] md:h-[20rem] xl:h-[14rem] 2xl:h-[19rem] relative rounded overflow-hidden">
+                  <Image
+                    src={getUrl(ele.image)}
+                    alt={ele.title}
+                    fill
+                    className="object-cover w-full h-full cursor-pointer"
+                    onClick={() => handleVideoClick(ele.link)}
+                  />
+                </div>
+
+                <div>
+                  <div className="flex flex-row justify-between py-3">
+                    <div className="flex flex-row items-center gap-2 md:gap-3">
+                      <span className="w-[7px] h-[7px] md:w-[12px] md:h-[12px] rounded-full bg-darkgray/30"></span>
+                      <p className=" text-black">
+                        {ele.categories?.[0]?.name || "Video"}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-darkgray ">
+                        {ele.date
+                          ? new Date(ele.date).toLocaleDateString("en-US", {
+                              month: "long",
+                              year: "numeric",
+                            })
+                          : ""}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="w-full  md:w-[90%]">
+                    <h5 className="text-blacksecond font-medium line-clamp-2">
+                      {ele.title}
+                    </h5>
+                  </div>
+                </div>
+                <div className="py-2 md:py-4">
+                  <BorderGrayHeroBtn
+                    text="Watch video"
+                    role="button"
+                    borderColor="darkgray/40"
+                    color="black"
+                    bgColor="white"
+                    size="base"
+                    handlepopup={() => handleVideoClick(ele.link)}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {hasNextPage && (
+            <div className="flex w-full blade-top-padding-sm">
+              <button
+                onClick={handleSeeMore}
+                className={`group mx-auto text-xl lg:text-2xl   text-pink hover:text-white   text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
+              >
+                <span className="z-50 relative">See more</span>
+                <span
+                  className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
+                ></span>
+                <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5] transition-all duration-700 ease-in-out z-0"></span>
+              </button>
+            </div>
+          )}
+
+          {popupOpen && (
+            <VideoPopup src={videoLink} onClose={() => setPopupOpen(false)} />
+          )}
         </div>
       </div>
     </section>
-  );
-}
-
-const filter = [
-  "All",
-  "Projects",
- 
-  "Infrakatha",
-  "The Infravision Conversation",
-  "InfraShakti Awards",
-   "Quarterly meet"
-];
-
-function TabsSection({
-  tab,
-  setTab,
-}: {
-  tab: string;
-  setTab: (tabname: string) => void;
-}) {
-  return (
-    <div className="flex flex-col md:flex-row gap-6 border-b border-darkgray/20">
-      <div className="sm:border-r sm:border-darkgray/20">
-        <h5 className="text-darkgray/80 sm:py-5 pr-5 text-nowrap">Filter by</h5>
-      </div>
-      <div className="flex flex-row gap-4 md:gap-5 flex-wrap">
-        {filter.map((ele) => (
-          <button
-            key={ele}
-            className={`mt-auto text-sm md:text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4 ${tab === ele
-                ? "text-pink font-medium border border-pink"
-                : "border border-lightgray/30"
-              }`}
-            onClick={() => setTab(ele)}
-          >
-            {ele}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function CardSection({ tab }: { tab: string }) {
-  const FilterCards = () => {
-    if (tab === "All") return allCards;
-    return allCards.filter((card) => card.subtitle === tab);
-  };
-
-  const mobileview = 3;
-
-  const [visiblecountmobile, setvisiblecountmobile] = useState(mobileview);
-
-  const [videoLink, setVideoLink] = useState("");
-  const [popupOpen, setPopupOpen] = useState(false);
-
-  const handleVideoClick = (link: string) => {
-    setVideoLink(link);
-    setPopupOpen(true);
-  };
-
-  const handleSeeMoreCta = () => {
-    setvisiblecountmobile((prev) => prev + 3);
-  };
-  useEffect(() => {
-    setvisiblecountmobile(mobileview);
-  }, [tab]);
-
-  return (
-    <>
-      <div className="grid grid-cols-1  sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-6 md:gap-10 xl:gap-10 ">
-        {FilterCards()
-          .slice(0, visiblecountmobile)
-          .map((ele) => (
-            <div key={ele.link} className="pt-4  md:pt-10 xl:pt-12">
-              <div
-                className="h-[18rem] md:h-[20rem] xl:h-[14rem] 2xl:h-[19rem] bg-no-repeat bg-cover bg-center rounded"
-                style={{ backgroundImage: `url(${ele.image})` }}
-              >
-                <Image
-                  src={ele.image}
-                  alt={ele.subtitle}
-                  className="w-full h-full cursor-pointer"
-                  onClick={() => handleVideoClick(ele.link)}
-                />
-              </div>
-
-              <div>
-                <div className="flex flex-col sm:flex-row justify-between py-3">
-                  <div className="flex flex-row items-center gap-2 md:gap-3">
-                    <span className="w-[7px] h-[7px] md:w-[12px] md:h-[12px] rounded-full bg-darkgray/30"></span>
-                    <p className=" text-black">{ele.subtitle}</p>
-                  </div>
-                  <div>
-                    <p className="text-darkgray ">{ele.date}</p>
-                  </div>
-                </div>
-
-                <div className="w-full  md:w-[90%]">
-                  <h5 className="text-blacksecond font-medium">
-                    {ele.subdesc}
-                  </h5>
-                </div>
-              </div>
-              <div className="py-2 md:py-4">
-                <BorderGrayHeroBtn
-                  text="Watch video"
-                  role="button"
-                  borderColor="darkgray/40"
-                  color="black"
-                  bgColor="white"
-                  size="base"
-                  handlepopup={() => handleVideoClick(ele.link)}
-                />
-              </div>
-            </div>
-          ))}
-      </div>
-      {visiblecountmobile < FilterCards().length && (
-        <div className="flex w-full blade-top-padding-sm">
-          <button
-            onClick={handleSeeMoreCta}
-            className={`group mx-auto text-xl lg:text-2xl   text-pink hover:text-white   text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
-          >
-            <span className="z-50 relative">See more</span>
-            <span
-              className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
-            ></span>
-            <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5] transition-all duration-700 ease-in-out z-0"></span>
-          </button>
-        </div>
-      )}
-      {popupOpen && (
-        <VideoPopup src={videoLink} onClose={() => setPopupOpen(false)} />
-      )}
-    </>
   );
 }

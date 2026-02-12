@@ -1,44 +1,93 @@
-"use client";
+ 
+import { Metadata } from "next";
 import BannerSection from "./01_banner";
-import NewsAndMedia from "./03_newsAndMedia";
-import Newsletter from "./02_newsletter";
-import Gallery from "./04_gallery";
-import { useRef } from "react";
-import PublicationTabs from "@/_components/molecules/tabs";
-import Video from "./05_video";
+import Section from "./sections";
+ 
 
-type TabId = "newsletter" | "newsandMedia" | "video" | "gallery";
+export const metadata: Metadata = {
+  title: "Insights & resources on infrastructure | TIF Archives",
+  description:
+    "Explore newsletters, media features, videos & galleries capturing infrastructure discourse by The Infravision Foundation, India’s first infrastructure think tank",
+  keywords: [
+    "think tank india",
+    "think tanks",
+    "the infravision foundation",
+    "infravision foundation",
+    "policy research",
+    "public policy",
+    "archive",
+  ],
+  icons: {
+    icon: [
+      {
+        url: "https://theinfravisionfoundation.org/favicon16x16.png",
+        sizes: "16x16",
+        type: "image/png",
+      },
+      {
+        url: "https://theinfravisionfoundation.org/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      { url: "https://theinfravisionfoundation.org/favicon.png" },
+    ],
+    apple: "https://theinfravisionfoundation.org/apple-touch-icon.png",
+  },
 
-const tabs: { id: TabId; label: string }[] = [
-  { id: "newsletter", label: "Newsletters" },
-  { id: "newsandMedia", label: "In the News" },
-  { id: "video", label: "Videos" },
-  { id: "gallery", label: "Gallery" },
-];
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://theinfravisionfoundation.org/archive",
+    languages: {
+      "x-default": "https://theinfravisionfoundation.org/",
+    },
+  },
+  authors: [{ name: "The Infravision Foundation" }],
+  publisher: "The Infravision Foundation",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://theinfravisionfoundation.org/archive",
+    siteName: "The Infravision Foundation",
+    title: "Insights & resources on infrastructure | TIF Archives",
+    description:
+      "Explore newsletters, media features, videos & galleries capturing infrastructure discourse by The Infravision Foundation, India’s first infrastructure think tank.",
+    images: [
+      {
+        url: "https://theinfravisionfoundation.org/assets/og/ogImage.png",
+        width: 1200,
+        height: 630,
+        alt: "The Infravision Foundation",
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Insights & resources on infrastructure | TIF Archives",
+    description:
+      "Explore newsletters, media features, videos & galleries capturing infrastructure discourse by The Infravision Foundation, India’s first infrastructure think tank.",
+    images: ["https://theinfravisionfoundation.org/assets/og/ogImage.png"],
+  },
+};
 
 export default function Archive() {
-  const sectionRefs: Record<TabId, React.RefObject<HTMLDivElement | null>> = {
-    newsletter: useRef<HTMLDivElement | null>(null),
-    newsandMedia: useRef<HTMLDivElement | null>(null),
-    gallery: useRef<HTMLDivElement | null>(null),
-    video: useRef<HTMLDivElement | null>(null),
-  };
+ 
   return (
-    <>
+    <main>
       <BannerSection />
-      <PublicationTabs tabs={tabs} sectionRefs={sectionRefs} />
-      <div id="newsletters" ref={sectionRefs.newsletter}>
-        <Newsletter />
-      </div>
-      <div id="newsandMedia" ref={sectionRefs.newsandMedia}>
-        <NewsAndMedia />
-      </div>
-      <div id="videos" ref={sectionRefs.video}>
-        <Video />
-      </div>
-      <div id="gallery" ref={sectionRefs.gallery}>
-        <Gallery />
-      </div>
-    </>
+       <Section/>
+    </main>
   );
 }

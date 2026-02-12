@@ -20,11 +20,6 @@ const tabs: { id: TabId; label: string }[] = [
   { id: "gallery", label: "Gallery" },
 ];
 
-
-
-
-
-
 export default function InfraShakti() {
   const sectionRefs: Record<TabId, React.RefObject<HTMLDivElement | null>> = {
     overview: useRef<HTMLDivElement | null>(null),
