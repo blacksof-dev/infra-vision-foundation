@@ -1,7 +1,9 @@
 import image from "@/../public/assets/knowledeg/banner/banner.jpg"
 import bannerMobile from "@/../public/assets/knowledeg/banner/bannerMobile.jpg"
 import Banner from "@/_components/molecules/banner";
+
 import { Metadata } from "next";
+
 
 export const metadata: Metadata = {
   title: 'Research & insights by The Infravision Foundation | Knowledge',
@@ -64,7 +66,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BannerSection() {
+
+
+export default  function BannerSection() {
+
+ 
+
     return (
         <Banner
             id="knowledge-section1"
@@ -76,3 +83,4 @@ export default function BannerSection() {
         />
     )
 }
+

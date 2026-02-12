@@ -15,7 +15,9 @@ import Patrons from "./patrons";
 export default function Home() {
   return (
     <>
+      
       <Banner />
+     
       <WhoWeAre />
       <OurCore />
       <TeamsTrustees />
@@ -26,6 +28,7 @@ export default function Home() {
       <Association />
       <SocialMedia />
       <GetInvolved />
+     
     </>
   );
 }

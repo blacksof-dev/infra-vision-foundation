@@ -116,7 +116,8 @@ export default function Page() {
   }, [pagination]);
 
   return (
-    <section>
+    <section >
+      <div className="">
       <SectionHeading
         heading="Newsletters"
         cta={true}
@@ -238,6 +239,8 @@ export default function Page() {
           </div>
         </div>
       )}
+      </div>
+      
     </section>
   );
 }

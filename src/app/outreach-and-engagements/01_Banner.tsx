@@ -83,7 +83,7 @@ export const metadata: Metadata = {
   },
 };
 
-interface BannerData {
+export interface BannerData {
   heading: string;
   description: string;
   backgroundImageDesktop: string;
@@ -91,10 +91,10 @@ interface BannerData {
 }
 
 export default async function OutreachBanner() {
-  noStore();
+
 
   const data = await getFetch<BannerData>(
-    "/content/outreach-and-engagements-banner",
+    "/content/knowledge-banner-section",
   );
 
   return (

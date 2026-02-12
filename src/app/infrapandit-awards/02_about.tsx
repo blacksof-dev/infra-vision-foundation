@@ -1,372 +1,156 @@
-import { BorderGrayHeroBtn, UnderlineCta } from "@/_components/atoms/buttons";
-import React, { useState } from "react";
-import { MdClose } from "react-icons/md";
+"use client";
+import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 
-const AboutInfraPandit = () => {
-  const [showPopup, setShowPopup] = useState(false);
+// types/award.ts
 
+export interface EditorBlock {
+  id: string;
+  type: string;
+  data: any;
+}
+
+export interface EditorContentType {
+  time: number;
+  blocks: EditorBlock[];
+  version: string;
+}
+
+export interface MainSection {
+  id: string;
+  active: boolean;
+  title: string;
+  content: EditorContentType;
+  posterImageUrl: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface EligibilitySection {
+  id: string;
+  ctaText: string;
+  active: boolean;
+  content: EditorContentType;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ApplicationSection {
+  id: string;
+  ctaText: string;
+  url: string;
+  active: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface AwardResponse {
+  main: MainSection;
+  eligibility: EligibilitySection;
+  application: ApplicationSection;
+}
+
+interface PopupProps {
+  onClose: () => void;
+  content: EditorContentType;
+}
+
+const EligibilityPopup = ({ onClose, content }: PopupProps) => {
   return (
-    <>
-      <section className="bg-[#F6F6F6]">
-        <div className="w-container blade-top-padding blade-bottom-padding-lg flex flex-col justify-between md:flex-row gap-8 md:gap-20 md:items-center">
-          <div className="max-w-full md:max-w-sm lg:max-w-md xl:max-w-2xl">
-            <div className="flex items-center gap-2 md:gap-3 text-pink">
-              <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
-              <h5 className="font-medium text-sm xl:text-lg">
-                About InfraPandit Awards
-              </h5>
-            </div>
-            <div className="pt-4 pb-2 md:py-5 flex flex-col md:flex-row justify-between gap-4">
-              <h1 className="leading-snug font-light text-2xl md:text-3xl xl:text-5xl">
-                Connecting{" "}
-                <span className="font-medium">academic excellence</span> to
-                national progress
-              </h1>
-            </div>
-            <div className="">
-              <h4 className="font-light text-base xl:text-xl">
-                {" "}
-                The <span className="font-medium">InfraPandit Awards</span> honour and reward first-rate research
-                that can accelerate India towards becoming a{" "}
-                <span className="font-semibold">Viksit Bharat</span>. It
-                identifies and recognises young minds for their fresh outlook on
-                core infrastructure issues and groundbreaking insights.
-              </h4>
-              <h4 className="font-light mt-5 text-base xl:text-xl">
-                Instituted by The Infravision Foundation, the awards aim to
-                foster tangible outcomes in infrastructure research and
-                development through effective collaboration among industry,
-                academia, and government.
-              </h4>
-            </div>
-            <div className="mt-4">
-              <h4 className="font-medium  mb-1">For the awardees</h4>
-              <div className="flex items-center gap-2 md:gap-3 mb-2">
-                <span className="w-[6px] h-[6px] md:w-[10px] md:h-[10px] rounded-full bg-pink"></span>
-                <h5 className="font-light text-sm xl:text-xl">
-                  The{" "}
-                  <span className="font-medium">Uttam Award (INR 5 lakh)</span>{" "}
-                  and the{" "}
-                  <span className="font-medium">
-                    Mahaan Award (INR 3 lakh).
-                  </span>
-                </h5>
-              </div>
-              <div className="flex items-start gap-2 md:gap-3 ">
-                <span className="w-[6px] h-[6px] md:w-[10px] md:h-[10px] rounded-full mt-2 bg-pink shrink-0"></span>
-                <h5 className="font-light text-sm xl:text-xl">
-                  A citation by{" "}
-                  <span className="font-medium">
-                    The Infravision Foundation
-                  </span>{" "}
-                  highlighting the dissertation's significance.
-                </h5>
-              </div>
-            </div>
-            <div className="pt-6 flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-8 sm:items-center">
-              {/* <BorderGrayHeroBtn
-                text="Applications closed"
-                role="link"
-                borderColor="pink"
-                color="black"
-                bgColor="white"
-                size="large"
-                classes="font-medium"
-                link="https://docs.google.com/forms/d/e/1FAIpQLSdjpffzJCT6qmQXNUmoUau7giN4qVTsm5j3ysGZ0r8QxiG05g/viewform?usp=sharing&ouid=118204303619309850521"
-                target="_blank"
-              /> */}
-              <div
-                role="button"
-                onClick={() => setShowPopup(true)}
-                className="cursor-pointer"
-              >
-                <UnderlineCta
-                  title="Eligibility and process"
-                  color="black"
-                  underlineColor="pink"
-                  role="link"
-                  size="extralarge" 
-              
-                />
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-center">
-            <img
-              className=""
-              src="/assets/infrapandit/award.png"
-              alt="Infrapandit Awards"
-            />
-          </div>
-        </div>
-      </section>
-      {showPopup && (
-        <EligibilityProcessPopup onClose={() => setShowPopup(false)} />
-      )}
-    </>
-  );
-};
-
-// Popup Component
-const EligibilityProcessPopup = ({ onClose }: { onClose: () => void }) => {
-  return (
-    <div className="fixed inset-0  flex items-cente  justify-center bg-black/70 backdrop-blur-sm px-2 py-10 z-[9999]">
-      <div className="relative bg-white rounded-md  max-w-[800px]  h-full my-auto flex flex-col">
-        {/* Header with close button */}
-        <div className="flex items-center  justify-between px-2 py-2 sm:px-6 sm:py-4 ">
-          <button
-            onClick={onClose}
-            className="bg-pink cursor-pointer rounded-full p-1 text-white text-2xl ml-auto focus:outline-none"
-          >
-            <MdClose />
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+      <div className="bg-white w-[90%] max-w-4xl max-h-[90vh] rounded-lg shadow-lg flex flex-col">
+        {/* Header */}
+        <div className="flex justify-between items-center p-4 border-b">
+          <h2 className="text-xl font-semibold">Eligibility & Process</h2>
+          <button onClick={onClose} className="text-gray-600 hover:text-black">
+            ✕
           </button>
         </div>
+
         {/* Content */}
-        <div className="flex-1 overflow-y-auto space-y-2 px-2 sm:px-6 py-4 text-[13px] md:text-base mr-5 sm:mr-9 ">
-          <h2 className="text-pink font-semibold mb-4">Eligibility</h2>
-          <p className="text-base sm:text-lg font-light">
-            Eligible candidates must be{" "}
-            <span className="font-medium"> Indian citizens </span> who have been
-            awarded a PhD from an Indian university or an institute recognised
-            by the University Grants Commission (UGC) and accredited by NAAC or
-            any autonomous institute or institutions of national importance,
-            during the preceding three years.
-          </p>
-          <p className="text-base sm:text-lg font-light">
-            The awarded dissertations will be in fields directly relevant to
-            infrastructure, including{" "}
-            <span className="font-medium">
-              {" "}
-              engineering, technology, management, finance, economics, and
-              others.
-            </span>{" "}
-            The submitted dissertation may have been published.
-          </p>
-          <div>
-            <h2 className="text-pink font-semibold mb-2 mt-6 md:mt-10">
-              The awards
-            </h2>
-            <ul className="list-disc pl-5 mb-2 text-pink text-2xl space-y-2">
-              <li className=" text-base font-light sm:text-lg">
-                <span className="text-black">
-                  Two InfraPandits will be selected in the first year of the
-                  award.
-                </span>
-              </li>
-              <li className=" text-base font-light sm:text-lg">
-                <span className="text-black">
-                  The award will consist of a citation from The Infravision
-                  Foundation stating the significance of the dissertation and a
-                  cash prize in one of the following amounts:
-                </span>
-              </li>
-              <ul className="pl-5">
-                <li className="list-disc text-black text-base">
-                  Uttam Award (INR 5 lakh)
-                </li>
-                <li className="list-disc text-black text-base">
-                  Mahaan Award (INR 3 lakh)
-                </li>
-              </ul>
-              <li className=" text-base font-light sm:text-lg">
-                <span className="text-black">
-                  The winners of the InfraPandit Award will be felicitated at an event in the presence of high-profile guests from academia, industry, and government. The event will receive extensive coverage and publicity.
-                </span>
-              </li>
-            </ul>
-          </div>
-          <div className="">
-            <h2 className="text-pink font-semibold mb-2 mt-6 md:mt-10">
-              Timeline
-            </h2>
-            <ul className="list-disc pl-5 mb-2 text-pink text-2xl space-y-2">
-              <li className=" text-base font-light sm:text-lg">
-                <span className="text-black">
-                  The awards program will be announced along with a call for
-                  online applications on 20th June 2025 on The
-                  
-                    Infravision Foundation’s {" "}
-                  
-                     official website.
-                </span>
-              </li>
-              <li className=" text-base font-light sm:text-lg">
-                <span className="text-black">
-                  The <span className="font-medium">last date</span> for
-                  submitting the applications will be  August 14, 2025.
-                </span>
-              </li>
-              <li className=" text-base font-light sm:text-lg">
-                <span className="text-black">
-                  The <span className="font-medium">results</span> will be
-                  announced latest by November 15, 2025.
-                </span>
-              </li>
-              {/* <ul className="pl-5">
-                <li className="list-disc text-black text-base">
-                  Uttam Award (INR 5 lakh)
-                </li>
-                <li className="list-disc text-black text-base">
-                  Mahaan Award (INR 3 lakh)
-                </li>
-              </ul> */}
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-pink font-semibold mb-2 mt-6 md:mt-10">
-              About the jury
-            </h2>
-            <p className="text-base sm:text-lg font-light">
-              The jury panel for the award will feature eminent experts from
-              fields directly relevant to infrastructure development and
-              innovation in India. It will comprise{" "}
-              <span className="font-medium">
-                five (5) members, representing academia, technology &
-                innovation, industry, and finance.
-              </span>
-            </p>
-            <p className="text-base sm:text-lg font-light mt-2">
-              While the members of the jury may change in later cycles of the
-              award, the sectors they represent will remain constant.
-            </p>
-          </div>
-          <div className="space-y-3">
-            <h2 className="text-pink font-semibold  mb-2 mt-6 md:mt-10">
-              Process
-            </h2>
-            <p className="text-base sm:text-lg font-light pl-3">
-              The process to be followed is described below:
-            </p>
-            <p className="text-base sm:text-lg font-medium">
-              1. Receipt of applications as per the standard online format
-            </p>
-            <p className="text-base sm:text-lg font-medium">
-              2. Screening of applications
-            </p>
-            <p className="text-base sm:text-lg font-light pl-5">
-              Verification of authentic documents and confirmation of
-              eligibility.
-            </p>
-            <p className="text-base sm:text-lg font-medium">
-              3. Evaluation of dissertation (Stage 1: Desk Review)
-            </p>
-            <p className="text-base sm:text-lg font-light pl-5">
-              Three criteria will be evaluated in Stage 1. It will cover 70% of
-              the marks.
-            </p>
-          </div>
-          <div className=" mt-2">
-            <h5 className="text-pink font-semibold relative flex items-center">
-              <span className="inline-block w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-pink my-auto mr-2"></span>
-              Quality (30%)
-            </h5>
-            <ul className="space-y-2 pt-2 list-disc list-outside pl-5 font-light text-base sm:text-lg">
-              <li>Originality of the research</li>
-              <li>Quality of data collected and the analysis</li>
-              <li>Theoretical framework and literature review</li>
-              <li>Methodology</li>
-              <li>Quality of research documentation</li>
-            </ul>
-          </div>
-          <div className="mt-4">
-            <h5 className="text-pink font-semibold relative flex items-center">
-              <span className="inline-block w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-pink my-auto mr-2"></span>
-              Relevance (20%)
-            </h5>
-            <ul className="space-y-2 pt-2 list-disc list-outside pl-5 font-light text-base sm:text-lg">
-              <li>
-                Potential for practical application in the infrastructure sector
-              </li>
-              <li>Relevance to current infrastructure challenges in India</li>
-              <li>Economic and social impact potential</li>
-              <li>Scalability of the solutions proposed</li>
-            </ul>
-          </div>
-          <div className="mt-4">
-            <h5 className="text-pink font-semibold relative flex items-center">
-              <span className="inline-block w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-pink my-auto mr-2"></span>
-              Outcomes (20%)
-            </h5>
-            <ul className="space-y-2 pt-2 list-disc list-outside pl-5 font-light text-base sm:text-lg">
-              <li>Publications in peer-reviewed journals</li>
-              <li>Conference presentations</li>
-              <li>Patents and other efforts to build intellectual property</li>
-              <li>Industry collaboration/s initiated</li>
-            </ul>
-          </div>
-          <div className="mb-2 mt-6 md:mt-10">
-            <p className="text-base sm:text-lg font-medium">
-              4. Shortlisting of candidates for interview
-            </p>
-            <p className="text-base sm:text-lg font-light pl-5 pt-2">
-              Based on the Stage 1 evaluation, shortlisted candidates will be
-              invited to present before the jury. The candidates must cover
-              their own travelling costs when invited to appear for the
-              presentation/jury interaction.
-            </p>
-          </div>
-          <div className="mb-2 mt-6 md:mt-10">
-            <p className="text-base sm:text-lg font-medium">
-              5. Presentation before the jury (Stage 2: Presentation)
-            </p>
-            <ul className="space-y-2 pt-2 list-disc list-outside pl-5 font-light text-base sm:text-lg">
-              <li>Stage 2 accounts for 30% of the total marks.</li>
-              <li>
-                The shortlisted candidates will be requested to present their
-                dissertation using an MS PowerPoint presentation containing a
-                maximum of 20 slides (inclusive of the cover and the closing
-                slides).
-              </li>
-              <li className="">
-                The presentation shall cover:
-                <ol className="space-y-1 sm:pl-7 mt-1 text-sm sm:text-base ">
-                  <li>a. Research objectives and methodology</li>
-                  <li>b. Key findings and innovations</li>
-                  <li>
-                    c. Practical applications and impact (including prototypes
-                    and/or pilots)
-                  </li>
-                  <li>
-                    d. Implementation roadmap and go-to-market strategy, as
-                    appropriate
-                  </li>
-                  <li>
-                    e. Downstream research & development enabled by PhD
-                    dissertation
-                  </li>
-                </ol>
-              </li>
-              <li>
-                The jury's interaction with each candidate will be for 60
-                minutes.
-                <ol className="sm:pl-7 space-y-1 mt-1 text-sm sm:text-base">
-                  <li>a. Duration of presentation: 30 minutes</li>
-                  <li>b. Q&A: 30 minutes</li>
-                </ol>
-              </li>
-              <li>
-                Evaluation criteria{" "}
-                <ol className="space-y-1 sm:pl-7 mt-1 text-sm sm:text-base">
-                  <li>a. Clarity and coherence of presentation</li>
-                  <li>b. Effectiveness of verbal and visual communication</li>
-                  <li>c. Quality of response to Jury questions</li>
-                </ol>
-              </li>
-            </ul>
-          </div>
-          <p className="text-base sm:text-lg font-medium mt-4">
-            6. Jury deliberation and final decision
-          </p>
-          <p className="text-base sm:text-lg font-medium mt-4">
-            7. Announcement of results
-          </p>
-          <p className="text-base sm:text-lg font-medium mt-4">
-            8. The awards ceremony
-          </p>
+        <div className="flex-1 overflow-y-auto p-6">
+          <EditorContent data={content} />
         </div>
       </div>
     </div>
   );
 };
 
-export default AboutInfraPandit;
+const EditorJsRenderer = dynamic(() => import("editorjs-react-renderer"), {
+  ssr: false,
+});
+
+const EditorContent = ({ data }: { data: EditorContentType }) => {
+  return (
+    <div className="prose max-w-none">
+      <EditorJsRenderer data={data} />
+    </div>
+  );
+};
+
+export default function InfraPanditAwardsPage() {
+  const [data, setData] = useState<AwardResponse | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("http://64.227.188.3:4000/infrapandit-awards"); // 🔥 replace with real API
+        const json: AwardResponse = await res.json();
+        setData(json);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) return <div className="p-10">Loading...</div>;
+  if (!data) return <div className="p-10">No data found</div>;
+
+  return (
+    <div className="container mx-auto px-6 py-12">
+      {/* MAIN SECTION */}
+      {data.main.active && (
+        <section className="mb-16">
+          <h1 className="text-3xl font-bold mb-6">{data.main.title}</h1>
+
+          <EditorContent data={data.main.content} />
+        </section>
+      )}
+
+      {/* CTA BUTTON */}
+      {data.eligibility.active && (
+        <button
+          onClick={() => setShowPopup(true)}
+          className="bg-pink-600 text-white px-6 py-3 rounded-lg hover:bg-pink-700 transition"
+        >
+          {data.eligibility.ctaText}
+        </button>
+      )}
+
+      {/* APPLICATION BUTTON */}
+      {data.application.active && (
+        <a
+          href={data.application.url}
+          target="_blank"
+          className="ml-4 bg-black text-white px-6 py-3 rounded-lg"
+        >
+          {data.application.ctaText}
+        </a>
+      )}
+
+      {/* POPUP */}
+      {showPopup && (
+        <EligibilityPopup
+          onClose={() => setShowPopup(false)}
+          content={data.eligibility.content}
+        />
+      )}
+    </div>
+  );
+}

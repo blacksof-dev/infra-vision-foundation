@@ -1,4 +1,4 @@
-"use server"
+"use server";
 import { HeroBtn, UnderlineCta } from "@/_components/atoms/buttons";
 import { getFetch } from "@/lib/api";
 import { getUrl } from "@/lib/getUrl";
@@ -23,18 +23,20 @@ export default async function GetInvolvedSection() {
           {data.backgroundImageDesktop && data.backgroundImageMobile && (
             <>
               <div
-                style={{ backgroundImage: `url(${getUrl(data.backgroundImageDesktop)})` }}
+                style={{
+                  backgroundImage: `url(${getUrl(data.backgroundImageDesktop)})`,
+                }}
                 className="bg-cover  object-right-bottom  absolute inset-0 hidden sm:block"
               ></div>
 
               <div
-                style={{ backgroundImage: `url(${getUrl(data.backgroundImageMobile)})` }}
+                style={{
+                  backgroundImage: `url(${getUrl(data.backgroundImageMobile)})`,
+                }}
                 className="bg-cover bg-center d absolute inset-0 sm:hidden block"
               ></div>
             </>
           )}
-   
-       
 
           <div className="w-container flex flex-col md:flex-row  gap-14 md:gap-16 h-[25rem] xl:h-[38rem] xlg:h-[45rem] ">
             <div className="relative z-10 w-full  sm:w-[65%] lg:w-[60%] xl:w-[80%] blade-top-padding-lg   md:pb-28 ">
@@ -49,7 +51,12 @@ export default async function GetInvolvedSection() {
                 <div className="w-full max-w-4xl">
                   <h1
                     className="text-white font-light "
-                    dangerouslySetInnerHTML={{ __html: data.heading.replace(/\*\*(.*?)\*\*/g, "<b class='font-medium'>$1</b>") }}
+                    dangerouslySetInnerHTML={{
+                      __html: data.heading.replace(
+                        /\*\*(.*?)\*\*/g,
+                        "<b class='font-medium'>$1</b>",
+                      ),
+                    }}
                   />
                 </div>
 
@@ -73,7 +80,6 @@ export default async function GetInvolvedSection() {
                 />
               </div>
             </div>
-
           </div>
         </div>
       </div>

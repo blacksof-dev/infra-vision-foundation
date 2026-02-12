@@ -1,32 +1,46 @@
-import banner from "@/../public/assets/contact/banner.png";
-import bannerMob from "@/../public/assets/contact/bannerMobile.png";
+"use client";
+
+import { getFetch } from "@/lib/api";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
 import { RiArrowRightSLine } from "react-icons/ri";
+import { getUrl } from "@/lib/getUrl";
+import { BannerData } from "../outreach-and-engagements/01_Banner";
 
 export default function GetInvolvedBanner() {
+  const { data, isLoading } = useQuery({
+    queryKey: ["get-involved-banner"],
+    queryFn: () => getFetch<BannerData>("/content/get-involved-banner-section"),
+  });
+
+  console.log(data);
+  if (!data || isLoading) {
+    return null;
+  }
+
   return (
     <>
       <div id="getInvolvedBanner" className="pt-[5rem] sm:pt-[6rem]">
         <div className="relative ">
           <div
-            className={`sm:block  hidden w-full h-auto max-h-[45rem] overflow-hidden bg-black `}
+            className={`sm:block  relative  hidden w-full h-[25rem] md:h-[36rem] xl:h-[45rem] overflow-hidden bg-black `}
           >
             <Image
-            // style={{objectPosition:"left 20%"}}
-              src={banner}
+              src={getUrl(data.backgroundImageDesktop)}
               alt="Publication Banner"
               className="w-full h-full object-cover "
+              fill
               unoptimized={true}
               quality={100}
             ></Image>
           </div>
-          
 
-          <div className="sm:hidden block h-auto">
+          <div className="sm:hidden relative block w-full h-[30rem] overflow-hidden bg-black ">
             <Image
-              src={bannerMob}
+              src={getUrl(data.backgroundImageMobile)}
               alt="Publication Banner"
+              fill
               className="w-full h-full object-cover object-right"
               unoptimized={true}
               quality={100}
@@ -53,19 +67,14 @@ export default function GetInvolvedBanner() {
                 </Link>
                 <h5 className="text-white font-light flex flex-row">
                   <RiArrowRightSLine className="text-[24px]" />
-                  Get Involved
+                  {data.heading}
                 </h5>
               </div>
               <div className="  w-full ">
-                <h1 className="text-white font-medium ">Get Involved</h1>
+                <h1 className="text-white font-medium ">{data.heading}</h1>
                 <div className={` py-2 sm:py-4 w-full  max-w-lg`}>
-                  <h5 className="text-white font-light ">
-                    Join our community, ask questions, or participate in
-                    building a resilient India.
-                  </h5>
+                  <h5 className="text-white font-light ">{data.description}</h5>
                 </div>
-
-               
               </div>
             </div>
           </div>
