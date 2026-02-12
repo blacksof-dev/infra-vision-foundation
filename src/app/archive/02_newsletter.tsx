@@ -45,6 +45,16 @@ const INITIAL_VISIBLE_COUNT = 3;
 
 
 const allcards = [
+   {
+    id: 33,
+    img: "/assets/archive/newsletter/landValue.png",
+    category: "Volume 33",
+    title: "",
+    sectors: "",
+    date: "February 2026",
+    description: "Why Land Value Capture can fix India's infrastructure financing crisis",
+    link: "/assets/pdf/landValue_Feb.pdf",
+  },
   {
     id: 32,
     img: "/assets/archive/newsletter/analysisAction.png",

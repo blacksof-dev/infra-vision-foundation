@@ -9,7 +9,7 @@ import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import Link from "next/link";
 import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg";
-import analysis from "@/../public/assets/archive/newsletter/analysisAction.png";
+import landValue from "@/../public/assets/archive/newsletter/landValue.png";
 import abha from "@/../public/assets/home/updates/abha.png";
 import montek from "@/../public/assets/globals/infrapanditAward.jpg";
 import anumita from "@/../public/assets/knowledeg/conversations/anumita.png";
@@ -177,11 +177,11 @@ const EventsDetails = [
     link: "/infrapandit-awards",
   },
   {
-    image: analysis,
+    image: landValue,
     category: "Newsletter",
-    title: "Analysis and action",
+    title: "Why Land Value Capture can fix India's infrastructure financing crisis",
     btnTitle: "Read more",
-    link: "/assets/pdf/analysisAction.pdf",
+    link: "/assets/pdf/landValue_Feb.pdf",
   },
 
   {

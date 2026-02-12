@@ -8,6 +8,15 @@ import { useHeader } from "@/context/useHeader";
 import Link from "next/link";
 
 const newsletters = [
+  {
+    id: 31,
+    img: "/assets/archive/newsletter/landValue.png",
+    category: "Volume 33",
+    title: "Why Land Value Capture can fix India's infrastructure financing crisis",
+    sectors: "",
+    date: "February 2026",
+    link: "/assets/pdf/landValue_Feb.pdf",
+  },
    {
     id: 30,
     img: "/assets/archive/newsletter/analysisAction.png",
@@ -26,15 +35,7 @@ const newsletters = [
     date: "December 2025",
     link: "/assets/pdf/decmber.pdf",
   },
-    {
-    id: 28,
-    img: "/assets/archive/newsletter/noveberNewsletter.png",
-    category: "Volume 30",
-    title: "PM gets vocal on unified transport authority",
-    sectors: "",
-    date: "November 2025",
-    link: "/assets/pdf/novemberNewsletter.pdf",
-  },
+   
   
 
   
