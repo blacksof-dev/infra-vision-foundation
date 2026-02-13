@@ -1,6 +1,7 @@
 import image1 from "@/../public/assets/resource/blogs/image1.png";
 import image2 from "@/../public/assets/resource/blogs/image2.png";
 import image3 from "@/../public/assets/resource/blogs/image3.png";
+import image4 from "@/../public/assets/knowledeg/blogs/delhi.png";
 import { NewsCard } from "@/_components/molecules/newsCard";
 
 export default function RecentPostDetails() {
@@ -30,6 +31,13 @@ export default function RecentPostDetails() {
 }
 
 const allcards = [
+  {
+    img: image4.src,
+    category: "Transportation",
+    date: "February, 2026",
+    title: "An Express Train Journey That Tested Patience, Policy and People",
+    link: "/blogs/an-express-train-journey-that-tested-patience-policy-and-people",
+  },
   {
     img: image1.src,
     category: "Transportation",

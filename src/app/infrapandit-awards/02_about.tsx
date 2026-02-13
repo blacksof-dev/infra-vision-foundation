@@ -17,7 +17,7 @@ const AboutInfraPandit = () => {
               </h5>
             </div>
             <div className="pt-4 pb-2 md:py-5 flex flex-col md:flex-row justify-between gap-4">
-              <h1 className="leading-snug font-light text-2xl md:text-3xl xl:text-5xl">
+              <h1 className="leading-snug font-light text-2xl md:text-3xl xl:text-4xl">
                 Connecting{" "}
                 <span className="font-medium">academic excellence</span> to
                 national progress
@@ -64,17 +64,7 @@ const AboutInfraPandit = () => {
               </div>
             </div>
             <div className="pt-6 flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-8 sm:items-center">
-              {/* <BorderGrayHeroBtn
-                text="Applications closed"
-                role="link"
-                borderColor="pink"
-                color="black"
-                bgColor="white"
-                size="large"
-                classes="font-medium"
-                link="https://docs.google.com/forms/d/e/1FAIpQLSdjpffzJCT6qmQXNUmoUau7giN4qVTsm5j3ysGZ0r8QxiG05g/viewform?usp=sharing&ouid=118204303619309850521"
-                target="_blank"
-              /> */}
+            
               <div
                 role="button"
                 onClick={() => setShowPopup(true)}

@@ -496,6 +496,16 @@ export default function Page() {
                             <h2 className="text-xl md:text-3xl font-poppins font-semibold text-black pt-10">
                                 Water, Wastewater, and Environmental Infrastructure Deficits
                             </h2>
+                             <div className="my-4 md:my-10">
+                                <Image
+                                    src={flow}
+                                    alt="Infrastructure Bottlenecks in India’s Marine Export Sector"
+                                   
+                                    className=" w-full h-auto max-h-[450px] object-contain rounded-md md:rounded-2xl shadow-lg"
+                                    quality={100}
+                                    priority
+                                />
+                            </div>
                             <p className="text-darkgray pt-4 text-base md:text-xl leading-relaxed text-justify">
                                 Water is a critical input across marine export operations, from
                                 ice production and washing to peeling sheds and processing
@@ -565,15 +575,7 @@ export default function Page() {
                                 Processing Capacity and Value-Addition Shortfalls
                             </h2>
 
-                            <div className="my-4 md:my-10">
-                                <Image
-                                    src={conclusionImage}
-                                    alt="Infrastructure Bottlenecks in India’s Marine Export Sector"
-                                    className="w-full max-h-[650px] object-cover rounded-md md:rounded-2xl"
-                                    quality={100}
-                                    priority
-                                />
-                            </div>
+                           
 
                             <p className="text-darkgray pt-4 text-base md:text-xl leading-relaxed text-justify">
                                 As per MPEDA’s 2023–24 Annual Report
@@ -723,9 +725,9 @@ export default function Page() {
 
                             <div className="my-4 md:my-10">
                                 <Image
-                                    src={flow}
+                                    src={conclusionImage}
                                     alt="Infrastructure Bottlenecks in India’s Marine Export Sector"
-                                    className="w-full h-auto max-h-[450px] object-contain rounded-md md:rounded-2xl shadow-lg"
+                                    className="w-full max-h-[650px] object-cover rounded-md md:rounded-2xl"
                                     quality={100}
                                     priority
                                 />

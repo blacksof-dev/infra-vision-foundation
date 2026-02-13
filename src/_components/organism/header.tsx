@@ -60,7 +60,6 @@ function Header() {
   }, [pathname, setShowNavbar]);
 
   useEffect(() => {
- 
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -95,21 +94,13 @@ function Header() {
     window.addEventListener("resize", handleResize);
 
     window.addEventListener("scroll", handleScroll);
-  
+
     return () => {
       if (!mounted) return;
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
-  
-  }
-  
+    };
   }, [lastScrollY, isMobile, mounted, setShowNavbar]);
-
-
-
-
-
-
 
   // Handle body scroll lock for mobile menu
   useEffect(() => {
@@ -123,19 +114,18 @@ function Header() {
   }, [isMenuOpen, mounted]);
 
   useEffect(() => {
-  if (!mounted) return;
+    if (!mounted) return;
 
-  const handleScroll = () => {
-    setOpenDropdown(null);
-  };
+    const handleScroll = () => {
+      setOpenDropdown(null);
+    };
 
-  window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-  };
-}, [mounted]);
-
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [mounted]);
 
   //Navbar color change for specific routes
   useEffect(() => {
@@ -199,13 +189,15 @@ function Header() {
   return (
     <>
       <nav
-        className={`fixed  top-0 left-0 w-full transition-all ease-linear duration-200 px-0 sm:px-3 py-3 z-[9999] ${isMobile
+        className={`fixed  top-0 left-0 w-full transition-all ease-linear duration-200 px-0 sm:px-3 py-3 z-[9999] ${
+          isMobile
             ? "translate-y-0"
             : showNavbar
               ? "translate-y-0"
               : "-translate-y-full"
-          } ${showNavBg ? "bg-white " : "bg-transparent"} ${scrolled ? "bg-white" : ""
-          }`}
+        } ${showNavBg ? "bg-white " : "bg-transparent"} ${
+          scrolled ? "bg-white" : ""
+        }`}
       >
         <div className="w-container">
           <div className="flex flex-row justify-between">

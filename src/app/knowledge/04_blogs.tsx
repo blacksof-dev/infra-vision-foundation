@@ -13,6 +13,7 @@ import img_09 from "@/../public/assets/knowledeg/blogs/09.jpg";
 import img_10 from "@/../public/assets/knowledeg/blogs/marine.png";
 import img_11 from "@/../public/assets/knowledeg/blogs/urban challenges.jpg";
 import img_12 from "@/../public/assets/knowledeg/blogs/transit.png";
+import img_13 from "@/../public/assets/knowledeg/blogs/fiveHourLate.png";
 
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 
@@ -55,6 +56,18 @@ const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
   {
+    id: 13,
+    img: img_13,
+    slug: "an-express-train-journey-that-tested-patience-policy-and-people",
+    category: "Transportation",
+    title: "",
+    sectors: "Transportation",
+    date: "February 13, 2026",
+    description:
+      "An express train journey that tested patience, policy, and people: Ticket confirmed, time cancelled",
+    link: "/blogs/an-express-train-journey-that-tested-patience-policy-and-people",
+  },
+  {
     id: 12,
     img: img_12,
     slug: "transit-oriented-development-and-urban-mobility-in-india",
@@ -62,8 +75,7 @@ const allcards = [
     title: "",
     sectors: "Urban Planning",
     date: "December 31, 2025",
-    description:
-      "Transit-Oriented Development and urban mobility in India",
+    description: "Transit-Oriented Development and urban mobility in India",
     link: "/blogs/transit-oriented-development-and-urban-mobility-in-india",
   },
 
@@ -75,8 +87,7 @@ const allcards = [
     title: "",
     sectors: "Urban Planning",
     date: "December 31, 2025",
-    description:
-      "Urban Challenge Fund: A catalyst for next-gen urban projects",
+    description: "Urban Challenge Fund: A catalyst for next-gen urban projects",
     link: "/blogs/a-catalyst-for-next-gen-urban-projects",
   },
 
@@ -105,7 +116,6 @@ const allcards = [
       "Two days to Tawang: Why Arunachal’s agriculture needs better infrastructure",
     link: "/blogs/why-arunachal-agriculture-needs-better-infrastructure",
   },
-
 
   {
     id: 1,
@@ -226,7 +236,7 @@ export default function Blogs() {
         ? YEARS[0]
         : tab === "Sectors"
           ? SECTORS[0]
-          : "All"
+          : "All",
     );
     setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
@@ -239,7 +249,7 @@ export default function Blogs() {
   const filteredCards = useMemo(() => {
     if (selectedTab === "Publication year") {
       return allcards.filter(
-        (card) => card.date.split(" ").pop() === selectedFilter
+        (card) => card.date.split(" ").pop() === selectedFilter,
       );
     }
     if (selectedTab === "Sectors" && selectedFilter !== "All") {
@@ -262,10 +272,11 @@ export default function Blogs() {
               tabRefs.current[index] = el;
             }}
             className={`text-base text-nowrap cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
-                            ${selectedFilter === filter
-                ? "border border-pink text-white bg-pink font-medium"
-                : "border border-lightgray/30"
-              }`}
+                            ${
+                              selectedFilter === filter
+                                ? "border border-pink text-white bg-pink font-medium"
+                                : "border border-lightgray/30"
+                            }`}
             onClick={() => handleFilterClick(filter, index)}
           >
             {filter}
@@ -309,10 +320,11 @@ export default function Blogs() {
                 <button
                   key={tab}
                   className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4
-                                        ${selectedTab === tab
-                      ? "border border-pink text-pink font-medium"
-                      : "border border-lightgray/30"
-                    }`}
+                                        ${
+                                          selectedTab === tab
+                                            ? "border border-pink text-pink font-medium"
+                                            : "border border-lightgray/30"
+                                        }`}
                   onClick={() => handleTabClick(tab)}
                 >
                   {tab}
@@ -327,8 +339,9 @@ export default function Blogs() {
 
           {/* Newsletter Cards */}
           <div
-            className={`${selectedTab === "Publication year" ? "pt-8" : "pt-8"
-              }`}
+            className={`${
+              selectedTab === "Publication year" ? "pt-8" : "pt-8"
+            }`}
           >
             {filteredCards.length === 0 && (
               <div className="flex justify-center"> No results </div>
