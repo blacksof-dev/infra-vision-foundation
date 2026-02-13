@@ -1,6 +1,6 @@
 "use client";
 
-import highway from "@/../public/assets/home/whoWeAre/knowledge/highway.png";
+import highway from "@/../public/assets/knowledeg/blogs/fiveHourLate.png";
 import infraKatha from "@/../public/assets/infrakatha/banner/banner.jpg";
 import infraShakti from "@/../public/assets/home/whoWeAre/advocacy/infraPandit.png";
 import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infraPanditAward.png";
@@ -48,10 +48,11 @@ const knowledge = [
     id: 2,
     img: highway.src,
     category: "Blog",
-    date: "September 2023",
-    title: "India needs sustainability ratings for infrastructure projects",
+    date: "February 13",
+    title:
+      "An express train journey that tested patience, policy, and people: Ticket confirmed, time",
     subtitle: "",
-    link: "/blogs/india-needs-sustainability-ratings-for-infrastructure-projects",
+    link: "/blogs/an-express-train-journey-that-tested-patience-policy-and-people",
   },
 ];
 

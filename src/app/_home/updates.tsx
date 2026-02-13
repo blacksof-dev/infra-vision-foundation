@@ -8,7 +8,7 @@ import "swiper/css/navigation";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import Link from "next/link";
-import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg";
+import img_15 from "@/../public/assets/knowledeg/blogs/fiveHourLate.png";
 import landValue from "@/../public/assets/archive/newsletter/landValue.png";
 import abha from "@/../public/assets/home/updates/abha.png";
 import montek from "@/../public/assets/globals/infrapanditAward.jpg";
@@ -179,7 +179,8 @@ const EventsDetails = [
   {
     image: landValue,
     category: "Newsletter",
-    title: "Why Land Value Capture can fix India's infrastructure financing crisis",
+    title:
+      "Why Land Value Capture can fix India's infrastructure financing crisis",
     btnTitle: "Read more",
     link: "/assets/pdf/landValue_Feb.pdf",
   },
@@ -187,9 +188,10 @@ const EventsDetails = [
   {
     image: img_15,
     category: "Blog",
-    title: "How to make India’s highways safe",
+    title:
+      "An express train journey that tested patience, policy, and people: Ticket confirmed, time",
     btnTitle: "Read more",
-    link: "/blogs/how-to-make-india-highways-safe",
+    link: "/blogs/an-express-train-journey-that-tested-patience-policy-and-people",
   },
 
   {
