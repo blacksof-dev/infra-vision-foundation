@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import image1 from "@/../public/assets/knowledeg/blogs/fiveHourLate.png";
+import image1 from "@/../public/assets/knowledeg/blogs/superfast-rail-reality.png";
 import Image from "next/image";
 import Link from "next/link";
 import { MoveLeft } from "lucide-react";

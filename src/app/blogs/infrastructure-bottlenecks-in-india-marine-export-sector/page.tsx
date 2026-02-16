@@ -45,7 +45,7 @@ export const metadata: Metadata = {
                 width: 1200,
                 height: 630,
                 alt: 'The Infravision Foundation',
-                type: 'image/jpg',
+                type: 'image/png',
             },
         ],
     },
@@ -379,15 +379,7 @@ export default function Page() {
                                 .
                             </p>
 
-                            <div className="my-4 md:my-10">
-                                <Image
-                                    src={fishiry}
-                                    alt="Infrastructure Bottlenecks in India’s Marine Export Sector"
-                                    className="w-full max-h-[350px] md:max-h-[550px] object-cover rounded-md md:rounded-2xl shadow-xl"
-                                    quality={100}
-                                    priority
-                                />
-                            </div>
+                           
 
                             <h2 className="text-xl md:text-3xl font-poppins font-semibold text-black pt-10">
                                 Cold-Chain Gaps: Storage, Transport, and Energy Reliability
@@ -492,20 +484,19 @@ export default function Page() {
                                 </Link>
                                 .
                             </p>
-
-                            <h2 className="text-xl md:text-3xl font-poppins font-semibold text-black pt-10">
-                                Water, Wastewater, and Environmental Infrastructure Deficits
-                            </h2>
                              <div className="my-4 md:my-10">
                                 <Image
-                                    src={flow}
+                                    src={fishiry}
                                     alt="Infrastructure Bottlenecks in India’s Marine Export Sector"
-                                   
-                                    className=" w-full h-auto max-h-[450px] object-contain rounded-md md:rounded-2xl shadow-lg"
+                                    className="w-full max-h-[350px] md:max-h-[550px] object-cover rounded-md md:rounded-2xl shadow-xl"
                                     quality={100}
                                     priority
                                 />
                             </div>
+                            <h2 className="text-xl md:text-3xl font-poppins font-semibold text-black pt-10">
+                                Water, Wastewater, and Environmental Infrastructure Deficits
+                            </h2>
+                             
                             <p className="text-darkgray pt-4 text-base md:text-xl leading-relaxed text-justify">
                                 Water is a critical input across marine export operations, from
                                 ice production and washing to peeling sheds and processing
@@ -570,7 +561,7 @@ export default function Page() {
                                 </Link>
                                 .
                             </p>
-
+                                
                             <h2 className="text-xl md:text-3xl font-poppins font-semibold text-black pt-10">
                                 Processing Capacity and Value-Addition Shortfalls
                             </h2>
@@ -631,7 +622,16 @@ export default function Page() {
                                 </Link>
                                 .
                             </p>
-
+                             <div className="my-4 md:my-10">
+                                <Image
+                                    src={flow}
+                                    alt="Infrastructure Bottlenecks in India’s Marine Export Sector"
+                                   
+                                    className=" w-full h-auto max-h-[450px] object-contain rounded-md md:rounded-2xl shadow-lg"
+                                    quality={100}
+                                    priority
+                                />
+                            </div>
                             <h2 className="text-xl md:text-3xl font-poppins font-semibold text-black pt-10">
                                 Quality Control, Testing Capacity, and Export Rejections
                             </h2>
@@ -688,7 +688,15 @@ export default function Page() {
                                 </Link>
                                 .
                             </p>
-
+                               <div className="my-4 md:my-10">
+                                <Image 
+                                    src={conclusionImage}
+                                    alt="Infrastructure Bottlenecks in India’s Marine Export Sector"
+                                    className="w-full max-h-[650px] object-cover rounded-md md:rounded-2xl"
+                                    quality={100}
+                                    priority
+                                />
+                            </div>
                             <h2 className="text-xl md:text-3xl font-poppins font-semibold text-black pt-10">
                                 Last-Mile Connectivity: The Weakest Link
                             </h2>
@@ -723,15 +731,7 @@ export default function Page() {
                                 export-grade systems rather than standalone assets?
                             </p>
 
-                            <div className="my-4 md:my-10">
-                                <Image
-                                    src={conclusionImage}
-                                    alt="Infrastructure Bottlenecks in India’s Marine Export Sector"
-                                    className="w-full max-h-[650px] object-cover rounded-md md:rounded-2xl"
-                                    quality={100}
-                                    priority
-                                />
-                            </div>
+                           
 
                             <p className="text-darkgray pt-6 text-base md:text-xl leading-relaxed text-justify">
                                 India now needs a second-generation reform agenda that goes
