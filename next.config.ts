@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+ 
 
 const nextConfig = {
   images: {
@@ -8,6 +9,11 @@ const nextConfig = {
         protocol: 'http',
         hostname: '64.227.188.3',
         pathname: '/**',
+      } ,
+      {
+        protocol:"http",
+        hostname:"localhost",
+        pathname:"/**"
       }
     ],
   },

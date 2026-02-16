@@ -1,91 +1,89 @@
 "use client";
 import Card from "@/_components/molecules/cardTemplate";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import { TabItem } from "./02_whoWeAre";
 
 import InfrapanditAward from "./infraPanditAward";
 import { useHeader } from "@/context/useHeader";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
+import { getFetch } from "@/lib/api";
+import { getUrl } from "@/lib/getUrl";
 
-const newsletters = [
-   {
-    id: 30,
-    img: "/assets/archive/newsletter/analysisAction.png",
-    category: "Volume 32",
-    title: "Analysis and action",
-    sectors: "",
-    date: "January 2026",
-    link: "/assets/pdf/analysisAction.pdf",
-  },
-    {
-    id: 29,
-    img: "/assets/archive/newsletter/infraPanditAward.png",
-    category: "Volume 31",
-    title: "InfraPandit Awards 2025",
-    sectors: "",
-    date: "December 2025",
-    link: "/assets/pdf/decmber.pdf",
-  },
-    {
-    id: 28,
-    img: "/assets/archive/newsletter/noveberNewsletter.png",
-    category: "Volume 30",
-    title: "PM gets vocal on unified transport authority",
-    sectors: "",
-    date: "November 2025",
-    link: "/assets/pdf/novemberNewsletter.pdf",
-  },
-  
-
-  
-];
-
-const news = [
-   {
-    id:60,
-    img: "/assets/archive/newsAndMedia/landValue.png",
-    category: "",
-    date: "January 2026",
-    title: "Land value capture",
-    subtitle:"Vinayak Chatterjee",
-    link: "/assets/pdf/landValue.pdf",
-  },
-    {
-    id:60,
-    img: "/assets/archive/newsAndMedia/invest-in-small-towns.png",
-    category: "",
-    date: "January 2026",
-    title: "Invest in small towns",
-    subtitle:" Kiran Karnik",
-    link: "/assets/pdf/invest-in-small-towns.pdf",
-  },
-     {
-    id:59,
-    img: "/assets/archive/newsAndMedia/soumyaNews.jpg",
-    category: "",
-    title: "How consistent is IMF classification of exchange rate arrangement and data adequacy?",
-    date: "December 2025",
-     subtitle: "Soumya Kanti Ghosh",
-    link: "/assets/pdf/how-consistent-is-imf-classification.jpeg",
-  },
-     
-  
- 
-  
-];
+// Types
+interface HighlightsResponse {
+  outreachAndEngagement: {
+    event: any;
+    type: string;
+  };
+  newsletters: Array<{
+    id: string;
+    title: string;
+    subtitle: string;
+    version: string;
+    publishedDate: string;
+    coverImage: string;
+    fileUrl: string;
+  }>;
+  inTheNews: Array<{
+    id: string;
+    image: string;
+    title: string;
+    date: string;
+    author: string;
+    link: string;
+    pdfFile: string | null;
+  }>;
+}
 
 export default function Highlights() {
   const [activeTab, setActiveTab] = useState("Outreach and Engagements");
   const mobileview = 3;
   const [visiblecountmobile, setvisiblecountmobile] = useState(mobileview);
 
-  const handleSeeMoreCta = () => {
-    setvisiblecountmobile((prev) => prev + 3);
-  };
+  const { data: highlights } = useQuery({
+    queryKey: ["homepage-highlights"],
+    queryFn: () => getFetch<HighlightsResponse>("/highlights"),
+  });
+
+  const newslettersData: TabItem[] = useMemo(() => {
+    return (highlights?.newsletters || []).map((item) => ({
+      id: item.id as any,
+      img: getUrl(item.coverImage),
+      category: item.version,
+      title: item.title,
+      link: getUrl(item.fileUrl),
+      date: item.publishedDate
+        ? new Date(item.publishedDate).toLocaleDateString("en-US", {
+            month: "long",
+            year: "numeric",
+          })
+        : "",
+      subtitle: item.subtitle,
+    }));
+  }, [highlights]);
+
+  const newsData: TabItem[] = useMemo(() => {
+    return (highlights?.inTheNews || []).map((item) => ({
+      id: item.id as any,
+      img: getUrl(item.image),
+      category: item.author,
+      title: item.title,
+      link: item.pdfFile ? getUrl(item.pdfFile) : item.link,
+      date: item.date
+        ? new Date(item.date).toLocaleDateString("en-US", {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+          })
+        : "",
+    }));
+  }, [highlights]);
 
   useEffect(() => {
     setvisiblecountmobile(mobileview);
   }, [activeTab]);
+
   return (
     <>
       <div id="homepage-section-5" className="bg-whitesmoke">
@@ -100,7 +98,13 @@ export default function Highlights() {
             </h1>
           </div>
           <div className="">
-            <TabSwitch setActiveTab={setActiveTab} activeTab={activeTab} />
+            <TabSwitch
+              setActiveTab={setActiveTab}
+              activeTab={activeTab}
+              event={highlights?.outreachAndEngagement?.event}
+              newsletters={newslettersData}
+              news={newsData}
+            />
           </div>
         </div>
       </div>
@@ -111,9 +115,15 @@ export default function Highlights() {
 export const TabSwitch = ({
   setActiveTab,
   activeTab,
+  event,
+  newsletters,
+  news,
 }: {
   setActiveTab: (value: string) => void;
   activeTab: string;
+  event: any;
+  newsletters: TabItem[];
+  news: TabItem[];
 }) => {
   const { isHeaderVisible } = useHeader();
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -123,8 +133,6 @@ export const TabSwitch = ({
     const container = containerRef.current;
 
     if (tab && container) {
-      // const containerRect = container.getBoundingClientRect();
-      // const tabRect = tab.getBoundingClientRect();
       const offset =
         tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
       container.scrollTo({ left: offset, behavior: "smooth" });
@@ -188,7 +196,10 @@ export const TabSwitch = ({
         </div>
       </div>
       <div className="pt-6 xl:pt-14">
-        {activeTab === "Outreach and Engagements" && <InfrapanditAward />}
+        {activeTab === "Outreach and Engagements" && (
+          // <InfrapanditAward event={event} />
+          <div>Outreach and Engagements</div>
+        )}
 
         {activeTab === "Newsletters" && <TabContent data={newsletters} />}
         {activeTab === "In the News" && <TabContent data={news} />}
@@ -201,20 +212,20 @@ export const TabSwitch = ({
               activeTab === "Outreach and Engagements"
                 ? "/outreach-and-engagements"
                 : activeTab === "Newsletters"
-                ? "/archive#newsletters"
-                : activeTab === "In the News"
-                ? "/archive#news-and-media"
-                : ""
+                  ? "/archive#newsletters"
+                  : activeTab === "In the News"
+                    ? "/archive#news-and-media"
+                    : ""
             }
           >
             <span className="z-50 relative">{`${
               activeTab === "Outreach and Engagements"
                 ? "View all events"
                 : activeTab === "Newsletters"
-                ? "Browse newsletters"
-                : activeTab === "In the News"
-                ? "Browse news"
-                : "Read more"
+                  ? "Browse newsletters"
+                  : activeTab === "In the News"
+                    ? "Browse news"
+                    : "Read more"
             }`}</span>
             <span
               className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0  transition-all duration-300`}
