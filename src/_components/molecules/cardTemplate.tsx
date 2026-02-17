@@ -3,7 +3,7 @@ type CardProps = {
   title: string;
   image: string;
   link: string;
-  category: string;
+  category?: string;
   classes?: string;
   subtitle?: string; ctaText: string;
 };

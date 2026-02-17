@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import type { Swiper as SwiperClass } from "swiper/types";
 import type { Swiper as SwiperType } from "swiper/types";
 import Image from "next/image";
@@ -8,12 +8,33 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { advisory, CardData, fellow, patrons, team, trustee } from "./static";
+import { CardData } from "./static";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import Link from "next/link";
 import { StaticImageData } from "next/image";
 import PopupDescription from "./popupDescription";
 import { MemberCard } from "@/_components/molecules/memberCard";
+import { useQuery } from "@tanstack/react-query";
+import { getFetch } from "@/lib/api";
+import { getUrl } from "@/lib/getUrl";
+
+interface Member {
+  id: string;
+  image: string;
+  title: string;
+  desig: string;
+  subtitle?: string;
+  popupImg: string;
+  popupdesc: string;
+  link?: string;
+  socialMedia?: string;
+}
+
+interface ApiResponse<T> {
+  pagination: any;
+  lastUpdated: string;
+  [key: string]: T[] | any;
+}
 
 type ButtonTabProps = {
   label: string;
@@ -38,16 +59,18 @@ const ButtonTab = ({ label, value, data, setdata }: ButtonTabProps) => {
   return (
     <div className="py-4 group">
       <button
-        className={`text-white cursor-pointer text-md text-nowrap lg:text-xl relative ${data === value ? "font-medium opacity-100" : "opacity-70"
-          }`}
+        className={`text-white cursor-pointer text-md text-nowrap lg:text-xl relative ${
+          data === value ? "font-medium opacity-100" : "opacity-70"
+        }`}
         onClick={() => setdata(value)}
       >
         {label}
         <span
-          className={`h-[1px] ${data === value
-            ? "w-full transition-all duration-1000"
-            : "w-10 sm:w-5"
-            } sm:h-[2px] bg-white absolute bottom-0 left-0 top-7`}
+          className={`h-[1px] ${
+            data === value
+              ? "w-full transition-all duration-1000"
+              : "w-10 sm:w-5"
+          } sm:h-[2px] bg-white absolute bottom-0 left-0 top-7`}
         ></span>
       </button>
     </div>
@@ -83,31 +106,90 @@ export default function Infravisionaries() {
     }
   }, [showPopup]);
 
+  const transformData = (members: Member[] = []): CardData[] => {
+    return members.map((member) => ({
+      image: getUrl(member.image),
+      title: member.title,
+      desig: member.desig,
+      link: member.link,
+      socialMedia: member.socialMedia,
+      popupImg: getUrl(member.popupImg),
+      popupdesc: member.popupdesc,
+      subtitle: member.subtitle,
+    }));
+  };
+
+  const { data: trusteesData } = useQuery({
+    queryKey: ["trustees"],
+    queryFn: () => getFetch<ApiResponse<Member>>("/teams/trustees?limit=100"),
+  });
+
+  const { data: patronsData } = useQuery({
+    queryKey: ["patrons"],
+    queryFn: () => getFetch<ApiResponse<Member>>("/teams/patrons?limit=100"),
+  });
+
+  const { data: advisorsData } = useQuery({
+    queryKey: ["advisors"],
+    queryFn: () => getFetch<ApiResponse<Member>>("/teams/advisors?limit=100"),
+  });
+
+  const { data: fellowsData } = useQuery({
+    queryKey: ["fellows"],
+    queryFn: () => getFetch<ApiResponse<Member>>("/teams/fellow?limit=100"),
+  });
+
+  const { data: teamData } = useQuery({
+    queryKey: ["team"],
+    queryFn: () => getFetch<ApiResponse<Member>>("/teams/team?limit=100"),
+  });
+
+  const trusteesList = useMemo(
+    () => transformData(trusteesData?.trustees || []),
+    [trusteesData],
+  );
+  const patronsList = useMemo(
+    () => transformData(patronsData?.patrons || []),
+    [patronsData],
+  );
+  const advisorsList = useMemo(
+    () => transformData(advisorsData?.advisors || []),
+    [advisorsData],
+  );
+  const fellowsList = useMemo(
+    () => transformData(fellowsData?.fellow || []),
+    [fellowsData],
+  );
+  const teamsList = useMemo(
+    () => transformData(teamData?.team || []),
+    [teamData],
+  );
+
   useEffect(() => {
     let cardDetails: CardData[] = [];
 
     switch (data) {
       case "trustee":
-        cardDetails = trustee;
+        cardDetails = trusteesList;
         break;
       case "advisory":
-        cardDetails = advisory;
+        cardDetails = advisorsList;
         break;
       case "fellow":
-        cardDetails = fellow;
+        cardDetails = fellowsList;
         break;
-       case "team":
-        cardDetails = team;
+      case "team":
+        cardDetails = teamsList;
         break;
       case "patrons":
-        cardDetails = patrons;
+        cardDetails = patronsList;
         break;
       default:
         cardDetails = [];
     }
 
     setcarddata(cardDetails);
-  }, [data]);
+  }, [data, trusteesList, patronsList, advisorsList, fellowsList, teamsList]);
 
   return (
     <>
@@ -170,7 +252,7 @@ export default function Infravisionaries() {
                 data={data}
                 setdata={setdata}
               />
-               <ButtonTab
+              <ButtonTab
                 label="Founding Patrons"
                 value="patrons"
                 data={data}
@@ -189,14 +271,12 @@ export default function Infravisionaries() {
                 setdata={setdata}
               />
 
-               <ButtonTab
+              <ButtonTab
                 label="Team"
                 value="team"
                 data={data}
                 setdata={setdata}
               />
-             
-               
             </div>
 
             <div className="w-full overflow-x-hidden  ml-[4%]">
@@ -250,7 +330,6 @@ export default function Infravisionaries() {
                       </SwiperSlide>
                     );
                   })}
-
                 </Swiper>
               </div>
               <div className="flex pt-3 pr-1 h-[80px] flex-wrap gap-5 mt-4 justify-end md:gap-4 2xl:mt-1">
@@ -280,7 +359,7 @@ export default function Infravisionaries() {
 
           <MobileMembersSlider
             title="Trustees"
-            data={trustee}
+            data={trusteesList}
             navClass="trustee"
             setShowPopup={setShowPopup}
             setPopUpData={setPopUpData}
@@ -288,9 +367,9 @@ export default function Infravisionaries() {
             showPopup={showPopup}
             onSelectTab={() => setdata("trustee")}
           />
-           <MobileMembersSlider
+          <MobileMembersSlider
             title="Founding Patrons"
-            data={patrons}
+            data={patronsList}
             navClass="patrons"
             setShowPopup={setShowPopup}
             setPopUpData={setPopUpData}
@@ -301,7 +380,7 @@ export default function Infravisionaries() {
 
           <MobileMembersSlider
             title="Council of Advisors"
-            data={advisory}
+            data={advisorsList}
             navClass="advisory"
             setShowPopup={setShowPopup}
             setPopUpData={setPopUpData}
@@ -312,7 +391,7 @@ export default function Infravisionaries() {
 
           <MobileMembersSlider
             title="Distinguished Fellows"
-            data={fellow}
+            data={fellowsList}
             navClass="fellow"
             setShowPopup={setShowPopup}
             setPopUpData={setPopUpData}
@@ -323,7 +402,7 @@ export default function Infravisionaries() {
 
           <MobileMembersSlider
             title="Team"
-            data={team}
+            data={teamsList}
             navClass="team"
             setShowPopup={setShowPopup}
             setPopUpData={setPopUpData}
@@ -331,7 +410,6 @@ export default function Infravisionaries() {
             showPopup={showPopup}
             onSelectTab={() => setdata("team")}
           />
-          
         </div>
       </section>
     </>

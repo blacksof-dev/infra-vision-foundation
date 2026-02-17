@@ -1,19 +1,15 @@
 "use client";
 
-import highway from "@/../public/assets/home/whoWeAre/knowledge/highway.png";
-import infraKatha from "@/../public/assets/infrakatha/banner/banner.jpg";
-import infraShakti from "@/../public/assets/home/whoWeAre/advocacy/infraPandit.png";
-import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infraPanditAward.png";
-import img_16 from "@/../public/assets/knowledeg/researchPapers/16.jpg";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Card from "@/_components/molecules/cardTemplate";
 import { useHeader } from "@/context/useHeader";
-
 import Link from "next/link";
-import anumita from "@/../public/assets/knowledeg/conversations/anumita.png";
+import { useQuery } from "@tanstack/react-query";
+import { getFetch } from "@/lib/api";
+import { getUrl } from "@/lib/getUrl";
 
 export type TabItem = {
-  id: number;
+  id: string | number;
   img: string;
   category: string;
   title: string;
@@ -23,70 +19,136 @@ export type TabItem = {
   ctaText?: string;
 };
 
-const knowledge = [
-  {
-    id: 1,
-    img: img_16.src,
-    category: "Infrastructure",
-    date: "",
-    title:
-      "Land Value Capture for urban and regional public transport infrastructure financing",
-    link: "/assets/pdf/LVC-report-for-urban-and-regional-public-transport-new.pdf",
-  },
+interface WhoWeAreContent {
+  label: string;
+  heading: string;
+  description: string;
+}
 
-  {
-    id: 3,
-    img: anumita.src,
-    category: "The Infravision Conversation",
-    title: "How to fix Delhi's air pollution ",
-    subtitle: "Anumita Roychowdhury",
-    link: "https://youtu.be/YV7VYaCB7Yw?si=af66MfWQnjdsG_op",
-    ctaText: "Watch now",
-  },
+interface Item {
+  id: string;
+  title: string;
+  date?: string;
+  image?: string;
+  link?: string;
+  coverImage?: string;
+  slug?: string;
+  author?: string;
+  publishedDate?: string;
+  videoLink?: string;
+  name?: string;
+}
 
-  {
-    id: 2,
-    img: highway.src,
-    category: "Blog",
-    date: "September 2023",
-    title: "India needs sustainability ratings for infrastructure projects",
-    subtitle: "",
-    link: "/blogs/india-needs-sustainability-ratings-for-infrastructure-projects",
-  },
-];
+interface KnowledgeRecent {
+  researchPaper?: Item;
+  conversation?: Item;
+  blog?: Item;
+}
 
-const advocacy = [
-  {
-    id: 1,
-    img: infraKatha.src,
-    category: "Infrakatha",
-    title:
-      "A forum of conversations with cross-sectoral experts aimed at mainstreaming the discourse around infrastructure.",
-    link: "/infrakatha",
-    ctaText: "Know more",
-  },
-  {
-    id: 2,
-    img: infraShakti.src,
-    category: "InfraShakti Awards",
-    title:
-      "A flagship initiative in association with NDTV, celebrating changemakers unlocking impact at scale through innovative projects.",
-    link: "/infrashakti-awards",
-    ctaText: "Know more",
-  },
-  {
-    id: 3,
-    img: infraPandit.src,
-    category: "InfraPandit Awards",
-    title:
-      "A national effort at recognising outstanding doctoral research on infrastructure, fostering youth participation in India's infra evolution.",
-    link: "/infrapandit-awards",
-    ctaText: "Know more",
-  },
-];
+interface AdvocacyItem {
+  id: string;
+  image: string;
+  label: string;
+  title: string;
+  ctaText: string;
+  ctaLink: string;
+}
+
+const formatHeading = (text?: string) => {
+  if (!text) return null;
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <span key={index} className="text-black font-medium ">
+          {part.slice(2, -2)}
+        </span>
+      );
+    }
+    return part;
+  });
+};
+
+const formatDescription = (text?: string) => {
+  if (!text) return "";
+  return text.replace(
+    /\*\*(.*?)\*\*/g,
+    '<span class="font-semibold">$1</span>',
+  );
+};
 
 export default function WhoWeAre() {
   const [activeTab, setActiveTab] = useState("Knowledge");
+
+  const { data: content } = useQuery({
+    queryKey: ["who-we-are-content"],
+    queryFn: () => getFetch<WhoWeAreContent>("/content/who-we-are"),
+  });
+
+  const { data: knowledgeData } = useQuery({
+    queryKey: ["knowledge-recent"],
+    queryFn: () => getFetch<KnowledgeRecent>("/knowledge/recent"),
+  });
+
+  const { data: advocacyData = [] } = useQuery({
+    queryKey: ["homepage-advocacy"],
+    queryFn: () => getFetch<AdvocacyItem[]>("/homepage/advocacy"),
+  });
+
+  const processedKnowledge: TabItem[] = useMemo(() => {
+    const list: TabItem[] = [];
+    if (knowledgeData?.researchPaper) {
+      list.push({
+        id: knowledgeData.researchPaper.id,
+        img: getUrl(knowledgeData.researchPaper.image || ""),
+        category: "Infrastructure",
+        title: knowledgeData.researchPaper.title,
+        link: getUrl(knowledgeData.researchPaper.link || ""),
+        date: "",
+      });
+    }
+    if (knowledgeData?.conversation) {
+      list.push({
+        id: knowledgeData.conversation.id,
+        img: getUrl(knowledgeData.conversation.image || ""),
+        category: "The Infravision Conversation",
+        title: knowledgeData.conversation.title,
+        subtitle: knowledgeData.conversation.name,
+        link: getUrl(knowledgeData.conversation.videoLink || ""),
+        ctaText: "Watch now",
+      });
+    }
+    if (knowledgeData?.blog) {
+      list.push({
+        id: knowledgeData.blog.id,
+        img: getUrl(knowledgeData.blog.coverImage || ""),
+        category: "Blog",
+        title: knowledgeData.blog.title,
+        link: `/blogs/${knowledgeData.blog.slug}`,
+        date: knowledgeData.blog.publishedDate
+          ? new Date(knowledgeData.blog.publishedDate).toLocaleDateString(
+              "en-US",
+              {
+                month: "long",
+                year: "numeric",
+              },
+            )
+          : "",
+      });
+    }
+    return list;
+  }, [knowledgeData]);
+
+  const processedAdvocacy: TabItem[] = useMemo(() => {
+    return advocacyData.map((item) => ({
+      id: item.id,
+      img: getUrl(item.image),
+      category: item.label,
+      title: item.title,
+      link: item.ctaLink,
+      ctaText: item.ctaText,
+    }));
+  }, [advocacyData]);
 
   return (
     <>
@@ -96,52 +158,44 @@ export default function WhoWeAre() {
             <div>
               <div className="flex   flex-row  items-center gap-2 md:gap-3 ">
                 <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-                <h5 className="font-medium text-pink">Who We Are</h5>
+                <h5 className="font-medium text-pink">
+                  {content?.label || "Who We Are"}
+                </h5>
               </div>
               <div className="py-2 ">
-                <h1 className="text-black  font-light">
-                  A{" "}
-                  <span className="text-black font-medium ">
-                    think-and-do tank
-                  </span>
-                  <br /> powering change in India’s infrastructure
+                <h1 className="text-black  font-light max-w-xl 2xl:max-w-3xl">
+                  {content ? (
+                    formatHeading(content.heading)
+                  ) : (
+                    <>
+                      A{" "}
+                      <span className="text-black font-medium ">
+                        think-and-do tank
+                      </span>
+                      <br /> powering change in India’s infrastructure
+                    </>
+                  )}
                 </h1>
               </div>
             </div>
             <div className="w-full md:w-1/2 lg:md:w-[46%] pt-2">
-              <h6 className="text-black font-light">
-                Established in 2022 by Vinayak Chatterjee and Rumjhum
-                Chatterjee,{" "}
-                <span className="font-semibold">
-                  The Infravision Foundation
-                </span>{" "}
-                is a non-partisan, not-for-profit think tank driving{" "}
-                <span className="font-semibold">
-                  {" "}
-                  infrastructure-led economic development.
-                </span>
-              </h6>
-              <h6 className="text-black font-light py-2 md:py-3">
-                Founded by professionals and embellished with an ecosystem of
-                thought leaders and experts from academia, civil services, and
-                business,{" "}
-                <span className="font-semibold">
-                  The Infravision Foundation
-                </span>{" "}
-                is a hub for the exchange of knowledge and policy options. It
-                stands for upholding the impartial, enlightened, and respected
-                voice of reason. The Foundation addresses deeply rooted
-                challenges to enable steadfast infrastructure policy-making
-                through rigorous{" "}
-                <span className="font-semibold">
-                  {" "}
-                  knowledge sharing and advocacy.
-                </span>
-              </h6>
+              <h6
+                className="text-black font-light"
+                dangerouslySetInnerHTML={{
+                  __html: content
+                    ? formatDescription(content.description)
+                    : `Established in 2022 by Vinayak Chatterjee and Rumjhum Chatterjee, <span class="font-semibold">The Infravision Foundation</span> is a non-partisan, not-for-profit think tank driving <span class="font-semibold">infrastructure-led economic development.</span>`,
+                }}
+              />
             </div>
           </div>
           <div className=" relative">
-            <TabSwitch setActiveTab={setActiveTab} activeTab={activeTab} />
+            <TabSwitch
+              setActiveTab={setActiveTab}
+              activeTab={activeTab}
+              knowledge={processedKnowledge}
+              advocacy={processedAdvocacy}
+            />
           </div>
         </main>
       </section>
@@ -152,16 +206,20 @@ export default function WhoWeAre() {
 export const TabSwitch = ({
   setActiveTab,
   activeTab,
+  knowledge,
+  advocacy,
 }: {
   setActiveTab: (value: string) => void;
   activeTab: string;
+  knowledge: TabItem[];
+  advocacy: TabItem[];
 }) => {
   const { isHeaderVisible } = useHeader();
   return (
     <div>
       <div
         className={`${
-          isHeaderVisible ? "top-20 xl:top-24" : "top-0"
+          isHeaderVisible ? "top-20 xl:top-22" : "top-0"
         } sticky bg-whitesmoke py-6 xl:py-8 z-[99] transition-all duration-200 ease-linear`}
       >
         <div className=" flex flex-row sm:justify-center  items-center gap-12 md:gap-18 border-b sm:mx-auto  border-darkgray/16 w-fit">

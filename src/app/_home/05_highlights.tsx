@@ -198,7 +198,8 @@ export const TabSwitch = ({
       <div className="pt-6 xl:pt-14">
         {activeTab === "Outreach and Engagements" && (
           // <InfrapanditAward event={event} />
-          <div>Outreach and Engagements</div>
+          <div>Pending 
+            </div>
         )}
 
         {activeTab === "Newsletters" && <TabContent data={newsletters} />}
@@ -248,7 +249,7 @@ export const TabContent = ({ data }: { data: TabItem[] }) => {
           title={item.title}
           image={item.img}
           link={item.link}
-          category={item.category}
+          // category={item.category}
           subtitle={item.subtitle}
           ctaText="Read more"
           classes="line-clamp-2 xl:line-clamp-3 text-lg md:text-xl text-black"

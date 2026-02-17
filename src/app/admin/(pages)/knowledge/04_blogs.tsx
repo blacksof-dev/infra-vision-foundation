@@ -232,9 +232,7 @@ export default function KnowledgeBlogs() {
         {isLoadingList && formState.items.length === 0 ? (
           <div className="mt-10 text-center py-20 bg-white/50 rounded-lg">
             <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-pink border-t-transparent"></div>
-            <p className="mt-2 text-gray-500 font-poppin">
-              Loading blogs...
-            </p>
+            <p className="mt-2 text-gray-500 font-poppin">Loading blogs...</p>
           </div>
         ) : formState.items.length === 0 ? (
           <div className="mt-10 flex flex-col items-center justify-center py-20 bg-white border border-dashed border-gray-300 rounded-lg translate-y-2">
@@ -366,15 +364,16 @@ export default function KnowledgeBlogs() {
             <div className="flex gap-2">
               {Array.from(
                 { length: pagination.totalPages },
-                (_, i) => i + 1
+                (_, i) => i + 1,
               ).map((p) => (
                 <button
                   key={p}
                   onClick={() => loadBlogs(p, sectorFilter, yearFilter)}
-                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${p === page
-                    ? "bg-pink text-white shadow-md shadow-pink/20"
-                    : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
-                    }`}
+                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${
+                    p === page
+                      ? "bg-pink text-white shadow-md shadow-pink/20"
+                      : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
+                  }`}
                 >
                   {p}
                 </button>
@@ -456,7 +455,10 @@ function BlogForm({
       : undefined,
   );
   const [isEditorOpen, setIsEditorOpen] = useState(false);
-  const [editorHolderId] = useState(() => `editorjs-container-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`);
+  const [editorHolderId] = useState(
+    () =>
+      `editorjs-container-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+  );
 
   useEffect(() => {
     async function fetchSectors() {
@@ -466,7 +468,7 @@ function BlogForm({
           session,
         )) as Sector[];
         setSectors(data.filter((s) => s.active));
-      } catch { }
+      } catch {}
     }
     fetchSectors();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -698,7 +700,15 @@ function BlogForm({
               watcher={watch("coverImageFile")}
               accept=".svg, .png, .jpg, .jpeg, .webp"
             />
-
+            <PdfPicker
+              label="PDF File (optional)"
+              errors={errors.docFile}
+              register={register}
+              registerer="docFile"
+              watcher={watch("docFile")}
+              accept=".pdf"
+            />
+                                
             {/* Content Editor */}
             <div className="space-y-2">
               <label className="text-sm font-bold text-gray-700 font-poppin">

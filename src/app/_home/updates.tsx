@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperClass } from "swiper/types";
 import Image from "next/image";
@@ -8,16 +8,123 @@ import "swiper/css/navigation";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import Link from "next/link";
-import img_15 from "@/../public/assets/knowledeg/blogs/01.jpg";
-import analysis from "@/../public/assets/archive/newsletter/analysisAction.png";
-import abha from "@/../public/assets/home/updates/abha.png";
-import montek from "@/../public/assets/globals/infrapanditAward.jpg";
-import anumita from "@/../public/assets/knowledeg/conversations/anumita.png";
-import img_16 from "@/../public/assets/knowledeg/researchPapers/16.jpg";
+import { useQuery } from "@tanstack/react-query";
+import { getFetch } from "@/lib/api";
+import { getUrl } from "@/lib/getUrl";
+
+interface LatestUpdateItem {
+  image: string;
+  category: string;
+  title: string;
+  btnTitle: string;
+  link: string;
+}
+
+interface LatestUpdatesResponse {
+  newsletter?: {
+    id: string;
+    title: string;
+    coverImage: string;
+    fileUrl: string;
+  };
+  blog?: {
+    id: string;
+    title: string;
+    slug: string;
+    coverImage: string;
+  };
+  researchPaper?: {
+    id: string;
+    title: string;
+    image: string;
+    link: string;
+  };
+  video?: {
+    id: string;
+    title: string;
+    image: string;
+    link: string;
+  };
+  mediaCoverage?: {
+    id: string;
+    title: string;
+    image: string;
+    link: string;
+    pdfFile: string | null;
+  };
+}
 
 export default function Updates() {
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [isLastSlide, setIsLastSlide] = useState(false);
+
+  const { data: latestUpdates } = useQuery({
+    queryKey: ["latest-updates"],
+    queryFn: () =>
+      getFetch<LatestUpdatesResponse>(
+        "/homepage/latest-updates?activeOnly=true",
+      ),
+  });
+
+  const updatesData = useMemo(() => {
+    if (!latestUpdates) return [];
+
+    const items: LatestUpdateItem[] = [];
+
+    if (latestUpdates.newsletter) {
+      items.push({
+        image: getUrl(latestUpdates.newsletter.coverImage),
+        category: "Newsletter",
+        title: latestUpdates.newsletter.title,
+        btnTitle: "Read more",
+        link: getUrl(latestUpdates.newsletter.fileUrl),
+      });
+    }
+
+    if (latestUpdates.blog) {
+      items.push({
+        image: getUrl(latestUpdates.blog.coverImage),
+        category: "Blog",
+        title: latestUpdates.blog.title,
+        btnTitle: "Read more",
+        link: `/blogs/${latestUpdates.blog.slug}`,
+      });
+    }
+
+    if (latestUpdates.researchPaper) {
+      items.push({
+        image: getUrl(latestUpdates.researchPaper.image),
+        category: "Research Paper",
+        title: latestUpdates.researchPaper.title,
+        btnTitle: "Read more",
+        link: getUrl(latestUpdates.researchPaper.link),
+      });
+    }
+
+    if (latestUpdates.video) {
+      items.push({
+        image: getUrl(latestUpdates.video.image),
+        category: "Video",
+        title: latestUpdates.video.title,
+        btnTitle: "Watch video",
+        link: latestUpdates.video.link,
+      });
+    }
+
+    if (latestUpdates.mediaCoverage) {
+      items.push({
+        image: getUrl(latestUpdates.mediaCoverage.image),
+        category: "News",
+        title: latestUpdates.mediaCoverage.title,
+        btnTitle: "See details",
+        link: latestUpdates.mediaCoverage.pdfFile
+          ? getUrl(latestUpdates.mediaCoverage.pdfFile)
+          : latestUpdates.mediaCoverage.link,
+      });
+    }
+
+    return items;
+  }, [latestUpdates]);
 
   const handleSlideChange = (swiper: SwiperClass) => {
     setIsLastSlide(swiper.isEnd);
@@ -34,15 +141,13 @@ export default function Updates() {
             <div className="flex gap-5 py-4 justify-center  lg:justify-start md:gap-4 ">
               <button
                 disabled={isFirstSlide}
-                className={`swiper-solution-prev-btn-hero disabled:opacity-50 cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink
-                }`}
+                className={`swiper-solution-prev-btn-hero disabled:opacity-50 cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
               >
                 <GoArrowLeft />
               </button>
               <button
                 disabled={isLastSlide}
-                className={`swiper-solution-next-btn-hero disabled:opacity-50 cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink
-                }`}
+                className={`swiper-solution-next-btn-hero disabled:opacity-50 cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-white text-xl text-pink`}
               >
                 <GoArrowRight />
               </button>
@@ -61,7 +166,6 @@ export default function Updates() {
             }}
             pagination={{
               el: ".custom-pagination-bullets-banner",
-              // type: "fraction",
             }}
             loop
             autoplay={{
@@ -74,23 +178,10 @@ export default function Updates() {
             spaceBetween={10}
             slidesPerView={1.1}
             breakpoints={{
-              200: {
-                slidesPerView: 1.15,
-                spaceBetween: 10,
-              },
-              435: {
-                slidesPerView: 1.2,
-                spaceBetween: 10,
-              },
-
-              640: {
-                slidesPerView: 1.8,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 1.9,
-                spaceBetween: 20,
-              },
+              200: { slidesPerView: 1.15, spaceBetween: 10 },
+              435: { slidesPerView: 1.2, spaceBetween: 10 },
+              640: { slidesPerView: 1.8, spaceBetween: 20 },
+              768: { slidesPerView: 1.9, spaceBetween: 20 },
               1024: { slidesPerView: 2 },
               1120: { slidesPerView: 2.3 },
               1280: { slidesPerView: 2.1 },
@@ -99,7 +190,7 @@ export default function Updates() {
             }}
             onSlideChange={handleSlideChange}
           >
-            {EventsDetails.map((ele, index) => (
+            {updatesData.map((ele, index) => (
               <SwiperSlide key={index} className="  group  ">
                 <Link href={ele.link} target="_blank">
                   <div className="flex flex-row gap-4 bg-[#0000005e] backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4  group h-[8rem] sm:h-[9rem]  lg:h-[10rem] xl:h-[13rem] xlg:h-[16rem] 2xl:h-[18rem] group-hover:bg-white transition-all duration-500 ease-linear ">
@@ -151,68 +242,3 @@ export default function Updates() {
     </section>
   );
 }
-
-const EventsDetails = [
-  {
-    image: "/assets/home/updates/op.png",
-    category: "Video",
-    link: "https://www.youtube.com/embed/l_tOqH0ZpIE?si=AnuQwfGGP_POegUy",
-    title: "Dr O.P. Agarwal",
-    btnTitle: "Watch video",
-  },
-
-  {
-    image: "/assets/archive/newsAndMedia/landValue.png",
-    category: "News",
-    title: "Land value capture",
-    btnTitle: "See details",
-    link: "/assets/pdf/landValue.pdf",
-  },
-
-  {
-    image: montek,
-    category: "InfraPandit Awards",
-    title: "Nurturing the next generation of infra talent and ideas",
-    btnTitle: "See details",
-    link: "/infrapandit-awards",
-  },
-  {
-    image: analysis,
-    category: "Newsletter",
-    title: "Analysis and action",
-    btnTitle: "Read more",
-    link: "/assets/pdf/analysisAction.pdf",
-  },
-
-  {
-    image: img_15,
-    category: "Blog",
-    title: "How to make India’s highways safe",
-    btnTitle: "Read more",
-    link: "/blogs/how-to-make-india-highways-safe",
-  },
-
-  {
-    image: anumita,
-    category: "Video",
-    title: "Anumita Roy Choudhury",
-    btnTitle: "Watch video",
-    link: "https://youtu.be/YV7VYaCB7Yw?si=af66MfWQnjdsG_op",
-  },
-
-  {
-    image: abha,
-    category: "Video",
-    title: "Abha Narain Lambah",
-    btnTitle: "Watch video",
-    link: "https://www.youtube.com/embed/7oiHaLYOpfM?si=TqLV-npHvLJFPdUJ",
-  },
-  {
-    image: img_16,
-    category: "Research Paper",
-    title:
-      "Land Value Capture for urban and regional public transport infrastructure financing",
-    btnTitle: "Read more",
-    link: "/assets/pdf/LVC-report-for-urban-and-regional-public-transport-new.pdf",
-  },
-];

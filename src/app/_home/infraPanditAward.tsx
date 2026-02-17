@@ -43,6 +43,7 @@ export default function InfrapanditAward({
         year: "numeric",
       })
     : "";
+ console.log(event?.details?.images?.[0]?.image)
 
   return (
     <>
@@ -51,6 +52,7 @@ export default function InfrapanditAward({
           <div className="relative w-full h-full">
             <Image
               src={getUrl(eventImage)}
+    
               alt={event.desc || "Event Image"}
               fill
               className="rounded-lg object-contain"
@@ -70,9 +72,9 @@ export default function InfrapanditAward({
               <h4 className=" text-pink">{displayDate}</h4>
               <div className="cursor-pointer mt-6">
                 <BorderGrayHeroBtn
-                  text={ctaText}
+                  text={"See details"}
                   role="link"
-                  link={`${link}/${event.id}`}
+                 link="/outreach-and-engagements"
                   borderColor="pink"
                   color="black"
                   bgColor="white"
