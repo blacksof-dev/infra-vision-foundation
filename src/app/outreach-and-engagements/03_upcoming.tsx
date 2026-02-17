@@ -100,7 +100,7 @@ const Upcoming = () => {
       {
         month: "April",
         events: [
-           {
+          {
             date: "1",
             dayTime: "Tuesday",
             meetingType: "External engagement",
@@ -127,7 +127,7 @@ const Upcoming = () => {
               },
             },
           },
-            {
+          {
             date: "8",
             dayTime: "Tuesday",
             meetingType: "External engagement",
@@ -152,7 +152,7 @@ The study identified Noida as having exceptional potential to become a model cit
 `,
             },
           },
-           {
+          {
             date: "10",
             dayTime: "Thursday",
             meetingType: "External engagement",
@@ -179,8 +179,7 @@ The Infravision Foundation made a field visit and did a detailed report on the p
               },
             },
           },
-        
-         
+
           {
             date: "17",
             dayTime: "Thursday",
@@ -234,7 +233,6 @@ The dual-purpose gathering strengthened the Foundation's governance while establ
 `,
             },
           },
-         
         ],
       },
       {
@@ -244,6 +242,31 @@ The dual-purpose gathering strengthened the Foundation's governance while establ
       {
         month: "June",
         events: [
+          {
+            date: "17 & 18",
+            dayTime: "Monday & Tuesday",
+            meetingType: "External engagements",
+            desc: "InfraPandit Awards Round 2: Jury Presentations",
+            ctaText: "See details",
+            details: {
+              date: "June 17 & 18, 2025",
+              images: [
+                {
+                  image:
+                    "/assets/outreach-and-engagements/eventImages/infraPandit-Round2.jpeg",
+                  description:
+                    "Jury members Savita Mahajan, Advisor and Independent Director; Dr K.P. Krishnan, Former IAS Officer; and Prof. G. Raghuram, Member, Council of Advisors, The Infravision Foundation, during the research presentation.",
+                },
+              ],
+              content: `
+            The inaugural InfraPandit Awards drew submissions from 16 leading institutions. Submissions across engineering, energy, urban transport, governance, economics and the social sciences reflected strong interdisciplinary interest in infrastructure research.\n
+            <b>Nearly one-third</b> of applicants were women, which points to growing gender balance in India’s infrastructure research ecosystem. <b>10 candidates</b> were shortlisted for the jury presentations.\n
+            Beyond the citation and prize, TIF is dedicated to fostering sustained engagement with industry and policy partners for the awardees, and facilitating opportunities for collaborative research and pilot projects.  
+
+
+`,
+            },
+          },
           {
             date: "20",
             dayTime: "Friday",
@@ -297,55 +320,6 @@ The dual-purpose gathering strengthened the Foundation's governance while establ
 `,
             },
           },
-          //           {
-          //             date: "10",
-          //             dayTime: "Tuesday",
-          //             meetingType: "Virtual Conversations",
-          //             desc: "Infra projects in India are invariably only 90% complete",
-          //             ctaText: "See details",
-          //             details: {
-          //               date: "June 10, 2025",
-          //               images: [
-          //                 {image:"/assets/outreach-and-engagements/eventImages/june10_2025.png",
-          //                   description:""
-          //                 },
-
-          //               ],
-          //               cta: {
-          //                 ctaText: "Watch video",
-          //                 link: "https://www.youtube.com/watch?v=w6oJTRqeB4A",
-          //               },
-          //               content: `
-          //              While India's infrastructure projects are 90% complete, land acquisition issues and exorbitant pricing hinder the crucial last 10%. Additionally, last-mile connectivity remains a significant challenge due to a lack of planned transportation systems and overcrowded metros.\n
-          //               Watch the video to delve deeper into these and other related topics as Pratap Padode, Founder of First Construction Council and author of "Tarmac to Towers: India’s Infrastructure Story", joins Infravision Conversation with The Infravision Foundation’s Head of Advocacy, Kaveree Bamzai, to break it down.
-
-          // `,
-          //             },
-          //           },
-          // {
-          //   date: "5",
-          //   dayTime: "Thursday",
-          //   meetingType: "Virtual Conversations",
-          //   desc: "Why India needs a national plan to build new cities",
-          //   ctaText: "See details",
-          //   details: {
-          //     date: "June 5, 2025",
-          //     images: [
-          //       {image: "/assets/outreach-and-engagements/eventImages/june5_2025.png",
-          //         description:""
-          //       },
-
-          //     ],
-          //     cta: {
-          //       ctaText: "Watch video",
-          //       link: "https://www.youtube.com/watch?v=g5aA3Q3af1g&t=8s",
-          //     },
-          //     content: `
-          //     Watch Jagan Shah, CEO of The Infravision Foundation, and Kaveree Bamzai, Head of Advocacy at The Infravision Foundation, discuss India's critical need for a comprehensive national urban plan. They underscore the vital role of historical "brownfield" cities and renewed and newly developed "greenfield" cities in managing rapid population growth and urban chaos.\n
-          //      Learn why effective planning, resource utilisation, and local self-governance are essential to transform India's urban landscape and achieve prosperity.
-          //      `,
-          //   },
-          // },
         ],
       },
       {
@@ -486,7 +460,52 @@ The dual-purpose gathering strengthened the Foundation's governance while establ
       },
       {
         month: "November",
-        events: [],
+        events: [
+          {
+            date: "29",
+            dayTime: "Saturday",
+            meetingType: "External engagements",
+            desc: "InfraPandit Awards Round 2: Jury Presentations",
+            ctaText: "See details",
+
+            details: {
+              date: "November 29, 2025",
+              images: [
+                {
+                  image: "/assets/infrapandit/gallery/infrapandit_award2.png",
+                  description:
+                    "Sthaladipti Saha, Senior VP & Head – Buildings & Factories, L&T Ltd; Rumjhum Chatterjee, Co-Founder and Managing Trustee, TIF; and Vinayak Chatterjee, Founder and Managing Trustee, TIF, present the Uttam Award to Dr Shubham Jain.",
+                },
+                {
+                  image: "/assets/infrapandit/gallery/infrapandit_award3.png",
+                  description:
+                    "Sthaladipti Saha, Senior VP & Head – Buildings & Factories, L&T Ltd; Rumjhum Chatterjee, Co-Founder and Managing Trustee, TIF; and Vinayak Chatterjee, Founder and Managing Trustee, TIF, present the Mahaan Award to Dr. Paresh Jawarilal Chhajed.",
+                },
+                {
+                  image: "/assets/infrapandit/gallery/infrapandit_award7.png",
+                  description:
+                    "(From right to left) Chief Guest Sthaladipti Saha, Jury member Savita Mahajan, and TIF dignitaries during the lamp-lighting ceremony.",
+                },
+                {
+                  image: "/assets/infrapandit/gallery/infrapandit_award8.png",
+                  description:
+                    "Vinayak Chatterjee, Founder and Managing Trustee, TIF, shares his thoughts with attendees at the awards ceremony.",
+                },
+              ],
+              content: `Following the jury presentation in June, the first InfraPandits Awards were presented at a ceremony at the India Habitat Centre, supported by Larsen & Toubro.
+
+The event brought together senior leaders from industry, academia and government. Chief Guest Mr Sthaladipti Saha represented the partner organisation.
+
+<b>Winners</b><br/><b>Uttam Award – Dr Shubham Jain</b><br/>Recognised for the development of solar-powered thermal energy storage solutions with applications in clean cooking and industrial heat.
+
+<b>Mahaan Award – Dr Paresh Jawarilal Chhajed</b><br/>Recognised for research on scalable faecal-sludge management models and governance frameworks for small Indian cities.
+
+The ceremony highlighted the Awards’ potential to recognise and translate academically rigorous research into policy, pilots and industry practices to solve India’s infrastructure challenges and support the Viksit Bharat vision.
+
+TIF also used the platform to launch longer-term engagement pathways for the winners.`,
+            },
+          },
+        ],
       },
       {
         month: "December",
@@ -496,33 +515,7 @@ The dual-purpose gathering strengthened the Foundation's governance while establ
     "2024": [
       {
         month: "January",
-        events: [
-          // {
-          //   date: "12",
-          //   dayTime: "Friday",
-          //   meetingType: "Virtual Conversations ",
-          //   desc: "Renewable energy 2024: Storage will be the main focus with Nitin Zamre",
-          //   ctaText: "See details",
-          //   details: {
-          //     date: "Jan 12, 2024",
-          //     images: [
-          //        {
-          //         image:
-          //         "/assets/outreach-and-engagements/eventImages/januray12_2024.png",
-          //       description:""
-          //       }
-          //     ],
-          //     content: `
-          //     Join energy expert Nitin Zamre as he discusses India's evolving energy landscape with Kaveree Bamzai, Head of Advocacy at The Infravision Foundation. The discussion highlights the ongoing reliance on coal despite a strong push for renewable energy. While coal provides domestic energy security, its use is slowly declining as India commits to cleaner sources and emission reduction targets.\n
-          //     The discussion also touches upon the uneven access to 24/7 power and the decreasing cost of solar energy. Ultimately, the conversation underscores a shift towards a diversified energy mix, with a notable acceleration in electric vehicle adoption and the potential for decentralised, solar-powered solutions to empower rural communities.\n
-          //     `,
-          //     cta: {
-          //       ctaText: "Watch video",
-          //       link: "https://www.youtube.com/watch?v=q25SQpLHlDc",
-          //     },
-          //   },
-          // },
-        ],
+        events: [],
       },
       {
         month: "February",
@@ -619,65 +612,6 @@ The dual-purpose gathering strengthened the Foundation's governance while establ
               },
             },
           },
-          // {
-          //   date: "30",
-
-          //   dayTime: "Thursday",
-          //   meetingType: "Virtual Conversations",
-          //   desc: "Wild areas are necessary in cities, they allow nature to breathe with Anita Mani",
-          //   ctaText: "See details",
-          //   details: {
-          //     date: "May 30, 2024",
-          //     images: [ {
-
-          //       image:"/assets/outreach-and-engagements/eventImages/mayImg1_30_2024.png",
-          //     description:"",
-          //     },{
-
-          //       image:"/assets/outreach-and-engagements/eventImages/mayImg2_30_2024.png",
-          //      description:"",
-          //     }
-          //     ],
-          //     content: `
-          //      Join Anita Mani, founder of Indian Pitta Books, as she converses with Kaveree Bamzai, Head of Advocacy at The Infravision Foundation, in this Infravision Conversation.\n
-          //      Mani discusses the critical need for biodiversity and natural spaces within urban environments, highlighting the alarming rate at which green habitats are disappearing due to unchecked urbanisation, citing the poignant example of the Basai wetland. She advocates for allowing wild places to simply "be", rather than converting them into manicured parks or tourism complexes. The discussion also touches upon the limitations of "compensatory afforestation" and praises successful models like the Aravalli Biodiversity Park, arguing for a shift in urban planning philosophy to prioritise ecological preservation alongside development.
-          //     `,
-          //     cta: {
-          //       ctaText: "Watch video",
-          //       link: "https://www.youtube.com/watch?v=S4gStG-y7qM",
-          //     },
-          //   },
-          // },
-          // {
-          //   date: "30",
-
-          //   dayTime: "Thursday",
-          //   meetingType: "Virtual Conversations",
-          //   desc: "A walk for a cause with Gita Balakrishnan",
-          //   ctaText: "See details",
-          //   details: {
-          //     date: "May 30, 2024",
-          //     images: [ {
-
-          //       image:"/assets/outreach-and-engagements/eventImages/dummy.png",
-          //      description:"",
-          //     },{
-
-          //       image:"/assets/outreach-and-engagements/eventImages/dummy.png",
-          //       description:"",
-          //     }
-          //     ],
-          //     content: `
-          //     Join Gita Balakrishnan, an architect and author, as she converses with Kaveree Bamzai, Head of Advocacy at The Infravision Foundation, in this Infravision Conversation. Balakrishnan discusses her book, "1700 in 70: A Walk for a Cause," which chronicles her 70-day, 1,700-kilometre walk from Kolkata to Delhi\n
-          //     The interaction highlights Balakrishnan's motivation to experience India on foot and understand its diverse realities, particularly concerning urban design, infrastructure, and social dynamics. She discusses six key areas of focus identified during her walk, including the plight of construction workers, the need for Universal Design and design literacy, the preservation of traditional wisdom, and environmental concerns.\n
-          //     The conversation also delves into Balakrishnan's remarkable resilience in overcoming personal trauma and her commitment to fostering empathy and driving policy change through her work.
-          //     `,
-          //     cta: {
-          //       ctaText: "Watch video",
-          //       link: "https://www.youtube.com/watch?v=5jrEtMe-t6c",
-          //     },
-          //   },
-          // },
         ],
       },
       {
@@ -1206,34 +1140,7 @@ The dual-purpose gathering strengthened the Foundation's governance while establ
       },
       {
         month: "August",
-        events: [
-          //   {
-          //     date: "27",
-          //     dayTime: "Sunday",
-          //     meetingType: "Virtual Conversations",
-          //     desc: "Selecting the appropriate urban transport system for India's cities with Prof Geetam Tiwari",
-          //     ctaText: "See details",
-          //     details: {
-          //       date: "August 27, 2023",
-          //       images: [
-          //         {
-          //           image:
-          //           "/assets/outreach-and-engagements/eventImages/aug27_2023.png",
-          //           description:""
-          //         }
-          //         ,
-          //       ],
-          //       content: `
-          //  Watch a transportation expert’s perspective as Professor Geetam Tiwari engages in a discussion focused on “Selecting the appropriate urban transport system for India's cities”, particularly Delhi with Kaveree Bamzai, Head of Advocacy at The Infravision Foundation. Tiwari argues that metro is not the only solution for urban mobility. shes emphasises the need for a holistic and integrated approach that considers diverse travel demands, highlighting Delhi's decline in public transport ridership despite significant investment.\n
-          // The expert stresses the importance of government commitment to providing safe, reliable public transport and infrastructure for active travel, advocating for a shift in mindset from private to public assets, and the establishment of overarching institutional mechanisms to plan and integrate different transport modes based on actual city travel patterns.\n
-          //       `,
-          //       cta: {
-          //         ctaText: "Watch Video",
-          //         link: "https://www.youtube.com/watch?v=Sr17ZN7FLA4",
-          //       },
-          //     },
-          //   },
-        ],
+        events: [],
       },
       {
         month: "September",
@@ -1268,34 +1175,6 @@ The dual-purpose gathering strengthened the Foundation's governance while establ
               `,
             },
           },
-          // {
-          //   date: "15",
-
-          //   dayTime: "Friday",
-          //   meetingType: "Virtual Conversations",
-          //   desc: "Sustainability ratings: An idea whose time has come with Rajaji Meshram",
-          //   ctaText: "See details",
-          //   details: {
-          //     date: "Sep 15, 2023",
-          //     images: [
-          //       {
-          //         image:
-          //         "/assets/outreach-and-engagements/eventImages/sep15_2023.png",
-          //         description:""
-          //       }
-          //       ,
-          //     ],
-          //     content: `
-
-          // Join Rajaji, a transport and logistics expert and Distinguished Fellow at The Infravision Foundation, as he shares his thoughts on the critical need for Sustainability Ratings for infrastructure projects in India. Rajaji explains that as India aims for significant economic growth and a "step jump in infrastructure," this growth must be sustainable and not at the environment's or society's expense. The core idea is to implement a standardised rating system, similar to financial credit ratings, that would simplify the assessment of a project's environmental, social, and long-term climate impact.\n
-          //  The discussion also highlights the importance of systematic processes, building trust in the ratings, and securing buy-in from key stakeholders like the government and financial institutions to ensure the successful adoption and effectiveness of these sustainability ratings.\n
-          //     `,
-          //     cta: {
-          //       ctaText: "Watch Video",
-          //       link: "https://www.youtube.com/watch?v=Jis2Q7oOfr0&t=1s",
-          //     },
-          //   },
-          // },
         ],
       },
       {
@@ -1333,99 +1212,11 @@ The dual-purpose gathering strengthened the Foundation's governance while establ
               `,
             },
           },
-          //       {
-          //         date: "11",
-
-          //         dayTime: "Wednesday",
-          //         meetingType: "Virtual Conversations",
-          //         desc: "Making metro systems financially viable with Prof Sandip Chakrabarti",
-          //         ctaText: "See details",
-          //         details: {
-          //           date: "Oct 11, 2023",
-          //           images: [
-          //             {
-          //               image:
-          //               "/assets/outreach-and-engagements/eventImages/oct11_2023.png",
-          //             description:""
-          //             }
-          //             ,
-          //           ],
-          //           content: `
-
-          //   Most metro systems, especially in smaller Indian cities, are not financially viable due to low ridership, insufficient fare revenues, and a lack of non-fare income. Watch Professor Sandip Chakrabarti from IIM-Ahmedabad share his thoughts and insights on the financial sustainability of India's Metro systems. The core issue discussed is that\n
-          //  Professor Chakrabarti advocates for a comprehensive, integrated approach to urban transportation through the concept of "AMTA 2.0," which envisions a single entity responsible for planning, owning, building, operating, and setting policy for all modes of public transit in a city, including innovative funding mechanisms like land value capture and congestion pricing.\n
-          // The overall purpose is to encourage a shift towards sustainable, financially healthy urban mobility by making beneficiaries pay and fostering a strategic vision for integrated public transport.
-
-          //           `,
-          //           cta: {
-          //             ctaText: "Watch Video",
-          //             link: "https://www.youtube.com/watch?v=H34LNACsKZw&t=51s",
-          //           },
-          //         },
-          //       },
-          //           {
-          //             date: "11",
-
-          //             dayTime: "Wednesday",
-          //             meetingType: "Virtual Conversations",
-          //             desc: "How to save our hill cities with Rajiv Ranjan Mishra",
-          //             ctaText: "See details",
-          //             details: {
-          //               date: "Oct 11, 2023",
-          //               images: [
-          //                   {
-
-          //                     image:"/assets/outreach-and-engagements/eventImages/octImg2_11_2023.png",
-          //                 description:""
-          //                   }
-
-          //               ],
-          //               content: `
-
-          //    Rajiv Ranjan Mishra - Distinguished Fellow, The Infravision Foundation, and former Director General, National Mission for Clean Ganga.\n
-          //  Join Rajiv Ranjan Mishra, former Director General of the National Mission for Clean Ganga and Distinguished Fellow, The Infravision Foundation, as he converses with Kaveree Bamzai, Head of Advocacy at The Infravision Foundation. The discussion focuses on the carrying capacity of Himalayan hill cities in India, emphasising the urgent need to assess and manage human impact on these fragile ecosystems due to recent environmental damage. Mishra talks about the multidimensional nature of carrying capacity, encompassing resource availability, environmental assimilation, and infrastructure, and the necessity of integrating ecological sensitivity into urban planning. \n
-          //    The conversation also highlights the challenges of implementation across diverse states and the critical role of capacity building for city managers and regional planning to foster sustainable development in these vital regions.
-
-          //               `,
-          //               cta: {
-          //                 ctaText: "Watch video",
-          //                 link: "https://www.youtube.com/watch?v=ZdLcdjJShW8",
-          //               },
-          //             },
-          //           },
         ],
       },
       {
         month: "November",
-        events: [
-          //     {
-          //       date: "14",
-          //       dayTime: "Tuesday",
-          //       meetingType: "Virtual Conversations",
-          //       desc: "Air pollution: The solution has to be multi-sectoral",
-          //       ctaText: "See details",
-          //       details: {
-          //         date: "November 14, 2023",
-          //         images: [
-          //           {
-          //             image:
-          //             "/assets/outreach-and-engagements/eventImages/nov14_2023.png",
-          //           description:""
-          //           }
-          //           ,
-          //         ],
-          //         content: `
-          // Join Jagan Shah, urban planning expert and CEO of The Infravision Foundation, alongside Kaveree Bamzai, Head of Advocacy at The Infravision Foundation, in this episode of the Infravision Conversation.\n
-          // The discussion addresses air pollution as a critical human development issue with far-reaching consequences, extending beyond immediate health impacts to long-term societal and economic burdens. They emphasise air pollution as a complex outcome of current development models, with significant contributors including construction dust, vehicular emissions, and solid waste.\n
-          // Drawing inspiration from London's successful long-term efforts to combat smog through a dedicated metropolitan agency, Shah argues for a multi-sectoral, national approach to solutions. He highlights the inadequacy of isolated, reactive measures and advocates for proactive strategies involving various government ministries and public consensus.
-          //         `,
-          //         cta: {
-          //           ctaText: "Watch video",
-          //           link: "https://www.youtube.com/watch?v=OjrOlknqzu4",
-          //         },
-          //       },
-          //     },
-        ],
+        events: [],
       },
       {
         month: "December",
@@ -1485,13 +1276,6 @@ The dual-purpose gathering strengthened the Foundation's governance while establ
         alt="Decorative Circle"
       />
       <div className="w-container">
-        {/* <div className="blade-top-margin-sm blade-bottom-margin-sm p-2 border border-gray-300 bg-white rounded relative">
-          <InfrapanditAward
-            ctaText="Register now"
-            link="https://docs.google.com/forms/d/e/1FAIpQLSdjpffzJCT6qmQXNUmoUau7giN4qVTsm5j3ysGZ0r8QxiG05g/viewform?usp=sharing&ouid=118204303619309850521"
-          />
-        </div> */}
-
         <div>
           <div className="flex items-center gap-2 md:gap-3">
             <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>

@@ -1,13 +1,12 @@
 "use client";
-import React, { useRef } from 'react'
-import OutreachBanner from './01_Banner'
-import Highlight from './02_highlight';
-import Upcoming from './03_upcoming';
-import Past from './04_past';
-import Involved from './05_involved';
-import PublicationTabs from '@/_components/molecules/tabs';
-import OutreachTabs from '@/_components/molecules/tabs';
-
+import React, { useRef } from "react";
+import OutreachBanner from "./01_Banner";
+import Highlight from "./02_highlight";
+import Upcoming from "./03_upcoming";
+import Past from "./04_past";
+import Involved from "./05_involved";
+import PublicationTabs from "@/_components/molecules/tabs";
+import OutreachTabs from "@/_components/molecules/tabs";
 
 type TabId = "highlight" | "upcoming" | "past";
 
@@ -17,10 +16,7 @@ const tabs: { id: TabId; label: string }[] = [
   // { id: "past", label: "Past programmes" },
 ];
 
-
-
 const OutreachAndEngagements = () => {
-
   const sectionRefs: Record<TabId, React.RefObject<HTMLDivElement | null>> = {
     highlight: useRef<HTMLDivElement | null>(null),
     upcoming: useRef<HTMLDivElement | null>(null),
@@ -35,19 +31,13 @@ const OutreachAndEngagements = () => {
   return (
     <>
       <OutreachBanner />
-      {/* <OutreachTabs tabs={tabs} sectionRefs={sectionRefs} /> */}
-      {/* <div id="highlight" ref={sectionRefs.highlight}>
-        <Highlight />
-      </div> */}
-      <div id='upcoming' ref={sectionRefs.upcoming}>
+
+      <div id="upcoming" ref={sectionRefs.upcoming}>
         <Upcoming />
       </div>
-      {/* <div id='past' ref={sectionRefs.past}>
-        <Past />
-      </div> */}
       <Involved />
     </>
-  )
-}
+  );
+};
 
-export default OutreachAndEngagements
+export default OutreachAndEngagements;

@@ -77,7 +77,7 @@ export default function EventDetailsPopup({
                             <FaPlay className="text-pink text-base xl:text-xl group-hover:text-white" />
                           </button>
                         </div>
-                        <p className="absolute bottom-6 text-white px-4 text-center lg:block hidden">
+                        <p className="absolute  bottom-6 text-white px-4 text-center lg:block hidden">
                           {obj.description}
                         </p>
                       </Link>
@@ -119,10 +119,10 @@ export default function EventDetailsPopup({
                         paragraph.trim() && (
                           <p
                             key={index}
-                            className="text-black  text-sm md:text-base mt-6 first:mt-0"
+                            className="text-black text-sm md:text-base mt-4 first:mt-0"
                             dangerouslySetInnerHTML={{ __html: paragraph }}
                           />
-                        )
+                        ),
                     )}
                 </div>
               )}
