@@ -243,31 +243,6 @@ The dual-purpose gathering strengthened the Foundation's governance while establ
         month: "June",
         events: [
           {
-            date: "17 & 18",
-            dayTime: "Monday & Tuesday",
-            meetingType: "External engagements",
-            desc: "InfraPandit Awards Round 2: Jury Presentations",
-            ctaText: "See details",
-            details: {
-              date: "June 17 & 18, 2025",
-              images: [
-                {
-                  image:
-                    "/assets/outreach-and-engagements/eventImages/infraPandit-Round2.jpeg",
-                  description:
-                    "Jury members Savita Mahajan, Advisor and Independent Director; Dr K.P. Krishnan, Former IAS Officer; and Prof. G. Raghuram, Member, Council of Advisors, The Infravision Foundation, during the research presentation.",
-                },
-              ],
-              content: `
-            The inaugural InfraPandit Awards drew submissions from 16 leading institutions. Submissions across engineering, energy, urban transport, governance, economics and the social sciences reflected strong interdisciplinary interest in infrastructure research.\n
-            <b>Nearly one-third</b> of applicants were women, which points to growing gender balance in India’s infrastructure research ecosystem. <b>10 candidates</b> were shortlisted for the jury presentations.\n
-            Beyond the citation and prize, TIF is dedicated to fostering sustained engagement with industry and policy partners for the awardees, and facilitating opportunities for collaborative research and pilot projects.  
-
-
-`,
-            },
-          },
-          {
             date: "20",
             dayTime: "Friday",
             meetingType: "External engagement",
@@ -456,7 +431,33 @@ The dual-purpose gathering strengthened the Foundation's governance while establ
       },
       {
         month: "October",
-        events: [],
+        events: [
+          {
+            date: "17 & 18",
+            dayTime: "Monday & Tuesday",
+            meetingType: "External engagements",
+            desc: "InfraPandit Awards Round 2: Jury Presentations",
+            ctaText: "See details",
+            details: {
+              date: "October 17 & 18, 2025",
+              images: [
+                {
+                  image:
+                    "/assets/outreach-and-engagements/eventImages/infraPandit-Round2.jpeg",
+                  description:
+                    "Jury members Savita Mahajan, Advisor and Independent Director; Dr K.P. Krishnan, Former IAS Officer; and Prof. G. Raghuram, Member, Council of Advisors, The Infravision Foundation, during the research presentation.",
+                },
+              ],
+              content: `
+            The inaugural InfraPandit Awards drew submissions from 16 leading institutions. Submissions across engineering, energy, urban transport, governance, economics and the social sciences reflected strong interdisciplinary interest in infrastructure research.\n
+            <b>Nearly one-third</b> of applicants were women, which points to growing gender balance in India’s infrastructure research ecosystem. <b>10 candidates</b> were shortlisted for the jury presentations.\n
+            Beyond the citation and prize, TIF is dedicated to fostering sustained engagement with industry and policy partners for the awardees, and facilitating opportunities for collaborative research and pilot projects.  
+
+
+`,
+            },
+          },
+        ],
       },
       {
         month: "November",
