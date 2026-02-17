@@ -14,7 +14,6 @@ export default function GetInvolvedBanner() {
     queryFn: () => getFetch<BannerData>("/content/get-involved-banner-section"),
   });
 
-  console.log(data);
   if (!data || isLoading) {
     return null;
   }
