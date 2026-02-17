@@ -13,7 +13,7 @@ import img_09 from "@/../public/assets/knowledeg/blogs/09.jpg";
 import img_10 from "@/../public/assets/knowledeg/blogs/marine.png";
 import img_11 from "@/../public/assets/knowledeg/blogs/urban challenges.jpg";
 import img_12 from "@/../public/assets/knowledeg/blogs/transit.png";
-import img_13 from "@/../public/assets/knowledeg/blogs/fiveHourLate.png";
+import img_13 from "@/../public/assets/knowledeg/blogs/superfast-rail-reality.png";
 
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
 

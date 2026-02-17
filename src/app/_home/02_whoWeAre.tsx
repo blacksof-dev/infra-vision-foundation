@@ -1,6 +1,6 @@
 "use client";
 
-import highway from "@/../public/assets/knowledeg/blogs/fiveHourLate.png";
+import highway from "@/../public/assets/knowledeg/blogs/superfast-rail-reality.png";
 import infraKatha from "@/../public/assets/infrakatha/banner/banner.jpg";
 import infraShakti from "@/../public/assets/home/whoWeAre/advocacy/infraPandit.png";
 import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infraPanditAward.png";
