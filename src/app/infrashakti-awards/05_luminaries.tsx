@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import type { Swiper as SwiperClass } from "swiper/types";
 import type { Swiper as SwiperType } from "swiper/types";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,13 +9,24 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { MemberCard } from "@/_components/molecules/memberCard";
-import { CardData, Guests, Preeminent, jury } from "./static";
+import { useQuery } from "@tanstack/react-query";
+import { getFetch } from "@/lib/api";
+import { Datetyep } from "../infrakatha/02_about";
+import { getUrl } from "@/lib/getUrl";
 
 type ButtonTabProps = {
   label: string;
   value: string;
   data: string;
   setdata: (val: string) => void;
+};
+
+export type CardData = {
+  image: string;
+  title: string;
+  desig: string;
+  link?: string;
+  socialMedia?: string;
 };
 
 interface MobileMembersSliderProps {
@@ -57,7 +68,6 @@ export default function Luminaries() {
   const [data, setdata] = useState("jury");
   const [isLastSlide, setIsLastSlide] = useState(false);
   const [isFirstSlide, setIsFirstSlide] = useState(true);
-  const [carddata, setcarddata] = useState<CardData[]>([]);
   const [showPopup, setShowPopup] = useState<boolean>(false);
   const [popupData, setPopUpData] = useState<CardData | undefined>();
 
@@ -72,33 +82,78 @@ export default function Luminaries() {
     }
   }, [data]);
 
-  useEffect(() => {
-    if (showPopup) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-  }, [showPopup]);
+  const { data: juryData } = useQuery({
+    queryKey: ["jury"],
+    queryFn: () =>
+      getFetch<Datetyep[]>(
+        "/members?type=infrashakti-the-esteemed-jury&active=true",
+      ),
+  });
 
-  useEffect(() => {
-    let cardDetails: CardData[] = [];
+  const { data: guestData } = useQuery({
+    queryKey: ["guest"],
+    queryFn: () =>
+      getFetch<Datetyep[]>(
+        "/members?type=infrashakti-guests-of-honour&active=true",
+      ),
+  });
 
+  const { data: preEminentData } = useQuery({
+    queryKey: ["preEminent"],
+    queryFn: () =>
+      getFetch<Datetyep[]>(
+        "/members?type=infrashakti-pre-eminent%20leaders&active=true",
+      ),
+  });
+
+  const mappedJuryData = useMemo<CardData[]>(
+    () =>
+      (juryData ?? []).map((item) => ({
+        image: getUrl(item.image),
+        title: item.name,
+        desig: item.designation,
+        link: item.socialUrl,
+        socialMedia: item.socialType,
+      })),
+    [juryData],
+  );
+
+  const mappedGuestData = useMemo<CardData[]>(
+    () =>
+      (guestData ?? []).map((item) => ({
+        image: getUrl(item.image),
+        title: item.name,
+        desig: item.designation,
+        link: item.socialUrl,
+        socialMedia: item.socialType,
+      })),
+    [guestData],
+  );
+
+  const mappedPreEminentData = useMemo<CardData[]>(
+    () =>
+      (preEminentData ?? []).map((item) => ({
+        image: getUrl(item.image),
+        title: item.name,
+        desig: item.designation,
+        link: item.socialUrl,
+        socialMedia: item.socialType,
+      })),
+    [preEminentData],
+  );
+
+  const carddata = useMemo<CardData[]>(() => {
     switch (data) {
       case "Guests":
-        cardDetails = Guests;
-        break;
+        return mappedGuestData;
       case "Preeminent":
-        cardDetails = Preeminent;
-        break;
+        return mappedPreEminentData;
       case "jury":
-        cardDetails = jury;
-        break;
+        return mappedJuryData;
       default:
-        cardDetails = [];
+        return [];
     }
-
-    setcarddata(cardDetails);
-  }, [data]);
+  }, [data, mappedGuestData, mappedPreEminentData, mappedJuryData]);
 
   return (
     <>
@@ -193,7 +248,7 @@ export default function Luminaries() {
                     500: { slidesPerView: 1.5, centeredSlides: false },
                     768: { slidesPerView: 2.2, centeredSlides: false },
                     1024: { slidesPerView: 2, centeredSlides: false },
-                    1280: { slidesPerView:3, centeredSlides: false },
+                    1280: { slidesPerView: 3, centeredSlides: false },
                     1536: {
                       slidesPerView: 3.5,
                       centeredSlides: false,
@@ -241,7 +296,7 @@ export default function Luminaries() {
 
           <MobileMembersSlider
             title="Guests of honour"
-            data={Guests}
+            data={mappedGuestData}
             navClass="Guests"
             setShowPopup={setShowPopup}
             setPopUpData={setPopUpData}
@@ -252,7 +307,7 @@ export default function Luminaries() {
 
           <MobileMembersSlider
             title="Preeminent leaders"
-            data={Preeminent}
+            data={mappedPreEminentData}
             navClass="Preeminent"
             setShowPopup={setShowPopup}
             setPopUpData={setPopUpData}
@@ -263,7 +318,7 @@ export default function Luminaries() {
 
           <MobileMembersSlider
             title="The esteemed jury"
-            data={jury}
+            data={mappedJuryData}
             navClass="jury"
             setShowPopup={setShowPopup}
             setPopUpData={setPopUpData}

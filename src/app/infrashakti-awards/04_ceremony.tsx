@@ -1,46 +1,30 @@
 "use client";
-import dilip from "@/../public/assets/infraShakti/ceremony/dilip.png";
-import pranav from "@/../public/assets/infraShakti/ceremony/pranav.png";
-import raghuram from "@/../public/assets/infraShakti/ceremony/raghuram.png";
+
 import { FaPlay } from "react-icons/fa";
 import Image from "next/image";
 import { useState } from "react";
 import VideoPopupGlobal from "@/_components/molecules/videopopup";
+import { useQuery } from "@tanstack/react-query";
+import { getFetch } from "@/lib/api";
+import { getUrl } from "@/lib/getUrl";
 
 type VideoCard = {
-  image: string;
+  thumbnailUrl: string;
   title: string;
   name: string;
-  designation: string;
-  link: string;
+  description: string;
+  youtubeVideoUrl: string;
 };
 
-const videoCardDetails = [
-  {
-    image: pranav.src,
-    title: "The keynote speech",
-    name: "Mr Pranav Adani",
-    designation:
-      "Managing Director (Agro, Oil & Gas) and Director of Adani Enterprises",
-    link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=8400&end=9063",
-  },
-  {
-    image: raghuram.src,
-    title: "Juror talk",
-    name: "Prof G Raghuram",
-    designation: "Former Director, IIMB and Dean, IIMA",
-    link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=265&si=uTJRwlzGhyjpn4_a",
-  },
-  {
-    image: dilip.src,
-    title: "Juror talk",
-    name: "Mr Dilip Cherian",
-    designation: "Image Guru and Policy Analyst",
-    link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=214&si=uTJRwlzGhyjpn4_a",
-  },
-];
-
 export default function Ceremony() {
+  const { data } = useQuery({
+    queryKey: ["infrashakti-ceremony"],
+    queryFn: () =>
+      getFetch<VideoCard[]>("/infrashakti/ceremony-scenes?active=true"),
+  });
+
+  if (!data) return null;
+
   return (
     <>
       <div className="blade-top-padding-lg blade-bottom-padding-lg w-container">
@@ -57,7 +41,7 @@ export default function Ceremony() {
             </span>
           </h1>
         </div>
-        <VideoCard data={videoCardDetails} />
+        <VideoCard data={data} />
       </div>
     </>
   );
@@ -69,12 +53,13 @@ function VideoCard({ data }: { data: VideoCard[] }) {
   return (
     <>
       <div className="flex flex-col justify-center items-center md:flex-row md:justify-start md:items-start gap-5 blade-top-padding-sm">
-        {data.map((ele: VideoCard, index: number) => {
-          return (
+        {(Array.isArray(data) ? data : (data as any)?.data || [])?.map(
+          (ele: VideoCard, index: number) => {
+            return (
               <div key={index} className=" max-w-sm relative h-[28rem]  w-full">
                 <Image
-                  src={ele.image}
-                  alt={ele.title}
+                  src={getUrl(ele.thumbnailUrl)}
+                  alt={ele.title || "video thumbnail"}
                   fill
                   className="object-cover rounded "
                   unoptimized
@@ -83,15 +68,15 @@ function VideoCard({ data }: { data: VideoCard[] }) {
                 <div className="absolute -traslate-x-1/2 group -translate-y-1/2 left-1/2 top-1/2">
                   <button
                     onClick={() => {
-                      setActiveVideoSrc(ele.link);
+                      setActiveVideoSrc(ele.youtubeVideoUrl);
                       setpopup(true);
                     }}
                     className="w-12 h-12 rounded-full  ring-1 ring-pink bg-white flex justify-center items-center group-hover:bg-pink transition-all duration-100"
                   >
                     <FaPlay className="text-pink text-lg group-hover:text-white" />
                   </button>
-                </div> 
-                
+                </div>
+
                 <div className="w-full h-auto  absolute bottom-0">
                   <div className="">
                     <ul className="text-white font-semibold list-disc pl-3 md:pl-5 list-inside text-lg">
@@ -100,13 +85,13 @@ function VideoCard({ data }: { data: VideoCard[] }) {
                   </div>
                   <div className="text-white  pl-3 md:pl-5 py-2  md:h-[7rem]">
                     <p className="text-base sm:text-md">{ele.name}</p>
-                    <p className="text-base sm:text-md">{ele.designation}</p>
+                    <p className="text-base sm:text-md">{ele.description}</p>
                   </div>
                 </div>
               </div>
-         
-          );
-        })}
+            );
+          },
+        )}
         {openPopUp && activeVideoSrc !== null && (
           <VideoPopupGlobal
             src={activeVideoSrc}

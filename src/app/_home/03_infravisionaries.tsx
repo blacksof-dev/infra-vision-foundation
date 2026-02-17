@@ -18,7 +18,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getFetch } from "@/lib/api";
 import { getUrl } from "@/lib/getUrl";
 
-interface Member {
+export interface Member {
   id: string;
   image: string;
   title: string;

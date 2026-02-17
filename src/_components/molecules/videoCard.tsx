@@ -1,31 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { BorderGrayHeroBtn, HeroBtn } from "../atoms/buttons";
+import { BorderGrayHeroBtn } from "../atoms/buttons";
 import { FaPlay } from "react-icons/fa";
 import Portal from "../atoms/popupPortal";
 import { RxCross2 } from "react-icons/rx";
 import { useState } from "react";
-import Link from "next/link";
+
 import VideoPopupGlobal from "@/_components/molecules/videopopup";
+import {
+  Spotlight,
+  SpotlightResponse,
+} from "@/app/infrashakti-awards/03_spotlight";
+import { getUrl } from "@/lib/getUrl";
 
-type VideoProps = {
-  name: string;
-  link: string;
-  awardName: string;
-  thumbnailImage: string;
-  title: string;
-  desc: string;
-  awardslogo: string;
-  logo: string;
-  companyName?: string;
-};
-
-type VideoCardProps = {
-  data: VideoProps[];
-};
-
-export default function VideoCard({ data }: VideoCardProps) {
+export default function VideoCard({ data }: SpotlightResponse) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [currentIndex, setcurrentIndex] = useState(0);
   const [videoPopUp, setvideoPopup] = useState<boolean>(false);
@@ -56,9 +45,9 @@ export default function VideoCard({ data }: VideoCardProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-8 xl:gap-14">
         {data.map((elem, index) => (
           <div key={index}>
-            <div  className="relative w-full h-[18rem]">
+            <div className="relative w-full h-[18rem]">
               <Image
-                src={elem.thumbnailImage}
+                src={getUrl(elem.thumbnailUrl)}
                 width={500}
                 height={500}
                 alt="Image"
@@ -81,10 +70,10 @@ export default function VideoCard({ data }: VideoCardProps) {
             <div className="flex justify-between flex-col">
               <div>
                 <div className="pt-3">
-                  <p className="text-pink font-medium">{elem.awardName}</p>
+                  <p className="text-pink font-medium">{elem.awardType}</p>
                 </div>
                 <h6 className="text-black font-medium xl:text-xl">
-                  {elem.name}
+                  {elem.awardee}
                 </h6>
               </div>
               <div className="pt-3 pb-6 xl:py-4 ">
@@ -117,7 +106,7 @@ export default function VideoCard({ data }: VideoCardProps) {
       )}
       {videoPopUp && (
         <VideoPopupGlobal
-          src={data[currentIndex].link}
+          src={data[currentIndex].videoUrlYoutube}
           onClose={() => setvideoPopup(false)}
         />
       )}
@@ -134,7 +123,7 @@ export const VideoCardPopup = ({
   totalLength,
 }: {
   onclose: () => void;
-  videoPopupDetails: VideoProps;
+  videoPopupDetails: Spotlight;
   handleNextClick: () => void;
   handlePrevClick: () => void;
   currentIndex: number;
@@ -155,7 +144,7 @@ export const VideoCardPopup = ({
 
           <div className="w-full  md:w-1/2 rounded-lg flex flex-col items-center justify-center relative">
             <Image
-              src={videoPopupDetails.thumbnailImage}
+              src={getUrl(videoPopupDetails.thumbnailUrl)}
               alt="Thumbnail"
               width={160}
               height={50}
@@ -175,7 +164,7 @@ export const VideoCardPopup = ({
 
           <div className="w-full   md:w-1/2 flex flex-col justify-center">
             <Image
-              src={videoPopupDetails.logo}
+              src={getUrl(videoPopupDetails.partnersLogo)}
               alt="Logo"
               width={120}
               height={100}
@@ -185,7 +174,7 @@ export const VideoCardPopup = ({
             <div className="w-full h-full  pe-9   lg:py-14">
               <div className="flex flex-row gap-3 ">
                 <Image
-                  src={videoPopupDetails.awardslogo}
+                  src={getUrl(videoPopupDetails.iconUrl)}
                   alt="Award Logo"
                   width={160}
                   height={50}
@@ -193,13 +182,10 @@ export const VideoCardPopup = ({
                 />
                 <div className="my-auto">
                   <p className="text-pink text-sm font-semibold">
-                    {videoPopupDetails.awardName}
+                    {videoPopupDetails.awardType}
                   </p>
                   <p className="text-pink/90 text-sm">
-                    {videoPopupDetails.name}
-                  </p>
-                  <p className="text-pink text-sm">
-                    {videoPopupDetails.companyName}
+                    {videoPopupDetails.awardee}
                   </p>
                 </div>
               </div>
@@ -209,14 +195,12 @@ export const VideoCardPopup = ({
                   {videoPopupDetails.title}
                 </h6>
                 <p className="text-black text-sm w-full  pt-2 opacity-[0.9]">
-                  {videoPopupDetails.desc}
+                  {videoPopupDetails.description}
                 </p>
               </div>
             </div>
 
             <div className="pt-3 pb-6 xl:py-4 flex justify-between ">
-
-                
               {currentIndex > 0 && (
                 <div
                   onClick={handlePrevClick}
@@ -237,9 +221,11 @@ export const VideoCardPopup = ({
                 </div>
               )}
 
-          
               {currentIndex < totalLength - 1 && (
-                <div onClick={handleNextClick} className="w-fit cursor-pointer ">
+                <div
+                  onClick={handleNextClick}
+                  className="w-fit cursor-pointer "
+                >
                   <BorderGrayHeroBtn
                     text="Next"
                     role="button"
@@ -251,15 +237,13 @@ export const VideoCardPopup = ({
                   />
                 </div>
               )}
-
             </div>
-
           </div>
         </div>
       </div>
       {videoPopUp && (
         <VideoPopupGlobal
-          src={videoPopupDetails.link}
+          src={videoPopupDetails.videoUrlYoutube}
           onClose={() => setvideoPopup(false)}
         />
       )}

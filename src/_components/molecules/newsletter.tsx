@@ -14,8 +14,6 @@ interface GetInvolved {
 
 export default async function GetInvolvedSection() {
   const data = await getFetch<GetInvolved>("/content/get-involved");
-  console.log(data);
-
   return (
     <>
       <div className="">
