@@ -9,8 +9,9 @@ export default function AdminShell({
 }: {
   children: React.ReactNode;
 }) {
+  const routes=["/admin/forgot-password", "/admin/login", "/admin/reset-password"]
   const pathname = usePathname();
-  const showSidebar = pathname !== "/admin/login";
+  const showSidebar = !routes.includes(pathname);
 
   return (
     <div className="flex max-w-[1920px] w-full mx-auto">

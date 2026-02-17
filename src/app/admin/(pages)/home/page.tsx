@@ -11,14 +11,15 @@ import SocialMedia from "./06_social_media";
 import TeamsTrustees from "./trustees";
 import Fellows from "./fellow";
 import Patrons from "./patrons";
+import AdvocacyTab from "./advocacy";
 
 export default function Home() {
   return (
     <>
-      
       <Banner />
-     
+
       <WhoWeAre />
+      <AdvocacyTab />
       <OurCore />
       <TeamsTrustees />
       <Patrons />
@@ -28,7 +29,6 @@ export default function Home() {
       <Association />
       <SocialMedia />
       <GetInvolved />
-     
     </>
   );
 }
