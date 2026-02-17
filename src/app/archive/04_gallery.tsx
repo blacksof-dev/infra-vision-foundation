@@ -5,7 +5,6 @@ import Image from "next/image";
 import { Portal } from "@radix-ui/react-select";
 import { MoveLeft, MoveRight, X } from "lucide-react";
 
-
 // Gallery image data with random year and event type
 const galleryImages = [
   {
@@ -19,7 +18,8 @@ const galleryImages = [
     image: "assets/archive/gallery/image6.png",
     year: 2025,
     event: "Annual Get-together 2025",
-    description:"The Infravision Foundation CEO Jagan Shah, delivering the welcome address.",
+    description:
+      "The Infravision Foundation CEO Jagan Shah, delivering the welcome address.",
   },
   {
     image: "assets/archive/gallery/image11.png",
@@ -32,46 +32,67 @@ const galleryImages = [
     image: "assets/archive/gallery/image2.png",
     year: 2024,
     event: "InfraShakti Awards",
-    description:" Hon'ble Union Minister Mr Nitin Gadkari presenting the Transport Trailblazer Award to Mr Giridhar Rajagopalan, Deputy Managing Director at AFCONS Infrastructure Limited.",
+    description:
+      " Hon'ble Union Minister Mr Nitin Gadkari presenting the Transport Trailblazer Award to Mr Giridhar Rajagopalan, Deputy Managing Director at AFCONS Infrastructure Limited.",
   },
   {
     image: "assets/archive/gallery/image7.png",
     year: 2025,
     event: "Annual Get-together 2025",
-    description:"The Infravision community at the Foundation’s annual get-together.",
+    description:
+      "The Infravision community at the Foundation’s annual get-together.",
   },
   {
     image: "assets/archive/gallery/new1.png",
     year: 2024,
     event: "InfraShakti",
-    description: "The second Municipal Finance Champions Lab, organised by The Infravision Foundation, underway at IIM Mumbai with key stakeholders.",
+    description:
+      "The second Municipal Finance Champions Lab, organised by The Infravision Foundation, underway at IIM Mumbai with key stakeholders.",
   },
   {
-    image: "assets/archive/gallery/new4.png",
+    image: "/assets/infrapandit/gallery/infrapandit_award8.png",
     year: 2025,
     event: "InfraPandit  Awards",
     description:
-      "The Infravision Foundation team presenting the study on “Implementation of Compensatory Afforestation in India” to the Union Minister of Environment, Forest and Climate Change,  Mr Bhupender Yadav.",
+      "Vinayak Chatterjee, Founder and Managing Trustee, TIF, shares his thoughts with attendees at the awards ceremony.",
+  },
+  {
+    image: "/assets/infrapandit/gallery/infrapandit_award6.png",
+    year: 2025,
+    event: "InfraPandit  Awards",
+    description:
+      "(From right to left) Chief Guest Sthaladipti Saha, Jury member Savita Mahajan, and TIF dignitaries lighting the ceremonial lamp at the InfraPandit Awards.",
+  },
+
+  {
+    image: "/assets/infrapandit/gallery/infrapandit_award2.png",
+    year: 2025,
+    event: "InfraPandit  Awards",
+    description:
+      "Sthaladipti Saha, Senior VP & Head – Buildings & Factories, L&T Ltd; Rumjhum Chatterjee, Co-Founder and Managing Trustee, TIF; and Vinayak Chatterjee, Founder and Managing Trustee, TIF, present the Uttam Award to Dr Shubham Jain.",
   },
 
   {
     image: "assets/archive/gallery/image8.png",
     year: 2025,
     event: "Annual Get-together 2025",
-    description:"The Infravision community at the Foundation’s annual get-together.",
+    description:
+      "The Infravision community at the Foundation’s annual get-together.",
   },
 
   {
     image: "assets/archive/gallery/image13.png",
     year: 2025,
     event: "Annual Get-together 2025",
-    description: "The Infravision community at the Foundation’s annual get-together.",
+    description:
+      "The Infravision community at the Foundation’s annual get-together.",
   },
   {
     image: "assets/archive/gallery/new2.png",
     year: 2025,
     event: "InfraShakti",
-    description: "Kaveree Bamzai, Head of Advocacy at The Infravision Foundation, facilitating IIT Delhi Professor Emeritus Dr Geetam Tiwari at a national seminar on Decarbonising Urban Transport.",
+    description:
+      "Kaveree Bamzai, Head of Advocacy at The Infravision Foundation, facilitating IIT Delhi Professor Emeritus Dr Geetam Tiwari at a national seminar on Decarbonising Urban Transport.",
   },
   {
     image: "assets/archive/gallery/image9.png",
@@ -106,30 +127,32 @@ const galleryImages = [
     image: "assets/archive/gallery/image15.png",
     year: 2023,
     event: "InfraShakti",
-    description: "JCB CEO Deepak Shetty, The Infravision Foundation Founder and Managing Trustee Vinayak Chatterjee, IRDAI Chairman Debasish Panda, and Bajaj Allianz CEO Tapan Singhel at a roundtable on Surety Bonds organised by CII.",
+    description:
+      "JCB CEO Deepak Shetty, The Infravision Foundation Founder and Managing Trustee Vinayak Chatterjee, IRDAI Chairman Debasish Panda, and Bajaj Allianz CEO Tapan Singhel at a roundtable on Surety Bonds organised by CII.",
   },
 
-    {
+  {
     image: "assets/archive/gallery/image16.jpg",
     year: 2025,
     event: "TIF Meetings",
-    description: "Founder and Managing Trustee of The Infravision Foundation, Mr Vinayak Chatterjee, in conversation with Council of Advisors member Prof G. Raghuram and Prof Sandip Chakrabarti of IIM-A.",
+    description:
+      "Founder and Managing Trustee of The Infravision Foundation, Mr Vinayak Chatterjee, in conversation with Council of Advisors member Prof G. Raghuram and Prof Sandip Chakrabarti of IIM-A.",
   },
 
-
-    {
+  {
     image: "assets/archive/gallery/image17.jpg",
     year: 2025,
     event: "TIF Meetings",
-    description: "Ms Soma Banerjee, Executive Director, CII, along with Mr Vinayak Chatterjee, Prof G. Raghuram and Prof Sandip Chakrabarti.",
+    description:
+      "Ms Soma Banerjee, Executive Director, CII, along with Mr Vinayak Chatterjee, Prof G. Raghuram and Prof Sandip Chakrabarti.",
   },
   {
     image: "assets/archive/gallery/image18.jpeg",
-    year: 2025  ,
+    year: 2025,
     event: "TIF Meetings",
-    description: "Prof G. Raghuram in conversation with the media on the sidelines of the roundtable.",
+    description:
+      "Prof G. Raghuram in conversation with the media on the sidelines of the roundtable.",
   },
-    
 ];
 
 // Types
@@ -154,10 +177,10 @@ interface NewsletterCard {
 
 // Constants
 const FILTER_TYPES: FilterType[] = ["All", "Year", "Event"];
-const YEARS = [2023, 2024, 2025 ] as const;
+const YEARS = [2023, 2024, 2025] as const;
 const SECTORS: EventType[] = [
   "All",
- "InfraShakti Awards",
+  "InfraShakti Awards",
   "InfraPandit  Awards",
   "Annual Get-together 2025",
   "TIF Meetings",
@@ -190,7 +213,7 @@ export default function Gallery() {
   const filteredImages = useMemo(() => {
     if (selectedTab === "Year" && selectedFilter !== "All") {
       return galleryImages.filter(
-        (img) => img.year.toString() === selectedFilter
+        (img) => img.year.toString() === selectedFilter,
       );
     }
     if (selectedTab === "Event" && selectedFilter !== "All") {
@@ -257,11 +280,8 @@ export default function Gallery() {
 
         <div className="py-3 mb-4">
           <h1 className="text-black font-light">
-          
-            <span className="text-black font-medium">
-           Images of {' '}
-            </span>
-             impact
+            <span className="text-black font-medium">Images of </span>
+            impact
           </h1>
         </div>
         {/* Filter Bar */}
