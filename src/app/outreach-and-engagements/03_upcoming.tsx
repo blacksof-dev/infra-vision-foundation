@@ -434,7 +434,7 @@ The dual-purpose gathering strengthened the Foundation's governance while establ
         events: [
           {
             date: "17 & 18",
-            dayTime: "Monday & Tuesday",
+            dayTime: "Friday & Saturday",
             meetingType: "External engagements",
             desc: "InfraPandit Awards Round 2: Jury Presentations",
             ctaText: "See details",
@@ -466,7 +466,7 @@ The dual-purpose gathering strengthened the Foundation's governance while establ
             date: "29",
             dayTime: "Saturday",
             meetingType: "External engagements",
-            desc: "InfraPandit Awards Round 2: Jury Presentations",
+            desc: "InfraPandit Round 2: Jury Presentation to InfraPandit Award Ceremony",
             ctaText: "See details",
 
             details: {
