@@ -75,7 +75,7 @@ export default function Spotlight() {
                   </h6>
                 </div>
                 {/* Mobile Read More Button */}
-                <div className="pt-3 pb-6 ">
+                <div className="pt-3 pb-6 md:hidden">
                   <div
                     onClick={() =>
                       setClickedIndex((prev) => (prev === index ? null : index))
@@ -108,7 +108,7 @@ const data = [
     awardName: "Uttam Award",
     title: "Enabling long-term solar access",
     description:
-      "For developing <span class='font-bold'>solar-powered thermal energy </span> storage solutions with applications in clean cooking and industrial heat, contributing to sustainable infrastructure solutions in India.",
+      "For developing <span class='font-bold'>solar-powered thermal energy <span> storage solutions with applications in clean cooking and industrial heat, contributing to sustainable infrastructure solutions in India.",
     thumbnailImage: "/assets/infrapandit/spotlight/shubham.png",
   },
   {
