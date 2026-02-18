@@ -9,7 +9,7 @@ import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import Link from "next/link";
 import img_15 from "@/../public/assets/knowledeg/blogs/superfast-rail-reality.png";
-import landValue from "@/../public/assets/archive/newsletter/landValue_Feb_updated.png";
+import landValue from "@/../public/assets/archive/newsletter/landValue.png";
 import abha from "@/../public/assets/home/updates/abha.png";
 import montek from "@/../public/assets/globals/infrapanditAward.jpg";
 import anumita from "@/../public/assets/knowledeg/conversations/anumita.png";
