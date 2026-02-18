@@ -41,7 +41,7 @@ export const authOptions = {
           }
 
           const user = await res.json();
-          console.log(user);
+          // console.log(user);
           // Validate API response structure
           if (
             user?.access_token &&

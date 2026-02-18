@@ -1,20 +1,21 @@
 "use client";
 
-import {   useState  } from "react";
+import { useState } from "react";
 import { z } from "zod";
 import { Eye, EyeOff } from "lucide-react";
 import { Input } from "@/_components/ui/input";
 import logo from "@/../public/logo.png";
 import Image from "next/image";
 // import { HeroBtn } from "@/_components/atom/button";
- 
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
- 
+
 import { Button } from "../../components/button";
+import Link from "next/link";
 
 const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -60,7 +61,7 @@ export default function LoginInForm() {
         return;
       } else {
         setError(
-          response?.error || "Login failed. Please check your credentials."
+          response?.error || "Login failed. Please check your credentials.",
         );
         setTimeout(() => {
           setError("");
@@ -79,7 +80,7 @@ export default function LoginInForm() {
 
   return (
     <div className="w-full h-screen flex justify-center items-center ">
-      <div className="w-md  h-fit  p-6 sm:p-10 rounded-lg  font-schibsted  shadow-xl border border-lightgray/10 bg-lightgray/10">
+      <div className="w-md  h-fit  p-6 sm:p-10   font-schibsted  rounded-2xl shadow-2xl border-lightgray/10 bg-lightgray/10">
         <div className="flex flex-col items-center space-y-4">
           <div className="flex items-center">
             <Image
@@ -142,14 +143,14 @@ export default function LoginInForm() {
               )}
             </div>
 
-            {/* <div className="flex justify-end">
+            <div className="flex justify-end -mt-2">
               <Link
-                href="#"
-                className="text-xs text-darkPurple font-medium hover:underline"
+                href="/admin/forgot-password"
+                className="text-xs text-darkgray font-medium hover:underline hover:text-pink transition-colors"
               >
                 Forgot password?
               </Link>
-            </div> */}
+            </div>
 
             <Button
               text="Login"
