@@ -194,7 +194,7 @@ export default function Updates() {
               <SwiperSlide key={index} className="  group  ">
                 <Link href={ele.link} target="_blank">
                   <div className="flex flex-row gap-4 bg-[#0000005e] backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4  group h-[8rem] sm:h-[9rem]  lg:h-[10rem] xl:h-[13rem] xlg:h-[16rem] 2xl:h-[18rem] group-hover:bg-white transition-all duration-500 ease-linear ">
-                    <div className="w-[6rem]   h-full md:w-[14rem] lg:w-[13rem]  xl:w-[20rem] xlg:w-[30rem]  relative  group-hover:border group-hover:border-gray-300 ">
+                    <div className="w-[6rem]   h-full md:w-[14rem] lg:w-[13rem]  xl:w-[20rem] xlg:w-[30rem]  relative  group-hover:border group-hover:border-gray-300 rounded-md ">
                       <Image
                         src={ele.image}
                         alt={ele.title}

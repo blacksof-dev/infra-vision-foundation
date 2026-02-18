@@ -149,7 +149,7 @@ export const TabSwitch = ({
       <div
         ref={containerRef}
         className={`blade-top-padding-sm overflow-x-scroll bg-whitesmoke no-scrollbar transition-all duration-300 ease-linear z-[999] sticky ${
-          isHeaderVisible ? "top-20   lg:top-24" : "top-0"
+          isHeaderVisible ? "top-20   lg:top-22" : "top-0"
         } `}
       >
         <div className="flex flex-row gap-6 sm:gap-12  lg:gap-12 md:gap-18 border-b   border-darkgray/16 w-fit ">
@@ -197,9 +197,9 @@ export const TabSwitch = ({
       </div>
       <div className="pt-6 xl:pt-14">
         {activeTab === "Outreach and Engagements" && (
-          // <InfrapanditAward event={event} />
-          <div>Pending 
-            </div>
+          <InfrapanditAward event={event} />
+          // <div>Pending 
+          //   </div>
         )}
 
         {activeTab === "Newsletters" && <TabContent data={newsletters} />}

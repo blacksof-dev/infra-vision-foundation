@@ -77,7 +77,6 @@ export default function About() {
               link="https://www.youtube.com/playlist?list=PLj3lfy92K7LN4hC0FiPx_ABoTRE3PUYNa"
               classes="font-medium text-lg"
             />
-
           </div>
         </div>
         {/* Right: Hosts Cards */}
@@ -134,7 +133,7 @@ export default function About() {
                         title={member.name}
                         desig={member.designation}
                         link={member.socialUrl}
-                        socialMedia={member.socialType}
+                        socialMedia={member.socialType.toLowerCase()}
                       />
                     </div>
                   </SwiperSlide>

@@ -83,11 +83,13 @@ export default function LoginInForm() {
       <div className="w-md  h-fit  p-6 sm:p-10   font-schibsted  rounded-2xl shadow-2xl border-lightgray/10 bg-lightgray/10">
         <div className="flex flex-col items-center space-y-4">
           <div className="flex items-center">
+          <Link href="/">
             <Image
               className="w-36"
               src={logo}
               alt="Occult gurukul logo"
-            ></Image>
+              ></Image>
+              </Link>
           </div>
 
           <h1 className="text-xl text-center font-medium">

@@ -1,4 +1,3 @@
- ;
 import { Metadata } from "next";
 import BannerSection from "./01_banner";
 import Section from "./sections";
@@ -68,10 +67,10 @@ export default function Page() {
     
 
     return (
-        <main>
+        <main> 
             <BannerSection />
             <Section/>
-            <GetInvolved />
+            <GetInvolved />      
         </main>
     )
 }

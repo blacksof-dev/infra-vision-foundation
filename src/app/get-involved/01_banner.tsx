@@ -7,6 +7,7 @@ import Link from "next/link";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { getUrl } from "@/lib/getUrl";
 import { BannerData } from "../outreach-and-engagements/01_Banner";
+import { Loader } from "lucide-react";
 
 export default function GetInvolvedBanner() {
   const { data, isLoading } = useQuery({
@@ -15,8 +16,13 @@ export default function GetInvolvedBanner() {
   });
 
   if (!data || isLoading) {
-    return null;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Loader className="h-14 w-14 animate-spin text-[#C82249]" />
+      </div>
+    );
   }
+
 
   return (
     <>
