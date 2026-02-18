@@ -7,11 +7,11 @@ import { CloudCog, MoveLeft, MoveRight, X } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
-interface GalleryData {
+export interface GalleryData {
   imageUrl: string;
   description: string;
 }
-interface parentGallery {
+export interface parentGallery {
   data: GalleryData[];
 }
 export default function Gallery() {
@@ -27,7 +27,6 @@ export default function Gallery() {
   });
 
   const gallery = data?.data;
-  console.log(gallery);
 
   if (!gallery) {
     return null;

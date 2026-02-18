@@ -1,6 +1,6 @@
 import React from "react";
 import bg from "@/../public/assets/infrakatha/about/bgcircle.png";
- 
+
 import { MemberCard } from "@/_components/molecules/memberCard";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -15,23 +15,22 @@ import { useQuery } from "@tanstack/react-query";
 import { getFetch } from "@/lib/api";
 import { getUrl } from "@/lib/getUrl";
 
-interface Datetyep {
-    id: string
-    name:string
-    designation: string
-    socialUrl: string
-    socialType: string
-    image: string 
+export interface Datetyep {
+  id: string;
+  name: string;
+  designation: string;
+  socialUrl: string;
+  socialType: string;
+  image: string;
 }
- 
+
 export default function About() {
-   const {data:members} = useQuery({
-   queryKey:["tif-host"],
-   queryFn:()=>getFetch<Datetyep[]>("/members?type=Infrakath-hosts&active=true")
-   })  
-  
-  console.log(members)
-  
+  const { data: members } = useQuery({
+    queryKey: ["tif-host"],
+    queryFn: () =>
+      getFetch<Datetyep[]>("/members?type=Infrakath-hosts&active=true"),
+  });
+
   return (
     <section className="relative blade-top-padding-lg blade-bottom-padding-lg bg-whitesmoke">
       <Image
@@ -65,7 +64,6 @@ export default function About() {
             perfect blend of storytelling, scholarship, and strategy.
           </h6>
           <div className="mt-2 sm:mt-6">
-
             <BorderGrayHeroBtn
               text="Watch the videos"
               role="link"
@@ -145,7 +143,6 @@ export default function About() {
           </div>
         </div>
       </div>
-
     </section>
   );
 }

@@ -1,34 +1,35 @@
 "use client";
-import React, { useState } from "react";
-import sudhanshuBanner from "@/../public/assets/infraShakti/awardees/sudhanshuBanner.png";
-import sudhanshuMobileView from "@/../public/assets/infraShakti/awardees/sudhanshuMobileView.png";
-import Image from "next/image";
-import award from "@/../public/assets/infraShakti/awardees/award.png";
-import { HeroBtn } from "@/_components/atoms/buttons";
-import infraShaktiAward from "@/../public/assets/infraShakti/awardees/infraShaktiAward.png";
-import arun from "@/../public/assets/infraShakti/awardees/arun.png";
-import sandeep from "@/../public/assets/infraShakti/awardees/sandeep.png";
-import shashank from "@/../public/assets/infraShakti/awardees/shashank.png";
-import afcons from "@/../public/assets/infraShakti/awardees/afcons.png";
-import pankaj from "@/../public/assets/infraShakti/awardees/pankaj.png";
-import swarnalatha from "@/../public/assets/infraShakti/awardees/swarnalatha.png";
+import React from "react";
 import VideoCard from "@/_components/molecules/videoCard";
 
-import peopleChoiceAward from "@/../public/assets/infraShakti/overview/peopleChoiceAward.png";
-import waterSaviourAward from "@/../public/assets/infraShakti/overview/waterSaviourAward.png";
-import renewableAward from "@/../public/assets/infraShakti/overview/renewableAward.png";
-import transportAward from "@/../public/assets/infraShakti/overview/transportAward.png";
-import urbanAwards from "@/../public/assets/infraShakti/overview/urbanAwards.png";
-import ruralInfraAward from "@/../public/assets/infraShakti/overview/ruralInfraAward.png";
-import VideoPopupGlobal from "@/_components/molecules/videopopup";
+import { useQuery } from "@tanstack/react-query";
+import { getFetch } from "@/lib/api";
+
+export interface Spotlight {
+  awardType: string;
+  awardee: string;
+  title: string;
+  description: string;
+  videoUrlYoutube: string;
+  thumbnailUrl: string;
+  iconUrl: string;
+  partnersLogo: string;
+}
+
+export interface SpotlightResponse {
+  data: Spotlight[];
+}
 
 export default function Spotlight() {
-  const [videoPopUp, setvideoPopup] = useState<boolean>(false);
+  const { data } = useQuery({
+    queryKey: ["infrashakti-spotlight"],
+    queryFn: () =>
+      getFetch<SpotlightResponse>(
+        "/infrashakti/awardees?page=1&limit=50&active=true",
+      ),
+  });
 
-  const handleRedirect = () => {
-    setvideoPopup(true);
-
-  }
+  if (!data) return null;
   return (
     <>
       <div className="bg-whitesmoke">
@@ -45,146 +46,13 @@ export default function Spotlight() {
             </h1>
           </div>
 
-
           <div className="blade-top-padding-sm  ">
-            <div className="sm:relative overflow-hidden  sm:h-[22rem]  lg:h-[27rem]">
-              <Image
-                src={sudhanshuBanner}
-                alt="Sudhanshu Mani"
-                className="w-full h-[27rem]  object-cover   hidden sm:block   rounded-md"
-                style={{ objectPosition: "20% center" }}
-              />
-              <Image
-                src={sudhanshuMobileView}
-                alt="Sudhanshu Mani"
-                className="w-full h-[20rem] object-cover block object-top sm:hidden"
-              />
-              <div className="w-full sm:w-[45%] h-auto lg:h-[23rem]   sm:absolute right-3 top-1/2 sm:-translate-y-1/2 ">
-                <div className="w-full h-full  p-2 md:p-8 bg-pink">
-                  <div className="flex flex-row gap-3  ">
-                    <div>
-                      <Image
-                        src={award}
-                        alt="Infravisionary Award"
-                        className="w-14 h-14"
-                      />
-                    </div>
-                    <div className="border-l-1   border-white">
-                      <div className="ms-4">
-                        <h6 className="text-white font-medium">Infravisionary Award</h6>
-                        <h6 className="text-white">Sudhanshu Mani, ICF</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="pt-5">
-                    <h4 className="text-white font-medium">
-                      Catching lightning on the tracks
-                    </h4>
-                    <p className="text-[#E7E7E8] w-full xl:w-[70%] pt-2 opacity-[0.9]">
-                      For transforming urban mobility, by leading and completing
-                      the creation of the country's fastest train, Vande Bharat,
-                      in a mere 18 months, despite all odds.
-                    </p>
-                    <div role="button" onClick={handleRedirect} className="py-4">
-                      <HeroBtn
-                        text="Watch video"
-                        role="button"
-                        borderColor="white"
-                        color="white"
-                        bgColor="pink"
-                        size="base"
-                        aarowColor="white"
-                        classes="font-medium cursor-pointer "
-                      />
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
             <div className=" blade-top-padding-sm">
-              <VideoCard data={videoCard} />
+              <VideoCard data={data.data} />
             </div>
           </div>
-          {videoPopUp && (
-            <VideoPopupGlobal
-              src="https://www.youtube.com/embed/9DIAhTDim9Y?start=13850&end=13887"
-              onClose={() => setvideoPopup(false)}
-            />
-          )}
         </div>
       </div>
     </>
   );
 }
-
-const videoCard = [
-  {
-    thumbnailImage: arun.src,
-    awardName: "Water Saviour Award",
-    name: "Arun Krishnamurthy, EFI ",
-    link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=14821&end=14880",
-    title: "From decomposing to regenerating",
-    logo: infraShaktiAward.src,
-    awardslogo: waterSaviourAward.src,
-    desc: " For engaging and empowering local communities to replenish 460+ lakes and water bodies in their neighbourhood across 18 states.",
-
-  },
-  {
-    thumbnailImage: sandeep.src,
-    awardName: "Urban Infra Hero Award",
-    name: "Sandeep Patel, NEPRA Resource Management Pvt Ltd",
-    link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=14132&end=14161",
-    title: "Making waste useful",
-    logo: infraShaktiAward.src,
-    awardslogo: urbanAwards.src,
-    desc: "For recycling 2,00,000+ MT of dry waste annually across the country, from Ahmedabad to Indore, Pune to Jamnagar, through a circular end-to-end PPP model.",
-
-  },
-
-  {
-    thumbnailImage: shashank.src,
-    awardName: "Rural Infra Pioneer Award",
-    name: "Shashank Kumar, DeHaat ",
-    link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=14387&end=14467",
-    title: "Scripting agricultural prosperity",
-    logo: infraShaktiAward.src,
-    awardslogo: ruralInfraAward.src,
-    desc: "For using digitisation to transform the lives of 2.7 million farmers and 12,000 rural entrepreneurs with easily accessible online services.",
-
-  },
-  {
-    thumbnailImage: afcons.src,
-    awardName: "Transport Trailblazer Award",
-    name: "Afcons Infrastructure ",
-    link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=13536&end=13547",
-    title: "Redefining possibility",
-    logo: infraShaktiAward.src,
-    awardslogo: transportAward.src,
-    desc: "For building the world's highest arch railway bridge, the Chenab bridge, and improving the last-mile connectivity in the terrorist-prone areas of Jammu and Kashmir.",
-
-  },
-  {
-    thumbnailImage: pankaj.src,
-    awardName: "Renewable Energy Star Award",
-    name: "Pankaj Kumar and Siddhant Agarwal, Quant Solar",
-    link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=10129&end=10206",
-    title: "Powering impact with the sun",
-    logo: infraShaktiAward.src,
-    awardslogo: renewableAward.src,
-    desc: "For using dams and reservoirs for floating solar power solutions that generate energy while saving on real estate and reducing evaporation by 70%.",
-
-  },
-  {
-    thumbnailImage: swarnalatha.src,
-    awardName: "People’s Choice Award for Inclusive Infrastructure",
-    name: "Swarnalatha J, Swarga Foundation",
-    link: "https://www.youtube.com/embed/9DIAhTDim9Y?start=15332&end=15430",
-    title: "Ensuring accessibility",
-    logo: infraShaktiAward.src,
-    awardslogo: peopleChoiceAward.src,
-    desc: "For making an impact on 10 crore differently-abled Indians with her initiatives and advocacy of inclusive infrastructure.",
-
-  },
-
-];

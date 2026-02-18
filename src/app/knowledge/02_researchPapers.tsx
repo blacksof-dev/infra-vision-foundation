@@ -1,266 +1,117 @@
 "use client";
-import { useState, useMemo, useRef } from "react";
-
-import img_01 from "@/../public/assets/knowledeg/researchPapers/01.jpg";
-import img_02 from "@/../public/assets/knowledeg/researchPapers/02.jpg";
-import img_03 from "@/../public/assets/knowledeg/researchPapers/03.jpg";
-import img_04 from "@/../public/assets/knowledeg/researchPapers/04.jpg";
-import img_05 from "@/../public/assets/knowledeg/researchPapers/05.jpg";
-import img_06 from "@/../public/assets/knowledeg/researchPapers/06.jpg";
-import img_07 from "@/../public/assets/knowledeg/researchPapers/07.jpg";
-import img_08 from "@/../public/assets/knowledeg/researchPapers/08.jpg";
-import img_09 from "@/../public/assets/knowledeg/researchPapers/09.jpg";
-import img_10 from "@/../public/assets/knowledeg/researchPapers/10.jpg";
-import img_11 from "@/../public/assets/knowledeg/researchPapers/11.png";
-import img_12 from "@/../public/assets/knowledeg/researchPapers/12.jpg";
-import img_13 from "@/../public/assets/knowledeg/researchPapers/13.png";
-import img_14 from "@/../public/assets/knowledeg/researchPapers/14.jpg";
-import img_15 from "@/../public/assets/knowledeg/researchPapers/waterBodies.jpg";
-import img_16 from "@/../public/assets/knowledeg/researchPapers/16.jpg";
-
+import { useState, useMemo, useRef, useEffect } from "react";
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
-
 import { NewsCard } from "@/_components/molecules/newsCard";
-import Script from "next/script";
+import { useApiHook } from "@/lib/useApi";
+import { getUrl } from "@/lib/getUrl";
 
-// Types
-type FilterType = "All" | "Sectors";
-type SectorType =
-  | "All"
-  | "Transportation"
-  | "Water and Sanitation"
-  | "Energy"
-  | "Urban Planning"
-  | "Rural and Agri Infra"
-  | "Infrastructure";
+export interface TabApiRaw {
+  id: string;
+  name: string;
+  slug: string;
+  active: boolean;
+}
 
-// Constants
-const FILTER_TYPES: FilterType[] = ["All", "Sectors"];
-// const YEARS = ["2025", "2024"] as const;
-const SECTORS: SectorType[] = [
-  "All",
-  "Transportation",
-  "Water and Sanitation",
-  "Energy",
-  "Urban Planning",
-  "Rural and Agri Infra",
-  "Infrastructure",
-];
-const INITIAL_VISIBLE_COUNT = 3;
+interface contentApiResponse {
+  tagName: string;
+  description: string;
+}
 
-const allcards = [
-  {
-    id: 16,
-    img: img_16,
-    category: "Infrastructure",
-    title: "",
-    sectors: "Infrastructure",
-    date: "",
-    description:
-      "Land Value Capture for urban and regional public transport infrastructure financing",
-    link: "/assets/pdf/LVC-report-for-urban-and-regional-public-transport-new.pdf",
-  },
-  {
-    id: 15,
-    img: img_15,
-    category: "Water and Sanitation",
-    title: "",
-    sectors: "Water and Sanitation",
-    date: "",
-    description: "Water Body Census: Validation, Insights and Opportunities",
-    link: "/assets/pdf/waterBody.pdf",
-  },
-
-  {
-    id: 14,
-    img: img_14,
-    category: "Urban Planning",
-    title: "",
-    sectors: "Urban Planning",
-    date: " ",
-    description: "Impact of FSI deregulation in Hyderabad",
-    link: "/assets/pdf/report-fsi-deregulation-in-hyderabad.pdf",
-  },
-  {
-    id: 13,
-    img: img_13,
-    category: "Infrastructure",
-    title: "",
-    sectors: "Infrastructure",
-    date: " ",
-    description:
-      "Removing Barriers to Faster Penetration of Trees Outside Forests Products in Construction Sector",
-    link: "/assets/pdf/removing-barriers-to-faster-penetration-of-trees-final-report.pdf",
-  },
-  {
-    id: 10,
-    img: img_12,
-    category: "Urban Planning",
-    title: "",
-    sectors: "Urban Planning",
-    date: " ",
-    description:
-      "Relieving urban congestion and promoting tourism through ropeways",
-    link: "/assets/pdf/urbanCongestion.pdf",
-  },
-  {
-    id: 1,
-    img: img_01,
-    category: "Rural and Agri Infra",
-    title: "",
-    sectors: "Rural and Agri Infra",
-    date: "",
-    description:
-      "Study on the implementation of compensatory afforestation in India",
-    link: "/assets/pdf/Study-on-Implementation-of-Compensatory-Afforestation-in-India.pdf",
-  },
-  {
-    id: 2,
-    img: img_02,
-    category: "Transportation",
-    title: "",
-    sectors: "Transportation",
-    date: " ",
-    description: "The case for developing high-speed rail corridors in India",
-    link: "/assets/pdf/The-Case-For-Developing-High-Speed-Rail-Corridors-In-India.pdf",
-  },
-  {
-    id: 3,
-    img: img_03,
-    category: "Transportation",
-    title: "",
-    sectors: "Transportation",
-    date: " ",
-    description: "Safe highways in India: Challenges and solutions",
-    link: "/assets/pdf/Safe-Highways-in-India-Challenges-and-Solutions_August-2024.pdf",
-  },
-  {
-    id: 4,
-    img: img_04,
-    category: "Transportation",
-    title: "",
-    sectors: "Transportation",
-    date: " ",
-    description:
-      "Strategies to improve the financial performance of the metro rail system",
-    link: "/assets/pdf/Metro-Rail-Systems-Whitepaper.pdf",
-  },
-  {
-    id: 5,
-    img: img_05,
-    category: "Urban Planning",
-    title: "",
-    sectors: "Urban Planning",
-    date: " ",
-    description: "Sustainability ratings for Infrastructure projects in India",
-    link: "/assets/pdf/Sustainability-Rating-Infra-Whitepaper-2.pdf",
-  },
-  {
-    id: 6,
-    img: img_06,
-    category: "Energy",
-    title: "",
-    sectors: "Energy",
-    date: " ",
-    description: "Mass scale rooftop solar programme for poverty alleviation",
-    link: "/assets/pdf/solar.pdf",
-  },
-  {
-    id: 7,
-    img: img_07,
-    category: "Transportation",
-    title: "",
-    sectors: "Transportation",
-    date: " ",
-    description:
-      "A framework for selecting an appropriate urban transport system",
-    link: "/assets/pdf/Urban-Transport-Project-White-Paper.pdf",
-  },
-  {
-    id: 8,
-    img: img_08,
-    category: "Infrastructure",
-    title: "",
-    sectors: "Infrastructure",
-    date: " ",
-    description:
-      "Surety bonds: Evaluation for diversifying risk in infrastructure financing",
-    link: "/assets/pdf/Surety-Bond-White-Paper.pdf",
-  },
-  {
-    id: 9,
-    img: img_09,
-    category: "Rural and Agri Infra",
-    title: "",
-    sectors: "Rural and Agri Infra",
-    date: " ",
-    description:
-      "Ways to enhance warehouse-based sales and lending for agriculture commodities",
-    link: "/assets/pdf/Warehousing-Whitepaper.pdf",
-  },
-
-  {
-    id: 11,
-    img: img_10,
-    category: "Transportation",
-    title: "",
-    sectors: "Transportation",
-    date: " ",
-    description:
-      "Decarbonizing urban transport using traffic and transport data from ICCC: A Pilot Study in NOIDA",
-    link: "/assets/pdf/decarbonizing.pdf",
-  },
-  {
-    id: 12,
-    img: img_11,
-    category: "Rural and Agri Infra",
-    title: "",
-    sectors: "Rural and Agri Infra",
-    date: " ",
-    description:
-      "Expanding agricultural exports of Arunachal Pradesh through infrastructure development",
-    link: "/assets/pdf/expanding.pdf",
-  },
-];
-
-const generateResearchSchema = (card: any) => ({
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  headline: card.description,
-  description: card.description,
-  image: `https://theinfravisionfoundation.org${card.img}`,
-  url: "https://theinfravisionfoundation.org/knowledge#research-papers",
-  author: {
-    "@type": "Organization",
-    name: "The Infravision Foundation",
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "The Infravision Foundation",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://theinfravisionfoundation.org/logo.png",
-    },
-  },
-  about: card.sectors,
-  associatedMedia: {
-    "@type": "MediaObject",
-    contentUrl: `https://theinfravisionfoundation.org${card.link}`,
-    encodingFormat: "application/pdf",
-  },
-});
+export interface ResearchPaper {
+  id: string;
+  image: string;
+  title: string;
+  description: string;
+  link: string;
+  date: string;
+  active: string;
+  sectors: {
+    name: string;
+    slug: string;
+    active: boolean;
+  }[];
+}
 
 export default function ResearchPapers() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [selectedTab, setSelectedTab] = useState<FilterType>("All");
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
-  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
+
+  const [records, setRecords] = useState<{
+    [key: string]: { page: number; cards: ResearchPaper[]; totalCount: number };
+  }>({});
+
+  const { data: content } = useApiHook<contentApiResponse>({
+    url: "/knowledge/research-papers?activeOnly=true",
+    cacheKey: "knowledgeContentTab",
+  });
+
+  const { data: tabsData } = useApiHook<TabApiRaw[]>({
+    url: "/knowledge/sectors",
+    cacheKey: "knowledgeSectorTab",
+  });
+
+  const currentKey = `${selectedFilter}`;
+
+  const currentData = records[currentKey] ?? {
+    page: 1,
+    cards: [],
+    totalCount: 0,
+  };
+
+  const getApiUrl = () => {
+    const sector = tabsData?.find((t) => t.name === selectedFilter);
+    if (sector && selectedFilter !== "All") {
+      return `/knowledge/research-papers/by-sector/${sector.id}?page=${currentData.page}&limit=3`;
+    }
+
+    return `/knowledge/research-papers?page=${currentData.page}&limit=3`;
+  };
+
+  const { data: cardData } = useApiHook<{
+    researchPapers: ResearchPaper[];
+    pagination: {
+      totalCount: number;
+      page: number;
+      limit: number;
+      totalPages: number;
+    };
+  }>({
+    url: getApiUrl(),
+    cacheKey: `knowledgeCardData-${currentKey}-page-${currentData.page}`,
+  });
+
+  useEffect(() => {
+    if (cardData?.researchPapers) {
+      setRecords((prev) => {
+        const prevState = prev[currentKey] ?? {
+          page: 1,
+          cards: [],
+          totalCount: 0,
+        };
+        return {
+          ...prev,
+          [currentKey]: {
+            page: currentData.page,
+            cards:
+              currentData.page === 1
+                ? cardData.researchPapers
+                : [...prevState.cards, ...cardData.researchPapers],
+            totalCount: cardData.pagination?.totalCount ?? 0,
+          },
+        };
+      });
+    }
+  }, [cardData, currentKey, currentData.page]);
+
+  const activeTabs = useMemo(
+    () => tabsData?.map((tab) => tab.name) ?? [],
+    [tabsData],
+  );
 
   const scrollToCenter = (index: number) => {
     const tab = tabRefs.current[index];
     const container = containerRef.current;
-
     if (tab && container) {
       const offset =
         tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
@@ -268,43 +119,47 @@ export default function ResearchPapers() {
     }
   };
 
-  const handleTabClick = (tab: FilterType) => {
-    setSelectedTab(tab);
-    setSelectedFilter(tab === "Sectors" ? SECTORS[0] : "All");
-    setVisibleCount(INITIAL_VISIBLE_COUNT);
-  };
-
   const handleFilterClick = (filterName: string, index: number) => {
     setSelectedFilter(filterName);
     scrollToCenter(index);
+    // Reset when switching
+    setRecords((prev) => ({
+      ...prev,
+      [`${filterName}`]: { page: 1, cards: [], totalCount: 0 },
+    }));
   };
-
-  const filteredCards = useMemo(() => {
-    if (selectedTab === "Sectors" && selectedFilter !== "All") {
-      return allcards.filter((card) => card.sectors === selectedFilter);
-    }
-    return allcards;
-  }, [selectedTab, selectedFilter]);
 
   const handleSeeMore = () => {
-    setVisibleCount((prev) => prev + INITIAL_VISIBLE_COUNT);
+    setRecords((prev) => ({
+      ...prev,
+      [currentKey]: {
+        ...currentData,
+        page: currentData.page + 1,
+      },
+    }));
   };
 
-  const renderFilterButtons = (filters: readonly string[]) => (
+  const canSeeMore =
+    currentData.totalCount > 0 &&
+    currentData.cards.length < currentData.totalCount;
+
+  if (!tabsData || !cardData || !content) return null;
+
+  const renderFilterButtons = (filters: string[]) => (
     <div ref={containerRef} className="pt-5 overflow-scroll no-scrollbar">
-      <div className="flex  gap-3 ">
+      <div className="flex gap-3">
         {filters.map((filter, index) => (
           <button
             key={filter}
-            ref={(el: HTMLButtonElement | null) => {
+            ref={(el: HTMLButtonElement | null): void => {
               tabRefs.current[index] = el;
             }}
             className={`text-base text-nowrap cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
-                            ${
-                              selectedFilter === filter
-                                ? "border border-pink text-white bg-pink font-medium"
-                                : "border border-lightgray/30"
-                            }`}
+              ${
+                selectedFilter === filter
+                  ? "border border-pink text-white bg-pink font-medium"
+                  : "border border-lightgray/30"
+              }`}
             onClick={() => handleFilterClick(filter, index)}
           >
             {filter}
@@ -314,20 +169,10 @@ export default function ResearchPapers() {
     </div>
   );
 
-  const allResearchPaper = allcards.map(generateResearchSchema);
   return (
     <section id="research-papers">
-      <Script
-        id="researchPaper-schema"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(allResearchPaper),
-        }}
-      />
-
       <div className="w-container blade-top-padding-sm blade-bottom-padding">
-        {/* Header Section */}
+        {/* Heading */}
         <div className="flex flex-row items-center gap-2 md:gap-3">
           <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
           <h5 className="font-medium text-pink">Research Papers</h5>
@@ -347,52 +192,38 @@ export default function ResearchPapers() {
         <div className="pt-5">
           <div className="flex flex-col sm:flex-row gap-6 border-b border-darkgray/20">
             <div className="sm:border-r sm:border-darkgray/20">
-              <h5 className="text-darkgray/80 sm:py-5 pr-5 text-nowrap">
+              <h5 className="text-darkgray/80 sm:py-5 pr-5 mb-8 text-nowrap">
                 Filter by
               </h5>
             </div>
 
-            <div className="flex flex-row gap-5">
-              {FILTER_TYPES.map((tab) => (
-                <button
-                  key={tab}
-                  className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4
-                                        ${
-                                          selectedTab === tab
-                                            ? "border border-pink text-pink font-medium"
-                                            : "border border-lightgray/30"
-                                        }`}
-                  onClick={() => handleTabClick(tab)}
-                >
-                  {tab}
-                </button>
-              ))}
-            </div>
+            {renderFilterButtons(activeTabs)}
           </div>
 
-          {selectedTab === "Sectors" && renderFilterButtons(SECTORS)}
-
-          <div className={`pt-8`}>
-            {filteredCards.length === 0 && (
-              <div className="flex justify-center"> No results </div>
+          {/* Research Paper Cards */}
+          <div className="pt-8">
+            {currentData.cards.length === 0 && (
+              <div className="flex justify-center">No results</div>
             )}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 xlg:gap-24">
-              {filteredCards.slice(0, visibleCount).map((card) => (
+              {currentData.cards.map((card) => (
                 <div key={card.id}>
                   <NewsCard
-                    date={card.date}
+                    date=""
                     title={card.title}
-                    image={card.img.src}
+                    image={getUrl(card.image)}
                     link={card.link}
-                    category={card.category}
-                    // description={card.description}
+                    category={card.sectors[0]?.name ?? ""}
+                    description=""
                     classes="line-clamp-3"
                     ctaType="read more"
                   />
                 </div>
               ))}
             </div>
-            {visibleCount < filteredCards.length && (
+
+            {/* See More */}
+            {canSeeMore && (
               <div className="flex justify-center mb-4 sm:mt-4">
                 <UnderlineWithHover
                   size="xxlsize"
