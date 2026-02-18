@@ -10,7 +10,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import image_01 from "@/../public/assets/outreach-and-engagements/eventImages/dummy.png";
+import image_01 from "@/../public/assets/outreach-and-engagements/highlight/dummy.png";
 
 import { MdClose } from "react-icons/md";
 import Link from "next/link";

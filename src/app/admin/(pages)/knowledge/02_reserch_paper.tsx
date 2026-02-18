@@ -74,13 +74,15 @@ export default function KnowledgeResearchPapers() {
 
   // Filters
   const [page, setPage] = useState<number>(1);
-  const [limit] = useState<number>(10);
+  const [limit] = useState<number>(8);
 
   const [selectedSector, setSelectedSector] = useState<string>("all");
+  const [activeFilter, setActiveFilter] = useState<boolean>(true);
 
   const fetchSectors = useCallback(async () => {
     try {
-      const data = (await getData("/knowledge/sectors", session)) as Sector[];
+      const res = (await getData("/knowledge/sectors", session)) as any;
+      const data = Array.isArray(res) ? res : res?.sectors || [];
       setSectors(data || []);
     } catch (e) {
       console.error("Failed to load sectors:", e);
@@ -96,14 +98,16 @@ export default function KnowledgeResearchPapers() {
           limit: String(limit),
         });
         if (selectedSector !== "all") query.append("sectorId", selectedSector);
+        query.append("activeOnly", String(activeFilter));
 
         const res = (await getData(
           `/knowledge/research-papers?${query.toString()}`,
           session,
-        )) as ListResponse;
-
-        setFormState((s) => ({ ...s, items: res?.researchPapers ?? [] }));
-        setPagination(res?.pagination ?? null);
+        )) as any;
+        console.log(res);
+        const papers = res?.researchPapers || (Array.isArray(res) ? res : []);
+        setFormState((s) => ({ ...s, items: papers }));
+        setPagination(res?.pagination || null);
         setPage(targetPage);
       } catch (e) {
         toast.error("Failed to load research papers");
@@ -111,7 +115,7 @@ export default function KnowledgeResearchPapers() {
         setIsLoading(false);
       }
     },
-    [session, limit, selectedSector],
+    [session, limit, selectedSector, activeFilter],
   );
 
   useEffect(() => {
@@ -120,13 +124,13 @@ export default function KnowledgeResearchPapers() {
 
   useEffect(() => {
     loadPapers(1);
-  }, [selectedSector, loadPapers]);
+  }, [selectedSector, activeFilter, loadPapers]);
 
   const handleToggle = async (id: string) => {
     try {
       await axios.patch(
         `${process.env.NEXT_PUBLIC_HOST_URL}/knowledge/research-papers/${id}/toggle-status`,
-        null,
+        {},
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
         },
@@ -193,6 +197,19 @@ export default function KnowledgeResearchPapers() {
               ))}
             </SelectContent>
           </Select>
+
+          <Select
+            value={String(activeFilter)}
+            onValueChange={(v) => setActiveFilter(v === "true")}
+          >
+            <SelectTrigger className="w-56 h-11 border-gray bg-white">
+              <SelectValue placeholder="All Status" />
+            </SelectTrigger>
+            <SelectContent className="bg-white border border-gray-200">
+              <SelectItem value="true">Active Only</SelectItem>
+              <SelectItem value="false">Inactive Only</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
         {isLoading && formState.items.length === 0 ? (
@@ -222,23 +239,29 @@ export default function KnowledgeResearchPapers() {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute top-2 left-2 flex flex-wrap gap-1">
-                    {(it.sectors && it.sectors.length > 0
-                      ? it.sectors
-                      : [{ name: "Uncategorized" }]
-                    ).map((s: any, idx) => (
-                      <span
-                        key={idx}
-                        className="bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] font-bold text-pink uppercase tracking-wider shadow-sm"
-                      >
-                        {s.name}
+                    {it.sectorIds && it.sectorIds.length > 0 ? (
+                      it.sectorIds.map((sid) => {
+                        const sector = sectors.find((s) => s.id === sid);
+                        return (
+                          <span
+                            key={sid}
+                            className="bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] font-bold text-pink uppercase tracking-wider shadow-sm"
+                          >
+                            {sector ? sector.name : "Uncategorized"}
+                          </span>
+                        );
+                      })
+                    ) : (
+                      <span className="bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] font-bold text-pink uppercase tracking-wider shadow-sm">
+                        Uncategorized
                       </span>
-                    ))}
+                    )}
                   </div>
                 </div>
 
                 <div className="p-4 flex flex-col flex-1">
                   <div className="text-xs w-fit mb-2 font-medium text-pink px-2 py-0.5 bg-pink/10 rounded-full">
-                    {new Date(formatDate(it.date)).toLocaleDateString("en-GB", {
+                    {new Date(it.date).toLocaleDateString("en-GB", {
                       day: "numeric",
                       month: "short",
                       year: "numeric",

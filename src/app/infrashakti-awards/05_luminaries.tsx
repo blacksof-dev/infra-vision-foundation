@@ -267,7 +267,7 @@ export default function Luminaries() {
                             title={ele.title}
                             desig={ele.desig}
                             link={ele.link}
-                            socialMedia={ele.socialMedia}
+                            socialMedia={ele.socialMedia?.toLowerCase()}
                           />
                         </div>
                       </SwiperSlide>
