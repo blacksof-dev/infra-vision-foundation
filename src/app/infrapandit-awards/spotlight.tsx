@@ -57,7 +57,7 @@ export default function Spotlight() {
                       }}
                     >
                       <p
-                        className="text-white text-sm md:text-sm text-center font-poppins p-5 pb-8"
+                        className="text-white text-sm md:text-base text-center font-poppins p-5 pb-8"
                         dangerouslySetInnerHTML={{ __html: elem.description }}
                       />
                     </motion.div>
@@ -108,7 +108,7 @@ const data = [
     awardName: "Uttam Award",
     title: "Enabling long-term solar access",
     description:
-      "For developing <span class='font-bold'>solar-powered thermal energy <span> storage solutions with applications in clean cooking and industrial heat, contributing to sustainable infrastructure solutions in India.",
+      "For developing <span class='font-bold'>solar-powered thermal energy </span> storage solutions with applications in clean cooking and industrial heat, contributing to sustainable infrastructure solutions in India.",
     thumbnailImage: "/assets/infrapandit/spotlight/shubham.png",
   },
   {
