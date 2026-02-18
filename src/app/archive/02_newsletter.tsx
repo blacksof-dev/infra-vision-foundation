@@ -29,7 +29,7 @@ interface NewsletterCard {
 
 // Constants
 const FILTER_TYPES: FilterType[] = ["All", "Publication year"];
-const YEARS = ["2025", "2024","2023"] as const;
+const YEARS = ["2025", "2024", "2023"] as const;
 const SECTORS: SectorType[] = [
   "All",
   "Transportation",
@@ -42,18 +42,17 @@ const SECTORS: SectorType[] = [
 ];
 const INITIAL_VISIBLE_COUNT = 3;
 
-
-
 const allcards = [
-   {
+  {
     id: 33,
     img: "/assets/archive/newsletter/landValue.png",
     category: "Volume 33",
     title: "",
     sectors: "",
     date: "February 2026",
-    description: "Why Land Value Capture can fix India's infrastructure financing crisis",
-    link: "/assets/pdf/landValue_Feb.pdf",
+    description:
+      "Why Land Value Capture can fix India's infrastructure financing crisis",
+    link: "/assets/pdf/landValue_Feb_updated.pdf",
   },
   {
     id: 32,
@@ -112,8 +111,7 @@ const allcards = [
     title: "",
     sectors: "",
     date: "August 2025",
-    description:
-      "TIF reaches out to stakeholders",
+    description: "TIF reaches out to stakeholders",
     link: "/assets/pdf/augustNewsletter.pdf",
   },
   {
@@ -123,8 +121,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "July 2025",
-    description:
-      "Do you want to be an InfraPandit?",
+    description: "Do you want to be an InfraPandit?",
     link: "/assets/pdf/july.pdf",
   },
   {
@@ -134,8 +131,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "June 2025",
-    description:
-      "Transforming cities into frontiers for economic growth ",
+    description: "Transforming cities into frontiers for economic growth ",
     link: "/assets/pdf/june2025.pdf",
   },
 
@@ -146,8 +142,7 @@ const allcards = [
     title: "",
     sectors: "",
     date: "May 2025",
-    description:
-      "Making change happen",
+    description: "Making change happen",
     link: "/assets/pdf/letter1.pdf",
   },
   {
@@ -157,8 +152,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "April 2025",
-    description:
-      "Decarbonising urban transport",
+    description: "Decarbonising urban transport",
     link: "/assets/pdf/letter2.pdf",
   },
   {
@@ -168,8 +162,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "March 2025",
-    description:
-      "Fast-tracking High-Speed Rail",
+    description: "Fast-tracking High-Speed Rail",
     link: "/assets/pdf/letter3.pdf",
   },
   {
@@ -179,8 +172,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "February 2025",
-    description:
-      "CAIRA Roundtable on agri exports is a success",
+    description: "CAIRA Roundtable on agri exports is a success",
     link: "/assets/pdf/letter4.pdf",
   },
   {
@@ -190,8 +182,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "January 2025",
-    description:
-      "Workshop on Trees Outside Forests",
+    description: "Workshop on Trees Outside Forests",
     link: "/assets/pdf/letter5.pdf",
   },
   {
@@ -201,8 +192,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "December 2024",
-    description:
-      "Telling the story of India",
+    description: "Telling the story of India",
     link: "/assets/pdf/letter6.pdf",
   },
   {
@@ -212,8 +202,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "November 2024",
-    description:
-      "CAIRA takes shape",
+    description: "CAIRA takes shape",
     link: "/assets/pdf/letter7.pdf",
   },
   {
@@ -223,8 +212,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "October 2024",
-    description:
-      "The Infravision Fellowship",
+    description: "The Infravision Fellowship",
     link: "/assets/pdf/letter8.pdf",
   },
   {
@@ -234,8 +222,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "September 2024",
-    description:
-      "Understanding Land Value Capture in urban India",
+    description: "Understanding Land Value Capture in urban India",
     link: "/assets/pdf/letter9.pdf",
   },
   {
@@ -245,8 +232,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "August 2024",
-    description:
-      "The need for high-speed rail corridors",
+    description: "The need for high-speed rail corridors",
     link: "/assets/pdf/letter10.pdf",
   },
   {
@@ -256,8 +242,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "July 2024",
-    description:
-      "Champions Lab takes off",
+    description: "Champions Lab takes off",
     link: "/assets/pdf/letter11.pdf",
   },
   {
@@ -267,8 +252,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "June 2024",
-    description:
-      "The building blocks of mythology",
+    description: "The building blocks of mythology",
     link: "/assets/pdf/letter12.pdf",
   },
   {
@@ -278,8 +262,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "May 2024",
-    description:
-      "Diving into the water bodies census",
+    description: "Diving into the water bodies census",
     link: "/assets/pdf/letter13.pdf",
   },
   {
@@ -289,8 +272,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "April 2024",
-    description:
-      "Sustainability Ratings is the buzz in Mumbai",
+    description: "Sustainability Ratings is the buzz in Mumbai",
     link: "/assets/pdf/letter14.pdf",
   },
   {
@@ -300,8 +282,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "March 2024",
-    description:
-      "No grain drain",
+    description: "No grain drain",
     link: "/assets/pdf/letter15.pdf",
   },
   {
@@ -311,8 +292,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "February 2024",
-    description:
-      "Sooraj Se Rozgari gets PM nod",
+    description: "Sooraj Se Rozgari gets PM nod",
     link: "/assets/pdf/letter16.pdf",
   },
 
@@ -334,8 +314,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "December 2023",
-    description:
-      "Making commodities count for more",
+    description: "Making commodities count for more",
     link: "/assets/pdf/letter18.pdf",
   },
   {
@@ -345,8 +324,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "November 2023",
-    description:
-      "Ideas aplenty at quarterly meeting",
+    description: "Ideas aplenty at quarterly meeting",
     link: "/assets/pdf/letter19.pdf",
   },
   {
@@ -356,8 +334,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "October 2023",
-    description:
-      "Green signal for green ratings",
+    description: "Green signal for green ratings",
     link: "/assets/pdf/letter20.pdf",
   },
   {
@@ -367,8 +344,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "September 2023",
-    description:
-      "Smart city, smart PT",
+    description: "Smart city, smart PT",
     link: "/assets/pdf/letter21.pdf",
   },
   {
@@ -378,8 +354,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "August 2023",
-    description:
-      "The quarterly meeting",
+    description: "The quarterly meeting",
     link: "/assets/pdf/letter22.pdf",
   },
   {
@@ -389,8 +364,7 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "July 2023",
-    description:
-      "City mobility",
+    description: "City mobility",
     link: "/assets/pdf/letter23.pdf",
   },
   {
@@ -400,35 +374,32 @@ const allcards = [
     title: " ",
     sectors: "",
     date: "June 2023",
-    description:
-      "Here comes the sun",
+    description: "Here comes the sun",
     link: "/assets/pdf/letter24.pdf",
   },
 ];
 
-
 const generateArticleSchema = (card: any) => ({
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": `Infravision Newsletter – ${card.category}`,
-  "description": card.description,
-  "image": `https://theinfravisionfoundation.org${card.img}`,
-  "url": "https://theinfravisionfoundation.org/archive#newsletters",
-  "associatedMedia": {
+  headline: `Infravision Newsletter – ${card.category}`,
+  description: card.description,
+  image: `https://theinfravisionfoundation.org${card.img}`,
+  url: "https://theinfravisionfoundation.org/archive#newsletters",
+  associatedMedia: {
     "@type": "MediaObject",
-    "contentUrl": `https://theinfravisionfoundation.org${card.link}`,
-    "encodingFormat": "application/pdf"
+    contentUrl: `https://theinfravisionfoundation.org${card.link}`,
+    encodingFormat: "application/pdf",
   },
-  "publisher": {
+  publisher: {
     "@type": "Organization",
-    "name": "The Infravision Foundation",
-    "logo": {
+    name: "The Infravision Foundation",
+    logo: {
       "@type": "ImageObject",
-      "url": "https://theinfravisionfoundation.org/logo.png"
-    }
-  }
+      url: "https://theinfravisionfoundation.org/logo.png",
+    },
+  },
 });
-
 
 export default function Newsletters() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -446,7 +417,7 @@ export default function Newsletters() {
       // const tabRect = tab.getBoundingClientRect();
       const offset =
         tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
-      container.scrollTo({ left: offset, behavior: 'smooth' });
+      container.scrollTo({ left: offset, behavior: "smooth" });
     }
   };
 
@@ -457,20 +428,20 @@ export default function Newsletters() {
         ? YEARS[0]
         : tab === "sectors"
           ? SECTORS[0]
-          : "All"
+          : "All",
     );
     setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
 
   const handleFilterClick = (filterName: string, index: number) => {
     setSelectedFilter(filterName);
-    scrollToCenter(index)
+    scrollToCenter(index);
   };
 
   const filteredCards = useMemo(() => {
     if (selectedTab === "Publication year") {
       return allcards.filter(
-        (card) => card.date.split(" ").pop() === selectedFilter
+        (card) => card.date.split(" ").pop() === selectedFilter,
       );
     }
     if (selectedTab === "sectors" && selectedFilter !== "All") {
@@ -493,10 +464,11 @@ export default function Newsletters() {
               tabRefs.current[index] = el;
             }}
             className={`text-base cursor-pointer text-nowrap rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
-                            ${selectedFilter === filter
-                ? "border border-pink text-white bg-pink font-medium"
-                : "border border-lightgray/30"
-              }`}
+                            ${
+                              selectedFilter === filter
+                                ? "border border-pink text-white bg-pink font-medium"
+                                : "border border-lightgray/30"
+                            }`}
             onClick={() => handleFilterClick(filter, index)}
           >
             {filter}
@@ -506,15 +478,10 @@ export default function Newsletters() {
     </div>
   );
 
-
-
   const allNewsLetterSchemas = allcards.map(generateArticleSchema);
-
 
   return (
     <section id="newsletters">
-
-
       <Script
         id="newsletter-schema"
         type="application/ld+json"
@@ -523,8 +490,6 @@ export default function Newsletters() {
           __html: JSON.stringify(allNewsLetterSchemas),
         }}
       />
-
-
 
       <div className="w-container blade-top-padding-sm blade-bottom-padding">
         {/* Header Section */}
@@ -536,9 +501,7 @@ export default function Newsletters() {
         <div className="py-3 max-w-[890px] ">
           <h1 className="text-black font-light">
             A chronicle of our <br />
-            <span className="text-black font-medium">
-              {' '} monthly dispatches
-            </span>
+            <span className="text-black font-medium"> monthly dispatches</span>
           </h1>
         </div>
 
@@ -556,10 +519,11 @@ export default function Newsletters() {
                 <button
                   key={tab}
                   className={`mt-auto text-base cursor-pointer rounded-[50px] px-4 py-2 mb-3 sm:px-6 sm:py-3 sm:mb-4
-                                        ${selectedTab === tab
-                      ? "border border-pink text-pink font-medium"
-                      : "border border-lightgray/30"
-                    }`}
+                                        ${
+                                          selectedTab === tab
+                                            ? "border border-pink text-pink font-medium"
+                                            : "border border-lightgray/30"
+                                        }`}
                   onClick={() => handleTabClick(tab)}
                 >
                   {tab}
@@ -574,12 +538,13 @@ export default function Newsletters() {
 
           {/* Newsletter Cards */}
           <div
-            className={`${selectedTab === "Publication year" ? "pt-8" : "pt-8"
-              }`}
+            className={`${
+              selectedTab === "Publication year" ? "pt-8" : "pt-8"
+            }`}
           >
-            {
-              filteredCards.length === 0 && <div className="flex justify-center "> No results </div>
-            }
+            {filteredCards.length === 0 && (
+              <div className="flex justify-center "> No results </div>
+            )}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 xlg:gap-24">
               {filteredCards.slice(0, visibleCount).map((card) => (
                 <div key={card.id}>

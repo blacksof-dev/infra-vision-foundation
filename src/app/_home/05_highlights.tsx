@@ -12,12 +12,13 @@ const newsletters = [
     id: 31,
     img: "/assets/archive/newsletter/landValue.png",
     category: "Volume 33",
-    title: "Why Land Value Capture can fix India's infrastructure financing crisis",
+    title:
+      "Why Land Value Capture can fix India's infrastructure financing crisis",
     sectors: "",
     date: "February 2026",
-    link: "/assets/pdf/landValue_Feb.pdf",
+    link: "/assets/pdf/landValue_Feb_updated.pdf",
   },
-   {
+  {
     id: 30,
     img: "/assets/archive/newsletter/analysisAction.png",
     category: "Volume 32",
@@ -26,7 +27,7 @@ const newsletters = [
     date: "January 2026",
     link: "/assets/pdf/analysisAction.pdf",
   },
-    {
+  {
     id: 29,
     img: "/assets/archive/newsletter/infraPanditAward.png",
     category: "Volume 31",
@@ -35,44 +36,37 @@ const newsletters = [
     date: "December 2025",
     link: "/assets/pdf/decmber.pdf",
   },
-   
-  
-
-  
 ];
 
 const news = [
-   {
-    id:60,
+  {
+    id: 60,
     img: "/assets/archive/newsAndMedia/landValue.png",
     category: "",
     date: "January 2026",
     title: "Land value capture",
-    subtitle:"Vinayak Chatterjee",
+    subtitle: "Vinayak Chatterjee",
     link: "/assets/pdf/landValue.pdf",
   },
-    {
-    id:60,
+  {
+    id: 60,
     img: "/assets/archive/newsAndMedia/invest-in-small-towns.png",
     category: "",
     date: "January 2026",
     title: "Invest in small towns",
-    subtitle:" Kiran Karnik",
+    subtitle: " Kiran Karnik",
     link: "/assets/pdf/invest-in-small-towns.pdf",
   },
-     {
-    id:59,
+  {
+    id: 59,
     img: "/assets/archive/newsAndMedia/soumyaNews.jpg",
     category: "",
-    title: "How consistent is IMF classification of exchange rate arrangement and data adequacy?",
+    title:
+      "How consistent is IMF classification of exchange rate arrangement and data adequacy?",
     date: "December 2025",
-     subtitle: "Soumya Kanti Ghosh",
+    subtitle: "Soumya Kanti Ghosh",
     link: "/assets/pdf/how-consistent-is-imf-classification.jpeg",
   },
-     
-  
- 
-  
 ];
 
 export default function Highlights() {
@@ -202,20 +196,20 @@ export const TabSwitch = ({
               activeTab === "Outreach and Engagements"
                 ? "/outreach-and-engagements"
                 : activeTab === "Newsletters"
-                ? "/archive#newsletters"
-                : activeTab === "In the News"
-                ? "/archive#news-and-media"
-                : ""
+                  ? "/archive#newsletters"
+                  : activeTab === "In the News"
+                    ? "/archive#news-and-media"
+                    : ""
             }
           >
             <span className="z-50 relative">{`${
               activeTab === "Outreach and Engagements"
                 ? "View all events"
                 : activeTab === "Newsletters"
-                ? "Browse newsletters"
-                : activeTab === "In the News"
-                ? "Browse news"
-                : "Read more"
+                  ? "Browse newsletters"
+                  : activeTab === "In the News"
+                    ? "Browse news"
+                    : "Read more"
             }`}</span>
             <span
               className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0  transition-all duration-300`}
