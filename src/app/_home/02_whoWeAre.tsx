@@ -178,7 +178,7 @@ export default function WhoWeAre() {
                 </h1>
               </div>
             </div>
-            <div className="w-full md:w-1/2 lg:md:w-[46%] pt-2">
+            <div className="w-full md:w-1/2 xlg:md:w-[40%] pt-2">
               <h6
                 className="text-black font-light"
                 dangerouslySetInnerHTML={{

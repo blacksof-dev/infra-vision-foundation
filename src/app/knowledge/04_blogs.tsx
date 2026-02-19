@@ -297,7 +297,7 @@ export default function Blogs() {
                     date={formatDate(card.publishedDate)}
                     title={card.title}
                     image={getUrl(card.coverImage)}
-                    link={`/knowledge/blogs/${card.slug}`}
+                    link={`/blogs/${card.slug}`}
                     category={card.sectors[0]?.name ?? ""}
                     description={""}
                     classes="line-clamp-3"

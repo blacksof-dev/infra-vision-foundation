@@ -59,7 +59,7 @@ export default function EventDetailsPopup({
               >
                 {images.map((obj, idx) => (
                   <SwiperSlide key={idx}>
-                    {data?.details?.cta?.ctaText === "Watch video" ? (
+                    {data?.details?.cta?.link.includes("www.youtube.com") ? (
                       <Link
                         href={data?.details?.cta?.link}
                         target="_blank"

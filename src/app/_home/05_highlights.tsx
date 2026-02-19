@@ -33,6 +33,7 @@ interface HighlightsResponse {
     author: string;
     link: string;
     pdfFile: string | null;
+    imageFile:string | null;
   }>;
 }
 
@@ -69,7 +70,7 @@ export default function Highlights() {
       img: getUrl(item.image),
       category: item.author,
       title: item.title,
-      link: item.pdfFile ? getUrl(item.pdfFile) : item.link,
+      link: item.pdfFile ? getUrl(item.pdfFile) : item.imageFile?getUrl(item.imageFile):item.link,
       date: item.date
         ? new Date(item.date).toLocaleDateString("en-US", {
             month: "long",
