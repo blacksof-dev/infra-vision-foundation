@@ -7,12 +7,12 @@ const Goal = () => {
     {
       icon: "/assets/infrapandit/logo/logo-1.png",
       title: "Synergising impact",
-      desc: "Invite and promote industry-academia collaboration by highlighting research with direct and immediate relevance to India’s concurrent needs.",
+      desc: "Promote industry-academia collaboration by highlighting research with direct relevance to india’s current infrastructure development strategy.",
     },
     {
       icon: "/assets/infrapandit/logo/logo-2.png",
       title: "Acknowledging excellence",
-      desc: "Identification of the next generation of infra changemakers by eminent experts, academicians, practitioners, and industry leaders.",
+      desc: "Identify the next generation of infra changemakers through expert evaluation to strengthen infrastructure research for policy impact.",
     },
     {
       icon: "/assets/infrapandit/logo/logo-3.png",
@@ -40,7 +40,6 @@ const Goal = () => {
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
               <h5 className="font-medium text-pink text-sm xl:text-lg">
                 The Goal
-
               </h5>
             </div>
             <div className="pt-1 md:pt-4 pb-2 md:py-5 flex justify-between">
@@ -59,8 +58,8 @@ const Goal = () => {
             </h6>
             <h6 className="text-sm xl:text-lg">
               The InfraPandit Awards are committed to identifying and motivating
-              such outstanding brains with the potential to supplement India’s
-              infrastructure growth.
+              such outstanding brains with the potential to supplement
+              infrastructure policy innovation in India.
             </h6>
           </div>
         </div>
