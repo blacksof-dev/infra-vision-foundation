@@ -12,9 +12,14 @@ export interface TabApiRaw {
   active: boolean;
 }
 
-interface contentApiResponse {
-  tagName: string;
-  description: string;
+interface ResearchPaperApiResponse {
+  researchPapers: ResearchPaper[];
+  pagination: {
+    totalCount: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
 }
 
 export interface ResearchPaper {
@@ -24,35 +29,32 @@ export interface ResearchPaper {
   description: string;
   link: string;
   date: string;
-  active: string;
-  sectors: {
-    name: string;
-    slug: string;
-    active: boolean;
-  }[];
+  active: boolean;
+  sectorIds: string[];
+}
+
+interface FilterState {
+  page: number;
+  cards: ResearchPaper[];
+  totalCount: number;
 }
 
 export default function ResearchPapers() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [selectedFilter, setSelectedFilter] = useState<string>("All");
+  const [selectedFilter, setSelectedFilter] = useState<{
+    name: string;
+    id?: string;
+  }>({ name: "All" });
 
-  const [records, setRecords] = useState<{
-    [key: string]: { page: number; cards: ResearchPaper[]; totalCount: number };
-  }>({});
-
-  const { data: content } = useApiHook<contentApiResponse>({
-    url: "/knowledge/research-papers?activeOnly=true",
-    cacheKey: "knowledgeContentTab",
-  });
+  const [records, setRecords] = useState<{ [key: string]: FilterState }>({});
 
   const { data: tabsData } = useApiHook<TabApiRaw[]>({
     url: "/knowledge/sectors",
     cacheKey: "knowledgeSectorTab",
   });
 
-  const currentKey = `${selectedFilter}`;
-
+  const currentKey = selectedFilter.name;
   const currentData = records[currentKey] ?? {
     page: 1,
     cards: [],
@@ -60,25 +62,16 @@ export default function ResearchPapers() {
   };
 
   const getApiUrl = () => {
-    const sector = tabsData?.find((t) => t.name === selectedFilter);
-    if (sector && selectedFilter !== "All") {
-      return `/knowledge/research-papers/by-sector/${sector.id}?page=${currentData.page}&limit=3`;
+    const base = `/knowledge/research-papers?limit=3&activeOnly=true&page=${currentData.page}`;
+    if (selectedFilter.name !== "All" && selectedFilter.id) {
+      return `${base}&sectorId=${selectedFilter.id}`;
     }
-
-    return `/knowledge/research-papers?page=${currentData.page}&limit=3`;
+    return base;
   };
 
-  const { data: cardData } = useApiHook<{
-    researchPapers: ResearchPaper[];
-    pagination: {
-      totalCount: number;
-      page: number;
-      limit: number;
-      totalPages: number;
-    };
-  }>({
+  const { data: cardData } = useApiHook<ResearchPaperApiResponse>({
     url: getApiUrl(),
-    cacheKey: `knowledgeCardData-${currentKey}-page-${currentData.page}`,
+    cacheKey: `researchPapers-${currentKey}-${currentData.page}`,
   });
 
   useEffect(() => {
@@ -89,14 +82,25 @@ export default function ResearchPapers() {
           cards: [],
           totalCount: 0,
         };
+
+        const newCards = cardData.researchPapers;
+        let updatedCards = newCards;
+
+        if (currentData.page > 1) {
+          const existingIds = new Set(prevState.cards.map((c) => c.id));
+          const uniqueNewCards = newCards.filter((c) => !existingIds.has(c.id));
+          if (uniqueNewCards.length === 0) return prev; // No new cards
+          updatedCards = [...prevState.cards, ...uniqueNewCards];
+        }
+
+        // Prevent update if data is identical (shallow check for page 1)
+        if (currentData.page === 1 && prevState.cards === newCards) return prev;
+
         return {
           ...prev,
           [currentKey]: {
             page: currentData.page,
-            cards:
-              currentData.page === 1
-                ? cardData.researchPapers
-                : [...prevState.cards, ...cardData.researchPapers],
+            cards: updatedCards,
             totalCount: cardData.pagination?.totalCount ?? 0,
           },
         };
@@ -104,10 +108,10 @@ export default function ResearchPapers() {
     }
   }, [cardData, currentKey, currentData.page]);
 
-  const activeTabs = useMemo(
-    () => tabsData?.map((tab) => tab.name) ?? [],
-    [tabsData],
-  );
+  const activeTabs = useMemo(() => {
+    if (!tabsData) return ["All"];
+    return ["All", ...tabsData.map((t) => t.name)];
+  }, [tabsData]);
 
   const scrollToCenter = (index: number) => {
     const tab = tabRefs.current[index];
@@ -120,13 +124,9 @@ export default function ResearchPapers() {
   };
 
   const handleFilterClick = (filterName: string, index: number) => {
-    setSelectedFilter(filterName);
+    const sector = tabsData?.find((t) => t.name === filterName);
+    setSelectedFilter({ name: filterName, id: sector?.id });
     scrollToCenter(index);
-    // Reset when switching
-    setRecords((prev) => ({
-      ...prev,
-      [`${filterName}`]: { page: 1, cards: [], totalCount: 0 },
-    }));
   };
 
   const handleSeeMore = () => {
@@ -143,31 +143,22 @@ export default function ResearchPapers() {
     currentData.totalCount > 0 &&
     currentData.cards.length < currentData.totalCount;
 
-  if (!tabsData || !cardData || !content) return null;
+  const getSectorName = (ids: string[]) => {
+    if (!ids?.length) return "";
+    const sector = tabsData?.find((t) => t.id === ids[0]);
+    return sector?.name || "";
+  };
 
-  const renderFilterButtons = (filters: string[]) => (
-    <div ref={containerRef} className="pt-5 overflow-scroll no-scrollbar">
-      <div className="flex gap-3">
-        {filters.map((filter, index) => (
-          <button
-            key={filter}
-            ref={(el: HTMLButtonElement | null): void => {
-              tabRefs.current[index] = el;
-            }}
-            className={`text-base text-nowrap cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
-              ${
-                selectedFilter === filter
-                  ? "border border-pink text-white bg-pink font-medium"
-                  : "border border-lightgray/30"
-              }`}
-            onClick={() => handleFilterClick(filter, index)}
-          >
-            {filter}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
+  const formatDate = (dateStr: string) => {
+    if (!dateStr) return "";
+    return new Date(dateStr).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
+  if (!tabsData) return null;
 
   return (
     <section id="research-papers">
@@ -197,7 +188,30 @@ export default function ResearchPapers() {
               </h5>
             </div>
 
-            {renderFilterButtons(activeTabs)}
+            <div
+              ref={containerRef}
+              className="pt-5 overflow-scroll no-scrollbar"
+            >
+              <div className="flex gap-3">
+                {activeTabs.map((filter, index) => (
+                  <button
+                    key={filter}
+                    ref={(el: HTMLButtonElement | null): void => {
+                      tabRefs.current[index] = el;
+                    }}
+                    className={`text-base text-nowrap cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
+                      ${
+                        selectedFilter.name === filter
+                          ? "border border-pink text-white bg-pink font-medium"
+                          : "border border-lightgray/30"
+                      }`}
+                    onClick={() => handleFilterClick(filter, index)}
+                  >
+                    {filter}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Research Paper Cards */}
@@ -209,11 +223,11 @@ export default function ResearchPapers() {
               {currentData.cards.map((card) => (
                 <div key={card.id}>
                   <NewsCard
-                    date=""
+                    date={formatDate(card.date)}
                     title={card.title}
                     image={getUrl(card.image)}
                     link={card.link}
-                    category={card.sectors[0]?.name ?? ""}
+                    category={getSectorName(card.sectorIds)}
                     description=""
                     classes="line-clamp-3"
                     ctaType="read more"
