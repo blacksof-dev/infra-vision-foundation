@@ -1,188 +1,72 @@
-Max we can add three cards in advocacy section
-POST
-/homepage/advocacy
-Create a new advocacy card (Max 3)
-
-
-Parameters
-Try it out
-No parameters
-
-Request body
-
-multipart/form-data
-image *
-string($binary)
-Image for the advocacy card
-
-label *
-string
-Label for the card (e.g. Infrakatha)
-
-title *
-string
-Description/Title text for the card
-
-ctaText *
-string
-Text for the call to action button
-
-ctaLink *
-string
-URL for the call to action button
-
-active
-boolean
-Whether the card is active
-
-Responses
-Code	Description	Links
-201	
-Created successfully
-
-No links
-
-
 GET
-/homepage/advocacy
-Get all advocacy cards
+/knowledge/research-papers
+Get all research papers
+
+Retrieves a list of all research papers. This endpoint is public.
 
 Parameters
 Cancel
-No parameters
+Name Description
+page
+number
+(query)
+Page number (starts from 1)
 
+1
+limit
+number
+(query)
+Number of items per page
+
+1
+activeOnly
+boolean
+(query)
+If true, returns only active research papers
+
+true
+sectorId
+string
+(query)
+Filter research papers by sector ID
+
+6989a8152f071952d791fa18
 Execute
 Clear
 Responses
 Curl
 
 curl -X 'GET' \
- 'http://localhost:4000/homepage/advocacy' \
+ 'http://64.227.188.3:4000/knowledge/research-papers?page=1&limit=1&activeOnly=true&sectorId=6989a8152f071952d791fa18' \
  -H 'accept: _/_'
 Request URL
-http://localhost:4000/homepage/advocacy
+http://64.227.188.3:4000/knowledge/research-papers?page=1&limit=1&activeOnly=true&sectorId=6989a8152f071952d791fa18
 Server response
 Code Details
 200
 Response body
 Download
-[
 {
-"id": "6992e740ae2e7a64e9f02450",
-"image": "/assets/images\\advocacy.png",
-"label": " InfraPandit Awards",
-"title": "A national effort at recognising outstanding doctoral research on infrastructure, fostering youth participation in India's infra evolution.",
-"ctaText": "Know more",
-"ctaLink": "https://theinfravisionfoundation.org/infrapandit-awards",
-"active": true,
-"createdAt": "2026-02-16T09:45:36.409Z",
-"updatedAt": "2026-02-16T09:45:36.409Z"
-},
+"researchPapers": [
 {
-"id": "6992ecbb8bb774eb0920412f",
-"image": "/assets/images\\advocacy.png",
-"label": " InfraPandit Awards",
-"title": "A national effort at recognising outstanding doctoral research on infrastructure, fostering youth participation in India's infra evolution.",
-"ctaText": "Know more",
-"ctaLink": "https://theinfravisionfoundation.org/infrapandit-awards",
+"id": "6989aa202f071952d791fa1e",
+"image": "/assets/images/research-paper-img-ways-to-enhance-warehouse-base-1770629664552-xj6tit43.jpg",
+"title": "Ways to enhance warehouse-based sales and lending for agriculture commodities",
+"link": "/assets/pdf/research-paper-pdf-ways-to-enhance-warehouse-base-1770629664552-d2zpfl93.pdf",
+"date": "2026-02-09T00:00:00.000Z",
 "active": true,
-"createdAt": "2026-02-16T10:08:59.757Z",
-"updatedAt": "2026-02-16T10:08:59.757Z"
-},
-{
-"id": "6992ecbe8bb774eb09204130",
-"image": "/assets/images\\advocacy.png",
-"label": " InfraPandit Awards",
-"title": "A national effort at recognising outstanding doctoral research on infrastructure, fostering youth participation in India's infra evolution.",
-"ctaText": "Know more",
-"ctaLink": "https://theinfravisionfoundation.org/infrapandit-awards",
-"active": true,
-"createdAt": "2026-02-16T10:09:02.902Z",
-"updatedAt": "2026-02-16T10:09:02.902Z"
-}
+"createdAt": "2026-02-09T09:34:24.557Z",
+"updatedAt": "2026-02-09T09:41:12.448Z",
+"sectorIds": [
+"6989a8152f071952d791fa18"
 ]
-Response headers
-access-control-allow-credentials: true
-access-control-allow-origin: http://localhost:3000
-content-length: 1306
-content-type: application/json; charset=utf-8
-date: Tue,17 Feb 2026 09:30:08 GMT
-etag: W/"51a-0ga75nK4tlFK+omy5ce5MgkHG7Y"
-vary: Origin
-x-powered-by: Express
-Responses
-Code Description Links
-200
-Returns all advocacy cards
-
-No links
-
-
-
-
-
-
-PATCH
-/homepage/advocacy/{id}
-Update an advocacy card
-
-
-Parameters
-Try it out
-Name	Description
-id *
-string
-(path)
-id
-Request body
-
-multipart/form-data
-image
-string($binary)
-New image for the advocacy card (optional)
-
-label
-string
-Label for the card
-
-title
-string
-Description/Title text for the card
-
-ctaText
-string
-Text for the call to action button
-
-ctaLink
-string
-URL for the call to action button
-
-active
-boolean
-Whether the card is active
-
-Responses
-Code	Description	Links
-200	
-Updated successfully
-
-No links
-
-DELETE
-/homepage/advocacy/{id}
-Delete an advocacy card
-
-
-Parameters
-Try it out
-Name	Description
-id *
-string
-(path)
-id
-Responses
-Code	Description	Links
-200	
-Deleted successfully
-
-No links
+}
+],
+"pagination": {
+"totalCount": 3,
+"page": 1,
+"limit": 1,
+"totalPages": 3
+},
+"lastUpdated": "2026-02-18T10:31:03.009Z"
+}

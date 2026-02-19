@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+
 import bg from "@/../public/assets/infrakatha/past-events/bgcircle.png";
 
 import Image from "next/image";
@@ -8,6 +8,7 @@ import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { getFetch } from "@/lib/api";
 import { getUrl } from "@/lib/getUrl";
 import { UnderlineWithHover } from "@/_components/atoms/buttons";
+import Script from "next/script";
 
 interface Datetype {
   id: string;
@@ -29,6 +30,25 @@ interface DataResponse {
   };
 }
 
+const generateVideoSchema = (video: Datetype) => ({
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  name: video.title,
+  description: video.description || video.title,
+  thumbnailUrl: getUrl(video.thumbnailUrl),
+  uploadDate: video.date,
+  contentUrl: video.youtubeVideoUrl,
+  embedUrl: video.youtubeVideoUrl,
+  publisher: {
+    "@type": "Organization",
+    name: "The Infravision Foundation",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://theinfravisionfoundation.org/logo.png",
+    },
+  },
+});
+
 export default function PastEvents() {
   const {
     data: data,
@@ -48,8 +68,20 @@ export default function PastEvents() {
   });
 
   console.log(data);
+
+  const videos = data?.pages.flatMap((page) => page.data) || [];
+  const allVideoSchemas = videos.map(generateVideoSchema);
+
   return (
     <section className="relative bg-white">
+      <Script
+        id="infrakatha-video-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(allVideoSchemas),
+        }}
+      />
       <Image
         className="absolute top-0 left-0 lg:block hidden "
         src={bg}
@@ -74,7 +106,11 @@ export default function PastEvents() {
               .map((ele, index) => (
                 <div key={index}>
                   <NewsCard
-                    date={ele.date}
+                    date={new Date(ele.date).toLocaleDateString("en-US", {
+                      month: "long",
+                      day: "2-digit",
+                      year: "numeric",
+                    })}
                     title={ele.title}
                     image={getUrl(ele.thumbnailUrl)}
                     link={ele.youtubeVideoUrl}
@@ -99,22 +135,6 @@ export default function PastEvents() {
               />
             </div>
           )}
-          {/* {visiblecountmobile < FilteredCard().length && (
-            <div className="flex justify-center xl:mt-4">
-              <div>
-                <button
-                  onClick={handleSeeMoreCta}
-                  className={`group  text-xl lg:text-2xl   text-pink hover:text-white cursor-pointer  text-nowrap w-40  py-3 block text-center font-medium relative  overflow-hidden    transition-all duration-300`}
-                >
-                  <span className="z-50 relative"> See more</span>
-                  <span
-                    className={`w-full  h-[1px] bg-pink absolute bottom-0 left-0 transition-all duration-300`}
-                  ></span>
-                  <span className="absolute  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-transparent group-hover:bg-pink rounded-full  group-hover:scale-[5] transition-all duration-700 ease-in-out z-0"></span>
-                </button>
-              </div>
-            </div>
-          )} */}
         </div>
       </div>
     </section>

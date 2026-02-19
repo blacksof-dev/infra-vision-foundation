@@ -12,6 +12,7 @@ import { FaYoutube } from "react-icons/fa";
 import { useQuery } from "@tanstack/react-query";
 import { getFetch } from "@/lib/api";
 import { getUrl } from "@/lib/getUrl";
+import Script from "next/script";
 
 interface Conversation {
   image: string;
@@ -35,7 +36,7 @@ export default function Conversations() {
   };
 
   const { data } = useQuery({
-    queryKey: ["infrashakti-overview"],
+    queryKey: ["conversation-overview"],
     queryFn: () =>
       getFetch<ConversationResponse>(
         "/knowledge/conversation?page=1&limit=100",
@@ -44,11 +45,48 @@ export default function Conversations() {
 
   if (!data) return null;
 
+  const generateResearchSchema = (card: any) => ({
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    headline: card.title,
+    name: card.name,
+    image: `https://api.theinfravisionfoundation.org${card.image}`,
+    url: "https://api.theinfravisionfoundation.org/knowledge#research-papers",
+    author: {
+      "@type": "Organization",
+      name: "The Infravision Foundation",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "The Infravision Foundation",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://theinfravisionfoundation.org/logo.png",
+      },
+    },
+    associatedMedia: {
+      "@type": "MediaObject",
+      contentUrl: `https://api.theinfravisionfoundation.org${card.videoLink}`,
+      encodingFormat: "application/pdf",
+    },
+  });
+
+  const allResearchPaper = data.data.map(generateResearchSchema);
+
   return (
     <section
       id="infravision-conversations"
       className="bg-whitesmoke overflow-hidden"
     >
+      <Script
+        id="researchPaper-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(allResearchPaper),
+        }}
+      />
+
       <div className="w-container blade-top-padding-lg blade-bottom-padding-lg ">
         {/* Header Section */}
         <div className="lg:flex justify-between mb-4 lg:mb-8">
@@ -197,3 +235,13 @@ export default function Conversations() {
     </section>
   );
 }
+
+// What is a Buffer in Node.js?Why do we need it?Is it part of JavaScript or Node.js?
+
+/*
+
+
+
+
+
+*/

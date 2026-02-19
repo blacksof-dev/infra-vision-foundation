@@ -74,9 +74,10 @@ export default function InfrapanditAward({
                 <BorderGrayHeroBtn
                   text={"See details"}
                   role="link"
-                 link="/outreach-and-engagements"
+                  link="/outreach-and-engagements"
                   borderColor="pink"
-                  color="black"
+                  color="black" 
+                  target="_self"
                   bgColor="white"
                   size="large"
                   classes="font-medium"

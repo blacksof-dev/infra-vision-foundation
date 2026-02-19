@@ -85,7 +85,7 @@ export default function Page() {
     try {
       const url = `${process.env.NEXT_PUBLIC_HOST_URL}/newsletter-subscription/export/csv`;
       const res = await axios.get(url, {
-        headers: { Authorization: `Bearer ${session?.accessToken}` },
+        headers: { Authorization: `Bearer ${session?.accessToken}` }, 
         responseType: "blob",
       });
 

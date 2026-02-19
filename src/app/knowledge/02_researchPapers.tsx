@@ -12,14 +12,9 @@ export interface TabApiRaw {
   active: boolean;
 }
 
-interface ResearchPaperApiResponse {
-  researchPapers: ResearchPaper[];
-  pagination: {
-    totalCount: number;
-    page: number;
-    limit: number;
-    totalPages: number;
-  };
+interface contentApiResponse {
+  tagName: string;
+  description: string;
 }
 
 export interface ResearchPaper {
@@ -29,32 +24,35 @@ export interface ResearchPaper {
   description: string;
   link: string;
   date: string;
-  active: boolean;
-  sectorIds: string[];
-}
-
-interface FilterState {
-  page: number;
-  cards: ResearchPaper[];
-  totalCount: number;
+  active: string;
+  sectors: {
+    name: string;
+    slug: string;
+    active: boolean;
+  }[];
 }
 
 export default function ResearchPapers() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [selectedFilter, setSelectedFilter] = useState<{
-    name: string;
-    id?: string;
-  }>({ name: "All" });
+  const [selectedFilter, setSelectedFilter] = useState<string>("All");
 
-  const [records, setRecords] = useState<{ [key: string]: FilterState }>({});
+  const [records, setRecords] = useState<{
+    [key: string]: { page: number; cards: ResearchPaper[]; totalCount: number };
+  }>({});
+
+  const { data: content } = useApiHook<contentApiResponse>({
+    url: "/knowledge/research-papers?activeOnly=true",
+    cacheKey: "knowledgeContentTab",
+  });
 
   const { data: tabsData } = useApiHook<TabApiRaw[]>({
     url: "/knowledge/sectors",
     cacheKey: "knowledgeSectorTab",
   });
 
-  const currentKey = selectedFilter.name;
+  const currentKey = `${selectedFilter}`;
+
   const currentData = records[currentKey] ?? {
     page: 1,
     cards: [],
@@ -62,16 +60,31 @@ export default function ResearchPapers() {
   };
 
   const getApiUrl = () => {
-    const base = `/knowledge/research-papers?limit=3&activeOnly=true&page=${currentData.page}`;
-    if (selectedFilter.name !== "All" && selectedFilter.id) {
-      return `${base}&sectorId=${selectedFilter.id}`;
+    const params = `activeOnly=true&limit=3&page=${currentData.page}`;
+
+    if (selectedFilter === "All") {
+      return `/knowledge/research-papers?${params}`;
     }
-    return base;
+
+    const sector = tabsData?.find((t) => t.name === selectedFilter);
+    if (sector) {
+      return `/knowledge/research-papers/by-sector/${sector.id}?${params}`;
+    }
+
+    return `/knowledge/research-papers?${params}`;
   };
 
-  const { data: cardData } = useApiHook<ResearchPaperApiResponse>({
+  const { data: cardData } = useApiHook<{
+    researchPapers: ResearchPaper[];
+    pagination: {
+      totalCount: number;
+      page: number;
+      limit: number;
+      totalPages: number;
+    };
+  }>({
     url: getApiUrl(),
-    cacheKey: `researchPapers-${currentKey}-${currentData.page}`,
+    cacheKey: `knowledgeCardData-${currentKey}-page-${currentData.page}`,
   });
 
   useEffect(() => {
@@ -83,30 +96,22 @@ export default function ResearchPapers() {
           totalCount: 0,
         };
 
-        const newCards = cardData.researchPapers;
-        let updatedCards = newCards;
-
-        if (currentData.page > 1) {
-          const existingIds = new Set(prevState.cards.map((c) => c.id));
-          const uniqueNewCards = newCards.filter((c) => !existingIds.has(c.id));
-          if (uniqueNewCards.length === 0) return prev; // No new cards
-          updatedCards = [...prevState.cards, ...uniqueNewCards];
-        }
-
-        // Prevent update if data is identical (shallow check for page 1)
-        if (currentData.page === 1 && prevState.cards === newCards) return prev;
+        const apiPage = cardData.pagination?.page ?? 1;
 
         return {
           ...prev,
           [currentKey]: {
-            page: currentData.page,
-            cards: updatedCards,
+            page: apiPage,
+            cards:
+              apiPage === 1
+                ? cardData.researchPapers
+                : [...prevState.cards, ...cardData.researchPapers],
             totalCount: cardData.pagination?.totalCount ?? 0,
           },
         };
       });
     }
-  }, [cardData, currentKey, currentData.page]);
+  }, [cardData, currentKey]);
 
   const activeTabs = useMemo(() => {
     if (!tabsData) return ["All"];
@@ -124,9 +129,14 @@ export default function ResearchPapers() {
   };
 
   const handleFilterClick = (filterName: string, index: number) => {
-    const sector = tabsData?.find((t) => t.name === filterName);
-    setSelectedFilter({ name: filterName, id: sector?.id });
+    if (filterName === selectedFilter) return;
+    setSelectedFilter(filterName);
     scrollToCenter(index);
+    // Reset when switching to a new tab
+    setRecords((prev) => ({
+      ...prev,
+      [filterName]: { page: 1, cards: [], totalCount: 0 },
+    }));
   };
 
   const handleSeeMore = () => {
@@ -143,22 +153,31 @@ export default function ResearchPapers() {
     currentData.totalCount > 0 &&
     currentData.cards.length < currentData.totalCount;
 
-  const getSectorName = (ids: string[]) => {
-    if (!ids?.length) return "";
-    const sector = tabsData?.find((t) => t.id === ids[0]);
-    return sector?.name || "";
-  };
-
-  const formatDate = (dateStr: string) => {
-    if (!dateStr) return "";
-    return new Date(dateStr).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  };
-
   if (!tabsData) return null;
+
+  const renderFilterButtons = (filters: string[]) => (
+    <div ref={containerRef} className="pt-5 overflow-scroll no-scrollbar">
+      <div className="flex gap-3">
+        {filters.map((filter, index) => (
+          <button
+            key={filter}
+            ref={(el: HTMLButtonElement | null): void => {
+              tabRefs.current[index] = el;
+            }}
+            className={`text-base text-nowrap cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
+              ${
+                selectedFilter === filter
+                  ? "border border-pink text-white bg-pink font-medium"
+                  : "border border-lightgray/30"
+              }`}
+            onClick={() => handleFilterClick(filter, index)}
+          >
+            {filter}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
 
   return (
     <section id="research-papers">
@@ -188,46 +207,25 @@ export default function ResearchPapers() {
               </h5>
             </div>
 
-            <div
-              ref={containerRef}
-              className="pt-5 overflow-scroll no-scrollbar"
-            >
-              <div className="flex gap-3">
-                {activeTabs.map((filter, index) => (
-                  <button
-                    key={filter}
-                    ref={(el: HTMLButtonElement | null): void => {
-                      tabRefs.current[index] = el;
-                    }}
-                    className={`text-base text-nowrap cursor-pointer rounded-[50px] px-3 py-1 sm:px-6 sm:py-3
-                      ${
-                        selectedFilter.name === filter
-                          ? "border border-pink text-white bg-pink font-medium"
-                          : "border border-lightgray/30"
-                      }`}
-                    onClick={() => handleFilterClick(filter, index)}
-                  >
-                    {filter}
-                  </button>
-                ))}
-              </div>
-            </div>
+            {renderFilterButtons(activeTabs)}
           </div>
 
           {/* Research Paper Cards */}
           <div className="pt-8">
             {currentData.cards.length === 0 && (
-              <div className="flex justify-center">No results</div>
+              <div className="flex justify-center">
+                {!cardData ? "Loading..." : "No results"}
+              </div>
             )}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 xlg:gap-24">
               {currentData.cards.map((card) => (
                 <div key={card.id}>
                   <NewsCard
-                    date={formatDate(card.date)}
+                    date=""
                     title={card.title}
                     image={getUrl(card.image)}
                     link={card.link}
-                    category={getSectorName(card.sectorIds)}
+                    category={card.sectors?.[0]?.name ?? ""}
                     description=""
                     classes="line-clamp-3"
                     ctaType="read more"

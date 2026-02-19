@@ -131,7 +131,7 @@ export default function About() {
                         title={member.name}
                         desig={member.designation}
                         link={member.socialUrl}
-                        socialMedia={member.socialType}
+                        socialMedia={member.socialType.toLowerCase()}
                       />
                     </div>
                   </SwiperSlide>

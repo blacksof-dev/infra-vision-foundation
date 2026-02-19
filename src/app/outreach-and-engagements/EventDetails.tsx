@@ -10,12 +10,13 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import image_01 from "@/../public/assets/outreach-and-engagements/eventImages/dummy.png";
+import image_01 from "@/../public/assets/outreach-and-engagements/highlight/dummy.png";
 
 import { MdClose } from "react-icons/md";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { FaPlay } from "react-icons/fa";
+import { getUrl } from "@/lib/getUrl";
 
 export default function EventDetailsPopup({
   onClose,
@@ -137,7 +138,7 @@ export default function EventDetailsPopup({
                 <div>
                   <Link
                     target="_blank"
-                    href={data?.details?.cta?.link}
+                    href={data?.details?.cta?.link.startsWith("/assets/pdf/") ? getUrl(data?.details?.cta?.link): data?.details?.cta?.link}
                     className=" text-pink flex items-center gap-2 cursor-pointer  group"
                   >
                     {data?.details?.cta?.ctaText}{" "}

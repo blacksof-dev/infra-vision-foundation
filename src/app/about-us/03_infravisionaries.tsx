@@ -7,7 +7,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { CardData } from "./static";
+ 
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import PopupDescription from "../_home/popupDescription";
 import { MemberCard } from "@/_components/molecules/memberCard";
@@ -21,7 +21,16 @@ type ButtonTabProps = {
   data: string;
   setdata: (val: string) => void;
 };
-
+  type CardData = {
+  image:  string;
+  title: string;
+  desig: string;
+  link?: string;
+  subtitle?: string;
+  socialMedia?: string;
+  popupImg: string;
+  popupdesc: string;
+};
 interface Member {
   id: string;
   image: string;

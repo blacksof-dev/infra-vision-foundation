@@ -1,5 +1,5 @@
 import Image from "next/image";
-import BannerBg from "@/../public/assets/home/BannerBg.png";
+ 
 import Updates from "./updates";
 import { getFetch } from "@/lib/api";
 import { getUrl } from "@/lib/getUrl";
@@ -20,7 +20,7 @@ export default async function Banner() {
         <div className="relative overflow-hidden">
           <div className="relative w-full h-[40rem]   lg:h-auto xl:h-full ">
             <Image
-              src={getUrl(content?.backgroundImageDesktop) || BannerBg}
+              src={getUrl(content?.backgroundImageDesktop)  }
               alt="InfraVision Foundation"
               className="w-full h-full object-cover"
               width={1920}

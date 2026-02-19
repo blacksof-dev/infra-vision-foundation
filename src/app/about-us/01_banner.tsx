@@ -9,6 +9,7 @@ import { RiArrowRightSLine } from "react-icons/ri";
 import { useQuery } from "@tanstack/react-query";
 import { getFetch } from "@/lib/api";
 import { getUrl } from "@/lib/getUrl";
+import { Loader } from "lucide-react";
 
 interface BannerData {
   title: string;
@@ -17,16 +18,30 @@ interface BannerData {
 }
 
 export default function Association() {
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["about-banner"],
     queryFn: () => getFetch<BannerData>("/content/about-us-banner"),
   });
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Loader className="h-14 w-14 animate-spin text-[#C82249]" />
+      </div>
+    );
+  }
 
   return (
     <>
       <div id="aboutUs" className=" relative">
         <div className="blade-top-padding-sm ">
-          <Swiper className="" slidesPerView={1} autoplay modules={[Autoplay]}>
+          <Swiper
+            className=""
+            slidesPerView={1}
+            autoplay
+            loop
+            modules={[Autoplay]}
+          >
             {data?.images.map((obj, index) => (
               <SwiperSlide key={index} className="">
                 <div className="relative w-screen h-screen  max-h-[450px] md:max-h-[768px] xl:max-h-[1024px]">

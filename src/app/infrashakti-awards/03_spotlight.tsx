@@ -46,7 +46,7 @@ export default function Spotlight() {
             </h1>
           </div>
 
-          <div className="blade-top-padding-sm  ">
+          <div className="   ">
             <div className=" blade-top-padding-sm">
               <VideoCard data={data.data} />
             </div>

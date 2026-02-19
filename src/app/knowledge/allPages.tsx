@@ -37,3 +37,7 @@ export default function Knowledge() {
     </main>
   );
 }
+
+/*
+What is highWaterMark?Default value for readable stream?Default value for writable stream?What happens if you increase it?What happens if you decrease it?
+*/

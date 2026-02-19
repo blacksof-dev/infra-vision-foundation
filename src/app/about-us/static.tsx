@@ -42,16 +42,7 @@ import VrindaSingh from "@/../public/assets/home/team/VrindaSingh.jpg";
 
 import { StaticImageData } from "next/image";
 
-export type CardData = {
-  image: StaticImageData | string;
-  title: string;
-  desig: string;
-  link?: string;
-  subtitle?: string;
-  socialMedia?: string;
-  popupImg: string;
-  popupdesc: string;
-};
+
 
 export const trustee = [
   {

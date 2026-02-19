@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { MdClose } from "react-icons/md";
 import { useApiHook } from "@/lib/useApi";
 import EditorRenderer from "@/_components/molecules/editor";
+import { getUrl } from "@/lib/getUrl";
 
 
 const AboutInfraPandit = () => {
@@ -44,9 +45,7 @@ const AboutInfraPandit = () => {
 
   const { main, eligibility, application } = apiData;
 
-  const imageSrc = main?.posterImageUrl
-    ? `${process.env.NEXT_PUBLIC_API_URL}${main.posterImageUrl}`
-    : "";
+  
 
   return (
     <>
@@ -96,7 +95,7 @@ const AboutInfraPandit = () => {
           <div className="flex justify-center">
             <img
               className="max-w-full h-auto"
-              src={imageSrc}
+              src={getUrl(main?.posterImageUrl)}
               alt="Infrapandit Awards"
             />
           </div>

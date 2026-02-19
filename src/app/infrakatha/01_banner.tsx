@@ -2,7 +2,6 @@
 import Banner from "@/_components/molecules/banner";
 import { getFetch } from "@/lib/api";
 import { getUrl } from "@/lib/getUrl";
-// import { unstable_noStore as noStore } from "next/cache";
 interface BannerData {
   heading: string;
   description: string;
@@ -12,8 +11,6 @@ interface BannerData {
 
 
 export default async function BannerSection() { 
-    //  noStore();
-
   const data = await getFetch<BannerData>(
     "/content/infrakatha-banner",
   );

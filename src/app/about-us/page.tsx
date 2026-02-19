@@ -1,69 +1,96 @@
-"use client"
-import React, { useRef } from 'react'
-import AboutUsBanner from './01_banner'
-import WhoWeAre from './02_who_we_are';
-import PublicationTabs from "@/_components/molecules/tabs";
-import Infravisionaries from './03_infravisionaries';
-import VisionMission from './04_vision_mission';
-import './page.css'
-import Pulse from './05_pulse';
-import Pathway from './06_pathway';
-import Involved from './07_involved';
+import React from "react";
+import Involved from "@/_components/molecules/newsletter";
+import AboutUsBanner from "./01_banner";
 
+import { Metadata } from "next";
+import Sections from "./sections";
+export const metadata: Metadata = {
+  title: " Impacting public policy in infra | The Infravision Foundation",
+  description:
+    "We are a think tank led by thought leaders & experts from the infrastructure domain. Together, we are elevating India’s infrastructural & economic trajectory. ",
+  keywords: [
+    "think tank india",
+    "think tanks",
+    "the infravision foundation",
+    "infravision foundation",
+    "policy research",
+    "public policy",
+    "about-us",
+  ],
+  icons: {
+    icon: [
+      {
+        url: "https://theinfravisionfoundation.org/favicon16x16.png",
+        sizes: "16x16",
+        type: "image/png",
+      },
+      {
+        url: "https://theinfravisionfoundation.org/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      { url: "https://theinfravisionfoundation.org/favicon.png" },
+    ],
+    apple: "https://theinfravisionfoundation.org/apple-touch-icon.png",
+  },
 
-
-
-
-
-type TabId = 'who_we_are' | 'infravisionaries' | 'vision_and_mission' | 'our_pulse' | 'project_pathway';
-
-const tabs: { id: TabId; label: string }[] = [
-  { id: "who_we_are", label: "Who We Are" },
-  { id: "infravisionaries", label: "The Infravisionaries" },
-  { id: "vision_and_mission", label: "Vision and Mission" },
-  { id: "our_pulse", label: "Our Foundational Pillars" },
-  { id: "project_pathway", label: "The Project Pathway" },
-];
-
-
-
-
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://theinfravisionfoundation.org/about-us",
+    languages: {
+      "x-default": "https://theinfravisionfoundation.org/",
+    },
+  },
+  authors: [{ name: "The Infravision Foundation" }],
+  publisher: "The Infravision Foundation",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://theinfravisionfoundation.org/about-us",
+    siteName: "The Infravision Foundation",
+    title: " Impacting public policy in infra | The Infravision Foundation",
+    description:
+      "We are a think tank led by thought leaders & experts from the infrastructure domain. Together, we are elevating India’s infrastructural & economic trajectory. ",
+    images: [
+      {
+        url: "https://theinfravisionfoundation.org/assets/og/ogImage.png",
+        width: 1200,
+        height: 630,
+        alt: "The Infravision Foundation",
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: " Impacting public policy in infra | The Infravision Foundation",
+    description:
+      "We are a think tank led by thought leaders & experts from the infrastructure domain. Together, we are elevating India’s infrastructural & economic trajectory. ",
+    images: ["https://theinfravisionfoundation.org/assets/og/ogImage.png"],
+  },
+};
 
 const AboutUs = () => {
-
-    const sectionRefs: Record<TabId, React.RefObject<HTMLDivElement | null>> = {
-        who_we_are: useRef<HTMLDivElement | null>(null),
-        infravisionaries: useRef<HTMLDivElement | null>(null),
-        vision_and_mission: useRef<HTMLDivElement | null>(null),
-        our_pulse: useRef<HTMLDivElement | null>(null),
-        project_pathway: useRef<HTMLDivElement | null>(null),
-    };
-
-
-
-
   return (
     <>
-        <AboutUsBanner />
-        <PublicationTabs tabs={tabs}  sectionRefs={sectionRefs} />
-        <div id='who_we_are' ref={sectionRefs.who_we_are}>
-            <WhoWeAre />
-        </div>
-        <div id='infravisionaries' ref={sectionRefs.infravisionaries}>
-            <Infravisionaries />
-        </div>
-        <div id='vision_and_mission' ref={sectionRefs.vision_and_mission}>
-            <VisionMission />
-        </div>
-        <div id='our-pulse' ref={sectionRefs.our_pulse}>
-            <Pulse />
-        </div>
-        <div id='project-pathway' ref={sectionRefs.project_pathway}>
-            <Pathway />
-        </div>
-        {/* <Involved /> */}
-    </>
-  )
-}
+      <AboutUsBanner />
 
-export default AboutUs
+      <Sections />
+      <Involved />
+    </>
+  );
+};
+
+export default AboutUs;
