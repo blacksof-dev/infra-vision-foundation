@@ -28,24 +28,43 @@ interface Blog {
 async function getBlogBySlug(slug: string): Promise<Blog | null> {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_HOST_URL}/knowledge/blogs?limit=100`,
+      `${process.env.NEXT_PUBLIC_HOST_URL}/knowledge/blogs/${slug}`,
       { next: { revalidate: 60 } },
     );
     if (!res.ok) return null;
     const data = await res.json();
-    return data.blogs.find((b: any) => b.slug === slug) || null;
+    // Support both { blog: ... } and direct object response
+    return data.blog || data;
   } catch (error) {
     console.error("Failed to fetch blog:", error);
     return null;
   }
 }
 
+export async function generateStaticParams() {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_HOST_URL}/knowledge/blogs?limit=100`,
+      { next: { revalidate: 60 } },
+    );
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.blogs.map((blog: any) => ({
+      slug: blog.slug,
+    }));
+  } catch (error) {
+    console.error("Failed to generate static params for blogs:", error);
+    return [];
+  }
+}
+
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const blog = await getBlogBySlug(params.slug);
+  const { slug } = await params;
+  const blog = await getBlogBySlug(slug);
 
   if (!blog) {
     return {
@@ -73,9 +92,10 @@ export async function generateMetadata({
 export default async function BlogPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const blog = await getBlogBySlug(params.slug);
+  const { slug } = await params;
+  const blog = await getBlogBySlug(slug);
 
   if (!blog) {
     notFound();

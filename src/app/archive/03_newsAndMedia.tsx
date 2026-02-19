@@ -158,7 +158,7 @@ export default function NewsAndMedia() {
   const allNewsSchemas = mediaItems.map(generateNewsSchema);
 
   return (
-    <section>
+    <section className="bg-[#f6f6f6]">
       <Script
         id="news-schema"
         type="application/ld+json"
@@ -175,8 +175,8 @@ export default function NewsAndMedia() {
 
         <div className="py-3 max-w-[890px] ">
           <h1 className="text-black font-light">
-            Infravision in the <br />
-            <span className="text-black font-medium"> headlines</span>
+           <span className="text-black font-medium"> The Infravision Foundation </span> in <br /> the public sphere
+            
           </h1>
         </div>
 

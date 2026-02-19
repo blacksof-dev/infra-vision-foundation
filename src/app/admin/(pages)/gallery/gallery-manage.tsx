@@ -149,7 +149,7 @@ export default function GalleryManage() {
         `${process.env.NEXT_PUBLIC_HOST_URL}/gallery/${deletingId}`,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
-        }
+        },
       );
       toast.success("Item deleted successfully");
       fetchGallery();
@@ -167,13 +167,13 @@ export default function GalleryManage() {
         null,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
-        }
+        },
       );
       toast.success("Archived status toggled");
       fetchGallery();
     } catch (error: any) {
       toast.error(
-        error?.response?.data?.message || "Failed to toggle archived status"
+        error?.response?.data?.message || "Failed to toggle archived status",
       );
     }
   };
@@ -185,13 +185,14 @@ export default function GalleryManage() {
         null,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
-        }
+        },
       );
       toast.success("Main display status toggled");
       fetchGallery();
     } catch (error: any) {
       toast.error(
-        error?.response?.data?.message || "Failed to toggle main display status"
+        error?.response?.data?.message ||
+          "Failed to toggle main display status",
       );
     }
   };
@@ -372,14 +373,14 @@ export default function GalleryManage() {
                 <div className="flex gap-2">
                   <button
                     onClick={() => openEditForm(item)}
-                    className="w-10 h-10 rounded-full bg-white text-darkgray flex items-center justify-center hover:bg-pink hover:text-white transition-colors"
+                    className="w-10 h-10 rounded-full cursor-pointer bg-white text-darkgray flex items-center justify-center hover:bg-pink hover:text-white transition-colors"
                     title="Edit Item"
                   >
                     <Edit2 size={18} />
                   </button>
                   <button
                     onClick={() => setDeletingId(item.id)}
-                    className="w-10 h-10 rounded-full bg-white text-darkgray flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors"
+                    className="w-10 h-10 rounded-full cursor-pointer bg-white text-darkgray flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors"
                     title="Delete Item"
                   >
                     <Trash2 size={18} />
@@ -387,8 +388,13 @@ export default function GalleryManage() {
                 </div>
                 <div className="flex gap-2">
                   <button
+                    title="Choose “Yes” if this section has its own dedicated page (such as Infrapandit or Infrakatha), and you want the archived image to appear there as well. 
+
+Choose “No” if this section exists only as a tab inside the Archive page (such as CAIRA) and does not have a separate dedicated page.
+  
+                    "
                     onClick={() => handleToggleMain(item.id)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-bold transition-colors ${
+                    className={`px-3 py-1.5 rounded-full text-xs font-bold transition-colors cursor-pointer ${
                       item.activeOnMain
                         ? "bg-pink text-white"
                         : "bg-white text-darkgray hover:bg-pink hover:text-white"
@@ -398,7 +404,7 @@ export default function GalleryManage() {
                   </button>
                   <button
                     onClick={() => handleToggleArchive(item.id)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-bold transition-colors ${
+                    className={`px-3 py-1.5 rounded-full text-xs font-bold transition-colors cursor-pointer ${
                       item.archived
                         ? "bg-slate-700 text-white"
                         : "bg-white text-darkgray hover:bg-slate-700 hover:text-white"
@@ -545,7 +551,7 @@ function GalleryForm({
       });
 
       toast.success(
-        initialData ? "Updated successfully" : "Created successfully"
+        initialData ? "Updated successfully" : "Created successfully",
       );
       onSuccess();
     } catch (error: any) {
@@ -571,7 +577,7 @@ function GalleryForm({
           </div>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray rounded-full transition-colors"
+            className="p-2 hover:bg-gray rounded-full transition-colors cursor-pointer"
           >
             <X size={24} />
           </button>

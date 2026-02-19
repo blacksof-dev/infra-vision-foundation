@@ -142,7 +142,7 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ value, setValue }) => {
     commands.unorderedListCommand,
     commands.orderedListCommand,
     // commands.image, // Default Image Command
-    customImageCommand, // Custom Image Upload Button
+    // customImageCommand, // Custom Image Upload Button
   ];
 
   return (
