@@ -110,10 +110,38 @@ export default async function BlogPage({
     },
   );
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: blog.title,
+    description: blog.subtitle,
+    image: getUrl(blog.coverImage),
+    author: {
+      "@type": "Person",
+      name: blog.author,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "The Infravision Foundation",
+      logo: {
+        "@type": "ImageObject",
+        url: `${process.env.NEXT_PUBLIC_HOST_URL}/logo.png`, // replace with actual logo URL
+      },
+    },
+    datePublished: blog.publishedDate,
+    dateModified: blog.publishedDate,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${process.env.NEXT_PUBLIC_HOST_URL}/knowledge/blogs/${blog.slug}`,
+    },
+  };
+
   return (
     <>
-      <Progessbar />
-
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="max-w-5xl mx-auto pt-[15%] sm:pt-[12%] lg:pt-[8%] blade-top-padding-lg blade-bottom-padding-lg px-4 md:px-6">
         <Link
           href="/knowledge"
@@ -130,11 +158,11 @@ export default async function BlogPage({
 
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-darkgray font-medium border-b border-gray/10 pb-6">
             <span className="text-sm sm:text-base">By {blog.author}</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-pink/20" />
+            <span className="w-1.5 h-1.5 rounded-full bg-pink" />
             <span className="text-sm sm:text-base text-lightgray font-normal">
               {formattedDate}
             </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-pink/20" />
+            <span className="w-1.5 h-1.5 rounded-full bg-pink" />
             <span className="text-sm sm:text-base text-lightgray font-normal italic">
               {blog.readingTime} min read
             </span>
@@ -143,7 +171,7 @@ export default async function BlogPage({
 
         <article className="md:space-y-16 space-y-6">
           <div className="space-y-10">
-            <div className="py-3 text-darkgray text-base md:text-xl leading-relaxed text-justify">
+            <div className=" text-darkgray text-base md:text-xl leading-relaxed text-justify">
               <EditorRenderer data={blog.content} />
             </div>
             {blog.docFile && (

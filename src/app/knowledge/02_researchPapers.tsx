@@ -224,7 +224,7 @@ export default function ResearchPapers() {
                     date=""
                     title={card.title}
                     image={getUrl(card.image)}
-                    link={card.link}
+                    link={getUrl(card.link)}
                     category={card.sectors?.[0]?.name ?? ""}
                     description=""
                     classes="line-clamp-3"

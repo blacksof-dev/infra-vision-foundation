@@ -1,14 +1,10 @@
 "use client";
 import React, { useRef } from "react";
+import PublicationTabs from "@/_components/molecules/tabs";
 import AboutInfraPandit from "./02_about";
 import Jury from "./03_jury";
-import PublicationTabs from "@/_components/molecules/tabs";
-
-import Goal from "./04_goal";
-
 import Gallery from "./05_gallery";
- 
-
+import Goal from "./04_goal";
 type TabId = "about" | "jury" | "goal" | "gallery";
 
 const tabs: { id: TabId; label: string }[] = [
@@ -18,7 +14,7 @@ const tabs: { id: TabId; label: string }[] = [
   { id: "gallery", label: "Gallery" },
 ];
 
-const Sections = () => {
+export default function Knowledge() {
   const sectionRefs: Record<TabId, React.RefObject<HTMLDivElement | null>> = {
     about: useRef<HTMLDivElement | null>(null),
     jury: useRef<HTMLDivElement | null>(null),
@@ -27,22 +23,20 @@ const Sections = () => {
   };
 
   return (
-    <>
+    <main>
       <PublicationTabs tabs={tabs} sectionRefs={sectionRefs} />
-      <div id="about">
+      <div id="about" ref={sectionRefs.about}>
         <AboutInfraPandit />
       </div>
-      <div id="jury">
+      <div id="jury" ref={sectionRefs.jury}>
         <Jury />
       </div>
-      <div id="goal">
+      <div id="goal" ref={sectionRefs.goal}>
         <Goal />
       </div>
-      <div id="gallery">
+      <div id="gallery" ref={sectionRefs.gallery}>
         <Gallery />
       </div>
-    </>
+    </main>
   );
-};
-
-export default Sections;
+}

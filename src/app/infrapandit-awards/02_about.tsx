@@ -5,7 +5,7 @@ import { MdClose } from "react-icons/md";
 import { useApiHook } from "@/lib/useApi";
 import EditorRenderer from "@/_components/molecules/editor";
 import { getUrl } from "@/lib/getUrl";
-
+import Image from "next/image";
 
 const AboutInfraPandit = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -16,7 +16,6 @@ const AboutInfraPandit = () => {
   });
 
   if (isLoading || !apiData) {
-    // Skeleton/Loading state to prevent layout shifts
     return (
       <section className="bg-[#F6F6F6] animate-pulse">
         <div className="w-container blade-top-padding blade-bottom-padding-lg flex flex-col justify-between md:flex-row gap-8 md:gap-20 md:items-center">
@@ -45,8 +44,6 @@ const AboutInfraPandit = () => {
 
   const { main, eligibility, application } = apiData;
 
-  
-
   return (
     <>
       <section className="bg-[#F6F6F6]">
@@ -54,23 +51,21 @@ const AboutInfraPandit = () => {
           <div className="max-w-full md:max-w-sm lg:max-w-md xl:max-w-2xl">
             <div className="flex items-center gap-2 md:gap-3 text-pink">
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
-              <h5 className="font-medium text-sm xl:text-lg">
-                {main?.title || "About InfraPandit Awards"}
-              </h5>
+              <h5 className="font-medium text-sm xl:text-lg">{main?.title}</h5>
             </div>
 
             <div className="pt-4">
               <EditorRenderer data={main?.content} />
             </div>
 
-            <div className="pt-6 flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-8 sm:items-center">
-              {application?.active && (
-                <div className="mb-4">
+            <div className="pt-6 flex  flex-col sm:flex-row flex-wrap gap-4 sm:gap-8 items-center">
+              {application.active && (
+                <div className=" ">
                   <Link href={application.url} target="_blank">
                     <UnderlineCta
                       title={application.ctaText}
                       color="black"
-                      underlineColor="pink"
+                      underlineColor="#D52C5A"
                       role="link"
                       size="extralarge"
                     />
@@ -85,18 +80,20 @@ const AboutInfraPandit = () => {
                 <UnderlineCta
                   title={eligibility?.ctaText}
                   color="black"
-                  underlineColor="pink"
+                  underlineColor="#D52C5A"
                   role="link"
                   size="extralarge"
                 />
               </div>
             </div>
           </div>
-          <div className="flex justify-center">
-            <img
+          <div className="flex  justify-center">
+            <Image
               className="max-w-full h-auto"
               src={getUrl(main?.posterImageUrl)}
               alt="Infrapandit Awards"
+              width={550}
+              height={550}
             />
           </div>
         </div>

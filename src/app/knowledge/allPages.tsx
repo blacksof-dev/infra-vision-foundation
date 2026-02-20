@@ -1,6 +1,5 @@
 "use client";
 import React, { useRef } from "react";
-import BannerSection from "./01_banner";
 import ResearchPapers from "./02_researchPapers";
 import Blogs from "./04_blogs";
 import Publications from "./05_publications";
@@ -37,7 +36,3 @@ export default function Knowledge() {
     </main>
   );
 }
-
-/*
-What is highWaterMark?Default value for readable stream?Default value for writable stream?What happens if you increase it?What happens if you decrease it?
-*/

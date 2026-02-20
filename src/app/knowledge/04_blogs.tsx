@@ -107,7 +107,6 @@ export default function Blogs() {
   });
 
   useEffect(() => {
-    // Only update if we have data and it matches the current page we are trying to load
     if (cardData?.blogs && cardData.pagination?.page === currentData.page) {
       setRecords((prev) => {
         const prevState = prev[currentKey] ?? {
@@ -118,10 +117,7 @@ export default function Blogs() {
 
         const newCards = cardData.blogs;
 
-        // Correctly handle page 1 (replace) vs other pages (append unique)
         if (currentData.page === 1) {
-          // Avoid unnecessary updates if data is identical?
-          // For simplicity, just update.
           return {
             ...prev,
             [currentKey]: {

@@ -278,7 +278,7 @@ export function BorderGrayHeroBtn<T extends "submit" | "button">({
 }
 
 export function UnderlineCta<T extends "submit" | "button">(
-  props: MasterUnderlineBtnProps<T>
+  props: MasterUnderlineBtnProps<T>,
 ) {
   const { title, color, underlineColor, size = "base" } = props;
   const sizeClass: string = sizeMap[size];
@@ -290,7 +290,7 @@ export function UnderlineCta<T extends "submit" | "button">(
       >
         {title}
         <span
-          className="w-10 sm:w-15 h-[1px] sm:h-[2px]  absolute bottom-0 left-0 top-7 group-hover:w-full transition-all duration-1000"
+          className="w-10 sm:w-10 h-[1px] sm:h-[2px]  absolute bottom-0 left-0 top-7 group-hover:w-full transition-all duration-1000"
           style={{ backgroundColor: underlineColor }}
         ></span>
       </button>
