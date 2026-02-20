@@ -9,7 +9,7 @@ export async function getData(url: string, session: Session | null) {
       headers: {
         Authorization: `Bearer ${session?.accessToken}`,
       },
-    }
+    },
   );
 
   return response.data;
@@ -39,7 +39,7 @@ function extractAxiosErrorMessage(error: unknown): {
 export async function deleteAdmin(
   url: string,
   session: Session | null,
-  superAdminPassword: string
+  superAdminPassword: string,
 ): Promise<ApiResult<unknown>> {
   try {
     const response = await axios.delete(
@@ -49,7 +49,7 @@ export async function deleteAdmin(
         headers: {
           Authorization: `Bearer ${session?.accessToken}`,
         },
-      }
+      },
     );
     return { success: true, data: response.data, status: response.status };
   } catch (error) {
@@ -63,7 +63,7 @@ export async function deleteAdmin(
 export async function createAdmin(
   url: string,
   session: Session | null,
-  body: { name: string; email: string; password: string }
+  body: { name: string; email: string; password: string },
 ): Promise<ApiResult<unknown>> {
   try {
     const response = await axios.post(
@@ -73,7 +73,7 @@ export async function createAdmin(
         headers: {
           Authorization: `Bearer ${session?.accessToken}`,
         },
-      }
+      },
     );
     return { success: true, data: response.data, status: response.status };
   } catch (error) {
@@ -85,7 +85,7 @@ export async function createAdmin(
 export async function uploadImage(
   file: File,
   session: Session | null,
-  filename?: string
+  filename?: string,
 ): Promise<ApiResult<{ url: string }>> {
   try {
     const formData = new FormData();
@@ -102,7 +102,7 @@ export async function uploadImage(
           Authorization: `Bearer ${session?.accessToken}`,
           "Content-Type": "multipart/form-data",
         },
-      }
+      },
     );
     return { success: true, data: response.data, status: response.status };
   } catch (error) {
@@ -115,7 +115,7 @@ export async function updateContent(
   url: string,
   session: Session | null,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  formData: any
+  formData: any,
 ): Promise<ApiResult<unknown>> {
   try {
     console.log(formData);
@@ -126,7 +126,28 @@ export async function updateContent(
         headers: {
           Authorization: `Bearer ${session?.accessToken}`,
         },
-      }
+      },
+    );
+    return { success: true, data: response.data, status: response.status };
+  } catch (error) {
+    const { message, status } = extractAxiosErrorMessage(error);
+    return { success: false, errorMessage: message, status };
+  }
+}
+
+export async function deleteFile(
+  type: string,
+  filename: string,
+  session: Session | null,
+): Promise<ApiResult<unknown>> {
+  try {
+    const response = await axios.delete(
+      `${process.env.NEXT_PUBLIC_HOST_URL}/uploads/${type}/${filename}`,
+      {
+        headers: {
+          Authorization: `Bearer ${session?.accessToken}`,
+        },
+      },
     );
     return { success: true, data: response.data, status: response.status };
   } catch (error) {

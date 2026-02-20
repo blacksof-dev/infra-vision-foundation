@@ -19,8 +19,9 @@ import InlineCode from "@editorjs/inline-code";
 import Embed from "@editorjs/embed";
 // @ts-ignore
 import ColorPlugin from "editorjs-text-color-plugin";
-import { uploadImage } from "../lib/utils";
+import { uploadImage, deleteFile } from "../lib/utils";
 import { useSession } from "next-auth/react";
+import { toast } from "react-toastify";
 
 interface EditorProps {
   data?: OutputData;
@@ -44,7 +45,7 @@ const COLOR_COLLECTIONS = [
 // Helper function to validate and sanitize EditorJS data
 const validateEditorData = (data?: OutputData): OutputData | undefined => {
   if (!data) return undefined;
-  
+
   // If data has blocks array, validate it
   if (data.blocks && Array.isArray(data.blocks)) {
     // Filter out invalid blocks
@@ -58,18 +59,18 @@ const validateEditorData = (data?: OutputData): OutputData | undefined => {
         typeof block.data === "object"
       );
     });
-    
+
     // If no valid blocks, return undefined to let EditorJS create default
     if (validBlocks.length === 0) {
       return undefined;
     }
-    
+
     return {
       ...data,
       blocks: validBlocks,
     };
   }
-  
+
   // If structure is invalid, return undefined
   return undefined;
 };
@@ -102,12 +103,20 @@ const EditorJSWrapper: React.FC<EditorProps> = ({ data, onChange, holder }) => {
 
   useEffect(() => {
     // Prevent multiple initializations
-    if (hasInitialized.current || isInitializing.current || ejInstance.current) {
+    if (
+      hasInitialized.current ||
+      isInitializing.current ||
+      ejInstance.current
+    ) {
       return;
     }
 
     function initEditor() {
-      if (isInitializing.current || ejInstance.current || hasInitialized.current) {
+      if (
+        isInitializing.current ||
+        ejInstance.current ||
+        hasInitialized.current
+      ) {
         return;
       }
 
@@ -150,7 +159,46 @@ const EditorJSWrapper: React.FC<EditorProps> = ({ data, onChange, holder }) => {
               inlineToolbar: true,
             },
             image: {
-              class: ImageTool as any,
+              class: class extends (ImageTool as any) {
+                async removed() {
+                  const url = (this.data || (this as any)._data)?.file?.url;
+                  const blockData = { ...(this.data || (this as any)._data) };
+                  const currentIndex = this.api.blocks.getCurrentBlockIndex();
+
+                  if (url && url.includes(process.env.NEXT_PUBLIC_HOST_URL)) {
+                    const filename = url.split(/[/\\]/).pop();
+
+                    if (filename) {
+                      const res = await deleteFile(
+                        "images",
+                        filename,
+                        sessionRef.current,
+                      );
+                      if (res.success) {
+                        toast.success("Image deleted successfully");
+                      } else {
+                        toast.error(
+                          res.errorMessage ||
+                            "Failed to delete image from server",
+                        );
+                        // If API fails, re-insert the block to keep it in the editor
+                        setTimeout(() => {
+                          this.api.blocks.insert(
+                            "image",
+                            blockData,
+                            {},
+                            currentIndex,
+                            true,
+                          );
+                        }, 50);
+                      }
+                    }
+                  }
+                  if (super.removed) {
+                    super.removed();
+                  }
+                }
+              } as any,
               config: {
                 uploader: {
                   uploadByFile: async (file: File) => {
@@ -208,7 +256,12 @@ const EditorJSWrapper: React.FC<EditorProps> = ({ data, onChange, holder }) => {
       // Retry after a short delay if element is not ready
       const timeout = setTimeout(() => {
         const element = document.getElementById(holder);
-        if (element && !hasInitialized.current && !ejInstance.current && !isInitializing.current) {
+        if (
+          element &&
+          !hasInitialized.current &&
+          !ejInstance.current &&
+          !isInitializing.current
+        ) {
           initEditor();
         }
       }, 100);
