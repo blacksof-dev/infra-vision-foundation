@@ -30,7 +30,7 @@ interface NewsletterCard {
 
 // Constants
 const FILTER_TYPES: FilterType[] = ["All", "Publication year"];
-const YEARS = ["2025","2024","2023", "2022"] as const;
+const YEARS = ["2025", "2024", "2023", "2022"] as const;
 const SECTORS: SectorType[] = [
   "All",
   "Transportation",
@@ -43,14 +43,19 @@ const SECTORS: SectorType[] = [
 ];
 const INITIAL_VISIBLE_COUNT = 3;
 
-
-
-
-
-
 const allcards = [
-   {
-    id:67,
+  {
+    id: 68,
+    img: "/assets/archive/newsAndMedia/revitalising.jpg",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "February 2026",
+    description: "Revitalising PPPs",
+    link: "/assets/pdf/revitalising.pdf",
+  },
+  {
+    id: 67,
     img: "/assets/archive/newsAndMedia/landValue.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -59,8 +64,8 @@ const allcards = [
     description: "Land value capture",
     link: "/assets/pdf/landValue.pdf",
   },
-   {
-    id:66,
+  {
+    id: 66,
     img: "/assets/archive/newsAndMedia/invest-in-small-towns.png",
     category: "News",
     title: "Kiran Karnik",
@@ -69,19 +74,20 @@ const allcards = [
     description: "Invest in small towns",
     link: "/assets/pdf/invest-in-small-towns.pdf",
   },
- 
+
   {
-    id:64,
+    id: 64,
     img: "/assets/archive/newsAndMedia/soumyaNews.jpg",
     category: "News",
     title: "Soumya Kanti Ghosh",
     sectors: "",
     date: "December 2025",
-    description: "How consistent is IMF classification of exchange rate arrangement and data adequacy?",
+    description:
+      "How consistent is IMF classification of exchange rate arrangement and data adequacy?",
     link: "/assets/pdf/how-consistent-is-imf-classification.jpeg",
   },
   {
-    id:63,
+    id: 63,
     img: "/assets/archive/newsAndMedia/uthDelthi.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -90,8 +96,8 @@ const allcards = [
     description: "The megacity dream that isn't",
     link: "/assets/pdf/uth-dehli.pdf",
   },
-    {
-    id:62,
+  {
+    id: 62,
     img: "/assets/archive/newsAndMedia/budget.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -101,9 +107,8 @@ const allcards = [
     link: "/assets/pdf/budget.jpg",
   },
 
-
-   {
-    id:61,
+  {
+    id: 61,
     img: "/assets/archive/newsAndMedia/confidence.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -113,8 +118,8 @@ const allcards = [
     link: "/assets/pdf/confidence.pdf",
   },
 
-    {
-    id:60,
+  {
+    id: 60,
     img: "/assets/archive/newsAndMedia/crumbling.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -124,7 +129,7 @@ const allcards = [
     link: "/assets/pdf/crumbling.pdf",
   },
   {
-    id:59,
+    id: 59,
     img: "/assets/archive/newsAndMedia/vande-bharat.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -133,8 +138,8 @@ const allcards = [
     description: "Fast Forwarding Bharat: The Next Leap",
     link: "/assets/pdf/infrastructure.pdf",
   },
-   {
-    id:57,
+  {
+    id: 57,
     img: "/assets/archive/newsAndMedia/rail.webp",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -143,8 +148,8 @@ const allcards = [
     description: "High-speed rail is the big move India",
     link: "/assets/pdf/highSpeedRail.pdf",
   },
-   {
-    id:58,
+  {
+    id: 58,
     img: "/assets/archive/newsAndMedia/image11.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -154,7 +159,7 @@ const allcards = [
     link: "/assets/pdf/projectChoice.pdf",
   },
   {
-    id:56,
+    id: 56,
     img: "/assets/archive/newsAndMedia/energy.png",
     category: "News",
     title: "D.K. Sen",
@@ -164,7 +169,7 @@ const allcards = [
     link: "/assets/pdf/energySecurity.pdf",
   },
   {
-    id:55,
+    id: 55,
     img: "/assets/knowledeg/researchPapers/02.jpg",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -174,17 +179,18 @@ const allcards = [
     link: "/assets/pdf/speedRail.jpg",
   },
   {
-    id:54,
+    id: 54,
     img: "/assets/archive/newsAndMedia/vrinda.png",
     category: "News",
     title: "Vrinda Singh and Priyanka Bains",
     sectors: "",
     date: "August 9, 2025",
-    description: "Cold Rooms in Local Markets: Securing Farmers, Delivering Nutrition",
+    description:
+      "Cold Rooms in Local Markets: Securing Farmers, Delivering Nutrition",
     link: "/assets/pdf/vrinda-singh-priyanka-bains.pdf",
   },
   {
-    id:53,
+    id: 53,
     img: "/assets/archive/newsAndMedia/hyderbad.webp",
     category: "News",
     title: "Dr. Mutum Chaobisana",
@@ -193,8 +199,8 @@ const allcards = [
     description: "Hyderabad's FSI deregulation:  A missed opportunity",
     link: "/assets/pdf/hyderabad-fSI-deregulation.pdf",
   },
-   {
-    id:52,
+  {
+    id: 52,
     img: "/assets/archive/newsAndMedia/womanEmpowerment.jpg",
     category: "News",
     title: "Rumjhum Chatterjee",
@@ -203,8 +209,8 @@ const allcards = [
     description: "Empowering Women for Viksit Bharat 2047",
     link: "/assets/pdf/empowering-women-for-viksit-bharat.pdf",
   },
-    {
-    id:51,
+  {
+    id: 51,
     img: "/assets/archive/newsAndMedia/urbanFund.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -213,8 +219,8 @@ const allcards = [
     description: "Shaping the Urban Challenge Fund",
     link: "/assets/pdf/shaping-the-urban-challenge-fund.pdf",
   },
-   {
-    id:50,
+  {
+    id: 50,
     img: "/assets/archive/newsAndMedia/coal.jpg",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -224,7 +230,7 @@ const allcards = [
     link: "/assets/pdf/coalClean.pdf",
   },
   {
-    id:49,
+    id: 49,
     img: "/assets/archive/newsAndMedia/ropeway.jpg",
     category: "News",
     title: "Kaveree Bamzai",
@@ -234,8 +240,8 @@ const allcards = [
     link: "/assets/archive/newsAndMedia/kaveeryMamRopways.jpeg",
   },
 
-   {
-    id:48,
+  {
+    id: 48,
     img: "/assets/archive/newsAndMedia/planning-new.jpg",
     category: "News",
     title: "Jagan Shah",
@@ -244,8 +250,8 @@ const allcards = [
     description: "Why India needs a National Plan for building new cities",
     link: "/assets/pdf/nationPlan.jpeg",
   },
-     {
-    id:47,
+  {
+    id: 47,
     img: "/assets/archive/newsAndMedia/urbanCity.webp",
     category: "News",
     title: "Jagan Shah",
@@ -472,7 +478,7 @@ const allcards = [
     description: "Flying commutes: Air taxes set for takeoff",
     link: "/assets/pdf/flyingCommutes.pdf",
   },
-   {
+  {
     id: 22,
     img: "/assets/archive/newsAndMedia/newsMedia22.png",
     category: "News",
@@ -512,7 +518,7 @@ const allcards = [
     description: "Forests await better compensation",
     link: "/assets/pdf/forestsAwait.pdf",
   },
-   {
+  {
     id: 26,
     img: "/assets/archive/newsAndMedia/newsMedia26.png",
     category: "News",
@@ -522,7 +528,7 @@ const allcards = [
     description: "Time to assess impact of procurement reforms",
     link: "/assets/pdf/timeAssess.pdf",
   },
-   {
+  {
     id: 27,
     img: "/assets/archive/newsAndMedia/newsMedia27.png",
     category: "News",
@@ -542,7 +548,7 @@ const allcards = [
     description: "New smart cities: Packing more punch",
     link: "/assets/pdf/newSmart.pdf",
   },
-   {
+  {
     id: 29,
     img: "/assets/archive/newsAndMedia/newsMedia29.png",
     category: "News",
@@ -553,7 +559,7 @@ const allcards = [
     link: "/assets/pdf/groupTaxation.pdf",
   },
   {
-    id:30,
+    id: 30,
     img: "/assets/archive/newsAndMedia/newsMedia30.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -563,7 +569,7 @@ const allcards = [
     link: "/assets/pdf/agriWarehousing.pdf",
   },
   {
-    id:31,
+    id: 31,
     img: "/assets/archive/newsAndMedia/newsMedia31.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -573,7 +579,7 @@ const allcards = [
     link: "/assets/pdf/rbiDraft.pdf",
   },
   {
-    id:32,
+    id: 32,
     img: "/assets/archive/newsAndMedia/newsMedia32.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -582,8 +588,8 @@ const allcards = [
     description: "Digital infra: Pushing chips hard",
     link: "/assets/pdf/digitalInfra.pdf",
   },
-   {
-    id:33,
+  {
+    id: 33,
     img: "/assets/archive/newsAndMedia/newsMedia48.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -593,7 +599,7 @@ const allcards = [
     link: "/assets/pdf/infraManiframe.pdf",
   },
   {
-    id:34,
+    id: 34,
     img: "/assets/archive/newsAndMedia/newsMedia34.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -603,7 +609,7 @@ const allcards = [
     link: "/assets/pdf/elections.pdf",
   },
   {
-    id:35,
+    id: 35,
     img: "/assets/archive/newsAndMedia/newsMedia35.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -612,8 +618,8 @@ const allcards = [
     description: "Getting to grips with logistics cost",
     link: "/assets/pdf/getting.pdf",
   },
-   {
-    id:36,
+  {
+    id: 36,
     img: "/assets/archive/newsAndMedia/newsMedia36.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -623,7 +629,7 @@ const allcards = [
     link: "/assets/pdf/storage.pdf",
   },
   {
-    id:37,
+    id: 37,
     img: "/assets/archive/newsAndMedia/newsMedia47.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -633,7 +639,7 @@ const allcards = [
     link: "/assets/pdf/mundraPort.pdf",
   },
   {
-    id:38,
+    id: 38,
     img: "/assets/archive/newsAndMedia/newsMedia38.jpg",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -643,7 +649,7 @@ const allcards = [
     link: "/assets/pdf/theEssentials.pdf",
   },
   {
-    id:39,
+    id: 39,
     img: "/assets/archive/newsAndMedia/newsMedia39.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -653,7 +659,7 @@ const allcards = [
     link: "/assets/pdf/stopping.pdf",
   },
   {
-    id:40,
+    id: 40,
     img: "/assets/archive/newsAndMedia/newsMedia40.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -663,7 +669,7 @@ const allcards = [
     link: "/assets/pdf/electricity.pdf",
   },
   {
-    id:41,
+    id: 41,
     img: "/assets/archive/newsAndMedia/newsMedia41.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -673,7 +679,7 @@ const allcards = [
     link: "/assets/pdf/movingAhead.pdf",
   },
   {
-    id:42,
+    id: 42,
     img: "/assets/archive/newsAndMedia/newsMedia42.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -683,7 +689,7 @@ const allcards = [
     link: "/assets/pdf/transmission.pdf",
   },
   {
-    id:43,
+    id: 43,
     img: "/assets/archive/newsAndMedia/newsMedia43.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -693,7 +699,7 @@ const allcards = [
     link: "/assets/pdf/scDirections.pdf",
   },
   {
-    id:44,
+    id: 44,
     img: "/assets/archive/newsAndMedia/newsMedia45.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -703,7 +709,7 @@ const allcards = [
     link: "/assets/pdf/privateEnterprise.pdf",
   },
   {
-    id:45,
+    id: 45,
     img: "/assets/archive/newsAndMedia/newsMedia44.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -713,7 +719,7 @@ const allcards = [
     link: "/assets/pdf/movingGatiShakti.pdf",
   },
   {
-    id:46,
+    id: 46,
     img: "/assets/archive/newsAndMedia/newsMedia46.png",
     category: "News",
     title: "Vinayak Chatterjee",
@@ -722,37 +728,31 @@ const allcards = [
     description: "Rooftop solar for poverty alleviation",
     link: "https://www.business-standard.com/article/opinion/rooftop-solar-for-poverty-alleviation-123022101397_1.html",
   },
- 
- 
-  
-  
 ];
-
 
 const generateNewsSchema = (card: any) => ({
   "@context": "https://schema.org",
   "@type": "NewsArticle",
-  "headline":`The Infravision Foundation - ${card.category}`,
-  "description": card.description,
-  "image": `https://theinfravisionfoundation.org${card.img}`,
-  "mainEntityOfPage": {
+  headline: `The Infravision Foundation - ${card.category}`,
+  description: card.description,
+  image: `https://theinfravisionfoundation.org${card.img}`,
+  mainEntityOfPage: {
     "@type": "WebPage",
-    "@id": card.link
+    "@id": card.link,
   },
-  "author": {
+  author: {
     "@type": "Person",
-    "name": card.title
+    name: card.title,
   },
-  "publisher": {
+  publisher: {
     "@type": "Organization",
-    "name": "The Infravision Foundation",
-    "logo": {
+    name: "The Infravision Foundation",
+    logo: {
       "@type": "ImageObject",
-      "url": "https://theinfravisionfoundation.org/logo.png"
-    }
-  }
+      url: "https://theinfravisionfoundation.org/logo.png",
+    },
+  },
 });
-
 
 export default function NewsAndMedia() {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -778,8 +778,8 @@ export default function NewsAndMedia() {
       tab === "Publication year"
         ? YEARS[0]
         : tab === "sectors"
-        ? SECTORS[0]
-        : "All"
+          ? SECTORS[0]
+          : "All",
     );
     setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
@@ -792,7 +792,7 @@ export default function NewsAndMedia() {
   const filteredCards = useMemo(() => {
     if (selectedTab === "Publication year") {
       return allcards.filter(
-        (card) => card.date.split(" ").pop() === selectedFilter
+        (card) => card.date.split(" ").pop() === selectedFilter,
       );
     }
     if (selectedTab === "sectors" && selectedFilter !== "All") {
@@ -831,10 +831,8 @@ export default function NewsAndMedia() {
 
   const allNewsMedia = allcards.map(generateNewsSchema);
 
-
   return (
     <section id="news-and-media" className="bg-whitesmoke">
-
       <Script
         id="newsMedia-schema"
         type="application/ld+json"
@@ -843,7 +841,6 @@ export default function NewsAndMedia() {
           __html: JSON.stringify(allNewsMedia),
         }}
       />
-
 
       <div className="w-container blade-top-padding-sm blade-bottom-padding ">
         {/* Header Section */}
@@ -912,7 +909,6 @@ export default function NewsAndMedia() {
                     link={card.link}
                     category={card.category}
                     description={card.description}
-                    
                     classes="line-clamp-3"
                     ctaType="read more"
                   />
@@ -940,10 +936,8 @@ export default function NewsAndMedia() {
   );
 }
 
-
-
-
-
-{/* <script async src="https://cse.google.com/cse.js?cx=850e8def017d04e42">
+{
+  /* <script async src="https://cse.google.com/cse.js?cx=850e8def017d04e42">
 </script>
-<div class="gcse-search"></div> */}
+<div class="gcse-search"></div> */
+}

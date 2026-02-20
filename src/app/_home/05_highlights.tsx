@@ -40,7 +40,16 @@ const newsletters = [
 
 const news = [
   {
-    id: 60,
+    id: 62,
+    img: "/assets/archive/newsAndMedia/revitalising.jpg",
+    category: "",
+    date: "February 2026",
+    title: "Revitalising PPPs",
+    subtitle: "Vinayak Chatterjee",
+    link: "/assets/pdf/revitalising.pdf",
+  },
+  {
+    id: 61,
     img: "/assets/archive/newsAndMedia/landValue.png",
     category: "",
     date: "January 2026",
@@ -56,16 +65,6 @@ const news = [
     title: "Invest in small towns",
     subtitle: " Kiran Karnik",
     link: "/assets/pdf/invest-in-small-towns.pdf",
-  },
-  {
-    id: 59,
-    img: "/assets/archive/newsAndMedia/soumyaNews.jpg",
-    category: "",
-    title:
-      "How consistent is IMF classification of exchange rate arrangement and data adequacy?",
-    date: "December 2025",
-    subtitle: "Soumya Kanti Ghosh",
-    link: "/assets/pdf/how-consistent-is-imf-classification.jpeg",
   },
 ];
 

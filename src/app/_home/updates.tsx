@@ -162,11 +162,11 @@ const EventsDetails = [
   },
 
   {
-    image: "/assets/archive/newsAndMedia/landValue.png",
+    image: "/assets/archive/newsAndMedia/revitalising.jpg",
     category: "News",
-    title: "Land value capture",
+    title: "Revitalising PPPs",
     btnTitle: "See details",
-    link: "/assets/pdf/landValue.pdf",
+    link: "/assets/pdf/revitalising.pdf",
   },
 
   {
