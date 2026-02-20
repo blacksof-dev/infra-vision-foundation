@@ -86,6 +86,12 @@ export async function generateMetadata({
         },
       ],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: blog.title,
+      description: blog.subtitle,
+      images: [getUrl(blog.coverImage)],
+    },
   };
 }
 
