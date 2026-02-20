@@ -15,7 +15,6 @@ import { GoArrowRight } from "react-icons/go";
 import gsap from "gsap";
 import SearchContent from "@/app/search/searchContent";
 
-
 interface NavItem {
   label: string;
   href: string;
@@ -61,7 +60,6 @@ function Header() {
   }, [pathname, setShowNavbar]);
 
   useEffect(() => {
- 
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -96,14 +94,12 @@ function Header() {
     window.addEventListener("resize", handleResize);
 
     window.addEventListener("scroll", handleScroll);
-  
+
     return () => {
       if (!mounted) return;
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
-  
-  }
-  
+    };
   }, [lastScrollY, isMobile, mounted, setShowNavbar]);
 
   // Handle body scroll lock for mobile menu
@@ -118,19 +114,18 @@ function Header() {
   }, [isMenuOpen, mounted]);
 
   useEffect(() => {
-  if (!mounted) return;
+    if (!mounted) return;
 
-  const handleScroll = () => {
-    setOpenDropdown(null);
-  };
+    const handleScroll = () => {
+      setOpenDropdown(null);
+    };
 
-  window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-  };
-}, [mounted]);
-
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [mounted]);
 
   //Navbar color change for specific routes
   useEffect(() => {
@@ -160,16 +155,17 @@ function Header() {
     setIsMenuOpen((prev) => !prev);
   };
 
-
   const footer_not_allowed = [
     "/signup",
     "/login",
     "/register",
     "/forgot-password",
     "/reset-password",
-  ]
+    "/service-unavailable",
+  ];
 
-  const hideHeader = footer_not_allowed.includes(pathname)||pathname.startsWith("/admin")
+  const hideHeader =
+    footer_not_allowed.includes(pathname) || pathname.startsWith("/admin");
 
   const AboutUsDropDown: NavItem[] = [
     { label: "Who We Are", href: "/about-us#who-we-are" },
@@ -205,13 +201,15 @@ function Header() {
   return (
     <>
       <nav
-        className={`fixed  top-0 left-0 w-full transition-all ease-linear duration-200 px-0 sm:px-3 py-3 z-[9999] ${isMobile
+        className={`fixed  top-0 left-0 w-full transition-all ease-linear duration-200 px-0 sm:px-3 py-3 z-[9999] ${
+          isMobile
             ? "translate-y-0"
             : showNavbar
               ? "translate-y-0"
               : "-translate-y-full"
-          } ${showNavBg ? "bg-white " : "bg-transparent"} ${scrolled ? "bg-white" : ""
-          } ${hideHeader?"hidden":""}`}
+        } ${showNavBg ? "bg-white " : "bg-transparent"} ${
+          scrolled ? "bg-white" : ""
+        } ${hideHeader ? "hidden" : ""}`}
       >
         <div className="w-container">
           <div className="flex flex-row justify-between">

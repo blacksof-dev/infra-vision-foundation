@@ -13,6 +13,7 @@ interface NavItemType {
 }
 
 const navItems: NavItemType[] = [
+  { label: "Instructions", href: "/admin/instructions" },
   { label: "Home", href: "/admin/home" },
   { label: "Knowledge", href: "/admin/knowledge" },
   { label: "Archive", href: "/admin/archive" },
@@ -25,7 +26,7 @@ const navItems: NavItemType[] = [
     label: "Outreach & Engagements",
     href: "/admin/outreach-and-engagements",
   },
-  {label:"Entry Popup",href:"/admin/entry-popup"},
+  { label: "Entry Popup", href: "/admin/entry-popup" },
   { label: "Get Involved", href: "/admin/get-involved" },
   { label: "Newsletters", href: "/admin/newsletter" },
 ];

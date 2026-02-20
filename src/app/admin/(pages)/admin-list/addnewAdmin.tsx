@@ -39,7 +39,8 @@ export default function AddNewAdmin({ close }: { close: () => void }) {
   };
 
   return (
-    <div className="w-screen h-screen bg-black/40 fixed top-0 left-0 flex items-center justify-center shadow-xl">
+    <div className="w-screen h-screen bg-black/40 fixed top-0 left-0 flex items-center justify-center shadow-xl"> 
+       
       <section className="relative w-sm bg-white rounded-md p-6">
         <div className="absolute top-2.5 right-2.5">
           <button
