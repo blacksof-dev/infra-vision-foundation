@@ -17,7 +17,7 @@ type TabId = "about" | "jury" | "goal" | "award" | "spotlight" | "gallery";
 const tabs: { id: TabId; label: string }[] = [
   { id: "about", label: "About InfraPandit Awards" },
   { id: "goal", label: "The Goal" },
-  { id: "award", label: "Ceremony" },
+  { id: "award", label: "Awards Ceremony" },
   { id: "spotlight", label: "Spotlight" },
   { id: "jury", label: "The Jury" },
   { id: "gallery", label: "Gallery" },

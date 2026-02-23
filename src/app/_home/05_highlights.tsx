@@ -53,7 +53,7 @@ const news = [
     img: "/assets/archive/newsAndMedia/landValue.png",
     category: "",
     date: "January 2026",
-    title: "Land value capture",
+    title: "Land Value Capture",
     subtitle: "Vinayak Chatterjee",
     link: "/assets/pdf/landValue.pdf",
   },

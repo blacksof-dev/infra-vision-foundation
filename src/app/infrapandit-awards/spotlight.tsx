@@ -29,7 +29,7 @@ export default function Spotlight() {
           {data.map((elem, index) => (
             <div key={index}>
               <div
-                className="relative w-full h-[18rem] rounded-md overflow-hidden cursor-pointer"
+                className="relative w-full h-[18rem] rounded-md overflow-hidden "
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
@@ -108,7 +108,7 @@ const data = [
     awardName: "Uttam Award",
     title: "Enabling long-term solar access",
     description:
-      "For developing <span class='font-bold'>solar-powered thermal energy </span> storage solutions with applications in clean cooking and industrial heat, contributing to sustainable infrastructure solutions in India.",
+      "For developing <span class='font-medium'>solar-powered thermal energy </span> storage solutions with applications in clean cooking and industrial heat, contributing to sustainable infrastructure solutions in India.",
     thumbnailImage: "/assets/infrapandit/spotlight/shubham.png",
   },
   {
@@ -116,7 +116,7 @@ const data = [
     awardName: "Mahaan Award",
     title: "Neutralising hazard with innovation",
     description:
-      "For advancing scalable faecal-sludge management models and governance frameworks tailored to small Indian cities, with significant potential for grassroots-level impact.",
+      "For advancing scalable <span class='font-medium'>faecal-sludge management models</span> and governance frameworks tailored to small Indian cities, with significant potential for grassroots-level impact.",
     thumbnailImage: "/assets/infrapandit/spotlight/paresh.png",
   },
 ];

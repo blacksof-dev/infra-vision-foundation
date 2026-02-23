@@ -2,7 +2,6 @@
 import { useState, useRef, useEffect } from "react";
 import type { Swiper as SwiperClass } from "swiper/types";
 import type { Swiper as SwiperType } from "swiper/types";
-import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -10,8 +9,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { advisory, CardData, fellow, patrons, team, trustee } from "./static";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
-import Link from "next/link";
-import { StaticImageData } from "next/image";
 import PopupDescription from "./popupDescription";
 import { MemberCard } from "@/_components/molecules/memberCard";
 
@@ -38,16 +35,18 @@ const ButtonTab = ({ label, value, data, setdata }: ButtonTabProps) => {
   return (
     <div className="py-4 group">
       <button
-        className={`text-white cursor-pointer text-md text-nowrap lg:text-xl relative ${data === value ? "font-medium opacity-100" : "opacity-70"
-          }`}
+        className={`text-white cursor-pointer text-md text-nowrap lg:text-xl relative ${
+          data === value ? "font-medium opacity-100" : "opacity-70"
+        }`}
         onClick={() => setdata(value)}
       >
         {label}
         <span
-          className={`h-[1px] ${data === value
-            ? "w-full transition-all duration-1000"
-            : "w-10 sm:w-5"
-            } sm:h-[2px] bg-white absolute bottom-0 left-0 top-7`}
+          className={`h-[1px] ${
+            data === value
+              ? "w-full transition-all duration-1000"
+              : "w-10 sm:w-5"
+          } sm:h-[2px] bg-white absolute bottom-0 left-0 top-7`}
         ></span>
       </button>
     </div>
@@ -96,7 +95,7 @@ export default function Infravisionaries() {
       case "fellow":
         cardDetails = fellow;
         break;
-       case "team":
+      case "team":
         cardDetails = team;
         break;
       case "patrons":
@@ -170,7 +169,7 @@ export default function Infravisionaries() {
                 data={data}
                 setdata={setdata}
               />
-               <ButtonTab
+              <ButtonTab
                 label="Founding Patrons"
                 value="patrons"
                 data={data}
@@ -189,14 +188,12 @@ export default function Infravisionaries() {
                 setdata={setdata}
               />
 
-               <ButtonTab
+              <ButtonTab
                 label="Team"
                 value="team"
                 data={data}
                 setdata={setdata}
               />
-             
-               
             </div>
 
             <div className="w-full overflow-x-hidden  ml-[4%]">
@@ -250,7 +247,6 @@ export default function Infravisionaries() {
                       </SwiperSlide>
                     );
                   })}
-
                 </Swiper>
               </div>
               <div className="flex pt-3 pr-1 h-[80px] flex-wrap gap-5 mt-4 justify-end md:gap-4 2xl:mt-1">
@@ -288,7 +284,7 @@ export default function Infravisionaries() {
             showPopup={showPopup}
             onSelectTab={() => setdata("trustee")}
           />
-           <MobileMembersSlider
+          <MobileMembersSlider
             title="Founding Patrons"
             data={patrons}
             navClass="patrons"
@@ -331,7 +327,6 @@ export default function Infravisionaries() {
             showPopup={showPopup}
             onSelectTab={() => setdata("team")}
           />
-          
         </div>
       </section>
     </>

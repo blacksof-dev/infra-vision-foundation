@@ -66,7 +66,7 @@ const galleryImages = [
   {
     image: "/assets/infrapandit/gallery/infrapandit_award3.png",
     description:
-      "Sthaladipti Saha, Senior VP & Head – Buildings & Factories, L&T Ltd; Rumjhum Chatterjee, Co-Founder and Managing Trustee, TIF; and Vinayak Chatterjee, Founder and Managing Trustee, TIF, present the Mahaan Award to Dr. Paresh Jawarilal Chhajed.",
+      "Sthaladipti Saha, Senior VP & Head – Buildings & Factories, L&T Ltd; Rumjhum Chatterjee, Co-Founder and Managing Trustee, TIF; and Vinayak Chatterjee, Founder and Managing Trustee, TIF, present the Mahaan Award to Dr Paresh Jawarilal Chhajed.",
   },
   {
     image: "/assets/infrapandit/gallery/infrapandit_award7.png",

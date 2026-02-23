@@ -5,14 +5,15 @@ export default function InfraPanditAward() {
     <section className="bg-pink blade-top-padding-lg blade-bottom-padding-lg">
       <div className="w-container ">
         {/* Section Header */}
+
         <div>
-          <div className="flex items-center gap-2 md:gap-3 text-white">
-            <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-white"></span>
-            <h5 className="font-medium text-sm xl:text-lg">
+          <div className="flex  flex-row  items-center gap-2 md:gap-3">
+            <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-white "></span>
+            <h5 className="font-medium text-white text-sm xl:text-lg">
               The InfraPandit Awards 2025
             </h5>
           </div>
-          <div>
+          <div className="pt-1 md:pt-4 pb-2 md:py-5 flex justify-between">
             <h1 className="font-light text-white max-w-4xl text-2xl md:text-3xl xl:text-5xl my-2">
               Translating infrastructure <br /> research into{" "}
               <span className="font-medium">real-world impact</span>
@@ -38,9 +39,9 @@ export default function InfraPanditAward() {
                 research.
               </p>
               <p className="text-black  text-sm md:text-lg">
-                <b>One-third </b>of entries were led by women researchers,
-                underscoring the bright future of India&apos;s infrastructure
-                research and innovation ecosystem.
+                <b className="font-medium">One-third </b>of entries were led by
+                women researchers, underscoring the bright future of
+                India&apos;s infrastructure research and innovation ecosystem.
               </p>
             </div>
           </div>

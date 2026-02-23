@@ -52,9 +52,9 @@ const allcards = [
   {
     id: 16,
     img: img_16,
-    category: "Infrastructure",
+    category: "Urban Planning",
     title: "",
-    sectors: "Infrastructure",
+    sectors: "Urban Planning",
     date: "",
     description:
       "Land Value Capture for urban and regional public transport infrastructure financing",
@@ -89,7 +89,7 @@ const allcards = [
     sectors: "Infrastructure",
     date: " ",
     description:
-      "Removing Barriers to Faster Penetration of Trees Outside Forests Products in Construction Sector",
+      "Removing barriers to faster penetration of Trees Outside Forests products in construction sector",
     link: "/assets/pdf/removing-barriers-to-faster-penetration-of-trees-final-report.pdf",
   },
   {

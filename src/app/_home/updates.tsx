@@ -157,7 +157,7 @@ const EventsDetails = [
     image: "/assets/home/updates/op.png",
     category: "Video",
     link: "https://www.youtube.com/embed/l_tOqH0ZpIE?si=AnuQwfGGP_POegUy",
-    title: "Dr O.P. Agarwal",
+    title: "Transport thought leader and Distinguished Fellow at Niti Aayog",
     btnTitle: "Watch video",
   },
 
@@ -197,18 +197,11 @@ const EventsDetails = [
   {
     image: anumita,
     category: "Video",
-    title: "Anumita Roy Choudhury",
+    title: "Executive Director, Centre for Science and Environment",
     btnTitle: "Watch video",
     link: "https://youtu.be/YV7VYaCB7Yw?si=af66MfWQnjdsG_op",
   },
 
-  {
-    image: abha,
-    category: "Video",
-    title: "Abha Narain Lambah",
-    btnTitle: "Watch video",
-    link: "https://www.youtube.com/embed/7oiHaLYOpfM?si=TqLV-npHvLJFPdUJ",
-  },
   {
     image: img_16,
     category: "Research Paper",

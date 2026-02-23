@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const Jury = () => {
@@ -45,10 +46,16 @@ const Jury = () => {
             Meet the panel
           </h1>
         </div>
-        <div className="flex flex-col md:flex-row justify-center flex-wrap  blade-top-margin gap-10 justify-center">
+        <div className="flex flex-col md:flex-row justify-center flex-wrap  blade-top-margin gap-18 xlg:gap-10 justify-center">
           {data.map((elem, idx) => (
             <div className="flex flex-col items-center" key={idx}>
-              <img src={elem.image} alt={elem.name} />
+              <Image
+                src={elem.image}
+                alt={elem.name}
+                width={240}
+                height={240}
+                className=""
+              />
               <h6 className="font-semibold mt-4 mb-1 text-center">
                 {elem.name}
               </h6>

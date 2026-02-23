@@ -29,9 +29,8 @@ import lokanath from "@/../public/assets/knowledeg/conversations/lokanath.png";
 import anumita from "@/../public/assets/knowledeg/conversations/anumita.png";
 import op from "@/../public/assets/knowledeg/conversations/op.png";
 
-
 const people = [
-   {
+  {
     image: op.src,
     videoLink: "https://www.youtube.com/embed/l_tOqH0ZpIE?si=AnuQwfGGP_POegUy",
     name: "Dr O.P. Agarwal",
@@ -51,8 +50,7 @@ const people = [
     image: abha.src,
     videoLink: "https://www.youtube.com/embed/7oiHaLYOpfM?si=TqLV-npHvLJFPdUJ",
     name: "Abha Narain Lambah",
-    title:
-      "Heritage Conservationist",
+    title: "Heritage Conservationist",
     desc: "Urban Renewal in India",
     date: "",
   },
@@ -60,8 +58,7 @@ const people = [
     image: lokanath.src,
     videoLink: "https://www.youtube.com/embed/3y7U8G23O9M?si=X_3YXXx__Wd7pdKu",
     name: "Loknath Behera",
-    title:
-      "MD Kochi Metro Rail",
+    title: "MD Kochi Metro Rail",
     desc: "Making the water metro sustainable",
     date: "",
   },
@@ -69,8 +66,7 @@ const people = [
     image: kalpana.src,
     videoLink: "https://www.youtube.com/embed/gg9NtuYLiZA?si=3IY8UMlwZb7r_LzP",
     name: "Kalpana Viswanath",
-    title:
-      "Founder and CEO, Safetipin",
+    title: "Founder and CEO, Safetipin",
     desc: "Does free public transport for women improve safety?",
     date: "",
   },
@@ -91,8 +87,7 @@ const people = [
       "Prof. Chetan Vaidya (Former Director SPA and NIUA), Vijaya Venkatraman (Independent Development Consultant) and Santosh Nargund (Director, Policy Engagement, Janaagraha)",
     desc: "How should India govern its fast-growing metros? ",
 
-
-    date: ""
+    date: "",
   },
   {
     image: mihir.src,
@@ -102,8 +97,7 @@ const people = [
       "Architect, Researcher, Urban Planner and Director of the all the India disaster Mitigation Institute",
     desc: "How do we build cities that truly serve their citizens?",
 
-
-    date: ""
+    date: "",
   },
 
   {
@@ -114,22 +108,19 @@ const people = [
       "The Infravision Foundation CEO and senior expert in urban development policy",
     desc: "Can the Urban Challenge Fund be a gamechanger for India’s urban future?",
 
-
-    date: "August 28, 2025"
+    date: "August 28, 2025",
   },
   {
     image: img10.src,
     videoLink: "https://www.youtube.com/embed/ZGIjUOfs91U?si=-iX4ss69vegjRpoQ",
     name: "Tarun Sharma and Yutika Vora",
-    title:
-      "Co-founder at Nagrika ",
+    title: "Co-founder at Nagrika ",
     desc: "Why Smaller Cities can become Growth Hubs",
     date: "August 21, 2025",
   },
   {
     image: img3.src,
-    videoLink:
-      "https://www.youtube.com/embed/crb5-c_wDYs?si=VsMrZLNj6BDHjaxp",
+    videoLink: "https://www.youtube.com/embed/crb5-c_wDYs?si=VsMrZLNj6BDHjaxp",
     name: "Prof. G Raghuram",
     title:
       "Member, Council of Advisors, TIF, and Former Director, IIM Bangalore",
@@ -159,8 +150,7 @@ const people = [
   },
   {
     image: img1.src,
-    videoLink:
-      "https://www.youtube.com/embed/Sr17ZN7FLA4?si=DFB5whTWLmjG50EK",
+    videoLink: "https://www.youtube.com/embed/Sr17ZN7FLA4?si=DFB5whTWLmjG50EK",
     name: "Professor Geetam Tiwari",
     title:
       "TRIPP Chair Professor at the Department of Civil Engineering, Indian Institute of Technology in New Delhi, India.",
@@ -226,10 +216,6 @@ const people = [
   },
 ];
 
-
-
-
-
 export default function Conversations() {
   const [swiper, setSwiper] = React.useState<SwiperClass | null>(null);
   const [isBeginning, setIsBeginning] = React.useState(true);
@@ -246,14 +232,11 @@ export default function Conversations() {
     setIsEnd(swiper.isEnd);
   };
 
-   
-
   return (
     <section
       id="infravision-conversations"
       className="bg-whitesmoke overflow-hidden"
     >
-    
       <div className="w-container blade-top-padding-lg blade-bottom-padding-lg ">
         {/* Header Section */}
         <div className="lg:flex justify-between mb-4 lg:mb-8">
@@ -313,7 +296,6 @@ export default function Conversations() {
               prevEl: ".swiper-conv-prev-btn",
               nextEl: ".swiper-conv-next-btn",
             }}
-
             onSlideChange={handleSlideChange}
             spaceBetween={30}
             slidesPerView={1}
@@ -358,8 +340,12 @@ export default function Conversations() {
                       </Link>
                       {/* Text overlay */}
                       <div className="  bg-white rounded px-4 py-3 shadow z-20 ">
-                        <p className="font-medium text-black text-sm">{person.name}</p>
-                        <p className="xl:text-sm text-drakgray text-[9px] leading-4 xl:leading-5 lg:line-clamp-2  group-hover/desig:line-clamp-none">{person.title}</p>
+                        <p className="font-medium text-black text-sm">
+                          {person.name}
+                        </p>
+                        <p className="xl:text-sm text-drakgray text-[9px] leading-4 xl:leading-5 lg:line-clamp-2  group-hover/desig:line-clamp-none">
+                          {person.title}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -367,29 +353,28 @@ export default function Conversations() {
                     <h6 className="font-medium w-full xl:max-w-xs  ">
                       {person.desc}
                     </h6>
-                    <h6 className="text-darkgray py-1">
-                      {person.date}
-                    </h6>
+                    <h6 className="text-darkgray py-1">{person.date}</h6>
                   </div>
                 </div>
               </SwiperSlide>
             ))}
-
           </Swiper>
           {/* Navigation & Pagination */}
           <div className="flex items-center  justify-end mt-6">
             <div className="flex gap-3">
               <button
-                className={`swiper-conv-prev-btn cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white transition-opacity duration-200 ${isBeginning ? "opacity-50 cursor-not-allowed" : "opacity-100"
-                  }`}
+                className={`swiper-conv-prev-btn cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-xl text-white transition-opacity duration-200 ${
+                  isBeginning ? "opacity-50 cursor-not-allowed" : "opacity-100"
+                }`}
                 aria-label="Previous slide"
                 disabled={isBeginning}
               >
                 <GoArrowLeft />
               </button>
               <button
-                className={`swiper-conv-next-btn cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-white transition-opacity duration-200 ${isEnd ? "opacity-50 cursor-not-allowed" : "opacity-100"
-                  }`}
+                className={`swiper-conv-next-btn cursor-pointer flex sm:h-10 sm:w-10 h-8 w-8 items-center justify-center rounded-full bg-pink text-white transition-opacity duration-200 ${
+                  isEnd ? "opacity-50 cursor-not-allowed" : "opacity-100"
+                }`}
                 aria-label="Next slide"
                 disabled={isEnd}
               >

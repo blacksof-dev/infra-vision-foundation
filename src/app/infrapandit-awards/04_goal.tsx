@@ -7,12 +7,12 @@ const Goal = () => {
     {
       icon: "/assets/infrapandit/logo/logo-1.png",
       title: "Synergising impact",
-      desc: "Promote industry-academia collaboration by highlighting research with direct relevance to india’s current infrastructure development strategy.",
+      desc: "Promote industry-academia collaboration by highlighting research with direct relevance to india’s  current <strong class='font-medium'> infrastructure development strategy.</span>",
     },
     {
       icon: "/assets/infrapandit/logo/logo-2.png",
       title: "Acknowledging excellence",
-      desc: "Identify the next generation of infra changemakers through expert evaluation to strengthen infrastructure research for policy impact.",
+      desc: "Identify the next generation of infra changemakers through expert evaluation to <span class='font-medium'>strengthen infrastructure research for policy impact.</span>",
     },
     {
       icon: "/assets/infrapandit/logo/logo-3.png",
@@ -57,9 +57,12 @@ const Goal = () => {
               innovative thinking and academic rigour to the table.
             </h6>
             <h6 className="text-sm xl:text-lg">
-              The InfraPandit Awards are committed to identifying and motivating
-              such outstanding brains with the potential to supplement
-              infrastructure policy innovation in India.
+              The <strong className="font-medium">InfraPandit Awards</strong>{" "}
+              are committed to identifying and motivating such outstanding
+              brains with the potential to supplement{" "}
+              <span className="font-medium">
+                infrastructure policy innovation in India.
+              </span>
             </h6>
           </div>
         </div>
@@ -75,7 +78,10 @@ const Goal = () => {
                   <img className="max-xl:h-10" src={elem.icon} alt="icons" />
                   <div className="blade-top-margin sm:blade-top-margin-sm space-y-2">
                     <h5 className="font-medium">{elem.title}</h5>
-                    <h5 className="text-sm xl:text-base">{elem.desc}</h5>
+                    <h5
+                      className="text-sm xl:text-base"
+                      dangerouslySetInnerHTML={{ __html: elem.desc }}
+                    />
                   </div>
                 </div>
               );
