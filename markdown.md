@@ -59,3 +59,6 @@ If you make any updates to a blog, the changes may not appear immediately on the
 - Once regenerated, all subsequent visitors will see the latest version without delay.
 
 This behavior is part of the caching and revalidation process and does not indicate an error.
+
+
+If you try to upload any file more then 20MB it will throw an error "save failed "

@@ -74,6 +74,7 @@ const Footer = () => {
     "/login",
     "/forgot-password",
     "/reset-password",
+    "/service-unavailable",
   ];
 
   if (!data || isLoading) {
