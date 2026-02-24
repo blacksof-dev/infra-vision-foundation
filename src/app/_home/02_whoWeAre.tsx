@@ -141,7 +141,8 @@ export default function WhoWeAre() {
               </h6>
             </div>
           </div>
-          <div className=" relative">
+
+          <div className="relative">
             <TabSwitch setActiveTab={setActiveTab} activeTab={activeTab} />
           </div>
         </main>
@@ -162,8 +163,8 @@ export const TabSwitch = ({
     <div>
       <div
         className={`${
-          isHeaderVisible ? "top-20 xl:top-24" : "top-0"
-        } sticky bg-whitesmoke py-6 xl:py-8 z-[99] transition-all duration-200 ease-linear`}
+          isHeaderVisible ? "top-14  xl:top-18" : "top-0"
+        } sticky md:relative bg-whitesmoke py-6 xl:py-8 z-[99] transition-all duration-200 ease-linear`}
       >
         <div className=" flex flex-row sm:justify-center  items-center gap-12 md:gap-18 border-b sm:mx-auto  border-darkgray/16 w-fit">
           <button

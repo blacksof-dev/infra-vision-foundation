@@ -46,7 +46,7 @@ const Jury = () => {
             Meet the panel
           </h1>
         </div>
-        <div className="flex flex-col md:flex-row justify-center flex-wrap  blade-top-margin gap-18 xlg:gap-10 justify-center">
+        <div className="flex flex-col md:flex-row justify-center flex-wrap  mt-8 gap-6 md:gap-18 xlg:gap-10 justify-center">
           {data.map((elem, idx) => (
             <div className="flex flex-col items-center" key={idx}>
               <Image

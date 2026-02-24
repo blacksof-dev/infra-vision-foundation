@@ -70,16 +70,7 @@ const news = [
 
 export default function Highlights() {
   const [activeTab, setActiveTab] = useState("Outreach and Engagements");
-  const mobileview = 3;
-  const [visiblecountmobile, setvisiblecountmobile] = useState(mobileview);
 
-  const handleSeeMoreCta = () => {
-    setvisiblecountmobile((prev) => prev + 3);
-  };
-
-  useEffect(() => {
-    setvisiblecountmobile(mobileview);
-  }, [activeTab]);
   return (
     <>
       <div id="homepage-section-5" className="bg-whitesmoke">
@@ -117,8 +108,6 @@ export const TabSwitch = ({
     const container = containerRef.current;
 
     if (tab && container) {
-      // const containerRect = container.getBoundingClientRect();
-      // const tabRect = tab.getBoundingClientRect();
       const offset =
         tab.offsetLeft - container.offsetWidth / 2 + tab.offsetWidth / 2;
       container.scrollTo({ left: offset, behavior: "smooth" });
@@ -134,11 +123,11 @@ export const TabSwitch = ({
     <div>
       <div
         ref={containerRef}
-        className={`blade-top-padding-sm overflow-x-scroll bg-whitesmoke no-scrollbar transition-all duration-300 ease-linear z-[999] sticky ${
-          isHeaderVisible ? "top-20   lg:top-24" : "top-0"
+        className={` overflow-x-scroll bg-whitesmoke no-scrollbar transition-all duration-300 ease-linear z-[999] sticky lg:relative ${
+          isHeaderVisible ? "top-16 lg:top-0" : "top-0"
         } `}
       >
-        <div className="flex flex-row gap-6 sm:gap-12  lg:gap-12 md:gap-18 border-b   border-darkgray/16 w-fit ">
+        <div className="flex flex-row gap-6 sm:gap-12  mt-4 lg:gap-12 md:gap-18 border-b   border-darkgray/16 w-fit ">
           <button
             ref={(el: HTMLButtonElement | null) => {
               tabRefs.current[0] = el;

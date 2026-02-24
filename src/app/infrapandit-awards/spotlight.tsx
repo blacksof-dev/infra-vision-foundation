@@ -12,7 +12,7 @@ export default function Spotlight() {
     hoveredIndex === index || clickedIndex === index;
 
   return (
-    <section className=" blade-top-padding blade-bottom-padding-sm">
+    <section className=" blade-top-padding blade-bottom-padding">
       <div className="w-container">
         <div>
           <div className="flex items-center gap-2 md:gap-3 text-pink">
@@ -29,7 +29,7 @@ export default function Spotlight() {
           {data.map((elem, index) => (
             <div key={index}>
               <div
-                className="relative w-full h-[18rem] rounded-md overflow-hidden "
+                className="relative w-full h-[18rem] rounded-md overflow-hidden md:block hidden"
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
@@ -57,12 +57,30 @@ export default function Spotlight() {
                       }}
                     >
                       <p
-                        className="text-white text-sm md:text-base text-center font-poppins p-5 pb-8"
+                        className="text-white  text-sm md:text-base text-center font-poppins p-5 pb-8"
                         dangerouslySetInnerHTML={{ __html: elem.description }}
                       />
                     </motion.div>
                   )}
                 </AnimatePresence>
+              </div>
+
+              <div className="relative  w-full h-[18rem] rounded-md overflow-hidden md:hidden block">
+                <Image
+                  src={elem.thumbnailImage}
+                  width={500}
+                  height={500}
+                  alt="Image"
+                  quality={100}
+                  className="w-full h-full object-cover object-top"
+                />
+
+                <div className="absolute bottom-0 bg-linear-to-t from-black via-black to-transparent">
+                  <p
+                    className="text-white  text-sm md:text-base text-center font-poppins  p-2 md:p-5 md:pb-8"
+                    dangerouslySetInnerHTML={{ __html: elem.description }}
+                  />
+                </div>
               </div>
 
               <div className="flex justify-between flex-col">
@@ -73,25 +91,6 @@ export default function Spotlight() {
                   <h6 className="text-black font-medium xl:text-xl">
                     {elem.name}
                   </h6>
-                </div>
-                {/* Mobile Read More Button */}
-                <div className="pt-3 pb-6 md:hidden">
-                  <div
-                    onClick={() =>
-                      setClickedIndex((prev) => (prev === index ? null : index))
-                    }
-                    className="w-fit cursor-pointer"
-                  >
-                    <BorderGrayHeroBtn
-                      text={clickedIndex === index ? "Read less" : "Read more"}
-                      role="button"
-                      borderColor="darkgray/40"
-                      color="black"
-                      bgColor="white"
-                      size="base"
-                      classes="font-medium"
-                    />
-                  </div>
                 </div>
               </div>
             </div>

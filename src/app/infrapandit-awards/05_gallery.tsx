@@ -111,7 +111,7 @@ export default function Gallery() {
               <span className="text-black/90 font-medium ">ceremony</span>
             </h1>
           </div>
-          <div className="columns-3  overflow-visible md:columns-3 lg:columns-5 gap-3 pt-8 space-y-2">
+          <div className=" columns-2 md:columns-3  overflow-visible md:columns-3 lg:columns-5 gap-3 pt-8 space-y-2">
             {galleryImages.map((ele, index) => (
               <div
                 key={index}
@@ -123,7 +123,7 @@ export default function Gallery() {
                   alt={`InfraShakti Photo ${index + 1}`}
                   width={600}
                   height={600}
-                  className="w-full h-full object-cover rounded hover:scale-105 transition-all duration-300 ease-linear"
+                  className="w-full h-full cursor-pointer object-cover rounded hover:scale-105 transition-all duration-300 ease-linear"
                   unoptimized={true}
                   quality={100}
                 />

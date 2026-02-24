@@ -327,7 +327,7 @@ export default function Gallery() {
                   alt={`Gallery Photo ${idx + 1}`}
                   width={300}
                   height={256}
-                  className="w-full h-auto object-cover transition-all duration-300 ease-linear group-hover:scale-[1.05]"
+                  className="w-full h-auto object-cover cursor-pointer transition-all duration-300 ease-linear group-hover:scale-[1.05]"
                   unoptimized
                 />
               </div>

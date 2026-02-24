@@ -14,7 +14,7 @@ export default function Association() {
           <Swiper className="" slidesPerView={1} autoplay modules={[Autoplay]}>
             {data.map((obj, index) => (
               <SwiperSlide key={index} className="">
-                <div className="relative w-screen h-screen sm:block hidden">
+                <div className="relative w-screen  sm:h-[30rem] xl:h-[90vh] xlg:h-screen sm:block hidden">
                   <Image
                     src={obj.logo}
                     alt={obj.id}
@@ -22,8 +22,9 @@ export default function Association() {
                     className="object-cover"
                     unoptimized
                   />
+                  <div className="absolute h-[15rem] bottom-0 w-full  bg-gradient-to-t from-black via-black/90 to-transparent"></div>
                 </div>
-                <div className="relative w-screen h-screen block sm:hidden">
+                <div className="relative  w-screen  h-[35rem] block sm:hidden">
                   <Image
                     src={obj.mobilelogo}
                     alt={obj.id}
@@ -31,12 +32,13 @@ export default function Association() {
                     className="object-cover"
                     unoptimized
                   />
+                  <div className="absolute h-[14rem] bottom-0 w-full  bg-gradient-to-t from-black via-black/90 to-transparent"></div>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
-        <div className="  absolute   bottom-20 z-[22] pointer-events-none h-[45rem] w-full">
+        <div className="  absolute    xlg:bottom-20 bottom-10 z-[22] pointer-events-none h-[45rem] w-full ">
           <div className="w-container   top-9  sm:top-12 md:top-18 flex flex-col  justify-between h-full">
             <div className="flex flex-row   gap-1 ">
               <Link href="/">
@@ -61,10 +63,10 @@ export default function Association() {
             </div>
             <div className="  w-full ">
               <h1 className="text-white font-medium ">About Us</h1>
-              <div className={` py-2 sm:py-4 w-full  max-w-lg`}>
+              <div className={` py-2 xl:py-4 w-full  max-w-lg`}>
                 <h5 className="text-white font-light ">
-                  Nation at heart. Infrastructure in mind.<br/> Economic prosperity
-                  in action.
+                  Nation at heart. Infrastructure in mind.
+                  <br /> Economic prosperity in action.
                 </h5>
               </div>
             </div>
@@ -79,16 +81,16 @@ const data = [
   {
     id: "1",
     logo: "/assets/about-us/bannerBg.png",
-    mobilelogo:"/assets/about-us/mobile1.png"
+    mobilelogo: "/assets/about-us/mobile1.png",
   },
   {
     id: "2",
     logo: "/assets/about-us/bannerBg1.png",
-     mobilelogo:"/assets/about-us/mobile2.png"
+    mobilelogo: "/assets/about-us/mobile2.png",
   },
   {
     id: "3",
     logo: "/assets/about-us/bannerBg2.png",
-     mobilelogo:"/assets/about-us/mobile3.png"
+    mobilelogo: "/assets/about-us/mobile3.png",
   },
 ];

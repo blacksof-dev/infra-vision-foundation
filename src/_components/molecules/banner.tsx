@@ -2,7 +2,7 @@ import Image, { StaticImageData } from "next/image";
 import Balancer from "react-wrap-balancer";
 
 interface bannerProps {
-  id?:string;
+  id?: string;
   image: StaticImageData;
   heading: string;
   title: string;
@@ -10,7 +10,7 @@ interface bannerProps {
   mobileimage?: StaticImageData;
   classes?: string;
   buttonText?: string;
-  link?: string
+  link?: string;
 }
 
 import { RiArrowRightSLine } from "react-icons/ri";
@@ -29,10 +29,12 @@ export default function Banner({
 }: bannerProps) {
   return (
     <>
-      <div id={id} className="pt-[5rem] sm:pt-[6rem]">
+      <div id={id} className="pt-[4rem] sm:pt-[6rem]">
         <div className="relative ">
           {/* <div className={`w-full h-[40rem] md:h-[36rem] xl:h-[40rem] bg-black ${mobileimage ? "md:block hidden" : ""}`}> */}
-          <div className={`w-full h-[25rem] md:h-[36rem] xl:h-[40rem] bg-black ${mobileimage ? "md:block hidden" : ""}`}>
+          <div
+            className={`w-full h-[25rem] md:h-[36rem] xl:h-[40rem] bg-black ${mobileimage ? "md:block hidden" : ""}`}
+          >
             <Image
               src={image}
               alt="Publication Banner"
@@ -66,7 +68,6 @@ export default function Banner({
                     <path
                       opacity="0.8"
                       d="M14.2891 0.351685L0.730469 12.5549H4.42827V23.6483H13.0565V16.2527H15.5217V23.6483H24.1499V12.5549H27.8477L14.2891 0.351685ZM14.2891 3.66911L21.6847 10.3256V11.3223V21.1831H17.9869V13.7875H10.5913V21.1831H6.89347V10.3256L14.2891 3.66911Z"
-
                     />
                   </svg>
                 </Link>
@@ -78,9 +79,10 @@ export default function Banner({
               <div className="  w-full ">
                 <h1 className="text-white font-medium ">{title}</h1>
                 <div className={` py-2 sm:py-4 w-full  max-w-lg`}>
-                  <h5 className="text-white font-light " dangerouslySetInnerHTML={{ __html: subdesc }} />
-
-
+                  <h5
+                    className="text-white font-light "
+                    dangerouslySetInnerHTML={{ __html: subdesc }}
+                  />
                 </div>
                 {buttonText && (
                   <HeroBtnPink
@@ -96,7 +98,6 @@ export default function Banner({
                     target={"_blank"}
                   />
                 )}
-
               </div>
             </div>
           </div>

@@ -33,22 +33,21 @@ const Goal = () => {
         src={BannerBg}
         alt="background"
       ></Image>
-      <div className=" blade-top-padding blade-bottom-padding-lg w-container relative">
-        <div className="sm:w-container flex flex-col md:flex-row gap-y-5 md:gap-y-0 justify-between md:items-center blade-bottom-margin">
+      <div className=" blade-top-padding-lg blade-bottom-padding-lg  w-container relative ">
+        <div className="sm:w-container  flex flex-col md:flex-row gap-y-5 md:gap-y-0 justify-between md:items-center blade-bottom-margin">
           <div>
-            <div className="flex  flex-row  items-center gap-2 md:gap-3">
-              <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink "></span>
-              <h5 className="font-medium text-pink text-sm xl:text-lg">
-                The Goal
-              </h5>
+            <div className="flex items-center gap-2 md:gap-3 text-pink">
+              <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
+              <h5 className="font-medium text-sm xl:text-lg">The Goal</h5>
             </div>
-            <div className="pt-1 md:pt-4 pb-2 md:py-5 flex justify-between">
+            <div className="pt-4 pb-2 md:py-5 flex flex-col md:flex-row justify-between gap-4">
               <h1 className="text-black font-light max-w-2xl">
                 Forging a foundation for{" "}
                 <span className="font-medium">infrastructure excellence</span>
               </h1>
             </div>
           </div>
+
           <div className="w-full sm:w-[90%] xl:w-[45%]">
             <h6 className="text-black  tracking-[1%] mb-4 text-sm xl:text-lg">
               India’s infrastructural landscape is evolving into an{" "}
@@ -67,7 +66,7 @@ const Goal = () => {
           </div>
         </div>
 
-        <div className="blade-top-margin-lg blade-bottom-margin-lg">
+        <div className=" ">
           <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
             {data.map((elem, idx) => {
               return (

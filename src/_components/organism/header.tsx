@@ -189,7 +189,7 @@ function Header() {
   return (
     <>
       <nav
-        className={`fixed  top-0 left-0 w-full transition-all ease-linear duration-200 px-0 sm:px-3 py-3 z-[9999] ${
+        className={`fixed  top-0 left-0 w-full transition-all ease-linear duration-200 px-0 sm:px-3 py-2  md:py-3 z-[9999] ${
           isMobile
             ? "translate-y-0"
             : showNavbar
@@ -201,7 +201,7 @@ function Header() {
       >
         <div className="w-container">
           <div className="flex flex-row justify-between">
-            <div className="w-[10rem] md:w-[10rem] xl:w-[14rem] h-full">
+            <div className="w-[20rem]  md:w-[10rem] xl:w-[14rem] h-full">
               <Link href="/">
                 <Image
                   src={logo}

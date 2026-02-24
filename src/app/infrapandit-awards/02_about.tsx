@@ -8,7 +8,7 @@ const AboutInfraPandit = () => {
   return (
     <>
       <section className="bg-[#F6F6F6]">
-        <div className="w-container blade-top-padding blade-bottom-padding-lg flex flex-col justify-between md:flex-row gap-8 md:gap-20 md:items-center">
+        <div className="w-container blade-top-padding-lg blade-bottom-padding-lg flex flex-col justify-between md:flex-row gap-8 md:gap-20 md:items-center">
           <div className="max-w-full md:max-w-sm lg:max-w-md xl:max-w-2xl">
             <div className="flex items-center gap-2 md:gap-3 text-pink">
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-pink"></span>
@@ -23,11 +23,19 @@ const AboutInfraPandit = () => {
                 national progress
               </h1>
             </div>
+            <div className="flex justify-center md:hidden block my-4">
+              <img
+                className=""
+                src="/assets/infrapandit/award.png"
+                alt="Infrapandit Awards"
+              />
+            </div>
             <div className="">
               <h4 className="font-light text-base xl:text-xl">
                 {" "}
-                The <span className="font-medium">InfraPandit Awards</span> honour and reward first-rate research
-                that can accelerate India towards becoming a{" "}
+                The <span className="font-medium">InfraPandit Awards</span>{" "}
+                honour and reward first-rate research that can accelerate India
+                towards becoming a{" "}
                 <span className="font-semibold">Viksit Bharat</span>. It
                 identifies and recognises young minds for their fresh outlook on
                 core infrastructure issues and groundbreaking insights.
@@ -64,7 +72,6 @@ const AboutInfraPandit = () => {
               </div>
             </div>
             <div className="pt-6 flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-8 sm:items-center">
-            
               <div
                 role="button"
                 onClick={() => setShowPopup(true)}
@@ -75,13 +82,12 @@ const AboutInfraPandit = () => {
                   color="black"
                   underlineColor="pink"
                   role="link"
-                  size="extralarge" 
-              
+                  size="extralarge"
                 />
               </div>
             </div>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center md:block hidden">
             <img
               className=""
               src="/assets/infrapandit/award.png"
@@ -160,7 +166,10 @@ const EligibilityProcessPopup = ({ onClose }: { onClose: () => void }) => {
               </ul>
               <li className=" text-base font-light sm:text-lg">
                 <span className="text-black">
-                  The winners of the InfraPandit Award will be felicitated at an event in the presence of high-profile guests from academia, industry, and government. The event will receive extensive coverage and publicity.
+                  The winners of the InfraPandit Award will be felicitated at an
+                  event in the presence of high-profile guests from academia,
+                  industry, and government. The event will receive extensive
+                  coverage and publicity.
                 </span>
               </li>
             </ul>
@@ -173,17 +182,14 @@ const EligibilityProcessPopup = ({ onClose }: { onClose: () => void }) => {
               <li className=" text-base font-light sm:text-lg">
                 <span className="text-black">
                   The awards program will be announced along with a call for
-                  online applications on 20th June 2025 on The
-                  
-                    Infravision Foundation’s {" "}
-                  
-                     official website.
+                  online applications on 20th June 2025 on The Infravision
+                  Foundation’s official website.
                 </span>
               </li>
               <li className=" text-base font-light sm:text-lg">
                 <span className="text-black">
                   The <span className="font-medium">last date</span> for
-                  submitting the applications will be  August 14, 2025.
+                  submitting the applications will be August 14, 2025.
                 </span>
               </li>
               <li className=" text-base font-light sm:text-lg">
@@ -192,14 +198,6 @@ const EligibilityProcessPopup = ({ onClose }: { onClose: () => void }) => {
                   announced latest by November 15, 2025.
                 </span>
               </li>
-              {/* <ul className="pl-5">
-                <li className="list-disc text-black text-base">
-                  Uttam Award (INR 5 lakh)
-                </li>
-                <li className="list-disc text-black text-base">
-                  Mahaan Award (INR 3 lakh)
-                </li>
-              </ul> */}
             </ul>
           </div>
           <div>
