@@ -76,7 +76,7 @@ const Pulse = () => {
             To become <span className="font-medium">‘Viksit Bharat’</span> by
             2047, India needs to address its infrastructure gaps swiftly and
             efficiently through proportionate, need-specific developments.
-            Developments that are innovative, inclusive, steadfast, and
+            Developments that are innovative, inclusive, steadfast and
             sustainable. This demands active collaboration among policymakers,
             the private sector, and citizens, driven by increased awareness.
           </h6>

@@ -59,9 +59,9 @@ export default function About() {
             The event digs deep into issues of national importance, from the
             centrality of pilgrim towns in ancient India to the lessons for
             climate change from the lost Saraswati river, from the advent of AI
-            in reshaping the digital infra landscape to whether public private
+            in reshaping the digital infra landscape to whether public-private
             partnerships in infrastructure can be revitalised. It provides the
-            perfect blend of storytelling, scholarship, and strategy.
+            perfect blend of storytelling, scholarship and strategy.
           </h6>
           <div className="mt-2 sm:mt-6">
             <BorderGrayHeroBtn

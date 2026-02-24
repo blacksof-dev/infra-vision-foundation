@@ -64,7 +64,7 @@ export default function Overview() {
             <h6 className="pt-4">
               Featuring seven outstanding winners for best infrastructure
               practices fulfilling a strict matrix of collaboration, innovation,
-              replicability, sustainability, and scalability.
+              replicability, sustainability and scalability.
             </h6>
           </div>
         </div>
