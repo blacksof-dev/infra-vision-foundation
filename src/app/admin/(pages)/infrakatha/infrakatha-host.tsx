@@ -196,10 +196,9 @@ export default function Members({
                           target="_blank"
                           className="underline text-pink mt-8 inline-block group"
                         >
-                          {host?.socialType}{" "}
                           <SquareArrowOutUpRight
                             size={16}
-                            className="inline ml-1 group-hover:scale-110 transition transform duration-300"
+                            className="inline ml-1  group-hover:scale-110 transition transform duration-300"
                           />
                         </Link>
                       )}
@@ -386,7 +385,7 @@ const HostForm = ({
               </div>
 
               <ImagePicker
-                label="Image*"
+                label="Cover Image* (Max-limit - 3MB)"
                 errors={errors.image}
                 register={register}
                 registerer="image"

@@ -221,22 +221,21 @@ export default function InTheNews() {
                       <ImageIcon className="w-12 h-12 opacity-20" />
                     </div>
                   )}
-                  
                 </div>
 
                 <div className="p-4 flex flex-col flex-1">
                   <div className="text-xs w-fit mb-2 font-medium text-pink px-2 py-0.5 bg-pink/10 rounded-full flex items-center gap-1.5">
                     <Calendar className="w-3 h-3" />
-                    {new Date(it.date).toLocaleDateString("en-IN",{
-                      day:"2-digit",
-                      month:"short",
-                      year:"numeric"
+                    {new Date(it.date).toLocaleDateString("en-IN", {
+                      day: "2-digit",
+                      month: "short",
+                      year: "numeric",
                     })}
                   </div>
 
                   <h3 className="text-base font-medium text-gray-900 leading-tight mb-2 line-clamp-3  ">
                     {it.title}
-                  </h3> 
+                  </h3>
                   <h4 className="text-sm font-medium text-gray-500 leading-tight mb-2 line-clamp-3">
                     {it.author}
                   </h4>
@@ -556,7 +555,7 @@ function MediaForm({
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <ImagePicker
-                label="Thumbnail / Cover Image*"
+                label="Cover Image* (Max-limit - 3MB)"
                 errors={errors.thumbnail}
                 register={register}
                 registerer="thumbnail"
@@ -581,7 +580,7 @@ function MediaForm({
               />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <PdfPicker
-                  label="PDF   (Optional)"
+                  label="PDF (Optional) (Max-limit - 10MB)"
                   errors={errors.pdfFile}
                   register={register}
                   registerer="pdfFile"

@@ -151,8 +151,6 @@ export default function AdvocacyTab() {
             ))}
           </div>
         )}
-
-        
       </section>
 
       {formState.isFormOpen && (
@@ -194,7 +192,6 @@ function AdvocacyCard({
 }) {
   return (
     <div className="border border-gray-100 rounded-md overflow-hidden shadow-sm ">
-      {/* Image Section - reference from 05_video.tsx lines 190-198 */}
       <div className="h-[18rem] md:h-[20rem] xl:h-[14rem] 2xl:h-[19rem] relative rounded overflow-hidden ">
         <Image
           src={getUrl(item.image)}
@@ -202,28 +199,14 @@ function AdvocacyCard({
           fill
           className="object-cover w-full h-full"
         />
-        {/* <div className="absolute top-3 right-3 z-10">
-          <div className="bg-white/90 backdrop-blur-sm p-1.5 rounded-full shadow-sm">
-            <ToggleSwitch checked={item.active} onChange={onToggle} />
-          </div>
-        </div> */}
       </div>
 
-      {/* Content Section - reference from 05_video.tsx lines 201-225 */}
       <div className="p-4">
         <div className="flex flex-row justify-between py-3">
           <div className="flex flex-row items-center gap-2 md:gap-3">
             <span className="w-[7px] h-[7px] md:w-[12px] md:h-[12px] rounded-full bg-pink"></span>
             <p className="text-black font-medium">{item.label}</p>
           </div>
-          {/* <div>
-            <p className="text-darkgray text-sm">
-              {new Date(item.updatedAt).toLocaleDateString("en-US", {
-                month: "long",
-                year: "numeric",
-              })}
-            </p>
-          </div> */}
         </div>
 
         <div className="w-full md:w-[90%] pb-4">
@@ -233,7 +216,11 @@ function AdvocacyCard({
         </div>
 
         <div className="flex items-center justify-between pt-3 border-t border-gray-100">
-          <Link href={item.ctaLink} className="flex items-center gap-3 text-sm hover:text-pink text-darkgray">
+          <Link
+            href={item.ctaLink}
+            target="_blank"
+            className="flex items-center gap-3 text-sm hover:text-pink text-darkgray"
+          >
             <ExternalLink className="w-3 h-3" />
             <span className="truncate max-w-[120px]">{item.ctaText}</span>
           </Link>

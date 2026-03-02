@@ -80,7 +80,7 @@ export default function Sectors() {
 
         const res = (await getData(
           `/about-us/sectors?${query.toString()}`,
-          session
+          session,
         )) as ListResponse;
 
         setItems(res?.sectors || []);
@@ -93,7 +93,7 @@ export default function Sectors() {
         setIsLoading(false);
       }
     },
-    [session, limit, activeOnly, page]
+    [session, limit, activeOnly, page],
   );
 
   useEffect(() => {
@@ -106,7 +106,7 @@ export default function Sectors() {
         `${process.env.NEXT_PUBLIC_HOST_URL}/about-us/sectors/${id}`,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
-        }
+        },
       );
       toast.success("Sector deleted successfully");
       setDeletingId(null);
@@ -128,7 +128,7 @@ export default function Sectors() {
           headers: {
             Authorization: `Bearer ${session?.accessToken}`,
           },
-        }
+        },
       );
       toast.success("Status updated");
       fetchSectors(page);
@@ -240,7 +240,7 @@ export default function Sectors() {
             <div className="flex gap-2 items-center">
               {Array.from(
                 { length: pagination.totalPages },
-                (_, i) => i + 1
+                (_, i) => i + 1,
               ).map((p) => (
                 <button
                   key={p}
@@ -401,7 +401,7 @@ function SectorForm({
             />
 
             <ImagePicker
-              label="Sector Image*"
+              label="Sector Image* (Max-limit - 3MB)"
               errors={errors.imageFile}
               register={register}
               registerer="imageFile"

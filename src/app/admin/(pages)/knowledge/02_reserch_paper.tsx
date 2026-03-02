@@ -571,7 +571,7 @@ function ResearchPaperForm({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <ImagePicker
-                label="Cover Image*"
+                label="Cover Image* (Max-limit - 3MB)"
                 errors={errors.imageFile}
                 register={register}
                 registerer="imageFile"
@@ -579,7 +579,7 @@ function ResearchPaperForm({
                 accept=".png, .jpg, .jpeg, .webp"
               />
               <PdfPicker
-                label="PDF Document*"
+                label="PDF Document* (Max-limit - 10MB)"
                 errors={errors.pdfFile}
                 register={register}
                 registerer="pdfFile"

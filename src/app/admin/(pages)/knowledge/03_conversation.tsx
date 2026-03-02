@@ -64,7 +64,7 @@ export default function KnowledgeConversations() {
 
         const res = (await getData(
           `/knowledge/conversation?${query.toString()}`,
-          session
+          session,
         )) as ListResponse;
 
         setItems(Array.isArray(res?.data) ? res.data : []);
@@ -76,7 +76,7 @@ export default function KnowledgeConversations() {
         setIsLoading(false);
       }
     },
-    [session, limit, page]
+    [session, limit, page],
   );
 
   useEffect(() => {
@@ -87,7 +87,7 @@ export default function KnowledgeConversations() {
     try {
       const res = await axios.delete(
         `${process.env.NEXT_PUBLIC_HOST_URL}/knowledge/conversation/${id}`,
-        { headers: { Authorization: `Bearer ${session?.accessToken}` } }
+        { headers: { Authorization: `Bearer ${session?.accessToken}` } },
       );
       if (res.status >= 200 && res.status < 300) {
         toast.success("Deleted successfully");
@@ -153,8 +153,6 @@ export default function KnowledgeConversations() {
                       {it.title}
                     </p>
 
-
-
                     <div className=" border-t border-gray-50  my-4">
                       <p className="text-md  text-gray-900 line-clamp-3 py-1 flex-1">
                         {it.desc}
@@ -205,15 +203,16 @@ export default function KnowledgeConversations() {
                 <div className="flex gap-2">
                   {Array.from(
                     { length: pagination.totalPages },
-                    (_, i) => i + 1
+                    (_, i) => i + 1,
                   ).map((p) => (
                     <button
                       key={p}
                       onClick={() => loadList(p)}
-                      className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${p === page
-                        ? "bg-pink text-white shadow-md shadow-pink/20"
-                        : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
-                        }`}
+                      className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${
+                        p === page
+                          ? "bg-pink text-white shadow-md shadow-pink/20"
+                          : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
+                      }`}
                     >
                       {p}
                     </button>
@@ -334,7 +333,7 @@ function ConversationForm({
       });
 
       toast.success(
-        initialData ? "Updated successfully" : "Created successfully"
+        initialData ? "Updated successfully" : "Created successfully",
       );
       onSuccess();
     } catch (e: any) {
@@ -410,7 +409,7 @@ function ConversationForm({
             />
 
             <ImagePicker
-              label="Cover Image*"
+              label="Cover Image* (Max-limit - 3MB)"
               errors={errors.imageFile}
               register={register}
               registerer="imageFile"

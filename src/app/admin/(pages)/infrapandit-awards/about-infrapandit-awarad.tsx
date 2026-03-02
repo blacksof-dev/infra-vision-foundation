@@ -416,7 +416,7 @@ function MainForm({
           </div>
 
           <ImagePicker
-            label="Poster Image"
+            label="Poster Image* (Max-limit - 3MB)"
             register={register}
             registerer="posterImage"
             watcher={watch("posterImage")}
@@ -832,28 +832,24 @@ function EditorContent({
             padding-left: 1.5rem !important;
             margin-top: 0.5rem;
             margin-bottom: 0.5rem;
-                
           }
           .editorjs-content ol {
             list-style-type: decimal !important;
             padding-left: 1.5rem !important;
             margin-top: 0.5rem;
             margin-bottom: 0.5rem;
-              
           }
           .editorjs-content li {
             margin-bottom: 0.25rem;
-            
-           font-size: 16px;
 
-          } 
+            font-size: 16px;
+          }
           .editorjs-content p {
-           font-size: 16px;
-           
-          } 
-           .editorjs-content {
-              color: #000;
-           }
+            font-size: 16px;
+          }
+          .editorjs-content {
+            color: #000;
+          }
         `}</style>
       </div>
     );

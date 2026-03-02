@@ -352,34 +352,14 @@ function BannerForm({
             registerer="title"
             // tooltip="Enter a compelling title for the banner"
           />
-          
+
           <MessageInput
-          label="Description*"
-          errors={errors.description}
-          placeholder="Enter the banner description..."
-          register={register}
-          registerer="description"
+            label="Description*"
+            errors={errors.description}
+            placeholder="Enter the banner description..."
+            register={register}
+            registerer="description"
           />
-          {/* Description */}
-          {/* <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-              Description
-              <span className="text-red-500">*</span>
-            </label>
-            <textarea
-              {...register("description")}
-              placeholder="Enter the banner description..."
-              rows={4}
-              className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-pink/20 focus:border-pink transition-all resize-none ${
-                errors.description ? "border-red-500" : "border-gray-200"
-              }`}
-            />
-            {errors.description && (
-              <p className="text-red-500 text-sm">
-                {errors.description.message}
-              </p>
-            )}
-          </div> */}
 
           {/* Images Section */}
           <div className="space-y-4">
@@ -434,7 +414,7 @@ function BannerForm({
 
                     <div className="flex-1">
                       <ImagePicker
-                        label={`Image ${index + 1}`}
+                        label={`Image ${index + 1} (Max-limit - 3MB)`}
                         errors={errors.images?.[index]?.url}
                         register={register}
                         registerer={`images.${index}.url`}

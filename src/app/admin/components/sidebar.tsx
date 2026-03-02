@@ -38,11 +38,10 @@ export default function Sidebar() {
     <nav>
       <div className="flex flex-col gap-4 p-4 2xl:pt-8 h-screen border-r border-gray/30">
         {/* Logo */}
-        <Link href="/">
-          <div className="w-[7rem] md:w-[7rem] xl:w-[9rem] pl-3">
-            <Image src={logo} alt="Infravision Foundation Logo" />
-          </div>
-        </Link>
+
+        <div className="w-[7rem] md:w-[7rem] xl:w-[9rem] pl-3">
+          <Image src={logo} alt="Infravision Foundation Logo" />
+        </div>
 
         {/* Nav Links */}
         <div className="h-auto flex flex-col gap-y-3 2xl:gap-y-6 mt-4 2x:mt-8 overflow-y-auto pr-2">

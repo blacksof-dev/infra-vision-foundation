@@ -72,7 +72,7 @@ export default function WhoWeAre() {
           </div>
           <div>
             <h5 className="text-sm font-bold text-gray-900 mb-1">
-              Admin Pro-Tip  
+              Admin Pro-Tip
             </h5>
             <ul className="list-disc list-outside pl-4">
               <li className="text-sm text-gray-600 leading-relaxed">
@@ -207,24 +207,6 @@ function WhoWeAreForm({
             register={register}
             registerer="description"
           />
-          {/* <div className="flex flex-col gap-y-1.5">
-            <label className="text-sm font-semibold text-gray-700">
-              Description
-            </label>
-            <textarea
-              {...register("description")}
-              rows={5}
-              className={`w-full p-4 border rounded-xl outline-none transition-all focus:border-pink ${
-                errors.description ? "border-red-500" : "border-gray"
-              }`}
-              placeholder="Enter context description..."
-            />
-            {errors.description && (
-              <p className="text-xs text-red-500">
-                {errors.description.message}
-              </p>
-            )}
-          </div> */}
 
           <div className="flex gap-4 pt-4">
             <Button
@@ -274,10 +256,8 @@ function WhoWeAreCard({ data }: { data: WhoWeAreDefaultValueType }) {
               className="text-2xl font-normal text-gray-900 leading-tight font-poppin"
               dangerouslySetInnerHTML={{
                 __html:
-                  heading.replace(
-                    /\*\*(.*?)\*\*/g,
-                    "<strong>$1</strong>"
-                  ) || "No Heading Provided",
+                  heading.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") ||
+                  "No Heading Provided",
               }}
             />
           </div>
@@ -292,7 +272,7 @@ function WhoWeAreCard({ data }: { data: WhoWeAreDefaultValueType }) {
                 __html:
                   description.replace(
                     /\*\*(.*?)\*\*/g,
-                    "<strong>$1</strong>"
+                    "<strong>$1</strong>",
                   ) || "No Description Provided",
               }}
             />

@@ -62,7 +62,7 @@ export default function PastEvents() {
       ),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
-      if (lastPage.meta.totalPages < lastPage.meta.page) return undefined;
+      if (lastPage.meta.page >= lastPage.meta.totalPages) return undefined;
       return lastPage.meta.page + 1;
     },
   });

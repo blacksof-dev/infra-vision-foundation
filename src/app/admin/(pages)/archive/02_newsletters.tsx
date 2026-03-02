@@ -457,26 +457,25 @@ function NewsletterForm({
           className="flex-1 overflow-y-auto p-6 space-y-6"
         >
           <div className="space-y-5">
-            
-              <MessageInput
-                label="Newsletter Title*"
-                errors={errors.title}
-                placeholder="e.g. Monthly Infrastructure Update"
-                register={register}
-                registerer="title"
-              />
-             
-              <TextInput
-                label="Publication Date*"
-                placeholder="yyyy-mm-dd"
-                errors={errors.publishedDate}
-                register={register}
-                registerer="publishedDate"
-              />
+            <MessageInput
+              label="Newsletter Title*"
+              errors={errors.title}
+              placeholder="e.g. Monthly Infrastructure Update"
+              register={register}
+              registerer="title"
+            />
+
+            <TextInput
+              label="Publication Date*"
+              placeholder="yyyy-mm-dd"
+              errors={errors.publishedDate}
+              register={register}
+              registerer="publishedDate"
+            />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <ImagePicker
-                label="Cover Image*"
+                label="Cover Image* (Max-limit - 3MB)"
                 errors={errors.coverImageFile}
                 register={register}
                 registerer="coverImageFile"
@@ -484,7 +483,7 @@ function NewsletterForm({
                 accept=".svg, .png, .jpg, .jpeg, .webp"
               />
               <PdfPicker
-                label="PDF Document*"
+                label="PDF Document* (Max-limit - 10MB)"
                 errors={errors.pdfFile}
                 register={register}
                 registerer="pdfFile"

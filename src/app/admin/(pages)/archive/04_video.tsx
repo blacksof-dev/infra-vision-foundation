@@ -22,6 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/_components/ui/select";
+import Link from "next/link";
 
 // ============ TYPES ============
 interface Category {
@@ -68,6 +69,7 @@ export default function VideoSection() {
   const [isLoadingList, setIsLoadingList] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
   const [limit] = useState<number>(12);
+  const [playVideo, setplayVideo] = useState<boolean>(false);
 
   const [formState, setFormState] = useState<{
     isFormOpen: boolean;
@@ -186,22 +188,28 @@ export default function VideoSection() {
             </p>
           </div>
         ) : (
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 ">
             {items.map((it) => (
               <article
                 key={it.id}
-                className="group bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-all duration-300"
+                className="group  bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-all duration-300"
               >
                 {/* Image Container */}
-                <div className="relative h-48 overflow-hidden bg-gray-100 border-b border-gray-50">
+                <div className="relative h-48  overflow-hidden bg-gray-100 border-b border-gray-50">
                   <img
                     src={`${process.env.NEXT_PUBLIC_HOST_URL}${it.image}`}
                     alt={it.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
                     <div className="bg-white/90 backdrop-blur-sm p-3 rounded-full scale-90 group-hover:scale-100 transition-transform">
-                      <Play className="w-5 h-5 text-pink fill-pink" />
+                      <Link target="_blank" href={it.link}>
+                        <Play
+                          onClick={() => setplayVideo(true)}
+                          className="w-5 h-5 text-pink fill-pink"
+                        />
+                      </Link>
                     </div>
                   </div>
                   <div className="absolute top-2 left-2">
@@ -226,24 +234,7 @@ export default function VideoSection() {
                     {it.title}
                   </h3>
 
-                  {/* {it.subtitle && (
-                    <p className="text-xs text-pink font-medium line-clamp-1 mb-4 italic">
-                      {it.subtitle}
-                    </p>
-                  )} */}
-
-                  <div className="mt-auto pt-2 border-t border-gray-100">
-                    <div className="flex items-center justify-between mb-4">
-                      <a
-                        href={it.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-1.5 text-sm flex items-center gap-1 underline text-pink transition-colors"
-                      >
-                        Video <ExternalLink className="w-4 h-4" />
-                      </a>
-                    </div>
-
+                  <div className="mt-auto pt-8 border-t border-gray-100">
                     <div className="flex justify-end gap-4">
                       <Button
                         theme="transparentGray"
@@ -473,13 +464,6 @@ function VideoForm({
                 register={register}
                 registerer="title"
               />
-              {/* <TextInput
-                label="Subtitle (Optional)"
-                errors={errors.subtitle}
-                placeholder="e.g. The Infravision Conversation"
-                register={register}
-                registerer="subtitle"
-              /> */}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -533,7 +517,7 @@ function VideoForm({
                 )}
               </div>
               <ImagePicker
-                label="Thumbnail Image*"
+                label="Cover Image* (Max-limit - 3MB)"
                 errors={errors.image}
                 register={register}
                 registerer="image"

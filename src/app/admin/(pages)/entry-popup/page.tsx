@@ -56,12 +56,14 @@ function ToggleSwitch({
       aria-checked={checked}
       disabled={disabled}
       onClick={() => onChange(!checked)}
-      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
-        } ${checked ? "bg-pink" : "bg-gray-300"}`}
+      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${
+        disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
+      } ${checked ? "bg-pink" : "bg-gray-300"}`}
     >
       <span
-        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${checked ? "translate-x-6" : "translate-x-1"
-          }`}
+        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+          checked ? "translate-x-6" : "translate-x-1"
+        }`}
       />
     </button>
   );
@@ -212,7 +214,6 @@ function PopupPreviewCard({
                   {data.description}
                 </p>
 
-
                 <div className="grid grid-cols-2 gap-6 pt-6">
                   <div>
                     {data.cta && (
@@ -248,7 +249,6 @@ function PopupPreviewCard({
 
               {data.date && data.date.trim() !== "" && (
                 <div className="text-end  h-fit ">
-
                   <p className="text-sm font-medium text-gray-900">
                     {(() => {
                       const d = new Date(data.date);
@@ -260,8 +260,6 @@ function PopupPreviewCard({
                 </div>
               )}
             </div>
-
-
 
             <div className=" text-[10px] text-gray-600 font-medium uppercase tracking-widest  flex justify-between">
               <div className="flex items-center gap-3 pt-4 border-t border-gray-50">
@@ -364,8 +362,8 @@ function PopupForm({
       console.error("Error updating popup:", error);
       toast.error(
         error?.response?.data?.message[0] ||
-        error?.response?.data?.message ||
-        "Failed to update popup",
+          error?.response?.data?.message ||
+          "Failed to update popup",
       );
     } finally {
       setIsSaving(false);
@@ -456,7 +454,7 @@ function PopupForm({
           />
 
           <ImagePicker
-            label="Popup Image"
+            label="Popup Image (Max-limit - 3MB)"
             errors={errors.image}
             register={register}
             registerer="image"

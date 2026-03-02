@@ -54,7 +54,7 @@ export default function AwardTypes() {
       setIsLoading(true);
       const res = (await getData(
         `/infrashakti/types-of-awards`,
-        session
+        session,
       )) as AwardTypeItem[];
       setItems(res || []);
     } catch (error) {
@@ -76,7 +76,7 @@ export default function AwardTypes() {
         null,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
-        }
+        },
       );
       toast.success("Status updated");
       fetchAwards();
@@ -91,14 +91,14 @@ export default function AwardTypes() {
         `${process.env.NEXT_PUBLIC_HOST_URL}/infrashakti/types-of-awards/${id}`,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
-        }
+        },
       );
       toast.success("Award type deleted successfully");
       setDeletingId(null);
       fetchAwards();
     } catch (error: any) {
       toast.error(
-        error?.response?.data?.message || "Failed to delete award type"
+        error?.response?.data?.message || "Failed to delete award type",
       );
     }
   };
@@ -241,15 +241,15 @@ function AwardTypeForm({
     resolver: zodResolver(awardTypeSchema),
     defaultValues: initialData
       ? {
-        title: initialData.title,
-        description: initialData.description,
-        active: initialData.active,
-        imageFile: initialData.image,
-        iconFile: initialData.icon,
-      }
+          title: initialData.title,
+          description: initialData.description,
+          active: initialData.active,
+          imageFile: initialData.image,
+          iconFile: initialData.icon,
+        }
       : {
-        active: true,
-      },
+          active: true,
+        },
   });
 
   const onSubmit: SubmitHandler<AwardTypeFormValues> = async (data) => {
@@ -351,7 +351,7 @@ function AwardTypeForm({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <ImagePicker
-                label="Cover Image*"
+                label="Cover Image* (Max-limit - 3MB)"
                 errors={errors.imageFile}
                 register={register}
                 registerer="imageFile"

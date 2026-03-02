@@ -23,7 +23,6 @@ export default function GetInvolvedBanner() {
     );
   }
 
-
   return (
     <>
       <div id="getInvolvedBanner" className="pt-[5rem] sm:pt-[6rem]">

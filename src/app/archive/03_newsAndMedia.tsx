@@ -175,8 +175,11 @@ export default function NewsAndMedia() {
 
         <div className="py-3 max-w-[890px] ">
           <h1 className="text-black font-light">
-           <span className="text-black font-medium"> The Infravision Foundation </span> in <br /> the public sphere
-            
+            <span className="text-black font-medium">
+              {" "}
+              The Infravision Foundation{" "}
+            </span>{" "}
+            in <br /> the public sphere
           </h1>
         </div>
 
@@ -245,14 +248,14 @@ export default function NewsAndMedia() {
               ))}
             </div>
             {hasNextPage && (
-              <div className="flex justify-center mb-4  blade-top-padding-sm">
+              <div className="flex justify-center mb-4 z-1 relative blade-top-padding-sm">
                 <UnderlineWithHover
                   size="xxlsize"
                   color="pink"
                   bgColor="pink"
                   text="See more"
                   role="button"
-                  borderColor="white"
+                  borderColor="white "
                   handlefun={handleSeeMore}
                 />
               </div>

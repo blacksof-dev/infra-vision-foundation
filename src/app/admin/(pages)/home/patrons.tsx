@@ -73,7 +73,7 @@ export default function Patrons() {
         `${process.env.NEXT_PUBLIC_HOST_URL}/teams/patrons/${id}`,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
-        }
+        },
       );
       toast.success("Patron deleted successfully");
       setDeletingId(null);
@@ -107,7 +107,7 @@ export default function Patrons() {
             <p className="text-gray-500">No patrons found.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xlg:grid-cols-5 gap-6 mt-6">
             {items.map((item) => (
               <PatronCard
                 key={item.id}
@@ -275,7 +275,7 @@ const patronSchema = z.object({
     z.string().min(1, "image is required"),
     z.any().refine((file) => file?.length > 0, "image is required"),
   ]),
-  popupImg:z.union([
+  popupImg: z.union([
     z.string().min(1, "image is required"),
     z.any().refine((file) => file?.length > 0, "image is required"),
   ]),

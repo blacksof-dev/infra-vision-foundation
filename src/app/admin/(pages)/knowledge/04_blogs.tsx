@@ -693,7 +693,7 @@ function BlogForm({
             </div>
 
             <ImagePicker
-              label="Thumbnail*"
+              label="Thumbnail* (Max-limit - 3MB)"
               errors={errors.coverImageFile}
               register={register}
               registerer="coverImageFile"
@@ -701,14 +701,14 @@ function BlogForm({
               accept=".svg, .png, .jpg, .jpeg, .webp"
             />
             <PdfPicker
-              label="PDF File (optional)"
+              label="PDF File (optional)  (Max-limit - 10MB)"
               errors={errors.docFile}
               register={register}
               registerer="docFile"
               watcher={watch("docFile")}
               accept=".pdf"
             />
-                                
+
             {/* Content Editor */}
             <div className="space-y-2">
               <label className="text-sm font-bold text-gray-700 font-poppin">

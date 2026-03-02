@@ -63,7 +63,7 @@ export default function Banner() {
           }
         />
 
-        <div className="mt-10">
+        <div className="mt-10 ">
           <BannerCard data={formState.intialValue} />
         </div>
 
@@ -74,7 +74,7 @@ export default function Banner() {
           </div>
           <div>
             <h5 className="text-sm font-bold text-gray-900 mb-1">
-              Admin Pro-Tip  
+              Admin Pro-Tip
             </h5>
             <p className="text-sm text-gray-600 leading-relaxed">
               To make specific words in the heading appear in{" "}
@@ -144,7 +144,7 @@ function BannerForm({
         const result = await uploadImage(
           desktopValue[0],
           session,
-          `banner-desktop-${Date.now()}`
+          `banner-desktop-${Date.now()}`,
         );
         if (!result.success) {
           toast.error(`Desktop upload failed: ${result.errorMessage}`);
@@ -160,7 +160,7 @@ function BannerForm({
         const result = await uploadImage(
           mobileValue[0],
           session,
-          `banner-mobile-${Date.now()}`
+          `banner-mobile-${Date.now()}`,
         );
         if (!result.success) {
           toast.error(`Mobile upload failed: ${result.errorMessage}`);
@@ -177,7 +177,7 @@ function BannerForm({
           description: data.description,
           backgroundImageDesktop: desktopImageUrl,
           backgroundImageMobile: mobileImageUrl,
-        }
+        },
       );
 
       if (result.success) {
@@ -312,6 +312,23 @@ function BannerCard({ data }: { data: BannerDefaultValueType }) {
                 </div>
               )}
             </div>
+            {/* Desktop Dimension Hint */}
+            <div className="mt-4 bg-pink/5 rounded-xl border border-pink/10 flex items-center gap-3 px-4 py-3">
+              <div className="w-8 h-8 bg-pink/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Info className="w-4 h-4 text-pink" />
+              </div>
+              <div>
+                <p className="text-[10px] font-bold text-pink uppercase tracking-widest leading-none mb-1">
+                  Recommended Dimensions
+                </p>
+                <p className="text-xs font-semibold text-gray-700 leading-none">
+                  1920 x 1024{" "}
+                  <span className="text-gray-400 font-normal ml-1">
+                    (Landscape)
+                  </span>
+                </p>
+              </div>
+            </div>
           </div>
 
           <div className="lg:w-1/3 flex flex-col">
@@ -332,6 +349,23 @@ function BannerCard({ data }: { data: BannerDefaultValueType }) {
                   No Mobile Image
                 </div>
               )}
+            </div>
+            {/* Mobile Dimension Hint */}
+            <div className="mt-4 bg-pink/5 rounded-xl border border-pink/10 flex items-center gap-3 px-4 py-3">
+              <div className="w-8 h-8 bg-pink/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Info className="w-4 h-4 text-pink" />
+              </div>
+              <div>
+                <p className="text-[10px] font-bold text-pink uppercase tracking-widest leading-none mb-1">
+                  Recommended Dimensions
+                </p>
+                <p className="text-xs font-semibold text-gray-700 leading-none">
+                  390 x 690{" "}
+                  <span className="text-gray-400 font-normal ml-1">
+                    (Portrait)
+                  </span>
+                </p>
+              </div>
             </div>
           </div>
         </div>

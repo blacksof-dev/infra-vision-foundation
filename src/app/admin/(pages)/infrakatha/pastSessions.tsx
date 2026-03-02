@@ -499,7 +499,7 @@ function InfraKathaForm({
             />
 
             <ImagePicker
-              label="Thumbnail Image*"
+              label="Thumbnail Image* (Max-limit - 3MB)"
               errors={errors.thumbnail}
               register={register}
               registerer="thumbnail"

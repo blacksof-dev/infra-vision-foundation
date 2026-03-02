@@ -4,7 +4,7 @@ import SectionHeading from "../../components/sectionHeading";
 import { Button } from "../../components/button";
 import TextInput from "../../components/input/textInput";
 import MessageInput from "../../components/input/textareaInput";
-import { X, PlayCircle } from "lucide-react";
+import { X, Play } from "lucide-react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import ImagePicker from "../../components/input/imagePicker";
 import { ToggleSwitch } from "../../components/toggleSwitch";
@@ -23,6 +23,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/_components/ui/select";
+import Link from "next/link";
 
 // --- Schema ---
 const ceremonySceneSchema = z.object({
@@ -74,7 +75,7 @@ export default function CeremonyScenes() {
   // Form State
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<CeremonySceneItem | null>(
-    null
+    null,
   );
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
@@ -90,7 +91,7 @@ export default function CeremonyScenes() {
 
         const res = (await getData(
           `/infrashakti/ceremony-scenes?${query.toString()}`,
-          session
+          session,
         )) as ListResponse;
 
         setItems(res?.data || []);
@@ -103,7 +104,7 @@ export default function CeremonyScenes() {
         setIsLoading(false);
       }
     },
-    [session, limit, active, page]
+    [session, limit, active, page],
   );
 
   useEffect(() => {
@@ -117,7 +118,7 @@ export default function CeremonyScenes() {
         null,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
-        }
+        },
       );
       toast.success("Status updated");
       fetchScenes(page);
@@ -132,7 +133,7 @@ export default function CeremonyScenes() {
         `${process.env.NEXT_PUBLIC_HOST_URL}/infrashakti/ceremony-scenes/${id}`,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
-        }
+        },
       );
       toast.success("Scene deleted successfully");
       setDeletingId(null);
@@ -191,15 +192,12 @@ export default function CeremonyScenes() {
                     src={`${process.env.NEXT_PUBLIC_HOST_URL}${item.thumbnailUrl}`}
                     alt={item.title}
                   />
-                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <a
-                      href={item.youtubeVideoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white transform hover:scale-110 transition-transform"
-                    >
-                      <PlayCircle className="w-12 h-12" />
-                    </a>
+                  <div className="absolute  inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                    <div className="bg-white/90 backdrop-blur-sm p-3 rounded-full scale-90 group-hover:scale-100 transition-transform">
+                      <Link href={item.youtubeVideoUrl} target="_blank">
+                        <Play className="w-5 h-5 cursor-pointer text-pink fill-pink" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
 
@@ -215,21 +213,6 @@ export default function CeremonyScenes() {
                   <p className="text-sm text-gray-500 line-clamp-3 mb-4 flex-1">
                     {item.description}
                   </p>
-
-                  {item.youtubeVideoUrl && (
-                    <a
-                      href={
-                        item.youtubeVideoUrl
-                      }
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-medium text-black   underline   my-2     "
-                    >
-                      Watch on YouTube
-                    </a>
-                  )
-
-                  }
 
                   <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
                     <div className="flex items-center gap-2">
@@ -278,15 +261,16 @@ export default function CeremonyScenes() {
             <div className="flex gap-2 items-center">
               {Array.from(
                 { length: pagination.totalPages },
-                (_, i) => i + 1
+                (_, i) => i + 1,
               ).map((p) => (
                 <button
                   key={p}
                   onClick={() => fetchScenes(p)}
-                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${p === page
-                    ? "bg-pink text-white"
-                    : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
-                    }`}
+                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${
+                    p === page
+                      ? "bg-pink text-white"
+                      : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
+                  }`}
                 >
                   {p}
                 </button>
@@ -354,16 +338,16 @@ function CeremonySceneForm({
     resolver: zodResolver(ceremonySceneSchema),
     defaultValues: initialData
       ? {
-        title: initialData.title,
-        name: initialData.name,
-        description: initialData.description,
-        youtubeVideoUrl: initialData.youtubeVideoUrl,
-        active: initialData.active,
-        thumbnailFile: initialData.thumbnailUrl,
-      }
+          title: initialData.title,
+          name: initialData.name,
+          description: initialData.description,
+          youtubeVideoUrl: initialData.youtubeVideoUrl,
+          active: initialData.active,
+          thumbnailFile: initialData.thumbnailUrl,
+        }
       : {
-        active: true,
-      },
+          active: true,
+        },
   });
 
   const onSubmit: SubmitHandler<CeremonySceneFormValues> = async (data) => {
@@ -470,7 +454,7 @@ function CeremonySceneForm({
             />
 
             <ImagePicker
-              label="Thumbnail Image*"
+              label="Thumbnail Image* (Max-limit - 3MB)"
               errors={errors.thumbnailFile}
               register={register}
               registerer="thumbnailFile"

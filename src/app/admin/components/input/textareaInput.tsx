@@ -41,7 +41,7 @@ const MessageInput = ({
           />
         </svg>
         <textarea
-          rows={3}
+          rows={6}
           type={"text"}
           {...register(registerer)}
           className={`ml-2.5 rounded-lg border-none w-11/12 h-full outline-none font-regular pt-1`}

@@ -587,7 +587,7 @@ function GalleryForm({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="md:col-span-2">
               <ImagePicker
-                label="Gallery Image"
+                label="Gallery Image (Max-limit - 3MB)"
                 register={register}
                 registerer="file"
                 errors={errors.file}

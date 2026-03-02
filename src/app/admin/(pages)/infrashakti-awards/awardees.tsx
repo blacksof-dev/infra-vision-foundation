@@ -4,7 +4,8 @@ import SectionHeading from "../../components/sectionHeading";
 import { Button } from "../../components/button";
 import TextInput from "../../components/input/textInput";
 import MessageInput from "../../components/input/textareaInput";
-import { X, PlayCircle } from "lucide-react";
+import { X, Play } from "lucide-react";
+import Link from "next/link";
 import { useForm, SubmitHandler } from "react-hook-form";
 import ImagePicker from "../../components/input/imagePicker";
 import { ToggleSwitch } from "../../components/toggleSwitch";
@@ -94,7 +95,7 @@ export default function Awardees() {
 
         const res = (await getData(
           `/infrashakti/awardees?${query.toString()}`,
-          session
+          session,
         )) as ListResponse;
         setItems(res?.data || []);
         setPagination(res?.meta || null);
@@ -106,7 +107,7 @@ export default function Awardees() {
         setIsLoading(false);
       }
     },
-    [session, limit, active, page]
+    [session, limit, active, page],
   );
 
   useEffect(() => {
@@ -120,7 +121,7 @@ export default function Awardees() {
         null,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
-        }
+        },
       );
       toast.success("Status updated");
       fetchAwardees(page);
@@ -135,7 +136,7 @@ export default function Awardees() {
         `${process.env.NEXT_PUBLIC_HOST_URL}/infrashakti/awardees/${id}`,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
-        }
+        },
       );
       toast.success("Awardee deleted successfully");
       setDeletingId(null);
@@ -194,15 +195,13 @@ export default function Awardees() {
                     src={`${process.env.NEXT_PUBLIC_HOST_URL}${item.thumbnailUrl}`}
                     alt={item.title}
                   />
-                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <a
-                      href={item.videoUrlYoutube}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white transform hover:scale-110 transition-transform"
-                    >
-                      <PlayCircle className="w-12 h-12" />
-                    </a>
+
+                  <div className="absolute  inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                    <div className="bg-white/90 backdrop-blur-sm p-3 rounded-full scale-90 group-hover:scale-100 transition-transform">
+                      <Link href={item.videoUrlYoutube} target="_blank">
+                        <Play className="w-5 h-5 cursor-pointer text-pink fill-pink" />
+                      </Link>
+                    </div>
                   </div>
 
                   {item.iconUrl && (
@@ -232,8 +231,6 @@ export default function Awardees() {
                     {item.description}
                   </p>
 
-
-
                   {item.partnersLogo && (
                     <div className="mb-4 pt-3 border-t border-gray-50 flex items-center gap-2">
                       <span className="text-[10px] font-medium text-gray-400 uppercase tracking-widest">
@@ -246,26 +243,6 @@ export default function Awardees() {
                       />
                     </div>
                   )}
-
-                  {item.videoUrlYoutube && (
-                    <a
-                      href={
-                        item.videoUrlYoutube
-                      }
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-medium text-black   underline   my-2     "
-                    >
-                      Watch on YouTube
-                    </a>
-                  )
-
-                  }
-
-
-
-
-
 
                   <div className="mt-auto  py-6 flex items-center justify-between ">
                     <div className="flex  items-center gap-2">
@@ -314,15 +291,16 @@ export default function Awardees() {
             <div className="flex gap-2 items-center">
               {Array.from(
                 { length: pagination.totalPages },
-                (_, i) => i + 1
+                (_, i) => i + 1,
               ).map((p) => (
                 <button
                   key={p}
                   onClick={() => fetchAwardees(p)}
-                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${p === page
-                    ? "bg-pink text-white"
-                    : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
-                    }`}
+                  className={`w-8 h-8 rounded-md text-sm font-medium transition-colors ${
+                    p === page
+                      ? "bg-pink text-white"
+                      : "bg-white border border-gray-200 text-gray-600 hover:border-pink hover:text-pink"
+                  }`}
                 >
                   {p}
                 </button>
@@ -390,19 +368,19 @@ function AwardeeForm({
     resolver: zodResolver(awardeeSchema),
     defaultValues: initialData
       ? {
-        awardType: initialData.awardType,
-        awardee: initialData.awardee,
-        title: initialData.title,
-        description: initialData.description,
-        videoUrlYoutube: initialData.videoUrlYoutube,
-        active: initialData.active,
-        thumbnailFile: initialData.thumbnailUrl,
-        iconFile: initialData.iconUrl,
-        partnersLogo: initialData.partnersLogo || undefined,
-      }
+          awardType: initialData.awardType,
+          awardee: initialData.awardee,
+          title: initialData.title,
+          description: initialData.description,
+          videoUrlYoutube: initialData.videoUrlYoutube,
+          active: initialData.active,
+          thumbnailFile: initialData.thumbnailUrl,
+          iconFile: initialData.iconUrl,
+          partnersLogo: initialData.partnersLogo || undefined,
+        }
       : {
-        active: true,
-      },
+          active: true,
+        },
   });
 
   const onSubmit: SubmitHandler<AwardeeFormValues> = async (data) => {
@@ -537,7 +515,7 @@ function AwardeeForm({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <ImagePicker
-                label="Thumbnail Image*"
+                label="Thumbnail Image* (Max-limit - 3MB)"
                 errors={errors.thumbnailFile}
                 register={register}
                 registerer="thumbnailFile"
@@ -545,7 +523,7 @@ function AwardeeForm({
                 accept=".png, .jpg, .jpeg, .webp"
               />
               <ImagePicker
-                label="Icon Logo*"
+                label="Icon Logo* (Max-limit - 3MB)"
                 errors={errors.iconFile}
                 register={register}
                 registerer="iconFile"
@@ -555,7 +533,7 @@ function AwardeeForm({
             </div>
 
             <ImagePicker
-              label="Partners Logo (Optional)"
+              label="Partners Logo (Optional) (Max-limit - 3MB)"
               errors={errors.partnersLogo}
               register={register}
               registerer="partnersLogo"

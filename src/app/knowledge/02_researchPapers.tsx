@@ -156,8 +156,8 @@ export default function ResearchPapers() {
   if (!tabsData) return null;
 
   const renderFilterButtons = (filters: string[]) => (
-    <div ref={containerRef} className="pt-5 overflow-scroll no-scrollbar">
-      <div className="flex gap-3">
+    <div ref={containerRef} className="pt-2 pb-6 sm:py-5">
+      <div className="flex flex-wrap gap-3">
         {filters.map((filter, index) => (
           <button
             key={filter}
@@ -168,7 +168,7 @@ export default function ResearchPapers() {
               ${
                 selectedFilter === filter
                   ? "border border-pink text-white bg-pink font-medium"
-                  : "border border-lightgray/30"
+                  : "border border-lightgray/30 hover:border-pink/50 transition-colors"
               }`}
             onClick={() => handleFilterClick(filter, index)}
           >
@@ -200,14 +200,13 @@ export default function ResearchPapers() {
 
         {/* Filter Section */}
         <div className="pt-5">
-          <div className="flex flex-col sm:flex-row gap-6 border-b border-darkgray/20">
+          <div className="flex flex-col  sm:flex-row gap-6 border-b border-darkgray/20">
             <div className="sm:border-r sm:border-darkgray/20">
               <h5 className="text-darkgray/80 sm:py-5 pr-5 mb-8 text-nowrap">
                 Filter by
               </h5>
             </div>
-
-            {renderFilterButtons(activeTabs)}
+            <div className="flex-1">{renderFilterButtons(activeTabs)}</div>
           </div>
 
           {/* Research Paper Cards */}
@@ -217,7 +216,7 @@ export default function ResearchPapers() {
                 {!cardData ? "Loading..." : "No results"}
               </div>
             )}
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-10 xl:gap-16 xlg:gap-24">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  gap-5 sm:gap-10 xl:gap-16 xlg:gap-24">
               {currentData.cards.map((card) => (
                 <div key={card.id}>
                   <NewsCard

@@ -15,8 +15,6 @@ export default function Page() {
       <InTheNews />
       <SectorsManagerVideo />
       <VideoSection />
-      {/* <SectorsManagerGallery/> */}
-      {/* <GallerySection/> */}
     </>
   );
 }

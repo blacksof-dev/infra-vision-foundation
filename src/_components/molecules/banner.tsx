@@ -21,7 +21,6 @@ export default function Banner({
   title,
   subdesc,
   mobileimage,
-  classes,
   buttonText,
   link,
   id,

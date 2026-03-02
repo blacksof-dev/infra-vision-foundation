@@ -56,7 +56,7 @@ export default function TeamsTrustees() {
       setIsLoading(true);
       const res = (await getData(
         `/teams/trustees`,
-        session
+        session,
       )) as TrusteesResponse;
       setItems(res.trustees ?? []);
     } catch (e) {
@@ -68,23 +68,7 @@ export default function TeamsTrustees() {
 
   useEffect(() => {
     loadTrustees();
-  }, [ ]);
-
-  // const handleToggle = async (id: string) => {
-  //   try {
-  //     await axios.put(
-  //       `${process.env.NEXT_PUBLIC_HOST_URL}/teams/trustees/${id}`,
-  //       { active: !items.find((i) => i.id === id)?.active },
-  //       {
-  //         headers: { Authorization: `Bearer ${session?.accessToken}` },
-  //       }
-  //     );
-  //     toast.success("Status updated");
-  //     loadTrustees();
-  //   } catch (error: any) {
-  //     toast.error(error?.response?.data?.message || "Failed to toggle status");
-  //   }
-  // };
+  }, []);
 
   const handleDelete = async (id: string) => {
     try {
@@ -92,7 +76,7 @@ export default function TeamsTrustees() {
         `${process.env.NEXT_PUBLIC_HOST_URL}/teams/trustees/${id}`,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
-        }
+        },
       );
       toast.success("Trustee deleted successfully");
       setDeletingId(null);
@@ -126,7 +110,7 @@ export default function TeamsTrustees() {
             <p className="text-gray-500">No trustees found.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xlg:grid-cols-5 gap-6 mt-6">
             {items.map((item) => (
               <TrusteeMemberCard
                 key={item.id}
@@ -442,7 +426,7 @@ function TrusteeForm({
             <MessageInput
               label="Description (Popup)*"
               errors={errors.popupdesc}
-              placeholder="Tell something about this trustee..."
+              placeholder="Tell something about this trustee ..."
               register={register}
               registerer="popupdesc"
             />
