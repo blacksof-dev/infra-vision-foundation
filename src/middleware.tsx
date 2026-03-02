@@ -5,16 +5,20 @@ export default withAuth(
   function middleware(req) {
     const { pathname } = req.nextUrl;
     const token = req.nextauth.token;
- 
+
     if (pathname.startsWith("/admin") && !token) {
       // Allow login page itself
-      if (pathname === "/admin/login") {
+      if (
+        pathname === "/admin/login" ||
+        pathname === "/admin/forgot-password" ||
+        pathname === "/admin/reset-password"
+      ) {
         return NextResponse.next();
       }
 
       return NextResponse.redirect(new URL("/admin/login", req.url));
     }
- 
+
     if (pathname === "/admin/login" && token) {
       return NextResponse.redirect(new URL("/admin/admin-list", req.url));
     }
