@@ -10,14 +10,14 @@ import Popup from "./popup";
 export default function Home() {
   return (
     <>
-      {/* <Popup />
+      <Popup />
       <Banner />
-      <WhoWeAre /> */}
+      <WhoWeAre />
       <Infravisionaries />
-      {/* <Association />
+      <Association />
       <Highlights />
       <StayConnected />
-      <InfravisionTalks /> */}
+      <InfravisionTalks />
     </>
   );
 }

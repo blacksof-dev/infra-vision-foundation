@@ -19,7 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   } catch (error) {
     console.error("Sitemap: Failed to fetch blogs", error);
   }
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
   const blogUrls = blogs.map((blog: any) => ({
     url: `${baseUrl}/blogs/${blog.slug}`,
     lastModified: new Date(blog.publishedDate || new Date()),
