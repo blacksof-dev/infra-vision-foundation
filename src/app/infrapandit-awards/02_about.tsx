@@ -72,19 +72,21 @@ const AboutInfraPandit = () => {
                   </Link>
                 </div>
               )}
-              <div
-                role="button"
-                onClick={() => setShowPopup(true)}
-                className="cursor-pointer"
-              >
-                <UnderlineCta
-                  title={eligibility?.ctaText}
-                  color="black"
-                  underlineColor="#D52C5A"
-                  role="link"
-                  size="extralarge"
-                />
-              </div>
+              {eligibility?.active && (
+                <div
+                  role="button"
+                  onClick={() => setShowPopup(true)}
+                  className="cursor-pointer"
+                >
+                  <UnderlineCta
+                    title={eligibility?.ctaText}
+                    color="black"
+                    underlineColor="#D52C5A"
+                    role="link"
+                    size="extralarge"
+                  />
+                </div>
+              )}
             </div>
           </div>
           <div className="flex  justify-center">

@@ -143,7 +143,7 @@ export default function InfraPanditAwards() {
                 <div className="prose prose-sm max-w-none text-gray-600 mb-8  overflow-y-auto">
                   <EditorContent content={data.main.content} />
                 </div>
-                <div className="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
+                {/* <div className="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <ToggleSwitch
                       checked={data.main.active}
@@ -153,11 +153,7 @@ export default function InfraPanditAwards() {
                       className={`text-sm font-semibold ${
                         data.main.active ? "text-green-600" : "text-red-500"
                       }`}
-                    >
-                      {data.main.active
-                        ? "Live on Website"
-                        : "Hidden from Public"}
-                    </span>
+                    ></span>
                   </div>
                   {isMainDeactivated && (
                     <div className="flex items-center gap-2 text-amber-600 bg-amber-50 px-3 py-1.5 rounded-lg border border-amber-100 italic text-xs">
@@ -165,7 +161,7 @@ export default function InfraPanditAwards() {
                       associated sections
                     </div>
                   )}
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -200,7 +196,7 @@ export default function InfraPanditAwards() {
                 isDisabled={isMainDeactivated}
               />
             </div>
-            <div className="flex-1 bg-gray-50/50 rounded-xl p-5 border border-gray-100 mb-6 overflow-hidden max-h-100 overflow-y-auto   text-gray-600 text-sm">
+            <div className="flex-1 bg-gray-50/50  rounded-xl p-5 border border-gray-100 mb-6 overflow-hidden max-h-100 overflow-y-auto   text-gray-600 text-sm">
               <EditorContent content={data.eligibility.content} isSmall />
             </div>
             <div className="flex items-center gap-3 pt-4 border-t border-gray-50">
