@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 import OutreachBanner from "./01_Banner";
 import Upcoming from "./03_upcoming";
-import Involved   from "@/_components/molecules/newsletter";
+import Involved from "@/_components/molecules/newsletter";
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Upcoming programmes of The Infravision Foundation",
   description:

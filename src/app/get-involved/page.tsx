@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import ContactBanner from "./01_banner";
+export const revalidate = 60;
 import ContactForm from "./contactUsForm";
 
 export const metadata: Metadata = {

@@ -1,4 +1,4 @@
-import Highlights from "./05_highlights"
+import Highlights from "./05_highlights";
 import Banner from "./01_banner";
 import WhoWeAre from "./02_whoWeAre";
 import Infravisionaries from "./03_infravisionaries";
@@ -7,16 +7,15 @@ import StayConnected from "./06_connected";
 import InfravisionTalks from "./07_infravision_talks";
 import Popup from "./popup";
 
-
 export default function Home() {
   return (
     <>
-      <Popup/>
+      <Popup />
       <Banner />
       <WhoWeAre />
       <Infravisionaries />
       <Association />
-      <Highlights/>
+      <Highlights />
       <StayConnected />
       <InfravisionTalks />
     </>

@@ -1,12 +1,8 @@
-
-
-import GetInvolved   from "@/_components/molecules/newsletter";
+import GetInvolved from "@/_components/molecules/newsletter";
 import InfraPanditBanner from "./01_banner";
-
+export const revalidate = 60;
 import Sections from "./allsection";
 import { Metadata } from "next";
-
-
 
 export const metadata: Metadata = {
   title: "Recognising top infrastructure researchers | InfraPandit Awards",
@@ -86,14 +82,11 @@ export const metadata: Metadata = {
   },
 };
 
-
 const InfraPandit = () => {
- 
-
   return (
     <>
       <InfraPanditBanner />
-       <Sections/>
+      <Sections />
       <GetInvolved />
     </>
   );

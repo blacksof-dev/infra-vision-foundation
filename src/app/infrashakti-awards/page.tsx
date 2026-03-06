@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import BannerSection from "./01_banner";
-import GetInvolved   from "@/_components/molecules/newsletter";
+import GetInvolved from "@/_components/molecules/newsletter";
 import InfraShaktiContent from "./allPages";
-
+export const revalidate = 60;
 export const metadata: Metadata = {
   title: "Celebrating infra changemakers | InfraShakti Awards",
   description:
@@ -80,7 +80,6 @@ export const metadata: Metadata = {
     images: ["https://theinfravisionfoundation.org/assets/og/ogImage.png"],
   },
 };
-
 
 export default function InfraShaktiPage() {
   return (

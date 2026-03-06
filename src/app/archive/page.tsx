@@ -1,9 +1,7 @@
- 
 import { Metadata } from "next";
 import BannerSection from "./01_banner";
 import Section from "./sections";
- 
-
+export const revalidate = 60;
 export const metadata: Metadata = {
   title: "Insights & resources on infrastructure | TIF Archives",
   description:
@@ -83,11 +81,10 @@ export const metadata: Metadata = {
 };
 
 export default function Archive() {
- 
   return (
     <main>
       <BannerSection />
-       <Section/>
+      <Section />
     </main>
   );
 }

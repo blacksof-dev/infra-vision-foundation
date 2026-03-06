@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { MoveLeft } from "lucide-react";
-import { Progessbar } from "@/_components/molecules/timelineBlog";
 import EditorRenderer from "@/_components/molecules/editor";
 import { notFound } from "next/navigation";
 import { getUrl } from "@/lib/getUrl";

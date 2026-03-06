@@ -1,8 +1,9 @@
 import Image from "next/image";
- 
+
 import Updates from "./updates";
 import { getFetch } from "@/lib/api";
 import { getUrl } from "@/lib/getUrl";
+export const revalidate = 60;
 
 interface BannerContent {
   heading: string;
@@ -20,12 +21,11 @@ export default async function Banner() {
         <div className="relative overflow-hidden">
           <div className="relative w-full h-[40rem]   lg:h-auto xl:h-full ">
             <Image
-              src={getUrl(content?.backgroundImageDesktop)  }
+              src={getUrl(content?.backgroundImageDesktop)}
               alt="InfraVision Foundation"
               className="w-full h-full object-cover"
               width={1920}
-              height={1024} 
-              
+              height={1024}
             ></Image>
           </div>
           <div className="w-container">

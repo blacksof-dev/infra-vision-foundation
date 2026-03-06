@@ -290,23 +290,23 @@ arr2 = [3, 4, 5, 6]
 
 // console.log(mergedArray([1, 2, 3, 4], [3, 4, 5, 6]));
 
-function reverseString(str) {
-  let arr = str.toString().split("");
-  console.log(arr);
-  let start = 0;
-  let end = str.length - 1;
+// function reverseString(str) {
+//   let arr = str.toString().split("");
+//   console.log(arr);
+//   let start = 0;
+//   let end = str.length - 1;
 
-  while (start < end) {
-    let temp = arr[start];
-    arr[start] = arr[end];
-    arr[end] = temp;
-    start++;
-    end--;
-  }
-  return arr.join("");
-}
+//   while (start < end) {
+//     let temp = arr[start];
+//     arr[start] = arr[end];
+//     arr[end] = temp;
+//     start++;
+//     end--;
+//   }
+//   return arr.join("");
+// }
 
-console.log(reverseString(142));
+// console.log(reverseString(142));
 
 // function ckeckPalindrome(str) {
 //   let reverse = reverseString(str);
@@ -383,3 +383,165 @@ console.log(reverseString(142));
 // }
 
 // console.log(reverseNumber(142));
+
+//let arr = [1, 2, 3, 3, 4, 3, 3, 1, 1, 2];
+// Output - [4,2,1,3]
+
+// function findUnique(arr) {
+//   let newArr = [];
+//   const map = new Map();
+//   for (let ele of arr) {
+//     if (!map.has(ele)) {
+//       map.set(ele, 1);
+//     } else {
+//       let value = map.get(ele);
+//       map.set(ele, value + 1);
+//     }
+//   }
+
+//   const sorted = new Map([...map.entries()].sort((a, b) => a[1] - b[1]));
+//   for (let [key, value] of sorted) {
+//     newArr.push(key);
+//   }
+//   return newArr;
+// }
+
+// console.log(findUnique(arr));
+
+let arr = [2, 4, 3, 5, 7, 8, 9];
+let targetValue = 7;
+function findPair(arr, targetValue) {}
+
+console.log(findPair(arr, targetValue));
+
+// Optimization related questions
+
+// what is the bundler?
+/*
+
+Ans - bundler is a tool 
+ - that takes multiple file
+ - understand their dependencies
+ - bundle them into a single file and optimise them
+  - this single optimse file is send to the browser.
+   popular bundlers: webpack,vite,rolup,turbopack,parcel
+
+  Why Bundler exists?
+  Browser dont understand the ts,jsx,tailwind,modern js
+  so bundler solve all these problems
+
+  How bundler work internally 
+
+  1. Start from the entry file (like index.js)
+  2.Parse the file and create AST (Abstract syntax tree)
+      AST allow the bundler to understand the ocdee like - 
+      1. Detect the import
+      2. Detech the exports,
+      3. detech the unused code,
+      4. Transform the code.
+  3. Build the dependency graph
+  4. Loaders / Transformers Run
+  5. Convert Everything Into Modules
+  6: Bundle Generation
+  7. Optimization Phase
+     1. tree shaking
+     2. Minification
+     3. Dead Code Elimination
+     4. Code Splitting
+  8. Output Files
+*/
+
+/*
+
+2. Difference between the webpack,rollup,vite
+     
+webpack : 
+Builds entire dependency graph
+Bundles everything
+Serves bundle
+Uses in-memory filesystem
+
+Rollup
+Designed for:Clean ES module bundling
+
+
+
+Vite
+This is the modern approach.
+Instead of bundling everything:
+Uses native ES modules in browser
+Serves files on demand
+Uses esbuild for fast transformation
+
+*/
+
+/*
+3. What is babel
+
+Babel is the javascript compiler
+Different browsers support different JS features.
+Modern JavaScript → Older JavaScript
+JSX → Regular JavaScript
+TypeScript → JavaScript
+
+*/
+
+/*
+
+ How does Hot Module Replacement work?
+ Ans - Hot Module Replacement allows updating modules in the browser:
+        Without full page reload
+        Without losing application state
+        Almost instantly
+
+Without HMR:
+You edit a file
+Browser reloads
+State resets
+You lose form input, scroll position, etc.
+
+With HMR:
+You edit a file
+Only that module updates
+App state remains
+
+
+
+Edit file
+   ↓
+File watcher detects change
+   ↓
+Bundler rebuilds changed module
+   ↓
+Dependency graph finds affected modules
+   ↓
+Dev server pushes update via WebSocket
+   ↓
+Browser runtime swaps module
+   ↓
+App re-renders only affected parts
+
+
+Watching files
+Rebuilding only changed module
+Using dependency graph to find affected modules
+Sending update via WebSocket
+Replacing module in browser runtime
+Preserving app state
+
+
+
+React Fast Refresh - HMR
+- Keeps component state
+- Preserves hooks state
+
+
+
+*/
+
+/*
+
+What Is a Monorepo?
+A single Git repository that contains multiple projects or packages.
+
+*/

@@ -26,6 +26,7 @@ export async function postFetch<T, B = unknown>(
   try {
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_HOST_URL}${url}`,
+
       body,
       {
         headers: {

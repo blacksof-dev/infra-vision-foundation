@@ -4,6 +4,7 @@ import AboutUsBanner from "./01_banner";
 
 import { Metadata } from "next";
 import Sections from "./sections";
+export const revalidate = 60;
 export const metadata: Metadata = {
   title: " Impacting public policy in infra | The Infravision Foundation",
   description:
