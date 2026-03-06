@@ -8,6 +8,7 @@ import InfravisionTalks from "./07_infravision_talks";
 import Popup from "./popup";
 
 
+
 export default function Home() {
   return (
     <>
