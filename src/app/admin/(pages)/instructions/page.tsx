@@ -10,8 +10,8 @@ export default function AdminInstructionsPage() {
           Dashboard Guidelines
         </h1>
         <p className="text-darkgray text-lg max-w-2xl">
-            Follow these guidelines to ensure data integrity and
-          optimal performance.
+          Follow these guidelines to ensure data integrity and optimal
+          performance.
         </p>
       </header>
 
@@ -33,6 +33,11 @@ export default function AdminInstructionsPage() {
             </li>
             <li>
               Always ensure a stable connection before submitting large files.
+            </li>
+            <li>
+              If errors persist, try{" "}
+              <strong>clearing your browser cache and cookies</strong> for this
+              site.
             </li>
           </ul>
         </section>
@@ -125,19 +130,23 @@ export default function AdminInstructionsPage() {
           </div>
         </section>
 
-        {/* ⚠️ Blog Update Visibility Notice */}
+        {/* ⚠️ Frontend Propagation Delay */}
         <section className="p-8 border border-pink/10 rounded-xl bg-pink/5">
           <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-3">
             <Hourglass /> Propagation Delay
           </h2>
           <p className="text-darkgray mb-4">
-            Updates to blog posts or static content may take{" "}
-            <strong>1–2 minutes</strong> to reflect on the live site.
+            Any operation performed in the{" "}
+            <strong>backend or admin panel</strong> — including creating,
+            updating, or deleting records — may take up to{" "}
+            <strong>5 minutes</strong> to reflect on the live frontend site.
           </p>
           <div className="bg-white/50 p-4 rounded-lg text-sm text-darkgray italic border border-pink/5">
-            Reason: The platform uses static regeneration. The latest version is
-            generated after the first visit following an update. Subsequent
-            visitors will see the updated content instantly.
+            Reason: The platform uses static regeneration with a revalidation
+            window. Pages are rebuilt in the background after changes are made.
+            If updates are not visible immediately, please wait a few minutes
+            and do a hard refresh <strong>(Ctrl + Shift + R)</strong> before
+            reporting an issue.
           </div>
         </section>
       </div>

@@ -36,6 +36,12 @@ interface ApiResponse<T> {
   [key: string]: T[] | any;
 }
 
+interface OurCoreContent {
+  label: string;
+  heading: string;
+  description: string;
+}
+
 type ButtonTabProps = {
   label: string;
   value: string;
@@ -118,6 +124,11 @@ export default function Infravisionaries() {
       subtitle: member.subtitle,
     }));
   };
+
+  const { data: ourCoreContent } = useQuery({
+    queryKey: ["our-core-content"],
+    queryFn: () => getFetch<OurCoreContent>("/content/our-core"),
+  });
 
   const { data: trusteesData } = useQuery({
     queryKey: ["trustees"],
@@ -226,20 +237,24 @@ export default function Infravisionaries() {
           <div className="w-container">
             <div className="flex  flex-row  items-center gap-2 md:gap-3">
               <span className="w-[7px] h-[7px] md:w-[15px] md:h-[15px] rounded-full bg-white "></span>
-              <h5 className="font-medium text-white">Our Core</h5>
+              <h5 className="font-medium text-white">
+                {ourCoreContent?.label ?? "Our Core"}
+              </h5>
             </div>
             <div className="pt-4 md:pt-5 ">
-              <h1 className="text-white font-medium">The Infravisionaries</h1>
+              <h1
+                className="text-white font-medium"
+                dangerouslySetInnerHTML={{
+                  __html: ourCoreContent?.heading ?? "The Infravisionaries",
+                }}
+              />
               <div className="w-full sm:w-[85%] xl:w-[45%]">
-                <h6 className="text-white  tracking-[1%] py-4">
-                  <span className="font-semibold">
-                    {" "}
-                    The Infravision Foundation{" "}
-                  </span>{" "}
-                  is a confluence of seasoned professionals with the aim of
-                  contributing thought leadership to help shape and evaluate
-                  infrastructure-related public policies and programmes.
-                </h6>
+                <h6
+                  className="text-white tracking-[1%] py-4"
+                  dangerouslySetInnerHTML={{
+                    __html: ourCoreContent?.description ?? "",
+                  }}
+                />
               </div>
             </div>
           </div>
