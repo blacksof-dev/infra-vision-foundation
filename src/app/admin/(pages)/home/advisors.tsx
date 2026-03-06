@@ -32,6 +32,7 @@ type Advisor = {
   link?: string;
   socialMedia?: string;
   popupdesc?: string;
+  order: number;
   active: boolean;
 };
 
@@ -56,7 +57,7 @@ export default function Advisors() {
       setIsLoading(true);
       const data = (await getData(
         `/teams/advisors`,
-        session
+        session,
       )) as AdvisorsResponse;
       setItems(data.advisors ?? []);
     } catch (e) {
@@ -92,7 +93,7 @@ export default function Advisors() {
         `${process.env.NEXT_PUBLIC_HOST_URL}/teams/advisors/${id}`,
         {
           headers: { Authorization: `Bearer ${session?.accessToken}` },
-        }
+        },
       );
       toast.success("Advisor deleted successfully");
       setDeletingId(null);
@@ -218,7 +219,11 @@ function AdvisorCard({
           src={`${process.env.NEXT_PUBLIC_HOST_URL}${item.image}`}
           alt={item.title}
         />
-
+        <div className="absolute top-2 right-2 flex flex-col gap-1">
+          <span className="bg-black/50 backdrop-blur-md text-white px-2 py-0.5 rounded text-[10px] font-bold">
+            Order: {item.order}
+          </span>
+        </div>
         {item.popupImg && (
           <div className="absolute bottom-2 right-2 w-16 h-16 bg-white backdrop-blur-sm rounded-lg p-0.5 shadow-md border border-gray-100 overflow-hidden">
             <img
@@ -284,6 +289,7 @@ const advisorSchema = z.object({
   link: z.string().optional().or(z.literal("")),
   socialMedia: z.string().optional().or(z.literal("")),
   active: z.boolean(),
+  order: z.coerce.number(),
   image: z.union([
     z.string().min(1, "image is required"),
     z.any().refine((file) => file?.length > 0, "image is required"),
@@ -325,6 +331,7 @@ function AdvisorForm({
           link: initialData.link || "",
           socialMedia: initialData.socialMedia || "",
           active: initialData.active,
+          order: initialData.order,
           image: initialData.image,
           popupImage: initialData.popupImg,
         }
@@ -332,6 +339,7 @@ function AdvisorForm({
           title: "",
           desig: "",
           popupdesc: "",
+          order: 0,
           active: true,
           image: undefined,
           popupImage: undefined,
@@ -342,12 +350,12 @@ function AdvisorForm({
     try {
       setIsSubmitting(true);
       const formData = new FormData();
-      console.log("🧨")
+      console.log("🧨");
       formData.append("title", data.title);
       formData.append("desig", data.desig);
       formData.append("popupdesc", data.popupdesc);
       formData.append("active", String(data.active));
-
+      formData.append("order", String(data.order));
       if (data.link) formData.append("link", data.link);
       if (data.socialMedia) formData.append("socialMedia", data.socialMedia);
 
@@ -448,7 +456,7 @@ function AdvisorForm({
               />
               <div>
                 <label className="font-semibold text-sm mb-2 block text-gray-700">
-                  Platform Name 
+                  Platform Name
                 </label>
                 <Select
                   value={watch("socialMedia") || ""}
@@ -479,17 +487,24 @@ function AdvisorForm({
                 )}
               </div>
             </div>
-
-            <div className="flex items-center gap-3 py-2">
-              <label className="font-medium text-sm text-gray-700">
-                Active Status
-              </label>
-              <ToggleSwitch
-                checked={watch("active")}
-                onChange={(val: boolean) => setValue("active", val)}
+            <div className="grid grid-cols-2 gap-4 ">
+              <TextInput
+                label="Order Priority (optional)"
+                errors={errors.order}
+                placeholder="0"
+                register={register}
+                registerer="order"
               />
+              <div className="flex items-center gap-3 py-2">
+                <label className="font-medium text-sm text-gray-700">
+                  Active Status
+                </label>
+                <ToggleSwitch
+                  checked={watch("active")}
+                  onChange={(val: boolean) => setValue("active", val)}
+                />
+              </div>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <ImagePicker
                 label="Advisor Image*"
