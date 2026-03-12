@@ -7,10 +7,9 @@ import infraPandit from "@/../public/assets/home/whoWeAre/advocacy/infraPanditAw
 import img_16 from "@/../public/assets/knowledeg/researchPapers/16.jpg";
 import { useState } from "react";
 import Card from "@/_components/molecules/cardTemplate";
-import { useHeader } from "@/context/useHeader";
 
 import Link from "next/link";
-import anumita from "@/../public/assets/knowledeg/conversations/anumita.png";
+import anumita from "@/../public/assets/home/conversation2.png";
 
 export type TabItem = {
   id: number;
@@ -158,13 +157,10 @@ export const TabSwitch = ({
   setActiveTab: (value: string) => void;
   activeTab: string;
 }) => {
-  const { isHeaderVisible } = useHeader();
   return (
     <div>
       <div
-        className={`${
-          isHeaderVisible ? "top-14  xl:top-18" : "top-0"
-        } sticky md:relative bg-whitesmoke py-6 xl:py-8 z-[99] transition-all duration-200 ease-linear`}
+        className={` bg-whitesmoke py-6 xl:py-8 z-10 transition-all duration-200 ease-linear`}
       >
         <div className=" flex flex-row sm:justify-center  items-center gap-12 md:gap-18 border-b sm:mx-auto  border-darkgray/16 w-fit">
           <button

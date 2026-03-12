@@ -10,9 +10,8 @@ import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import Link from "next/link";
 import img_15 from "@/../public/assets/knowledeg/blogs/superfast-rail-reality.png";
 import landValue from "@/../public/assets/archive/newsletter/landValue.png";
-import abha from "@/../public/assets/home/updates/abha.png";
 import montek from "@/../public/assets/globals/infrapanditAward.jpg";
-import anumita from "@/../public/assets/knowledeg/conversations/anumita.png";
+import anumita from "@/../public/assets/home/conversation2.png";
 import img_16 from "@/../public/assets/knowledeg/researchPapers/16.jpg";
 
 export default function Updates() {
@@ -154,7 +153,7 @@ export default function Updates() {
 
 const EventsDetails = [
   {
-    image: "/assets/home/updates/op.png",
+    image: "/assets/home/conversation1.png",
     category: "Video",
     link: "https://www.youtube.com/embed/l_tOqH0ZpIE?si=AnuQwfGGP_POegUy",
     title: "Transport thought leader and Distinguished Fellow at Niti Aayog",

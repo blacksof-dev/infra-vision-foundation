@@ -81,7 +81,7 @@ export default function Association() {
                     src={obj.logo}
                     alt={obj.id}
                     fill
-                    className="object-contain"
+                    className="object-contain "
                     unoptimized={true}
                   />
                 </div>

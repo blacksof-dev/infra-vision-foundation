@@ -5,7 +5,8 @@ type CardProps = {
   link: string;
   category: string;
   classes?: string;
-  subtitle?: string; ctaText: string;
+  subtitle?: string;
+  ctaText: string;
 };
 import Image from "next/image";
 import { BorderGrayHeroBtn } from "../atoms/buttons";
@@ -18,18 +19,21 @@ export default function Card({
   category,
   classes,
   subtitle,
-  ctaText = "Read more"
+  ctaText = "Read more",
 }: CardProps) {
   return (
     <>
-      <div data-aos="fade-up" className="xl:max-w-[29rem] flex flex-col  relative ">
-        <div className="w-full h-[16rem] ">
+      <div
+        data-aos="fade-up"
+        className="xl:max-w-[29rem] flex flex-col  relative "
+      >
+        <div className="w-full h-[19rem] ">
           <Image
             src={image}
             width={1000}
             height={1000}
             alt="Image"
-            className="w-full h-full object-cover rounded"
+            className="w-full h-full object-cover  rounded"
           />
         </div>
 
@@ -37,13 +41,12 @@ export default function Card({
           <div>
             <div className="flex flex-row justify-between pt-2 pb-1 md:py-3">
               {category && (
-
-              <div className="flex  flex-row  items-center gap-3 ">
-                <span className="w-[12px]  h-[12px] rounded-full bg-pink "></span>
-                <p className="text-sm md:text-base font-medium text-black">
-                  {category}
-                </p>
-              </div>
+                <div className="flex  flex-row  items-center gap-3 ">
+                  <span className="w-[12px]  h-[12px] rounded-full bg-pink "></span>
+                  <p className="text-sm md:text-base font-medium text-black">
+                    {category}
+                  </p>
+                </div>
               )}
               <div>
                 <h6 className="text-sm md:text-base  text-darkgray ">{date}</h6>
@@ -59,8 +62,6 @@ export default function Card({
               </div>
             )}
           </div>
-
-         
         </div>
         <div className="pt-3  pb-6 xl:py-4 mt-auto ">
           <BorderGrayHeroBtn
