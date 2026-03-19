@@ -1,7 +1,7 @@
 "use client";
 import emailjs from "@emailjs/browser";
 import Image from "next/image";
-import logo from "@/../public/logo.png";
+import logo from "@/../public/logo.webp";
 import { Anchor, TextAnchor } from "../atoms/links";
 import Link from "next/link";
 import SocialMedia from "../atoms/socialMedia";
@@ -463,8 +463,6 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-
-      
     </>
   );
 };

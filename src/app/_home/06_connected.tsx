@@ -1,4 +1,3 @@
-
 import { FaYoutube } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -9,7 +8,7 @@ import TwitterPost from "./twittersection";
 export default function StayConnected() {
   return (
     <section id="homepage-section-6">
-      <div className="blade-top-padding-lg blade-bottom-padding-lg">
+      <div className="blade-top-padding-sm blade-bottom-padding-lg">
         <div className="w-container flex flex-col lg:flex-row gap-7 sm:gap-6 lg:gap-20">
           <div className="w-full lg:w-[65%] xl:w-[70%] ">
             <div className="flex  flex-row  items-center gap-2 md:gap-3">
@@ -18,7 +17,7 @@ export default function StayConnected() {
             </div>
             <div className=" pt-4 pb-2 sm:py-4">
               <h1 className="font-light text-black">
-                Stay connected to {" "}
+                Stay connected to{" "}
                 <span className="font-medium text-black">
                   The Infravision Foundation
                 </span>
@@ -26,7 +25,9 @@ export default function StayConnected() {
             </div>
 
             <h6 className="text-black ">
-              Be part of India's infrastructure transformation. Join our community of infrastructure experts, featuring exclusive conversations, in-depth analysis and research, and more.
+              Be part of India's infrastructure transformation. Join our
+              community of infrastructure experts, featuring exclusive
+              conversations, in-depth analysis and research, and more.
             </h6>
             <div className=" py-2 sm:py-4 hidden lg:block ">
               <h6 className="text-pink font-medium py-2">Follow us on</h6>
@@ -99,10 +100,7 @@ export default function StayConnected() {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );
-};
-
-
+}
