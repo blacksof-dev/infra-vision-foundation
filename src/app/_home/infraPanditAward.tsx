@@ -8,7 +8,7 @@ export default function InfrapanditAward({ ctaText = "See details", link = "/out
   return (
     <>
       <div className="relative  bg-white  rounded-lg   flex flex-col sm:flex-row items-cente sm:gap-4 md:gap-7 xl:gap-10 min-h-[22rem] lg:min-h-[25rem] overflow-hidden">
-        <div className="w-full h-[12rem] md:h-[25rem] sm:w-[45%] lg:w-[38%]  sm:p-5 ">
+        <div className="w-full h-full  md:h-[25rem] sm:w-[45%] lg:w-[38%]  lg:p-5 ">
           <Image
             src={nitiAayog}
             alt="Mr Montek Singh Ahluwalia"
@@ -16,7 +16,7 @@ export default function InfrapanditAward({ ctaText = "See details", link = "/out
             unoptimized={false}
           />
         </div>
-        <div className=" px-3 py-6 xl:py-0 w-full sm:w-1/2 flex flex-col justify-center ">
+        <div className="  py-4 lg:py-0 w-full sm:w-1/2 flex flex-col justify-start lg:justify-center ">
           <h2 className="text-pink font-semibold lg:text-[42px]">
            External engagement
           </h2>
