@@ -44,6 +44,17 @@ const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
   {
+    id: 34,
+    img: "/assets/archive/newsletter/infra-talk-march.png",
+    category: "Volume 34",
+    title: "",
+    sectors: "",
+    date: "March 2026",
+    description:
+      "Infrastructure Expansion Needs More Than Public Money",
+    link: "/assets/pdf/infravision-talk-march-2026.pdf",
+  },
+  {
     id: 33,
     img: "/assets/archive/newsletter/landValue.png",
     category: "Volume 33",

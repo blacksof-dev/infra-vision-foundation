@@ -45,6 +45,16 @@ const INITIAL_VISIBLE_COUNT = 3;
 
 const allcards = [
   {
+    id: 69,
+    img: "/assets/archive/newsAndMedia/indias-urban-shift-from-funding-to-financing.png",
+    category: "News",
+    title: "Vinayak Chatterjee",
+    sectors: "",
+    date: "March 2026",
+    description: "India's Urban Shift - From Funding to Financing",
+    link: "/assets/pdf/indias-urban-shift-from-funding-to-financing.pdf",
+  },
+  {
     id: 68,
     img: "/assets/archive/newsAndMedia/revitalising.jpg",
     category: "News",

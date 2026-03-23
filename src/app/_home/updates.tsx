@@ -102,7 +102,7 @@ export default function Updates() {
               <SwiperSlide key={index} className="  group  ">
                 <Link href={ele.link} target="_blank">
                   <div className="flex flex-row gap-4 bg-[#0000005e] backdrop-blur-[10px] shadow-blur rounded-lg p-2 md:p-4  group h-[8rem] sm:h-[9rem]  lg:h-[10rem] xl:h-[13rem] xlg:h-[16rem] 2xl:h-[18rem] group-hover:bg-white transition-all duration-500 ease-linear ">
-                    <div className="w-[6rem]   h-full md:w-[14rem] lg:w-[13rem]  xl:w-[20rem] xlg:w-[30rem]  relative  group-hover:border group-hover:border-gray-300 ">
+                    <div className="w-[6rem]   h-full md:w-[14rem] lg:w-[13rem]  xl:w-[20rem] xlg:w-[30rem]  relative  group-hover:border group-hover:border-gray-300">
                       <Image
                         src={ele.image}
                         alt={ele.title}
@@ -161,13 +161,12 @@ const EventsDetails = [
   },
 
   {
-    image: "/assets/archive/newsAndMedia/revitalising.jpg",
+    image: "/assets/archive/newsAndMedia/indias-urban-shift-from-funding-to-financing.png",
     category: "News",
-    title: "Revitalising PPPs",
+    title: "India's Urban Shift - From Funding to Financing",
     btnTitle: "See details",
-    link: "/assets/pdf/revitalising.pdf",
+    link: "/assets/pdf/indias-urban-shift-from-funding-to-financing.pdf",
   },
-
   {
     image: montek,
     category: "InfraPandit Awards",
@@ -175,15 +174,15 @@ const EventsDetails = [
     btnTitle: "See details",
     link: "/infrapandit-awards",
   },
-  {
-    image: landValue,
+   {
+    image: "/assets/archive/newsletter/infra-talk-march.png",
     category: "Newsletter",
     title:
-      "Why Land Value Capture can fix India's infrastructure financing crisis",
-    btnTitle: "Read more",
-    link: "/assets/pdf/landValue_Feb_updated.pdf",
+      "Infrastructure Expansion Needs More Than Public Money",
+       btnTitle: "Read more",
+    link: "/assets/pdf/infravision-talk-march-2026.pdf",
   },
-
+ 
   {
     image: img_15,
     category: "Blog",

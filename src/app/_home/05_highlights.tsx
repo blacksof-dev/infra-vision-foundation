@@ -8,6 +8,16 @@ import { useHeader } from "@/context/useHeader";
 import Link from "next/link";
 
 const newsletters = [
+   {
+    id: 34,
+    img: "/assets/archive/newsletter/infra-talk-march.png",
+    category: "Volume 34",
+    sectors: "",
+    date: "March 2026",
+    title:
+      "Infrastructure Expansion Needs More Than Public Money",
+    link: "/assets/pdf/infravision-talk-march-2026.pdf",
+  },
   {
     id: 31,
     img: "/assets/archive/newsletter/landValue.png",
@@ -27,18 +37,19 @@ const newsletters = [
     date: "January 2026",
     link: "/assets/pdf/analysisAction.pdf",
   },
-  {
-    id: 29,
-    img: "/assets/archive/newsletter/infraPanditAward.png",
-    category: "Volume 31",
-    title: "InfraPandit Awards 2025",
-    sectors: "",
-    date: "December 2025",
-    link: "/assets/pdf/decmber.pdf",
-  },
+  
 ];
 
 const news = [
+    {
+    id: 69,
+    img: "/assets/archive/newsAndMedia/indias-urban-shift-from-funding-to-financing.png",
+    category: "News",
+    subtitle: "Vinayak Chatterjee",
+    date: "March 2026",
+    title: "India's Urban Shift - From Funding to Financing",
+    link: "/assets/pdf/indias-urban-shift-from-funding-to-financing.pdf",
+  },
   {
     id: 62,
     img: "/assets/archive/newsAndMedia/revitalising.jpg",
@@ -57,15 +68,7 @@ const news = [
     subtitle: "Vinayak Chatterjee",
     link: "/assets/pdf/landValue.pdf",
   },
-  {
-    id: 60,
-    img: "/assets/archive/newsAndMedia/invest-in-small-towns.png",
-    category: "",
-    date: "January 2026",
-    title: "Invest in small towns",
-    subtitle: " Kiran Karnik",
-    link: "/assets/pdf/invest-in-small-towns.pdf",
-  },
+ 
 ];
 
 export default function Highlights() {
